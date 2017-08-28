@@ -1,0 +1,15 @@
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\bin\Release\Controles.dll
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\bin\Release\Controles.pdb
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\obj\Release\ResolveAssemblyReference.cache
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\obj\Release\Controles.dll
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\obj\Release\Controles.pdb
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\bin\Release\Controles.dll
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\bin\Release\Controles.pdb
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\obj\Release\ResolveAssemblyReference.cache
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\obj\Release\Controles.dll
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\Controles\obj\Release\Controles.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Controles\bin\Release\Controles.dll
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Controles\bin\Release\Controles.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Controles\obj\Release\Controles.csprojResolveAssemblyReference.cache
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Controles\obj\Release\Controles.dll
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Controles\obj\Release\Controles.pdb

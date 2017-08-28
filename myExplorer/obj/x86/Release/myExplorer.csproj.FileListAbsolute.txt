@@ -1,0 +1,83 @@
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\myExplorer.exe.config
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\myExplorer.exe
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\myExplorer.pdb
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\ResolveAssemblyReference.cache
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmAcercaDe.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmVerObraSocial.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmObraSocial.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmDiagnostico.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmForm.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmMain.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmSearch.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Properties.Resources.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Reportes.frmReporte.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\ResGen.read.1.tlog
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\ResGen.write.1.tlog
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.exe
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.pdb
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\myExplorer.exe.config
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\myExplorer.exe
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\myExplorer.pdb
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\Controles.dll
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\Controles.pdb
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmAcercaDe.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmFecha.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmTurno.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmVerObraSocial.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmObraSocial.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmDiagnostico.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmForm.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmMain.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmSearch.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Properties.Resources.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Reportes.frmReporte.resources
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\ResGen.read.1.tlog
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\ResGen.write.1.tlog
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.exe
+D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.pdb
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\Controles.dll
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Release\Controles.pdb
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmFecha.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmTurno.resources
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer-020512-0824\myExplorer\bin\Release\myExplorer.exe.config
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer-020512-0824\myExplorer\obj\x86\Release\myExplorer.exe
+E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer-020512-0824\myExplorer\obj\x86\Release\myExplorer.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\MyExplorer.exe.config
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\MyExplorer.exe
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\MyExplorer.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Controles.dll
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Datos.dll
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Entidades.dll
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Estadisticas.dll
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Reportes.dll
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\System.Data.SQLite.dll
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Controles.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Datos.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Entidades.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Estadisticas.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\Reportes.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\MyExplorer.csprojResolveAssemblyReference.cache
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmEstadistica.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmVerUsuarios.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmAcercaDe.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmAuxiliar.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmFecha.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmLogin.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmTurno.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmUsuario.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmVerObraSocial.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmObraSocial.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmDiagnostico.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmForm.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmMain.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmSearch.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Formularios.frmDialogoImprecion.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\myExplorer.Properties.Resources.resources
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\MyExplorer.csproj.GenerateResource.Cache
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\MyExplorer.exe
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\MyExplorer.pdb
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\MyExplorer.exe.manifest
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\MyExplorer.application
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\MyExplorer.exe.manifest
+F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\MyExplorer.application
