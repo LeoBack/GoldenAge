@@ -134,11 +134,11 @@
     <Compile Include="Formularios\frmTurno.Designer.cs">
       <DependentUpon>frmTurno.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmUsuario.cs">
+    <Compile Include="Formularios\frmMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmUsuario.Designer.cs">
-      <DependentUpon>frmUsuario.cs</DependentUpon>
+    <Compile Include="Formularios\frmMedico.Designer.cs">
+      <DependentUpon>frmMedico.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmVerObraSocial.cs">
       <SubType>Form</SubType>
@@ -206,8 +206,8 @@
     <EmbeddedResource Include="Formularios\frmTurno.resx">
       <DependentUpon>frmTurno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmUsuario.resx">
-      <DependentUpon>frmUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmMedico.resx">
+      <DependentUpon>frmMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmVerObraSocial.resx">
       <DependentUpon>frmVerObraSocial.cs</DependentUpon>
