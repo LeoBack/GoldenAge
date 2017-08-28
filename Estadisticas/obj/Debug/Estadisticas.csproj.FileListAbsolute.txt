@@ -12,3 +12,10 @@ E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Estadisticas\
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Estadisticas\obj\Debug\Estadisticas.csproj.GenerateResource.Cache
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Estadisticas\obj\Debug\Estadisticas.dll
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Estadisticas\obj\Debug\Estadisticas.pdb
+D:\Project-GitHub\GoldenAge\Estadisticas\bin\Debug\Estadisticas.dll
+D:\Project-GitHub\GoldenAge\Estadisticas\bin\Debug\Estadisticas.pdb
+D:\Project-GitHub\GoldenAge\Estadisticas\obj\Debug\Estadisticas.csprojResolveAssemblyReference.cache
+D:\Project-GitHub\GoldenAge\Estadisticas\obj\Debug\Estadisticas.frmVisor.resources
+D:\Project-GitHub\GoldenAge\Estadisticas\obj\Debug\Estadisticas.csproj.GenerateResource.Cache
+D:\Project-GitHub\GoldenAge\Estadisticas\obj\Debug\Estadisticas.dll
+D:\Project-GitHub\GoldenAge\Estadisticas\obj\Debug\Estadisticas.pdb

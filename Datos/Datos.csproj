@@ -35,8 +35,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\System.Data.SQLite.dll</HintPath>
+    <Reference Include="System.Data.SQLite, Version=1.0.79.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>

@@ -109,10 +109,10 @@ namespace myExplorer.Formularios
         //OK 03/06/12
         private void tsbAgregar_Click(object sender, EventArgs e)
         {
-                frmObraSocial frmA = new frmObraSocial();
+                frmAbmObraSocial frmA = new frmAbmObraSocial();
                 frmA.oConsulta = this.oConsulta;
                 frmA.oUtil = this.oUtil;
-                frmA.Acto = frmObraSocial.Accion.Nuevo;
+                frmA.Acto = frmAbmObraSocial.Accion.Nuevo;
                 frmA.ShowDialog();
 
                 frmAux_Load(sender, e);
@@ -131,11 +131,11 @@ namespace myExplorer.Formularios
 
             if (oConsulta.Error)
             {
-                frmObraSocial frmA = new frmObraSocial();
+                frmAbmObraSocial frmA = new frmAbmObraSocial();
                 frmA.oConsulta = this.oConsulta;
                 frmA.oUtil = this.oUtil;
                 frmA.oObraSocial = oOS;
-                frmA.Acto = frmObraSocial.Accion.Eliminar;
+                frmA.Acto = frmAbmObraSocial.Accion.Eliminar;
                 frmA.ShowDialog();
 
                 frmAux_Load(sender, e);
@@ -160,11 +160,11 @@ namespace myExplorer.Formularios
 
             if (oConsulta.Error)
             {
-                frmObraSocial frmA = new frmObraSocial();
+                frmAbmObraSocial frmA = new frmAbmObraSocial();
                 frmA.oConsulta = this.oConsulta;
                 frmA.oUtil = this.oUtil;
                 frmA.oObraSocial = oOS;
-                frmA.Acto = frmObraSocial.Accion.Modificar;
+                frmA.Acto = frmAbmObraSocial.Accion.Modificar;
                 frmA.ShowDialog();
 
                 frmAux_Load(sender, e);
