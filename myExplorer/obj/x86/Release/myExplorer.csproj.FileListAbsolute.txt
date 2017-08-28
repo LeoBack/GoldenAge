@@ -81,3 +81,6 @@ F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExp
 F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\bin\Release\MyExplorer.application
 F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\MyExplorer.exe.manifest
 F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\myExplorer\obj\x86\Release\MyExplorer.application
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Release\MyExplorer.exe.config
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Release\MyExplorer.exe
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Release\MyExplorer.pdb
