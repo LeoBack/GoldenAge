@@ -134,11 +134,11 @@
     <Compile Include="Formularios\frmTurno.Designer.cs">
       <DependentUpon>frmTurno.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmMedico.cs">
+    <Compile Include="Formularios\frmAbmMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmMedico.Designer.cs">
-      <DependentUpon>frmMedico.cs</DependentUpon>
+    <Compile Include="Formularios\frmAbmMedico.Designer.cs">
+      <DependentUpon>frmAbmMedico.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmVerObraSocial.cs">
       <SubType>Form</SubType>
@@ -146,11 +146,11 @@
     <Compile Include="Formularios\frmVerObraSocial.Designer.cs">
       <DependentUpon>frmVerObraSocial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmObraSocial.cs">
+    <Compile Include="Formularios\frmAbmObraSocial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmObraSocial.Designer.cs">
-      <DependentUpon>frmObraSocial.cs</DependentUpon>
+    <Compile Include="Formularios\frmAbmObraSocial.Designer.cs">
+      <DependentUpon>frmAbmObraSocial.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmDiagnostico.cs">
       <SubType>Form</SubType>
@@ -158,11 +158,11 @@
     <Compile Include="Formularios\frmDiagnostico.Designer.cs">
       <DependentUpon>frmDiagnostico.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmFicha.cs">
+    <Compile Include="Formularios\frmAmbAbuelo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmFicha.Designer.cs">
-      <DependentUpon>frmFicha.cs</DependentUpon>
+    <Compile Include="Formularios\frmAmbAbuelo.Designer.cs">
+      <DependentUpon>frmAmbAbuelo.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmMain.cs">
       <SubType>Form</SubType>
@@ -206,20 +206,20 @@
     <EmbeddedResource Include="Formularios\frmTurno.resx">
       <DependentUpon>frmTurno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmMedico.resx">
-      <DependentUpon>frmMedico.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmAbmMedico.resx">
+      <DependentUpon>frmAbmMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmVerObraSocial.resx">
       <DependentUpon>frmVerObraSocial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmObraSocial.resx">
-      <DependentUpon>frmObraSocial.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmAbmObraSocial.resx">
+      <DependentUpon>frmAbmObraSocial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmDiagnostico.resx">
       <DependentUpon>frmDiagnostico.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmFicha.resx">
-      <DependentUpon>frmFicha.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmAmbAbuelo.resx">
+      <DependentUpon>frmAmbAbuelo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

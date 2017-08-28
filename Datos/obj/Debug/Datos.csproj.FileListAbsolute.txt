@@ -16,3 +16,11 @@ E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Deb
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.dll
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.pdb
+D:\Project-GitHub\GoldenAge\Datos\bin\Debug\Datos.dll
+D:\Project-GitHub\GoldenAge\Datos\bin\Debug\Datos.pdb
+D:\Project-GitHub\GoldenAge\Datos\bin\Debug\Entidades.dll
+D:\Project-GitHub\GoldenAge\Datos\bin\Debug\System.Data.SQLite.dll
+D:\Project-GitHub\GoldenAge\Datos\bin\Debug\Entidades.pdb
+D:\Project-GitHub\GoldenAge\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+D:\Project-GitHub\GoldenAge\Datos\obj\Debug\Datos.dll
+D:\Project-GitHub\GoldenAge\Datos\obj\Debug\Datos.pdb

@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="MyExplorer.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="MyExplorer" version="1.50.0.40120" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="MyExplorer" version="1.50.0.40211" language="neutral" processorArchitecture="msil" />
     <commandLine file="MyExplorer.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -143,13 +143,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Controles.dll" size="11264">
-      <assemblyIdentity name="Controles" version="1.0.0.39823" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Controles" version="1.0.0.40210" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>TUOXUbtv8YFcNDuh+uegjAkHNr0=</dsig:DigestValue>
+        <dsig:DigestValue>p+8tA+hdLSa613UjpFbKI4uzMVk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -161,7 +161,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>M5k4/YmOq1DfnWBcIkwPLOszfic=</dsig:DigestValue>
+        <dsig:DigestValue>NDgbvdp+80AL1DTASjclvG5P8IQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -173,7 +173,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>FLNhgZHLSeF2fH096q+DGvxO2Oc=</dsig:DigestValue>
+        <dsig:DigestValue>nkL7ZZS1bBRx3f3Cb2mXwDeIpc8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -185,19 +185,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ftMbseT2JvaVprspc4CtWJu/CtQ=</dsig:DigestValue>
+        <dsig:DigestValue>skxMrPyAbv2Ea2RFe87VpBZec80=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyExplorer.exe" size="1751552">
-      <assemblyIdentity name="MyExplorer" version="1.50.0.40120" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="MyExplorer" version="1.50.0.40211" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>GW7qNVaiQWAIIp77HZYGlFbyJYA=</dsig:DigestValue>
+        <dsig:DigestValue>fjg/o2q7Rgs3TN4ROwCb0IB43r8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -209,7 +209,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>kg7XZOnBqeE2fKC4GDtB7AEwZY4=</dsig:DigestValue>
+        <dsig:DigestValue>2yf6BT3P38S53bx6Ge/d8wZcgKw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

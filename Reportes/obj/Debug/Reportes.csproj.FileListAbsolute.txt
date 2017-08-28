@@ -25,3 +25,15 @@ E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Reportes\obj\
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Reportes\obj\Debug\Reportes.csproj.GenerateResource.Cache
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Reportes\obj\Debug\Reportes.dll
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Reportes\obj\Debug\Reportes.pdb
+D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Reportes.dll
+D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Reportes.pdb
+D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Datos.dll
+D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Entidades.dll
+D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\System.Data.SQLite.dll
+D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Datos.pdb
+D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Entidades.pdb
+D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csprojResolveAssemblyReference.cache
+D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.frmVisor.resources
+D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csproj.GenerateResource.Cache
+D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.dll
+D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.pdb

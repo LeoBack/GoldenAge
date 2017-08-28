@@ -13,7 +13,7 @@ using Datos;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmObraSocial : Form
+    public partial class frmAbmObraSocial : Form
     {
         #region Atributos y Propiedades
 
@@ -35,7 +35,7 @@ namespace myExplorer.Formularios
         #region Formulario
 
         //OK 25/05/12
-        public frmObraSocial()
+        public frmAbmObraSocial()
         {
             InitializeComponent();
         }
