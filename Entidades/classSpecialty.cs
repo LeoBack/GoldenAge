@@ -7,36 +7,39 @@ namespace Entidades
 {
     public class classSpecialty
     {
-        
-         #region Atributos y Metodos
+        #region Atributos y Metodos
 
         public int IdSpecialty { set; get; }
-        public string SpecialtyDescription { set; get; }
+        public string Description { set; get; }
+        public bool Visible { set; get; }
         
         #endregion
 
-         #region Constructores
+        #region Constructores
 
         public classSpecialty()
         {
-            this.IdSpecialty = 0;
-            this.SpecialtyDescription = "";
+            IdSpecialty = 0;
+            Description = string.Empty;
+            Visible = true;
         }
 
-        public classSpecialty(int IdSpecialty, string SpecialtyDescription)
+        public classSpecialty(int vIdSpecialty, string vDescription, bool vVisible)
         {
-            this.IdSpecialty = IdSpecialty;
-            this.SpecialtyDescription = SpecialtyDescription;
+            IdSpecialty = vIdSpecialty;
+            Description = vDescription;
+            Visible = vVisible;
         }
 
         #endregion
 
-         #region Metodos
-        public string toString()
+        #region Metodos
+        public override string ToString()
         {
             return
-                "Id: " + this.IdSpecialty +
-                "\nDescripcion: " + this.SpecialtyDescription;
+            "IdSpecialty: " + IdSpecialty.ToString() +
+            "\nDescription: " + Description +
+            "\nVisible: " + Visible.ToString();
         }
 
         #endregion

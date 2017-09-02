@@ -51,7 +51,7 @@ namespace myExplorer.Formularios
             {
                 this.ConfiguracionInicial();
                 oCombos = new classControlComboBoxes();
-                oCombos.CargaCombo(tcmbObraSocial.ComboBox, oConsulta.ListaObraSociales(true), oConsulta.Table);
+                oCombos.CargaCombo(tcmbObraSocial.ComboBox, oConsulta.ListSpecialty(true), oConsulta.Table);
 
                 this.Hasta = this.oUtil.CantRegistrosGrilla;
                 this.tslPagina.Text = "Página: 0 de 0";

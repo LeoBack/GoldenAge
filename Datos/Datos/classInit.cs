@@ -14,12 +14,12 @@ namespace Datos
         public string BDname { get; set; }
         public bool ActivarLog { set; get; }
         public string Menssage {set; get;}
-        private SQLite oSql;
+        private baseSQL oSql;
 
         public classSchemaBD(bool ActivarLog)
         {
             this.ActivarLog = ActivarLog;
-            oSql = new SQLite(this.ActivarLog);
+            oSql = new baseSQL(this.ActivarLog);
         }
 
         public classSchemaBD(string path, string BDname, bool Log)
@@ -27,7 +27,7 @@ namespace Datos
             this.path = path;
             this.BDname = BDname;
             this.ActivarLog = Log;
-            oSql = new SQLite(this.path, this.BDname, this.ActivarLog);
+            oSql = new baseSQL(this.path, this.BDname, this.ActivarLog);
         }
 
         #endregion
