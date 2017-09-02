@@ -42,6 +42,7 @@
     <Compile Include="Clases\classDiagnostico.cs" />
     <Compile Include="Clases\classObraSocial.cs" />
     <Compile Include="Clases\classPersona.cs" />
+    <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classTurnos.cs" />
     <Compile Include="Clases\ComboBox\cmbBarrio.cs" />
     <Compile Include="Clases\ComboBox\cmbCiudad.cs" />
