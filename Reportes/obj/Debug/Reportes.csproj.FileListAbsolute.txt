@@ -37,3 +37,6 @@ D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.frmVisor.resources
 D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csproj.GenerateResource.Cache
 D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.dll
 D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csprojResolveAssemblyReference.cache
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.frmVisor.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csproj.GenerateResource.Cache
