@@ -19,7 +19,6 @@ namespace myExplorer.Formularios
         private enum EstadoUsuario { Invalido = 0, Valido = 1, Invitado = 2 }
 
         private classBackUp oBck;
-        private classSchemaBD oBD;
         private classConsultas oConsulta;
         private classUtiles oUtil;
         private EstadoUsuario Usuario;
