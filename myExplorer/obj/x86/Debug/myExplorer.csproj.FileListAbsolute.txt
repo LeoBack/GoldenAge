@@ -114,3 +114,4 @@ E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\ob
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.config

@@ -64,7 +64,7 @@ namespace Entidades.newClases
                 "\nE-Mail: " + this.Mail + "" +
                 "\nUsuario: " + this.User + "" +
                 "\nClave: " + this.Password + "" +
-                "\nVisible: " + this.Visible;
+                "\nVisible: " + this.Visible.ToString();
         }
 
         #endregion
