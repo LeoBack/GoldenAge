@@ -25,6 +25,3 @@ E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Reportes\obj\
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Reportes\obj\Debug\Reportes.csproj.GenerateResource.Cache
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Reportes\obj\Debug\Reportes.dll
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Reportes\obj\Debug\Reportes.pdb
-C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csprojResolveAssemblyReference.cache
-C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.frmVisor.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csproj.GenerateResource.Cache

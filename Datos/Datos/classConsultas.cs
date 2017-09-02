@@ -3039,6 +3039,105 @@ namespace Datos
         //#endregion
 
         #endregion
+
+        #region AGREGADOS MARCOS CARRERAS
+
+        #region Consultas TypeDocument
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Inserta una TypeDocument.
+        /// </summary>
+        /// <param name="oTd">TypeDocument</param>
+        /// <returns>Error</returns>
+        public bool AddTypeDocument(classTypeDocument oTd)
+        {
+            bool error;
+
+            error = Sql.InsertDB("INSERT INTO TypeDocument (Description) VALUES ('" + oTd.Description + ");",
+                Sql.Parametros, "AddTypeDocument");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Modifica una TypeDocument.
+        /// </summary>
+        /// <param name="oTd">Specialty</param>
+        /// <returns>Error</returns>
+        public bool UpdateTypeDocument(classTypeDocument oTd)
+        {
+            bool error;
+
+            error = Sql.InsertDB("UPDATE TypeDocument SET Description = '" + oTd.Description
+                + "', Visible = " + Convert.ToInt32(oTd.Visible) + " WHERE IdTypeDocument = " + oTd.IdTypeDocument + ";",
+                null, "UpdateSpecialty");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Elimina de forma definitiva o Actualiza el campo visible de una TypeDocument. 
+        /// </summary>
+        /// <param name="oTd"></param>
+        /// <param name="Delete">Delete o Update state</param>
+        /// <returns>Error</returns>
+        public bool DeleteTypeDocument(classTypeDocument oTd, bool Delete)
+        {
+            bool error;
+
+            if (Delete)
+                error = Sql.DeleteDB("DELETE TypeDocument WHERE IdTypeDocument = " + oTd.IdTypeDocument + " ;", null, "DeleteTypeDocument");
+            else
+                error = Sql.InsertDB("UPDATE TypeDocument SET Visible = 0 WHERE IdTypeDocument = " + oTd.IdTypeDocument + " ;", null, "DeleteTypeDocument");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Carga una Combo con TypeDocument
+        /// </summary>
+        /// <returns></returns>
+        public bool ListTypeDocument(bool Filtro)
+        {
+            #region Consulta
+
+            string Consulta = "SELECT IdTypeDocument[Id], Description[Valor] FROM TypeDocument WHERE Visible = 1 ";
+
+            if (Filtro)
+                Consulta += " ORDER BY Description";
+            else
+                Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdTypeDocument) FROM Specialty AS I) " +
+                    " ORDER BY Description";
+
+            #endregion
+
+            if (Sql.SelectAdapterDB(Consulta, "ListTypeDocument"))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                Sql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                Sql.Desconectar();
+                return true;
+            }
+            else
+            {
+                Sql.Desconectar();
+                return false;
+            }
+        }
+
+        #endregion
+
+        #endregion
     }
 }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades.Clases
+namespace Entidades.newClases
 {
     public class classProfessional
     {
@@ -17,8 +17,6 @@ namespace Entidades.Clases
         public string Mail { set; get; }
         public string User { set; get; }
         public string Password { set; get; }
-        public int IdSpecialty { set; get; }
-        public string SpecialtyDescription { set; get; }
         public bool Visible { set; get; }
         
         #endregion
@@ -35,12 +33,10 @@ namespace Entidades.Clases
             this.Mail = "";
             this.User = "";
             this.Password = "";
-            this.IdSpecialty = 0;
-            this.SpecialtyDescription = "";
             this.Visible = true;
         }
 
-        public classProfessional(int IdProfessional, int ProfessionalRegistration, string Names, string LastNames, string Address, string Phone, string Mail, string User, string Password, int IdSpecialty, string SpecialtyDescription,bool Visible)
+        public classProfessional(int IdProfessional, int ProfessionalRegistration, string Names, string LastNames, string Address, string Phone, string Mail, string User, string Password, bool Visible)
         {
             this.IdProfessional = IdProfessional;
             this.ProfessionalRegistration = ProfessionalRegistration;
@@ -51,18 +47,16 @@ namespace Entidades.Clases
             this.Mail = Mail;
             this.User = User;
             this.Password = Password;
-            this.IdSpecialty = IdSpecialty;
-            this.SpecialtyDescription = SpecialtyDescription;
             this.Visible = Visible;
         }
 
         #endregion
 
         #region Metodos
-        public string toString()
+        public override string ToString()
         {
             return
-                "Id: " + this.IdProfessional +
+                "Id: " + this.IdProfessional.ToString() +
                 "\nMatriculaProfesional: " + this.ProfessionalRegistration +
                 "\nApellido y Nombre: " + this.LastName + ", " + this.Names +
                 "\nDomicilio: " + this.Address + "" +
@@ -70,7 +64,6 @@ namespace Entidades.Clases
                 "\nE-Mail: " + this.Mail + "" +
                 "\nUsuario: " + this.User + "" +
                 "\nClave: " + this.Password + "" +
-                "\nEspecialidad: " + this.SpecialtyDescription +
                 "\nVisible: " + this.Visible;
         }
 

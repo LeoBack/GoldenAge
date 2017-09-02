@@ -114,22 +114,3 @@ E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\ob
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.config
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csprojResolveAssemblyReference.cache
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmEstadistica.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerUsuarios.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAcercaDe.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAuxiliar.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmFecha.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmLogin.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmTurno.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmUsuario.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerObraSocial.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAbmObraSocial.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDiagnostico.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmForm.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmMain.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmSearch.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache

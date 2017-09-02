@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades.Clases
+namespace Entidades.newClases
 {
-    class classTypeDocument
+    public class classTypeDocument
     {
         #region Atributos y Metodos
 

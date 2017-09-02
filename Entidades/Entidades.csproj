@@ -44,11 +44,11 @@
     <Compile Include="Clases\classPersona.cs" />
     <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classTurnos.cs" />
-    <Compile Include="Clases\classTypeDocument.cs" />
+    <Compile Include="newClases\classTypeDocument.cs" />
     <Compile Include="Clases\ComboBox\cmbBarrio.cs" />
     <Compile Include="Clases\ComboBox\cmbCiudad.cs" />
     <Compile Include="Clases\classBarrio.cs" />
-    <Compile Include="Clases\classProfessional.cs" />
+    <Compile Include="newClases\classProfessional.cs" />
     <Compile Include="Clases\Grillas\grvObraSocial.cs" />
     <Compile Include="Clases\Grillas\grvPersona.cs" />
     <Compile Include="Clases\Grillas\grvTurnos.cs" />

@@ -16,4 +16,3 @@ E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Deb
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.dll
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.pdb
-C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
