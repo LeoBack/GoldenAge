@@ -24,3 +24,4 @@ D:\Project-GitHub\GoldenAge\Datos\bin\Debug\Entidades.pdb
 D:\Project-GitHub\GoldenAge\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
 D:\Project-GitHub\GoldenAge\Datos\obj\Debug\Datos.dll
 D:\Project-GitHub\GoldenAge\Datos\obj\Debug\Datos.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache

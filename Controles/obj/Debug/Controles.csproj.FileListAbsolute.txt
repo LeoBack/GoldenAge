@@ -18,3 +18,8 @@ D:\Project-GitHub\GoldenAge\Controles\bin\Debug\Controles.pdb
 D:\Project-GitHub\GoldenAge\Controles\obj\Debug\Controles.csprojResolveAssemblyReference.cache
 D:\Project-GitHub\GoldenAge\Controles\obj\Debug\Controles.dll
 D:\Project-GitHub\GoldenAge\Controles\obj\Debug\Controles.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Controles\bin\Debug\Controles.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Controles\bin\Debug\Controles.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Controles\obj\Debug\Controles.csprojResolveAssemblyReference.cache
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Controles\obj\Debug\Controles.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Controles\obj\Debug\Controles.pdb

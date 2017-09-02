@@ -46,11 +46,13 @@
     <Compile Include="Clases\ComboBox\cmbBarrio.cs" />
     <Compile Include="Clases\ComboBox\cmbCiudad.cs" />
     <Compile Include="Clases\classBarrio.cs" />
+    <Compile Include="Clases\classProfessional.cs" />
     <Compile Include="Clases\Grillas\grvObraSocial.cs" />
     <Compile Include="Clases\Grillas\grvPersona.cs" />
     <Compile Include="Clases\Grillas\grvTurnos.cs" />
     <Compile Include="Clases\classPatologia.cs" />
     <Compile Include="Clases\classUsuarios.cs" />
+    <Compile Include="classSpecialty.cs" />
     <Compile Include="classUtiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
