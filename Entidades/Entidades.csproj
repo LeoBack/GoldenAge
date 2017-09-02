@@ -53,10 +53,10 @@
     <Compile Include="Clases\classPatologia.cs" />
     <Compile Include="Clases\classUsuarios.cs" />
     <Compile Include="classGrandfather.cs" />
-    <Compile Include="classRelationship.cs" />
-    <Compile Include="classSpecialty.cs" />
+    <Compile Include="newClases\classRelationship.cs" />
+    <Compile Include="newClases\classSpecialty.cs" />
     <Compile Include="classUtiles.cs" />
-    <Compile Include="classPersonCharge.cs" />
+    <Compile Include="newClases\classParent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

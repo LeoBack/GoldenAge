@@ -11,8 +11,6 @@ namespace Entidades.Clases
         public int Id { set; get; }
         public string Nombre { set; get; }
         public string Descripcion { set; get; }
-        public int IdCiudad { set; get; }
-        public int IdBarrio { set; get; }
         public string Direccion { set; get; }
         public string Telefono1 { set; get; }
         public string Telefono2 { set; get; }
@@ -27,22 +25,18 @@ namespace Entidades.Clases
             this.Id = 0;
             this.Nombre = "";
             this.Descripcion = "";
-            this.IdCiudad = 0;
-            this.IdBarrio = 0;
             this.Direccion = "";
             this.Telefono1= "";
             this.Telefono2= "";
             this.Visible = 1;
         }
 
-        public classObraSocial(int Id, string Nombre, string Descripcion, int IdCiudad, int IdBarrio, 
+        public classObraSocial(int Id, string Nombre, string Descripcion,  
             string Direccion, string Telefono1, string Telefono2, int Visible)
         {
             this.Id = Id;
             this.Nombre = Nombre;
             this.Descripcion = Descripcion;
-            this.IdCiudad = IdCiudad;
-            this.IdBarrio = IdBarrio;
             this.Direccion = Direccion;
             this.Telefono1 = Telefono1;
             this.Telefono2 = Telefono2;

@@ -4,7 +4,7 @@ using System.Text;
 
 using System.Data;
 using System.IO;
-using Entidades;
+using Entidades.newClases;
 //using Entidades.Clases;
 //using Entidades.Clases.Grillas;
 
@@ -146,6 +146,169 @@ namespace Datos
                 Sql.Desconectar();
                 return false;
             }
+        }
+
+        #endregion
+
+        // OK - 17/09/02
+        #region Consultas Relationship
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Inserta una Relacion.
+        /// </summary>
+        /// <param name="oSp">Relationship</param>
+        /// <returns>Error</returns>
+        public bool AddRelationship(classRelationship oSp)
+        {
+            bool error;
+
+            error = Sql.InsertDB("INSERT INTO Relationship (Description) VALUES ('" + oSp.Description + ");",
+                Sql.Parametros, "AddRelationship");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Modifica una Relacion.
+        /// </summary>
+        /// <param name="oSp">Relationship</param>
+        /// <returns>Error</returns>
+        public bool UpdateRelationship(classRelationship oSp)
+        {
+            bool error;
+
+            error = Sql.InsertDB("UPDATE Relationship SET Description = '" + oSp.Description
+                + "', Visible = " + Convert.ToInt32(oSp.Visible) + " WHERE IdRelationship = " + oSp.IdRelationship + ";",
+                null, "UpdateRelationship");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Elimina de forma definitiva o Actualiza el campo visible de una Relacion. 
+        /// </summary>
+        /// <param name="oSp"></param>
+        /// <param name="Delete">Delete o Update state</param>
+        /// <returns>Error</returns>
+        public bool DeleteRelationship(classRelationship oSp, bool Delete)
+        {
+            bool error;
+
+            if (Delete)
+                error = Sql.DeleteDB("DELETE Relationship WHERE IdRelationship = " + oSp.IdRelationship + " ;", null, "DeleteRelationship");
+            else
+                error = Sql.InsertDB("UPDATE Relationship SET Visible = 0 WHERE IdRelationship = " + oSp.IdRelationship + " ;", null, "DeleteRelationship");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Carga una Combo con Relacion.
+        /// </summary>
+        /// <returns></returns>
+        public bool ListRelationship(bool Filtro)
+        {
+            #region Consulta
+
+            string Consulta = "SELECT IdRelationship[Id], Description[Valor] FROM Relationship WHERE Visible = 1 ";
+
+            if (Filtro)
+                Consulta += " ORDER BY Description";
+            else
+                Consulta += " AND IdRelationship BETWEEN 2 AND (SELECT MAX(I.IdRelationship) FROM Relationship AS I) " +
+                    " ORDER BY Description";
+
+            #endregion
+
+            if (Sql.SelectAdapterDB(Consulta, "ListRelationship"))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                Sql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                Sql.Desconectar();
+                return true;
+            }
+            else
+            {
+                Sql.Desconectar();
+                return false;
+            }
+        }
+
+        #endregion
+
+        // OK - 17/09/02
+        #region Consultas Parent
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Inserta una Pariente.
+        /// </summary>
+        /// <param name="oSp">Parent</param>
+        /// <returns>Error</returns>
+        public bool AddParent(classParent oSp)
+        {
+            bool error;
+
+            error = Sql.InsertDB("INSERT INTO Parent (Name, LastName, IdTypeDocument, " 
+                + " NumberDocument, Phone, AlternativePhone, Email, IdRelationship, "
+                + " Address, Visible ) VALUES ('" + oSp.Name + "', '" + oSp.LastName + "', " + oSp.IdTypeDocument 
+                + ", " + oSp.NumberDocument + ", '" + oSp.Phone + "', '" + oSp.AlternativePhone 
+                + "', '" + oSp.Email + "', " + oSp.IdRelationship + ", '" + oSp.Address + "');",
+                Sql.Parametros, "AddParent");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Modifica una Pariente.
+        /// </summary>
+        /// <param name="oSp">Parent</param>
+        /// <returns>Error</returns>
+        public bool UpdateParent(classParent oSp)
+        {
+            bool error;
+
+            error = Sql.InsertDB("UPDATE Parent SET Name = '" + oSp.Name + "', LastName = '" + oSp.LastName
+                + "', IdTypeDocument = " + oSp.IdTypeDocument + ", NumberDocument" + oSp.NumberDocument
+                + ", Phone = '" + oSp.Phone + "', AlternativePhone ='" + oSp.AlternativePhone + "', Email= '" +oSp.Email 
+                + "', IdRelationship = " +oSp.IdRelationship + ", Address = '"+ oSp.Address
+                + "', Visible = " + Convert.ToInt32(oSp.Visible) + " WHERE IdParent = " + oSp.IdParent + ";",
+                null, "UpdateParent");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Elimina de forma definitiva o Actualiza el campo visible de una Pariente. 
+        /// </summary>
+        /// <param name="oSp"></param>
+        /// <param name="Delete">Delete o Update state</param>
+        /// <returns>Error</returns>
+        public bool DeleteParent(classParent oSp, bool Delete)
+        {
+            bool error;
+
+            if (Delete)
+                error = Sql.DeleteDB("DELETE Parent WHERE IdParent = " + oSp.IdParent + " ;", null, "DeleteParent");
+            else
+                error = Sql.InsertDB("UPDATE Parent SET Visible = 0 WHERE IdParent = " + oSp.IdParent + " ;", null, "DeleteParent");
+
+            Menssage = Sql.Mensaje;
+            return error;
         }
 
         #endregion

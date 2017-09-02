@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades
+namespace Entidades.newClases
 {
     public class classRelationship
     {
-         #region Atributos y Metodos
+        #region Atributos y Metodos
 
         public int IdRelationship { set; get; }
         public string Description { set; get; }
@@ -34,12 +34,12 @@ namespace Entidades
         #endregion
 
         #region Metodos
-        public string toString()
+        public override string ToString()
         {
             return
-            "Id: " + this.IdRelationship +
+            "Id: " + this.IdRelationship.ToString() +
             "\nRelación: " + this.Description +
-            "\nVisible: " + this.Visible;
+            "\nVisible: " + this.Visible.ToString();
         }
 
         #endregion
