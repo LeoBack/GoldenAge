@@ -38,30 +38,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\classCiudad.cs" />
     <Compile Include="Clases\classDiagnostico.cs" />
-    <Compile Include="Clases\classObraSocial.cs" />
-    <Compile Include="Clases\classPersona.cs" />
     <Compile Include="Clases\classSocialWork.cs" />
-    <Compile Include="Clases\classTurnos.cs" />
-    <Compile Include="newClases\classTypeDocument.cs" />
-    <Compile Include="Clases\ComboBox\cmbBarrio.cs" />
-    <Compile Include="Clases\ComboBox\cmbCiudad.cs" />
-    <Compile Include="Clases\classBarrio.cs" />
-    <Compile Include="newClases\classProfessional.cs" />
+    <Compile Include="Clases\classTypeDocument.cs" />
+    <Compile Include="Clases\classProfessional.cs" />
     <Compile Include="Clases\Grillas\grvObraSocial.cs" />
     <Compile Include="Clases\Grillas\grvPersona.cs" />
     <Compile Include="Clases\Grillas\grvTurnos.cs" />
-    <Compile Include="Clases\classPatologia.cs" />
-    <Compile Include="Clases\classUsuarios.cs" />
-    <Compile Include="newClases\classGrandfather.cs" />
-    <Compile Include="newClases\classRelationship.cs" />
-    <Compile Include="newClases\classSpecialty.cs" />
+    <Compile Include="Clases\classGrandfather.cs" />
+    <Compile Include="Clases\classRelationship.cs" />
+    <Compile Include="Clases\classSpecialty.cs" />
     <Compile Include="classUtiles.cs" />
-    <Compile Include="newClases\classParent.cs" />
+    <Compile Include="Clases\classParent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Clases\ComboBox\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

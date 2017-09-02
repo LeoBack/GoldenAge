@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades.Clases
+namespace Entidades.newClases
 {
     public class classSocialWork
     {
@@ -25,11 +25,11 @@ namespace Entidades.Clases
         public classSocialWork()
         {
             this.IdSocialWork = 0;
-            this.Names = "";
-            this.Description = "";
-            this.Address = "";
-            this.Phone = "";
-            this.AlternativePhone = "";
+            this.Names = string.Empty;
+            this.Description = string.Empty;
+            this.Address = string.Empty;
+            this.Phone = string.Empty;
+            this.AlternativePhone = string.Empty;
             this.Visible = true;
         }
 
@@ -51,13 +51,13 @@ namespace Entidades.Clases
         public string toString()
         {
             return
-            "Id: " + this.IdSocialWork +
+            "Id: " + this.IdSocialWork.ToString() +
             "\nNombre: " + this.Names +
             "\nDescripcion: " + this.Description +
-            "\nDomicilio: " + this.Address + "" +
-            "\nTelefono: " + this.Phone + "" +
-            "\nTelefono Alternativo: " + this.AlternativePhone + "" +
-            "\nVisible: " + this.Visible;
+            "\nDomicilio: " + this.Address +
+            "\nTelefono: " + this.Phone +
+            "\nTelefono Alternativo: " + this.AlternativePhone +
+            "\nVisible: " + this.Visible.ToString();
         }
 
         #endregion
