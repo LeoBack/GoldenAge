@@ -47,8 +47,7 @@ namespace Entidades
         public string toString()
         {
             return
-                "Id: " + this.IdGrandfather +
-                "\nDescripcion: " + this.SpecialtyDescription;
+                "Id: " + this.IdGrandfather;
         }
 
         #endregion

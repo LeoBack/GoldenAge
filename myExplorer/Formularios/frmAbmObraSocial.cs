@@ -93,13 +93,13 @@ namespace myExplorer.Formularios
                 {   //***********Eliminar*************************
                     if (this.IdObraSocial != 0)
                     {   // Consulta de eliminacion
-                        oConsulta.EliminarObraSocial(
+                        oConsulta.DeleteSpecialty(
                             new classObraSocial(
                                 this.IdObraSocial, "", "", 0, 0, "", "", "", 0), false);
                     }
                     else if (oObraSocial != null)
                     {   // Consulta de eliminacion
-                        oConsulta.EliminarObraSocial(oObraSocial, false);
+                        oConsulta.DeleteSpecialty(oObraSocial, false);
                     }
                     else
                     {

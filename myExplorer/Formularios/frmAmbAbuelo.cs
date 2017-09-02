@@ -64,7 +64,7 @@ namespace myExplorer.Formularios
 
                 // Cargo los Combos
                 oComboBox = new classControlComboBoxes();
-                oComboBox.CargaCombo(cmbObraSocial, oConsulta.ListaObraSociales(false), oConsulta.Table);
+                oComboBox.CargaCombo(cmbObraSocial, oConsulta.ListSpecialty(false), oConsulta.Table);
                 oComboBox.CargaCombo(cmbTipoPaciente, oConsulta.ListaTipoDePersonas(), oConsulta.Table);
 
                 this.CargarCombosCiudadBarrio();
@@ -393,7 +393,7 @@ namespace myExplorer.Formularios
                 // Cargo los Combos pero no lo selecciona
                 oComboBox.CargaCombo(
                     cmbObraSocial,
-                    oConsulta.ListaObraSociales(false),
+                    oConsulta.ListSpecialty(false),
                     oConsulta.Table);
             }
         }
