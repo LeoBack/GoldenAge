@@ -52,6 +52,7 @@
     <Compile Include="Clases\Grillas\grvTurnos.cs" />
     <Compile Include="Clases\classPatologia.cs" />
     <Compile Include="Clases\classUsuarios.cs" />
+    <Compile Include="classGrandfather.cs" />
     <Compile Include="classSpecialty.cs" />
     <Compile Include="classUtiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
