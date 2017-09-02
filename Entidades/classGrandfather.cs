@@ -7,7 +7,7 @@ namespace Entidades
 {
     public class classGrandfather
     {
-        #region Atributos y Metodos
+         #region Atributos y Metodos
         public int IdGrandfather { set; get; }
         public string Names { set; get; }
         public string LastName { set; get; }
@@ -23,6 +23,8 @@ namespace Entidades
         public DateTime EgressDate { set; get; }
         public int IdPersonCharge { set; get; }
         public string ReasonExit { set; get; }
+        public string Address { set; get; }
+        public bool Visible { set; get; }
         #endregion
 
          #region Constructores
@@ -44,11 +46,14 @@ namespace Entidades
             this.EgressDate = DateTime.Now.AddDays(90);
             this.IdPersonCharge = 0;
             this.ReasonExit = "";
+            this.Address = "";
+            this.Visible = true;
+
         }
 
         public classGrandfather( int IdGrandfather, string Names, string LastName, DateTime Birthdate,           
             int IdTypeDocument, int NumberDocument,int Sex, string Phone, int IdObraSocial, int AffiliateNumber, 
-            DateTime DateAdmission, DateTime EgressDate, int IdPersonCharge, string ReasonExit )
+            DateTime DateAdmission, DateTime EgressDate, int IdPersonCharge, string ReasonExit, string Address, bool Visible )
         {
             this.IdGrandfather = IdGrandfather;
             this.Names = Names;
@@ -65,6 +70,8 @@ namespace Entidades
             this.EgressDate = EgressDate;
             this.IdPersonCharge = IdPersonCharge;
             this.ReasonExit = ReasonExit;
+            this.Address = Address;
+            this.Visible = Visible;
         }
 
         #endregion
@@ -84,7 +91,9 @@ namespace Entidades
                 "\nPersona a Cargo: " + this.IdPersonCharge +
                 "\nFecha de Ingreso: " +this.DateAdmission +
                 "\nFecha de Egreso: " +this.EgressDate +
-                "\nFecha de Motivo de Egreso: " +this.ReasonExit 
+                "\nFecha de Motivo de Egreso: " +this.ReasonExit+ 
+                "\nDomicilio: " +this.Address  +
+                "\nVisible: " + this.Visible
                 ;
         }
 
