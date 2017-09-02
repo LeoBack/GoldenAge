@@ -3211,6 +3211,92 @@ namespace Datos
 
         
 
+        #region Consultas Professional
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Inserta una Professional.
+        /// </summary>
+        /// <param name="oPl">Professional</param>
+        /// <returns>Error</returns>
+        public bool AddProfessional(classProfessional oPl)
+        {
+            bool error;
+
+            error = Sql.InsertDB( "INSERT INTO Professional ("+"ProfessionalRegistration, "+
+                                                                "Names, "+
+                                                                "LastName, "+ 
+                                                                "Address, "+
+                                                                "Phone, "+
+                                                                "Mail, "+
+                                                                "User, "+
+                                                                "Password, "
+                                                                + " Visible ) VALUES (" 
+                + oPl.ProfessionalRegistration + ", '" 
+                + oPl.Names     + "', '" 
+                + oPl.LastName  + "', '" 
+                + oPl.Address   + "', '" 
+                + oPl.Phone     + "', '" 
+                + oPl.Mail      + "', '" 
+                + oPl.User      + "', '" 
+                + oPl.Password + "', " 
+                + oPl.Visible + "');",
+                Sql.Parametros, "AddProfessional");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Modifica una Professional.
+        /// </summary>
+        /// <param name="oPl">Professional</param>
+        /// <returns>Error</returns>
+        public bool UpdateProfessional(classProfessional oPl)
+        {
+            bool error;
+
+            error = Sql.InsertDB(
+                "UPDATE Professional "+ 
+                "SET ProfessionalRegistration = " + oPl.ProfessionalRegistration + ", "+
+                "Names = '" + oPl.Names + "', "+
+                "LastName = '" + oPl.LastName + "', " +
+                "Address = '" + oPl.Address+ "', " +
+                "Phone = '" + oPl.Phone + "', " + 
+                "Mail ='" + oPl.Mail + "', " + 
+                "User= '" + oPl.User + "', " + 
+                "Password= '" + oPl.Password + "', " + 
+                "Visible = " + Convert.ToInt32(oPl.Visible) +
+                " WHERE IdProfessional = " + oPl.IdProfessional + ";",
+                null, "UpdateProfessional");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Elimina de forma definitiva o Actualiza el campo visible de una Professional. 
+        /// </summary>
+        /// <param name="oPl"></param>
+        /// <param name="Delete">Delete o Update state</param>
+        /// <returns>Error</returns>
+        public bool DeleteProfessional(classProfessional oPl, bool Delete)
+        {
+            bool error;
+
+            if (Delete)
+                error = Sql.DeleteDB("DELETE Professional WHERE IdProfessional = " + oPl.IdProfessional + " ;", null, "DeleteProfessional");
+            else
+                error = Sql.InsertDB("UPDATE Professional SET Visible = 0 WHERE IdProfessional = " + oPl.IdProfessional + " ;", null, "DeleteProfessional");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        #endregion
+
         #endregion
     }
 }
