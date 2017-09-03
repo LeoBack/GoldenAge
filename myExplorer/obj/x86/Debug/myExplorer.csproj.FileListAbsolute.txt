@@ -114,6 +114,7 @@ E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\ob
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache
+<<<<<<< HEAD
 D:\Project-GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.config
 D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csprojResolveAssemblyReference.cache
 D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmEstadistica.resources
@@ -133,3 +134,6 @@ D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmS
 D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
 D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
 D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache
+=======
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.config
+>>>>>>> 9524a2edf974ce8bf021ca681ca9108c0fe4b253

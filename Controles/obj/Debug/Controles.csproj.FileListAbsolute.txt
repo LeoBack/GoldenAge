@@ -13,8 +13,3 @@ D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Controles\bin\Debu
 D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Controles\obj\Debug\ResolveAssemblyReference.cache
 D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Controles\obj\Debug\Controles.dll
 D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Controles\obj\Debug\Controles.pdb
-D:\Project-GitHub\GoldenAge\Controles\bin\Debug\Controles.dll
-D:\Project-GitHub\GoldenAge\Controles\bin\Debug\Controles.pdb
-D:\Project-GitHub\GoldenAge\Controles\obj\Debug\Controles.csprojResolveAssemblyReference.cache
-D:\Project-GitHub\GoldenAge\Controles\obj\Debug\Controles.dll
-D:\Project-GitHub\GoldenAge\Controles\obj\Debug\Controles.pdb
