@@ -9,8 +9,8 @@ namespace Entidades.Clases
         #region Atributos y Metodos
 
         public int IdDiagnostico { set; get; }
-        public int IdPersona { set; get; }
-        public int IdDetalle { set; get; }
+        public int IdPersona { set; get; } //Obsoleto
+        public int IdDetalle { set; get; } //Speciality
         public string Diagnostico { set; get; }
         public DateTime Fecha { set; get; }
 

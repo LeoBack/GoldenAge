@@ -133,3 +133,4 @@ D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmS
 D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
 D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
 D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.config
