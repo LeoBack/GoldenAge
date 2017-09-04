@@ -13,6 +13,7 @@ namespace Entidades.Clases
         private int IdRelationship { set; get; }
         private bool Visible { set; get; }
         #endregion
+
         #region Constructores
         
         public classParentRelationship()

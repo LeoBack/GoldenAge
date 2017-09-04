@@ -50,6 +50,7 @@
     <Compile Include="Clases\classGrandfather.cs" />
     <Compile Include="Clases\classRelationship.cs" />
     <Compile Include="Clases\classSpecialty.cs" />
+    <Compile Include="classProfessionalSpeciality.cs" />
     <Compile Include="classUtiles.cs" />
     <Compile Include="Clases\classParent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
