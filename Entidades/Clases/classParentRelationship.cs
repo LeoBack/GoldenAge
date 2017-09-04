@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades.Clases
+namespace Entidades.newClases
 {
     public class classParentRelationship
     {
         #region Atributos y Metodos
-        private int IdParentRelationship { set; get; }
-        private int IdParent { set; get; }
-        private int IdRelationship { set; get; }
-        private bool Visible { set; get; }
+        public int IdParentRelationship { set; get; }
+        public int IdParent { set; get; }
+        public int IdRelationship { set; get; }
+        public bool Visible { set; get; }
         #endregion
 
         #region Constructores

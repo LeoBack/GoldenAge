@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades
+namespace Entidades.newClases
 {
     public class classProfessionalSpeciality
     {
         #region Atributos y Metodos
-        private int IdProfessionalSpeciality { set; get; }
-        private int IdProfessional { set; get; }
-        private int IdSpeciality { set; get; }
-        private bool Visible { set; get; }
+        public int IdProfessionalSpeciality { set; get; }
+        public int IdProfessional { set; get; }
+        public int IdSpeciality { set; get; }
+        public bool Visible { set; get; }
         #endregion
 
         #region Constructores
