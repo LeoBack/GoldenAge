@@ -10,7 +10,7 @@ namespace Entidades.newClases
         #region Atributos y Metodos
         public int IdProfessional { set; get; }
         public int ProfessionalRegistration{ set; get; }
-        public string Names { set; get; }
+        public string Name { set; get; }
         public string LastName { set; get; }
         public string Address { set; get; }
         public string Phone { set; get; }
@@ -26,28 +26,29 @@ namespace Entidades.newClases
         {
             this.IdProfessional = 0;
             this.ProfessionalRegistration = 1;
-            this.Names = "";
-            this.LastName = "";
-            this.Address = "";
-            this.Phone = "";
-            this.Mail = "";
-            this.User = "";
-            this.Password = "";
+            this.Name = string.Empty;
+            this.LastName = string.Empty;
+            this.Address = string.Empty;
+            this.Phone = string.Empty;
+            this.Mail = string.Empty;
+            this.User = string.Empty;
+            this.Password = string.Empty;
             this.Visible = true;
         }
 
-        public classProfessional(int IdProfessional, int ProfessionalRegistration, string Names, string LastNames, string Address, string Phone, string Mail, string User, string Password, bool Visible)
+        public classProfessional(int vIdProfessional, int vProfessionalRegistration, string vName, string vLastNames, 
+            string vAddress, string vPhone, string vMail, string vUser, string vPassword, bool vVisible)
         {
-            this.IdProfessional = IdProfessional;
-            this.ProfessionalRegistration = ProfessionalRegistration;
-            this.Names = Names;
+            this.IdProfessional = vIdProfessional;
+            this.ProfessionalRegistration = vProfessionalRegistration;
+            this.Name = vName;
             this.LastName = LastName;
-            this.Address = Address;
-            this.Phone = Phone;
-            this.Mail = Mail;
-            this.User = User;
-            this.Password = Password;
-            this.Visible = Visible;
+            this.Address = vAddress;
+            this.Phone = vPhone;
+            this.Mail = vMail;
+            this.User = vUser;
+            this.Password = vPassword;
+            this.Visible = vVisible;
         }
 
         #endregion
@@ -56,9 +57,9 @@ namespace Entidades.newClases
         public override string ToString()
         {
             return
-                "Id: " + this.IdProfessional.ToString() +
+                "IdProfessional: " + this.IdProfessional.ToString() +
                 "\nMatriculaProfesional: " + this.ProfessionalRegistration +
-                "\nApellido y Nombre: " + this.LastName + ", " + this.Names +
+                "\nApellido y Nombre: " + this.LastName + ", " + this.Name +
                 "\nDomicilio: " + this.Address + "" +
                 "\nTelefono: " + this.Phone + "" +
                 "\nE-Mail: " + this.Mail + "" +

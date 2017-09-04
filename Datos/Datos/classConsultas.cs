@@ -480,10 +480,210 @@ namespace Datos
 
         #endregion
 
+        // OK - 17/09/02
+        #region Consultas Professional
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Inserta una Professional.
+        /// </summary>
+        /// <param name="oPl">Professional</param>
+        /// <returns>Error</returns>
+        public bool AddProfessional(classProfessional oPl)
+        {
+            bool error;
+
+            error = Sql.InsertDB("INSERT INTO Professional (ProfessionalRegistration, Names, LastName, "
+                + "Address, Phone, Mail, User, Password, Visible ) VALUES (" + oPl.ProfessionalRegistration + ", '"
+                + oPl.Name + "', '" + oPl.LastName + "', '" + oPl.Address + "', '" + oPl.Phone
+                + "', '" + oPl.Mail + "', '" + oPl.User + "', '" + oPl.Password + "', " + oPl.Visible + "');",
+                Sql.Parametros, "AddProfessional");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Modifica una Professional.
+        /// </summary>
+        /// <param name="oPl">Professional</param>
+        /// <returns>Error</returns>
+        public bool UpdateProfessional(classProfessional oPl)
+        {
+            bool error;
+
+            error = Sql.InsertDB(
+                "UPDATE Professional SET ProfessionalRegistration = " + oPl.ProfessionalRegistration + ", " +
+                " Names = '" + oPl.Name + "', LastName = '" + oPl.LastName + "', Address = '" + oPl.Address
+                + "', Phone = '" + oPl.Phone + "', Mail ='" + oPl.Mail + "', User= '" + oPl.User
+                + "', Password= '" + oPl.Password + "', Visible = " + Convert.ToInt32(oPl.Visible) +
+                " WHERE IdProfessional = " + oPl.IdProfessional + ";", null, "UpdateProfessional");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Elimina de forma definitiva o Actualiza el campo visible de una Professional. 
+        /// </summary>
+        /// <param name="oPl"></param>
+        /// <param name="Delete">Delete o Update state</param>
+        /// <returns>Error</returns>
+        public bool DeleteProfessional(classProfessional oPl, bool Delete)
+        {
+            bool error;
+
+            if (Delete)
+                error = Sql.DeleteDB("DELETE Professional WHERE IdProfessional = " + oPl.IdProfessional + " ;", null, "DeleteProfessional");
+            else
+                error = Sql.InsertDB("UPDATE Professional SET Visible = 0 WHERE IdProfessional = " + oPl.IdProfessional + " ;", null, "DeleteProfessional");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        #endregion
+
+        // OK - 17/09/02
+        #region Consultas SocialWork
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Inserta una Obra Social.
+        /// </summary>
+        /// <param name="oSp">SocialWork</param>
+        /// <returns>Error</returns>
+        public bool AddSocialWork(classSocialWork oSp)
+        {
+            bool error;
+
+            error = Sql.InsertDB("INSERT INTO SocialWork (Name, Description, Address, Phone , AlternativePhone) "
+                + "VALUES ('" + oSp.Name + "', '" + oSp.Description + "', '" + oSp.Address + "', '" + oSp.Phone 
+                + "', '" + oSp.AlternativePhone + "');", Sql.Parametros, "AddSocialWork");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Modifica una Obra Social.
+        /// </summary>
+        /// <param name="oSp">SocialWork</param>
+        /// <returns>Error</returns>
+        public bool UpdateSocialWork(classSocialWork oSp)
+        {
+            bool error;
+
+            error = Sql.InsertDB("UPDATE SocialWork SET Name = '" + oSp.Name + "', Description = '" + oSp.Description
+                + "', Address = '" + oSp.Address + "' Phone = '" + oSp.Phone + "', AlternativePhone = '" + oSp.AlternativePhone 
+                + "', Visible = " + Convert.ToInt32(oSp.Visible) + " WHERE IdSocialWork = " + oSp.IdSocialWork + ";",
+                null, "UpdateSocialWork");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Elimina de forma definitiva o Actualiza el campo visible de una Obra Social. 
+        /// </summary>
+        /// <param name="oSp"></param>
+        /// <param name="Delete">Delete o Update state</param>
+        /// <returns>Error</returns>
+        public bool DeleteSocialWork(classSocialWork oSp, bool Delete)
+        {
+            bool error;
+
+            if (Delete)
+                error = Sql.DeleteDB("DELETE SocialWork WHERE IdSocialWork = " + oSp.IdSocialWork + " ;", null, "DeleteSocialWork");
+            else
+                error = Sql.InsertDB("UPDATE SocialWork SET Visible = 0 WHERE IdSocialWork = " + oSp.IdSocialWork + " ;", null, "DeleteSocialWork");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        ///// <summary>
+        ///// OK - 17/09/02
+        ///// Carga una Combo con Obra Social
+        ///// </summary>
+        ///// <returns></returns>
+        //public bool ListSocialWork(bool Filtro)
+        //{
+        //    #region Consulta
+
+        //    string Consulta = "SELECT IdSocialWork[Id], Description[Valor] FROM SocialWork WHERE Visible = 1 ";
+
+        //    if (Filtro)
+        //        Consulta += " ORDER BY Description";
+        //    else
+        //        Consulta += " AND IdSocialWork BETWEEN 2 AND (SELECT MAX(I.IdSocialWork) FROM SocialWork AS I) " +
+        //            " ORDER BY Description";
+
+        //    #endregion
+
+        //    if (Sql.SelectAdapterDB(Consulta, "ListSocialWork"))
+        //    {
+        //        DataSet set = new DataSet();
+        //        Table = new DataTable();
+        //        set.Reset();
+        //        Sql.Adapter.Fill(set);
+        //        Table = set.Tables[0];
+        //        Sql.Desconectar();
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        Sql.Desconectar();
+        //        return false;
+        //    }
+        //}
+
+        ///// <summary>
+        ///// Carga una Combo con Obras Sociales
+        ///// OK 25/05/12
+        ///// </summary>
+        ///// <returns></returns>
+        //public bool ListaSocialWorkes(bool Filtro)
+        //{
+        //    #region Consulta
+
+        //    string Consulta = "SELECT IdSocialWork[Id], Nombre[Valor] FROM SocialWork WHERE Visible = 1 ";
+
+        //    if (Filtro)
+        //        Consulta += " ORDER BY Nombre";
+        //    else
+        //        Consulta += " AND IdSocialWork BETWEEN 2 AND (SELECT MAX(I.IdSocialWork) FROM SocialWork AS I) " +
+        //            " ORDER BY Nombre";
+
+        //    #endregion
+
+        //    if (Sql.SelectAdapterDB(Consulta, "ListaSocialWorkes"))
+        //    {
+        //        DataSet set = new DataSet();
+        //        Table = new DataTable();
+        //        set.Reset();
+        //        Sql.Adapter.Fill(set);
+        //        Table = set.Tables[0];
+        //        Sql.Desconectar();
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        Sql.Desconectar();
+        //        return false;
+        //    }
+        //}
+
+        #endregion
+
         #region CONSULTAS COMETADAS
 
         //// OK 07/06/12
-        //#region Consultas Comboboxes
+        #region Consultas Comboboxes
 
         ///// <summary>
         ///// Carga una Combo con Usuarios
@@ -510,214 +710,10 @@ namespace Datos
         //    }
         //}
 
-        ///// <summary>
-        ///// Carga una Combo con Patologias (Tabla detalle)
-        ///// OK 26/05/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool ListaPatologias()
-        //{
-        //    if (Sql.SelectAdapterDB("SELECT IdDetalle[Id], Nombre[Valor] FROM Detalle WHERE Visible = 1 ORDER BY Nombre",
-        //        "ListaPatologias"))
-        //    {
-        //        DataSet set = new DataSet();
-        //        Table = new DataTable();
-        //        set.Reset();
-        //        Sql.Adapter.Fill(set);
-        //        Table = set.Tables[0];
-        //        Sql.Desconectar();
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Desconectar();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Carga una Combo con Barrios
-        ///// OK 25/05/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool ListaBarrios(int IdCiudad)
-        //{
-        //    if (Sql.SelectAdapterDB("SELECT iIdBarrio[Id], Nombre[Valor] FROM Barrio WHERE Visible = 1 AND IdCiudad = " + IdCiudad + " ORDER BY Nombre; "
-        //        , "ListaBarrios"))
-        //    {
-        //        DataSet set = new DataSet();
-        //        Table = new DataTable();
-        //        set.Reset();
-        //        Sql.Adapter.Fill(set);
-        //        Table = set.Tables[0];
-        //        Sql.Desconectar();
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Desconectar();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Carga una Combo con Ciudades
-        ///// OK 25/05/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool ListaCiudades()
-        //{
-        //    if (Sql.SelectAdapterDB("SELECT IdCiudad[Id], Nombre[Valor] FROM Ciudad WHERE Visible = 1 ORDER BY Nombre", "ListaCiudades"))
-        //    {
-        //        DataSet set = new DataSet();
-        //        Table = new DataTable();
-        //        set.Reset();
-        //        Sql.Adapter.Fill(set);
-        //        Table = set.Tables[0];
-        //        Sql.Desconectar();
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Desconectar();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Carga una Combo con Obras Sociales
-        ///// OK 25/05/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool ListaObraSociales(bool Filtro)
-        //{
-        //    #region Consulta
-
-        //    string Consulta = "SELECT IdObraSocial[Id], Nombre[Valor] FROM ObraSocial WHERE Visible = 1 ";
-
-        //    if (Filtro)
-        //        Consulta += " ORDER BY Nombre";
-        //    else
-        //        Consulta += " AND IdObraSocial BETWEEN 2 AND (SELECT MAX(I.IdObraSocial) FROM ObraSocial AS I) " +
-        //            " ORDER BY Nombre";
-
-        //    #endregion
-
-        //    if (Sql.SelectAdapterDB(Consulta, "ListaObraSociales"))
-        //    {
-        //        DataSet set = new DataSet();
-        //        Table = new DataTable();
-        //        set.Reset();
-        //        Sql.Adapter.Fill(set);
-        //        Table = set.Tables[0];
-        //        Sql.Desconectar();
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Desconectar();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Carga una Combo con Personas
-        ///// OK 21/03/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool ListaTipoDePersonas()
-        //{
-        //    if (Sql.SelectAdapterDB("SELECT IdTipoPersona[Id], Nombre[Valor] FROM TipoPersona ORDER BY Nombre",
-        //        "ListaTipoDePersonas"))
-        //    {
-        //        DataSet set = new DataSet();
-        //        Table = new DataTable();
-        //        set.Reset();
-        //        Sql.Adapter.Fill(set);
-        //        Table = set.Tables[0];
-        //        Sql.Desconectar();
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Desconectar();
-        //        return false;
-        //    }
-        //}
-
-        //#endregion
+        #endregion
 
         //// OK 26/05/12
-        //#region Consulta Diagnostico
-
-        //// Revisado OK 25/05/12
-        //public DateTime UltimaVisita(classPersona oP)
-        //{
-        //    DateTime oD = DateTime.Now;
-
-        //    if (Sql.SelectReaderDB("SELECT max(Fecha)[UltimaVisita]" +
-        //                       " FROM Diagnostico WHERE IdPersona = " + oP.IdPersona + " ;",
-        //                       null,
-        //                       "UltimaVisita"))
-        //    {
-
-        //        Sql.Reader.Read();
-        //        string re = Sql.Reader["UltimaVisita"].ToString();
-
-        //        if (re != "")
-        //            oD = Convert.ToDateTime(re);
-        //        else
-        //            oD = DateTime.Now;
-
-        //        Sql.Reader.Close();
-        //        Sql.Desconectar();
-        //    }
-
-        //    return oD;
-        //}
-
-        //// Revisado OK 25/05/12
-        //public DateTime PrimeraVisita(classPersona oP)
-        //{
-        //    DateTime oD = DateTime.Now;
-
-        //    if (Sql.SelectReaderDB("SELECT min(Fecha)[PrimeraVisita]" +
-        //                       " FROM Diagnostico WHERE IdPersona = " + oP.IdPersona + " ;",
-        //                       null,
-        //                       "PrimeraVisita"))
-        //    {
-
-        //        Sql.Reader.Read();
-        //        string re = Sql.Reader["PrimeraVisita"].ToString();
-        //        if (re != "")
-        //            oD = Convert.ToDateTime(re);
-        //        else
-        //            oD = DateTime.Now;
-        //        Sql.Reader.Close();
-        //        Sql.Desconectar();
-        //    }
-
-        //    return oD;
-        //}
-
-        //// Revisado OK 25/05/12
-        //public int CantidadVisitas(classPersona oP)
-        //{
-        //    int oD = 0;
-
-        //    if (Sql.SelectReaderDB("SELECT count(Fecha)[CantVisita]" +
-        //                       " FROM Diagnostico WHERE IdPersona = " + oP.IdPersona + " ;",
-        //                       null,
-        //                       "CantidadVisitas"))
-        //    {
-        //        Sql.Reader.Read();
-        //        oD = Convert.ToInt32(Sql.Reader["CantVisita"]);
-        //        Sql.Reader.Close();
-        //        Sql.Desconectar();
-        //    }
-
-        //    return oD;
-        //}
+        #region Consulta Diagnostico
 
         //// Revisado OK 25/05/12
         //public bool AgregarDiagnostico(classDiagnostico oD)
@@ -853,10 +849,10 @@ namespace Datos
         //    return error;
         //}
 
-        //#endregion 
+        #endregion 
 
         //// OK 26/05/12
-        //#region Consulta Persona
+        #region Consulta Persona
 
         ///// <summary>
         ///// OK 24/06/12
@@ -922,47 +918,6 @@ namespace Datos
         //    }
 
         //    return A;
-        //}
-
-        //// OK 26/05/12
-        //public bool AgregarPersona(classPersona oP, int IdUsuario)
-        //{
-        //    bool error;
-
-        //    error = Sql.InsertDB(" INSERT INTO Persona (Nombre, Apellido, Direccion, FechaNacimiento,FechaAlta, Sexo, "
-        //        + " IdObraSocial, nAfiliado, Visible, IdTipoPersona, IdCiudad, IdBarrio, Telefono, TelefonoParticular, IdUsuario)"
-        //        + " VALUES ('" + oP.Nombre + "', '" + oP.Apellido + "', '" + oP.Direccion + "', '"
-        //        + String.Format("{0:yyyy'-'MM'-'dd}", oP.FechaNac) + "' , '"
-        //        + String.Format("{0:yyyy'-'MM'-'dd}", oP.FechaAlta) + "' , "
-        //        + oP.Sexo + ", "
-        //        + oP.ObraSocial + ", '" + oP.nAfiliado + "', " + 1 + ", " + oP.TipoPaciente
-        //        + ", " + oP.IdCiudad + ", " + oP.IdBarrio + ", '" + oP.Telefono + "', '" + oP.TelefonoParticular
-        //        + "', " + IdUsuario + " ); ",
-        //        null,
-        //        "AgregarPaciente");
-
-        //    Menssage = Sql.Mensaje;
-
-        //    return error;
-        //}
-
-        //// Revisado OK 26/05/12
-        //public bool ModificarPersona(classPersona oP)
-        //{
-        //    bool error;
-
-        //    error = Sql.UpdateDB("UPDATE Persona SET Nombre = '" + oP.Nombre + "', Apellido = '" + oP.Apellido
-        //        + "', IdTipoPersona = " + oP.TipoPaciente + ", Direccion = '" + oP.Direccion
-        //        + "', FechaNacimiento = '" + String.Format("{0:yyyy'-'MM'-'dd}", oP.FechaNac)
-        //        + "', FechaAlta = '" + String.Format("{0:yyyy'-'MM'-'dd}", oP.FechaAlta)
-        //        + "', Sexo = " + oP.Sexo + ", IdObraSocial = " + oP.ObraSocial + ", nAfiliado = '" + oP.nAfiliado
-        //        + "', IdCiudad = " + oP.IdCiudad + ", IdBarrio = " + oP.IdBarrio
-        //        + " , Telefono = '" + oP.Telefono + "', TelefonoParticular = '" + oP.TelefonoParticular
-        //        + "' WHERE IdPersona = " + oP.IdPersona + ";", null, "ModificarPaciente");
-
-        //    Menssage = Sql.Mensaje;
-
-        //    return error;
         //}
 
         //// Revisado OK 25/05/12
@@ -1037,71 +992,10 @@ namespace Datos
         //    return oPa;
         //}
 
-        //#endregion
+        #endregion
 
         //// OK 03/06/12
-        //#region Consulta obraSocial
-
-        ///// <summary>
-        ///// OK 03/06/12
-        ///// Inserta una Obra Social.
-        ///// </summary>
-        ///// <param name="oS"></param>
-        ///// <returns></returns>
-        //public bool AgregarObraSocial(classObraSocial oS)
-        //{
-        //    bool error;
-
-        //    error = Sql.InsertDB("INSERT INTO ObraSocial (Nombre, Descripcion, IdCiudad, IdBarrio, Direccion, Telefono1, Telefono2, Visible) VALUES ('" 
-        //        + oS.Nombre + "', '" + oS.Descripcion + "', " + oS.IdCiudad + ", " +oS.IdBarrio + ", '" + oS.Direccion 
-        //        + "', '" + oS.Telefono1 + "', '" + oS.Telefono2 + "', " + oS.Visible + ");",
-        //        Sql.Parametros,
-        //        "AgregarObraSocial");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// OK 22/03/12
-        ///// Actualiza una Obra Social.
-        ///// </summary>
-        ///// <param name="oS"></param>
-        ///// <returns></returns>
-        //public bool ModificarObraSocial(classObraSocial oS)
-        //{
-        //    bool error;
-
-        //    error = Sql.InsertDB("UPDATE ObraSocial SET Nombre = '" + oS.Nombre + "', Descripcion = '" + oS.Descripcion
-        //        + "', IdCiudad = " + oS.IdCiudad + ", Direccion = '" + oS.Direccion + "', IdBarrio = " + oS.IdBarrio
-        //        + ", Telefono1 = '" +oS.Telefono1 + "',  Telefono2 = '" + oS.Telefono2 
-        //        + "' WHERE IdObraSocial = " + oS.Id + ";",
-        //        null,
-        //        "ModificarObraSocial");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// OK 03/06/12
-        ///// Elimina de forma definitiva o Actualiza el campo visible de una Obra Social. 
-        ///// </summary>
-        ///// <param name="oS"></param>
-        ///// <param name="Eliminar"></param>
-        ///// <returns></returns>
-        //public bool EliminarObraSocial(classObraSocial oS, bool Eliminar)
-        //{
-        //    bool error;
-
-        //    if (Eliminar)
-        //        error = Sql.DeleteDB("DELETE ObraSocial WHERE IdObraSocial = " + oS.Id + " ;", null, "EliminarObraSocial");
-        //    else
-        //        error = Sql.InsertDB("UPDATE ObraSocial SET Visible = 0 WHERE IdObraSocial = " + oS.Id + " ;", null, "EliminarObraSocial");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
+        #region Consulta obraSocial
 
         ///// <summary>
         ///// OK 03/06/12
@@ -1281,479 +1175,10 @@ namespace Datos
         //    }
         //}
 
-        //#endregion
-
-        //// OK 31/05/12
-        //#region Consulta Turnos
-
-        ///// <summary>
-        ///// OK 24/06/12
-        ///// Cuenta Obras Sociales.
-        ///// </summary>
-        ///// <returns></returns>
-        //public int CountTurnosDelDia(DateTime FechaDesde, DateTime FechaHasta, int IdUsuario)
-        //{
-        //    int C = 0;
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT COUNT(oT.IdTurno)[C] FROM Turno AS oT "
-        //        + " INNER JOIN Usuario AS oU ON oU.Idusuario = oT.IdUsuario "
-        //        + " WHERE oT.Fecha BETWEEN '" + String.Format("{0:yyyy'-'MM'-'dd}", FechaDesde)
-        //        + "' AND '" + String.Format("{0:yyyy'-'MM'-'dd}", FechaHasta) + "' AND oU.IdUsuario= " + IdUsuario + " ;";
-
-        //    #endregion
-
-        //    if (Sql.SelectReaderDB(Consulta, null, "CountTurnosDelDia"))
-        //    {
-        //        Sql.Reader.Read();
-        //        C = Convert.ToInt32(Sql.Reader["C"]);
-        //        Sql.Reader.Close();
-        //        Error = true;
-        //        Sql.Desconectar();
-        //    }
-        //    return C;
-        //}
-
-        ///// <summary>
-        ///// OK 24/06/12
-        ///// Cuenta Obras Sociales.
-        ///// </summary>
-        ///// <returns></returns>
-        //public int CountTurnos(classTurnos oT)
-        //{
-        //    int C = 0;
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT COUNT(oT.IdTurno)[C] FROM Turno AS oT "
-        //        + " INNER JOIN Usuario AS oU ON oU.Idusuario = oT.IdUsuario "
-        //        + " WHERE oT.IdPersona = " + oT.IdPersona + " AND oU.IdUsuario= " + oT.IdUsuario;
-
-        //    #endregion
-
-        //    if (Sql.SelectReaderDB(Consulta, null, "CountTurnos"))
-        //    {
-        //        Sql.Reader.Read();
-        //        C = Convert.ToInt32(Sql.Reader["C"]);
-        //        Sql.Reader.Close();
-        //        Error = true;
-        //        Sql.Desconectar();
-        //    }
-        //    return C;
-        //}
-
-        ///// <summary>
-        ///// OK 23/04/12
-        ///// Inserta un Turno.
-        ///// </summary>
-        ///// <param name="oS"></param>
-        ///// <returns></returns>
-        //public bool AgregarTurno(classTurnos oT)
-        //{
-        //    bool error;
-        //    string Consulta = "INSERT INTO Turno (IdPersona, Fecha, IdEstadoTurno, IdUsuario)"
-        //        + "VALUES (" + oT.IdPersona + ", '" + String.Format("{0:yyyy'-'MM'-'dd' 'HH':'mm}", oT.Turno) + "', '"
-        //        + oT.Estado + "', " + oT.IdUsuario + " );";
-
-
-        //    error = Sql.InsertDB(Consulta, null, "AgregarTurno");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-
-        ///// <summary>
-        ///// Trae todos los turnos del paciente seleccionado.
-        ///// OK 230412
-        ///// </summary>
-        ///// <param name="oT"></param>
-        ///// <returns></returns>
-        //public List<classTurnos> SelectTurnos(classTurnos oT)
-        //{
-        //    List<classTurnos> oTa = new List<classTurnos>();
-
-        //    if (Sql.SelectReaderDB("SELECT IdTurno, IdPersona, Fecha, IdEstadoTurno, IdUsuario "
-        //        + " FROM Turno WHERE IdPersona = " + oT.IdPersona + ";",
-        //        null,
-        //        "selectTurnos"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            classTurnos oTr = new classTurnos(
-        //                Convert.ToInt32(Sql.Reader["IdTurno"])
-        //                , Convert.ToDateTime(Sql.Reader["Fecha"])
-        //                , Convert.ToInt32(Sql.Reader["IdEstadoTurno"])
-        //                , Convert.ToInt32(Sql.Reader["IdPersona"])
-        //                , Convert.ToInt32(Sql.Reader["IdUsuario"])
-        //                );
-        //            oTa.Add(oTr);
-        //        }
-
-        //        Sql.Reader.Close();
-        //        Sql.Desconectar();
-        //    }
-        //    return oTa;
-        //}
-
-        ///// <summary>
-        ///// Trae los datos de un turnos seleccionado.
-        ///// OK 230412
-        ///// </summary>
-        ///// <param name="oT"></param>
-        ///// <returns></returns>
-        //public classTurnos SelectTurno(classTurnos oT)
-        //{
-        //    classTurnos oTr = new classTurnos();
-
-        //    if (Sql.SelectReaderDB("SELECT IdTurno, IdPersona, Fecha, IdEstadoTurno, IdUsuario "
-        //        + " FROM Turno WHERE IdTurno = " + oT.Id + ";",
-        //        null,
-        //        "selectTurno"))
-        //    {
-        //        Sql.Reader.Read();
-        //        oTr = new classTurnos(
-        //            Convert.ToInt32(Sql.Reader["IdTurno"])
-        //            , Convert.ToDateTime(Sql.Reader["Fecha"])
-        //            , Convert.ToInt32(Sql.Reader["IdEstadoTurno"])
-        //            , Convert.ToInt32(Sql.Reader["IdPersona"])
-        //            , Convert.ToInt32(Sql.Reader["IdUsuario"])
-        //            );
-
-        //        Sql.Reader.Close();
-        //        Sql.Desconectar();
-        //    }
-        //    return oTr;
-        //}
-
-        ///// <summary>
-        ///// Modifica el turno.
-        ///// </summary>
-        ///// <param name="oT"></param>
-        ///// <returns></returns>
-        //public bool ModificarTurno(classTurnos oT)
-        //{
-        //    bool error;
-
-        //    error = Sql.UpdateDB("UPDATE Turno SET Fecha = '" + String.Format("{0:yyyy'-'MM'-'dd' 'HH':'mm}", oT.Turno)
-        //        + "', IdEstadoTurno = " + oT.Estado + ", IdUsuario = " + oT.IdUsuario + " WHERE IdTurno = " + oT.Id + " ;",
-        //        null, "ModificarTurno");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// CHEKEAR SI FUNCIONA 22/03/12
-        ///// Elimina de forma definitiva o Actualiza el campo visible de una Obra Social. 
-        ///// </summary>
-        ///// <param name="oS"></param>
-        ///// <param name="Eliminar"></param>
-        ///// <returns></returns>
-        //public bool EliminarTurno(classTurnos oT, bool Eliminar)
-        //{
-        //    bool error;
-
-        //    if (Eliminar)
-        //        error = Sql.DeleteDB("DELETE FROM Turno WHERE IdTurno = " + oT.Id + " ;", null, "EliminarTurno");
-        //    else
-        //        error = Sql.InsertDB("UPDATE FROM Turno SET Estado = 0 WHERE IdTurno = " + oT.Id + " ;", null, "EliminarTurno");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        //#endregion
-
-        //// OK 03/06/12
-        //#region Consulta Patologias
-
-        ///// <summary>
-        ///// Elimina de forma definitiva o Actualiza el campo visible de Patologias
-        ///// Eliminar: True-> Elimina
-        /////           False-> Modifica Estado "No Elimina"
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oP"></param>
-        ///// <param name="Eliminar"></param>
-        ///// <returns></returns>
-        //public bool EliminarPatologia(classPatologia oP, bool Eliminar)
-        //{
-        //    bool error;
-
-        //    if (Eliminar)
-        //        error = Sql.DeleteDB("DELETE FROM Detalle WHERE IdDetalle = " + oP.IdDetalle + " ;", null, "EliminarDetalle");
-        //    else
-        //        error = Sql.UpdateDB("UPDATE Detalle SET Visible = 0 WHERE IdDetalle = " + oP.IdDetalle + " ;", null, "EliminarDetalle");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// Trae los datos de una Patologia seleccionado.
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oC"></param>
-        ///// <returns></returns>
-        //public classPatologia SelectPatologia(classPatologia oC)
-        //{
-        //    classPatologia oTr = null;
-
-        //    if (Sql.SelectReaderDB("SELECT IdDetalle, Nombre "
-        //        + " FROM Detalle WHERE IdDetalle = " + oC.IdDetalle + " AND Visible = 1 ORDER BY Nombre;",
-        //        null,
-        //        "selectPatologia"))
-        //    {
-        //        Sql.Reader.Read();
-        //        oTr = new classPatologia(
-        //            Convert.ToInt32(Sql.Reader["IdDetalle"])
-        //            , Sql.Reader["Nombre"].ToString()
-        //            );
-
-        //        Sql.Reader.Close();
-        //        Sql.Desconectar();
-        //    }
-        //    return oTr;
-        //}
-
-        ///// <summary>
-        ///// Inserta una Patologia.
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oS"></param>
-        ///// <returns></returns>
-        //public bool AgregarPatologia(classPatologia oP)
-        //{
-        //    bool error;
-
-        //    error = Sql.InsertDB("INSERT INTO Detalle (Nombre) VALUES ('"+ oP.Detalle +"');",
-        //        null,
-        //        "AgregarPatologia");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// Modifica una Patologia.
-        ///// Restore: True-> Vuelve a mostrar
-        /////          False-> Oculta
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oP"></param>
-        ///// <returns></returns>
-        //public bool ModificarPatologia(classPatologia oP, bool Restore)
-        //{
-        //    bool error;
-
-        //    error = Sql.UpdateDB("UPDATE Detalle SET Nombre = '" + oP.Detalle
-        //        + "', Visible = " + Convert.ToInt32(Restore) 
-        //        + " WHERE IdDetalle = " + oP.IdDetalle + " ;",
-        //        null,
-        //        "ModificarPatologia");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        //#endregion
-
-        //// OK 03/06/12
-        //#region Consulta Barrio
-
-        ///// <summary>
-        ///// Elimina de forma definitiva o Actualiza el campo visible de Barrios
-        ///// Eliminar: True-> Elimina
-        /////           False-> Modifica Estado "No Elimina"
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oB"></param>
-        ///// <param name="Eliminar"></param>
-        ///// <returns></returns>
-        //public bool EliminarBarrio(classBarrio oB, bool Eliminar)
-        //{
-        //    bool error;
-
-        //    if (Eliminar)
-        //        error = Sql.DeleteDB("DELETE FROM Barrio WHERE iIdBarrio = " + oB.IdBarrio + " ;", null, "EliminarBarrio");
-        //    else
-        //        error = Sql.UpdateDB("UPDATE Barrio SET Visible = 0 WHERE iIdBarrio = " + oB.IdBarrio + " ;", null, "EliminaBarrio");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// Trae los datos de una Barrio seleccionado.
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oB"></param>
-        ///// <returns></returns>
-        //public classBarrio SelectBarrio(classBarrio oB)
-        //{
-        //    classBarrio oTr = null;
-
-        //    if (Sql.SelectReaderDB("SELECT iIdBarrio, IdCiudad, Nombre "
-        //        + " FROM Barrio WHERE iIdBarrio = " + oB.IdBarrio + " AND Visible = 1 ORDER BY Nombre;",
-        //        null,
-        //        "selectBarrio"))
-        //    {
-        //        Sql.Reader.Read();
-        //        oTr = new classBarrio(
-        //            Convert.ToInt32(Sql.Reader["IdCiudad"])
-        //            , Convert.ToInt32(Sql.Reader["iIdBarrio"])
-        //            , Sql.Reader["Nombre"].ToString()
-        //            );
-
-        //        Sql.Reader.Close();
-        //        Sql.Desconectar();
-        //    }
-        //    return oTr;
-        //}
-
-        ///// <summary>
-        ///// Inserta una Barrio.
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oS"></param>
-        ///// <returns></returns>
-        //public bool AgregarBarrio(classBarrio oB)
-        //{
-        //    bool error;
-
-        //    error = Sql.InsertDB("INSERT INTO Barrio (Nombre, IdCiudad) VALUES ( '"
-        //        + oB.Nombre + "', " + oB.IdCiudad +");",
-        //        null,
-        //        "AgregarBarrio");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// Modifica un Barrio.
-        ///// Restore: True-> Vuelve a mostrar
-        /////          False-> Oculta
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oB"></param>
-        ///// <returns></returns>
-        //public bool ModificarBarrio(classBarrio oB, bool Restore)
-        //{
-        //    bool error;
-
-        //    error = Sql.UpdateDB("UPDATE Barrio SET Nombre = '" + oB.Nombre
-        //        + "', IdCiudad = " + oB.IdCiudad 
-        //        + " Visible = " + Convert.ToInt32(Restore) 
-        //        + " WHERE iIdBarrio = " + oB.IdBarrio + " ;",
-        //        null,
-        //        "ModificarBarrio");
-
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        //#endregion
-
-        //// OK 03/06/12
-        //#region Consulta Ciudad
-
-        ///// <summary>
-        ///// Elimina de forma definitiva o Actualiza el campo visible de Ciudades
-        ///// Eliminar: True-> Elimina
-        /////           False-> Modifica Estado "No Elimina"
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oC"></param>
-        ///// <param name="Eliminar"></param>
-        ///// <returns></returns>
-        //public bool EliminarCiudad(classCiudad oC, bool Eliminar)
-        //{
-        //    bool error;
-        //    if (Eliminar)
-        //        error = Sql.DeleteDB("DELETE FROM Ciudad WHERE IdCiudad = " + oC.IdCiudad + " ;", null, "EliminarCiudad");
-        //    else
-        //        error = Sql.UpdateDB("UPDATE Ciudad SET Visible = 0 WHERE IdCiudad = " + oC.IdCiudad + " ;", null, "EliminarCiudad");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// Trae los datos de una Ciudad seleccionado.
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oC"></param>
-        ///// <returns></returns>
-        //public classCiudad SelectCiudad(classCiudad oC)
-        //{
-        //    classCiudad oTr = new classCiudad();
-
-        //    if (Sql.SelectReaderDB("SELECT IdCiudad, Nombre "
-        //        + " FROM Ciudad WHERE IdCiudad = " + oC.IdCiudad + " ORDER BY Nombre;",
-        //        null,
-        //        "selectCiudad"))
-        //    {
-        //        Sql.Reader.Read();
-        //        oTr = new classCiudad(
-        //            Convert.ToInt32(Sql.Reader["IdCiudad"])
-        //            , Sql.Reader["Nombre"].ToString()
-        //            );
-
-        //        Sql.Reader.Close();
-        //        Sql.Desconectar();
-        //    }
-        //    return oTr;
-        //}
-
-        ///// <summary>
-        ///// Inserta una Ciudad.
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oS"></param>
-        ///// <returns></returns>
-        //public bool AgregarCiudad(classCiudad oT)
-        //{
-        //    bool error;
-
-        //    error = Sql.InsertDB("INSERT INTO Ciudad (Nombre) VALUES ( '"
-        //        + oT.Nombre + "');",
-        //        null,
-        //        "AgregarCiudad");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// Modifica una Ciudad.
-        ///// Restore: True-> Vuelve a mostrar
-        /////          False-> Oculta
-        ///// OK 03/06/12
-        ///// </summary>
-        ///// <param name="oC"></param>
-        ///// <returns></returns>
-        //public bool ModificarCiudad(classCiudad oC, bool Restore)
-        //{
-        //    bool error;
-
-        //    error = Sql.UpdateDB("UPDATE Ciudad SET Nombre = '" + oC.Nombre
-        //        + "', Visible = " + Convert.ToInt32(Restore) 
-        //        + " WHERE IdCiudad = " + oC.IdCiudad + " ;",
-        //        null,
-        //        "ModificarCiudad");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        //#endregion
+        #endregion
 
         //// OK 11/16/12
-        //#region Consulta Usuario
+        #region Consulta Usuario
 
         ///// <summary>
         ///// OK 24/06/12
@@ -1807,27 +1232,6 @@ namespace Datos
         //        Sql.Desconectar();
         //    }
         //    return A;
-        //}
-
-        ///// <summary>
-        ///// Elimina de forma definitiva o Actualiza el campo visible de Password
-        ///// Eliminar: True-> Elimina
-        /////           False-> Modifica Estado "No Elimina"
-        ///// OK /06/12
-        ///// </summary>
-        ///// <param name="oU"></param>
-        ///// <param name="Eliminar"></param>
-        ///// <returns></returns>
-        //public bool EliminarUsuario(classUsuarios oU, bool Eliminar)
-        //{
-        //    bool error;
-        //    if (Eliminar)
-        //        error = Sql.DeleteDB("DELETE FROM Usuario WHERE IdUsuario = " + oU.IdUsuario + " ;", null, "EliminarUsuario");
-        //    else
-        //        error = Sql.UpdateDB("UPDATE Usuario SET Bloqueado = 0 WHERE IdUsuario = " + oU.IdUsuario + " ;", null, "EliminarUsuario");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
         //}
 
         ///// <summary>
@@ -1887,54 +1291,10 @@ namespace Datos
         //    return A;
         //}
 
-        ///// <summary>
-        ///// Inserta una Usuario.
-        ///// 07/06/12
-        ///// </summary>
-        ///// <param name="oS"></param>
-        ///// <returns></returns>
-        //public bool AgregarUsuario(classUsuarios oU)
-        //{
-        //    bool error;
-
-        //    error = Sql.InsertDB("INSERT INTO Usuario (Nombre, Apellido, Email, Contrasenia) VALUES ( '"
-        //        + oU.Nombre + "', '" + oU.Apellido + "', '" + oU.Email + "', '" + oU.Contrasenia + "');",
-        //        null,
-        //        "AgregarUsuario");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        ///// <summary>
-        ///// Modifica una Usuario.
-        ///// Restore: True-> Vuelve a mostrar
-        /////          False-> Oculta
-        ///// 07/06/12
-        ///// </summary>
-        ///// <param name="oU"></param>
-        ///// <returns></returns>
-        //public bool ModificarUsuario(classUsuarios oU)
-        //{
-        //    bool error;
-
-        //    error = Sql.UpdateDB("UPDATE Usuario SET Nombre = '" + oU.Nombre
-        //        + "', Bloqueado = " + Convert.ToInt32(oU.Bloqueado)
-        //        + " , Contrasenia = '" + oU.Contrasenia 
-        //        + "', Apellido = '" + oU.Apellido
-        //        + "', Email = '" + oU.Email 
-        //        + "' WHERE IdUsuario = " + oU.IdUsuario + " ;",
-        //        null,
-        //        "ModificarUsuario");
-
-        //    Menssage = Sql.Mensaje;
-        //    return error;
-        //}
-
-        //#endregion
+        #endregion
 
         //// OK 11/06/12
-        //#region Consulta Filtros
+        #region Consulta Filtros
 
         ///// <summary>
         ///// Filtra Obras Sociales por coincidencia de la primera letras.
@@ -2481,10 +1841,10 @@ namespace Datos
         //    return oTa;
         //}
 
-        //#endregion
+        #endregion
 
         //// OK 21/06/12
-        //#region Estadisticas
+        #region Estadisticas
 
         ///// <summary>
         ///// Carga un objeto DataTable
@@ -3203,99 +2563,11 @@ namespace Datos
         //    }
         //}
 
-        //#endregion
+        #endregion
 
         #endregion
 
         #region AGREGADOS MARCOS CARRERAS
-
-        
-
-        #region Consultas Professional
-
-        /// <summary>
-        /// OK - 17/09/02
-        /// Inserta una Professional.
-        /// </summary>
-        /// <param name="oPl">Professional</param>
-        /// <returns>Error</returns>
-        public bool AddProfessional(classProfessional oPl)
-        {
-            bool error;
-
-            error = Sql.InsertDB( "INSERT INTO Professional ("+"ProfessionalRegistration, "+
-                                                                "Names, "+
-                                                                "LastName, "+ 
-                                                                "Address, "+
-                                                                "Phone, "+
-                                                                "Mail, "+
-                                                                "User, "+
-                                                                "Password, "
-                                                                + " Visible ) VALUES (" 
-                + oPl.ProfessionalRegistration + ", '" 
-                + oPl.Names     + "', '" 
-                + oPl.LastName  + "', '" 
-                + oPl.Address   + "', '" 
-                + oPl.Phone     + "', '" 
-                + oPl.Mail      + "', '" 
-                + oPl.User      + "', '" 
-                + oPl.Password + "', " 
-                + oPl.Visible + "');",
-                Sql.Parametros, "AddProfessional");
-
-            Menssage = Sql.Mensaje;
-            return error;
-        }
-
-        /// <summary>
-        /// OK - 17/09/02
-        /// Modifica una Professional.
-        /// </summary>
-        /// <param name="oPl">Professional</param>
-        /// <returns>Error</returns>
-        public bool UpdateProfessional(classProfessional oPl)
-        {
-            bool error;
-
-            error = Sql.InsertDB(
-                "UPDATE Professional "+ 
-                "SET ProfessionalRegistration = " + oPl.ProfessionalRegistration + ", "+
-                "Names = '" + oPl.Names + "', "+
-                "LastName = '" + oPl.LastName + "', " +
-                "Address = '" + oPl.Address+ "', " +
-                "Phone = '" + oPl.Phone + "', " + 
-                "Mail ='" + oPl.Mail + "', " + 
-                "User= '" + oPl.User + "', " + 
-                "Password= '" + oPl.Password + "', " + 
-                "Visible = " + Convert.ToInt32(oPl.Visible) +
-                " WHERE IdProfessional = " + oPl.IdProfessional + ";",
-                null, "UpdateProfessional");
-
-            Menssage = Sql.Mensaje;
-            return error;
-        }
-
-        /// <summary>
-        /// OK - 17/09/02
-        /// Elimina de forma definitiva o Actualiza el campo visible de una Professional. 
-        /// </summary>
-        /// <param name="oPl"></param>
-        /// <param name="Delete">Delete o Update state</param>
-        /// <returns>Error</returns>
-        public bool DeleteProfessional(classProfessional oPl, bool Delete)
-        {
-            bool error;
-
-            if (Delete)
-                error = Sql.DeleteDB("DELETE Professional WHERE IdProfessional = " + oPl.IdProfessional + " ;", null, "DeleteProfessional");
-            else
-                error = Sql.InsertDB("UPDATE Professional SET Visible = 0 WHERE IdProfessional = " + oPl.IdProfessional + " ;", null, "DeleteProfessional");
-
-            Menssage = Sql.Mensaje;
-            return error;
-        }
-
-        #endregion
 
         #endregion
     }

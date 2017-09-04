@@ -11,7 +11,7 @@ namespace Entidades.newClases
         #region Atributos y Metodos
 
         public int IdSocialWork { set; get; }
-        public string Names { set; get; }
+        public string Name { set; get; }
         public string Description { set; get; }
         public string Address { set; get; }
         public string Phone { set; get; }
@@ -25,7 +25,7 @@ namespace Entidades.newClases
         public classSocialWork()
         {
             this.IdSocialWork = 0;
-            this.Names = string.Empty;
+            this.Name = string.Empty;
             this.Description = string.Empty;
             this.Address = string.Empty;
             this.Phone = string.Empty;
@@ -33,11 +33,11 @@ namespace Entidades.newClases
             this.Visible = true;
         }
 
-        public classSocialWork(int IdSocialWork, string Names, string Description,
+        public classSocialWork(int IdSocialWork, string Name, string Description,
             string Address, string Phone, string AlternativePhone, bool Visible)
         {
             this.IdSocialWork = IdSocialWork;
-            this.Names = Names;
+            this.Name = Name;
             this.Description = Description;
             this.Address = Address;
             this.Phone = Phone;
@@ -52,7 +52,7 @@ namespace Entidades.newClases
         {
             return
             "Id: " + this.IdSocialWork.ToString() +
-            "\nNombre: " + this.Names +
+            "\nNombre: " + this.Name +
             "\nDescripcion: " + this.Description +
             "\nDomicilio: " + this.Address +
             "\nTelefono: " + this.Phone +
