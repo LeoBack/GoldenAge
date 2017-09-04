@@ -38,6 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\classDiagnostic.cs" />
     <Compile Include="Clases\classDiagnostico.cs" />
     <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
