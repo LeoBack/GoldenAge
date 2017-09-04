@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Clases\classDiagnostic.cs" />
     <Compile Include="Clases\classDiagnostico.cs" />
+    <Compile Include="Clases\classParentRelationship.cs" />
     <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
     <Compile Include="Clases\classProfessional.cs" />
