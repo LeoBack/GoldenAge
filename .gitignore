@@ -11,4 +11,6 @@ x86/
 build/
 bld/
 Bin/
+bin/
 Obj/
+obj/
