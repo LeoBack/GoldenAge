@@ -110,12 +110,6 @@
     <Compile Include="Formularios\frmAcercaDe.Designer.cs">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAuxiliar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmAuxiliar.Designer.cs">
-      <DependentUpon>frmAuxiliar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\frmFecha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,9 +187,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAuxiliar.resx">
-      <DependentUpon>frmAuxiliar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmFecha.resx">
       <DependentUpon>frmFecha.cs</DependentUpon>

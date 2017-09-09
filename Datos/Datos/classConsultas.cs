@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using Entidades.newClases;
 using Entidades;
+using Entidades.Clases;
 //using Entidades.Clases;
 //using Entidades.Clases.Grillas;
 
@@ -607,6 +608,45 @@ namespace Datos
             return error;
         }
 
+
+        /// <summary>
+        /// OK 03/06/12
+        /// Trae una SocialWork. 
+        /// Campo ID obligatorio.
+        /// </summary>
+        /// <param name="oS"></param>
+        /// <returns></returns>
+        public classSocialWork SelectSocialWork(classSocialWork oS)
+        {
+            classSocialWork oSa = null;
+
+            string Consulta = "SELECT IdSocialWork, Name, Description, Address, Phone, AlternativePhone, Visible"
+                + "FROM SocialWork WHERE IdSocialWork = " + oS.IdSocialWork + " AND Visible = " + oS.Visible +
+                " AND IdSocialWork BETWEEN 2 AND (SELECT MAX(I.IdSocialWork) FROM SocialWork AS I);";
+
+            if (Sql.SelectReaderDB(Consulta, null, "SelectSocialWork"))
+            {
+                while (Sql.Reader.Read())
+                {
+                    classSocialWork oSr = new classSocialWork(
+                        Convert.ToInt32(Sql.Reader["IdSocialWork"])
+                        , Sql.Reader["Name"].ToString()
+                        , Sql.Reader["Description"].ToString()
+                        , Sql.Reader["Address"].ToString()
+                        , Sql.Reader["Phone"].ToString()
+                        , Sql.Reader["AlternativePhone"].ToString()
+                        , Convert.ToBoolean(Sql.Reader["Visible"])
+                        );
+                    oSa = oSr;
+                }
+
+                Sql.Reader.Close();
+                Sql.Desconectar();
+            }
+            return oSa;
+        }
+
+
         ///// <summary>
         ///// OK - 17/09/02
         ///// Carga una Combo con Obra Social
@@ -1010,7 +1050,7 @@ namespace Datos
         //    classObraSocial oSa = null;
 
         //    string Consulta = "SELECT IdObraSocial, Nombre, Descripcion, IdCiudad, IdBarrio, Visible, Telefono1, Telefono2, Direccion "
-        //        + "FROM ObraSocial WHERE IdObraSocial = " + oS.Id + " AND Visible = " + oS.Visible  +
+        //        + "FROM ObraSocial WHERE IdObraSocial = " + oS.Id + " AND Visible = " + oS.Visible +
         //        " AND IdObraSocial BETWEEN 2 AND (SELECT MAX(I.IdObraSocial) FROM ObraSocial AS I);";
 
         //    if (Sql.SelectReaderDB(Consulta, null, "SelectObraSocial"))

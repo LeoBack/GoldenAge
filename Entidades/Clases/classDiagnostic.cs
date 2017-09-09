@@ -36,7 +36,7 @@ namespace Entidades.newClases
         #endregion
 
         #region Methods
-        public string ToString()
+        public override string ToString()
         {
             return "Id: " + this.IdDiagnostic.ToString()+
             "\nEspecialidad: " + this.IdSpeciality.ToString()+
