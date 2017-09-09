@@ -1,154 +1,12 @@
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\myExplorer.exe.config
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\myExplorer.exe
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\myExplorer.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\Controles.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\System.Data.SQLite.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\Controles.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\System.Data.SQLite.xml
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\ResolveAssemblyReference.cache
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAcercaDe.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmFecha.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmTurno.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerObraSocial.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmObraSocial.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDiagnostico.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmForm.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmMain.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmSearch.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Reportes.frmReporte.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\ResGen.read.1.tlog
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\ResGen.write.1.tlog
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.exe
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\myExplorer.exe.config
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\myExplorer.exe
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\myExplorer.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\Controles.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\System.Data.SQLite.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\Controles.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\bin\Debug\System.Data.SQLite.xml
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAcercaDe.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmFecha.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmTurno.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerObraSocial.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmObraSocial.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDiagnostico.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmForm.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmMain.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmSearch.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Reportes.frmReporte.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\ResGen.read.1.tlog
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\ResGen.write.1.tlog
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.exe
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\Proyectos - ACTUALES -\myExplorer\myExplorer\obj\x86\Debug\myExplorer.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\myExplorer.exe.config
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\myExplorer.exe
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\myExplorer.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Controles.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Datos.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Entidades.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Estadisticas.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Reportes.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\System.Data.SQLite.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Controles.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Datos.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Entidades.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Estadisticas.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Reportes.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\System.Data.SQLite.xml
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmEstadistica.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerUsuarios.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAcercaDe.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAuxiliar.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmFecha.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmLogin.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmTurno.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmUsuario.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerObraSocial.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmObraSocial.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDiagnostico.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmForm.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmMain.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmSearch.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\ResGen.read.1.tlog
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\ResGen.write.1.tlog
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.exe
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\MyExplorer.exe.config
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\MyExplorer.exe
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\MyExplorer.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\MyExplorer.exe
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\MyExplorer.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Controles.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Datos.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Entidades.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Estadisticas.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Reportes.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\System.Data.SQLite.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Controles.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Datos.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Entidades.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Estadisticas.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\Reportes.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\bin\Debug\System.Data.SQLite.xml
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\MyExplorer.csprojResolveAssemblyReference.cache
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmEstadistica.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerUsuarios.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAcercaDe.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAuxiliar.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmFecha.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmLogin.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmTurno.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmUsuario.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerObraSocial.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmObraSocial.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDiagnostico.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmForm.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmMain.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmSearch.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache
-<<<<<<< HEAD
-D:\Project-GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.config
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csprojResolveAssemblyReference.cache
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmEstadistica.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerUsuarios.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAcercaDe.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAuxiliar.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmFecha.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmLogin.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmTurno.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmUsuario.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerObraSocial.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAbmObraSocial.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDiagnostico.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmForm.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmMain.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmSearch.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
-D:\Project-GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.config
-=======
->>>>>>> 9524a2edf974ce8bf021ca681ca9108c0fe4b253
->>>>>>> f570fc7c083e6a99780f922de1645abba439fb80
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csprojResolveAssemblyReference.cache
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmEstadistica.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerUsuarios.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAcercaDe.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAuxiliar.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmFecha.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmLogin.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmTurno.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmUsuario.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerObraSocial.resources
-C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAbmObraSocial.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerSocialWork.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAbmSocialWork.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDiagnostico.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmForm.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmMain.resources
@@ -156,3 +14,24 @@ C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.F
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
 C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Default.mdf
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Default_log.ldf
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.config
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.manifest
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.application
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Controles.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Datos.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Entidades.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Estadisticas.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Reportes.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Controles.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Datos.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Entidades.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Estadisticas.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\Reportes.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.exe.manifest
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.application
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.exe
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.pdb

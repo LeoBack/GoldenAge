@@ -1,8 +1,0 @@
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Datos\bin\Release\Datos.dll
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Datos\bin\Release\Datos.pdb
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Datos\bin\Release\Entidades.dll
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Datos\bin\Release\System.Data.SQLite.dll
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Datos\bin\Release\Entidades.pdb
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Datos\obj\Release\Datos.csprojResolveAssemblyReference.cache
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Datos\obj\Release\Datos.dll
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Datos\obj\Release\Datos.pdb

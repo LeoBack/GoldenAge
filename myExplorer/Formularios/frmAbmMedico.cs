@@ -24,7 +24,7 @@ namespace myExplorer.Formularios
         public int IdUsuario { set; get; }
 
         public classConsultas oConsulta { set; get; }
-        public classUsuarios oUsuario { set; get; }
+        public classProfessional oProfessional { set; get; }
         public classUtiles oUtil { set; get; }
 
         private classValidaciones oValidar;
@@ -67,11 +67,11 @@ namespace myExplorer.Formularios
                 if (Acto == Modo.Nuevo)
                 {   //-------------------------------------------------
                     // Guarda
-                    if (oConsulta.AgregarUsuario(oUsuario))
+                    if (oConsulta.AddProfessional(oProfessional))
                     {
                         MessageBox.Show(oTxt.AgregarUsuario);
                         this.Acto = Modo.Modificar;
-                        this.oUsuario.IdUsuario = oConsulta.UltimoIdUsuario();
+                        this.oProfessional.IdProfessional = oConsulta.UltimoIdProfessional();
                         this.IdUsuario = 0;
                         this.ini();
                     }
@@ -82,7 +82,7 @@ namespace myExplorer.Formularios
                 else if (Acto == Modo.Modificar)
                 {   //-------------------------------------------------
                     // Actualiza
-                    if (oConsulta.ModificarUsuario(oUsuario))
+                    if (oConsulta.UpdateProfessional(oProfessional))
                     {
                         MessageBox.Show(oTxt.ModificarUsuario);
                         this.Acto = Modo.Modificar;
@@ -114,7 +114,7 @@ namespace myExplorer.Formularios
             {
                 if (frmVer.IdSelecionado != 0)
                 {
-                    oUsuario = oConsulta.SelectUsuario(new classUsuarios(frmVer.IdSelecionado, "", "", "", "", false));
+                    oProfessional = oConsulta.SelectProfessional(new classProfessional(frmVer.IdSelecionado, 0,"", "", "", "", "", "", "",false));
                     this.Acto = Modo.Modificar;
                     this.ini();
                 }
@@ -124,16 +124,16 @@ namespace myExplorer.Formularios
         //OK 11/06/12
         private void btnBloquear_Click(object sender, EventArgs e)
         {
-            if (oUsuario != null)
+            if (oProfessional != null)
             {
                 if (btnBloquear.Text == oTxt.Bloquear)
                 {
-                    oUsuario.Bloqueado = true;
+                    oProfessional.Visible = true;
                     btnBloquear.Text = oTxt.Desbloquear;
                 }
                 else
                 {
-                    oUsuario.Bloqueado = false;
+                    oProfessional.Visible = false;
                     btnBloquear.Text = oTxt.Bloquear;
                 }
                 btnGuardar_Click(sender, e);
@@ -171,19 +171,19 @@ namespace myExplorer.Formularios
         {
             if (this.IdUsuario != 0)
             {
-                oUsuario.IdUsuario = this.IdUsuario;
-                oUsuario = oConsulta.SelectUsuario(oUsuario);
+                oProfessional.IdProfessional = this.IdUsuario;
+                oProfessional = oConsulta.SelectProfessional(oProfessional);
                 btnBloquear.Enabled = true;
             }
 
             // Modo en el que se mostrara el formulario
-            if (Acto == Modo.Ver && oUsuario.IdUsuario != 0)
+            if (Acto == Modo.Ver && oProfessional.IdProfessional != 0)
             {
                 this.EnableFrm(false);
                 btnBloquear.Enabled = true;
                 this.EscribirEnFrm();
             }
-            else if (Acto == Modo.Modificar && oUsuario.IdUsuario != 0)
+            else if (Acto == Modo.Modificar && oProfessional.IdProfessional != 0)
             {
                 this.EnableFrm(true);
                 btnBloquear.Enabled = true;
@@ -191,7 +191,7 @@ namespace myExplorer.Formularios
             }
             else if (Acto == Modo.Nuevo)
             {
-                oUsuario = new classUsuarios();
+                oProfessional = new classProfessional();
                 this.EnableFrm(true);
                 btnBloquear.Enabled = false;
                 this.EscribirEnFrm();
@@ -230,11 +230,15 @@ namespace myExplorer.Formularios
         /// </summary>
         private void CargarObjeto()
         {
-            oUsuario.Contrasenia = this.oValidarSql.ValidaString(txtContrasenia.Text);
-            oUsuario.Nombre = this.oValidarSql.ValidaString(txtNombre.Text);
-            oUsuario.Apellido = this.oValidarSql.ValidaString(txtApellido.Text);
-            oUsuario.Email = this.oValidarSql.ValidaString(txtEmail.Text);
-
+            oProfessional.ProfessionalRegistration = Convert.ToInt32(txtProfessionalRegistration.Text);
+            oProfessional.Name = this.oValidarSql.ValidaString(txtName.Text);
+            oProfessional.LastName = this.oValidarSql.ValidaString(txtLastName.Text);
+            oProfessional.Address = this.oValidarSql.ValidaString(txtAddress.Text);
+            oProfessional.Phone = this.oValidarSql.ValidaString(txtPhone.Text);
+            oProfessional.Mail = this.oValidarSql.ValidaString(txtMail.Text);
+            oProfessional.User = this.oValidarSql.ValidaString(txtUser.Text);
+            oProfessional.Password = this.oValidarSql.ValidaString(txtPassword.Text);
+        
         }
 
         /// <summary>
@@ -243,12 +247,18 @@ namespace myExplorer.Formularios
         /// </summary>
         private void EscribirEnFrm()
         {
-            txtContrasenia.Text = oUsuario.Contrasenia;
-            txtNombre.Text = oUsuario.Nombre;
-            txtApellido.Text = oUsuario.Apellido;
-            txtEmail.Text = oUsuario.Email;
+            txtProfessionalRegistration.Text = Convert.ToString(oProfessional.ProfessionalRegistration);
+            txtName.Text = oProfessional.Name;
+            txtLastName.Text = oProfessional.LastName;
+            txtAddress.Text = oProfessional.Address;
+            txtPhone.Text = oProfessional.Phone;
+            txtMail.Text = oProfessional.Mail;
+            txtUser.Text = oProfessional.User;
+            txtPassword.Text = oProfessional.Password;
+            
+            
 
-            if (oUsuario.Bloqueado)
+            if (oProfessional.Visible)
                 btnBloquear.Text = "Desbloquear";
             else
                 btnBloquear.Text = "Bloquear";
@@ -264,13 +274,13 @@ namespace myExplorer.Formularios
         {
             bool V = true;
 
-            if ((txtApellido.Text == "") || (txtNombre.Text == "") ||
-                (txtContrasenia.Text == "") || (txtEmail.Text == ""))
+            if ((txtLastName.Text == "") || (txtName.Text == "") ||
+                (txtPassword.Text == "") || (txtMail.Text == ""))
             {
                 V = false;
                 MessageBox.Show("Se encontraron casillas vacias.");
             }
-            else if (txtContrasenia.TextLength <= 7)
+            else if (txtPassword.TextLength <= 7)
             {
                 V = false;
                 MessageBox.Show("La contraseña debe tener como minimo 8 caracteres.");

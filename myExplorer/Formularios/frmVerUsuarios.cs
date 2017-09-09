@@ -21,7 +21,7 @@ namespace myExplorer.Formularios
         public classUtiles oUtil { set; get; }
         public int IdSelecionado { set; get; }
 
-        private List<classUsuarios> lUsuarios;
+        private List<classProfessional> lUsuarios;
         private bool Hiden;
         private int SelectRow;
 
@@ -148,24 +148,24 @@ namespace myExplorer.Formularios
         /// </summary>
         public void Filtrar()
         {
-            lUsuarios = oConsulta.FiltroUsuarioLimite(
-                this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text), 
-                this.Hiden, this.Desde, this.Hasta);
+            //lUsuarios = oConsulta.FiltroUsuarioLimite(
+            //    this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text), 
+            //    this.Hiden, this.Desde, this.Hasta);
 
-            decimal Cont = oConsulta.CountUsuarios(this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text), this.Hiden);
-            decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
-            this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+            //decimal Cont = oConsulta.CountUsuarios(this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text), this.Hiden);
+            //decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
+            //this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
 
-            this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
+            //this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
             
-            if (oConsulta.Error)
-            {
-                dgvLista.Columns.Clear();
-                this.GenerarGrilla(lUsuarios);
-                this.PintarBloqueados(Color.Gray);
-            }
-            else
-                MessageBox.Show(oTxt.ErrorListaConsulta);
+            //if (oConsulta.Error)
+            //{
+            //    dgvLista.Columns.Clear();
+            //    this.GenerarGrilla(lUsuarios);
+            //    this.PintarBloqueados(Color.Gray);
+            //}
+            //else
+            //    MessageBox.Show(oTxt.ErrorListaConsulta);
         }
 
         /// <summary>
@@ -175,17 +175,17 @@ namespace myExplorer.Formularios
         /// <param name="Color"></param>
         public void PintarBloqueados(Color Color)
         {
-            int Bloqueado = 0;
+            //int Bloqueado = 0;
 
-            for (int Fila = 0; Fila < dgvLista.Rows.Count; Fila++)
-            {
-                Bloqueado = Convert.ToInt32(dgvLista.Rows[Fila].Cells[0].Value);
+            //for (int Fila = 0; Fila < dgvLista.Rows.Count; Fila++)
+            //{
+            //    Bloqueado = Convert.ToInt32(dgvLista.Rows[Fila].Cells[0].Value);
                 
-                if (Bloqueado == lUsuarios[Fila].IdUsuario)
-                    if (lUsuarios[Fila].Bloqueado == true)
-                        for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
-                            dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
-            }
+            //    if (Bloqueado == lUsuarios[Fila].IdUsuario)
+            //        if (lUsuarios[Fila].Bloqueado == true)
+            //            for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
+            //                dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
+            //}
         }
 
         /// <summary>

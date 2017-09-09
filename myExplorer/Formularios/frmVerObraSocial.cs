@@ -13,13 +13,13 @@ using Controles;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmVerObraSocial : Form
+    public partial class frmVerSocialWork : Form
     {
         #region Atributos y Propiedades
 
         public classConsultas oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
-        private List<classObraSocial> lObraSocial;
+        private List<classSocialWork> lSocialWork;
         private classValidaSqlite oValidarSql = new classValidaSqlite();
 
         private classTextos oTxt = new classTextos();
@@ -37,7 +37,7 @@ namespace myExplorer.Formularios
         #region Formulario
 
         //OK 25/05/12
-        public frmVerObraSocial()
+        public frmVerSocialWork()
         {
             InitializeComponent();
         }
@@ -71,9 +71,9 @@ namespace myExplorer.Formularios
                 frmDialogoImprecion fIm = new frmDialogoImprecion();
                 fIm.oConsulta = this.oConsulta;
                 fIm.oUtil = this.oUtil;
-                fIm.IdObraSocial = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
+                fIm.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
 
-                if (fIm.IdObraSocial != 0)
+                if (fIm.IdSocialWork != 0)
                     fIm.ShowDialog();
             }
         }
@@ -109,10 +109,10 @@ namespace myExplorer.Formularios
         //OK 03/06/12
         private void tsbAgregar_Click(object sender, EventArgs e)
         {
-                frmAbmObraSocial frmA = new frmAbmObraSocial();
+                frmAbmSocialWork frmA = new frmAbmSocialWork();
                 frmA.oConsulta = this.oConsulta;
                 frmA.oUtil = this.oUtil;
-                frmA.Acto = frmAbmObraSocial.Accion.Nuevo;
+                frmA.Acto = frmAbmSocialWork.Accion.Nuevo;
                 frmA.ShowDialog();
 
                 frmAux_Load(sender, e);
@@ -121,21 +121,21 @@ namespace myExplorer.Formularios
         //OK 03/06/12
         private void tsmiEliminar_Click(object sender, EventArgs e)
         {
-            classObraSocial oOS = new classObraSocial();
+            classSocialWork oOS = new classSocialWork();
 
             if (dgvLista.Rows.Count != 0)
             {
-                oOS.Id = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
-                oOS = oConsulta.SelectObraSocial(oOS);
+                //oOS.Id = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
+                oOS = oConsulta.SelectSocialWork(oOS);
             }
 
             if (oConsulta.Error)
             {
-                frmAbmObraSocial frmA = new frmAbmObraSocial();
+                frmAbmSocialWork frmA = new frmAbmSocialWork();
                 frmA.oConsulta = this.oConsulta;
                 frmA.oUtil = this.oUtil;
                 frmA.oSocialWork = oOS;
-                frmA.Acto = frmAbmObraSocial.Accion.Eliminar;
+                frmA.Acto = frmAbmSocialWork.Accion.Eliminar;
                 frmA.ShowDialog();
 
                 frmAux_Load(sender, e);
@@ -150,21 +150,21 @@ namespace myExplorer.Formularios
         //OK 03/06/12
         private void tsmiModificar_Click(object sender, EventArgs e)
         {
-            classObraSocial oOS = new classObraSocial();
+            classSocialWork oOS = new classSocialWork();
 
             if (dgvLista.Rows.Count != 0)
             {
-                oOS.Id = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
-                oOS = oConsulta.SelectObraSocial(oOS);
+               // oOS.Id = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
+                oOS = oConsulta.SelectSocialWork(oOS);
             }
 
             if (oConsulta.Error)
             {
-                frmAbmObraSocial frmA = new frmAbmObraSocial();
+                frmAbmSocialWork frmA = new frmAbmSocialWork();
                 frmA.oConsulta = this.oConsulta;
                 frmA.oUtil = this.oUtil;
                 frmA.oSocialWork = oOS;
-                frmA.Acto = frmAbmObraSocial.Accion.Modificar;
+                frmA.Acto = frmAbmSocialWork.Accion.Modificar;
                 frmA.ShowDialog();
 
                 frmAux_Load(sender, e);
@@ -205,23 +205,23 @@ namespace myExplorer.Formularios
         /// </summary>
         public void Filtrar()
         {
-            lObraSocial = oConsulta.FiltroObraSocialLimite(
-                this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text),
-                this.Desde, this.Hasta);
+            //lSocialWork = oConsulta.FiltroSocialWorkLimite(
+            //    this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text),
+            //    this.Desde, this.Hasta);
 
-            decimal Cont = oConsulta.CountObraSocial(tstxtNombre.TextBox.Text);
-            decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
-            this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+            //decimal Cont = oConsulta.CountSocialWork(tstxtNombre.TextBox.Text);
+            //decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
+            //this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
 
-            this.tslPagina.Text = "Página: " +Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
+            //this.tslPagina.Text = "Página: " +Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
 
-            if (oConsulta.Error)
-            {
-                dgvLista.Columns.Clear();
-                this.GenerarGrilla(lObraSocial);
-            }
-            else
-                MessageBox.Show(oTxt.ErrorListaConsulta);
+            //if (oConsulta.Error)
+            //{
+            //    dgvLista.Columns.Clear();
+            //    this.GenerarGrilla(lSocialWork);
+            //}
+            //else
+            //    MessageBox.Show(oTxt.ErrorListaConsulta);
         }
 
         /// <summary>

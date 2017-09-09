@@ -52,40 +52,40 @@ namespace myExplorer.Formularios
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            bool error = true;
+            //bool error = true;
 
-            if (rbtObraSocial.Checked)
-            {
-                if (oConsulta.eObraSocial("dtObraSocial", this.dtpDesde.Value, this.dtpHasta.Value))
-                {
-                    error = false;
-                    fE = new frmVisor(frmVisor.Reporte.ObraSocial, oConsulta.Table, this.oUtil.IdUsuario);
-                    fE.Show();
-                }
-            }
-            else if (rbtDiagnostico.Checked)
-            {
-                if (oConsulta.eDiagnosticos("dtDiagnostico", this.dtpDesde.Value, this.dtpHasta.Value))
-                {
-                    error = false;
-                    fE = new frmVisor(frmVisor.Reporte.Diagnostico, oConsulta.Table, this.oUtil.IdUsuario);
-                    fE.Show();
-                }
-            }
-            else if (rbtPaciente.Checked)
-            {
-                if (oConsulta.ePacientes("dtPaciente", this.dtpDesde.Value, this.dtpHasta.Value))
-                {
-                    error = false;
-                    fE = new frmVisor(frmVisor.Reporte.Paciente, oConsulta.Table, this.oUtil.IdUsuario);
-                    fE.Show();
-                }
-            }
-            else
-            { }
+            //if (rbtSocialWork.Checked)
+            //{
+            //    if (oConsulta.eSocialWork("dtSocialWork", this.dtpDesde.Value, this.dtpHasta.Value))
+            //    {
+            //        error = false;
+            //        fE = new frmVisor(frmVisor.Reporte.SocialWork, oConsulta.Table, this.oUtil.IdUsuario);
+            //        fE.Show();
+            //    }
+            //}
+            //else if (rbtDiagnostico.Checked)
+            //{
+            //    if (oConsulta.eDiagnosticos("dtDiagnostico", this.dtpDesde.Value, this.dtpHasta.Value))
+            //    {
+            //        error = false;
+            //        fE = new frmVisor(frmVisor.Reporte.Diagnostico, oConsulta.Table, this.oUtil.IdUsuario);
+            //        fE.Show();
+            //    }
+            //}
+            //else if (rbtPaciente.Checked)
+            //{
+            //    if (oConsulta.ePacientes("dtPaciente", this.dtpDesde.Value, this.dtpHasta.Value))
+            //    {
+            //        error = false;
+            //        fE = new frmVisor(frmVisor.Reporte.Paciente, oConsulta.Table, this.oUtil.IdUsuario);
+            //        fE.Show();
+            //    }
+            //}
+            //else
+            //{ }
 
-            if (error)
-                MessageBox.Show(oTxt.ErrorListaConsulta);
+            //if (error)
+            //    MessageBox.Show(oTxt.ErrorListaConsulta);
         }
 
         #endregion

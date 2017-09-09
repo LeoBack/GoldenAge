@@ -20,7 +20,7 @@ namespace myExplorer.Formularios
         public enum Vista { Nuevo, Ver, Modificar }
 
         public Vista Modo { set; get; }
-        public classDiagnostico oDiagnostico { set; get; }
+        public classDiagnostic oDiagnostico { set; get; }
         public classConsultas oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
 
@@ -51,14 +51,14 @@ namespace myExplorer.Formularios
                 btnEliminar.Size = sBtn;
                 btnGuardar.Size = sBtn;
 
-                oCombo.CargaCombo(cmbPatologia, oConsulta.ListaPatologias(), oConsulta.Table);
+                //oCombo.CargaCombo(cmbPatologia, oConsulta.ListaPatologias(), oConsulta.Table);
 
                 if (Modo == Vista.Modificar)
                 {
                     if (this.oDiagnostico != null)
                     {
-                        oCombo.IndexCombos(cmbPatologia, this.oDiagnostico.IdDetalle);
-                        rtxtDiagnostico.Text = this.oDiagnostico.Diagnostico;
+                        //oCombo.IndexCombos(cmbPatologia, this.oDiagnostico.IdDetalle);
+                        rtxtDiagnostico.Text = this.oDiagnostico.Detail;
                     }
                 }
             }
@@ -81,7 +81,7 @@ namespace myExplorer.Formularios
             // Eliminar el Diagnostico
             if (MessageBox.Show(oTxt.MsgEliminarDiagnostico, oTxt.MsgTituloDiagnostico, 
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                error = oConsulta.EliminarDiagnostico(oDiagnostico, false);
+                error = oConsulta.DeleteDiagnostic(oDiagnostico, false);
 
             if (!error)
                 MessageBox.Show(oTxt.ErrorEliminarConsulta);
@@ -92,29 +92,29 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            bool error = false;
-            // Guardar el nuevo diagnostico.
-            if ((rtxtDiagnostico.Text != ""))
-            {
-                if (Modo == Vista.Nuevo)
-                {
-                    this.oDiagnostico.Diagnostico = this.oValidarSql.ValidaString(rtxtDiagnostico.Text);
-                    this.oDiagnostico.IdDetalle = Convert.ToInt32(cmbPatologia.SelectedValue);
-                    this.oDiagnostico.Fecha = DateTime.Now;
-                    error = oConsulta.AgregarDiagnostico(oDiagnostico);
-                }
-                if (Modo == Vista.Modificar)
-                {
-                    this.oDiagnostico.Diagnostico = this.oValidarSql.ValidaString(rtxtDiagnostico.Text);
-                    this.oDiagnostico.IdDetalle = Convert.ToInt32(cmbPatologia.SelectedValue);
-                    error = oConsulta.ModificarDiagnostico(oDiagnostico);
-                }
-            }
+            //bool error = false;
+            //// Guardar el nuevo diagnostico.
+            //if ((rtxtDiagnostico.Text != ""))
+            //{
+            //    if (Modo == Vista.Nuevo)
+            //    {
+            //        this.oDiagnostico.Diagnostico = this.oValidarSql.ValidaString(rtxtDiagnostico.Text);
+            //        this.oDiagnostico.IdDetalle = Convert.ToInt32(cmbPatologia.SelectedValue);
+            //        this.oDiagnostico.Fecha = DateTime.Now;
+            //        error = oConsulta.AgregarDiagnostico(oDiagnostico);
+            //    }
+            //    if (Modo == Vista.Modificar)
+            //    {
+            //        this.oDiagnostico.Diagnostico = this.oValidarSql.ValidaString(rtxtDiagnostico.Text);
+            //        this.oDiagnostico.IdDetalle = Convert.ToInt32(cmbPatologia.SelectedValue);
+            //        error = oConsulta.ModificarDiagnostico(oDiagnostico);
+            //    }
+            //}
 
-            if (!error)
-                MessageBox.Show(oTxt.ErrorAgregarConsulta);
-            else
-                this.Close();
+            //if (!error)
+            //    MessageBox.Show(oTxt.ErrorAgregarConsulta);
+            //else
+            //    this.Close();
         }
 
         // OK 03/06/12
@@ -126,18 +126,18 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         private void btnAddPatologia_Click(object sender, EventArgs e)
         {
-            frmAuxiliar frmA = new frmAuxiliar();
-            frmA.oConsulta = this.oConsulta;
-            frmA.tipoObjeto = frmAuxiliar.Tipo.Patologias;
-            frmA.Id = Convert.ToInt32(cmbPatologia.SelectedValue);
+            //frmAuxiliar frmA = new frmAuxiliar();
+            //frmA.oConsulta = this.oConsulta;
+            //frmA.tipoObjeto = frmAuxiliar.Tipo.Patologias;
+            //frmA.Id = Convert.ToInt32(cmbPatologia.SelectedValue);
 
-            if (frmA.ShowDialog() == DialogResult.OK)
-            {
-                oCombo.CargaCombo(
-                    cmbPatologia,
-                    oConsulta.ListaPatologias(),
-                    oConsulta.Table);
-            }
+            //if (frmA.ShowDialog() == DialogResult.OK)
+            //{
+            //    oCombo.CargaCombo(
+            //        cmbPatologia,
+            //        oConsulta.ListaPatologias(),
+            //        oConsulta.Table);
+            //}
         }
 
         #endregion

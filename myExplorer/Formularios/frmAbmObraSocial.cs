@@ -13,7 +13,7 @@ using Datos;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmAbmObraSocial : Form
+    public partial class frmAbmSocialWork : Form
     {
         #region Atributos y Propiedades
 
@@ -35,7 +35,7 @@ namespace myExplorer.Formularios
         #region Formulario
 
         //OK 25/05/12
-        public frmAbmObraSocial()
+        public frmAbmSocialWork()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         private void frmAuxABM_Load(object sender, EventArgs e)
         {
-            this.Text = oTxt.TituloObraSocial;
+            this.Text = oTxt.TituloSocialWork;
 
             oComboBox = new classControlComboBoxes();
 
@@ -144,7 +144,7 @@ namespace myExplorer.Formularios
                         // INSERTAR OBJETO;
                         if (oConsulta.AddSocialWork(oSocialWork))
                         {
-                            MessageBox.Show(oTxt.AgregarObraSocial);
+                            MessageBox.Show(oTxt.AgregarSocialWork);
                             btnAgregar.Text = oTxt.Limpiar;
                         }
                         else
@@ -165,7 +165,7 @@ namespace myExplorer.Formularios
                         // Modifica OBJETO;
                         if (oConsulta.UpdateSocialWork(oSocialWork))
                         {
-                            MessageBox.Show(oTxt.ModificarObraSocial);
+                            MessageBox.Show(oTxt.ModificarSocialWork);
                             this.Close();
                         }
                         else
@@ -249,9 +249,9 @@ namespace myExplorer.Formularios
         /// <returns></returns>
         private bool ValidarCampos()
         {
-            if ((txtNombre.Text == "") ||
-                (txtDireccion.Text == "") ||
-                (txtTelefono1.Text == ""))
+            if ((txtName.Text == "") ||
+                (txtAddress.Text == "") ||
+                (txtPhone.Text == ""))
                 return false;
             else
                 return true;
@@ -263,13 +263,13 @@ namespace myExplorer.Formularios
         /// </summary>
         private void CargarObjeto()
         {
-            //oObraSocial.Id = 0;
-            //oObraSocial.Visible = 0;
-            oSocialWork.Name = oValidarSql.ValidaString(txtNombre.Text.ToUpper());
-            oSocialWork.Description = oValidarSql.ValidaString(txtDetalle.Text);
-            oSocialWork.Address = oValidarSql.ValidaString(txtDireccion.Text);
-            oSocialWork.Phone = oValidarSql.ValidaString(txtTelefono1.Text);
-            oSocialWork.AlternativePhone = oValidarSql.ValidaString(txtTelefono2.Text);
+            //oSocialWork.Id = 0;
+            //oSocialWork.Visible = 0;
+            oSocialWork.Name = oValidarSql.ValidaString(txtName.Text.ToUpper());
+            oSocialWork.Description = oValidarSql.ValidaString(txtDescription.Text);
+            oSocialWork.Address = oValidarSql.ValidaString(txtAddress.Text);
+            oSocialWork.Phone = oValidarSql.ValidaString(txtPhone.Text);
+            oSocialWork.AlternativePhone = oValidarSql.ValidaString(txtAlternativePhone.Text);
             
             //oSocialWork.IdCiudad = Convert.ToInt32(cmbCiudad.SelectedValue);
             //oSocialWork.IdBarrio = Convert.ToInt32(cmbBarrio.SelectedValue);
@@ -281,11 +281,11 @@ namespace myExplorer.Formularios
         /// </summary>
         private void CargarFrm()
         {
-            txtNombre.Text = oSocialWork.Name;
-            txtDetalle.Text = oSocialWork.Description;
-            txtDireccion.Text = oSocialWork.Address;
-            txtTelefono1.Text = oSocialWork.Phone;
-            txtTelefono2.Text = oSocialWork.AlternativePhone;
+            txtName.Text = oSocialWork.Name;
+            txtDescription.Text = oSocialWork.Description;
+            txtAddress.Text = oSocialWork.Address;
+            txtPhone.Text = oSocialWork.Phone;
+            txtAlternativePhone.Text = oSocialWork.AlternativePhone;
             
             
 

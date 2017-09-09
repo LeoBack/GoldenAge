@@ -20,7 +20,7 @@ namespace myExplorer.Formularios
 
         public classConsultas oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
-        public int IdObraSocial { set; get; }
+        public int IdSocialWork { set; get; }
         private classTextos oTxt = new classTextos();
 
         private frmVisor fE;
@@ -34,8 +34,8 @@ namespace myExplorer.Formularios
 
         private void frmDialogoImprecion_Load(object sender, EventArgs e)
         {
-            this.Text = "Dialogo de Imprecion - Obra social: " +
-                oConsulta.SelectObraSocial(new classObraSocial(this.IdObraSocial, "", "", 0, 0, "", "", "", 1)).Nombre;
+            //this.Text = "Dialogo de Imprecion - Obra social: " +
+            //    oConsulta.SelectSocialWork(new classSocialWork(this.IdSocialWork, "", "", 0, 0, "", "", "", 1)).Nombre;
 
             this.rbtPacientesAtendidosXOS.Checked = true;
             this.dtpDesde.Value = DateTime.Now.AddMonths(-1);
@@ -44,30 +44,30 @@ namespace myExplorer.Formularios
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            bool error = true;
+            //bool error = true;
 
-            if (rbtPacientesAtendidosXOS.Checked)
-            {
-                if (oConsulta.listaPacientesObraSocial("dtObraSocial", this.dtpDesde.Value, this.dtpHasta.Value, true))
-                {
-                    error = false;
-                    fE = new frmVisor(frmVisor.Reporte.PacienteXObraSocial, oConsulta.Table);
-                    fE.Show();
-                }
-            }
+            //if (rbtPacientesAtendidosXOS.Checked)
+            //{
+            //    if (oConsulta.listaPacientesSocialWork("dtSocialWork", this.dtpDesde.Value, this.dtpHasta.Value, true))
+            //    {
+            //        error = false;
+            //        fE = new frmVisor(frmVisor.Reporte.PacienteXSocialWork, oConsulta.Table);
+            //        fE.Show();
+            //    }
+            //}
 
-            if (rbtTodosLosPacientes.Checked)
-            {
-                if (oConsulta.listaPacientesObraSocial("dtObraSocial", this.dtpDesde.Value, this.dtpHasta.Value, false))
-                {
-                    error = false;
-                    fE = new frmVisor(frmVisor.Reporte.PacienteXObraSocial, oConsulta.Table);
-                    fE.Show();
-                }
-            }
+            //if (rbtTodosLosPacientes.Checked)
+            //{
+            //    if (oConsulta.listaPacientesSocialWork("dtSocialWork", this.dtpDesde.Value, this.dtpHasta.Value, false))
+            //    {
+            //        error = false;
+            //        fE = new frmVisor(frmVisor.Reporte.PacienteXSocialWork, oConsulta.Table);
+            //        fE.Show();
+            //    }
+            //}
 
-            if (error)
-                MessageBox.Show(oTxt.ErrorListaConsulta);
+            //if (error)
+            //    MessageBox.Show(oTxt.ErrorListaConsulta);
         }
     }
 }

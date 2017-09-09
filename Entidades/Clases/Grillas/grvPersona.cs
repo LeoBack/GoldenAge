@@ -8,7 +8,7 @@ namespace Entidades.Clases.Grillas
     {
         #region Atributos y Metodos
 
-        public int IdPersona { set; get;}
+        public int IdGrandfather { set; get;}
         public string ObraSocial { set; get; }
         public int TipoPaciente { set; get; }
         public string Nombre { set; get; }
@@ -24,7 +24,7 @@ namespace Entidades.Clases.Grillas
 
         public grvPersona()
         {
-            this.IdPersona = 0;
+            this.IdGrandfather = 0;
             this.ObraSocial = "";
             this.TipoPaciente = 1;
             this.Nombre = "";
@@ -35,10 +35,10 @@ namespace Entidades.Clases.Grillas
             this.nAfiliado = "";
         }
 
-        public grvPersona(int IdPersona, string ObraSocial,int TipoPaciente, string Nombre, string Apellido, string Direccion, 
+        public grvPersona(int IdGrandfather, string ObraSocial,int TipoPaciente, string Nombre, string Apellido, string Direccion, 
             DateTime FechaNac, string Sexo, string nAfiliado)
         {
-            this.IdPersona = IdPersona;
+            this.IdGrandfather = IdGrandfather;
             this.ObraSocial = ObraSocial;
             this.TipoPaciente = TipoPaciente;
             this.Nombre = Nombre;

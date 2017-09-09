@@ -1,6 +1,6 @@
 ﻿namespace myExplorer.Formularios
 {
-    partial class frmVerObraSocial
+    partial class frmVerSocialWork
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVerObraSocial));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVerSocialWork));
             this.tlpPanel = new System.Windows.Forms.TableLayoutPanel();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblInfo = new System.Windows.Forms.Label();
@@ -224,7 +224,7 @@
             this.tsbImprimir.Text = "Imprimir";
             this.tsbImprimir.Click += new System.EventHandler(this.tsbImprimir_Click);
             // 
-            // frmVerObraSocial
+            // frmVerSocialWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -233,7 +233,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmVerObraSocial";
+            this.Name = "frmVerSocialWork";
             this.Text = "frmAux";
             this.Load += new System.EventHandler(this.frmAux_Load);
             this.tlpPanel.ResumeLayout(false);

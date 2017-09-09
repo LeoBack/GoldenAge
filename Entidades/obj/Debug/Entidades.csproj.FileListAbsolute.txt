@@ -1,8 +1,3 @@
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Entidades\bin\Debug\Entidades.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Entidades\bin\Debug\Entidades.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Entidades\obj\Debug\ResolveAssemblyReference.cache
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Entidades\obj\Debug\Entidades.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Entidades\obj\Debug\Entidades.pdb
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Entidades\bin\Debug\Entidades.dll
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Entidades\bin\Debug\Entidades.pdb
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Entidades\obj\Debug\Entidades.dll

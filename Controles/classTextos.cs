@@ -12,7 +12,7 @@ namespace Controles
         public string TituloAdministradorUsuario = "Administrador de Usuarios.";
         public string TituloListaUsuarios = "Planilla de Usuarios del Sistema.";
         public string TituloObrasSociales = "Obras Sociales";
-        public string TituloObraSocial = "Obra Social - Detalles";
+        public string TituloSocialWork = "Obra Social - Detalles";
         public string TituloFichaPaciente = "Ficha Medica";
 
         //
@@ -61,9 +61,9 @@ namespace Controles
         public string ModificarPatología = "Modificar patología.";
         public string AgregarPatología = "Agregar patología.";
 
-        //ObraSocial
-        public string AgregarObraSocial = "Obra Social agregada con exito.";
-        public string ModificarObraSocial = "Obra Social actualizada con exito.";
+        //SocialWork
+        public string AgregarSocialWork = "Obra Social agregada con exito.";
+        public string ModificarSocialWork = "Obra Social actualizada con exito.";
 
         //Mensajes
         public string MsgTituloCerrarAplicacion = "Atencion";

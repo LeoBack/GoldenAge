@@ -47,9 +47,9 @@
             this.rbtFemenino = new System.Windows.Forms.RadioButton();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnModificarPerfil = new System.Windows.Forms.Button();
-            this.cmbObraSocial = new System.Windows.Forms.ComboBox();
-            this.lblObraSocial = new System.Windows.Forms.Label();
-            this.btnPlusObraSocial = new System.Windows.Forms.Button();
+            this.cmbSocialWork = new System.Windows.Forms.ComboBox();
+            this.lblSocialWork = new System.Windows.Forms.Label();
+            this.btnPlusSocialWork = new System.Windows.Forms.Button();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
             this.lblDomicilio = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
@@ -141,9 +141,9 @@
             this.tlpPanel.Controls.Add(this.lblFechaNac, 0, 3);
             this.tlpPanel.Controls.Add(this.dtpFechaNacimiento, 1, 3);
             this.tlpPanel.Controls.Add(this.rbtFemenino, 2, 4);
-            this.tlpPanel.Controls.Add(this.cmbObraSocial, 4, 0);
-            this.tlpPanel.Controls.Add(this.lblObraSocial, 3, 0);
-            this.tlpPanel.Controls.Add(this.btnPlusObraSocial, 6, 0);
+            this.tlpPanel.Controls.Add(this.cmbSocialWork, 4, 0);
+            this.tlpPanel.Controls.Add(this.lblSocialWork, 3, 0);
+            this.tlpPanel.Controls.Add(this.btnPlusSocialWork, 6, 0);
             this.tlpPanel.Controls.Add(this.lblDomicilio, 0, 6);
             this.tlpPanel.Controls.Add(this.txtDomicilio, 1, 6);
             this.tlpPanel.Controls.Add(this.lblTelefono, 0, 7);
@@ -358,41 +358,41 @@
             this.btnModificarPerfil.UseVisualStyleBackColor = true;
             this.btnModificarPerfil.Click += new System.EventHandler(this.btnModificarPerfil_Click);
             // 
-            // cmbObraSocial
+            // cmbSocialWork
             // 
-            this.cmbObraSocial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpPanel.SetColumnSpan(this.cmbObraSocial, 2);
-            this.cmbObraSocial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbObraSocial.FormattingEnabled = true;
-            this.cmbObraSocial.Location = new System.Drawing.Point(723, 9);
-            this.cmbObraSocial.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cmbObraSocial.Name = "cmbObraSocial";
-            this.cmbObraSocial.Size = new System.Drawing.Size(326, 28);
-            this.cmbObraSocial.TabIndex = 9;
+            this.cmbSocialWork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpPanel.SetColumnSpan(this.cmbSocialWork, 2);
+            this.cmbSocialWork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSocialWork.FormattingEnabled = true;
+            this.cmbSocialWork.Location = new System.Drawing.Point(723, 9);
+            this.cmbSocialWork.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbSocialWork.Name = "cmbSocialWork";
+            this.cmbSocialWork.Size = new System.Drawing.Size(326, 28);
+            this.cmbSocialWork.TabIndex = 9;
             // 
-            // lblObraSocial
+            // lblSocialWork
             // 
-            this.lblObraSocial.AutoSize = true;
-            this.lblObraSocial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblObraSocial.Location = new System.Drawing.Point(518, 0);
-            this.lblObraSocial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblObraSocial.Name = "lblObraSocial";
-            this.lblObraSocial.Size = new System.Drawing.Size(197, 46);
-            this.lblObraSocial.TabIndex = 21;
-            this.lblObraSocial.Text = "Afiliado a la Obra Social";
-            this.lblObraSocial.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblSocialWork.AutoSize = true;
+            this.lblSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSocialWork.Location = new System.Drawing.Point(518, 0);
+            this.lblSocialWork.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSocialWork.Name = "lblSocialWork";
+            this.lblSocialWork.Size = new System.Drawing.Size(197, 46);
+            this.lblSocialWork.TabIndex = 21;
+            this.lblSocialWork.Text = "Afiliado a la Obra Social";
+            this.lblSocialWork.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnPlusObraSocial
+            // btnPlusSocialWork
             // 
-            this.btnPlusObraSocial.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnPlusObraSocial.Location = new System.Drawing.Point(1057, 5);
-            this.btnPlusObraSocial.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnPlusObraSocial.Name = "btnPlusObraSocial";
-            this.btnPlusObraSocial.Size = new System.Drawing.Size(45, 35);
-            this.btnPlusObraSocial.TabIndex = 32;
-            this.btnPlusObraSocial.Text = "+";
-            this.btnPlusObraSocial.UseVisualStyleBackColor = true;
-            this.btnPlusObraSocial.Click += new System.EventHandler(this.btnPlusObraSocial_Click);
+            this.btnPlusSocialWork.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPlusSocialWork.Location = new System.Drawing.Point(1057, 5);
+            this.btnPlusSocialWork.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnPlusSocialWork.Name = "btnPlusSocialWork";
+            this.btnPlusSocialWork.Size = new System.Drawing.Size(45, 35);
+            this.btnPlusSocialWork.TabIndex = 32;
+            this.btnPlusSocialWork.Text = "+";
+            this.btnPlusSocialWork.UseVisualStyleBackColor = true;
+            this.btnPlusSocialWork.Click += new System.EventHandler(this.btnPlusSocialWork_Click);
             // 
             // txtDomicilio
             // 
@@ -1010,11 +1010,11 @@
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
         private System.Windows.Forms.Button btnModificarPerfil;
-        private System.Windows.Forms.ComboBox cmbObraSocial;
-        private System.Windows.Forms.Label lblObraSocial;
+        private System.Windows.Forms.ComboBox cmbSocialWork;
+        private System.Windows.Forms.Label lblSocialWork;
         private System.Windows.Forms.Label lblPrimeraVisita;
         private System.Windows.Forms.DateTimePicker dtpPrimeraVisita;
-        private System.Windows.Forms.Button btnPlusObraSocial;
+        private System.Windows.Forms.Button btnPlusSocialWork;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;

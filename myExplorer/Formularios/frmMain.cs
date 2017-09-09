@@ -43,26 +43,26 @@ namespace myExplorer.Formularios
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.Text = "MyExplorer";
-            this.WindowState = FormWindowState.Maximized;
-            //tsBaseDatos.Visible = false;
+            //this.Text = "MyExplorer";
+            //this.WindowState = FormWindowState.Maximized;
+            ////tsBaseDatos.Visible = false;
 
-            if (!System.IO.Directory.Exists(this.PahtBd))
-                System.IO.Directory.CreateDirectory(this.PahtBd);
+            //if (!System.IO.Directory.Exists(this.PahtBd))
+            //    System.IO.Directory.CreateDirectory(this.PahtBd);
 
-            oConsulta = new classConsultas(this.PahtBd, this.NameBd, this.Log);
-            oBD = new classSchemaBD(oConsulta.Path, oConsulta.DBname, oConsulta.ActivarLog);
+            //oConsulta = new classConsultas(this.PahtBd, this.NameBd, this.Log);
+            //oBD = new classSchemaBD(oConsulta.Path, oConsulta.DBname, oConsulta.ActivarLog);
 
-            if (oBD.ExistCreateBD())
-                tsslPath.Text = oTxt.ConexionNuevaExitosa;
-            else
-                tsslPath.Text = oTxt.ConexionExitosa;
+            //if (oBD.ExistCreateBD())
+            //    tsslPath.Text = oTxt.ConexionNuevaExitosa;
+            //else
+            //    tsslPath.Text = oTxt.ConexionExitosa;
             
-            oUtil = new classUtiles();
+            //oUtil = new classUtiles();
 
-            // Inicia Secion.
-            this.HabilitarUsuario(false);
-            this.tsbUsuario_Click(sender, e);
+            //// Inicia Secion.
+            //this.HabilitarUsuario(false);
+            //this.tsbUsuario_Click(sender, e);
         }
 
         // Cierra Formulario
@@ -130,10 +130,10 @@ namespace myExplorer.Formularios
         {
             if (Usuario == EstadoUsuario.Valido)
             {
-                frmVerObraSocial frmObraSocial = new frmVerObraSocial();
-                frmObraSocial.oConsulta = this.oConsulta;
-                frmObraSocial.oUtil = this.oUtil;
-                frmObraSocial.ShowDialog();
+                frmVerSocialWork frmSocialWork = new frmVerSocialWork();
+                frmSocialWork.oConsulta = this.oConsulta;
+                frmSocialWork.oUtil = this.oUtil;
+                frmSocialWork.ShowDialog();
             }
         }
 
@@ -193,13 +193,13 @@ namespace myExplorer.Formularios
 
         private void tsbAsignarTurno_Click(object sender, EventArgs e)
         {
-            if (Usuario == EstadoUsuario.Valido)
-            {
-                frmTurno fTurno = new frmTurno();
-                fTurno.oConsulta = oConsulta;
-                fTurno.oUtil = this.oUtil;
-                fTurno.ShowDialog();
-            }
+        //    if (Usuario == EstadoUsuario.Valido)
+        //    {
+        //        frmTurno fTurno = new frmTurno();
+        //        fTurno.oConsulta = oConsulta;
+        //        fTurno.oUtil = this.oUtil;
+        //        fTurno.ShowDialog();
+        //    }
         }
 
         #endregion
@@ -212,52 +212,52 @@ namespace myExplorer.Formularios
         // OK 08/06/12
         private void tsbUsuario_Click(object sender, EventArgs e)
         {
-            if (this.Usuario == EstadoUsuario.Valido)
-            {
-                this.Usuario = EstadoUsuario.Invalido;
-                tsbUsuario.Text = oTxt.IniciarSesion;
-                this.Text = this.TituloVentana + oTxt.TituloLogin;
-                // Cerrar odas los frm
-                this.HabilitarUsuario(false);
-                this.oUtil.IdUsuario = 0;
-            }
-            else
-            {
-                bool H = true;
-                frmLogin fLogin = new frmLogin();
+            //if (this.Usuario == EstadoUsuario.Valido)
+            //{
+            //    this.Usuario = EstadoUsuario.Invalido;
+            //    tsbUsuario.Text = oTxt.IniciarSesion;
+            //    this.Text = this.TituloVentana + oTxt.TituloLogin;
+            //    // Cerrar odas los frm
+            //    this.HabilitarUsuario(false);
+            //    this.oUtil.IdUsuario = 0;
+            //}
+            //else
+            //{
+            //    bool H = true;
+            //    frmLogin fLogin = new frmLogin();
 
-                while (H)
-                {
-                    if (fLogin.ShowDialog() == DialogResult.Yes)
-                    {
-                        if (oConsulta.ValidarPassword(fLogin.oUsuario))
-                        {
-                            this.Usuario = EstadoUsuario.Valido;
-                            tsbUsuario.Text = oTxt.CerrarSesion ;
-                            this.Text = this.TituloVentana + oTxt.SeparadorTitulo + fLogin.oUsuario.Nombre.ToString();
-                            // Abre todas los frm
-                            this.HabilitarUsuario(true);
-                            this.oUtil.IdUsuario = oConsulta.SelectUsuario(fLogin.oUsuario).IdUsuario;
+            //    while (H)
+            //    {
+            //        if (fLogin.ShowDialog() == DialogResult.Yes)
+            //        {
+            //            if (oConsulta.ValidarPassword(fLogin.oUsuario))
+            //            {
+            //                this.Usuario = EstadoUsuario.Valido;
+            //                tsbUsuario.Text = oTxt.CerrarSesion ;
+            //                this.Text = this.TituloVentana + oTxt.SeparadorTitulo + fLogin.oUsuario.Nombre.ToString();
+            //                // Abre todas los frm
+            //                this.HabilitarUsuario(true);
+            //                this.oUtil.IdUsuario = oConsulta.SelectUsuario(fLogin.oUsuario).IdUsuario;
 
-                            // Ventana por defect al inicio
-                            this.frmAlInicio(sender, e);
+            //                // Ventana por defect al inicio
+            //                this.frmAlInicio(sender, e);
 
-                            H = false;
-                        }
-                        else
-                        {
-                            this.Usuario = EstadoUsuario.Invalido;
-                            tsbUsuario.Text = oTxt.IniciarSesion;
-                            this.Text = this.TituloVentana + oTxt.TituloLogin;
-                            this.oUtil.IdUsuario = 0;
-                            MessageBox.Show(oTxt.LoginInvalido);
-                        }
-                    }
-                    else
-                        H = false;
-                }
-            }
-            tsmiSesion.Text = tsbUsuario.Text;
+            //                H = false;
+            //            }
+            //            else
+            //            {
+            //                this.Usuario = EstadoUsuario.Invalido;
+            //                tsbUsuario.Text = oTxt.IniciarSesion;
+            //                this.Text = this.TituloVentana + oTxt.TituloLogin;
+            //                this.oUtil.IdUsuario = 0;
+            //                MessageBox.Show(oTxt.LoginInvalido);
+            //            }
+            //        }
+            //        else
+            //            H = false;
+            //    }
+            //}
+            //tsmiSesion.Text = tsbUsuario.Text;
         }
 
         // 

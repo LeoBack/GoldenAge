@@ -122,12 +122,6 @@
     <Compile Include="Formularios\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmTurno.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmTurno.Designer.cs">
-      <DependentUpon>frmTurno.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\frmAbmMedico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,9 +187,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmTurno.resx">
-      <DependentUpon>frmTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAbmMedico.resx">
       <DependentUpon>frmAbmMedico.cs</DependentUpon>

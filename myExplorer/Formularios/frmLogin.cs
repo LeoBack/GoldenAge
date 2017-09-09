@@ -16,7 +16,7 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
-        public classUsuarios oUsuario { set; get; }
+        public classProfessional oUsuario { set; get; }
         private classValidaSqlite oValidarSql = new classValidaSqlite();
         private classTextos oTxt = new classTextos();
 
@@ -37,11 +37,11 @@ namespace myExplorer.Formularios
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text != "" || txtPasw.Text != "")
-                oUsuario = new classUsuarios(0, oValidarSql.ValidaString(txtNombre.Text), "",
-                    oValidarSql.ValidaString(txtPasw.Text), "", false);
-            else
-                MessageBox.Show(oTxt.LoginInvalido);
+        //    if (txtNombre.Text != "" || txtPasw.Text != "")
+        //        oUsuario = new classProfessional(0, oValidarSql.ValidaString(txtNombre.Text), "",
+        //            oValidarSql.ValidaString(txtPasw.Text), "", false);
+        //    else
+        //        MessageBox.Show(oTxt.LoginInvalido);
         }
 
         #endregion

@@ -546,6 +546,67 @@ namespace Datos
             return error;
         }
 
+        /// <summary>
+        /// Trae los datos de una Professional seleccionado.
+        /// OK 11/06/12
+        /// </summary>
+        /// <param name="oU"></param>
+        /// <returns></returns>
+        public classProfessional SelectProfessional(classProfessional oU)
+        {
+            classProfessional oTr = new classProfessional();
+
+            string Consulta = "SELECT IdProfessional, ProfessionalRegistration,Name, LastName, Address, Phone, Mail, User, Password, Visible FROM Professional ";
+
+            if (oU.IdProfessional != 0)
+                Consulta = Consulta + "WHERE IdProfessional = " + oU.IdProfessional;
+            else
+                Consulta = Consulta + "WHERE User LIKE '" + oU.User + "' AND Password LIKE '" + oU.Password + "'";
+
+            if (Sql.SelectReaderDB(Consulta + " ORDER BY Name;",
+                null,
+                "SelectProfessional"))
+            {
+                Sql.Reader.Read();
+                oTr = new classProfessional(
+                    Convert.ToInt32(Sql.Reader["IdProfessional"])
+                    , Convert.ToInt32(Sql.Reader["ProfessionalRegistration"])
+                    , Sql.Reader["Name"].ToString()
+                    , Sql.Reader["LastName"].ToString()
+                    , Sql.Reader["Address"].ToString()
+                    , Sql.Reader["Phone"].ToString()
+                    , Sql.Reader["Mail"].ToString()
+                    , Sql.Reader["User"].ToString()
+                    , Sql.Reader["Password"].ToString()
+                    , Convert.ToBoolean(Sql.Reader["Visible"])
+                    );
+
+                Sql.Reader.Close();
+                Sql.Desconectar();
+            }
+
+            return oTr;
+        }
+
+        /// <summary>
+        /// Trae el ultimo usuario insertado
+        /// OK 07/06/12
+        /// </summary>
+        /// <returns></returns>
+        public int UltimoIdProfessional()
+        {
+            int A = 0;
+
+            if (Sql.SelectReaderDB("SELECT MAX(IdProfessional) AS Id FROM Professional", null, "UltimoIdUsuario"))
+            {
+                Sql.Reader.Read();
+                A = Convert.ToInt32(Sql.Reader["Id"]);
+                Sql.Reader.Close();
+                Sql.Desconectar();
+            }
+
+            return A;
+        }
         #endregion
 
         // OK - 17/09/02
@@ -2858,6 +2919,33 @@ namespace Datos
             return error;
         }
 
+        public classDiagnostic SelectDiagnostic(classDiagnostic oD)
+        {
+            classDiagnostic oDa = new classDiagnostic();
+
+            if (Sql.SelectReaderDB("SELECT IdDiagnostic, IdSpeciality, Detail, DiagnosticDate, Visible "
+                + "FROM Diagnostic WHERE Visible = 1 AND IdDiagnostic = " + oD.IdDiagnostic + " ;",
+                null,
+                "selectDiagnostic"))
+            {
+                Sql.Reader.Read();
+
+                classDiagnostic oDr = new classDiagnostic(
+                    Convert.ToInt32(Sql.Reader["IdDiagnostic"])
+                    , Convert.ToInt32(Sql.Reader["IdSpeciality"])
+                    , Sql.Reader["Detail"].ToString()
+                    , Convert.ToDateTime(Sql.Reader["DiagnosticDate"])
+                    , Convert.ToBoolean(Sql.Reader["Visible"])
+
+                    );
+
+                oDa = oDr;
+
+                Sql.Reader.Close();
+                Sql.Desconectar();
+            }
+            return oDa;
+        }
         /// <summary>
         /// OK - 17/09/02
         /// Carga una Combo con Diagnostic

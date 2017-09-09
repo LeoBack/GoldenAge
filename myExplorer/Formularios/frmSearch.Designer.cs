@@ -36,8 +36,8 @@
             this.txtbApellido = new System.Windows.Forms.ToolStripTextBox();
             this.tslNafiliado = new System.Windows.Forms.ToolStripLabel();
             this.txtbNafiliado = new System.Windows.Forms.ToolStripTextBox();
-            this.tslObraSocial = new System.Windows.Forms.ToolStripLabel();
-            this.tcmbObraSocial = new System.Windows.Forms.ToolStripComboBox();
+            this.tslSocialWork = new System.Windows.Forms.ToolStripLabel();
+            this.tcmbSocialWork = new System.Windows.Forms.ToolStripComboBox();
             this.tslPagina = new System.Windows.Forms.ToolStripLabel();
             this.tsbSiguiente = new System.Windows.Forms.ToolStripButton();
             this.tsbAnterior = new System.Windows.Forms.ToolStripButton();
@@ -92,8 +92,8 @@
             this.txtbApellido,
             this.tslNafiliado,
             this.txtbNafiliado,
-            this.tslObraSocial,
-            this.tcmbObraSocial,
+            this.tslSocialWork,
+            this.tcmbSocialWork,
             this.tslPagina,
             this.tsbSiguiente,
             this.tsbAnterior,
@@ -127,17 +127,17 @@
             this.txtbNafiliado.Name = "txtbNafiliado";
             this.txtbNafiliado.Size = new System.Drawing.Size(100, 39);
             // 
-            // tslObraSocial
+            // tslSocialWork
             // 
-            this.tslObraSocial.Name = "tslObraSocial";
-            this.tslObraSocial.Size = new System.Drawing.Size(67, 36);
-            this.tslObraSocial.Text = "Obra Social";
+            this.tslSocialWork.Name = "tslSocialWork";
+            this.tslSocialWork.Size = new System.Drawing.Size(67, 36);
+            this.tslSocialWork.Text = "Obra Social";
             // 
-            // tcmbObraSocial
+            // tcmbSocialWork
             // 
-            this.tcmbObraSocial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tcmbObraSocial.Name = "tcmbObraSocial";
-            this.tcmbObraSocial.Size = new System.Drawing.Size(121, 39);
+            this.tcmbSocialWork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tcmbSocialWork.Name = "tcmbSocialWork";
+            this.tcmbSocialWork.Size = new System.Drawing.Size(121, 39);
             // 
             // tslPagina
             // 
@@ -290,8 +290,8 @@
         private System.Windows.Forms.ToolStripLabel tslApellido;
         private System.Windows.Forms.ToolStripTextBox txtbApellido;
         private System.Windows.Forms.ToolStripLabel tslNafiliado;
-        private System.Windows.Forms.ToolStripComboBox tcmbObraSocial;
-        private System.Windows.Forms.ToolStripLabel tslObraSocial;
+        private System.Windows.Forms.ToolStripComboBox tcmbSocialWork;
+        private System.Windows.Forms.ToolStripLabel tslSocialWork;
         private System.Windows.Forms.ToolStripTextBox txtbNafiliado;
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.Button btnCancelar;

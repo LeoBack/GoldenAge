@@ -26,8 +26,8 @@ namespace myExplorer.Formularios
         public classConsultas oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
 
-        public classPersona oPersona { set; get; }
-        private classDiagnostico oDiagnostico;
+        public classGrandfather oGrandfather { set; get; }
+        private classDiagnostic oDiagnostic;
 
         private classControlComboBoxes oComboBox;
         private classValidaciones oValidar;
@@ -55,8 +55,8 @@ namespace myExplorer.Formularios
             this.Text = oTxt.TituloFichaPaciente;
             if (oConsulta != null)
             {
-                oPersona = new classPersona();
-                oDiagnostico = new classDiagnostico();
+                oGrandfather = new classGrandfather();
+                oDiagnostic = new classDiagnostic();
                 oValidar = new classValidaciones();
 
                 // Inicio Ficha
@@ -64,8 +64,8 @@ namespace myExplorer.Formularios
 
                 // Cargo los Combos
                 oComboBox = new classControlComboBoxes();
-                oComboBox.CargaCombo(cmbObraSocial, oConsulta.ListSpecialty(false), oConsulta.Table);
-                oComboBox.CargaCombo(cmbTipoPaciente, oConsulta.ListaTipoDePersonas(), oConsulta.Table);
+                oComboBox.CargaCombo(cmbSocialWork, oConsulta.ListSpecialty(false), oConsulta.Table);
+                //oComboBox.CargaCombo(cmbTipoPaciente, oConsulta.ListaTipoDePersonas(), oConsulta.Table);
 
                 this.CargarCombosCiudadBarrio();
 
@@ -99,13 +99,13 @@ namespace myExplorer.Formularios
         //OK 21/06/12
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            if (oConsulta.rHistoriaClinica("dtHistoriaClinica", oPersona.IdPersona))
-            {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.HistoriaClinica, oConsulta.Table);
-                fReport.Show();
-            }
-            else
-                MessageBox.Show(oTxt.ErrorListaConsulta);
+            //if (oConsulta.rHistoriaClinica("dtHistoriaClinica", oGrandfather.IdGrandfather))
+            //{
+            //    frmVisor fReport = new frmVisor(frmVisor.Reporte.HistoriaClinica, oConsulta.Table);
+            //    fReport.Show();
+            //}
+            //else
+            //    MessageBox.Show(oTxt.ErrorListaConsulta);
         }
 
         //OK 24/05/12
@@ -113,22 +113,22 @@ namespace myExplorer.Formularios
         {
             if (dgvDiagnostico.Rows.Count != 0)
             {
-                classDiagnostico oDs = new classDiagnostico();
+                classDiagnostic oDs = new classDiagnostic();
                 Formularios.frmDiagnostico frmD = new Formularios.frmDiagnostico();
 
                 // Traigo el diagnostico del paciente solicitado 
-                oDs.IdDiagnostico = Convert.ToInt32(dgvDiagnostico.Rows[SelectRow].Cells["dgvID"].Value);
-                oDs = oConsulta.SelectDiagnostico(oDs);
+                oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostico.Rows[SelectRow].Cells["dgvID"].Value);
+                //oDs = oConsulta.SelectDiagnostic(oDs);
 
                 // LLamo al formulario Diagnostico
                 frmD.Modo = Formularios.frmDiagnostico.Vista.Modificar;
-                frmD.oDiagnostico = oDs;
+               // frmD.oDiagnostic = oDs;
                 frmD.oConsulta = this.oConsulta;
                 frmD.oUtil = this.oUtil;
                 frmD.ShowDialog();
 
                 // Actualizo la grilla
-                this.GenerarGrillaDiagnostico(oConsulta.SelectDiagnosticoPersona(oDiagnostico));
+                //this.GenerarGrillaDiagnostico(oConsulta.SelectDiagnosticoGrandfather(oDiagnostic));
                 this.CargarDiagnostico();
             }
         }
@@ -136,7 +136,7 @@ namespace myExplorer.Formularios
         //OK 24/05/12
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            classDiagnostico oDs = new classDiagnostico();
+            classDiagnostic oDs = new classDiagnostic();
             Formularios.frmDiagnostico frmD = new Formularios.frmDiagnostico();
             frmD.oConsulta = this.oConsulta;
             frmD.oUtil = this.oUtil;
@@ -144,22 +144,22 @@ namespace myExplorer.Formularios
             if (dgvDiagnostico.Rows.Count != 0)
             {
                 // Traigo el diagnostico del paciente solicitado 
-                oDs.IdDiagnostico = Convert.ToInt32(dgvDiagnostico.Rows[SelectRow].Cells["dgvID"].Value);
-                oDs = oConsulta.SelectDiagnostico(oDs);
+                oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostico.Rows[SelectRow].Cells["dgvID"].Value);
+                oDs = oConsulta.SelectDiagnostic(oDs);
             }
             else
             {
                 // No Existe Diagnostico Previo
-                oDs.IdPersona = oPersona.IdPersona;
+               // oDs.IdGrandfather = oGrandfather.IdGrandfather;
             }
 
             // LLamo al formulario Diagnostico
             frmD.Modo = Formularios.frmDiagnostico.Vista.Nuevo;
-            frmD.oDiagnostico = oDs;
+           // frmD.oDiagnostic = oDs;
             frmD.ShowDialog();
 
             // Actualizo la grilla
-            this.GenerarGrillaDiagnostico(oConsulta.SelectDiagnosticoPersona(oDiagnostico));
+            //this.GenerarGrillaDiagnostico(oConsulta.SelectDiagnosticoGrandfather(oDiagnostic));
             this.CargarDiagnostico();
         }
 
@@ -181,21 +181,21 @@ namespace myExplorer.Formularios
         {
             // Carga Fechas
             //-------------------------------------------------
-            dtpUltimaVisita.Value = oConsulta.UltimaVisita(oPersona);
-            dtpPrimeraVisita.Value = oConsulta.PrimeraVisita(oPersona);
-            // Carga Visita
-            //-------------------------------------------------
-            txtNvisitas.Text = Convert.ToString(oConsulta.CantidadVisitas(oPersona));
-            txtNvisitas.Enabled = false;
-            // Carga Grilla Paciente
-            //-------------------------------------------------
-            oDiagnostico.IdPersona = oPersona.IdPersona;
-            int C = this.GenerarGrillaDiagnostico(oConsulta.SelectDiagnosticoPersona(oDiagnostico));
+            //dtpUltimaVisita.Value = oConsulta.UltimaVisita(oGrandfather);
+            //dtpPrimeraVisita.Value = oConsulta.PrimeraVisita(oGrandfather);
+            //// Carga Visita
+            ////-------------------------------------------------
+            //txtNvisitas.Text = Convert.ToString(oConsulta.CantidadVisitas(oGrandfather));
+            //txtNvisitas.Enabled = false;
+            //// Carga Grilla Paciente
+            ////-------------------------------------------------
+            //oDiagnostic.IdGrandfather = oGrandfather.IdGrandfather;
+            //int C = this.GenerarGrillaDiagnostico(oConsulta.SelectDiagnosticoGrandfather(oDiagnostic));
 
-            if (C == 0)
-                btnExportar.Enabled = false;
-            else
-                btnExportar.Enabled = true;
+            //if (C == 0)
+            //    btnExportar.Enabled = false;
+            //else
+            //    btnExportar.Enabled = true;
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace myExplorer.Formularios
             //Columna Oculta ID
             //
             dgvDiagnostico.Columns.Add("dgvId", "ID");
-            dgvDiagnostico.Columns["dgvId"].DataPropertyName = "IdDiagnostico";
+            dgvDiagnostico.Columns["dgvId"].DataPropertyName = "IdDiagnostic";
             dgvDiagnostico.Columns["dgvId"].Visible = false;
             dgvDiagnostico.Columns["dgvId"].DefaultCellStyle.NullValue = "0";
             //
@@ -274,39 +274,39 @@ namespace myExplorer.Formularios
         // OK AGREGAR 26/05/12
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos())
-            {
-                this.LeerDesdeFrm();
+            //if (ValidarCampos())
+            //{
+            //    this.LeerDesdeFrm();
 
-                if (Modo == Vista.Nuevo)
-                {   // Guarda
-                    if (!oConsulta.AgregarPersona(oPersona, oUtil.IdUsuario))
-                        MessageBox.Show(oConsulta.Menssage);
-                    else
-                    {
-                        MessageBox.Show(oTxt.AgregarPaciente);
-                        this.Modo = Vista.Modificar;
-                        this.oPersona.IdPersona = oConsulta.UltimoIdPersona();
-                        this.IdPaciente = 0;
-                        this.ini();
-                    }
-                }
-                else if (Modo == Vista.Modificar)
-                {   // Actualiza
-                    if (!oConsulta.ModificarPersona(oPersona))
-                        MessageBox.Show(oConsulta.Menssage);
-                    else
-                    {
-                        MessageBox.Show(oTxt.ModificarPaciente);
-                        this.Modo = Vista.Modificar;
-                        this.ini();
-                    }
-                }
-                else
-                    MessageBox.Show(oTxt.AccionIndefinida);
-            }
-            else
-                MessageBox.Show(oTxt.CaillasVacias);
+            //    if (Modo == Vista.Nuevo)
+            //    {   // Guarda
+            //        if (!oConsulta.AddGrandfather(oGrandfather, oUtil.IdUsuario))
+            //            MessageBox.Show(oConsulta.Menssage);
+            //        else
+            //        {
+            //            MessageBox.Show(oTxt.AgregarPaciente);
+            //            this.Modo = Vista.Modificar;
+            //            this.oGrandfather.IdGrandfather = oConsulta.UltimoIdGrandfather();
+            //            this.IdPaciente = 0;
+            //            this.ini();
+            //        }
+            //    }
+            //    else if (Modo == Vista.Modificar)
+            //    {   // Actualiza
+            //        if (!oConsulta.ModificarPersona(oGrandfather))
+            //            MessageBox.Show(oConsulta.Menssage);
+            //        else
+            //        {
+            //            MessageBox.Show(oTxt.ModificarPaciente);
+            //            this.Modo = Vista.Modificar;
+            //            this.ini();
+            //        }
+            //    }
+            //    else
+            //        MessageBox.Show(oTxt.AccionIndefinida);
+            //}
+            //else
+            //    MessageBox.Show(oTxt.CaillasVacias);
         }
 
         private void btnModificarPerfil_Click(object sender, EventArgs e)
@@ -336,7 +336,7 @@ namespace myExplorer.Formularios
 
         private void dtpFechaNacimiento_CloseUp(object sender, EventArgs e)
         {
-            txtEdad.Text = Convert.ToString(oPersona.Edad(dtpFechaNacimiento.Value));
+            //txtEdad.Text = Convert.ToString(oGrandfather.Edad(dtpFechaNacimiento.Value));
         }
 
         #endregion
@@ -346,53 +346,53 @@ namespace myExplorer.Formularios
 
         private void btnPlusBarrio_Click(object sender, EventArgs e)
         {
-            frmAuxiliar frmA = new frmAuxiliar();
-            frmA.oConsulta = this.oConsulta;
-            frmA.tipoObjeto = frmAuxiliar.Tipo.Barrio;
-            frmA.Id = Convert.ToInt32(cmbBarrio.SelectedValue);
+            //frmAuxiliar frmA = new frmAuxiliar();
+            //frmA.oConsulta = this.oConsulta;
+            //frmA.tipoObjeto = frmAuxiliar.Tipo.Barrio;
+            //frmA.Id = Convert.ToInt32(cmbBarrio.SelectedValue);
 
-            if (frmA.ShowDialog() == DialogResult.OK)
-            {
-                oComboBox.CargaCombo(
-                    cmbBarrio,
-                    oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-                    oConsulta.Table);
-            }
+            //if (frmA.ShowDialog() == DialogResult.OK)
+            //{
+            //    oComboBox.CargaCombo(
+            //        cmbBarrio,
+            //        oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
+            //        oConsulta.Table);
+            //}
         }
 
         private void btnPlusCiudad_Click(object sender, EventArgs e)
         {
-            frmAuxiliar frmA = new frmAuxiliar();
-            frmA.oConsulta = this.oConsulta;
-            frmA.tipoObjeto = frmAuxiliar.Tipo.Ciudad;
-            frmA.Id = Convert.ToInt32(cmbCiudad.SelectedValue);
+            //frmAuxiliar frmA = new frmAuxiliar();
+            //frmA.oConsulta = this.oConsulta;
+            //frmA.tipoObjeto = frmAuxiliar.Tipo.Ciudad;
+            //frmA.Id = Convert.ToInt32(cmbCiudad.SelectedValue);
 
-            if (frmA.ShowDialog() == DialogResult.OK)
-            {
-                oComboBox.CargaCombo(
-                    cmbCiudad,
-                    oConsulta.ListaCiudades(),
-                    oConsulta.Table);
-            }
+            //if (frmA.ShowDialog() == DialogResult.OK)
+            //{
+            //    oComboBox.CargaCombo(
+            //        cmbCiudad,
+            //        oConsulta.ListaCiudades(),
+            //        oConsulta.Table);
+            //}
         }
 
         private void cmbCiudad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            oComboBox.CargaCombo(cmbBarrio,
-                oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-                oConsulta.Table);
+            //oComboBox.CargaCombo(cmbBarrio,
+            //    oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
+            //    oConsulta.Table);
         }
 
-        private void btnPlusObraSocial_Click(object sender, EventArgs e)
+        private void btnPlusSocialWork_Click(object sender, EventArgs e)
         {
-            frmVerObraSocial frmA = new frmVerObraSocial();
+            frmVerSocialWork frmA = new frmVerSocialWork();
             frmA.oConsulta = this.oConsulta;
 
             if (frmA.ShowDialog() == DialogResult.OK)
             {
                 // Cargo los Combos pero no lo selecciona
                 oComboBox.CargaCombo(
-                    cmbObraSocial,
+                    cmbSocialWork,
                     oConsulta.ListSpecialty(false),
                     oConsulta.Table);
             }
@@ -410,19 +410,19 @@ namespace myExplorer.Formularios
         {
             if (this.IdPaciente != 0)
             {
-                oPersona.IdPersona = this.IdPaciente;
-                oPersona = oConsulta.SelectPersona(oPersona);
+                oGrandfather.IdGrandfather = this.IdPaciente;
+                //oGrandfather = oConsulta.SelectPersona(oGrandfather);
             }
 
             // Modo en el que se mostrara el formulario
-            if (Modo == Vista.Ver && oPersona.IdPersona != 0)
+            if (Modo == Vista.Ver && oGrandfather.IdGrandfather != 0)
             {
                 this.EnableFicha(false, true);
                 this.EnableDiagnostico(true);
                 this.EscribirEnFrm();
                 this.CargarDiagnostico();
             }
-            else if (Modo == Vista.Modificar && oPersona.IdPersona != 0)
+            else if (Modo == Vista.Modificar && oGrandfather.IdGrandfather != 0)
             {
                 this.EnableFicha(true, false);
                 this.EnableDiagnostico(true);
@@ -431,7 +431,7 @@ namespace myExplorer.Formularios
             }
             else if (Modo == Vista.Nuevo)
             {
-                oPersona = new classPersona();
+                oGrandfather = new classGrandfather();
 
                 this.EnableFicha(true, false);
                 this.EnableDiagnostico(false);
@@ -448,13 +448,13 @@ namespace myExplorer.Formularios
         /// </summary>
         private void CargarCombosCiudadBarrio()
         {
-            oComboBox.CargaCombo(cmbCiudad,
-                oConsulta.ListaCiudades(),
-                oConsulta.Table);
+            //oComboBox.CargaCombo(cmbCiudad,
+            //    oConsulta.ListaCiudades(),
+            //    oConsulta.Table);
 
-            oComboBox.CargaCombo(cmbBarrio,
-                oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-                oConsulta.Table);
+            //oComboBox.CargaCombo(cmbBarrio,
+            //    oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
+            //    oConsulta.Table);
         }
 
         /// <summary>
@@ -477,19 +477,19 @@ namespace myExplorer.Formularios
         // OK 04/03/12
         private void LeerDesdeFrm()
         {
-            oPersona.nAfiliado = this.oValidarSql.ValidaString(txtNumeroAfiliado.Text);
-            oPersona.Apellido = this.oValidarSql.ValidaString(txtApellido.Text);
-            oPersona.Nombre = this.oValidarSql.ValidaString(txtNombre.Text);
-            oPersona.FechaNac = dtpFechaNacimiento.Value;
-            oPersona.FechaAlta = DateTime.Now;
-            oPersona.Sexo = Convert.ToInt32(rbtMasculino.Checked);
-            oPersona.Direccion = this.oValidarSql.ValidaString(txtDomicilio.Text);
-            oPersona.ObraSocial = Convert.ToInt32(cmbObraSocial.SelectedValue);
-            oPersona.TipoPaciente = Convert.ToInt32(cmbTipoPaciente.SelectedValue);
-            oPersona.IdCiudad = Convert.ToInt32(cmbCiudad.SelectedValue);
-            oPersona.IdBarrio = Convert.ToInt32(cmbBarrio.SelectedValue);
-            oPersona.Telefono = this.oValidarSql.ValidaString(txtTelefono.Text);
-            oPersona.TelefonoParticular = this.oValidarSql.ValidaString(txtTelefonoParticular.Text);
+            //oGrandfather.nAfiliado = this.oValidarSql.ValidaString(txtNumeroAfiliado.Text);
+            //oGrandfather.Apellido = this.oValidarSql.ValidaString(txtApellido.Text);
+            //oGrandfather.Nombre = this.oValidarSql.ValidaString(txtNombre.Text);
+            //oGrandfather.FechaNac = dtpFechaNacimiento.Value;
+            //oGrandfather.FechaAlta = DateTime.Now;
+            //oGrandfather.Sexo = Convert.ToInt32(rbtMasculino.Checked);
+            //oGrandfather.Direccion = this.oValidarSql.ValidaString(txtDomicilio.Text);
+            //oGrandfather.SocialWork = Convert.ToInt32(cmbSocialWork.SelectedValue);
+            //oGrandfather.TipoPaciente = Convert.ToInt32(cmbTipoPaciente.SelectedValue);
+            //oGrandfather.IdCiudad = Convert.ToInt32(cmbCiudad.SelectedValue);
+            //oGrandfather.IdBarrio = Convert.ToInt32(cmbBarrio.SelectedValue);
+            //oGrandfather.Telefono = this.oValidarSql.ValidaString(txtTelefono.Text);
+            //oGrandfather.TelefonoParticular = this.oValidarSql.ValidaString(txtTelefonoParticular.Text);
         }
 
         /// <summary>
@@ -498,24 +498,24 @@ namespace myExplorer.Formularios
         /// </summary>
         private void EscribirEnFrm()
         {
-            txtNumeroAfiliado.Text = oPersona.nAfiliado;
-            txtApellido.Text = oPersona.Apellido;
-            txtNombre.Text = oPersona.Nombre;
-            dtpFechaNacimiento.Value = oPersona.FechaNac;
-            rbtMasculino.Checked = Convert.ToBoolean(oPersona.Sexo);
-            rbtFemenino.Checked = !Convert.ToBoolean(oPersona.Sexo);
-            txtDomicilio.Text = oPersona.Direccion;
-            txtEdad.Text = Convert.ToString(oPersona.Edad());
+            //txtNumeroAfiliado.Text = oGrandfather.nAfiliado;
+            //txtApellido.Text = oGrandfather.Apellido;
+            //txtNombre.Text = oGrandfather.Nombre;
+            //dtpFechaNacimiento.Value = oGrandfather.FechaNac;
+            //rbtMasculino.Checked = Convert.ToBoolean(oGrandfather.Sexo);
+            //rbtFemenino.Checked = !Convert.ToBoolean(oGrandfather.Sexo);
+            //txtDomicilio.Text = oGrandfather.Direccion;
+            //txtEdad.Text = Convert.ToString(oGrandfather.Edad());
 
-            oComboBox.IndexCombos(cmbObraSocial, oPersona.ObraSocial);
-            oComboBox.IndexCombos(cmbTipoPaciente, oPersona.TipoPaciente);
-            oComboBox.IndexCombos(cmbCiudad, oPersona.IdCiudad);
-            oComboBox.IndexCombos(cmbBarrio, oPersona.IdBarrio);
+            //oComboBox.IndexCombos(cmbSocialWork, oGrandfather.SocialWork);
+            //oComboBox.IndexCombos(cmbTipoPaciente, oGrandfather.TipoPaciente);
+            //oComboBox.IndexCombos(cmbCiudad, oGrandfather.IdCiudad);
+            //oComboBox.IndexCombos(cmbBarrio, oGrandfather.IdBarrio);
 
-            txtTelefono.Text = oPersona.Telefono;
-            txtTelefonoParticular.Text = oPersona.TelefonoParticular;
+            //txtTelefono.Text = oGrandfather.Telefono;
+            //txtTelefonoParticular.Text = oGrandfather.TelefonoParticular;
 
-            txtIdentificacion.Text = oPersona.Apellido + ", " + oPersona.Nombre;
+            //txtIdentificacion.Text = oGrandfather.Apellido + ", " + oGrandfather.Nombre;
         }
 
         /// <summary>

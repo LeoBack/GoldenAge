@@ -1,21 +1,3 @@
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\Datos.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\Datos.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\Entidades.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\System.Data.SQLite.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\Entidades.pdb
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\System.Data.SQLite.xml
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\ResolveAssemblyReference.cache
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.dll
-D:\Users\i5k\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\Datos.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\Datos.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\Entidades.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\System.Data.SQLite.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\Entidades.pdb
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Debug\System.Data.SQLite.xml
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.dll
-E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.pdb
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\bin\Debug\Default.mdf
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\bin\Debug\Default_log.ldf
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\bin\Debug\Datos.dll

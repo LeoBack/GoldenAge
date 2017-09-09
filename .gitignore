@@ -1,3 +1,14 @@
-bin/
-obj/
-Logs/
+*.pdb 
+*.exe 
+*.json 
+.vs
+Debug/
+DebugPublic/
+Release/
+Releases/
+x64/
+x86/
+build/
+bld/
+Bin/
+Obj/

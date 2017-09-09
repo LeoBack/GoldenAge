@@ -42,7 +42,7 @@
             this.tlpInforme = new System.Windows.Forms.TableLayoutPanel();
             this.rbtPaciente = new System.Windows.Forms.RadioButton();
             this.rbtDiagnostico = new System.Windows.Forms.RadioButton();
-            this.rbtObraSocial = new System.Windows.Forms.RadioButton();
+            this.rbtSocialWork = new System.Windows.Forms.RadioButton();
             this.grpInforme = new System.Windows.Forms.GroupBox();
             this.tlpPanel.SuspendLayout();
             this.tlpFiltro.SuspendLayout();
@@ -182,7 +182,7 @@
             this.tlpInforme.ColumnCount = 2;
             this.tlpInforme.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tlpInforme.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 410F));
-            this.tlpInforme.Controls.Add(this.rbtObraSocial, 1, 0);
+            this.tlpInforme.Controls.Add(this.rbtSocialWork, 1, 0);
             this.tlpInforme.Controls.Add(this.rbtDiagnostico, 1, 1);
             this.tlpInforme.Controls.Add(this.rbtPaciente, 1, 2);
             this.tlpInforme.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -219,17 +219,17 @@
             this.rbtDiagnostico.Text = "Estadisticas de diagnosticos.";
             this.rbtDiagnostico.UseVisualStyleBackColor = true;
             // 
-            // rbtObraSocial
+            // rbtSocialWork
             // 
-            this.rbtObraSocial.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.rbtObraSocial.AutoSize = true;
-            this.rbtObraSocial.Location = new System.Drawing.Point(71, 8);
-            this.rbtObraSocial.Name = "rbtObraSocial";
-            this.rbtObraSocial.Size = new System.Drawing.Size(206, 17);
-            this.rbtObraSocial.TabIndex = 0;
-            this.rbtObraSocial.TabStop = true;
-            this.rbtObraSocial.Text = "Cantidad de pacientes por obra social.";
-            this.rbtObraSocial.UseVisualStyleBackColor = true;
+            this.rbtSocialWork.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.rbtSocialWork.AutoSize = true;
+            this.rbtSocialWork.Location = new System.Drawing.Point(71, 8);
+            this.rbtSocialWork.Name = "rbtSocialWork";
+            this.rbtSocialWork.Size = new System.Drawing.Size(206, 17);
+            this.rbtSocialWork.TabIndex = 0;
+            this.rbtSocialWork.TabStop = true;
+            this.rbtSocialWork.Text = "Cantidad de pacientes por obra social.";
+            this.rbtSocialWork.UseVisualStyleBackColor = true;
             // 
             // grpInforme
             // 
@@ -278,7 +278,7 @@
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.GroupBox grpInforme;
         private System.Windows.Forms.TableLayoutPanel tlpInforme;
-        private System.Windows.Forms.RadioButton rbtObraSocial;
+        private System.Windows.Forms.RadioButton rbtSocialWork;
         private System.Windows.Forms.RadioButton rbtDiagnostico;
         private System.Windows.Forms.RadioButton rbtPaciente;
         private System.Windows.Forms.GroupBox grpFiltro;
