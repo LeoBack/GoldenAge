@@ -1,4 +1,0 @@
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Entidades\bin\Release\Entidades.dll
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Entidades\bin\Release\Entidades.pdb
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Entidades\obj\Release\Entidades.dll
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Entidades\obj\Release\Entidades.pdb

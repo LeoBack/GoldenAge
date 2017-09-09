@@ -1,7 +1,0 @@
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Estadisticas\bin\Release\Estadisticas.dll
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Estadisticas\bin\Release\Estadisticas.pdb
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Estadisticas\obj\Release\Estadisticas.csprojResolveAssemblyReference.cache
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Estadisticas\obj\Release\Estadisticas.frmVisor.resources
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Estadisticas\obj\Release\Estadisticas.csproj.GenerateResource.Cache
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Estadisticas\obj\Release\Estadisticas.dll
-F:\VisualStudio\VER\MyExplorer-Tesis\Software\myExplorer-050712-1122-Tesis\myExplorer\Estadisticas\obj\Release\Estadisticas.pdb

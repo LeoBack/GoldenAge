@@ -1,3 +1,15 @@
 bin/
 obj/
 Logs/
+Controles\bin/
+Controles\obj/
+Datos\bin/
+Datos\obj/
+Entidades\bin/
+Entidades\obj/
+Estadisticas\bin/
+Estadisticas\obj/
+myExplorer\bin/
+myExplorer\obj/
+Reportes\bin/
+Reportes\obj/
