@@ -16,3 +16,12 @@ E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\bin\Deb
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.dll
 E:\Users\Leonardo\Documents\Visual Studio 2010\Projects\myExplorer\Datos\obj\Debug\Datos.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\bin\Debug\Default.mdf
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\bin\Debug\Default_log.ldf
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\bin\Debug\Datos.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\bin\Debug\Datos.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\bin\Debug\Entidades.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\bin\Debug\Entidades.pdb
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\obj\Debug\Datos.dll
+C:\Users\Marcos\Documents\GitHub\GoldenAge\Datos\obj\Debug\Datos.pdb

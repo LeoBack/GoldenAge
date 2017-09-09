@@ -19,11 +19,11 @@ namespace myExplorer.Formularios
 
         public classConsultas oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
-        public classObraSocial oObraSocial { set; get; }
+        public classSocialWork oSocialWork { set; get; }
 
         public enum Accion { Nuevo = 1, Modificar = 2, Eliminar = 3 }
         public Accion Acto { set; get; }
-        public int IdObraSocial { set; get; }
+        public int IdSocialWork { set; get; }
 
         private classControlComboBoxes oComboBox;
         private classTextos oTxt = new classTextos();
@@ -54,24 +54,24 @@ namespace myExplorer.Formularios
                     this.btnAgregar.Text = oTxt.Aplicar;
                     // Cargo el Formulario Limpio
                     this.LimpiarFrm();
-                    this.CargarCombosCiudadBarrio();
+                    //this.CargarCombosCiudadBarrio();
                 }   //****************Fin*****************************
                 else if (this.Acto == Accion.Modificar)
                 {
-                    if (this.IdObraSocial != 0)
+                    if (this.IdSocialWork != 0)
                     {   //***********Modifica*************************
                         this.EnableFrm(false);
                         btnAgregar.Enabled = true;
                         btnCancelar.Enabled = true;
                         this.btnAgregar.Text = oTxt.Editar;
                         // Traigo la Obra Social
-                        oObraSocial = oConsulta.SelectObraSocial(
-                            new classObraSocial(this.IdObraSocial,"","",0,0,"","","",0));
+                        oSocialWork = oConsulta.SelectSocialWork(
+                            new classSocialWork(this.IdSocialWork,"","","","","",true));
                         // Cargo el Formulario
-                        this.CargarCombosCiudadBarrio();
+                        //this.CargarCombosCiudadBarrio();
                         this.CargarFrm();
                     }   //*************Fin****************************
-                    else if (oObraSocial != null)
+                    else if (oSocialWork != null)
                     {
                         {   //***********Modifica*************************
                             this.EnableFrm(false);
@@ -79,7 +79,7 @@ namespace myExplorer.Formularios
                             btnCancelar.Enabled = true;
                             this.btnAgregar.Text = oTxt.Editar;
                             // Cargo el Formulario
-                            this.CargarCombosCiudadBarrio();
+                            //this.CargarCombosCiudadBarrio();
                             this.CargarFrm();
                         }   //*************Fin****************************
                     }
@@ -91,15 +91,15 @@ namespace myExplorer.Formularios
                 }
                 else if (this.Acto == Accion.Eliminar)
                 {   //***********Eliminar*************************
-                    if (this.IdObraSocial != 0)
+                    if (this.IdSocialWork != 0)
                     {   // Consulta de eliminacion
-                        oConsulta.DeleteSpecialty(
-                            new classObraSocial(
-                                this.IdObraSocial, "", "", 0, 0, "", "", "", 0), false);
+                        oConsulta.DeleteSocialWork(
+                            new classSocialWork(
+                                this.IdSocialWork, "", "", "", "", "", true), false);
                     }
-                    else if (oObraSocial != null)
+                    else if (oSocialWork != null)
                     {   // Consulta de eliminacion
-                        oConsulta.DeleteSpecialty(oObraSocial, false);
+                        oConsulta.DeleteSocialWork(oSocialWork, false);
                     }
                     else
                     {
@@ -138,11 +138,11 @@ namespace myExplorer.Formularios
                     }
                     else
                     {
-                        oObraSocial = new classObraSocial();
+                        oSocialWork = new classSocialWork();
                         this.CargarObjeto();
 
                         // INSERTAR OBJETO;
-                        if (oConsulta.AgregarObraSocial(oObraSocial))
+                        if (oConsulta.AddSocialWork(oSocialWork))
                         {
                             MessageBox.Show(oTxt.AgregarObraSocial);
                             btnAgregar.Text = oTxt.Limpiar;
@@ -163,7 +163,7 @@ namespace myExplorer.Formularios
                     {
                         this.CargarObjeto();
                         // Modifica OBJETO;
-                        if (oConsulta.ModificarObraSocial(oObraSocial))
+                        if (oConsulta.UpdateSocialWork(oSocialWork))
                         {
                             MessageBox.Show(oTxt.ModificarObraSocial);
                             this.Close();
@@ -193,49 +193,49 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         #region Botones Auxiliares
 
-        // FrmAuxiliar
-        private void btnAddCiudad_Click(object sender, EventArgs e)
-        {
-            frmAuxiliar frmA = new frmAuxiliar();
-            frmA.oConsulta = this.oConsulta;
-            frmA.oUtil = this.oUtil;
-            frmA.tipoObjeto = frmAuxiliar.Tipo.Ciudad;
-            frmA.Id = Convert.ToInt32(cmbCiudad.SelectedValue);
+        //// FrmAuxiliar
+        //private void btnAddCiudad_Click(object sender, EventArgs e)
+        //{
+        //    frmAuxiliar frmA = new frmAuxiliar();
+        //    frmA.oConsulta = this.oConsulta;
+        //    frmA.oUtil = this.oUtil;
+        //    frmA.tipoObjeto = frmAuxiliar.Tipo.Ciudad;
+        //    frmA.Id = Convert.ToInt32(cmbCiudad.SelectedValue);
 
-            if (frmA.ShowDialog() == DialogResult.OK)
-            {
-                oComboBox.CargaCombo(
-                    cmbCiudad,
-                    oConsulta.ListaCiudades(),
-                    oConsulta.Table);
-            }
-        }
+        //    if (frmA.ShowDialog() == DialogResult.OK)
+        //    {
+        //        oComboBox.CargaCombo(
+        //            cmbCiudad,
+        //            oConsulta.ListaCiudades(),
+        //            oConsulta.Table);
+        //    }
+        //}
 
-        // FrmAuxiliar
-        private void btnAddBarrio_Click(object sender, EventArgs e)
-        {
-            frmAuxiliar frmA = new frmAuxiliar();
-            frmA.oConsulta = this.oConsulta;
-            frmA.oUtil = this.oUtil;
-            frmA.tipoObjeto = frmAuxiliar.Tipo.Barrio;
-            frmA.Id = Convert.ToInt32(cmbBarrio.SelectedValue);
+        //// FrmAuxiliar
+        //private void btnAddBarrio_Click(object sender, EventArgs e)
+        //{
+        //    frmAuxiliar frmA = new frmAuxiliar();
+        //    frmA.oConsulta = this.oConsulta;
+        //    frmA.oUtil = this.oUtil;
+        //    frmA.tipoObjeto = frmAuxiliar.Tipo.Barrio;
+        //    frmA.Id = Convert.ToInt32(cmbBarrio.SelectedValue);
 
-            if (frmA.ShowDialog() == DialogResult.OK)
-            {
-                oComboBox.CargaCombo(
-                    cmbBarrio,
-                    oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-                    oConsulta.Table);
-            }
-        }
+        //    if (frmA.ShowDialog() == DialogResult.OK)
+        //    {
+        //        oComboBox.CargaCombo(
+        //            cmbBarrio,
+        //            oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
+        //            oConsulta.Table);
+        //    }
+        //}
 
-        // OK 03/06/12
-        private void cmbCiudad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            oComboBox.CargaCombo(cmbBarrio,
-                oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-                oConsulta.Table);
-        }
+        //// OK 03/06/12
+        //private void cmbCiudad_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    oComboBox.CargaCombo(cmbBarrio,
+        //        oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
+        //        oConsulta.Table);
+        //}
 
         #endregion
 
@@ -265,14 +265,14 @@ namespace myExplorer.Formularios
         {
             //oObraSocial.Id = 0;
             //oObraSocial.Visible = 0;
-            oObraSocial.Nombre = oValidarSql.ValidaString(txtNombre.Text.ToUpper());
-            oObraSocial.Telefono1 = oValidarSql.ValidaString(txtTelefono1.Text);
-            oObraSocial.Telefono2 = oValidarSql.ValidaString(txtTelefono2.Text);
-            oObraSocial.Direccion = oValidarSql.ValidaString(txtDireccion.Text);
-            oObraSocial.Descripcion = oValidarSql.ValidaString(txtDetalle.Text);
+            oSocialWork.Name = oValidarSql.ValidaString(txtNombre.Text.ToUpper());
+            oSocialWork.Description = oValidarSql.ValidaString(txtDetalle.Text);
+            oSocialWork.Address = oValidarSql.ValidaString(txtDireccion.Text);
+            oSocialWork.Phone = oValidarSql.ValidaString(txtTelefono1.Text);
+            oSocialWork.AlternativePhone = oValidarSql.ValidaString(txtTelefono2.Text);
             
-            oObraSocial.IdCiudad = Convert.ToInt32(cmbCiudad.SelectedValue);
-            oObraSocial.IdBarrio = Convert.ToInt32(cmbBarrio.SelectedValue);
+            //oSocialWork.IdCiudad = Convert.ToInt32(cmbCiudad.SelectedValue);
+            //oSocialWork.IdBarrio = Convert.ToInt32(cmbBarrio.SelectedValue);
         }
 
         /// <summary>
@@ -281,30 +281,32 @@ namespace myExplorer.Formularios
         /// </summary>
         private void CargarFrm()
         {
-            txtNombre.Text = oObraSocial.Nombre;
-            txtTelefono1.Text = oObraSocial.Telefono1;
-            txtTelefono2.Text = oObraSocial.Telefono2;
-            txtDireccion.Text = oObraSocial.Direccion;
-            txtDetalle.Text = oObraSocial.Descripcion;
+            txtNombre.Text = oSocialWork.Name;
+            txtDetalle.Text = oSocialWork.Description;
+            txtDireccion.Text = oSocialWork.Address;
+            txtTelefono1.Text = oSocialWork.Phone;
+            txtTelefono2.Text = oSocialWork.AlternativePhone;
+            
+            
 
-            oComboBox.IndexCombos(cmbCiudad, oObraSocial.IdCiudad);
-            oComboBox.IndexCombos(cmbBarrio, oObraSocial.IdBarrio);
+            //oComboBox.IndexCombos(cmbCiudad, oSocialWork.IdCiudad);
+            //oComboBox.IndexCombos(cmbBarrio, oSocialWork.IdBarrio);
         }
 
         /// <summary>
         /// Carga los Combos de Ciudad y Barrios
         /// 03/02/12
         /// </summary>
-        private void CargarCombosCiudadBarrio()
-        {
-            oComboBox.CargaCombo(cmbCiudad,
-                oConsulta.ListaCiudades(), 
-                oConsulta.Table);
+        //private void CargarCombosCiudadBarrio()
+        //{
+        //    oComboBox.CargaCombo(cmbCiudad,
+        //        oConsulta.ListaCiudades(), 
+        //        oConsulta.Table);
 
-            oComboBox.CargaCombo(cmbBarrio,
-                oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-                oConsulta.Table);
-        }
+        //    oComboBox.CargaCombo(cmbBarrio,
+        //        oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
+        //        oConsulta.Table);
+        //}
 
         /// <summary>
         /// Habilita el formulario

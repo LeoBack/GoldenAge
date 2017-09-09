@@ -134,7 +134,7 @@ namespace myExplorer.Formularios
                 frmAbmObraSocial frmA = new frmAbmObraSocial();
                 frmA.oConsulta = this.oConsulta;
                 frmA.oUtil = this.oUtil;
-                frmA.oObraSocial = oOS;
+                frmA.oSocialWork = oOS;
                 frmA.Acto = frmAbmObraSocial.Accion.Eliminar;
                 frmA.ShowDialog();
 
@@ -163,7 +163,7 @@ namespace myExplorer.Formularios
                 frmAbmObraSocial frmA = new frmAbmObraSocial();
                 frmA.oConsulta = this.oConsulta;
                 frmA.oUtil = this.oUtil;
-                frmA.oObraSocial = oOS;
+                frmA.oSocialWork = oOS;
                 frmA.Acto = frmAbmObraSocial.Accion.Modificar;
                 frmA.ShowDialog();
 

@@ -35,7 +35,7 @@ namespace Entidades.newClases
 
         #region Methods
 
-        public string ToString()
+        public override string ToString()
         {
             return "Id: " + this.IdParentRelationship.ToString() +
             "\nParentezco: " + this.IdParent.ToString() +

@@ -138,3 +138,21 @@ C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\bin\Debug\MyExplorer.exe.c
 =======
 >>>>>>> 9524a2edf974ce8bf021ca681ca9108c0fe4b253
 >>>>>>> f570fc7c083e6a99780f922de1645abba439fb80
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csprojResolveAssemblyReference.cache
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmEstadistica.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerUsuarios.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAcercaDe.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAuxiliar.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmFecha.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmLogin.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmTurno.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmUsuario.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmVerObraSocial.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmAbmObraSocial.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDiagnostico.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmForm.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmMain.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmSearch.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Formularios.frmDialogoImprecion.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\myExplorer.Properties.Resources.resources
+C:\Users\Marcos\Documents\GitHub\GoldenAge\myExplorer\obj\x86\Debug\MyExplorer.csproj.GenerateResource.Cache
