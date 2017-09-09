@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.IO;
 using Entidades.newClases;
+using Entidades;
 //using Entidades.Clases;
 //using Entidades.Clases.Grillas;
 
@@ -424,11 +425,11 @@ namespace Datos
 
             error = Sql.InsertDB("INSERT INTO Grandfather (Name, LastName, Birthdate, IdTypeDocument, "
                 + " NumberDocument, Sex, Address, Phone, IdSocialWork, AffiliateNumber, DateAdmission, "
-                + " EgressDate, ReasonExit) VALUES ('" + oSp.Name + "', '" + oSp.LastName 
+                + " EgressDate, ReasonExit,Visible) VALUES ('" + oSp.Name + "', '" + oSp.LastName 
                 + "', '" + oSp.Birthdate.Date + "', " + oSp.IdTypeDocument + ", " + oSp.NumberDocument 
                 + ", " + oSp.Sex + ", '" + oSp.Address + "', '" + oSp.Phone + "', " + oSp.IdSocialWork
-                + ", " + oSp.AffiliateNumber + ", '" +oSp.DateAdmission.Date + "', '" + oSp.EgressDate.Date 
-                + "', '" + oSp.ReasonExit +"');",
+                + ", " + oSp.AffiliateNumber + ", '" +oSp.DateAdmission.Date + "', '" + oSp.EgressDate.Date
+                + "', '" + oSp.ReasonExit + "'," + oSp.Visible+");",
                 Sql.Parametros, "AddGrandfather");
 
             Menssage = Sql.Mensaje;
@@ -2568,6 +2569,294 @@ namespace Datos
         #endregion
 
         #region AGREGADOS MARCOS CARRERAS
+        #region Consultas ProfessionalSpeciality
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Inserta una ProfessionalSpeciality.
+        /// </summary>
+        /// <param name="oPsy">ProfessionalSpeciality</param>
+        /// <returns>Error</returns>
+        public bool AddProfessionalSpeciality(classProfessionalSpeciality oPsy)
+        {
+            bool error;
+
+            error = Sql.InsertDB("INSERT INTO ProfessionalSpeciality (IdProfessional, IdSpeciality, Visible) VALUES (" + oPsy.IdProfessional + "," + oPsy.IdSpeciality + "," +oPsy.Visible +");",
+                Sql.Parametros, "AddProfessionalSpeciality");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Modifica una ProfessionalSpeciality.
+        /// </summary>
+        /// <param name="oPs">Specialty</param>
+        /// <returns>Error</returns>
+        public bool UpdateProfessionalSpeciality(classProfessionalSpeciality oPs)
+        {
+            bool error;
+
+            error = Sql.InsertDB("UPDATE ProfessionalSpeciality SET IdProfessional = " + oPs.IdProfessional + "," + "IdSpeciality = '" + oPs.IdSpeciality + ", Visible = " + Convert.ToInt32(oPs.Visible) + " WHERE IdProfessionalSpeciality = " + oPs.IdProfessionalSpeciality + ";",
+                null, "UpdateSpecialty");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Elimina de forma definitiva o Actualiza el campo visible de una ProfessionalSpeciality. 
+        /// </summary>
+        /// <param name="oPs"></param>
+        /// <param name="Delete">Delete o Update state</param>
+        /// <returns>Error</returns>
+        public bool DeleteProfessionalSpeciality(classProfessionalSpeciality oPs, bool Delete)
+        {
+            bool error;
+
+            if (Delete)
+                error = Sql.DeleteDB("DELETE ProfessionalSpeciality WHERE IdProfessionalSpeciality = " + oPs.IdProfessionalSpeciality + " ;", null, "DeleteProfessionalSpeciality");
+            else
+                error = Sql.InsertDB("UPDATE ProfessionalSpeciality SET Visible = 0 WHERE IdProfessionalSpeciality = " + oPs.IdProfessionalSpeciality + " ;", null, "DeleteProfessionalSpeciality");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Carga una Combo con ProfessionalSpeciality
+        /// </summary>
+        /// <returns></returns>
+        public bool ListProfessionalSpeciality(bool Filtro)
+        {
+            #region Consulta
+
+            string Consulta = "SELECT IdProfessionalSpeciality[Id], IdProfessional[Valor] FROM ProfessionalSpeciality WHERE Visible = 1 ";
+
+            if (Filtro)
+                Consulta += " ORDER BY IdProfessional";
+            else
+                Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdProfessionalSpeciality) FROM Specialty AS I) " +
+                    " ORDER BY IdProfessional";
+
+            #endregion
+
+            if (Sql.SelectAdapterDB(Consulta, "ListProfessionalSpeciality"))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                Sql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                Sql.Desconectar();
+                return true;
+            }
+            else
+            {
+                Sql.Desconectar();
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region Consultas ParentRelationship
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Inserta una ParentRelationship.
+        /// </summary>
+        /// <param name="oPr">ParentRelationship</param>
+        /// <returns>Error</returns>
+        public bool AddParentRelationship(classParentRelationship oPr)
+        {
+            bool error;
+
+            error = Sql.InsertDB("INSERT INTO ParentRelationship (IdParent, IdRelationship,Visible) VALUES (" + oPr.IdParent + "," + oPr.IdRelationship + "," +oPr.Visible+");",
+                Sql.Parametros, "AddParentRelationship");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Modifica una ParentRelationship.
+        /// </summary>
+        /// <param name="oPs">Specialty</param>
+        /// <returns>Error</returns>
+        public bool UpdateParentRelationship(classParentRelationship oPs)
+        {
+            bool error;
+
+            error = Sql.InsertDB("UPDATE ParentRelationship SET IdParent = " + oPs.IdParent + "," + "IdRelationship = '" + oPs.IdRelationship + ", Visible = " + Convert.ToInt32(oPs.Visible) + " WHERE IdParentRelationship = " + oPs.IdParentRelationship + ";",
+                null, "UpdateSpecialty");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Elimina de forma definitiva o Actualiza el campo visible de una ParentRelationship. 
+        /// </summary>
+        /// <param name="oPs"></param>
+        /// <param name="Delete">Delete o Update state</param>
+        /// <returns>Error</returns>
+        public bool DeleteParentRelationship(classParentRelationship oPs, bool Delete)
+        {
+            bool error;
+
+            if (Delete)
+                error = Sql.DeleteDB("DELETE ParentRelationship WHERE IdParentRelationship = " + oPs.IdParentRelationship + " ;", null, "DeleteParentRelationship");
+            else
+                error = Sql.InsertDB("UPDATE ParentRelationship SET Visible = 0 WHERE IdParentRelationship = " + oPs.IdParentRelationship + " ;", null, "DeleteParentRelationship");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Carga una Combo con ParentRelationship
+        /// </summary>
+        /// <returns></returns>
+        public bool ListParentRelationship(bool Filtro)
+        {
+            #region Consulta
+
+            string Consulta = "SELECT IdParentRelationship[Id], IdParent[Valor] FROM ParentRelationship WHERE Visible = 1 ";
+
+            if (Filtro)
+                Consulta += " ORDER BY IdParent";
+            else
+                Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdParentRelationship) FROM Specialty AS I) " +
+                    " ORDER BY IdParent";
+
+            #endregion
+
+            if (Sql.SelectAdapterDB(Consulta, "ListParentRelationship"))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                Sql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                Sql.Desconectar();
+                return true;
+            }
+            else
+            {
+                Sql.Desconectar();
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region Consultas Diagnostic
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Inserta una Diagnostic.
+        /// </summary>
+        /// <param name="oDc">Diagnostic</param>
+        /// <returns>Error</returns>
+        public bool AddDiagnostic(classDiagnostic oDc)
+        {
+            bool error;
+
+            error = Sql.InsertDB("INSERT INTO Diagnostic (IdDiagnostic, IdSpeciality, Detail, DiagnosticDate, Visible) VALUES (" + oDc.IdDiagnostic + ","+ oDc.IdSpeciality +",'"+ oDc.Detail+"','"+oDc.DiagnosticDate+"',"+oDc.Visible+");",
+                Sql.Parametros, "AddDiagnostic");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Modifica una Diagnostic.
+        /// </summary>
+        /// <param name="oPs">Specialty</param>
+        /// <returns>Error</returns>
+        public bool UpdateDiagnostic(classDiagnostic oPs)
+        {
+            bool error;
+
+            error = Sql.InsertDB("UPDATE Diagnostic SET IdDiagnostic = " + oPs.IdDiagnostic + "," +
+                                                       "IdSpeciality = " + oPs.IdSpeciality + ","+
+                                                       "Detail = '" + oPs.Detail + "'," +
+                                                       "DiagnosticDate = '" + oPs.DiagnosticDate + "'," +
+                                                       "Visible = " + Convert.ToInt32(oPs.Visible) +
+                                                       " WHERE IdDiagnostic = " + oPs.IdDiagnostic + ";",
+                null, "UpdateSpecialty");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Elimina de forma definitiva o Actualiza el campo visible de una Diagnostic. 
+        /// </summary>
+        /// <param name="oPs"></param>
+        /// <param name="Delete">Delete o Update state</param>
+        /// <returns>Error</returns>
+        public bool DeleteDiagnostic(classDiagnostic oPs, bool Delete)
+        {
+            bool error;
+
+            if (Delete)
+                error = Sql.DeleteDB("DELETE Diagnostic WHERE IdDiagnostic = " + oPs.IdDiagnostic + " ;", null, "DeleteDiagnostic");
+            else
+                error = Sql.InsertDB("UPDATE Diagnostic SET Visible = 0 WHERE IdDiagnostic = " + oPs.IdDiagnostic + " ;", null, "DeleteDiagnostic");
+
+            Menssage = Sql.Mensaje;
+            return error;
+        }
+
+        /// <summary>
+        /// OK - 17/09/02
+        /// Carga una Combo con Diagnostic
+        /// </summary>
+        /// <returns></returns>
+        public bool ListDiagnostic(bool Filtro)
+        {
+            #region Consulta
+
+            string Consulta = "SELECT IdDiagnostic[Id], IdDiagnostic[Valor] FROM Diagnostic WHERE Visible = 1 ";
+
+            if (Filtro)
+                Consulta += " ORDER BY IdDiagnostic";
+            else
+                Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdDiagnostic) FROM Specialty AS I) " +
+                    " ORDER BY IdDiagnostic";
+
+            #endregion
+
+            if (Sql.SelectAdapterDB(Consulta, "ListDiagnostic"))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                Sql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                Sql.Desconectar();
+                return true;
+            }
+            else
+            {
+                Sql.Desconectar();
+                return false;
+            }
+        }
+
+        #endregion
+
+
 
         #endregion
     }

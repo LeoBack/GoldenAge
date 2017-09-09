@@ -38,7 +38,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\classDiagnostic.cs" />
     <Compile Include="Clases\classDiagnostico.cs" />
+    <Compile Include="Clases\classParentRelationship.cs" />
     <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
     <Compile Include="Clases\classProfessional.cs" />
@@ -48,6 +50,7 @@
     <Compile Include="Clases\classGrandfather.cs" />
     <Compile Include="Clases\classRelationship.cs" />
     <Compile Include="Clases\classSpecialty.cs" />
+    <Compile Include="classProfessionalSpeciality.cs" />
     <Compile Include="classUtiles.cs" />
     <Compile Include="Clases\classParent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
