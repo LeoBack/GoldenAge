@@ -2772,7 +2772,7 @@ namespace Datos
         /// </summary>
         /// <param name="oPr">ParentRelationship</param>
         /// <returns>Error</returns>
-        public bool AddParentRelationship(classParentRelationship oPr)
+        public bool AddParentRelationship(classGrandfatherParent oPr)
         {
             bool error;
 
@@ -2789,7 +2789,7 @@ namespace Datos
         /// </summary>
         /// <param name="oPs">Specialty</param>
         /// <returns>Error</returns>
-        public bool UpdateParentRelationship(classParentRelationship oPs)
+        public bool UpdateParentRelationship(classGrandfatherParent oPs)
         {
             bool error;
 
@@ -2807,7 +2807,7 @@ namespace Datos
         /// <param name="oPs"></param>
         /// <param name="Delete">Delete o Update state</param>
         /// <returns>Error</returns>
-        public bool DeleteParentRelationship(classParentRelationship oPs, bool Delete)
+        public bool DeleteParentRelationship(classGrandfatherParent oPs, bool Delete)
         {
             bool error;
 
