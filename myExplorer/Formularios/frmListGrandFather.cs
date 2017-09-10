@@ -16,15 +16,16 @@ using Controles;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmSearch : Form
+    public partial class frmListGrandfather : Form
     {
+        // REVISADO - 17/09/09
         #region Atributos y Propiedades
 
         public classConsultas oConsulta { set; get; }
         public int IdGrandfather { set; get; }
         public classUtiles oUtil { set; get; }
 
-        private List<grvPersona> lPersonas;
+        private List<grvGrandfather> lGrandfather;
         private classControlComboBoxes oCombos;
         private classValidaSqlite oValidarSql = new classValidaSqlite();
         private int SelectRow;
@@ -38,13 +39,16 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        // REVISADO - 17/09/09
         #region Formulario
 
-        public frmSearch()
+        // REVISADO - 17/09/09
+        public frmListGrandfather()
         {
             InitializeComponent();
         }
 
+        // REVISADO - 17/09/09
         private void frmSearch_Load(object sender, EventArgs e)
         {
             if (oConsulta != null)
@@ -63,40 +67,43 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        // REVISADO - 17/09/09
         #region Menu
 
-        //OK 21/06/12
+        // REVISADO - 17/09/09
         private void tsbImprimir_Click(object sender, EventArgs e)
         {
-            //classGrandfather oP = new classGrandfather();
-            //oP.Apellido = this.oValidarSql.ValidaString(txtbApellido.Text);
-            //oP.nAfiliado = this.oValidarSql.ValidaString(txtbNafiliado.Text);
-            //oP.SocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
+            classGrandfather oP = new classGrandfather();
+            oP.LastName = this.oValidarSql.ValidaString(txtbApellido.Text);
+            oP.AffiliateNumber = Convert.ToInt32(this.oValidarSql.ValidaString(txtbNafiliado.Text));
+            oP.IdSocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
 
-            //if (oConsulta.rListaPacientesLimite("dtPersona", oP, this.Desde, this.Hasta))
-            //{
-            //    frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oConsulta.Table);
-            //    fReport.Show();
-            //}
-            //else
-            //    MessageBox.Show(oTxt.ErrorListaConsulta);
+            if (oConsulta.rListaGrandfatherLimite("dtPersona", oP, this.Desde, this.Hasta))
+            {
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oConsulta.Table);
+                fReport.Show();
+            }
+            else
+                MessageBox.Show(oTxt.ErrorListaConsulta);
         }
 
         #endregion
 
+        // REVISADO - 17/09/09
         #region Botones
 
+        // REVISADO - 17/09/09
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             if (dgvLista.Rows.Count != 0)
             {
                 this.IdGrandfather = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
-                txtEstado.Text = oTxt.PacienteSeleccionado + dgvLista.Rows[this.SelectRow].Cells["dgvApellido"].Value.ToString();
+                txtEstado.Text = oTxt.PacienteSeleccionado + dgvLista.Rows[this.SelectRow].Cells["dgvLastName"].Value.ToString();
             }
 
         }
 
-        // OK 24/06/12
+        // REVISADO - 17/09/09
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             if (this.Pag < this.cantPag)
@@ -107,7 +114,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK 24/06/12
+        // REVISADO - 17/09/09
         private void btnAnterior_Click(object sender, EventArgs e)
         {
             if (this.Pag > 1)
@@ -118,17 +125,20 @@ namespace myExplorer.Formularios
             }
         }
 
+        // REVISADO - 17/09/09
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             this.Filtrar();
         }
 
+        // REVISADO - 17/09/09
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             IdGrandfather = 0;
             this.Close();
         }
 
+        // REVISADO - 17/09/09
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvLista.Rows.Count != 0)
@@ -137,14 +147,16 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        // REVISADO - 17/09/09
         #region MenuEmergente
 
+        // REVISADO - 17/09/09
         private void tsmiVerFicha_Click(object sender, EventArgs e)
         {
             if (dgvLista.Rows.Count != 0)
             {
                 this.IdGrandfather = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
-                txtEstado.Text = "Paciente Seleccionado : " + dgvLista.Rows[this.SelectRow].Cells["dgvApellido"].Value.ToString();
+                txtEstado.Text = "Paciente Seleccionado : " + dgvLista.Rows[this.SelectRow].Cells["dgvLastName"].Value.ToString();
 
                 frmGrandfather frmGrandfatherulario = new frmGrandfather();
                 frmGrandfatherulario.Modo = frmGrandfather.Vista.Ver;
@@ -157,29 +169,14 @@ namespace myExplorer.Formularios
             }
         }
 
-        private void tsmiTurnos_Click(object sender, EventArgs e)
-        {
-            //if (dgvLista.Rows.Count != 0)
-            //{
-            //    this.IdGrandfather = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
-            //    txtEstado.Text = "Paciente Seleccionado : " + dgvLista.Rows[this.SelectRow].Cells["dgvApellido"].Value.ToString();
-
-            //    //frmTurno fTurno = new frmTurno();
-            //    //fTurno.oConsulta = this.oConsulta;
-            //    //fTurno.oUtil = this.oUtil;
-            //    //fTurno.oPersona = oConsulta.SelectPersona(
-            //    //    new classGrandfather(this.IdGrandfather, 0, 0, 0, 0, "", "", "", DateTime.Now, DateTime.Now, 0, "", "", ""));
-            //    //fTurno.ShowDialog();
-            //}
-        }
-
         #endregion
 
+        // REVISADO - 17/09/09
         #region Metodos
 
         /// <summary>
         /// Configura el formulario.
-        /// OK 18/05/12
+        /// REVISADO - 17/09/09
         /// </summary>
         public void ConfiguracionInicial()
         {
@@ -191,50 +188,49 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// OK 21/05/12
+        /// REVISADO - 17/09/09
         /// </summary>
         public void Filtrar()
         {
-            //this.SelectRow = 0;
+            this.SelectRow = 0;
 
-            //if (dgvLista.Columns.Count != 0)
-            //    dgvLista.Columns.Clear();
+            if (dgvLista.Columns.Count != 0)
+                dgvLista.Columns.Clear();
 
-            //classGrandfather oPersona = new classGrandfather();
-            //oPersona.Apellido = this.oValidarSql.ValidaString(txtbApellido.Text);
-            //oPersona.nAfiliado = this.oValidarSql.ValidaString(txtbNafiliado.Text);
-            //oPersona.SocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
+            classGrandfather oGrandfather = new classGrandfather();
+            oGrandfather.LastName = this.oValidarSql.ValidaString(txtbApellido.Text);
+            oGrandfather.AffiliateNumber = Convert.ToInt32(this.oValidarSql.ValidaString(txtbNafiliado.Text));
+            oGrandfather.IdSocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
 
-            ////lPersonas = oConsulta.FiltroPersona(oPersona);
-            //lPersonas = oConsulta.FiltroPersonaLimite(oPersona, this.Desde, this.Hasta);
+            lGrandfather = oConsulta.FiltroGrandfatherLimite(oGrandfather, this.Desde, this.Hasta);
 
-            //decimal Cont = oConsulta.CountPersona(oPersona);
-            //decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
-            //this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+            decimal Cont = oConsulta.CountGrandfather(oGrandfather);
+            decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
+            this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
 
-            //this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
+            this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
 
-            //this.GenerarGrilla(lPersonas);
+            this.GenerarGrilla(lGrandfather);
 
-            //if (dgvLista.Rows.Count == 0)
-            //{
-            //    tsbImprimir.Enabled = false;
-            //    btnSeleccionar.Enabled = false;
-            //    tsmiTurnos.Enabled = false;
-            //    tsmiVerFicha.Enabled = false;
-            //}
-            //else
-            //{
-            //    tsmiTurnos.Enabled = true;
-            //    tsmiVerFicha.Enabled = true;
-            //        tsbImprimir.Enabled = true;
-            //    btnSeleccionar.Enabled = true;
-            //}
+            if (dgvLista.Rows.Count == 0)
+            {
+                tsbImprimir.Enabled = false;
+                btnSeleccionar.Enabled = false;
+                tsmiTurnos.Enabled = false;
+                tsmiVerFicha.Enabled = false;
+            }
+            else
+            {
+                tsmiTurnos.Enabled = true;
+                tsmiVerFicha.Enabled = true;
+                tsbImprimir.Enabled = true;
+                btnSeleccionar.Enabled = true;
+            }
         }
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// OK 25/05/12
+        /// REVISADO - 17/09/09
         /// </summary>
         /// <param name="Source"></param>
         public int GenerarGrilla(object Source)
@@ -243,14 +239,14 @@ namespace myExplorer.Formularios
 
                 dgvLista.Columns.Clear();
             //
-            //Columna Oculta ID
+            // Columna Oculta ID
             //
             dgvLista.Columns.Add("grvId", "ID");
             dgvLista.Columns["grvId"].DataPropertyName = "IdGrandfather";
             dgvLista.Columns["grvId"].Visible = false;
             dgvLista.Columns["grvId"].DefaultCellStyle.NullValue = "0";
             //
-            //Columna  Obra Social
+            // Columna SocialWork
             //
             dgvLista.Columns.Add("drvSocialWork", "Obra Social");
             dgvLista.Columns["drvSocialWork"].DataPropertyName = "SocialWork";
@@ -258,33 +254,33 @@ namespace myExplorer.Formularios
             dgvLista.Columns["drvSocialWork"].DefaultCellStyle.NullValue = "No especificado";
             dgvLista.Columns["drvSocialWork"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             //
-            //Columna nAfiliado
+            //Columna AffiliateNumber
             //
-            dgvLista.Columns.Add("grvnAfiliado", "N° Afiliado");
-            dgvLista.Columns["grvnAfiliado"].DataPropertyName = "nAfiliado";
-            dgvLista.Columns["grvnAfiliado"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvnAfiliado"].DefaultCellStyle.NullValue = "No especificado";
+            dgvLista.Columns.Add("grvAffiliateNumber", "N° Afiliado");
+            dgvLista.Columns["grvAffiliateNumber"].DataPropertyName = "AffiliateNumber";
+            dgvLista.Columns["grvAffiliateNumber"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvLista.Columns["grvAffiliateNumber"].DefaultCellStyle.NullValue = "No especificado";
             //
-            //Columna Apellido
+            //Columna LastName
             //
-            dgvLista.Columns.Add("dgvApellido", "Apellido");
-            dgvLista.Columns["dgvApellido"].DataPropertyName = "Apellido";
-            dgvLista.Columns["dgvApellido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["dgvApellido"].DefaultCellStyle.NullValue = "No especificado";
+            dgvLista.Columns.Add("dgvLastName", "Apellido");
+            dgvLista.Columns["dgvLastName"].DataPropertyName = "LastName";
+            dgvLista.Columns["dgvLastName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvLista.Columns["dgvLastName"].DefaultCellStyle.NullValue = "No especificado";
             //
-            //Columna Nombre
+            //Columna Nome
             //
-            dgvLista.Columns.Add("grvNombre", "Nombre");
-            dgvLista.Columns["grvNombre"].DataPropertyName = "Nombre";
-            dgvLista.Columns["grvNombre"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvNombre"].DefaultCellStyle.NullValue = "No especificado";
+            dgvLista.Columns.Add("grvNome", "Nombre");
+            dgvLista.Columns["grvNome"].DataPropertyName = "Name";
+            dgvLista.Columns["grvNome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvLista.Columns["grvNome"].DefaultCellStyle.NullValue = "No especificado";
             //
-            //Columna Nombre
+            //Columna Sex
             //
-            dgvLista.Columns.Add("grvSexo", "Sexo");
-            dgvLista.Columns["grvSexo"].DataPropertyName = "Sexo";
-            dgvLista.Columns["grvSexo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvSexo"].DefaultCellStyle.NullValue = "No especificado";
+            dgvLista.Columns.Add("grvSex", "Sexo");
+            dgvLista.Columns["grvSex"].DataPropertyName = "Sex";
+            dgvLista.Columns["grvSex"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvLista.Columns["grvSex"].DefaultCellStyle.NullValue = "No especificado";
             //
             //Configuracion del DataListView
             //
@@ -302,6 +298,5 @@ namespace myExplorer.Formularios
         }
 
         #endregion
-
     }
 }

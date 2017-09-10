@@ -11,6 +11,7 @@ using Entidades;
 using Entidades.Clases;
 //using Reportes;
 using Controles;
+using libLocalitation.Forms;
 
 namespace myExplorer.Formularios
 {
@@ -21,7 +22,7 @@ namespace myExplorer.Formularios
         public enum Modo { Nuevo, Ver, Modificar }
 
         public Modo Acto { set; get; }
-        public int IdUsuario { set; get; }
+        public int IdProfessional { set; get; }
 
         public classConsultas oConsulta { set; get; }
         public classProfessional oProfessional { set; get; }
@@ -69,10 +70,10 @@ namespace myExplorer.Formularios
                     // Guarda
                     if (oConsulta.AddProfessional(oProfessional))
                     {
-                        MessageBox.Show(oTxt.AgregarUsuario);
+                        MessageBox.Show(oTxt.AgregarProfesional);
                         this.Acto = Modo.Modificar;
                         this.oProfessional.IdProfessional = oConsulta.UltimoIdProfessional();
-                        this.IdUsuario = 0;
+                        this.IdProfessional = 0;
                         this.ini();
                     }
                     else
@@ -84,7 +85,7 @@ namespace myExplorer.Formularios
                     // Actualiza
                     if (oConsulta.UpdateProfessional(oProfessional))
                     {
-                        MessageBox.Show(oTxt.ModificarUsuario);
+                        MessageBox.Show(oTxt.ModificarProfesional);
                         this.Acto = Modo.Modificar;
                         this.ini();
                     }
@@ -106,7 +107,7 @@ namespace myExplorer.Formularios
         //OK 11/06/12
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            frmVerUsuarios frmVer = new frmVerUsuarios();
+            frmListProfessional frmVer = new frmListProfessional();
             frmVer.oConsulta = this.oConsulta;
             frmVer.oUtil = this.oUtil;
 
@@ -114,7 +115,8 @@ namespace myExplorer.Formularios
             {
                 if (frmVer.IdSelecionado != 0)
                 {
-                    oProfessional = oConsulta.SelectProfessional(new classProfessional(frmVer.IdSelecionado, 0,"", "", "", "", "", "", "",false));
+                    //oProfessional = oConsulta.SelectProfessional(
+                    //    new classProfessional(frmVer.IdSelecionado, 0,"", "", "", "", "", "", "",false));
                     this.Acto = Modo.Modificar;
                     this.ini();
                 }
@@ -137,6 +139,24 @@ namespace myExplorer.Formularios
                     btnBloquear.Text = oTxt.Bloquear;
                 }
                 btnGuardar_Click(sender, e);
+            }
+        }
+
+        #endregion
+
+        // REVISAR 17/09/09
+        #region Botones Auxiliares
+
+        // REVISAR 17/09/09
+        private void btnLocalitation_Click(object sender, EventArgs e)
+        {
+            frmLocation fLocalitation = new frmLocation("", frmLocation.eLocation.Select);
+            if (DialogResult.OK == fLocalitation.ShowDialog())
+            {
+                txtLocation.Text = fLocalitation.toStringLocation();
+                oProfessional.IdLocationCountry = fLocalitation.getIdCountry();
+                oProfessional.IdLocationProvince = fLocalitation.getIdProvince();
+                oProfessional.IdLocationCity = fLocalitation.getIdCity();
             }
         }
 
@@ -169,9 +189,9 @@ namespace myExplorer.Formularios
         /// </summary>
         private void ini()
         {
-            if (this.IdUsuario != 0)
+            if (this.IdProfessional != 0)
             {
-                oProfessional.IdProfessional = this.IdUsuario;
+                oProfessional.IdProfessional = this.IdProfessional;
                 oProfessional = oConsulta.SelectProfessional(oProfessional);
                 btnBloquear.Enabled = true;
             }

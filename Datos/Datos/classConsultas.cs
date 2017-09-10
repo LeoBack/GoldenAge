@@ -556,34 +556,34 @@ namespace Datos
         {
             classProfessional oTr = new classProfessional();
 
-            string Consulta = "SELECT IdProfessional, ProfessionalRegistration,Name, LastName, Address, Phone, Mail, User, Password, Visible FROM Professional ";
+            //string Consulta = "SELECT IdProfessional, ProfessionalRegistration,Name, LastName, Address, Phone, Mail, User, Password, Visible FROM Professional ";
 
-            if (oU.IdProfessional != 0)
-                Consulta = Consulta + "WHERE IdProfessional = " + oU.IdProfessional;
-            else
-                Consulta = Consulta + "WHERE User LIKE '" + oU.User + "' AND Password LIKE '" + oU.Password + "'";
+            //if (oU.IdProfessional != 0)
+            //    Consulta = Consulta + "WHERE IdProfessional = " + oU.IdProfessional;
+            //else
+            //    Consulta = Consulta + "WHERE User LIKE '" + oU.User + "' AND Password LIKE '" + oU.Password + "'";
 
-            if (Sql.SelectReaderDB(Consulta + " ORDER BY Name;",
-                null,
-                "SelectProfessional"))
-            {
-                Sql.Reader.Read();
-                oTr = new classProfessional(
-                    Convert.ToInt32(Sql.Reader["IdProfessional"])
-                    , Convert.ToInt32(Sql.Reader["ProfessionalRegistration"])
-                    , Sql.Reader["Name"].ToString()
-                    , Sql.Reader["LastName"].ToString()
-                    , Sql.Reader["Address"].ToString()
-                    , Sql.Reader["Phone"].ToString()
-                    , Sql.Reader["Mail"].ToString()
-                    , Sql.Reader["User"].ToString()
-                    , Sql.Reader["Password"].ToString()
-                    , Convert.ToBoolean(Sql.Reader["Visible"])
-                    );
+            //if (Sql.SelectReaderDB(Consulta + " ORDER BY Name;",
+            //    null,
+            //    "SelectProfessional"))
+            //{
+            //    Sql.Reader.Read();
+            //    oTr = new classProfessional(
+            //        Convert.ToInt32(Sql.Reader["IdProfessional"])
+            //        , Convert.ToInt32(Sql.Reader["ProfessionalRegistration"])
+            //        , Sql.Reader["Name"].ToString()
+            //        , Sql.Reader["LastName"].ToString()
+            //        , Sql.Reader["Address"].ToString()
+            //        , Sql.Reader["Phone"].ToString()
+            //        , Sql.Reader["Mail"].ToString()
+            //        , Sql.Reader["User"].ToString()
+            //        , Sql.Reader["Password"].ToString()
+            //        , Convert.ToBoolean(Sql.Reader["Visible"])
+            //        );
 
-                Sql.Reader.Close();
-                Sql.Desconectar();
-            }
+            //    Sql.Reader.Close();
+            //    Sql.Desconectar();
+            //}
 
             return oTr;
         }
@@ -681,29 +681,29 @@ namespace Datos
         {
             classSocialWork oSa = null;
 
-            string Consulta = "SELECT IdSocialWork, Name, Description, Address, Phone, AlternativePhone, Visible"
-                + "FROM SocialWork WHERE IdSocialWork = " + oS.IdSocialWork + " AND Visible = " + oS.Visible +
-                " AND IdSocialWork BETWEEN 2 AND (SELECT MAX(I.IdSocialWork) FROM SocialWork AS I);";
+            //string Consulta = "SELECT IdSocialWork, Name, Description, Address, Phone, AlternativePhone, Visible"
+            //    + "FROM SocialWork WHERE IdSocialWork = " + oS.IdSocialWork + " AND Visible = " + oS.Visible +
+            //    " AND IdSocialWork BETWEEN 2 AND (SELECT MAX(I.IdSocialWork) FROM SocialWork AS I);";
 
-            if (Sql.SelectReaderDB(Consulta, null, "SelectSocialWork"))
-            {
-                while (Sql.Reader.Read())
-                {
-                    classSocialWork oSr = new classSocialWork(
-                        Convert.ToInt32(Sql.Reader["IdSocialWork"])
-                        , Sql.Reader["Name"].ToString()
-                        , Sql.Reader["Description"].ToString()
-                        , Sql.Reader["Address"].ToString()
-                        , Sql.Reader["Phone"].ToString()
-                        , Sql.Reader["AlternativePhone"].ToString()
-                        , Convert.ToBoolean(Sql.Reader["Visible"])
-                        );
-                    oSa = oSr;
-                }
+            //if (Sql.SelectReaderDB(Consulta, null, "SelectSocialWork"))
+            //{
+            //    while (Sql.Reader.Read())
+            //    {
+            //        classSocialWork oSr = new classSocialWork(
+            //            Convert.ToInt32(Sql.Reader["IdSocialWork"])
+            //            , Sql.Reader["Name"].ToString()
+            //            , Sql.Reader["Description"].ToString()
+            //            , Sql.Reader["Address"].ToString()
+            //            , Sql.Reader["Phone"].ToString()
+            //            , Sql.Reader["AlternativePhone"].ToString()
+            //            , Convert.ToBoolean(Sql.Reader["Visible"])
+            //            );
+            //        oSa = oSr;
+            //    }
 
-                Sql.Reader.Close();
-                Sql.Desconectar();
-            }
+            //    Sql.Reader.Close();
+            //    Sql.Desconectar();
+            //}
             return oSa;
         }
 
@@ -2987,6 +2987,41 @@ namespace Datos
 
 
         #endregion
+
+        public List<classProfessional> FiltroUsuarioLimite(string p1, bool p2, int p3, int p4)
+        {
+            throw new NotImplementedException();
+        }
+
+        public decimal CountProfesionales(string p1, bool p2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public decimal CountSocialWork(string p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<classSocialWork> FiltroSocialWorkLimite(string p1, int p2, int p3)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool rListaGrandfatherLimite(string p1, classGrandfather oP, int p2, int p3)
+        {
+            throw new NotImplementedException();
+        }
+
+        public decimal CountGrandfather(classGrandfather oPersona)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Entidades.Clases.Grillas.grvGrandfather> FiltroGrandfatherLimite(classGrandfather oPersona, int p1, int p2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

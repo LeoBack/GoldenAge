@@ -1,6 +1,6 @@
 ﻿namespace myExplorer.Formularios
 {
-    partial class frmVerUsuarios
+    partial class frmListProfessional
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVerUsuarios));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListProfessional));
             this.tlpPanel = new System.Windows.Forms.TableLayoutPanel();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.dgvLista = new System.Windows.Forms.DataGridView();
@@ -37,10 +37,10 @@
             this.tstxtNombre = new System.Windows.Forms.ToolStripTextBox();
             this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tsbUsuario = new System.Windows.Forms.ToolStripButton();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.tslPagina = new System.Windows.Forms.ToolStripLabel();
             this.tsbSiguiente = new System.Windows.Forms.ToolStripButton();
             this.tsbAnterior = new System.Windows.Forms.ToolStripButton();
-            this.tslPagina = new System.Windows.Forms.ToolStripLabel();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
             this.tlpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.tsMenu.SuspendLayout();
@@ -49,31 +49,33 @@
             // tlpPanel
             // 
             this.tlpPanel.ColumnCount = 5;
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 196F));
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 294F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
             this.tlpPanel.Controls.Add(this.btnCerrar, 4, 2);
             this.tlpPanel.Controls.Add(this.dgvLista, 0, 1);
             this.tlpPanel.Controls.Add(this.tsMenu, 0, 0);
             this.tlpPanel.Controls.Add(this.btnSeleccionar, 3, 2);
             this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanel.Location = new System.Drawing.Point(0, 0);
+            this.tlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tlpPanel.Name = "tlpPanel";
             this.tlpPanel.RowCount = 3;
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tlpPanel.Size = new System.Drawing.Size(622, 450);
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tlpPanel.Size = new System.Drawing.Size(933, 692);
             this.tlpPanel.TabIndex = 0;
             // 
             // btnCerrar
             // 
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCerrar.Location = new System.Drawing.Point(541, 397);
+            this.btnCerrar.Location = new System.Drawing.Point(811, 611);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 50);
+            this.btnCerrar.Size = new System.Drawing.Size(112, 76);
             this.btnCerrar.TabIndex = 3;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
@@ -84,9 +86,10 @@
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tlpPanel.SetColumnSpan(this.dgvLista, 5);
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(3, 42);
+            this.dgvLista.Location = new System.Drawing.Point(4, 65);
+            this.dgvLista.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(616, 349);
+            this.dgvLista.Size = new System.Drawing.Size(925, 536);
             this.dgvLista.TabIndex = 5;
             this.dgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
             // 
@@ -104,7 +107,8 @@
             this.tsbAnterior});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Size = new System.Drawing.Size(622, 39);
+            this.tsMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.tsMenu.Size = new System.Drawing.Size(933, 39);
             this.tsMenu.TabIndex = 7;
             this.tsMenu.Text = "Menu";
             // 
@@ -116,7 +120,7 @@
             // tstxtNombre
             // 
             this.tstxtNombre.Name = "tstxtNombre";
-            this.tstxtNombre.Size = new System.Drawing.Size(100, 39);
+            this.tstxtNombre.Size = new System.Drawing.Size(148, 39);
             this.tstxtNombre.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tsbBuscar
@@ -124,7 +128,7 @@
             this.tsbBuscar.Image = global::myExplorer.Properties.Resources.Search;
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(78, 36);
+            this.tsbBuscar.Size = new System.Drawing.Size(99, 36);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
             // 
@@ -133,21 +137,16 @@
             this.tsbUsuario.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
             this.tsbUsuario.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbUsuario.Name = "tsbUsuario";
-            this.tsbUsuario.Size = new System.Drawing.Size(83, 36);
+            this.tsbUsuario.Size = new System.Drawing.Size(108, 36);
             this.tsbUsuario.Text = "Usuario";
             this.tsbUsuario.Click += new System.EventHandler(this.tsbUsuario_Click);
             // 
-            // btnSeleccionar
+            // tslPagina
             // 
-            this.btnSeleccionar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnSeleccionar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSeleccionar.Location = new System.Drawing.Point(455, 397);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(75, 50);
-            this.btnSeleccionar.TabIndex = 8;
-            this.btnSeleccionar.Text = "Seleccionar";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
+            this.tslPagina.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tslPagina.Name = "tslPagina";
+            this.tslPagina.Size = new System.Drawing.Size(82, 36);
+            this.tslPagina.Text = "tslPagina";
             // 
             // tsbSiguiente
             // 
@@ -171,24 +170,31 @@
             this.tsbAnterior.Text = "Anterior";
             this.tsbAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
-            // tslPagina
+            // btnSeleccionar
             // 
-            this.tslPagina.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tslPagina.Name = "tslPagina";
-            this.tslPagina.Size = new System.Drawing.Size(55, 36);
-            this.tslPagina.Text = "tslPagina";
+            this.btnSeleccionar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnSeleccionar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSeleccionar.Location = new System.Drawing.Point(682, 611);
+            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(112, 76);
+            this.btnSeleccionar.TabIndex = 8;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
-            // frmVerUsuarios
+            // frmListProfessional
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 450);
+            this.ClientSize = new System.Drawing.Size(933, 692);
             this.Controls.Add(this.tlpPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmVerUsuarios";
-            this.Text = "frmAux";
+            this.Name = "frmListProfessional";
+            this.Text = "Lista de Profesionales";
             this.Load += new System.EventHandler(this.frmAux_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tlpPanel.PerformLayout();

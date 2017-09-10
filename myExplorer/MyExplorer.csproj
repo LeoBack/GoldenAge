@@ -107,11 +107,11 @@
     <Compile Include="Formularios\frmEstadistica.Designer.cs">
       <DependentUpon>frmEstadistica.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmVerUsuarios.cs">
+    <Compile Include="Formularios\frmListProfessional.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmVerUsuarios.Designer.cs">
-      <DependentUpon>frmVerUsuarios.cs</DependentUpon>
+    <Compile Include="Formularios\frmListProfessional.Designer.cs">
+      <DependentUpon>frmListProfessional.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmAcercaDe.cs">
       <SubType>Form</SubType>
@@ -137,11 +137,11 @@
     <Compile Include="Formularios\frmAbmProfessional.Designer.cs">
       <DependentUpon>frmAbmProfessional.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmVerObraSocial.cs">
+    <Compile Include="Formularios\frmListSocialWorks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmVerObraSocial.Designer.cs">
-      <DependentUpon>frmVerObraSocial.cs</DependentUpon>
+    <Compile Include="Formularios\frmListSocialWorks.Designer.cs">
+      <DependentUpon>frmListSocialWorks.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmAbmSocialWork.cs">
       <SubType>Form</SubType>
@@ -167,11 +167,11 @@
     <Compile Include="Formularios\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmSearch.cs">
+    <Compile Include="Formularios\frmListGrandfather.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmSearch.Designer.cs">
-      <DependentUpon>frmSearch.cs</DependentUpon>
+    <Compile Include="Formularios\frmListGrandfather.Designer.cs">
+      <DependentUpon>frmListGrandfather.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Interfaz.cs" />
     <Compile Include="Formularios\frmDialogoImprecion.cs">
@@ -185,8 +185,8 @@
     <EmbeddedResource Include="Formularios\frmEstadistica.resx">
       <DependentUpon>frmEstadistica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmVerUsuarios.resx">
-      <DependentUpon>frmVerUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmListProfessional.resx">
+      <DependentUpon>frmListProfessional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>
@@ -200,8 +200,8 @@
     <EmbeddedResource Include="Formularios\frmAbmProfessional.resx">
       <DependentUpon>frmAbmProfessional.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmVerObraSocial.resx">
-      <DependentUpon>frmVerObraSocial.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmListSocialWorks.resx">
+      <DependentUpon>frmListSocialWorks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAbmSocialWork.resx">
       <DependentUpon>frmAbmSocialWork.cs</DependentUpon>
@@ -215,8 +215,8 @@
     <EmbeddedResource Include="Formularios\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmSearch.resx">
-      <DependentUpon>frmSearch.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmListGrandfather.resx">
+      <DependentUpon>frmListGrandfather.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmDialogoImprecion.resx">
       <DependentUpon>frmDialogoImprecion.cs</DependentUpon>

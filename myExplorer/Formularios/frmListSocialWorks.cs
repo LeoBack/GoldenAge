@@ -13,8 +13,9 @@ using Controles;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmVerSocialWork : Form
+    public partial class frmListSocialWorks : Form
     {
+        // REVISADO - 17/09/09
         #region Atributos y Propiedades
 
         public classConsultas oConsulta { set; get; }
@@ -33,19 +34,19 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        //OK 03/06/12
+        // REVISADO - 17/09/09
         #region Formulario
 
-        //OK 25/05/12
-        public frmVerSocialWork()
+        // REVISADO - 17/09/09
+        public frmListSocialWorks()
         {
             InitializeComponent();
         }
 
-        //OK 25/05/12
+        // REVISADO - 17/09/09
         private void frmAux_Load(object sender, EventArgs e)
         {
-            this.Text = oTxt.TituloObrasSociales;
+            this.Text = oTxt.TituloSocialWorks;
 
             if (oConsulta != null)
             {
@@ -61,9 +62,10 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        //OK 03/06/12
+        // REVISADO - 17/09/09
         #region Botones
 
+        // REVISADO - 17/09/09
         private void tsbImprimir_Click(object sender, EventArgs e)
         {
             if (dgvLista.Rows.Count != 0)
@@ -78,7 +80,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK 24/06/12
+        // REVISADO - 17/09/09
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             if (this.Pag < this.cantPag)
@@ -89,7 +91,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK 24/06/12
+        // REVISADO - 17/09/09
         private void btnAnterior_Click(object sender, EventArgs e)
         {
             if (this.Pag > 1)
@@ -100,13 +102,13 @@ namespace myExplorer.Formularios
             }
         }
 
-        //OK 24/05/12
+        // REVISADO - 17/09/09
         private void tsbBuscar_Click(object sender, EventArgs e)
         {
            this.Filtrar();
         }
 
-        //OK 03/06/12
+        // REVISADO - 17/09/09
         private void tsbAgregar_Click(object sender, EventArgs e)
         {
                 frmAbmSocialWork frmA = new frmAbmSocialWork();
@@ -118,15 +120,15 @@ namespace myExplorer.Formularios
                 frmAux_Load(sender, e);
         }
 
-        //OK 03/06/12
+        // REVISADO - 17/09/09
         private void tsmiEliminar_Click(object sender, EventArgs e)
         {
-            classSocialWork oOS = new classSocialWork();
+            classSocialWork oSw = new classSocialWork();
 
             if (dgvLista.Rows.Count != 0)
             {
-                //oOS.Id = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
-                oOS = oConsulta.SelectSocialWork(oOS);
+                oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
+                oSw = oConsulta.SelectSocialWork(oSw);
             }
 
             if (oConsulta.Error)
@@ -134,7 +136,7 @@ namespace myExplorer.Formularios
                 frmAbmSocialWork frmA = new frmAbmSocialWork();
                 frmA.oConsulta = this.oConsulta;
                 frmA.oUtil = this.oUtil;
-                frmA.oSocialWork = oOS;
+                frmA.oSocialWork = oSw;
                 frmA.Acto = frmAbmSocialWork.Accion.Eliminar;
                 frmA.ShowDialog();
 
@@ -147,14 +149,14 @@ namespace myExplorer.Formularios
             }
         }
 
-        //OK 03/06/12
+        // REVISADO - 17/09/09
         private void tsmiModificar_Click(object sender, EventArgs e)
         {
             classSocialWork oOS = new classSocialWork();
 
             if (dgvLista.Rows.Count != 0)
             {
-               // oOS.Id = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
+                oOS.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
                 oOS = oConsulta.SelectSocialWork(oOS);
             }
 
@@ -176,19 +178,19 @@ namespace myExplorer.Formularios
             }
         }
 
-        //OK 03/06/12
+        // REVISADO - 17/09/09
         private void tsmiAgregar_Click(object sender, EventArgs e)
         {
             tsbAgregar_Click(sender, e);
         }
 
-        //OK 24/05/12
+        // REVISADO - 17/09/09
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             //this.Close();
         }
 
-        //OK 24/05/12
+        // REVISADO - 17/09/09
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.SelectRow = e.RowIndex;
@@ -196,37 +198,37 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        //OK 03/06/12
+        // REVISADO - 17/09/09
         #region Metodos
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// OK 21/03/12
+        /// REVISADO - 17/09/09
         /// </summary>
         public void Filtrar()
         {
-            //lSocialWork = oConsulta.FiltroSocialWorkLimite(
-            //    this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text),
-            //    this.Desde, this.Hasta);
+            lSocialWork = oConsulta.FiltroSocialWorkLimite(
+                this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text),
+                this.Desde, this.Hasta);
 
-            //decimal Cont = oConsulta.CountSocialWork(tstxtNombre.TextBox.Text);
-            //decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
-            //this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+            decimal Cont = oConsulta.CountSocialWork(tstxtNombre.TextBox.Text);
+            decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
+            this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
 
-            //this.tslPagina.Text = "Página: " +Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
+            this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
 
-            //if (oConsulta.Error)
-            //{
-            //    dgvLista.Columns.Clear();
-            //    this.GenerarGrilla(lSocialWork);
-            //}
-            //else
-            //    MessageBox.Show(oTxt.ErrorListaConsulta);
+            if (oConsulta.Error)
+            {
+                dgvLista.Columns.Clear();
+                this.GenerarGrilla(lSocialWork);
+            }
+            else
+                MessageBox.Show(oTxt.ErrorListaConsulta);
         }
 
         /// <summary>
         /// Carga la Lista de Obras Sociales
-        /// OK 18/04/12
+        /// REVISADO - 17/09/09
         /// </summary>
         /// <param name="Source"></param>
         public void GenerarGrilla(object Source)
@@ -235,25 +237,25 @@ namespace myExplorer.Formularios
             //Columna Oculta ID
             //
             dgvLista.Columns.Add("grvId", "ID");
-            dgvLista.Columns["grvId"].DataPropertyName = "Id";
+            dgvLista.Columns["grvId"].DataPropertyName = "IdSocialWork";
             dgvLista.Columns["grvId"].Visible = false;
             dgvLista.Columns["grvId"].DefaultCellStyle.NullValue = "0";
             //
-            //Columna Nombre
+            //Columna Nome
             //
             dgvLista.Columns.Add("grvNombre", "Nombre");
-            dgvLista.Columns["grvNombre"].DataPropertyName = "Nombre";
-            dgvLista.Columns["grvNombre"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvNombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvLista.Columns["grvNombre"].DefaultCellStyle.NullValue = "No especificado";
+            dgvLista.Columns["grvNome"].DataPropertyName = "Name";
+            dgvLista.Columns["grvNome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvLista.Columns["grvNome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvLista.Columns["grvNome"].DefaultCellStyle.NullValue = "No especificado";
             //
-            //Columna Detalle
+            //Columna Description
             //
-            dgvLista.Columns.Add("grvDescripcion", "Descripcion");
-            dgvLista.Columns["grvDescripcion"].DataPropertyName = "Descripcion";
-            dgvLista.Columns["grvDescripcion"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvDescripcion"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvLista.Columns["grvDescripcion"].DefaultCellStyle.NullValue = "No especificado";
+            dgvLista.Columns.Add("grvDescription", "Descripcion");
+            dgvLista.Columns["grvDescription"].DataPropertyName = "Descripcion";
+            dgvLista.Columns["grvDescription"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvLista.Columns["grvDescription"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvLista.Columns["grvDescription"].DefaultCellStyle.NullValue = "No especificado";
             //
             //Configuracion del DataListView
             //
@@ -269,7 +271,5 @@ namespace myExplorer.Formularios
         }
 
         #endregion
-
-
     }
 }

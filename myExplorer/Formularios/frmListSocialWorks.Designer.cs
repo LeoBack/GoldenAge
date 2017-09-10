@@ -1,6 +1,6 @@
 ﻿namespace myExplorer.Formularios
 {
-    partial class frmVerSocialWork
+    partial class frmListSocialWorks
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVerSocialWork));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListSocialWorks));
             this.tlpPanel = new System.Windows.Forms.TableLayoutPanel();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblInfo = new System.Windows.Forms.Label();
@@ -42,11 +42,11 @@
             this.tslPagina = new System.Windows.Forms.ToolStripLabel();
             this.tsbSiguiente = new System.Windows.Forms.ToolStripButton();
             this.tsbAnterior = new System.Windows.Forms.ToolStripButton();
+            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAgregar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.tlpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.tsMenu.SuspendLayout();
@@ -56,29 +56,31 @@
             // tlpPanel
             // 
             this.tlpPanel.ColumnCount = 3;
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tlpPanel.Controls.Add(this.btnCerrar, 2, 2);
             this.tlpPanel.Controls.Add(this.lblInfo, 0, 2);
             this.tlpPanel.Controls.Add(this.dgvLista, 0, 1);
             this.tlpPanel.Controls.Add(this.tsMenu, 0, 0);
             this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanel.Location = new System.Drawing.Point(0, 0);
+            this.tlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tlpPanel.Name = "tlpPanel";
             this.tlpPanel.RowCount = 3;
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tlpPanel.Size = new System.Drawing.Size(854, 450);
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tlpPanel.Size = new System.Drawing.Size(1281, 692);
             this.tlpPanel.TabIndex = 0;
             // 
             // btnCerrar
             // 
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnCerrar.Location = new System.Drawing.Point(772, 397);
+            this.btnCerrar.Location = new System.Drawing.Point(1157, 611);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 50);
+            this.btnCerrar.Size = new System.Drawing.Size(112, 76);
             this.btnCerrar.TabIndex = 3;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
@@ -88,9 +90,10 @@
             // 
             this.lblInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(3, 415);
+            this.lblInfo.Location = new System.Drawing.Point(4, 639);
+            this.lblInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(25, 13);
+            this.lblInfo.Size = new System.Drawing.Size(37, 20);
             this.lblInfo.TabIndex = 4;
             this.lblInfo.Text = "Info";
             // 
@@ -99,9 +102,10 @@
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tlpPanel.SetColumnSpan(this.dgvLista, 3);
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(3, 42);
+            this.dgvLista.Location = new System.Drawing.Point(4, 65);
+            this.dgvLista.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(848, 349);
+            this.dgvLista.Size = new System.Drawing.Size(1273, 536);
             this.dgvLista.TabIndex = 5;
             this.dgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
             // 
@@ -120,7 +124,8 @@
             this.tsbImprimir});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Size = new System.Drawing.Size(854, 39);
+            this.tsMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.tsMenu.Size = new System.Drawing.Size(1281, 39);
             this.tsMenu.TabIndex = 7;
             this.tsMenu.Text = "Menu";
             // 
@@ -129,7 +134,7 @@
             this.tsbAgregar.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsbAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAgregar.Name = "tsbAgregar";
-            this.tsbAgregar.Size = new System.Drawing.Size(85, 36);
+            this.tsbAgregar.Size = new System.Drawing.Size(112, 36);
             this.tsbAgregar.Text = "Agregar";
             this.tsbAgregar.Click += new System.EventHandler(this.tsbAgregar_Click);
             // 
@@ -141,7 +146,7 @@
             // tstxtNombre
             // 
             this.tstxtNombre.Name = "tstxtNombre";
-            this.tstxtNombre.Size = new System.Drawing.Size(100, 39);
+            this.tstxtNombre.Size = new System.Drawing.Size(148, 39);
             this.tstxtNombre.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tsbBuscar
@@ -149,7 +154,7 @@
             this.tsbBuscar.Image = global::myExplorer.Properties.Resources.Search;
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(78, 36);
+            this.tsbBuscar.Size = new System.Drawing.Size(99, 36);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
             // 
@@ -157,7 +162,7 @@
             // 
             this.tslPagina.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tslPagina.Name = "tslPagina";
-            this.tslPagina.Size = new System.Drawing.Size(55, 36);
+            this.tslPagina.Size = new System.Drawing.Size(82, 36);
             this.tslPagina.Text = "tslPagina";
             // 
             // tsbSiguiente
@@ -182,20 +187,30 @@
             this.tsbAnterior.Text = "Anterior";
             this.tsbAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
+            // tsbImprimir
+            // 
+            this.tsbImprimir.Image = global::myExplorer.Properties.Resources.Printer;
+            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbImprimir.Name = "tsbImprimir";
+            this.tsbImprimir.Size = new System.Drawing.Size(116, 36);
+            this.tsbImprimir.Text = "Imprimir";
+            this.tsbImprimir.Click += new System.EventHandler(this.tsbImprimir_Click);
+            // 
             // cmsMenuEmergente
             // 
+            this.cmsMenuEmergente.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsMenuEmergente.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiModificar,
             this.tsmiEliminar,
             this.tsmiAgregar});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(126, 70);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(168, 94);
             // 
             // tsmiModificar
             // 
             this.tsmiModificar.Image = global::myExplorer.Properties.Resources.EditFile;
             this.tsmiModificar.Name = "tsmiModificar";
-            this.tsmiModificar.Size = new System.Drawing.Size(125, 22);
+            this.tsmiModificar.Size = new System.Drawing.Size(167, 30);
             this.tsmiModificar.Text = "Modificar";
             this.tsmiModificar.Click += new System.EventHandler(this.tsmiModificar_Click);
             // 
@@ -203,7 +218,7 @@
             // 
             this.tsmiEliminar.Image = global::myExplorer.Properties.Resources.Error;
             this.tsmiEliminar.Name = "tsmiEliminar";
-            this.tsmiEliminar.Size = new System.Drawing.Size(125, 22);
+            this.tsmiEliminar.Size = new System.Drawing.Size(167, 30);
             this.tsmiEliminar.Text = "Eliminar";
             this.tsmiEliminar.Click += new System.EventHandler(this.tsmiEliminar_Click);
             // 
@@ -211,30 +226,22 @@
             // 
             this.tsmiAgregar.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsmiAgregar.Name = "tsmiAgregar";
-            this.tsmiAgregar.Size = new System.Drawing.Size(125, 22);
+            this.tsmiAgregar.Size = new System.Drawing.Size(167, 30);
             this.tsmiAgregar.Text = "Agregar";
             this.tsmiAgregar.Click += new System.EventHandler(this.tsmiAgregar_Click);
             // 
-            // tsbImprimir
+            // frmListSocialWorks
             // 
-            this.tsbImprimir.Image = global::myExplorer.Properties.Resources.Printer;
-            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(89, 36);
-            this.tsbImprimir.Text = "Imprimir";
-            this.tsbImprimir.Click += new System.EventHandler(this.tsbImprimir_Click);
-            // 
-            // frmVerSocialWork
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 450);
+            this.ClientSize = new System.Drawing.Size(1281, 692);
             this.Controls.Add(this.tlpPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmVerSocialWork";
-            this.Text = "frmAux";
+            this.Name = "frmListSocialWorks";
+            this.Text = "Lista de Obras Sociales";
             this.Load += new System.EventHandler(this.frmAux_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tlpPanel.PerformLayout();

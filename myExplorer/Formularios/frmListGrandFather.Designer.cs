@@ -1,6 +1,6 @@
 ﻿namespace myExplorer.Formularios
 {
-    partial class frmSearch
+    partial class frmListGrandfather
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSearch));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListGrandfather));
             this.tlpPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tslApellido = new System.Windows.Forms.ToolStripLabel();
@@ -254,14 +254,6 @@
             this.tsmiVerFicha.Size = new System.Drawing.Size(111, 22);
             this.tsmiVerFicha.Text = "Ficha";
             this.tsmiVerFicha.Click += new System.EventHandler(this.tsmiVerFicha_Click);
-            // 
-            // tsmiTurnos
-            // 
-            this.tsmiTurnos.Image = global::myExplorer.Properties.Resources.Clipboard;
-            this.tsmiTurnos.Name = "tsmiTurnos";
-            this.tsmiTurnos.Size = new System.Drawing.Size(111, 22);
-            this.tsmiTurnos.Text = "Turnos";
-            this.tsmiTurnos.Click += new System.EventHandler(this.tsmiTurnos_Click);
             // 
             // frmSearch
             // 

@@ -43,9 +43,7 @@
     <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
     <Compile Include="Clases\classProfessional.cs" />
-    <Compile Include="Clases\Grillas\grvObraSocial.cs" />
-    <Compile Include="Clases\Grillas\grvPersona.cs" />
-    <Compile Include="Clases\Grillas\grvTurnos.cs" />
+    <Compile Include="Clases\Grillas\grvGrandfather.cs" />
     <Compile Include="Clases\classGrandfather.cs" />
     <Compile Include="Clases\classRelationship.cs" />
     <Compile Include="Clases\classSpecialty.cs" />

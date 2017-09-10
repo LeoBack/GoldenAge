@@ -118,7 +118,7 @@ namespace myExplorer.Formularios
         {
             if (Usuario == EstadoUsuario.Valido)
             {
-                frmSearch frmBuscar = new frmSearch();
+                frmListGrandfather frmBuscar = new frmListGrandfather();
                 frmBuscar.oConsulta = this.oConsulta;
                 frmBuscar.oUtil = this.oUtil;
                 frmBuscar.ShowDialog();
@@ -130,7 +130,7 @@ namespace myExplorer.Formularios
         {
             if (Usuario == EstadoUsuario.Valido)
             {
-                frmVerSocialWork frmSocialWork = new frmVerSocialWork();
+                frmListSocialWorks frmSocialWork = new frmListSocialWorks();
                 frmSocialWork.oConsulta = this.oConsulta;
                 frmSocialWork.oUtil = this.oUtil;
                 frmSocialWork.ShowDialog();
