@@ -67,8 +67,6 @@ namespace myExplorer.Formularios
                 oComboBox.CargaCombo(cmbSocialWork, oConsulta.ListSpecialty(false), oConsulta.Table);
                 //oComboBox.CargaCombo(cmbTipoPaciente, oConsulta.ListaTipoDePersonas(), oConsulta.Table);
 
-                //this.CargarCombosCiudadBarrio();
-
                 this.ini();
             }
             else

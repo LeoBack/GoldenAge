@@ -10,8 +10,8 @@ namespace Controles
         public string SeparadorTitulo = " -> Dr. ";
         public string TituloLogin = " -> Sesion No Iniciada";
         public string TituloAdministradorUsuario = "Administrador de Usuarios.";
-        public string TituloListaUsuarios = "Planilla de Usuarios del Sistema.";
-        public string TituloObrasSociales = "Obras Sociales";
+        public string TituloListaProfesionales = "Planilla de Profesionales.";
+        public string TituloSocialWorks = "Obras Sociales";
         public string TituloSocialWork = "Obra Social - Detalles";
         public string TituloFichaPaciente = "Ficha Medica";
 
@@ -40,11 +40,11 @@ namespace Controles
         public string CerrarSesion = "Cerrar Sesion";
         public string IniciarSesion = "Iniciar Sesion";
 
-        //Usuario
-        public string AgregarUsuario = "El Usuario a sido grabado con exito.";
-        public string ModificarUsuario = "El Usuario a sido actualizado con exito.";
-        public string MostrarUsuariosBloqueados = "Mostrar usuarios bloqueados";
-        public string OcultarUsuariosBloqueados = "Ocultar usuarios bloqueados";
+        // Profesionales
+        public string AgregarProfesional = "El Profesional a sido grabado con exito.";
+        public string ModificarProfesional = "El Profesional a sido actualizado con exito.";
+        public string MostrarProfesionalesBloqueados = "Mostrar Profesionales bloqueados";
+        public string OcultarProfesionalesBloqueados = "Ocultar Profesionales bloqueados";
 
         //Barrio
         public string Barrio = "Barrio";

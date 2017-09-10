@@ -10,6 +10,7 @@ using Entidades;
 using Entidades.Clases;
 using Controles;
 using Datos;
+using libLocalitation.Forms;
 
 namespace myExplorer.Formularios
 {
@@ -65,8 +66,8 @@ namespace myExplorer.Formularios
                         btnCancelar.Enabled = true;
                         this.btnAgregar.Text = oTxt.Editar;
                         // Traigo la Obra Social
-                        oSocialWork = oConsulta.SelectSocialWork(
-                            new classSocialWork(this.IdSocialWork,"","","","","",true));
+                        //oSocialWork = oConsulta.SelectSocialWork(
+                        //    new classSocialWork(this.IdSocialWork,"","","","","",true));
                         // Cargo el Formulario
                         //this.CargarCombosCiudadBarrio();
                         this.CargarFrm();
@@ -93,9 +94,9 @@ namespace myExplorer.Formularios
                 {   //***********Eliminar*************************
                     if (this.IdSocialWork != 0)
                     {   // Consulta de eliminacion
-                        oConsulta.DeleteSocialWork(
-                            new classSocialWork(
-                                this.IdSocialWork, "", "", "", "", "", true), false);
+                        //oConsulta.DeleteSocialWork(
+                        //    new classSocialWork(
+                        //        this.IdSocialWork, "", "", "", "", "", true), false);
                     }
                     else if (oSocialWork != null)
                     {   // Consulta de eliminacion
@@ -190,52 +191,21 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 03/06/12
+        // REVISAR 17/09/09
         #region Botones Auxiliares
 
-        //// FrmAuxiliar
-        //private void btnAddCiudad_Click(object sender, EventArgs e)
-        //{
-        //    frmAuxiliar frmA = new frmAuxiliar();
-        //    frmA.oConsulta = this.oConsulta;
-        //    frmA.oUtil = this.oUtil;
-        //    frmA.tipoObjeto = frmAuxiliar.Tipo.Ciudad;
-        //    frmA.Id = Convert.ToInt32(cmbCiudad.SelectedValue);
-
-        //    if (frmA.ShowDialog() == DialogResult.OK)
-        //    {
-        //        oComboBox.CargaCombo(
-        //            cmbCiudad,
-        //            oConsulta.ListaCiudades(),
-        //            oConsulta.Table);
-        //    }
-        //}
-
-        //// FrmAuxiliar
-        //private void btnAddBarrio_Click(object sender, EventArgs e)
-        //{
-        //    frmAuxiliar frmA = new frmAuxiliar();
-        //    frmA.oConsulta = this.oConsulta;
-        //    frmA.oUtil = this.oUtil;
-        //    frmA.tipoObjeto = frmAuxiliar.Tipo.Barrio;
-        //    frmA.Id = Convert.ToInt32(cmbBarrio.SelectedValue);
-
-        //    if (frmA.ShowDialog() == DialogResult.OK)
-        //    {
-        //        oComboBox.CargaCombo(
-        //            cmbBarrio,
-        //            oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-        //            oConsulta.Table);
-        //    }
-        //}
-
-        //// OK 03/06/12
-        //private void cmbCiudad_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    oComboBox.CargaCombo(cmbBarrio,
-        //        oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-        //        oConsulta.Table);
-        //}
+        // REVISAR 17/09/09
+        private void btnLocalitation_Click(object sender, EventArgs e)
+        {
+            frmLocation fLocalitation = new frmLocation("", frmLocation.eLocation.Select);
+            if(DialogResult.OK == fLocalitation.ShowDialog())
+            {
+                txtLocation.Text = fLocalitation.toStringLocation();
+                oSocialWork.IdLocationCountry = fLocalitation.getIdCountry();
+                oSocialWork.IdLocationProvince = fLocalitation.getIdProvince();
+                oSocialWork.IdLocationCity = fLocalitation.getIdCity();
+            }
+        }
 
         #endregion
 
@@ -332,6 +302,8 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
+
 
     }
 }

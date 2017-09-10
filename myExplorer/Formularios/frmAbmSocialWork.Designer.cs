@@ -43,7 +43,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.lblLocation = new System.Windows.Forms.Label();
             this.txtLocation = new System.Windows.Forms.TextBox();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnLocalitation = new System.Windows.Forms.Button();
             this.tlpPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +67,7 @@
             this.tlpPanel.Controls.Add(this.btnAgregar, 1, 7);
             this.tlpPanel.Controls.Add(this.lblLocation, 0, 4);
             this.tlpPanel.Controls.Add(this.txtLocation, 1, 4);
-            this.tlpPanel.Controls.Add(this.btnEdit, 2, 4);
+            this.tlpPanel.Controls.Add(this.btnLocalitation, 2, 4);
             this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanel.Location = new System.Drawing.Point(0, 0);
             this.tlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -231,14 +231,15 @@
             this.txtLocation.Size = new System.Drawing.Size(330, 26);
             this.txtLocation.TabIndex = 25;
             // 
-            // btnEdit
+            // btnLocalitation
             // 
-            this.btnEdit.Location = new System.Drawing.Point(459, 171);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(86, 36);
-            this.btnEdit.TabIndex = 26;
-            this.btnEdit.Text = "Cambiar";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnLocalitation.Location = new System.Drawing.Point(459, 171);
+            this.btnLocalitation.Name = "btnLocalitation";
+            this.btnLocalitation.Size = new System.Drawing.Size(86, 36);
+            this.btnLocalitation.TabIndex = 26;
+            this.btnLocalitation.Text = "Cambiar";
+            this.btnLocalitation.UseVisualStyleBackColor = true;
+            this.btnLocalitation.Click += new System.EventHandler(this.btnLocalitation_Click);
             // 
             // frmAbmSocialWork
             // 
@@ -277,6 +278,6 @@
         private System.Windows.Forms.Label lblTelefono1;
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.TextBox txtLocation;
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnLocalitation;
     }
 }
