@@ -1,6 +1,6 @@
 ﻿namespace myExplorer.Formularios
 {
-    partial class frmDiagnostico
+    partial class frmAbmDiagnostic
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDiagnostico));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbmDiagnostic));
             this.tlpPanel = new System.Windows.Forms.TableLayoutPanel();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.rtxtDiagnostico = new System.Windows.Forms.RichTextBox();
@@ -138,16 +138,16 @@
             this.cmbPatologia.Size = new System.Drawing.Size(165, 21);
             this.cmbPatologia.TabIndex = 1;
             // 
-            // frmDiagnostico
+            // frmDiagnostic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 393);
             this.Controls.Add(this.tlpPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmDiagnostico";
+            this.Name = "frmDiagnostic";
             this.Text = "Diagnostico";
-            this.Load += new System.EventHandler(this.frmDiagnostico_Load);
+            this.Load += new System.EventHandler(this.frmDiagnostic_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tlpPanel.PerformLayout();
             this.ResumeLayout(false);

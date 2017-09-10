@@ -14,7 +14,7 @@ using Controles;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmUsuario : Form
+    public partial class frmProfessional : Form
     {
         #region Atributos y Propiedades
 
@@ -35,13 +35,13 @@ namespace myExplorer.Formularios
 
         #region Formulario
 
-        public frmUsuario()
+        public frmProfessional()
         {
             InitializeComponent();
         }
 
         //OK 11/06/12
-        private void frmUsuario_Load(object sender, EventArgs e)
+        private void frmProfessional_Load(object sender, EventArgs e)
         {
             if (oConsulta != null)
             {
@@ -292,10 +292,5 @@ namespace myExplorer.Formularios
         }
 
         #endregion
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

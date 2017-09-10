@@ -13,7 +13,7 @@ using Datos;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmDiagnostico : Form
+    public partial class frmAbmDiagnostic : Form
     {
         #region Atributos y Propiedades
 
@@ -34,13 +34,13 @@ namespace myExplorer.Formularios
         #region Formulario
 
         //OK 24/05/12
-        public frmDiagnostico()
+        public frmAbmDiagnostic()
         {
             InitializeComponent();
         }
 
         //OK 24/05/12
-        private void frmDiagnostico_Load(object sender, EventArgs e)
+        private void frmDiagnostic_Load(object sender, EventArgs e)
         {
             if (oConsulta != null)
             {

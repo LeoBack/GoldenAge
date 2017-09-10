@@ -146,12 +146,12 @@ namespace myExplorer.Formularios
                 this.IdGrandfather = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
                 txtEstado.Text = "Paciente Seleccionado : " + dgvLista.Rows[this.SelectRow].Cells["dgvApellido"].Value.ToString();
 
-                frmForm frmFormulario = new frmForm();
-                frmFormulario.Modo = frmForm.Vista.Ver;
-                frmFormulario.oConsulta = this.oConsulta;
-                frmFormulario.IdPaciente = this.IdGrandfather;
-                frmFormulario.oUtil = this.oUtil;
-                frmFormulario.ShowDialog();
+                frmGrandfather frmGrandfatherulario = new frmGrandfather();
+                frmGrandfatherulario.Modo = frmGrandfather.Vista.Ver;
+                frmGrandfatherulario.oConsulta = this.oConsulta;
+                frmGrandfatherulario.IdPaciente = this.IdGrandfather;
+                frmGrandfatherulario.oUtil = this.oUtil;
+                frmGrandfatherulario.ShowDialog();
 
                 this.frmSearch_Load(sender, e);
             }
