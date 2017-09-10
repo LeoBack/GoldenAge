@@ -43,18 +43,16 @@
     <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
     <Compile Include="Clases\classProfessional.cs" />
-    <Compile Include="Clases\Grillas\grvGrandfather.cs" />
+    <Compile Include="Grillas\grvGrandfather.cs" />
     <Compile Include="Clases\classGrandfather.cs" />
     <Compile Include="Clases\classRelationship.cs" />
     <Compile Include="Clases\classSpecialty.cs" />
-    <Compile Include="classProfessionalSpeciality.cs" />
+    <Compile Include="Clases\classProfessionalSpeciality.cs" />
     <Compile Include="classUtiles.cs" />
     <Compile Include="Clases\classParent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Clases\ComboBox\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

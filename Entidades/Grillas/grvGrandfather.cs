@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entidades.Clases.Grillas
+namespace Entidades.Grillas
 {
     public class grvGrandfather
     {

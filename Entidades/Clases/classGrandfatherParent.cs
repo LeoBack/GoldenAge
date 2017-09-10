@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades.newClases
+namespace Entidades.Clases
 {
     public class classGrandfatherParent
     {
@@ -11,8 +11,8 @@ namespace Entidades.newClases
         public int IdGrandfatherParent { set; get; }
         public int IdGrandfather { set; get; }
         public int IdParent { set; get; }
-        
         public bool Visible { set; get; }
+
         #endregion
 
         #region Constructores
@@ -25,12 +25,12 @@ namespace Entidades.newClases
             this.Visible = true;
         }
 
-        public classGrandfatherParent(int IdIdGrandfatherParent, int IdGrandfather, int IdParent, bool Visible)
+        public classGrandfatherParent(int vIdIdGrandfatherParent, int vIdGrandfather, int vIdParent, bool vVisible)
         {
             this.IdGrandfatherParent = IdGrandfatherParent;
-            this.IdGrandfather = IdGrandfather;
-            this.IdParent = IdParent;
-            this.Visible = Visible;
+            this.IdGrandfather = vIdGrandfather;
+            this.IdParent = vIdParent;
+            this.Visible = vVisible;
         }
         #endregion
 

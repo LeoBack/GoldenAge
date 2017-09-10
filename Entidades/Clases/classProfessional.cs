@@ -43,15 +43,16 @@ namespace Entidades.Clases
         }
 
         public classProfessional(int vIdProfessional, int vProfessionalRegistration, string vName, string vLastNames,
-            int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, string vMail, string vUser, string vPassword, bool vVisible)
+            int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone, 
+            string vMail, string vUser, string vPassword, bool vVisible)
         {
             this.IdProfessional = vIdProfessional;
             this.ProfessionalRegistration = vProfessionalRegistration;
             this.Name = vName;
             this.LastName = LastName;
-            this.IdLocationCountry = IdLocationCountry;
-            this.IdLocationProvince = IdLocationProvince;
-            this.IdLocationCity = IdLocationCity;
+            this.IdLocationCountry = vIdLocationCountry;
+            this.IdLocationProvince = vIdLocationProvince;
+            this.IdLocationCity = vIdLocationCity;
             this.Address = vAddress;
             this.Phone = vPhone;
             this.Mail = vMail;

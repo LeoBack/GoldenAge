@@ -11,16 +11,3 @@ C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.frmVisor.
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csproj.GenerateResource.Cache
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.dll
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Reportes\obj\Debug\Reportes.pdb
-D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csprojResolveAssemblyReference.cache
-D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.frmVisor.resources
-D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.csproj.GenerateResource.Cache
-D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Default.mdf
-D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Default_log.ldf
-D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Reportes.dll
-D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Reportes.pdb
-D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Datos.dll
-D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Entidades.dll
-D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Datos.pdb
-D:\Project-GitHub\GoldenAge\Reportes\bin\Debug\Entidades.pdb
-D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.dll
-D:\Project-GitHub\GoldenAge\Reportes\obj\Debug\Reportes.pdb

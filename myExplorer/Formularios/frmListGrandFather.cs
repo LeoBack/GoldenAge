@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Datos;
 using Entidades;
 using Entidades.Clases;
-using Entidades.Clases.Grillas;
+using Entidades.Grillas;
 using Reportes;
 using Controles;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades.newClases
+namespace Entidades.Clases
 {
     public class classTypeDocument
     {
@@ -24,11 +24,11 @@ namespace Entidades.newClases
             this.Visible = true;
         }
 
-        public classTypeDocument(int IdTypeDocument, string Description, bool Visible)
+        public classTypeDocument(int vIdTypeDocument, string vDescription, bool vVisible)
         {
-            this.IdTypeDocument = IdTypeDocument;
-            this.Description = Description;
-            this.Visible = Visible;
+            this.IdTypeDocument = vIdTypeDocument;
+            this.Description = vDescription;
+            this.Visible = vVisible;
         }
 
         #endregion

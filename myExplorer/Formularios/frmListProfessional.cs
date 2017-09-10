@@ -149,7 +149,7 @@ namespace myExplorer.Formularios
         /// </summary>
         public void Filtrar()
         {
-            lProfesional = oConsulta.FiltroUsuarioLimite(
+            lProfesional = oConsulta.FiltroProfesionalesLimite(
                 this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text),
                 this.Hiden, this.Desde, this.Hasta);
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades.newClases
+namespace Entidades.Clases
 {
     public class classRelationship
     {
@@ -24,11 +24,11 @@ namespace Entidades.newClases
             this.Visible = true;
         }
 
-        public classRelationship(int vIdRelationship, string vDescription, bool Visible)
+        public classRelationship(int vIdRelationship, string vDescription, bool vVisible)
         {
             this.IdRelationship = vIdRelationship;
             this.Description = vDescription;
-            this.Visible = Visible;
+            this.Visible = vVisible;
         }
 
         #endregion

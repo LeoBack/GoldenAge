@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Entidades.newClases
+namespace Entidades.Clases
 {
     public class classProfessionalSpeciality
     {
@@ -24,12 +24,12 @@ namespace Entidades.newClases
             this.Visible = true;
         }
 
-        public classProfessionalSpeciality(int IdProfessionalSpeciality, int IdProfessional, int IdSpeciality, bool Visible)
+        public classProfessionalSpeciality(int vIdProfessionalSpeciality, int vIdProfessional, int vIdSpeciality, bool vVisible)
         {
-            this.IdProfessionalSpeciality = IdProfessionalSpeciality;
-            this.IdProfessional = IdProfessional;
-            this.IdSpeciality = IdSpeciality;
-            this.Visible = Visible;
+            this.IdProfessionalSpeciality = vIdProfessionalSpeciality;
+            this.IdProfessional = vIdProfessional;
+            this.IdSpeciality = vIdSpeciality;
+            this.Visible = vVisible;
         }
         #endregion
 

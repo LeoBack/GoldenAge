@@ -25,13 +25,13 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classDiagnostic(int IdDiagnostic, int IdSpeciality, string Detail, DateTime DiagnosticDate, bool Visible)
+        public classDiagnostic(int vIdDiagnostic, int vIdSpeciality, string vDetail, DateTime vDiagnosticDate, bool vVisible)
         {
-            this.IdDiagnostic = IdDiagnostic;
-            this.IdSpeciality = IdSpeciality;
-            this.Detail = Detail;
-            this.DiagnosticDate = DiagnosticDate;
-            this.Visible = Visible;
+            this.IdDiagnostic = vIdDiagnostic;
+            this.IdSpeciality = vIdSpeciality;
+            this.Detail = vDetail;
+            this.DiagnosticDate = vDiagnosticDate;
+            this.Visible = vVisible;
         }
         #endregion
 

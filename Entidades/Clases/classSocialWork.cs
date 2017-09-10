@@ -39,19 +39,19 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classSocialWork(int IdSocialWork, string Name, string Description,
-            int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string Address, string Phone, string AlternativePhone, bool Visible)
+        public classSocialWork(int vIdSocialWork, string vName, string vDescription,
+            int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone, string vAlternativePhone, bool vVisible)
         {
-            this.IdSocialWork = IdSocialWork;
-            this.Name = Name;
-            this.Description = Description;
-            this.IdLocationCountry = IdLocationCountry;
-            this.IdLocationProvince = IdLocationProvince;
-            this.IdLocationCity = IdLocationCity;
-            this.Address = Address;
-            this.Phone = Phone;
-            this.AlternativePhone = AlternativePhone;
-            this.Visible = Visible;
+            this.IdSocialWork = vIdSocialWork;
+            this.Name = vName;
+            this.Description = vDescription;
+            this.IdLocationCountry = vIdLocationCountry;
+            this.IdLocationProvince = vIdLocationProvince;
+            this.IdLocationCity = vIdLocationCity;
+            this.Address = vAddress;
+            this.Phone = vPhone;
+            this.AlternativePhone = vAlternativePhone;
+            this.Visible = vVisible;
         }
 
         #endregion
