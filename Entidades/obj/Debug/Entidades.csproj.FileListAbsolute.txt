@@ -3,3 +3,7 @@ C:\Users\Marcos\Documents\GitHub\GoldenAge\Entidades\bin\Debug\Entidades.pdb
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Entidades\obj\Debug\Entidades.dll
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Entidades\obj\Debug\Entidades.pdb
 C:\Users\Marcos\Documents\GitHub\GoldenAge\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+D:\Project-GitHub\GoldenAge\Entidades\bin\Debug\Entidades.dll
+D:\Project-GitHub\GoldenAge\Entidades\bin\Debug\Entidades.pdb
+D:\Project-GitHub\GoldenAge\Entidades\obj\Debug\Entidades.dll
+D:\Project-GitHub\GoldenAge\Entidades\obj\Debug\Entidades.pdb

@@ -2766,95 +2766,95 @@ namespace Datos
 
         #region Consultas ParentRelationship
 
-        /// <summary>
-        /// OK - 17/09/02
-        /// Inserta una ParentRelationship.
-        /// </summary>
-        /// <param name="oPr">ParentRelationship</param>
-        /// <returns>Error</returns>
-        public bool AddParentRelationship(classGrandfatherParent oPr)
-        {
-            bool error;
+        ///// <summary>
+        ///// OK - 17/09/02
+        ///// Inserta una ParentRelationship.
+        ///// </summary>
+        ///// <param name="oPr">ParentRelationship</param>
+        ///// <returns>Error</returns>
+        //public bool AddParentRelationship(classGrandfatherParent oPr)
+        //{
+        //    bool error;
 
-            error = Sql.InsertDB("INSERT INTO ParentRelationship (IdParent, IdRelationship,Visible) VALUES (" + oPr.IdParent + "," + oPr.IdRelationship + "," +oPr.Visible+");",
-                Sql.Parametros, "AddParentRelationship");
+        //    error = Sql.InsertDB("INSERT INTO ParentRelationship (IdParent, IdRelationship,Visible) VALUES (" + oPr.IdParent + "," + oPr.IdRelationship + "," +oPr.Visible+");",
+        //        Sql.Parametros, "AddParentRelationship");
 
-            Menssage = Sql.Mensaje;
-            return error;
-        }
+        //    Menssage = Sql.Mensaje;
+        //    return error;
+        //}
 
-        /// <summary>
-        /// OK - 17/09/02
-        /// Modifica una ParentRelationship.
-        /// </summary>
-        /// <param name="oPs">Specialty</param>
-        /// <returns>Error</returns>
-        public bool UpdateParentRelationship(classGrandfatherParent oPs)
-        {
-            bool error;
+        ///// <summary>
+        ///// OK - 17/09/02
+        ///// Modifica una ParentRelationship.
+        ///// </summary>
+        ///// <param name="oPs">Specialty</param>
+        ///// <returns>Error</returns>
+        //public bool UpdateParentRelationship(classGrandfatherParent oPs)
+        //{
+        //    bool error;
 
-            error = Sql.InsertDB("UPDATE ParentRelationship SET IdParent = " + oPs.IdParent + "," + "IdRelationship = '" + oPs.IdRelationship + ", Visible = " + Convert.ToInt32(oPs.Visible) + " WHERE IdParentRelationship = " + oPs.IdParentRelationship + ";",
-                null, "UpdateSpecialty");
+        //    error = Sql.InsertDB("UPDATE ParentRelationship SET IdParent = " + oPs.IdParent + "," + "IdRelationship = '" + oPs.IdRelationship + ", Visible = " + Convert.ToInt32(oPs.Visible) + " WHERE IdParentRelationship = " + oPs.IdParentRelationship + ";",
+        //        null, "UpdateSpecialty");
 
-            Menssage = Sql.Mensaje;
-            return error;
-        }
+        //    Menssage = Sql.Mensaje;
+        //    return error;
+        //}
 
-        /// <summary>
-        /// OK - 17/09/02
-        /// Elimina de forma definitiva o Actualiza el campo visible de una ParentRelationship. 
-        /// </summary>
-        /// <param name="oPs"></param>
-        /// <param name="Delete">Delete o Update state</param>
-        /// <returns>Error</returns>
-        public bool DeleteParentRelationship(classGrandfatherParent oPs, bool Delete)
-        {
-            bool error;
+        ///// <summary>
+        ///// OK - 17/09/02
+        ///// Elimina de forma definitiva o Actualiza el campo visible de una ParentRelationship. 
+        ///// </summary>
+        ///// <param name="oPs"></param>
+        ///// <param name="Delete">Delete o Update state</param>
+        ///// <returns>Error</returns>
+        //public bool DeleteParentRelationship(classGrandfatherParent oPs, bool Delete)
+        //{
+        //    bool error;
 
-            if (Delete)
-                error = Sql.DeleteDB("DELETE ParentRelationship WHERE IdParentRelationship = " + oPs.IdParentRelationship + " ;", null, "DeleteParentRelationship");
-            else
-                error = Sql.InsertDB("UPDATE ParentRelationship SET Visible = 0 WHERE IdParentRelationship = " + oPs.IdParentRelationship + " ;", null, "DeleteParentRelationship");
+        //    if (Delete)
+        //        error = Sql.DeleteDB("DELETE ParentRelationship WHERE IdParentRelationship = " + oPs.IdParentRelationship + " ;", null, "DeleteParentRelationship");
+        //    else
+        //        error = Sql.InsertDB("UPDATE ParentRelationship SET Visible = 0 WHERE IdParentRelationship = " + oPs.IdParentRelationship + " ;", null, "DeleteParentRelationship");
 
-            Menssage = Sql.Mensaje;
-            return error;
-        }
+        //    Menssage = Sql.Mensaje;
+        //    return error;
+        //}
 
-        /// <summary>
-        /// OK - 17/09/02
-        /// Carga una Combo con ParentRelationship
-        /// </summary>
-        /// <returns></returns>
-        public bool ListParentRelationship(bool Filtro)
-        {
-            #region Consulta
+        ///// <summary>
+        ///// OK - 17/09/02
+        ///// Carga una Combo con ParentRelationship
+        ///// </summary>
+        ///// <returns></returns>
+        //public bool ListParentRelationship(bool Filtro)
+        //{
+        //    #region Consulta
 
-            string Consulta = "SELECT IdParentRelationship[Id], IdParent[Valor] FROM ParentRelationship WHERE Visible = 1 ";
+        //    string Consulta = "SELECT IdParentRelationship[Id], IdParent[Valor] FROM ParentRelationship WHERE Visible = 1 ";
 
-            if (Filtro)
-                Consulta += " ORDER BY IdParent";
-            else
-                Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdParentRelationship) FROM Specialty AS I) " +
-                    " ORDER BY IdParent";
+        //    if (Filtro)
+        //        Consulta += " ORDER BY IdParent";
+        //    else
+        //        Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdParentRelationship) FROM Specialty AS I) " +
+        //            " ORDER BY IdParent";
 
-            #endregion
+        //    #endregion
 
-            if (Sql.SelectAdapterDB(Consulta, "ListParentRelationship"))
-            {
-                DataSet set = new DataSet();
-                Table = new DataTable();
-                set.Reset();
-                Sql.Adapter.Fill(set);
-                Table = set.Tables[0];
-                Sql.Desconectar();
-                return true;
-            }
-            else
-            {
-                Sql.Desconectar();
-                return false;
-            }
-        }
+        //    if (Sql.SelectAdapterDB(Consulta, "ListParentRelationship"))
+        //    {
+        //        DataSet set = new DataSet();
+        //        Table = new DataTable();
+        //        set.Reset();
+        //        Sql.Adapter.Fill(set);
+        //        Table = set.Tables[0];
+        //        Sql.Desconectar();
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        Sql.Desconectar();
+        //        return false;
+        //    }
+        //}
 
         #endregion
 
