@@ -361,7 +361,7 @@ namespace Datos
                 + " NumberDocument, Phone, AlternativePhone, Email, IdRelationship, "
                 + " Address, Visible ) VALUES ('" + oSp.Name + "', '" + oSp.LastName + "', " + oSp.IdTypeDocument 
                 + ", " + oSp.NumberDocument + ", '" + oSp.Phone + "', '" + oSp.AlternativePhone 
-                + "', '" + oSp.Email + "', " + oSp.IdRelationship + ", '" + oSp.Address + "');",
+                + "', '" + oSp.Email + "', " + oSp.IdRelationship + ", '" + oSp.Address + "'"+ oSp.IdLocationCity+");",
                 Sql.Parametros, "AddParent");
 
             Menssage = Sql.Mensaje;

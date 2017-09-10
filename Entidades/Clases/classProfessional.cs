@@ -12,6 +12,9 @@ namespace Entidades.Clases
         public int ProfessionalRegistration{ set; get; }
         public string Name { set; get; }
         public string LastName { set; get; }
+        public int IdLocationCountry { set; get; }
+        public int IdLocationProvince { set; get; }
+        public int IdLocationCity { set; get; }
         public string Address { set; get; }
         public string Phone { set; get; }
         public string Mail { set; get; }
@@ -28,6 +31,9 @@ namespace Entidades.Clases
             this.ProfessionalRegistration = 1;
             this.Name = string.Empty;
             this.LastName = string.Empty;
+            this.IdLocationCountry = 0;
+            this.IdLocationProvince = 0;
+            this.IdLocationCity = 0;
             this.Address = string.Empty;
             this.Phone = string.Empty;
             this.Mail = string.Empty;
@@ -36,13 +42,16 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classProfessional(int vIdProfessional, int vProfessionalRegistration, string vName, string vLastNames, 
-            string vAddress, string vPhone, string vMail, string vUser, string vPassword, bool vVisible)
+        public classProfessional(int vIdProfessional, int vProfessionalRegistration, string vName, string vLastNames,
+            int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, string vMail, string vUser, string vPassword, bool vVisible)
         {
             this.IdProfessional = vIdProfessional;
             this.ProfessionalRegistration = vProfessionalRegistration;
             this.Name = vName;
             this.LastName = LastName;
+            this.IdLocationCountry = IdLocationCountry;
+            this.IdLocationProvince = IdLocationProvince;
+            this.IdLocationCity = IdLocationCity;
             this.Address = vAddress;
             this.Phone = vPhone;
             this.Mail = vMail;
@@ -60,6 +69,9 @@ namespace Entidades.Clases
                 "IdProfessional: " + this.IdProfessional.ToString() +
                 "\nMatriculaProfesional: " + this.ProfessionalRegistration +
                 "\nApellido y Nombre: " + this.LastName + ", " + this.Name +
+                "\nPais: " + this.IdLocationCountry +
+                "\nProvincia: " + this.IdLocationProvince +
+                "\nCiudad: " + this.IdLocationCity +
                 "\nDomicilio: " + this.Address + "" +
                 "\nTelefono: " + this.Phone + "" +
                 "\nE-Mail: " + this.Mail + "" +

@@ -15,6 +15,9 @@ namespace Entidades.Clases
         public int IdTypeDocument { set; get; }
         public int NumberDocument { set; get; }
         public int Sex { set; get; }
+        public int IdLocationCountry { set; get; }
+        public int IdLocationProvince { set; get; }
+        public int IdLocationCity { set; get; }
         public string Address { set; get; }
         public string Phone { set; get; }
         public int IdSocialWork { set; get; }
@@ -36,6 +39,9 @@ namespace Entidades.Clases
             this.IdTypeDocument = 0;
             this.NumberDocument = 0;
             this.Sex = 0;
+            this.IdLocationCountry = 0;
+            this.IdLocationProvince = 0;
+            this.IdLocationCity = 0;
             this.Address = string.Empty;
             this.Phone = string.Empty;
             this.IdSocialWork = 0;
@@ -46,9 +52,9 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classGrandfather( int vIdGrandfather, string vName, string vLastName, DateTime vBirthdate,           
-            int vIdTypeDocument, int vNumberDocument,int vSex, string vAddress, string vPhone, int vIdSocialWork, int vAffiliateNumber, 
-            DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, bool vVisible )
+        public classGrandfather( int vIdGrandfather, string vName, string vLastName, DateTime vBirthdate,
+            int vIdTypeDocument, int vNumberDocument, int vSex, int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, int vAffiliateNumber,
+            DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, bool vVisible)
         {
             this.IdGrandfather = vIdGrandfather;
             this.Name = vName;
@@ -57,6 +63,9 @@ namespace Entidades.Clases
             this.IdTypeDocument = vIdTypeDocument;
             this.NumberDocument = vNumberDocument;
             this.Sex = vSex;
+            this.IdLocationCountry = IdLocationCountry;
+            this.IdLocationProvince = IdLocationProvince;
+            this.IdLocationCity = IdLocationCity;
             this.Address = vAddress;
             this.Phone = vPhone;
             this.IdSocialWork = vIdSocialWork;
@@ -78,6 +87,10 @@ namespace Entidades.Clases
                 "\nFecha de Nacimiento: " +this.Birthdate.ToShortDateString() +
                 "\nTipo y Nro Doc: " + this.IdTypeDocument.ToString() + "-" + this.NumberDocument.ToString() +
                 "\nSexo: " + this.Sex.ToString() +
+                "\nPais: " + this.IdLocationCountry +
+                "\nProvincia: " + this.IdLocationProvince +
+                "\nCiudad: " + this.IdLocationCity +
+                "\nDomicilio: " + this.Address +
                 "\nTelefono: " + this.Phone.ToString() +
                 "\nObra Social: " + this.IdSocialWork.ToString() +
                 "\nNumero de Afiliado: " + this.AffiliateNumber.ToString() +
