@@ -14,7 +14,7 @@ using Controles;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmForm : Form
+    public partial class frmGrandfather : Form
     {
         #region Atributos y Propiedades
 
@@ -44,13 +44,13 @@ namespace myExplorer.Formularios
         #region Formulario
 
         //OK 24/05/12
-        public frmForm()
+        public frmGrandfather()
         {
             InitializeComponent();
         }
 
         //OK 24/05/12
-        private void frmForm_Load(object sender, EventArgs e)
+        private void frmGrandfather_Load(object sender, EventArgs e)
         {
             this.Text = oTxt.TituloFichaPaciente;
             if (oConsulta != null)
@@ -67,7 +67,7 @@ namespace myExplorer.Formularios
                 oComboBox.CargaCombo(cmbSocialWork, oConsulta.ListSpecialty(false), oConsulta.Table);
                 //oComboBox.CargaCombo(cmbTipoPaciente, oConsulta.ListaTipoDePersonas(), oConsulta.Table);
 
-                this.CargarCombosCiudadBarrio();
+                //this.CargarCombosCiudadBarrio();
 
                 this.ini();
             }
@@ -111,17 +111,17 @@ namespace myExplorer.Formularios
         //OK 24/05/12
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (dgvDiagnostico.Rows.Count != 0)
+            if (dgvDiagnostic.Rows.Count != 0)
             {
                 classDiagnostic oDs = new classDiagnostic();
-                Formularios.frmDiagnostico frmD = new Formularios.frmDiagnostico();
+                Formularios.frmAbmDiagnostic frmD = new Formularios.frmAbmDiagnostic();
 
                 // Traigo el diagnostico del paciente solicitado 
-                oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostico.Rows[SelectRow].Cells["dgvID"].Value);
+                oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostic.Rows[SelectRow].Cells["dgvID"].Value);
                 //oDs = oConsulta.SelectDiagnostic(oDs);
 
                 // LLamo al formulario Diagnostico
-                frmD.Modo = Formularios.frmDiagnostico.Vista.Modificar;
+                frmD.Modo = Formularios.frmAbmDiagnostic.Vista.Modificar;
                // frmD.oDiagnostic = oDs;
                 frmD.oConsulta = this.oConsulta;
                 frmD.oUtil = this.oUtil;
@@ -137,14 +137,14 @@ namespace myExplorer.Formularios
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             classDiagnostic oDs = new classDiagnostic();
-            Formularios.frmDiagnostico frmD = new Formularios.frmDiagnostico();
+            Formularios.frmAbmDiagnostic frmD = new Formularios.frmAbmDiagnostic();
             frmD.oConsulta = this.oConsulta;
             frmD.oUtil = this.oUtil;
 
-            if (dgvDiagnostico.Rows.Count != 0)
+            if (dgvDiagnostic.Rows.Count != 0)
             {
                 // Traigo el diagnostico del paciente solicitado 
-                oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostico.Rows[SelectRow].Cells["dgvID"].Value);
+                oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostic.Rows[SelectRow].Cells["dgvID"].Value);
                 oDs = oConsulta.SelectDiagnostic(oDs);
             }
             else
@@ -154,7 +154,7 @@ namespace myExplorer.Formularios
             }
 
             // LLamo al formulario Diagnostico
-            frmD.Modo = Formularios.frmDiagnostico.Vista.Nuevo;
+            frmD.Modo = Formularios.frmAbmDiagnostic.Vista.Nuevo;
            // frmD.oDiagnostic = oDs;
             frmD.ShowDialog();
 
@@ -219,44 +219,44 @@ namespace myExplorer.Formularios
         /// <param name="Source"></param>
         public int GenerarGrillaDiagnostico(object Source)
         {
-            if (dgvDiagnostico.Columns.Count != 0)
-                dgvDiagnostico.Columns.Clear();
+            if (dgvDiagnostic.Columns.Count != 0)
+                dgvDiagnostic.Columns.Clear();
             //
             //Columna Oculta ID
             //
-            dgvDiagnostico.Columns.Add("dgvId", "ID");
-            dgvDiagnostico.Columns["dgvId"].DataPropertyName = "IdDiagnostic";
-            dgvDiagnostico.Columns["dgvId"].Visible = false;
-            dgvDiagnostico.Columns["dgvId"].DefaultCellStyle.NullValue = "0";
+            dgvDiagnostic.Columns.Add("dgvId", "ID");
+            dgvDiagnostic.Columns["dgvId"].DataPropertyName = "IdDiagnostic";
+            dgvDiagnostic.Columns["dgvId"].Visible = false;
+            dgvDiagnostic.Columns["dgvId"].DefaultCellStyle.NullValue = "0";
             //
             //Columna Nombre
             //
-            dgvDiagnostico.Columns.Add("dgvFecha", "Fecha");
-            dgvDiagnostico.Columns["dgvFecha"].DataPropertyName = "Fecha";
-            dgvDiagnostico.Columns["dgvFecha"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvDiagnostico.Columns["dgvFecha"].DefaultCellStyle.NullValue = "No especificado";
-            dgvDiagnostico.Columns["dgvFecha"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvDiagnostic.Columns.Add("dgvFecha", "Fecha");
+            dgvDiagnostic.Columns["dgvFecha"].DataPropertyName = "Fecha";
+            dgvDiagnostic.Columns["dgvFecha"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDiagnostic.Columns["dgvFecha"].DefaultCellStyle.NullValue = "No especificado";
+            dgvDiagnostic.Columns["dgvFecha"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             //
             //Columna  Obra Social
             //
-            dgvDiagnostico.Columns.Add("dgvDiagnostico", "Diagnostico");
-            dgvDiagnostico.Columns["dgvDiagnostico"].DataPropertyName = "Diagnostico";
-            dgvDiagnostico.Columns["dgvDiagnostico"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvDiagnostico.Columns["dgvDiagnostico"].DefaultCellStyle.NullValue = "No especificado";
+            dgvDiagnostic.Columns.Add("dgvDiagnostico", "Diagnostico");
+            dgvDiagnostic.Columns["dgvDiagnostico"].DataPropertyName = "Diagnostico";
+            dgvDiagnostic.Columns["dgvDiagnostico"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDiagnostic.Columns["dgvDiagnostico"].DefaultCellStyle.NullValue = "No especificado";
             //
             //Configuracion del DataListView
             //
-            dgvDiagnostico.AutoGenerateColumns = false;
-            dgvDiagnostico.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvDiagnostico.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDiagnostico.ReadOnly = true;
-            dgvDiagnostico.ScrollBars = ScrollBars.Both;
-            dgvDiagnostico.ContextMenuStrip = cmsMenuEmergente;
-            dgvDiagnostico.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvDiagnostico.MultiSelect = false;
-            dgvDiagnostico.DataSource = Source;
+            dgvDiagnostic.AutoGenerateColumns = false;
+            dgvDiagnostic.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvDiagnostic.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDiagnostic.ReadOnly = true;
+            dgvDiagnostic.ScrollBars = ScrollBars.Both;
+            dgvDiagnostic.ContextMenuStrip = cmsMenuEmergente;
+            dgvDiagnostic.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDiagnostic.MultiSelect = false;
+            dgvDiagnostic.DataSource = Source;
 
-            return dgvDiagnostico.Rows.Count;
+            return dgvDiagnostic.Rows.Count;
         }
 
         #endregion
@@ -314,7 +314,7 @@ namespace myExplorer.Formularios
             if (Modo == Vista.Ver)
             {
                 this.Modo = Vista.Modificar;
-                this.frmForm_Load(sender, e);
+                this.frmGrandfather_Load(sender, e);
             }
         }
 
@@ -337,65 +337,6 @@ namespace myExplorer.Formularios
         private void dtpFechaNacimiento_CloseUp(object sender, EventArgs e)
         {
             //txtEdad.Text = Convert.ToString(oGrandfather.Edad(dtpFechaNacimiento.Value));
-        }
-
-        #endregion
-
-        //Revisar
-        #region Plus
-
-        private void btnPlusBarrio_Click(object sender, EventArgs e)
-        {
-            //frmAuxiliar frmA = new frmAuxiliar();
-            //frmA.oConsulta = this.oConsulta;
-            //frmA.tipoObjeto = frmAuxiliar.Tipo.Barrio;
-            //frmA.Id = Convert.ToInt32(cmbBarrio.SelectedValue);
-
-            //if (frmA.ShowDialog() == DialogResult.OK)
-            //{
-            //    oComboBox.CargaCombo(
-            //        cmbBarrio,
-            //        oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-            //        oConsulta.Table);
-            //}
-        }
-
-        private void btnPlusCiudad_Click(object sender, EventArgs e)
-        {
-            //frmAuxiliar frmA = new frmAuxiliar();
-            //frmA.oConsulta = this.oConsulta;
-            //frmA.tipoObjeto = frmAuxiliar.Tipo.Ciudad;
-            //frmA.Id = Convert.ToInt32(cmbCiudad.SelectedValue);
-
-            //if (frmA.ShowDialog() == DialogResult.OK)
-            //{
-            //    oComboBox.CargaCombo(
-            //        cmbCiudad,
-            //        oConsulta.ListaCiudades(),
-            //        oConsulta.Table);
-            //}
-        }
-
-        private void cmbCiudad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //oComboBox.CargaCombo(cmbBarrio,
-            //    oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-            //    oConsulta.Table);
-        }
-
-        private void btnPlusSocialWork_Click(object sender, EventArgs e)
-        {
-            frmVerSocialWork frmA = new frmVerSocialWork();
-            frmA.oConsulta = this.oConsulta;
-
-            if (frmA.ShowDialog() == DialogResult.OK)
-            {
-                // Cargo los Combos pero no lo selecciona
-                oComboBox.CargaCombo(
-                    cmbSocialWork,
-                    oConsulta.ListSpecialty(false),
-                    oConsulta.Table);
-            }
         }
 
         #endregion
@@ -436,27 +377,13 @@ namespace myExplorer.Formularios
                 this.EnableFicha(true, false);
                 this.EnableDiagnostico(false);
                 this.EscribirEnFrm();
-                btnExportar.Enabled = false;
+                btnExport.Enabled = false;
             }
             else
                 MessageBox.Show("Error de typo");
         }
 
-        /// <summary>
-        /// Carga los Combos de Ciudad y Barrios
-        /// 03/02/12
-        /// </summary>
-        private void CargarCombosCiudadBarrio()
-        {
-            //oComboBox.CargaCombo(cmbCiudad,
-            //    oConsulta.ListaCiudades(),
-            //    oConsulta.Table);
-
-            //oComboBox.CargaCombo(cmbBarrio,
-            //    oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-            //    oConsulta.Table);
-        }
-
+        
         /// <summary>
         /// Valida los campos del Formulario.
         /// False -> Vacio - True -> Ok
@@ -465,10 +392,10 @@ namespace myExplorer.Formularios
         /// <returns></returns>
         private bool ValidarCampos()
         {
-            if ((txtApellido.Text == "") ||
-                (txtNombre.Text == "") ||
-                (txtDomicilio.Text == "") ||
-                (txtNumeroAfiliado.Text == ""))
+            if ((txtLastName.Text == "") ||
+                (txtName.Text == "") ||
+                (txtAddress.Text == "") ||
+                (txtAffiliateNumber.Text == ""))
                 return false;
             else
                 return true;
@@ -525,13 +452,13 @@ namespace myExplorer.Formularios
         /// <param name="X"></param>
         private void EnableFicha(bool X, bool Ver)
         {
-            foreach (Control C in this.tlpPanel.Controls)
+            foreach (Control C in this.tlpPanlData.Controls)
             {
                 if (!(C is Label))
                     C.Enabled = X;
             }
-            this.btnGuardar.Enabled = !Ver;
-            this.btnModificarPerfil.Enabled = Ver;
+            this.btnSave.Enabled = !Ver;
+            this.btnEdit.Enabled = Ver;
         }
 
         /// <summary>
@@ -541,12 +468,9 @@ namespace myExplorer.Formularios
         private void ConfiguracionFicha()
         {
             Size sBtn = new Size(75, 42);
-            btnModificarPerfil.Size = sBtn;
-            btnGuardar.Size = sBtn;
-            btnCerrar.Size = sBtn;
-
-            dtpFechaNacimiento.MaxDate = DateTime.Now.AddDays(1);
-            dtpUltimaVisita.MaxDate = DateTime.Now.AddDays(1);
+            btnEdit.Size = sBtn;
+            btnSave.Size = sBtn;
+            btnClose.Size = sBtn;
         }
 
         #endregion
@@ -554,12 +478,5 @@ namespace myExplorer.Formularios
         //-----------------------------------------------------------------------
         #endregion
         //-----------------------------------------------------------------------
-
-        /* 04/04/12: La falla no se presento.
-        * Tiene un comportamiento anormal cuando en la grilla seleccionas una fila y
-        * queres modificar un texto, Siempre selecciona un mismo ID paraece ser.
-        * Tenes que si o si precionar editar para que no ocurra Bugs.
-        * 
-        */
     }
 }

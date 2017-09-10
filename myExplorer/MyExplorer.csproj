@@ -131,11 +131,11 @@
     <Compile Include="Formularios\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAbmMedico.cs">
+    <Compile Include="Formularios\frmAbmProfessional.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAbmMedico.Designer.cs">
-      <DependentUpon>frmAbmMedico.cs</DependentUpon>
+    <Compile Include="Formularios\frmAbmProfessional.Designer.cs">
+      <DependentUpon>frmAbmProfessional.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmVerObraSocial.cs">
       <SubType>Form</SubType>
@@ -143,23 +143,23 @@
     <Compile Include="Formularios\frmVerObraSocial.Designer.cs">
       <DependentUpon>frmVerObraSocial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAbmObraSocial.cs">
+    <Compile Include="Formularios\frmAbmSocialWork.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAbmObraSocial.Designer.cs">
-      <DependentUpon>frmAbmObraSocial.cs</DependentUpon>
+    <Compile Include="Formularios\frmAbmSocialWork.Designer.cs">
+      <DependentUpon>frmAbmSocialWork.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmDiagnostico.cs">
+    <Compile Include="Formularios\frmAbmDiagnostic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmDiagnostico.Designer.cs">
-      <DependentUpon>frmDiagnostico.cs</DependentUpon>
+    <Compile Include="Formularios\frmAbmDiagnostic.Designer.cs">
+      <DependentUpon>frmAbmDiagnostic.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAmbAbuelo.cs">
+    <Compile Include="Formularios\frmAmbGrandfather.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAmbAbuelo.Designer.cs">
-      <DependentUpon>frmAmbAbuelo.cs</DependentUpon>
+    <Compile Include="Formularios\frmAmbGrandfather.Designer.cs">
+      <DependentUpon>frmAmbGrandfather.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmMain.cs">
       <SubType>Form</SubType>
@@ -197,20 +197,20 @@
     <EmbeddedResource Include="Formularios\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAbmMedico.resx">
-      <DependentUpon>frmAbmMedico.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmAbmProfessional.resx">
+      <DependentUpon>frmAbmProfessional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmVerObraSocial.resx">
       <DependentUpon>frmVerObraSocial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAbmObraSocial.resx">
-      <DependentUpon>frmAbmObraSocial.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmAbmSocialWork.resx">
+      <DependentUpon>frmAbmSocialWork.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmDiagnostico.resx">
-      <DependentUpon>frmDiagnostico.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmAbmDiagnostic.resx">
+      <DependentUpon>frmAbmDiagnostic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAmbAbuelo.resx">
-      <DependentUpon>frmAmbAbuelo.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmAmbGrandfather.resx">
+      <DependentUpon>frmAmbGrandfather.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

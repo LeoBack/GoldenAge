@@ -105,9 +105,9 @@ namespace myExplorer.Formularios
         {
             if (Usuario == EstadoUsuario.Valido)
             {
-                frmForm frmPaciente = new frmForm();
+                frmGrandfather frmPaciente = new frmGrandfather();
                 frmPaciente.oConsulta = this.oConsulta;
-                frmPaciente.Modo = frmForm.Vista.Nuevo;
+                frmPaciente.Modo = frmGrandfather.Vista.Nuevo;
                 frmPaciente.oUtil = this.oUtil;
                 frmPaciente.ShowDialog();
             }
@@ -263,7 +263,7 @@ namespace myExplorer.Formularios
         // 
         private void tsmiAgregarUsuario_Click(object sender, EventArgs e)
         {
-            frmUsuario fU = new frmUsuario();
+            frmProfessional fU = new frmProfessional();
             fU.oConsulta = this.oConsulta;
             fU.oUtil = this.oUtil;
             fU.Show();
