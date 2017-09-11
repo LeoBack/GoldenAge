@@ -52,6 +52,28 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
+        public classGrandfather(int vIdGrandfather)
+        {
+            this.IdGrandfather = vIdGrandfather;
+            this.Name = string.Empty;
+            this.LastName = string.Empty;
+            this.Birthdate = DateTime.Now.AddYears(-65);
+            this.IdTypeDocument = 0;
+            this.NumberDocument = 0;
+            this.Sex = 0;
+            this.IdLocationCountry = 0;
+            this.IdLocationProvince = 0;
+            this.IdLocationCity = 0;
+            this.Address = string.Empty;
+            this.Phone = string.Empty;
+            this.IdSocialWork = 0;
+            this.AffiliateNumber = 0;
+            this.DateAdmission = DateTime.Now;
+            this.EgressDate = DateTime.Now.AddDays(90);
+            this.ReasonExit = string.Empty;
+            this.Visible = true;
+        }
+
         public classGrandfather( int vIdGrandfather, string vName, string vLastName, DateTime vBirthdate,
             int vIdTypeDocument, int vNumberDocument, int vSex, int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, int vAffiliateNumber,
             DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, bool vVisible)

@@ -25,9 +25,27 @@ namespace Entidades.Clases
         #endregion
 
         #region Constructores
+
         public classProfessional()
         {
             this.IdProfessional = 0;
+            this.ProfessionalRegistration = 1;
+            this.Name = string.Empty;
+            this.LastName = string.Empty;
+            this.IdLocationCountry = 0;
+            this.IdLocationProvince = 0;
+            this.IdLocationCity = 0;
+            this.Address = string.Empty;
+            this.Phone = string.Empty;
+            this.Mail = string.Empty;
+            this.User = string.Empty;
+            this.Password = string.Empty;
+            this.Visible = true;
+        }
+
+        public classProfessional(int vIdProfessional)
+        {
+            this.IdProfessional = vIdProfessional;
             this.ProfessionalRegistration = 1;
             this.Name = string.Empty;
             this.LastName = string.Empty;

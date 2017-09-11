@@ -162,7 +162,6 @@
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(334, 26);
             this.txtMail.TabIndex = 4;
-            this.txtMail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // lblEmail
             // 
@@ -197,7 +196,6 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(334, 26);
             this.txtLastName.TabIndex = 2;
-            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // txtName
             // 
@@ -207,7 +205,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(334, 26);
             this.txtName.TabIndex = 1;
-            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // lblLastName
             // 

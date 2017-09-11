@@ -7,7 +7,6 @@ namespace Entidades.Clases
 {
     public class classSocialWork
     {
-
         #region Atributos y Metodos
 
         public int IdSocialWork { set; get; }
@@ -28,6 +27,20 @@ namespace Entidades.Clases
         public classSocialWork()
         {
             this.IdSocialWork = 0;
+            this.Name = string.Empty;
+            this.Description = string.Empty;
+            this.IdLocationCountry = 0;
+            this.IdLocationProvince = 0;
+            this.IdLocationCity = 0;
+            this.Address = string.Empty;
+            this.Phone = string.Empty;
+            this.AlternativePhone = string.Empty;
+            this.Visible = true;
+        }
+
+        public classSocialWork(int vIdSocialWork)
+        {
+            this.IdSocialWork = vIdSocialWork;
             this.Name = string.Empty;
             this.Description = string.Empty;
             this.IdLocationCountry = 0;

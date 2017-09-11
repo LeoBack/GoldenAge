@@ -16,9 +16,19 @@ namespace Entidades.Clases
         #endregion
 
         #region Constructores
+
         public classDiagnostic()
         {
             this.IdDiagnostic = 0;
+            this.IdSpeciality = 0;
+            this.Detail = "";
+            this.DiagnosticDate = DateTime.Now.Date;
+            this.Visible = true;
+        }
+
+        public classDiagnostic(int vIdDiagnostic)
+        {
+            this.IdDiagnostic = vIdDiagnostic;
             this.IdSpeciality = 0;
             this.Detail = "";
             this.DiagnosticDate = DateTime.Now.Date;

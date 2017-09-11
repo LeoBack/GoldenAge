@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Datos;
+using Datos.Query;
 using Entidades;
 using Entidades.Clases;
 //using Reportes;
@@ -24,7 +24,7 @@ namespace myExplorer.Formularios
         public Modo Acto { set; get; }
         public int IdProfessional { set; get; }
 
-        public classConsultas oConsulta { set; get; }
+        public classQuery oConsulta { set; get; }
         public classProfessional oProfessional { set; get; }
         public classUtiles oUtil { set; get; }
 
@@ -68,7 +68,7 @@ namespace myExplorer.Formularios
                 if (Acto == Modo.Nuevo)
                 {   //-------------------------------------------------
                     // Guarda
-                    if (oConsulta.AddProfessional(oProfessional))
+                    if ((bool)oConsulta.AbmProfessional(oProfessional, classQuery.eAbm.Insert))
                     {
                         MessageBox.Show(oTxt.AgregarProfesional);
                         this.Acto = Modo.Modificar;
@@ -83,7 +83,7 @@ namespace myExplorer.Formularios
                 else if (Acto == Modo.Modificar)
                 {   //-------------------------------------------------
                     // Actualiza
-                    if (oConsulta.UpdateProfessional(oProfessional))
+                    if ((bool)oConsulta.AbmProfessional(oProfessional, classQuery.eAbm.Update))
                     {
                         MessageBox.Show(oTxt.ModificarProfesional);
                         this.Acto = Modo.Modificar;
@@ -162,25 +162,6 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        #region TXT
-
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        #endregion
-
         #region Metodos
 
         /// <summary>
@@ -192,7 +173,7 @@ namespace myExplorer.Formularios
             if (this.IdProfessional != 0)
             {
                 oProfessional.IdProfessional = this.IdProfessional;
-                oProfessional = oConsulta.SelectProfessional(oProfessional);
+                oProfessional = (classProfessional)oConsulta.AbmProfessional(oProfessional, classQuery.eAbm.Select);
                 btnBloquear.Enabled = true;
             }
 
@@ -258,7 +239,6 @@ namespace myExplorer.Formularios
             oProfessional.Mail = this.oValidarSql.ValidaString(txtMail.Text);
             oProfessional.User = this.oValidarSql.ValidaString(txtUser.Text);
             oProfessional.Password = this.oValidarSql.ValidaString(txtPassword.Text);
-        
         }
 
         /// <summary>
@@ -275,8 +255,7 @@ namespace myExplorer.Formularios
             txtMail.Text = oProfessional.Mail;
             txtUser.Text = oProfessional.User;
             txtPassword.Text = oProfessional.Password;
-            
-            
+
 
             if (oProfessional.Visible)
                 btnBloquear.Text = "Desbloquear";

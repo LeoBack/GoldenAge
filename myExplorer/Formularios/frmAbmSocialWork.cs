@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Entidades;
 using Entidades.Clases;
 using Controles;
-using Datos;
+using Datos.Query;
 using libLocalitation.Forms;
 
 namespace myExplorer.Formularios
@@ -18,7 +18,7 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
-        public classConsultas oConsulta { set; get; }
+        public classQuery oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
         public classSocialWork oSocialWork { set; get; }
 
@@ -55,7 +55,6 @@ namespace myExplorer.Formularios
                     this.btnAgregar.Text = oTxt.Aplicar;
                     // Cargo el Formulario Limpio
                     this.LimpiarFrm();
-                    //this.CargarCombosCiudadBarrio();
                 }   //****************Fin*****************************
                 else if (this.Acto == Accion.Modificar)
                 {
@@ -66,10 +65,9 @@ namespace myExplorer.Formularios
                         btnCancelar.Enabled = true;
                         this.btnAgregar.Text = oTxt.Editar;
                         // Traigo la Obra Social
-                        //oSocialWork = oConsulta.SelectSocialWork(
-                        //    new classSocialWork(this.IdSocialWork,"","","","","",true));
+                        oSocialWork = (classSocialWork)oConsulta.AbmSocialWork(
+                            new classSocialWork(IdSocialWork), classQuery.eAbm.Select);
                         // Cargo el Formulario
-                        //this.CargarCombosCiudadBarrio();
                         this.CargarFrm();
                     }   //*************Fin****************************
                     else if (oSocialWork != null)
@@ -80,7 +78,6 @@ namespace myExplorer.Formularios
                             btnCancelar.Enabled = true;
                             this.btnAgregar.Text = oTxt.Editar;
                             // Cargo el Formulario
-                            //this.CargarCombosCiudadBarrio();
                             this.CargarFrm();
                         }   //*************Fin****************************
                     }
@@ -97,10 +94,12 @@ namespace myExplorer.Formularios
                         //oConsulta.DeleteSocialWork(
                         //    new classSocialWork(
                         //        this.IdSocialWork, "", "", "", "", "", true), false);
+                        oConsulta.AbmSocialWork(new classSocialWork(IdSocialWork), classQuery.eAbm.Delete);
                     }
                     else if (oSocialWork != null)
                     {   // Consulta de eliminacion
-                        oConsulta.DeleteSocialWork(oSocialWork, false);
+                        //oConsulta.DeleteSocialWork(oSocialWork, false);
+                        oConsulta.AbmSocialWork(oSocialWork, classQuery.eAbm.Delete);
                     }
                     else
                     {
@@ -143,7 +142,7 @@ namespace myExplorer.Formularios
                         this.CargarObjeto();
 
                         // INSERTAR OBJETO;
-                        if (oConsulta.AddSocialWork(oSocialWork))
+                        if ((bool)oConsulta.AbmSocialWork(oSocialWork, classQuery.eAbm.Insert))
                         {
                             MessageBox.Show(oTxt.AgregarSocialWork);
                             btnAgregar.Text = oTxt.Limpiar;
@@ -164,7 +163,7 @@ namespace myExplorer.Formularios
                     {
                         this.CargarObjeto();
                         // Modifica OBJETO;
-                        if (oConsulta.UpdateSocialWork(oSocialWork))
+                        if ((bool)oConsulta.AbmSocialWork(oSocialWork, classQuery.eAbm.Update))
                         {
                             MessageBox.Show(oTxt.ModificarSocialWork);
                             this.Close();

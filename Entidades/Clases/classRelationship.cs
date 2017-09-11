@@ -24,6 +24,13 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
+        public classRelationship(int vIdRelationship)
+        {
+            this.IdRelationship = vIdRelationship;
+            this.Description = string.Empty;
+            this.Visible = true;
+        }
+
         public classRelationship(int vIdRelationship, string vDescription, bool vVisible)
         {
             this.IdRelationship = vIdRelationship;

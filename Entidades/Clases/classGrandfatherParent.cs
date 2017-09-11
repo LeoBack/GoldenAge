@@ -25,6 +25,14 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
+        public classGrandfatherParent(int vIdGrandfatherParent)
+        {
+            this.IdGrandfatherParent = vIdGrandfatherParent;
+            this.IdGrandfather = 0;
+            this.IdParent = 0;
+            this.Visible = true;
+        }
+
         public classGrandfatherParent(int vIdIdGrandfatherParent, int vIdGrandfather, int vIdParent, bool vVisible)
         {
             this.IdGrandfatherParent = IdGrandfatherParent;

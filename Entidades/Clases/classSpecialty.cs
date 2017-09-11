@@ -24,6 +24,13 @@ namespace Entidades.Clases
             Visible = true;
         }
 
+        public classSpecialty(int vIdSpecialty)
+        {
+            IdSpecialty = vIdSpecialty;
+            Description = string.Empty;
+            Visible = true;
+        }
+
         public classSpecialty(int vIdSpecialty, string vDescription, bool vVisible)
         {
             IdSpecialty = vIdSpecialty;

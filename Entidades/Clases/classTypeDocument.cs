@@ -24,6 +24,13 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
+        public classTypeDocument(int vIdTypeDocument)
+        {
+            this.IdTypeDocument = vIdTypeDocument;
+            this.Description = "";
+            this.Visible = true;
+        }
+
         public classTypeDocument(int vIdTypeDocument, string vDescription, bool vVisible)
         {
             this.IdTypeDocument = vIdTypeDocument;
