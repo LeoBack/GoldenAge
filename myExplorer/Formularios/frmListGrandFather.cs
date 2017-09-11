@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Datos;
+using Datos.Query;
 using Entidades;
 using Entidades.Clases;
 using Entidades.Grillas;
@@ -21,7 +21,7 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         #region Atributos y Propiedades
 
-        public classConsultas oConsulta { set; get; }
+        public classQuery oConsulta { set; get; }
         public int IdGrandfather { set; get; }
         public classUtiles oUtil { set; get; }
 

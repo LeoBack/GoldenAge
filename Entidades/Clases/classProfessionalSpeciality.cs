@@ -24,6 +24,14 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
+        public classProfessionalSpeciality(int vIdProfessionalSpeciality)
+        {
+            this.IdProfessionalSpeciality = vIdProfessionalSpeciality;
+            this.IdProfessional = 0;
+            this.IdSpeciality = 0;
+            this.Visible = true;
+        }
+
         public classProfessionalSpeciality(int vIdProfessionalSpeciality, int vIdProfessional, int vIdSpeciality, bool vVisible)
         {
             this.IdProfessionalSpeciality = vIdProfessionalSpeciality;

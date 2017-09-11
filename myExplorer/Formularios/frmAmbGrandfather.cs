@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 //
-using Datos;
+using Datos.Query;
 using Entidades;
 using Entidades.Clases;
 using Reportes;
@@ -23,7 +23,7 @@ namespace myExplorer.Formularios
         public Vista Modo { set; get; }
         public int IdPaciente { set; get; }
 
-        public classConsultas oConsulta { set; get; }
+        public classQuery oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
 
         public classGrandfather oGrandfather { set; get; }
@@ -143,7 +143,7 @@ namespace myExplorer.Formularios
             {
                 // Traigo el diagnostico del paciente solicitado 
                 oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostic.Rows[SelectRow].Cells["dgvID"].Value);
-                oDs = oConsulta.SelectDiagnostic(oDs);
+                oDs = (classDiagnostic)oConsulta.AbmDiagnostic(oDs, classQuery.eAbm.Select);
             }
             else
             {

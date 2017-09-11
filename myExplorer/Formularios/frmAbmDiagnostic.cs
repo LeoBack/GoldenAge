@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Controles;
 using Entidades;
 using Entidades.Clases;
-using Datos;
+using Datos.Query;
 
 namespace myExplorer.Formularios
 {
@@ -21,7 +21,7 @@ namespace myExplorer.Formularios
 
         public Vista Modo { set; get; }
         public classDiagnostic oDiagnostico { set; get; }
-        public classConsultas oConsulta { set; get; }
+        public classQuery oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
 
         private classControlComboBoxes oCombo;
@@ -81,7 +81,8 @@ namespace myExplorer.Formularios
             // Eliminar el Diagnostico
             if (MessageBox.Show(oTxt.MsgEliminarDiagnostico, oTxt.MsgTituloDiagnostico, 
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                error = oConsulta.DeleteDiagnostic(oDiagnostico, false);
+                //error = oConsulta.DeleteDiagnostic(oDiagnostico, false);
+            error = (bool)oConsulta.AbmDiagnostic(oDiagnostico, classQuery.eAbm.Delete);
 
             if (!error)
                 MessageBox.Show(oTxt.ErrorEliminarConsulta);

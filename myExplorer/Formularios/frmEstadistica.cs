@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 //
-using Datos;
+using Datos.Query;
 using Entidades;
 using Entidades.Clases;
 using Estadisticas;
@@ -18,7 +18,7 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
-        public classConsultas oConsulta { set; get; }
+        public classQuery oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
         private classTextos oTxt = new classTextos();
 

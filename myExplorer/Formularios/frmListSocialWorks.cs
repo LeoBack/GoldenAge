@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 // De la solucion
-using Datos;
+using Datos.Query;
 using Entidades;
 using Entidades.Clases;
 using Controles;
@@ -18,7 +18,7 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         #region Atributos y Propiedades
 
-        public classConsultas oConsulta { set; get; }
+        public classQuery oConsulta { set; get; }
         public classUtiles oUtil { set; get; }
         private List<classSocialWork> lSocialWork;
         private classValidaSqlite oValidarSql = new classValidaSqlite();
@@ -111,13 +111,13 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         private void tsbAgregar_Click(object sender, EventArgs e)
         {
-                frmAbmSocialWork frmA = new frmAbmSocialWork();
-                frmA.oConsulta = this.oConsulta;
-                frmA.oUtil = this.oUtil;
-                frmA.Acto = frmAbmSocialWork.Accion.Nuevo;
-                frmA.ShowDialog();
+            frmAbmSocialWork frmA = new frmAbmSocialWork();
+            frmA.oConsulta = this.oConsulta;
+            frmA.oUtil = this.oUtil;
+            frmA.Acto = frmAbmSocialWork.Accion.Nuevo;
+            frmA.ShowDialog();
 
-                frmAux_Load(sender, e);
+            frmAux_Load(sender, e);
         }
 
         // REVISADO - 17/09/09
@@ -128,7 +128,7 @@ namespace myExplorer.Formularios
             if (dgvLista.Rows.Count != 0)
             {
                 oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
-                oSw = oConsulta.SelectSocialWork(oSw);
+                oSw = (classSocialWork)oConsulta.AbmSocialWork(oSw, classQuery.eAbm.Select);
             }
 
             if (oConsulta.Error)
@@ -157,7 +157,7 @@ namespace myExplorer.Formularios
             if (dgvLista.Rows.Count != 0)
             {
                 oOS.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
-                oOS = oConsulta.SelectSocialWork(oOS);
+                oOS = (classSocialWork)oConsulta.AbmSocialWork(oOS, classQuery.eAbm.Select);
             }
 
             if (oConsulta.Error)

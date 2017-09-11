@@ -24,11 +24,29 @@ namespace Entidades.Clases
         public bool Visible { set; get; }
         #endregion
 
-         #region Constructores
+        #region Constructores
 
         public classParent()
         {
             this.IdParent = 0;
+            this.Name = string.Empty;
+            this.LastName = string.Empty;
+            this.IdTypeDocument = 0;
+            this.NumberDocument = 0;
+            this.Phone = string.Empty;
+            this.AlternativePhone = string.Empty;
+            this.Email = string.Empty;
+            this.IdRelationship = 0;
+            this.IdLocationCountry = 0;
+            this.IdLocationProvince = 0;
+            this.IdLocationCity = 0;
+            this.Address = string.Empty;
+            this.Visible = true;
+        }
+
+        public classParent(int vIdParent)
+        {
+            this.IdParent = vIdParent;
             this.Name = string.Empty;
             this.LastName = string.Empty;
             this.IdTypeDocument = 0;
@@ -65,7 +83,7 @@ namespace Entidades.Clases
 
         #endregion
 
-         #region Metodos
+        #region Metodos
         public override string ToString()
         {
             return

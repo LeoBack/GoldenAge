@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 // De la solucion
 using Entidades;
-using Datos;
+using Datos.Query;
 using Controles;
 
 namespace myExplorer.Formularios
@@ -18,8 +18,7 @@ namespace myExplorer.Formularios
 
         private enum EstadoUsuario { Invalido = 0, Valido = 1, Invitado = 2 }
 
-        private classBackUp oBck;
-        private classConsultas oConsulta;
+        private classQuery oConsulta;
         private classUtiles oUtil;
         private EstadoUsuario Usuario;
         private classTextos oTxt = new classTextos();
@@ -150,17 +149,7 @@ namespace myExplorer.Formularios
         {
             if (Usuario == EstadoUsuario.Valido)
             {
-                FolderBrowserDialog oF = new FolderBrowserDialog();
-
-                if (oF.ShowDialog() == DialogResult.OK)
-                {
-                    oBck = new classBackUp(this.oConsulta);
-
-                    if (!oBck.RestoreFile(oBck.Filter, oF.SelectedPath))
-                        MessageBox.Show(oTxt.RestauracionExitosa);
-                    else
-                        MessageBox.Show(oTxt.RestauracionErronea);
-                }
+                
             }
         }
 
@@ -169,17 +158,7 @@ namespace myExplorer.Formularios
         {
             if (Usuario == EstadoUsuario.Valido)
             {
-                FolderBrowserDialog oF = new FolderBrowserDialog();
-
-                if (oF.ShowDialog() == DialogResult.OK)
-                {
-                    oBck = new classBackUp(this.oConsulta);
-
-                    if (!oBck.MakeCopy(oF.SelectedPath))
-                        MessageBox.Show(oTxt.CopiaExitosa);
-                    else
-                        MessageBox.Show(oTxt.CopiaErronea);
-                }
+                
             }
         }
 
