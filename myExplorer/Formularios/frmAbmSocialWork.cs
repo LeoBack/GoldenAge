@@ -18,7 +18,7 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
-        public classQuery oConsulta { set; get; }
+        public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         public classSocialWork oSocialWork { set; get; }
 
@@ -48,7 +48,7 @@ namespace myExplorer.Formularios
 
             oComboBox = new classControlComboBoxes();
 
-            if (oConsulta != null)
+            if (oQuery != null)
             {   //-------------------------------------------------
                 if (this.Acto == Accion.Nuevo)
                 {   //***************Nuevo****************************
@@ -65,7 +65,7 @@ namespace myExplorer.Formularios
                         btnCancelar.Enabled = true;
                         this.btnAgregar.Text = oTxt.Editar;
                         // Traigo la Obra Social
-                        oSocialWork = (classSocialWork)oConsulta.AbmSocialWork(
+                        oSocialWork = (classSocialWork)oQuery.AbmSocialWork(
                             new classSocialWork(IdSocialWork), classQuery.eAbm.Select);
                         // Cargo el Formulario
                         this.CargarFrm();
@@ -91,15 +91,15 @@ namespace myExplorer.Formularios
                 {   //***********Eliminar*************************
                     if (this.IdSocialWork != 0)
                     {   // Consulta de eliminacion
-                        //oConsulta.DeleteSocialWork(
+                        //oQuery.DeleteSocialWork(
                         //    new classSocialWork(
                         //        this.IdSocialWork, "", "", "", "", "", true), false);
-                        oConsulta.AbmSocialWork(new classSocialWork(IdSocialWork), classQuery.eAbm.Delete);
+                        oQuery.AbmSocialWork(new classSocialWork(IdSocialWork), classQuery.eAbm.Delete);
                     }
                     else if (oSocialWork != null)
                     {   // Consulta de eliminacion
-                        //oConsulta.DeleteSocialWork(oSocialWork, false);
-                        oConsulta.AbmSocialWork(oSocialWork, classQuery.eAbm.Delete);
+                        //oQuery.DeleteSocialWork(oSocialWork, false);
+                        oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Delete);
                     }
                     else
                     {
@@ -142,13 +142,13 @@ namespace myExplorer.Formularios
                         this.CargarObjeto();
 
                         // INSERTAR OBJETO;
-                        if ((bool)oConsulta.AbmSocialWork(oSocialWork, classQuery.eAbm.Insert))
+                        if ((bool)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Insert))
                         {
                             MessageBox.Show(oTxt.AgregarSocialWork);
                             btnAgregar.Text = oTxt.Limpiar;
                         }
                         else
-                            MessageBox.Show(oConsulta.Menssage);
+                            MessageBox.Show(oQuery.Menssage);
                     }
                 }   //-------------------------------------------------
                 else if (this.Acto == Accion.Modificar)
@@ -163,13 +163,13 @@ namespace myExplorer.Formularios
                     {
                         this.CargarObjeto();
                         // Modifica OBJETO;
-                        if ((bool)oConsulta.AbmSocialWork(oSocialWork, classQuery.eAbm.Update))
+                        if ((bool)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Update))
                         {
                             MessageBox.Show(oTxt.ModificarSocialWork);
                             this.Close();
                         }
                         else
-                            MessageBox.Show(oConsulta.Menssage);
+                            MessageBox.Show(oQuery.Menssage);
                     }
                 }   //-------------------------------------------------
                 else
@@ -269,12 +269,12 @@ namespace myExplorer.Formularios
         //private void CargarCombosCiudadBarrio()
         //{
         //    oComboBox.CargaCombo(cmbCiudad,
-        //        oConsulta.ListaCiudades(), 
-        //        oConsulta.Table);
+        //        oQuery.ListaCiudades(), 
+        //        oQuery.Table);
 
         //    oComboBox.CargaCombo(cmbBarrio,
-        //        oConsulta.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-        //        oConsulta.Table);
+        //        oQuery.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
+        //        oQuery.Table);
         //}
 
         /// <summary>

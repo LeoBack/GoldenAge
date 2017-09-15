@@ -23,7 +23,7 @@ namespace myExplorer.Formularios
         public Vista Modo { set; get; }
         public int IdPaciente { set; get; }
 
-        public classQuery oConsulta { set; get; }
+        public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
 
         public classGrandfather oGrandfather { set; get; }
@@ -53,7 +53,7 @@ namespace myExplorer.Formularios
         private void frmGrandfather_Load(object sender, EventArgs e)
         {
             this.Text = oTxt.TituloFichaPaciente;
-            if (oConsulta != null)
+            if (oQuery != null)
             {
                 oGrandfather = new classGrandfather();
                 oDiagnostic = new classDiagnostic();
@@ -64,8 +64,8 @@ namespace myExplorer.Formularios
 
                 // Cargo los Combos
                 oComboBox = new classControlComboBoxes();
-                oComboBox.CargaCombo(cmbSocialWork, oConsulta.ListSpecialty(false), oConsulta.Table);
-                //oComboBox.CargaCombo(cmbTipoPaciente, oConsulta.ListaTipoDePersonas(), oConsulta.Table);
+                oComboBox.CargaCombo(cmbSocialWork, oQuery.ListSpecialty(false), oQuery.Table);
+                //oComboBox.CargaCombo(cmbTipoPaciente, oQuery.ListaTipoDePersonas(), oQuery.Table);
 
                 this.ini();
             }
@@ -97,9 +97,9 @@ namespace myExplorer.Formularios
         //OK 21/06/12
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            //if (oConsulta.rHistoriaClinica("dtHistoriaClinica", oGrandfather.IdGrandfather))
+            //if (oQuery.rHistoriaClinica("dtHistoriaClinica", oGrandfather.IdGrandfather))
             //{
-            //    frmVisor fReport = new frmVisor(frmVisor.Reporte.HistoriaClinica, oConsulta.Table);
+            //    frmVisor fReport = new frmVisor(frmVisor.Reporte.HistoriaClinica, oQuery.Table);
             //    fReport.Show();
             //}
             //else
@@ -116,17 +116,17 @@ namespace myExplorer.Formularios
 
                 // Traigo el diagnostico del paciente solicitado 
                 oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostic.Rows[SelectRow].Cells["dgvID"].Value);
-                //oDs = oConsulta.SelectDiagnostic(oDs);
+                //oDs = oQuery.SelectDiagnostic(oDs);
 
                 // LLamo al formulario Diagnostico
                 frmD.Modo = Formularios.frmAbmDiagnostic.Vista.Modificar;
                // frmD.oDiagnostic = oDs;
-                frmD.oConsulta = this.oConsulta;
-                frmD.oUtil = this.oUtil;
+                frmD.oQuery = oQuery;
+                frmD.oUtil = oUtil;
                 frmD.ShowDialog();
 
                 // Actualizo la grilla
-                //this.GenerarGrillaDiagnostico(oConsulta.SelectDiagnosticoGrandfather(oDiagnostic));
+                //this.GenerarGrillaDiagnostico(oQuery.SelectDiagnosticoGrandfather(oDiagnostic));
                 this.CargarDiagnostico();
             }
         }
@@ -136,14 +136,14 @@ namespace myExplorer.Formularios
         {
             classDiagnostic oDs = new classDiagnostic();
             Formularios.frmAbmDiagnostic frmD = new Formularios.frmAbmDiagnostic();
-            frmD.oConsulta = this.oConsulta;
-            frmD.oUtil = this.oUtil;
+            frmD.oQuery = oQuery;
+            frmD.oUtil = oUtil;
 
             if (dgvDiagnostic.Rows.Count != 0)
             {
                 // Traigo el diagnostico del paciente solicitado 
                 oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostic.Rows[SelectRow].Cells["dgvID"].Value);
-                oDs = (classDiagnostic)oConsulta.AbmDiagnostic(oDs, classQuery.eAbm.Select);
+                oDs = (classDiagnostic)oQuery.AbmDiagnostic(oDs, classQuery.eAbm.Select);
             }
             else
             {
@@ -157,7 +157,7 @@ namespace myExplorer.Formularios
             frmD.ShowDialog();
 
             // Actualizo la grilla
-            //this.GenerarGrillaDiagnostico(oConsulta.SelectDiagnosticoGrandfather(oDiagnostic));
+            //this.GenerarGrillaDiagnostico(oQuery.SelectDiagnosticoGrandfather(oDiagnostic));
             this.CargarDiagnostico();
         }
 
@@ -179,16 +179,16 @@ namespace myExplorer.Formularios
         {
             // Carga Fechas
             //-------------------------------------------------
-            //dtpUltimaVisita.Value = oConsulta.UltimaVisita(oGrandfather);
-            //dtpPrimeraVisita.Value = oConsulta.PrimeraVisita(oGrandfather);
+            //dtpUltimaVisita.Value = oQuery.UltimaVisita(oGrandfather);
+            //dtpPrimeraVisita.Value = oQuery.PrimeraVisita(oGrandfather);
             //// Carga Visita
             ////-------------------------------------------------
-            //txtNvisitas.Text = Convert.ToString(oConsulta.CantidadVisitas(oGrandfather));
+            //txtNvisitas.Text = Convert.ToString(oQuery.CantidadVisitas(oGrandfather));
             //txtNvisitas.Enabled = false;
             //// Carga Grilla Paciente
             ////-------------------------------------------------
             //oDiagnostic.IdGrandfather = oGrandfather.IdGrandfather;
-            //int C = this.GenerarGrillaDiagnostico(oConsulta.SelectDiagnosticoGrandfather(oDiagnostic));
+            //int C = this.GenerarGrillaDiagnostico(oQuery.SelectDiagnosticoGrandfather(oDiagnostic));
 
             //if (C == 0)
             //    btnExportar.Enabled = false;
@@ -278,21 +278,21 @@ namespace myExplorer.Formularios
 
             //    if (Modo == Vista.Nuevo)
             //    {   // Guarda
-            //        if (!oConsulta.AddGrandfather(oGrandfather, oUtil.IdUsuario))
-            //            MessageBox.Show(oConsulta.Menssage);
+            //        if (!oQuery.AddGrandfather(oGrandfather, oUtil.IdUsuario))
+            //            MessageBox.Show(oQuery.Menssage);
             //        else
             //        {
             //            MessageBox.Show(oTxt.AgregarPaciente);
             //            this.Modo = Vista.Modificar;
-            //            this.oGrandfather.IdGrandfather = oConsulta.UltimoIdGrandfather();
+            //            this.oGrandfather.IdGrandfather = oQuery.UltimoIdGrandfather();
             //            this.IdPaciente = 0;
             //            this.ini();
             //        }
             //    }
             //    else if (Modo == Vista.Modificar)
             //    {   // Actualiza
-            //        if (!oConsulta.ModificarPersona(oGrandfather))
-            //            MessageBox.Show(oConsulta.Menssage);
+            //        if (!oQuery.ModificarPersona(oGrandfather))
+            //            MessageBox.Show(oQuery.Menssage);
             //        else
             //        {
             //            MessageBox.Show(oTxt.ModificarPaciente);
@@ -350,7 +350,7 @@ namespace myExplorer.Formularios
             if (this.IdPaciente != 0)
             {
                 oGrandfather.IdGrandfather = this.IdPaciente;
-                //oGrandfather = oConsulta.SelectPersona(oGrandfather);
+                //oGrandfather = oQuery.SelectPersona(oGrandfather);
             }
 
             // Modo en el que se mostrara el formulario

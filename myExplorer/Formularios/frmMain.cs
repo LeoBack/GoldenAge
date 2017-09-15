@@ -14,57 +14,54 @@ namespace myExplorer.Formularios
 {
     public partial class frmMain : Form
     {
+        // OK - 17/09/14
         #region Atributos y Propiedades
 
-        private enum EstadoUsuario { Invalido = 0, Valido = 1, Invitado = 2 }
+        private enum eUser { Invalido = 0, Valido = 1, Invitado = 2 }
 
-        private classQuery oConsulta;
+        private classQuery oQuery;
         private classUtiles oUtil;
-        private EstadoUsuario Usuario;
+        private eUser User = eUser.Invalido;
         private classTextos oTxt = new classTextos();
 
-        private bool Log = false;
-        private string PahtBd = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LAB\\";
-        private string NameBd = "Server.db";
-
-        private string TituloVentana = "MyExplorer";
+        private bool EanbleLog = true;
+        private string PathBd = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LAB\\";
+        private string NameBd = "Data.mdf";
 
         #endregion
 
         //-----------------------------------------------------------------
+        // OK - 17/09/14
         #region Formulario
         //-----------------------------------------------------------------
-
+        
+        // OK - 17/09/14
         public frmMain()
         {
             InitializeComponent();
+            Text = oTxt.TituloVentana;
+            WindowState = FormWindowState.Maximized;
         }
 
+        // OK - 17/09/14
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //this.Text = "MyExplorer";
-            //this.WindowState = FormWindowState.Maximized;
-            ////tsBaseDatos.Visible = false;
+            tsBaseDatos.Visible = false;
 
-            //if (!System.IO.Directory.Exists(this.PahtBd))
-            //    System.IO.Directory.CreateDirectory(this.PahtBd);
-
-            //oConsulta = new classConsultas(this.PahtBd, this.NameBd, this.Log);
-            //oBD = new classSchemaBD(oConsulta.Path, oConsulta.DBname, oConsulta.ActivarLog);
-
-            //if (oBD.ExistCreateBD())
-            //    tsslPath.Text = oTxt.ConexionNuevaExitosa;
-            //else
-            //    tsslPath.Text = oTxt.ConexionExitosa;
-            
-            //oUtil = new classUtiles();
-
-            //// Inicia Secion.
-            //this.HabilitarUsuario(false);
-            //this.tsbUsuario_Click(sender, e);
+            if (!System.IO.Directory.Exists(PathBd))
+                System.IO.Directory.CreateDirectory(PathBd);
+            if (!System.IO.File.Exists(System.IO.Path.Combine(PathBd, NameBd)))
+                DialogRestoreDataBase();
+            oQuery = new classQuery(PathBd, NameBd, EanbleLog);
+            tsslPath.Text = oQuery.ServerVersion();
+            oUtil = new classUtiles();
+            // Inicia Secion.
+            EnableUser(false);
+            tsbProfessional_Click(sender, e);
         }
 
         // Cierra Formulario
+        // OK - 17/09/14
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show(oTxt.MsgCerrarAplicacion, oTxt.MsgTituloCerrarAplicacion, 
@@ -76,16 +73,19 @@ namespace myExplorer.Formularios
         //-----------------------------------------------------------------
 
         //-----------------------------------------------------------------
+        // OK - 17/09/14
         #region msMenu
         //-----------------------------------------------------------------
         
         // Cierra Formulario
+        // OK - 17/09/14
         private void tsmiSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         // Cuadro de AcercaDe
+        // OK - 17/09/14
         private void tsmiAcercaDe_Click(object sender, EventArgs e)
         {
             frmAcercaDe frmAcercaDe = new frmAcercaDe();
@@ -96,42 +96,46 @@ namespace myExplorer.Formularios
         //-----------------------------------------------------------------
 
         //-----------------------------------------------------------------
+        // OK - 17/09/14
         #region tspPrincipal
         //-----------------------------------------------------------------
 
         // Formulario de Carga
-        private void tsbAgregar_Click(object sender, EventArgs e)
+        // OK - 17/09/14
+        private void tsbAddGrandfather_Click(object sender, EventArgs e)
         {
-            if (Usuario == EstadoUsuario.Valido)
+            if (User == eUser.Valido)
             {
-                frmGrandfather frmPaciente = new frmGrandfather();
-                frmPaciente.oConsulta = this.oConsulta;
-                frmPaciente.Modo = frmGrandfather.Vista.Nuevo;
-                frmPaciente.oUtil = this.oUtil;
-                frmPaciente.ShowDialog();
+                frmGrandfather frmAbmGrandfather = new frmGrandfather();
+                frmAbmGrandfather.oQuery = oQuery;
+                frmAbmGrandfather.Modo = frmGrandfather.Vista.Nuevo;
+                frmAbmGrandfather.oUtil = oUtil;
+                frmAbmGrandfather.ShowDialog();
             }
         }
 
         // Formulario de Busqueda
-        private void tsbBuscar_Click(object sender, EventArgs e)
+        // OK - 17/09/14
+        private void tsbListGrandfather_Click(object sender, EventArgs e)
         {
-            if (Usuario == EstadoUsuario.Valido)
+            if (User == eUser.Valido)
             {
                 frmListGrandfather frmBuscar = new frmListGrandfather();
-                frmBuscar.oConsulta = this.oConsulta;
-                frmBuscar.oUtil = this.oUtil;
+                frmBuscar.oQuery = oQuery;
+                frmBuscar.oUtil = oUtil;
                 frmBuscar.ShowDialog();
             }
         }
 
         // Formulario de Carga de Obras Sociales
-        private void tsgAgregarOB_Click(object sender, EventArgs e)
+        // OK - 17/09/14
+        private void tsgAddSocialWork_Click(object sender, EventArgs e)
         {
-            if (Usuario == EstadoUsuario.Valido)
+            if (User == eUser.Valido)
             {
                 frmListSocialWorks frmSocialWork = new frmListSocialWorks();
-                frmSocialWork.oConsulta = this.oConsulta;
-                frmSocialWork.oUtil = this.oUtil;
+                frmSocialWork.oQuery = oQuery;
+                frmSocialWork.oUtil = oUtil;
                 frmSocialWork.ShowDialog();
             }
         }
@@ -139,32 +143,97 @@ namespace myExplorer.Formularios
         #endregion
         //-----------------------------------------------------------------
 
-
         //-----------------------------------------------------------------
-        #region tspBaseDatos 
+        // OK - 17/09/14
+        #region tspBaseDatos
         //-----------------------------------------------------------------
 
         // Restura la base de datos
+        // OK - 17/09/14
         private void tsmiRestaurar_Click(object sender, EventArgs e)
         {
-            if (Usuario == EstadoUsuario.Valido)
-            {
-                
-            }
+            if (User == eUser.Valido)
+                DialogRestoreDataBase();   
         }
 
         // Realiza el BackUp
+        // OK - 17/09/14
         private void tsmiCopiar_Click(object sender, EventArgs e)
         {
-            if (Usuario == EstadoUsuario.Valido)
-            {
-                
-            }
+            if (User == eUser.Valido)
+                DialogCopiDataBase();
         }
 
         #endregion 
         //-----------------------------------------------------------------
 
+        //-----------------------------------------------------------------
+        // OK 08/06/12
+        #region tspProfessional
+        //-----------------------------------------------------------------
+        
+        // OK 08/06/12
+        private void tsbProfessional_Click(object sender, EventArgs e)
+        {
+            if (User == eUser.Valido)
+            {
+                User = eUser.Invalido;
+                tsbUsuario.Text = oTxt.IniciarSesion;
+                Text = oTxt.TituloVentana + oTxt.TituloLogin;
+                // Cerrar odas los frm
+                EnableUser(false);
+                oUtil.oProfessional = null;
+            }
+            else
+            {
+                bool H = true;
+                frmLogin fLogin = new frmLogin();
+
+                while (H)
+                {
+                    if (fLogin.ShowDialog() == DialogResult.Yes)
+                    {
+                        int Id = oQuery.ValidarPassword(fLogin.oProfessional);
+                        if (Id != 0)
+                        {
+                            User = eUser.Valido;
+                            tsbUsuario.Text = oTxt.CerrarSesion;
+                            Text = oTxt.TituloVentana + oTxt.SeparadorTitulo + fLogin.oProfessional.User.ToString();
+                            // Abre todas los frm
+                            EnableUser(true);
+                            oUtil.oProfessional = (Entidades.Clases.classProfessional)oQuery.AbmProfessional(
+                                new Entidades.Clases.classProfessional(Id), classQuery.eAbm.Select); 
+                            // Ventana por defecto al inicio
+                            frmAlInicio(sender, e);
+                            H = false;
+                        }
+                        else
+                        {
+                            User = eUser.Invalido;
+                            tsbUsuario.Text = oTxt.IniciarSesion;
+                            Text = oTxt.TituloVentana + oTxt.TituloLogin;
+                            oUtil.oProfessional = null; ;
+                            MessageBox.Show(oTxt.LoginInvalido);
+                        }
+                    }
+                    else
+                    H = false;
+                }
+            }
+            tsmiSesion.Text = tsbUsuario.Text;
+        }
+
+        // OK 08/06/12
+        private void tsmiAddProfessional_Click(object sender, EventArgs e)
+        {
+            frmProfessional fU = new frmProfessional();
+            fU.oQuery = oQuery;
+            fU.oUtil = oUtil;
+            fU.Show();
+        }
+
+        #endregion
+        //-----------------------------------------------------------------
 
         //-----------------------------------------------------------------
         #region tspTurnos
@@ -172,85 +241,17 @@ namespace myExplorer.Formularios
 
         private void tsbAsignarTurno_Click(object sender, EventArgs e)
         {
-        //    if (Usuario == EstadoUsuario.Valido)
-        //    {
-        //        frmTurno fTurno = new frmTurno();
-        //        fTurno.oConsulta = oConsulta;
-        //        fTurno.oUtil = this.oUtil;
-        //        fTurno.ShowDialog();
-        //    }
-        }
-
-        #endregion
-
-
-        //-----------------------------------------------------------------
-        #region tspUsuario
-        //-----------------------------------------------------------------
-        
-        // OK 08/06/12
-        private void tsbUsuario_Click(object sender, EventArgs e)
-        {
-            //if (this.Usuario == EstadoUsuario.Valido)
-            //{
-            //    this.Usuario = EstadoUsuario.Invalido;
-            //    tsbUsuario.Text = oTxt.IniciarSesion;
-            //    this.Text = this.TituloVentana + oTxt.TituloLogin;
-            //    // Cerrar odas los frm
-            //    this.HabilitarUsuario(false);
-            //    this.oUtil.IdUsuario = 0;
-            //}
-            //else
-            //{
-            //    bool H = true;
-            //    frmLogin fLogin = new frmLogin();
-
-            //    while (H)
+            //    if (Usuario == EstadoUsuario.Valido)
             //    {
-            //        if (fLogin.ShowDialog() == DialogResult.Yes)
-            //        {
-            //            if (oConsulta.ValidarPassword(fLogin.oUsuario))
-            //            {
-            //                this.Usuario = EstadoUsuario.Valido;
-            //                tsbUsuario.Text = oTxt.CerrarSesion ;
-            //                this.Text = this.TituloVentana + oTxt.SeparadorTitulo + fLogin.oUsuario.Nombre.ToString();
-            //                // Abre todas los frm
-            //                this.HabilitarUsuario(true);
-            //                this.oUtil.IdUsuario = oConsulta.SelectUsuario(fLogin.oUsuario).IdUsuario;
-
-            //                // Ventana por defect al inicio
-            //                this.frmAlInicio(sender, e);
-
-            //                H = false;
-            //            }
-            //            else
-            //            {
-            //                this.Usuario = EstadoUsuario.Invalido;
-            //                tsbUsuario.Text = oTxt.IniciarSesion;
-            //                this.Text = this.TituloVentana + oTxt.TituloLogin;
-            //                this.oUtil.IdUsuario = 0;
-            //                MessageBox.Show(oTxt.LoginInvalido);
-            //            }
-            //        }
-            //        else
-            //            H = false;
+            //        frmTurno fTurno = new frmTurno();
+            //        fTurno.oConsulta = oConsulta;
+            //        fTurno.oUtil = this.oUtil;
+            //        fTurno.ShowDialog();
             //    }
-            //}
-            //tsmiSesion.Text = tsbUsuario.Text;
-        }
-
-        // 
-        private void tsmiAgregarUsuario_Click(object sender, EventArgs e)
-        {
-            frmProfessional fU = new frmProfessional();
-            fU.oConsulta = this.oConsulta;
-            fU.oUtil = this.oUtil;
-            fU.Show();
         }
 
         #endregion
         //-----------------------------------------------------------------
-
 
         //-----------------------------------------------------------------
         #region tsEstadistica
@@ -259,10 +260,10 @@ namespace myExplorer.Formularios
         //OK 18/06/12
         private void tsEstadisticas_Click(object sender, EventArgs e)
         {
-            if (this.Usuario == EstadoUsuario.Valido)
+            if (this.User == eUser.Valido)
             {
                 frmEstadistica fE = new frmEstadistica();
-                fE.oConsulta = this.oConsulta;
+                fE.oConsulta = this.oQuery;
                 fE.oUtil = this.oUtil;
                 fE.ShowDialog();
             }
@@ -271,35 +272,85 @@ namespace myExplorer.Formularios
         #endregion
         //-----------------------------------------------------------------
 
-
         //-----------------------------------------------------------------
         #region Metodos
         //-----------------------------------------------------------------
 
         private void frmAlInicio(object sender, EventArgs e)
         {
-            if (Usuario == EstadoUsuario.Valido)
-                this.tsbAsignarTurno_Click(sender, e);
+            if (User == eUser.Valido)
+                tsbAsignarTurno_Click(sender, e);
         }
 
         /// <summary>
-        /// Habilita los controles cuando el ususario es valido
+        /// Habilita los controles cuando el ususario es valido.
+        /// OK - 17/09/14
         /// </summary>
         /// <param name="X"></param>
-        private void HabilitarUsuario(bool X)
+        private void EnableUser(bool X)
         {
-            this.tsBaseDatos.Enabled = X;
-            this.tspTurnos.Enabled = X;
-            this.tsPrincipal.Enabled = X;
-            this.tsEstadisticas.Enabled = X;
-            this.tsUsuario.Enabled = true;
+            tsBaseDatos.Enabled = X;
+            tspTurnos.Enabled = X;
+            tsPrincipal.Enabled = X;
+            tsEstadisticas.Enabled = X;
+            tsUsuario.Enabled = true;
 
-            this.tsmiPaciente.Enabled = X;
-            this.tsmiOS.Enabled = X;
-            this.tsmiBaseDeDatos.Enabled = X;
-            this.tsmiTurnos.Enabled = X;
-            this.tsmiAdministrador.Enabled = X;
-            this.tsmiEstadisticas.Enabled = X;
+            tsmiPaciente.Enabled = X;
+            tsmiOS.Enabled = X;
+            tsmiBaseDeDatos.Enabled = X;
+            tsmiTurnos.Enabled = X;
+            tsmiAdministrador.Enabled = X;
+            tsmiEstadisticas.Enabled = X;
+        }
+
+        /// <summary>
+        /// Dialogo para restaurar la base de datos.
+        /// OK - 17/09/14
+        /// </summary>
+        private void DialogRestoreDataBase()
+        {
+            OpenFileDialog openFileData = new OpenFileDialog();
+            openFileData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            openFileData.Filter = "mdf files (*.mdf)|*.mdf|All files (*.*)|*.*";
+            openFileData.FilterIndex = 2;
+            openFileData.RestoreDirectory = true;
+
+            if (openFileData.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    System.IO.File.Copy(openFileData.FileName, System.IO.Path.Combine(PathBd, NameBd));
+                }
+                catch (System.IO.IOException ex) { MessageBox.Show(ex.ToString()); }
+                catch (System.ArgumentException ex) { MessageBox.Show(ex.ToString()); }
+                catch (System.UnauthorizedAccessException ex) { MessageBox.Show(ex.ToString()); }
+                catch (System.NotSupportedException ex) { MessageBox.Show(ex.ToString()); }
+            }
+        }
+
+        /// <summary>
+        /// Dialogo para copiar la base de datos.
+        /// OK - 17/09/14
+        /// </summary>
+        private void DialogCopiDataBase()
+        {
+            OpenFileDialog openFileData = new OpenFileDialog();
+            openFileData.InitialDirectory = PathBd;
+            openFileData.Filter = "mdf files (*.mdf)|*.mdf|All files (*.*)|*.*";
+            openFileData.FilterIndex = 2;
+            openFileData.RestoreDirectory = true;
+
+            if (openFileData.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    System.IO.Directory.Move(openFileData.FileName,
+                        Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+                }
+                catch (System.IO.IOException ex) { MessageBox.Show(ex.ToString()); }
+                catch (System.ArgumentException ex) { MessageBox.Show(ex.ToString()); }
+                catch (System.UnauthorizedAccessException ex) { MessageBox.Show(ex.ToString()); }
+            }
         }
 
         #endregion

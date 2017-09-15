@@ -24,7 +24,7 @@ namespace myExplorer.Formularios
         public Modo Acto { set; get; }
         public int IdProfessional { set; get; }
 
-        public classQuery oConsulta { set; get; }
+        public classQuery oQuery { set; get; }
         public classProfessional oProfessional { set; get; }
         public classUtiles oUtil { set; get; }
 
@@ -44,7 +44,7 @@ namespace myExplorer.Formularios
         //OK 11/06/12
         private void frmProfessional_Load(object sender, EventArgs e)
         {
-            if (oConsulta != null)
+            if (oQuery != null)
             {
                 this.Text = oTxt.TituloAdministradorUsuario;
                 oValidar = new classValidaciones();
@@ -68,11 +68,11 @@ namespace myExplorer.Formularios
                 if (Acto == Modo.Nuevo)
                 {   //-------------------------------------------------
                     // Guarda
-                    if ((bool)oConsulta.AbmProfessional(oProfessional, classQuery.eAbm.Insert))
+                    if ((bool)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Insert))
                     {
                         MessageBox.Show(oTxt.AgregarProfesional);
                         this.Acto = Modo.Modificar;
-                        this.oProfessional.IdProfessional = oConsulta.UltimoIdProfessional();
+                        this.oProfessional.IdProfessional = oQuery.UltimoIdProfessional();
                         this.IdProfessional = 0;
                         this.ini();
                     }
@@ -83,7 +83,7 @@ namespace myExplorer.Formularios
                 else if (Acto == Modo.Modificar)
                 {   //-------------------------------------------------
                     // Actualiza
-                    if ((bool)oConsulta.AbmProfessional(oProfessional, classQuery.eAbm.Update))
+                    if ((bool)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Update))
                     {
                         MessageBox.Show(oTxt.ModificarProfesional);
                         this.Acto = Modo.Modificar;
@@ -108,7 +108,7 @@ namespace myExplorer.Formularios
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             frmListProfessional frmVer = new frmListProfessional();
-            frmVer.oConsulta = this.oConsulta;
+            frmVer.oConsulta = this.oQuery;
             frmVer.oUtil = this.oUtil;
 
             if (frmVer.ShowDialog() == DialogResult.OK)
@@ -173,7 +173,7 @@ namespace myExplorer.Formularios
             if (this.IdProfessional != 0)
             {
                 oProfessional.IdProfessional = this.IdProfessional;
-                oProfessional = (classProfessional)oConsulta.AbmProfessional(oProfessional, classQuery.eAbm.Select);
+                oProfessional = (classProfessional)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Select);
                 btnBloquear.Enabled = true;
             }
 

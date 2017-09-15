@@ -38,30 +38,47 @@ namespace Datos.Query
 
         #region Constructores
 
+        //public static string BuildConecctionString(string PathBd, string NameBd)
+        //{
+        //    string Route = System.IO.Path.Combine(PathBd, NameBd); //C:\Users\leona\AppData\Roaming\LAB\Data.mdf
+        //    return "Data Source=(LocalDB)\v11.0;AttachDbFilename=" + Route + ";Integrated Security=True;Connect Timeout=30";
+        //}
         public classQuery()
         {
             ActivarLog = true;
             oSql = new classSql();
-            //Path = oSql.Path;
-            //DBname = oSql.DBname;
-            Menssage = Menssage;
-            //
             ConexionString = oSql.ConnectionString;
-            Menssage = "Open Location";
+            Menssage = oSql.Mensage;
+            lParam = new List<SqlParameter>();
+        }
+
+        public classQuery(string vConnectionString)
+        {
+            ActivarLog = false;
+            oSql = new classSql(vConnectionString);
+            ConexionString = oSql.ConnectionString;
+            Menssage = oSql.Mensage;
             lParam = new List<SqlParameter>();
         }
 
         public classQuery(string vPath, string vDBname, bool vLog)
         {
             ActivarLog = vLog;
-            //Path = vPath;
-            //DBname = vDBname;
-            oSql = new classSql(Path, DBname, ActivarLog);
-            Menssage = Menssage;
-            //
+            oSql = new classSql(classSql.BuildConecctionString(vPath, vDBname), vPath, ActivarLog);
             ConexionString = oSql.ConnectionString;
-            Menssage = "Open Location";
+            Menssage = oSql.Mensage;
             lParam = new List<SqlParameter>();
+        }
+
+        public string ServerVersion()
+        {
+            string A = string.Empty;
+            if (oSql.SelectRaeder("SELECT SERVERPROPERTY('edition')"))
+            {
+                if (oSql.Reader.Read())
+                    A = Convert.ToString(oSql.Reader[0]);
+            }
+            return A;
         }
 
         #endregion
@@ -2483,9 +2500,9 @@ namespace Datos.Query
 
         #region Consultas Especiales
 
-        public bool ValidarPassword(classProfessional oU)
+        public int ValidarPassword(classProfessional oU)
         {
-            bool A = false;
+            int A = 0;
 
             //if (oSql.SelectReader("SELECT Count(IdUsuario) FROM Usuario  "
             //    + " WHERE Bloqueado = 0  AND Nombre = '" + oU.User

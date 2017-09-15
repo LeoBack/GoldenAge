@@ -18,7 +18,7 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
-        public classQuery oConsulta { set; get; }
+        public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         public int IdSocialWork { set; get; }
         private classTextos oTxt = new classTextos();
