@@ -21,7 +21,7 @@ namespace myExplorer.Formularios
 
         public Vista Modo { set; get; }
         public classDiagnostic oDiagnostico { set; get; }
-        public classQuery oConsulta { set; get; }
+        public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
 
         private classControlComboBoxes oCombo;
@@ -42,7 +42,7 @@ namespace myExplorer.Formularios
         //OK 24/05/12
         private void frmDiagnostic_Load(object sender, EventArgs e)
         {
-            if (oConsulta != null)
+            if (oQuery != null)
             {
                 oCombo = new classControlComboBoxes();
 
@@ -51,7 +51,7 @@ namespace myExplorer.Formularios
                 btnEliminar.Size = sBtn;
                 btnGuardar.Size = sBtn;
 
-                //oCombo.CargaCombo(cmbPatologia, oConsulta.ListaPatologias(), oConsulta.Table);
+                //oCombo.CargaCombo(cmbPatologia, oQuery.ListaPatologias(), oQuery.Table);
 
                 if (Modo == Vista.Modificar)
                 {
@@ -81,8 +81,8 @@ namespace myExplorer.Formularios
             // Eliminar el Diagnostico
             if (MessageBox.Show(oTxt.MsgEliminarDiagnostico, oTxt.MsgTituloDiagnostico, 
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                //error = oConsulta.DeleteDiagnostic(oDiagnostico, false);
-            error = (bool)oConsulta.AbmDiagnostic(oDiagnostico, classQuery.eAbm.Delete);
+                //error = oQuery.DeleteDiagnostic(oDiagnostico, false);
+            error = (bool)oQuery.AbmDiagnostic(oDiagnostico, classQuery.eAbm.Delete);
 
             if (!error)
                 MessageBox.Show(oTxt.ErrorEliminarConsulta);
@@ -102,13 +102,13 @@ namespace myExplorer.Formularios
             //        this.oDiagnostico.Diagnostico = this.oValidarSql.ValidaString(rtxtDiagnostico.Text);
             //        this.oDiagnostico.IdDetalle = Convert.ToInt32(cmbPatologia.SelectedValue);
             //        this.oDiagnostico.Fecha = DateTime.Now;
-            //        error = oConsulta.AgregarDiagnostico(oDiagnostico);
+            //        error = oQuery.AgregarDiagnostico(oDiagnostico);
             //    }
             //    if (Modo == Vista.Modificar)
             //    {
             //        this.oDiagnostico.Diagnostico = this.oValidarSql.ValidaString(rtxtDiagnostico.Text);
             //        this.oDiagnostico.IdDetalle = Convert.ToInt32(cmbPatologia.SelectedValue);
-            //        error = oConsulta.ModificarDiagnostico(oDiagnostico);
+            //        error = oQuery.ModificarDiagnostico(oDiagnostico);
             //    }
             //}
 
@@ -128,7 +128,7 @@ namespace myExplorer.Formularios
         private void btnAddPatologia_Click(object sender, EventArgs e)
         {
             //frmAuxiliar frmA = new frmAuxiliar();
-            //frmA.oConsulta = this.oConsulta;
+            //frmA.oQuery = this.oQuery;
             //frmA.tipoObjeto = frmAuxiliar.Tipo.Patologias;
             //frmA.Id = Convert.ToInt32(cmbPatologia.SelectedValue);
 
@@ -136,8 +136,8 @@ namespace myExplorer.Formularios
             //{
             //    oCombo.CargaCombo(
             //        cmbPatologia,
-            //        oConsulta.ListaPatologias(),
-            //        oConsulta.Table);
+            //        oQuery.ListaPatologias(),
+            //        oQuery.Table);
             //}
         }
 

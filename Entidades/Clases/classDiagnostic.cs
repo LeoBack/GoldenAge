@@ -9,7 +9,7 @@ namespace Entidades.Clases
     {
         #region Atributos y Metodos
         public int IdDiagnostic { set; get; }
-        public int IdSpeciality { set; get; } //Speciality
+        public int IdSpeciality { set; get; }
         public string Detail { set; get; }
         public DateTime DiagnosticDate { set; get; }
         public bool Visible { set; get; }

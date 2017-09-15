@@ -18,7 +18,7 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         #region Atributos y Propiedades
 
-        public classQuery oConsulta { set; get; }
+        public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         private List<classSocialWork> lSocialWork;
         private classValidaSqlite oValidarSql = new classValidaSqlite();
@@ -48,7 +48,7 @@ namespace myExplorer.Formularios
         {
             this.Text = oTxt.TituloSocialWorks;
 
-            if (oConsulta != null)
+            if (oQuery != null)
             {
                 this.SelectRow = 0;
                 lblInfo.Text = "";
@@ -71,8 +71,8 @@ namespace myExplorer.Formularios
             if (dgvLista.Rows.Count != 0)
             {
                 frmDialogoImprecion fIm = new frmDialogoImprecion();
-                fIm.oConsulta = this.oConsulta;
-                fIm.oUtil = this.oUtil;
+                fIm.oQuery = oQuery;
+                fIm.oUtil = oUtil;
                 fIm.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
 
                 if (fIm.IdSocialWork != 0)
@@ -112,8 +112,8 @@ namespace myExplorer.Formularios
         private void tsbAgregar_Click(object sender, EventArgs e)
         {
             frmAbmSocialWork frmA = new frmAbmSocialWork();
-            frmA.oConsulta = this.oConsulta;
-            frmA.oUtil = this.oUtil;
+            frmA.oQuery = oQuery;
+            frmA.oUtil = oUtil;
             frmA.Acto = frmAbmSocialWork.Accion.Nuevo;
             frmA.ShowDialog();
 
@@ -128,14 +128,14 @@ namespace myExplorer.Formularios
             if (dgvLista.Rows.Count != 0)
             {
                 oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
-                oSw = (classSocialWork)oConsulta.AbmSocialWork(oSw, classQuery.eAbm.Select);
+                oSw = (classSocialWork)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Select);
             }
 
-            if (oConsulta.Error)
+            if (oQuery.Error)
             {
                 frmAbmSocialWork frmA = new frmAbmSocialWork();
-                frmA.oConsulta = this.oConsulta;
-                frmA.oUtil = this.oUtil;
+                frmA.oQuery = oQuery;
+                frmA.oUtil = oUtil;
                 frmA.oSocialWork = oSw;
                 frmA.Acto = frmAbmSocialWork.Accion.Eliminar;
                 frmA.ShowDialog();
@@ -157,14 +157,14 @@ namespace myExplorer.Formularios
             if (dgvLista.Rows.Count != 0)
             {
                 oOS.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
-                oOS = (classSocialWork)oConsulta.AbmSocialWork(oOS, classQuery.eAbm.Select);
+                oOS = (classSocialWork)oQuery.AbmSocialWork(oOS, classQuery.eAbm.Select);
             }
 
-            if (oConsulta.Error)
+            if (oQuery.Error)
             {
                 frmAbmSocialWork frmA = new frmAbmSocialWork();
-                frmA.oConsulta = this.oConsulta;
-                frmA.oUtil = this.oUtil;
+                frmA.oQuery = oQuery;
+                frmA.oUtil = oUtil;
                 frmA.oSocialWork = oOS;
                 frmA.Acto = frmAbmSocialWork.Accion.Modificar;
                 frmA.ShowDialog();
@@ -207,17 +207,17 @@ namespace myExplorer.Formularios
         /// </summary>
         public void Filtrar()
         {
-            lSocialWork = oConsulta.FiltroSocialWorkLimite(
+            lSocialWork = oQuery.FiltroSocialWorkLimite(
                 this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text),
                 this.Desde, this.Hasta);
 
-            decimal Cont = oConsulta.CountSocialWork(tstxtNombre.TextBox.Text);
+            decimal Cont = oQuery.CountSocialWork(tstxtNombre.TextBox.Text);
             decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
             this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
 
             this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
 
-            if (oConsulta.Error)
+            if (oQuery.Error)
             {
                 dgvLista.Columns.Clear();
                 this.GenerarGrilla(lSocialWork);

@@ -21,7 +21,7 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         #region Atributos y Propiedades
 
-        public classQuery oConsulta { set; get; }
+        public classQuery oQuery { set; get; }
         public int IdGrandfather { set; get; }
         public classUtiles oUtil { set; get; }
 
@@ -51,11 +51,11 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         private void frmSearch_Load(object sender, EventArgs e)
         {
-            if (oConsulta != null)
+            if (oQuery != null)
             {
                 this.ConfiguracionInicial();
                 oCombos = new classControlComboBoxes();
-                oCombos.CargaCombo(tcmbSocialWork.ComboBox, oConsulta.ListSpecialty(true), oConsulta.Table);
+                oCombos.CargaCombo(tcmbSocialWork.ComboBox, oQuery.ListSpecialty(true), oQuery.Table);
 
                 this.Hasta = this.oUtil.CantRegistrosGrilla;
                 this.tslPagina.Text = "Página: 0 de 0";
@@ -78,9 +78,9 @@ namespace myExplorer.Formularios
             oP.AffiliateNumber = Convert.ToInt32(this.oValidarSql.ValidaString(txtbNafiliado.Text));
             oP.IdSocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
 
-            if (oConsulta.rListaGrandfatherLimite("dtPersona", oP, this.Desde, this.Hasta))
+            if (oQuery.rListaGrandfatherLimite("dtPersona", oP, this.Desde, this.Hasta))
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oConsulta.Table);
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
                 fReport.Show();
             }
             else
@@ -160,7 +160,7 @@ namespace myExplorer.Formularios
 
                 frmGrandfather frmGrandfatherulario = new frmGrandfather();
                 frmGrandfatherulario.Modo = frmGrandfather.Vista.Ver;
-                frmGrandfatherulario.oConsulta = this.oConsulta;
+                frmGrandfatherulario.oQuery = this.oQuery;
                 frmGrandfatherulario.IdPaciente = this.IdGrandfather;
                 frmGrandfatherulario.oUtil = this.oUtil;
                 frmGrandfatherulario.ShowDialog();
@@ -202,9 +202,9 @@ namespace myExplorer.Formularios
             oGrandfather.AffiliateNumber = Convert.ToInt32(this.oValidarSql.ValidaString(txtbNafiliado.Text));
             oGrandfather.IdSocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
 
-            lGrandfather = oConsulta.FiltroGrandfatherLimite(oGrandfather, this.Desde, this.Hasta);
+            lGrandfather = oQuery.FiltroGrandfatherLimite(oGrandfather, this.Desde, this.Hasta);
 
-            decimal Cont = oConsulta.CountGrandfather(oGrandfather);
+            decimal Cont = oQuery.CountGrandfather(oGrandfather);
             decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
             this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
 

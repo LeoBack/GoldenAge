@@ -155,7 +155,7 @@
             this.tsmiBuscar.Name = "tsmiBuscar";
             this.tsmiBuscar.Size = new System.Drawing.Size(116, 22);
             this.tsmiBuscar.Text = "Buscar";
-            this.tsmiBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
+            this.tsmiBuscar.Click += new System.EventHandler(this.tsbListGrandfather_Click);
             // 
             // tsmiAgregar
             // 
@@ -163,7 +163,7 @@
             this.tsmiAgregar.Name = "tsmiAgregar";
             this.tsmiAgregar.Size = new System.Drawing.Size(116, 22);
             this.tsmiAgregar.Text = "Agregar";
-            this.tsmiAgregar.Click += new System.EventHandler(this.tsbAgregar_Click);
+            this.tsmiAgregar.Click += new System.EventHandler(this.tsbAddGrandfather_Click);
             // 
             // tsmiOS
             // 
@@ -171,7 +171,7 @@
             this.tsmiOS.Name = "tsmiOS";
             this.tsmiOS.Size = new System.Drawing.Size(150, 22);
             this.tsmiOS.Text = "Obras Sociales";
-            this.tsmiOS.Click += new System.EventHandler(this.tsgAgregarOB_Click);
+            this.tsmiOS.Click += new System.EventHandler(this.tsgAddSocialWork_Click);
             // 
             // tsmiTurnos
             // 
@@ -224,7 +224,7 @@
             this.tsmiAdministrador.Name = "tsmiAdministrador";
             this.tsmiAdministrador.Size = new System.Drawing.Size(150, 22);
             this.tsmiAdministrador.Text = "Administrador";
-            this.tsmiAdministrador.Click += new System.EventHandler(this.tsmiAgregarUsuario_Click);
+            this.tsmiAdministrador.Click += new System.EventHandler(this.tsmiAddProfessional_Click);
             // 
             // tsmiSesion
             // 
@@ -232,7 +232,7 @@
             this.tsmiSesion.Name = "tsmiSesion";
             this.tsmiSesion.Size = new System.Drawing.Size(150, 22);
             this.tsmiSesion.Text = "Sesion";
-            this.tsmiSesion.Click += new System.EventHandler(this.tsbUsuario_Click);
+            this.tsmiSesion.Click += new System.EventHandler(this.tsbProfessional_Click);
             // 
             // toolStripSeparator2
             // 
@@ -313,7 +313,7 @@
             this.tsbBuscar.Name = "tsbBuscar";
             this.tsbBuscar.Size = new System.Drawing.Size(116, 22);
             this.tsbBuscar.Text = "Buscar";
-            this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
+            this.tsbBuscar.Click += new System.EventHandler(this.tsbListGrandfather_Click);
             // 
             // tsbAgregar
             // 
@@ -321,7 +321,7 @@
             this.tsbAgregar.Name = "tsbAgregar";
             this.tsbAgregar.Size = new System.Drawing.Size(116, 22);
             this.tsbAgregar.Text = "Agregar";
-            this.tsbAgregar.Click += new System.EventHandler(this.tsbAgregar_Click);
+            this.tsbAgregar.Click += new System.EventHandler(this.tsbAddGrandfather_Click);
             // 
             // toolStripSeparator3
             // 
@@ -335,7 +335,7 @@
             this.tsgAgregarOB.Name = "tsgAgregarOB";
             this.tsgAgregarOB.Size = new System.Drawing.Size(119, 36);
             this.tsgAgregarOB.Text = "Obras Sociales";
-            this.tsgAgregarOB.Click += new System.EventHandler(this.tsgAgregarOB_Click);
+            this.tsgAgregarOB.Click += new System.EventHandler(this.tsgAddSocialWork_Click);
             // 
             // ssEstado
             // 
@@ -401,7 +401,7 @@
             this.tsbUsuario.Name = "tsbUsuario";
             this.tsbUsuario.Size = new System.Drawing.Size(112, 36);
             this.tsbUsuario.Text = "Iniciar Sesion";
-            this.tsbUsuario.Click += new System.EventHandler(this.tsbUsuario_Click);
+            this.tsbUsuario.Click += new System.EventHandler(this.tsbProfessional_Click);
             // 
             // toolStrip1
             // 

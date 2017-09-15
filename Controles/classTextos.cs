@@ -6,6 +6,8 @@ namespace Controles
 {
     public class classTextos
     {
+        public string TituloVentana = "MyExplorer";
+
         //TitulosFrm
         public string SeparadorTitulo = " -> Dr. ";
         public string TituloLogin = " -> Sesion No Iniciada";
