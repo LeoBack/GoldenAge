@@ -30,12 +30,16 @@ namespace myExplorer.Formularios
         private classTextos oTxt = new classTextos();
         private classValidaSqlite oValidarSql = new classValidaSqlite();
 
+        private int IdCountry = 0;
+        private int IdProvince = 0;
+        private int IdCity = 0;
+
         #endregion
 
         // OK 03/06/12
         #region Formulario
 
-        //OK 25/05/12
+        // OK 25/05/12
         public frmAbmSocialWork()
         {
             InitializeComponent();
@@ -138,7 +142,7 @@ namespace myExplorer.Formularios
                         CargarObjeto();
 
                         // INSERTAR OBJETO;
-                        if ((bool)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Insert))
+                        if (0 != (int)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Insert))
                         {
                             MessageBox.Show(oTxt.AgregarSocialWork);
                             btnAgregar.Text = oTxt.Limpiar;
@@ -159,7 +163,7 @@ namespace myExplorer.Formularios
                     {
                         CargarObjeto();
                         // Modifica OBJETO;
-                        if ((bool)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Update))
+                        if (0 != (int)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Update))
                         {
                             MessageBox.Show(oTxt.ModificarSocialWork);
                             Close();
@@ -184,37 +188,33 @@ namespace myExplorer.Formularios
             Close();
         }
 
-        #endregion
-
-        // REVISAR 17/09/09
-        #region Botones Auxiliares
-
-        // REVISAR 17/09/09
+        // OK 17/09/09
         private void btnLocalitation_Click(object sender, EventArgs e)
         {
-            frmLocation fLocalitation = new frmLocation("", frmLocation.eLocation.Select);
+            frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
             if(DialogResult.OK == fLocalitation.ShowDialog())
             {
                 txtLocation.Text = fLocalitation.toStringLocation();
-                oSocialWork.IdLocationCountry = fLocalitation.getIdCountry();
-                oSocialWork.IdLocationProvince = fLocalitation.getIdProvince();
-                oSocialWork.IdLocationCity = fLocalitation.getIdCity();
+                IdCountry = fLocalitation.getIdCountry();
+                IdProvince = fLocalitation.getIdProvince();
+                IdCity = fLocalitation.getIdCity();
             }
         }
 
         #endregion
 
-        // OK 03/06/12
+        // OK 17/09/16
         #region Metodos
 
         /// <summary>
         /// Valida Campos
-        /// OK 03/06/12
+        /// OK 17/09/16
         /// </summary>
         /// <returns></returns>
         private bool ValidarCampos()
         {
             if ((txtName.Text == "") ||
+                (txtDescription.Text == "") ||
                 (txtAddress.Text == "") ||
                 (txtPhone.Text == ""))
                 return false;
@@ -224,16 +224,16 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Carga objeto
-        /// OK 03/06/12
+        /// OK 17/09/16
         /// </summary>
         private void CargarObjeto()
         {
             //oSocialWork.IdSocialWork = 0;
             oSocialWork.Name = txtName.Text.ToUpper();
             oSocialWork.Description = txtDescription.Text;
-            oSocialWork.IdLocationCountry = 0;
-            oSocialWork.IdLocationProvince = 0;
-            oSocialWork.IdLocationCity = 0;
+            oSocialWork.IdLocationCountry = IdCountry;
+            oSocialWork.IdLocationProvince = IdProvince;
+            oSocialWork.IdLocationCity = IdCity;
             oSocialWork.Address = oValidarSql.ValidaString(txtAddress.Text);
             oSocialWork.Phone = oValidarSql.ValidaString(txtPhone.Text);
             oSocialWork.AlternativePhone = oValidarSql.ValidaString(txtAlternativePhone.Text);
@@ -242,23 +242,26 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Carga el Formulario
-        /// OK 03/06/12
+        /// OK 17/09/16
         /// </summary>
         private void CargarFrm()
         {
             txtName.Text = oSocialWork.Name;
             txtDescription.Text = oSocialWork.Description;
-            oSocialWork.IdLocationCountry = 0;
-            oSocialWork.IdLocationProvince = 0;
-            oSocialWork.IdLocationCity = 0;
             txtAddress.Text = oSocialWork.Address;
             txtPhone.Text = oSocialWork.Phone;
             txtAlternativePhone.Text = oSocialWork.AlternativePhone;
+            
+            txtLocation.Text = frmLocation.toStringLocation(
+                oQuery.ConexionString,
+                oSocialWork.IdLocationCountry,
+                oSocialWork.IdLocationProvince,
+                oSocialWork.IdLocationCity);
         }
 
         /// <summary>
         /// Habilita el formulario
-        /// OK 03/06/12
+        /// OK 17/09/16
         /// </summary>
         private void EnableFrm(bool X)
         {
@@ -268,7 +271,7 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Limpia el formulario
-        /// OK 03/06/12
+        /// OK 17/09/16
         /// </summary>
         private void LimpiarFrm()
         {

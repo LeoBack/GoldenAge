@@ -35,14 +35,14 @@
             this.lblInfo = new System.Windows.Forms.Label();
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
-            this.tsbAgregar = new System.Windows.Forms.ToolStripButton();
+            this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tstxtNombre = new System.Windows.Forms.ToolStripTextBox();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tslPagina = new System.Windows.Forms.ToolStripLabel();
             this.tsbSiguiente = new System.Windows.Forms.ToolStripButton();
             this.tsbAnterior = new System.Windows.Forms.ToolStripButton();
-            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,14 +114,14 @@
             this.tlpPanel.SetColumnSpan(this.tsMenu, 3);
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbAgregar,
+            this.tsbAdd,
             this.toolStripSeparator1,
             this.tstxtNombre,
-            this.tsbBuscar,
+            this.tsbSearch,
             this.tslPagina,
             this.tsbSiguiente,
             this.tsbAnterior,
-            this.tsbImprimir});
+            this.tsbPrint});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
@@ -129,14 +129,14 @@
             this.tsMenu.TabIndex = 7;
             this.tsMenu.Text = "Menu";
             // 
-            // tsbAgregar
+            // tsbAdd
             // 
-            this.tsbAgregar.Image = global::myExplorer.Properties.Resources.Plus;
-            this.tsbAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAgregar.Name = "tsbAgregar";
-            this.tsbAgregar.Size = new System.Drawing.Size(112, 36);
-            this.tsbAgregar.Text = "Agregar";
-            this.tsbAgregar.Click += new System.EventHandler(this.tsbAgregar_Click);
+            this.tsbAdd.Image = global::myExplorer.Properties.Resources.Plus;
+            this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAdd.Name = "tsbAdd";
+            this.tsbAdd.Size = new System.Drawing.Size(112, 36);
+            this.tsbAdd.Text = "Agregar";
+            this.tsbAdd.Click += new System.EventHandler(this.tsbAgregar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -149,14 +149,14 @@
             this.tstxtNombre.Size = new System.Drawing.Size(148, 39);
             this.tstxtNombre.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // tsbBuscar
+            // tsbSearch
             // 
-            this.tsbBuscar.Image = global::myExplorer.Properties.Resources.Search;
-            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(99, 36);
-            this.tsbBuscar.Text = "Buscar";
-            this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
+            this.tsbSearch.Image = global::myExplorer.Properties.Resources.Search;
+            this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSearch.Name = "tsbSearch";
+            this.tsbSearch.Size = new System.Drawing.Size(99, 36);
+            this.tsbSearch.Text = "Buscar";
+            this.tsbSearch.Click += new System.EventHandler(this.tsbBuscar_Click);
             // 
             // tslPagina
             // 
@@ -187,14 +187,14 @@
             this.tsbAnterior.Text = "Anterior";
             this.tsbAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
-            // tsbImprimir
+            // tsbPrint
             // 
-            this.tsbImprimir.Image = global::myExplorer.Properties.Resources.Printer;
-            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(116, 36);
-            this.tsbImprimir.Text = "Imprimir";
-            this.tsbImprimir.Click += new System.EventHandler(this.tsbImprimir_Click);
+            this.tsbPrint.Image = global::myExplorer.Properties.Resources.Printer;
+            this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.Size = new System.Drawing.Size(116, 36);
+            this.tsbPrint.Text = "Imprimir";
+            this.tsbPrint.Click += new System.EventHandler(this.tsbImprimir_Click);
             // 
             // cmsMenuEmergente
             // 
@@ -261,8 +261,8 @@
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.ToolStrip tsMenu;
         private System.Windows.Forms.ToolStripTextBox tstxtNombre;
-        private System.Windows.Forms.ToolStripButton tsbBuscar;
-        private System.Windows.Forms.ToolStripButton tsbAgregar;
+        private System.Windows.Forms.ToolStripButton tsbSearch;
+        private System.Windows.Forms.ToolStripButton tsbAdd;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ContextMenuStrip cmsMenuEmergente;
         private System.Windows.Forms.ToolStripMenuItem tsmiModificar;
@@ -271,6 +271,6 @@
         private System.Windows.Forms.ToolStripButton tsbSiguiente;
         private System.Windows.Forms.ToolStripLabel tslPagina;
         private System.Windows.Forms.ToolStripButton tsbAnterior;
-        private System.Windows.Forms.ToolStripButton tsbImprimir;
+        private System.Windows.Forms.ToolStripButton tsbPrint;
     }
 }

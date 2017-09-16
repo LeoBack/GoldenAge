@@ -34,17 +34,17 @@
             this.tlpPanlData = new System.Windows.Forms.TableLayoutPanel();
             this.grpDataPersonal = new System.Windows.Forms.GroupBox();
             this.tlpDataPersonal = new System.Windows.Forms.TableLayoutPanel();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtLocation = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.lblLastName = new System.Windows.Forms.Label();
+            this.txtLastName = new System.Windows.Forms.TextBox();
             this.lblDocument = new System.Windows.Forms.Label();
             this.cmbTypeDocument = new System.Windows.Forms.ComboBox();
             this.txtNumberDocument = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblLocation = new System.Windows.Forms.Label();
+            this.txtLocation = new System.Windows.Forms.TextBox();
             this.lblSexo = new System.Windows.Forms.Label();
             this.rbtMale = new System.Windows.Forms.RadioButton();
             this.rbtFemale = new System.Windows.Forms.RadioButton();
@@ -103,6 +103,7 @@
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLocalitation = new System.Windows.Forms.Button();
             this.tlpPanlData.SuspendLayout();
             this.grpDataPersonal.SuspendLayout();
             this.tlpDataPersonal.SuspendLayout();
@@ -171,32 +172,34 @@
             // 
             // tlpDataPersonal
             // 
-            this.tlpDataPersonal.ColumnCount = 6;
+            this.tlpDataPersonal.ColumnCount = 7;
             this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
-            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 281F));
+            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 195F));
+            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
             this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 368F));
             this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpDataPersonal.Controls.Add(this.lblName, 3, 0);
-            this.tlpDataPersonal.Controls.Add(this.txtName, 4, 0);
+            this.tlpDataPersonal.Controls.Add(this.lblName, 4, 0);
+            this.tlpDataPersonal.Controls.Add(this.txtName, 5, 0);
             this.tlpDataPersonal.Controls.Add(this.lblLastName, 0, 0);
             this.tlpDataPersonal.Controls.Add(this.txtLastName, 1, 0);
             this.tlpDataPersonal.Controls.Add(this.lblDocument, 0, 2);
             this.tlpDataPersonal.Controls.Add(this.cmbTypeDocument, 1, 2);
-            this.tlpDataPersonal.Controls.Add(this.txtNumberDocument, 2, 2);
             this.tlpDataPersonal.Controls.Add(this.lblAddress, 0, 3);
             this.tlpDataPersonal.Controls.Add(this.txtAddress, 1, 3);
-            this.tlpDataPersonal.Controls.Add(this.lblLocation, 3, 3);
-            this.tlpDataPersonal.Controls.Add(this.txtLocation, 4, 3);
+            this.tlpDataPersonal.Controls.Add(this.lblLocation, 4, 3);
+            this.tlpDataPersonal.Controls.Add(this.txtLocation, 5, 3);
             this.tlpDataPersonal.Controls.Add(this.lblSexo, 0, 1);
             this.tlpDataPersonal.Controls.Add(this.rbtMale, 1, 1);
+            this.tlpDataPersonal.Controls.Add(this.lblBirthdate, 4, 1);
+            this.tlpDataPersonal.Controls.Add(this.dtpBirthdate, 5, 1);
+            this.tlpDataPersonal.Controls.Add(this.txtYearOld, 6, 1);
+            this.tlpDataPersonal.Controls.Add(this.txtPhone, 5, 2);
+            this.tlpDataPersonal.Controls.Add(this.lblPhone, 4, 2);
             this.tlpDataPersonal.Controls.Add(this.rbtFemale, 2, 1);
-            this.tlpDataPersonal.Controls.Add(this.lblBirthdate, 3, 1);
-            this.tlpDataPersonal.Controls.Add(this.dtpBirthdate, 4, 1);
-            this.tlpDataPersonal.Controls.Add(this.txtYearOld, 5, 1);
-            this.tlpDataPersonal.Controls.Add(this.txtPhone, 4, 2);
-            this.tlpDataPersonal.Controls.Add(this.lblPhone, 3, 2);
+            this.tlpDataPersonal.Controls.Add(this.txtNumberDocument, 2, 2);
+            this.tlpDataPersonal.Controls.Add(this.btnLocalitation, 3, 3);
             this.tlpDataPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpDataPersonal.Location = new System.Drawing.Point(3, 22);
             this.tlpDataPersonal.Name = "tlpDataPersonal";
@@ -208,58 +211,28 @@
             this.tlpDataPersonal.Size = new System.Drawing.Size(1126, 203);
             this.tlpDataPersonal.TabIndex = 0;
             // 
-            // txtAddress
-            // 
-            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpDataPersonal.SetColumnSpan(this.txtAddress, 2);
-            this.txtAddress.Location = new System.Drawing.Point(129, 163);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(399, 26);
-            this.txtAddress.TabIndex = 7;
-            // 
-            // txtLastName
-            // 
-            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpDataPersonal.SetColumnSpan(this.txtLastName, 2);
-            this.txtLastName.Location = new System.Drawing.Point(129, 12);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(399, 26);
-            this.txtLastName.TabIndex = 1;
-            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroAfiliado_KeyPress);
-            // 
-            // txtName
-            // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpDataPersonal.SetColumnSpan(this.txtName, 2);
-            this.txtName.Location = new System.Drawing.Point(659, 12);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(463, 26);
-            this.txtName.TabIndex = 2;
-            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroAfiliado_KeyPress);
-            // 
-            // txtLocation
-            // 
-            this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpDataPersonal.SetColumnSpan(this.txtLocation, 2);
-            this.txtLocation.Location = new System.Drawing.Point(658, 163);
-            this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(465, 26);
-            this.txtLocation.TabIndex = 49;
-            // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblName.Location = new System.Drawing.Point(536, 0);
+            this.lblName.Location = new System.Drawing.Point(556, 0);
             this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(115, 50);
             this.lblName.TabIndex = 14;
             this.lblName.Text = "Nombre";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpDataPersonal.SetColumnSpan(this.txtName, 2);
+            this.txtName.Location = new System.Drawing.Point(679, 12);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(443, 26);
+            this.txtName.TabIndex = 2;
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroAfiliado_KeyPress);
             // 
             // lblLastName
             // 
@@ -272,6 +245,17 @@
             this.lblLastName.TabIndex = 13;
             this.lblLastName.Text = "Apellido";
             this.lblLastName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpDataPersonal.SetColumnSpan(this.txtLastName, 3);
+            this.txtLastName.Location = new System.Drawing.Point(129, 12);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(419, 26);
+            this.txtLastName.TabIndex = 1;
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroAfiliado_KeyPress);
             // 
             // lblDocument
             // 
@@ -297,9 +281,10 @@
             // txtNumberDocument
             // 
             this.txtNumberDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpDataPersonal.SetColumnSpan(this.txtNumberDocument, 2);
             this.txtNumberDocument.Location = new System.Drawing.Point(254, 112);
             this.txtNumberDocument.Name = "txtNumberDocument";
-            this.txtNumberDocument.Size = new System.Drawing.Size(275, 26);
+            this.txtNumberDocument.Size = new System.Drawing.Size(295, 26);
             this.txtNumberDocument.TabIndex = 40;
             // 
             // lblAddress
@@ -314,16 +299,36 @@
             this.lblAddress.Text = "Domicilio";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // txtAddress
+            // 
+            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpDataPersonal.SetColumnSpan(this.txtAddress, 2);
+            this.txtAddress.Location = new System.Drawing.Point(129, 163);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
+            this.txtAddress.Size = new System.Drawing.Size(313, 26);
+            this.txtAddress.TabIndex = 7;
+            // 
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
             this.lblLocation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLocation.Location = new System.Drawing.Point(535, 150);
+            this.lblLocation.Location = new System.Drawing.Point(555, 150);
             this.lblLocation.Name = "lblLocation";
             this.lblLocation.Size = new System.Drawing.Size(117, 53);
             this.lblLocation.TabIndex = 48;
             this.lblLocation.Text = "localidad";
             this.lblLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtLocation
+            // 
+            this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpDataPersonal.SetColumnSpan(this.txtLocation, 2);
+            this.txtLocation.Location = new System.Drawing.Point(678, 163);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.Size = new System.Drawing.Size(445, 26);
+            this.txtLocation.TabIndex = 49;
             // 
             // lblSexo
             // 
@@ -367,7 +372,7 @@
             // 
             this.lblBirthdate.AutoSize = true;
             this.lblBirthdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBirthdate.Location = new System.Drawing.Point(536, 50);
+            this.lblBirthdate.Location = new System.Drawing.Point(556, 50);
             this.lblBirthdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBirthdate.Name = "lblBirthdate";
             this.lblBirthdate.Size = new System.Drawing.Size(115, 50);
@@ -378,7 +383,7 @@
             // dtpBirthdate
             // 
             this.dtpBirthdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpBirthdate.Location = new System.Drawing.Point(659, 62);
+            this.dtpBirthdate.Location = new System.Drawing.Point(679, 62);
             this.dtpBirthdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(360, 26);
@@ -388,17 +393,17 @@
             // txtYearOld
             // 
             this.txtYearOld.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtYearOld.Location = new System.Drawing.Point(1027, 62);
+            this.txtYearOld.Location = new System.Drawing.Point(1047, 62);
             this.txtYearOld.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtYearOld.Name = "txtYearOld";
             this.txtYearOld.ReadOnly = true;
-            this.txtYearOld.Size = new System.Drawing.Size(95, 26);
+            this.txtYearOld.Size = new System.Drawing.Size(75, 26);
             this.txtYearOld.TabIndex = 6;
             // 
             // txtPhone
             // 
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPhone.Location = new System.Drawing.Point(659, 112);
+            this.txtPhone.Location = new System.Drawing.Point(679, 112);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(360, 26);
@@ -408,7 +413,7 @@
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPhone.Location = new System.Drawing.Point(535, 100);
+            this.lblPhone.Location = new System.Drawing.Point(555, 100);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(117, 50);
             this.lblPhone.TabIndex = 54;
@@ -431,7 +436,7 @@
             this.tlpSocialWork.ColumnCount = 3;
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.24852F));
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.75148F));
-            this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tlpSocialWork.Controls.Add(this.lblSocialWork, 0, 0);
             this.tlpSocialWork.Controls.Add(this.cmbSocialWork, 1, 0);
             this.tlpSocialWork.Controls.Add(this.lblAffiliateNumber, 0, 1);
@@ -466,7 +471,7 @@
             this.cmbSocialWork.Location = new System.Drawing.Point(168, 17);
             this.cmbSocialWork.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbSocialWork.Name = "cmbSocialWork";
-            this.cmbSocialWork.Size = new System.Drawing.Size(337, 28);
+            this.cmbSocialWork.Size = new System.Drawing.Size(336, 28);
             this.cmbSocialWork.TabIndex = 9;
             // 
             // lblAffiliateNumber
@@ -487,7 +492,7 @@
             this.txtAffiliateNumber.Location = new System.Drawing.Point(168, 81);
             this.txtAffiliateNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAffiliateNumber.Name = "txtAffiliateNumber";
-            this.txtAffiliateNumber.Size = new System.Drawing.Size(337, 26);
+            this.txtAffiliateNumber.Size = new System.Drawing.Size(336, 26);
             this.txtAffiliateNumber.TabIndex = 0;
             // 
             // grpStatus
@@ -507,7 +512,7 @@
             this.tlpStatus.ColumnCount = 3;
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.47581F));
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.52419F));
-            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tlpStatus.Controls.Add(this.lblReasonExit, 0, 2);
             this.tlpStatus.Controls.Add(this.txtReasonExit, 1, 2);
             this.tlpStatus.Controls.Add(this.lblDateAdmission, 0, 1);
@@ -540,7 +545,7 @@
             this.txtReasonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtReasonExit.Location = new System.Drawing.Point(168, 92);
             this.txtReasonExit.Name = "txtReasonExit";
-            this.txtReasonExit.Size = new System.Drawing.Size(309, 26);
+            this.txtReasonExit.Size = new System.Drawing.Size(308, 26);
             this.txtReasonExit.TabIndex = 47;
             // 
             // lblDateAdmission
@@ -559,7 +564,7 @@
             this.dtpDateAdmission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpDateAdmission.Location = new System.Drawing.Point(168, 50);
             this.dtpDateAdmission.Name = "dtpDateAdmission";
-            this.dtpDateAdmission.Size = new System.Drawing.Size(309, 26);
+            this.dtpDateAdmission.Size = new System.Drawing.Size(308, 26);
             this.dtpDateAdmission.TabIndex = 45;
             // 
             // lblEgressDate
@@ -578,7 +583,7 @@
             this.dtpEgressDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpEgressDate.Location = new System.Drawing.Point(168, 8);
             this.dtpEgressDate.Name = "dtpEgressDate";
-            this.dtpEgressDate.Size = new System.Drawing.Size(309, 26);
+            this.dtpEgressDate.Size = new System.Drawing.Size(308, 26);
             this.dtpEgressDate.TabIndex = 46;
             // 
             // btnEdit
@@ -1000,6 +1005,17 @@
             this.agregarToolStripMenuItem.Text = "Agregar";
             this.agregarToolStripMenuItem.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // btnLocalitation
+            // 
+            this.btnLocalitation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLocalitation.Location = new System.Drawing.Point(449, 159);
+            this.btnLocalitation.Name = "btnLocalitation";
+            this.btnLocalitation.Size = new System.Drawing.Size(100, 35);
+            this.btnLocalitation.TabIndex = 55;
+            this.btnLocalitation.Text = "Cambiar";
+            this.btnLocalitation.UseVisualStyleBackColor = true;
+            this.btnLocalitation.Click += new System.EventHandler(this.btnLocalitation_Click);
+            // 
             // frmGrandfather
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1113,6 +1129,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpSocialWork;
         private System.Windows.Forms.TableLayoutPanel tlpStatus;
         private System.Windows.Forms.DataGridView dgvDiagnostic;
+        private System.Windows.Forms.Button btnLocalitation;
 
     }
 }

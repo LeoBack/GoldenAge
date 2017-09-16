@@ -81,7 +81,7 @@
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.Size = new System.Drawing.Size(585, 357);
+            this.tlpPanel.Size = new System.Drawing.Size(582, 373);
             this.tlpPanel.TabIndex = 0;
             // 
             // lblName
@@ -92,7 +92,7 @@
             this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(112, 42);
-            this.lblName.TabIndex = 0;
+            this.lblName.TabIndex = 8;
             this.lblName.Text = "Nombre";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -104,7 +104,7 @@
             this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(112, 42);
-            this.lblDescription.TabIndex = 1;
+            this.lblDescription.TabIndex = 9;
             this.lblDescription.Text = "Descripcion";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -115,7 +115,7 @@
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(325, 26);
-            this.txtDescription.TabIndex = 4;
+            this.txtDescription.TabIndex = 1;
             // 
             // txtName
             // 
@@ -124,7 +124,7 @@
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(325, 26);
-            this.txtName.TabIndex = 3;
+            this.txtName.TabIndex = 0;
             // 
             // lblTelefonos
             // 
@@ -134,17 +134,17 @@
             this.lblTelefonos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelefonos.Name = "lblTelefonos";
             this.lblTelefonos.Size = new System.Drawing.Size(112, 42);
-            this.lblTelefonos.TabIndex = 16;
+            this.lblTelefonos.TabIndex = 13;
             this.lblTelefonos.Text = "Telefono Alternativo";
             this.lblTelefonos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(460, 299);
+            this.btnCancelar.Location = new System.Drawing.Point(457, 299);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(112, 42);
-            this.btnCancelar.TabIndex = 19;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -156,7 +156,7 @@
             this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(325, 26);
-            this.txtPhone.TabIndex = 20;
+            this.txtPhone.TabIndex = 4;
             // 
             // txtAlternativePhone
             // 
@@ -165,7 +165,7 @@
             this.txtAlternativePhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAlternativePhone.Name = "txtAlternativePhone";
             this.txtAlternativePhone.Size = new System.Drawing.Size(325, 26);
-            this.txtAlternativePhone.TabIndex = 21;
+            this.txtAlternativePhone.TabIndex = 5;
             // 
             // lblTelefono1
             // 
@@ -175,7 +175,7 @@
             this.lblTelefono1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelefono1.Name = "lblTelefono1";
             this.lblTelefono1.Size = new System.Drawing.Size(112, 42);
-            this.lblTelefono1.TabIndex = 22;
+            this.lblTelefono1.TabIndex = 12;
             this.lblTelefono1.Text = "Telefono";
             this.lblTelefono1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -187,7 +187,7 @@
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(112, 42);
-            this.lblAddress.TabIndex = 12;
+            this.lblAddress.TabIndex = 10;
             this.lblAddress.Text = "Domicilio";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -198,16 +198,16 @@
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(325, 26);
-            this.txtAddress.TabIndex = 13;
+            this.txtAddress.TabIndex = 2;
             // 
             // btnAgregar
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.Location = new System.Drawing.Point(340, 299);
+            this.btnAgregar.Location = new System.Drawing.Point(337, 299);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(112, 42);
-            this.btnAgregar.TabIndex = 7;
+            this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -219,7 +219,7 @@
             this.lblLocation.Location = new System.Drawing.Point(3, 168);
             this.lblLocation.Name = "lblLocation";
             this.lblLocation.Size = new System.Drawing.Size(114, 42);
-            this.lblLocation.TabIndex = 24;
+            this.lblLocation.TabIndex = 11;
             this.lblLocation.Text = "Localidad";
             this.lblLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -228,15 +228,16 @@
             this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLocation.Location = new System.Drawing.Point(123, 176);
             this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(330, 26);
-            this.txtLocation.TabIndex = 25;
+            this.txtLocation.ReadOnly = true;
+            this.txtLocation.Size = new System.Drawing.Size(327, 26);
+            this.txtLocation.TabIndex = 14;
             // 
             // btnLocalitation
             // 
-            this.btnLocalitation.Location = new System.Drawing.Point(459, 171);
+            this.btnLocalitation.Location = new System.Drawing.Point(456, 171);
             this.btnLocalitation.Name = "btnLocalitation";
             this.btnLocalitation.Size = new System.Drawing.Size(86, 36);
-            this.btnLocalitation.TabIndex = 26;
+            this.btnLocalitation.TabIndex = 3;
             this.btnLocalitation.Text = "Cambiar";
             this.btnLocalitation.UseVisualStyleBackColor = true;
             this.btnLocalitation.Click += new System.EventHandler(this.btnLocalitation_Click);
@@ -245,7 +246,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 357);
+            this.ClientSize = new System.Drawing.Size(582, 373);
             this.ControlBox = false;
             this.Controls.Add(this.tlpPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
