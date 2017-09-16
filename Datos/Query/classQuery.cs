@@ -121,23 +121,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lDiagnostic = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lDiagnostic = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lDiagnostic = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lDiagnostic;
@@ -161,23 +161,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oDiagnostic = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oDiagnostic = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oDiagnostic = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oDiagnostic;
@@ -188,7 +188,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -198,7 +198,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -208,18 +208,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -291,23 +291,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lGrandfather = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lGrandfather = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lGrandfather = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lGrandfather;
@@ -344,23 +344,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oGrandfather = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oGrandfather = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oGrandfather = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oGrandfather;
@@ -371,7 +371,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -381,7 +381,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -391,18 +391,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -446,23 +446,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lGrandfatherParent = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lGrandfatherParent = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lGrandfatherParent = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lGrandfatherParent;
@@ -485,23 +485,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oGrandfatherParent = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oGrandfatherParent = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oGrandfatherParent = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oGrandfatherParent;
@@ -512,7 +512,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -522,7 +522,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -532,18 +532,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -607,23 +607,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lParent = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lParent = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lParent = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lParent;
@@ -656,23 +656,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oParent = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oParent = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oParent = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oParent;
@@ -683,7 +683,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -693,7 +693,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -703,18 +703,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -776,23 +776,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lProfessional = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lProfessional = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lProfessional = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lProfessional;
@@ -824,23 +824,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oProfessional = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oProfessional = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oProfessional = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oProfessional;
@@ -851,7 +851,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -861,7 +861,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -871,18 +871,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -926,23 +926,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lProfessionalSpeciality = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lProfessionalSpeciality = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lProfessionalSpeciality = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lProfessionalSpeciality;
@@ -965,23 +965,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oProfessionalSpeciality = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oProfessionalSpeciality = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oProfessionalSpeciality = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oProfessionalSpeciality;
@@ -992,7 +992,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1002,7 +1002,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1012,18 +1012,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -1065,23 +1065,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lRelationship = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lRelationship = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lRelationship = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lRelationship;
@@ -1103,23 +1103,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oRelationship = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oRelationship = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oRelationship = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oRelationship;
@@ -1130,7 +1130,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1140,7 +1140,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1150,18 +1150,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -1216,23 +1216,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lSocialWork = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lSocialWork = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lSocialWork = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lSocialWork;
@@ -1261,23 +1261,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oSocialWork = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oSocialWork = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oSocialWork = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oSocialWork;
@@ -1288,7 +1288,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1298,7 +1298,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1308,18 +1308,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -1361,23 +1361,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lSpecialty = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lSpecialty = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lSpecialty = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lSpecialty;
@@ -1399,23 +1399,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oSpecialty = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oSpecialty = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oSpecialty = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oSpecialty;
@@ -1426,7 +1426,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1436,7 +1436,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1446,18 +1446,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -1499,23 +1499,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lTypeDocument = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lTypeDocument = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     lTypeDocument = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = lTypeDocument;
@@ -1537,23 +1537,23 @@ namespace Datos.Query
                                 }
                                 catch (FormatException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oTypeDocument = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oTypeDocument = null;
                                 }
                                 catch (OverflowException ex)
                                 {
-                                    this.Menssage = ex.ToString();
+                                    Menssage = ex.ToString();
                                     oTypeDocument = null;
                                 }
                             }
                         }
                         else
-                            this.Menssage = this.oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         oSql.Close();
                         Result = oTypeDocument;
@@ -1564,7 +1564,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1574,7 +1574,7 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
@@ -1584,18 +1584,18 @@ namespace Datos.Query
                         int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
                         if (UltimoId == 0)
-                            this.Menssage = oSql.Mensage;
+                            Menssage = oSql.Mensage;
 
                         Result = UltimoId;
                         break;
                     }
                 case eAbm.LoadCmb:
                     {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    this.Table = oSql.Table;
-                        //else
-                        //    this.Table = null;
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
                         break;
                     }
                 default:
@@ -2497,21 +2497,28 @@ namespace Datos.Query
 
         #region Consultas Especiales
 
-        public int ValidarPassword(classProfessional oU)
+        /// <summary>
+        /// Consulta por Usuaui y contraseña y devuelve el id.
+        /// OK - 17/09/16
+        /// </summary>
+        /// <param name="oP"></param>
+        /// <returns></returns>
+        public int ValidarPassword(classProfessional oP)
         {
+            string SPname = sp.Login;
             int A = 0;
+            lParam.Add(new SqlParameter("@User", oP.User));
+            lParam.Add(new SqlParameter("@Password", oP.Password));
 
-            //if (oSql.SelectReader("SELECT Count(IdUsuario) FROM Usuario  "
-            //    + " WHERE Bloqueado = 0  AND Nombre = '" + oU.User
-            //    + "' AND Contrasenia = '" + oU.Password+ "';",
-            //    null,
-            //    "selectPassword"))
-            //{
-            //    oSql.Reader.Read();
-            //    A = Convert.ToBoolean(oSql.Reader[0]);
-            //    oSql.Reader.Close();
-            //    oSql.Close();
-            //}
+            if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+            {
+                if (oSql.Reader.Read())
+                {
+                    A = Convert.ToInt32(oSql.Reader[0]);
+                    oSql.Reader.Close();
+                }
+            }
+            oSql.Close();
             return A;
         }
 

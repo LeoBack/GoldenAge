@@ -18,7 +18,7 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
-        public classQuery oConsulta { set; get; }
+        public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         private classTextos oTxt = new classTextos();
 
@@ -36,7 +36,7 @@ namespace myExplorer.Formularios
 
         private void frmEstadistica_Load(object sender, EventArgs e)
         {
-            if (oConsulta == null)
+            if (oQuery == null)
             {
                 MessageBox.Show(oTxt.ErrorObjetoIndefinido);
                 this.Close();

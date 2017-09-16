@@ -44,52 +44,52 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         private void frmAuxABM_Load(object sender, EventArgs e)
         {
-            this.Text = oTxt.TituloSocialWork;
+            Text = oTxt.TituloSocialWork;
 
             oComboBox = new classControlComboBoxes();
 
             if (oQuery != null)
             {   //-------------------------------------------------
-                if (this.Acto == Accion.Nuevo)
+                if (Acto == Accion.Nuevo)
                 {   //***************Nuevo****************************
-                    this.btnAgregar.Text = oTxt.Aplicar;
+                    btnAgregar.Text = oTxt.Aplicar;
                     // Cargo el Formulario Limpio
-                    this.LimpiarFrm();
+                    LimpiarFrm();
                 }   //****************Fin*****************************
-                else if (this.Acto == Accion.Modificar)
+                else if (Acto == Accion.Modificar)
                 {
-                    if (this.IdSocialWork != 0)
+                    if (IdSocialWork != 0)
                     {   //***********Modifica*************************
-                        this.EnableFrm(false);
+                        EnableFrm(false);
                         btnAgregar.Enabled = true;
                         btnCancelar.Enabled = true;
-                        this.btnAgregar.Text = oTxt.Editar;
+                        btnAgregar.Text = oTxt.Editar;
                         // Traigo la Obra Social
                         oSocialWork = (classSocialWork)oQuery.AbmSocialWork(
                             new classSocialWork(IdSocialWork), classQuery.eAbm.Select);
                         // Cargo el Formulario
-                        this.CargarFrm();
+                        CargarFrm();
                     }   //*************Fin****************************
                     else if (oSocialWork != null)
                     {
                         {   //***********Modifica*************************
-                            this.EnableFrm(false);
+                            EnableFrm(false);
                             btnAgregar.Enabled = true;
                             btnCancelar.Enabled = true;
-                            this.btnAgregar.Text = oTxt.Editar;
+                            btnAgregar.Text = oTxt.Editar;
                             // Cargo el Formulario
-                            this.CargarFrm();
+                            CargarFrm();
                         }   //*************Fin****************************
                     }
                     else
                     {
                         MessageBox.Show(oTxt.ErrorObjetoIndefinido);
-                        this.Close();
+                        Close();
                     }
                 }
-                else if (this.Acto == Accion.Eliminar)
+                else if (Acto == Accion.Eliminar)
                 {   //***********Eliminar*************************
-                    if (this.IdSocialWork != 0)
+                    if (IdSocialWork != 0)
                     {   // Consulta de eliminacion
                         oQuery.AbmSocialWork(new classSocialWork(IdSocialWork), classQuery.eAbm.Delete);
                     }
@@ -100,18 +100,18 @@ namespace myExplorer.Formularios
                     else
                     {
                         MessageBox.Show(oTxt.ErrorObjetoIndefinido);
-                        this.Close();
+                        Close();
                     }
-                    this.Close();
+                    Close();
                 }
                 else
                 {
                     MessageBox.Show(oTxt.ErrorObjetoIndefinido);
-                    this.Close();
+                    Close();
                 }
             }   //-------------------------------------------------
             else
-                this.Close();
+                Close();
         }
 
         #endregion
@@ -122,20 +122,20 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (this.ValidarCampos())
+            if (ValidarCampos())
             {
-                if (this.Acto == Accion.Nuevo)
+                if (Acto == Accion.Nuevo)
                 {   //-------------------------------------------------
                     if (btnAgregar.Text == oTxt.Limpiar)
                     {
                         btnAgregar.Text = oTxt.Aplicar;
-                        this.LimpiarFrm();
-                        this.Acto = Accion.Nuevo;
+                        LimpiarFrm();
+                        Acto = Accion.Nuevo;
                     }
                     else
                     {
                         oSocialWork = new classSocialWork();
-                        this.CargarObjeto();
+                        CargarObjeto();
 
                         // INSERTAR OBJETO;
                         if ((bool)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Insert))
@@ -147,22 +147,22 @@ namespace myExplorer.Formularios
                             MessageBox.Show(oQuery.Menssage);
                     }
                 }   //-------------------------------------------------
-                else if (this.Acto == Accion.Modificar)
+                else if (Acto == Accion.Modificar)
                 {   //-------------------------------------------------
                     if (btnAgregar.Text == oTxt.Editar)
                     {
                         btnAgregar.Text = oTxt.Aplicar;
-                        this.EnableFrm(true);
-                        this.Acto = Accion.Modificar;
+                        EnableFrm(true);
+                        Acto = Accion.Modificar;
                     }
                     else
                     {
-                        this.CargarObjeto();
+                        CargarObjeto();
                         // Modifica OBJETO;
                         if ((bool)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Update))
                         {
                             MessageBox.Show(oTxt.ModificarSocialWork);
-                            this.Close();
+                            Close();
                         }
                         else
                             MessageBox.Show(oQuery.Menssage);
@@ -171,7 +171,7 @@ namespace myExplorer.Formularios
                 else
                 {
                     MessageBox.Show(oTxt.AccionIndefinida);
-                    this.Close();
+                    Close();
                 }
             }
             else
@@ -181,7 +181,7 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         #endregion
@@ -228,16 +228,16 @@ namespace myExplorer.Formularios
         /// </summary>
         private void CargarObjeto()
         {
-            //oSocialWork.Id = 0;
-            //oSocialWork.Visible = 0;
-            oSocialWork.Name = oValidarSql.ValidaString(txtName.Text.ToUpper());
-            oSocialWork.Description = oValidarSql.ValidaString(txtDescription.Text);
+            //oSocialWork.IdSocialWork = 0;
+            oSocialWork.Name = txtName.Text.ToUpper();
+            oSocialWork.Description = txtDescription.Text;
+            oSocialWork.IdLocationCountry = 0;
+            oSocialWork.IdLocationProvince = 0;
+            oSocialWork.IdLocationCity = 0;
             oSocialWork.Address = oValidarSql.ValidaString(txtAddress.Text);
             oSocialWork.Phone = oValidarSql.ValidaString(txtPhone.Text);
             oSocialWork.AlternativePhone = oValidarSql.ValidaString(txtAlternativePhone.Text);
-            
-            //oSocialWork.IdCiudad = Convert.ToInt32(cmbCiudad.SelectedValue);
-            //oSocialWork.IdBarrio = Convert.ToInt32(cmbBarrio.SelectedValue);
+            //oSocialWork.Visible = true;
         }
 
         /// <summary>
@@ -248,30 +248,13 @@ namespace myExplorer.Formularios
         {
             txtName.Text = oSocialWork.Name;
             txtDescription.Text = oSocialWork.Description;
+            oSocialWork.IdLocationCountry = 0;
+            oSocialWork.IdLocationProvince = 0;
+            oSocialWork.IdLocationCity = 0;
             txtAddress.Text = oSocialWork.Address;
             txtPhone.Text = oSocialWork.Phone;
             txtAlternativePhone.Text = oSocialWork.AlternativePhone;
-            
-            
-
-            //oComboBox.IndexCombos(cmbCiudad, oSocialWork.IdCiudad);
-            //oComboBox.IndexCombos(cmbBarrio, oSocialWork.IdBarrio);
         }
-
-        /// <summary>
-        /// Carga los Combos de Ciudad y Barrios
-        /// 03/02/12
-        /// </summary>
-        //private void CargarCombosCiudadBarrio()
-        //{
-        //    oComboBox.CargaCombo(cmbCiudad,
-        //        oQuery.ListaCiudades(), 
-        //        oQuery.Table);
-
-        //    oComboBox.CargaCombo(cmbBarrio,
-        //        oQuery.ListaBarrios(Convert.ToInt32(cmbCiudad.SelectedValue)),
-        //        oQuery.Table);
-        //}
 
         /// <summary>
         /// Habilita el formulario
@@ -279,7 +262,7 @@ namespace myExplorer.Formularios
         /// </summary>
         private void EnableFrm(bool X)
         {
-            foreach (Control oC in this.tlpPanel.Controls)
+            foreach (Control oC in tlpPanel.Controls)
                 oC.Enabled = X;
         }
 
@@ -289,7 +272,7 @@ namespace myExplorer.Formularios
         /// </summary>
         private void LimpiarFrm()
         {
-            foreach (Control oC in this.tlpPanel.Controls)
+            foreach (Control oC in tlpPanel.Controls)
             {
                 if (oC is TextBox)
                     oC.Text = "";

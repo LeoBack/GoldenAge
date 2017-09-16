@@ -44,7 +44,6 @@ namespace myExplorer.Formularios
         // OK - 17/09/14
         private void frmMain_Load(object sender, EventArgs e)
         {
-            tsBaseDatos.Visible = false;
             oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
             tsslPath.Text = oQuery.ServerVersion();
             oUtil = new classUtiles();
@@ -144,31 +143,7 @@ namespace myExplorer.Formularios
         //-----------------------------------------------------------------
 
         //-----------------------------------------------------------------
-        // OK - 17/09/14
-        #region tspBaseDatos
-        //-----------------------------------------------------------------
-
-        // Restura la base de datos
-        // OK - 17/09/14
-        private void tsmiRestaurar_Click(object sender, EventArgs e)
-        {
-            if (User == eUser.Valido)
-                DialogRestoreDataBase();   
-        }
-
-        // Realiza el BackUp
-        // OK - 17/09/14
-        private void tsmiCopiar_Click(object sender, EventArgs e)
-        {
-            if (User == eUser.Valido)
-                DialogCopiDataBase();
-        }
-
-        #endregion 
-        //-----------------------------------------------------------------
-
-        //-----------------------------------------------------------------
-        // OK 08/06/12
+        // OK - 17/09/16
         #region tspProfessional
         //-----------------------------------------------------------------
         
@@ -236,24 +211,6 @@ namespace myExplorer.Formularios
         //-----------------------------------------------------------------
 
         //-----------------------------------------------------------------
-        #region tspTurnos
-        //-----------------------------------------------------------------
-
-        private void tsbAsignarTurno_Click(object sender, EventArgs e)
-        {
-            //    if (Usuario == EstadoUsuario.Valido)
-            //    {
-            //        frmTurno fTurno = new frmTurno();
-            //        fTurno.oConsulta = oConsulta;
-            //        fTurno.oUtil = this.oUtil;
-            //        fTurno.ShowDialog();
-            //    }
-        }
-
-        #endregion
-        //-----------------------------------------------------------------
-
-        //-----------------------------------------------------------------
         #region tsEstadistica
         //-----------------------------------------------------------------
 
@@ -263,8 +220,8 @@ namespace myExplorer.Formularios
             if (this.User == eUser.Valido)
             {
                 frmEstadistica fE = new frmEstadistica();
-                fE.oConsulta = this.oQuery;
-                fE.oUtil = this.oUtil;
+                fE.oQuery = oQuery;
+                fE.oUtil = oUtil;
                 fE.ShowDialog();
             }
         }
@@ -278,8 +235,7 @@ namespace myExplorer.Formularios
 
         private void frmAlInicio(object sender, EventArgs e)
         {
-            if (User == eUser.Valido)
-                tsbAsignarTurno_Click(sender, e);
+            //if (User == eUser.Valido)
         }
 
         /// <summary>
@@ -289,16 +245,12 @@ namespace myExplorer.Formularios
         /// <param name="X"></param>
         private void EnableUser(bool X)
         {
-            tsBaseDatos.Enabled = X;
-            tspTurnos.Enabled = X;
             tsPrincipal.Enabled = X;
             tsEstadisticas.Enabled = X;
             tsUsuario.Enabled = true;
 
             tsmiPaciente.Enabled = X;
             tsmiOS.Enabled = X;
-            tsmiBaseDeDatos.Enabled = X;
-            tsmiTurnos.Enabled = X;
             tsmiAdministrador.Enabled = X;
             tsmiEstadisticas.Enabled = X;
         }
