@@ -1186,6 +1186,7 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
             lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
             lParam.Add(new SqlParameter("@Address", oP.Address));
+            lParam.Add(new SqlParameter("@Phone", oP.Phone));
             lParam.Add(new SqlParameter("@AlternativePhone", oP.AlternativePhone));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
 
@@ -2507,6 +2508,8 @@ namespace Datos.Query
         {
             string SPname = sp.Login;
             int A = 0;
+
+            List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@User", oP.User));
             lParam.Add(new SqlParameter("@Password", oP.Password));
 

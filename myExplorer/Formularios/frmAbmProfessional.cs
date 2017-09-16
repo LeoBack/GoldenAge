@@ -19,7 +19,7 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
-        public enum Modo { Nuevo, Ver, Modificar }
+        public enum Modo { Add, Select, Update }
 
         public Modo Acto { set; get; }
         public int IdProfessional { set; get; }
@@ -29,8 +29,11 @@ namespace myExplorer.Formularios
         public classUtiles oUtil { set; get; }
 
         private classValidaciones oValidar;
-        private classValidaSqlite oValidarSql = new classValidaSqlite();
         private classTextos oTxt = new classTextos();
+
+        private int IdCountry = 0;
+        private int IdProvince = 0;
+        private int IdCity = 0;
 
         #endregion
 
@@ -46,48 +49,48 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null)
             {
-                this.Text = oTxt.TituloAdministradorUsuario;
+                Text = oTxt.TituloAdministradorUsuario;
                 oValidar = new classValidaciones();
-                this.ini();
+                ini();
             }
             else
-                this.Close();
+                Close();
         }
 
         #endregion
 
         #region Botones
 
-        //OK 08/06/12
+        //OK 17/09/16
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
-                this.CargarObjeto();
+                CargarObjeto();
 
-                if (Acto == Modo.Nuevo)
+                if (Acto == Modo.Add)
                 {   //-------------------------------------------------
                     // Guarda
-                    if ((bool)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Insert))
+                    if (0 != (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Insert))
                     {
                         MessageBox.Show(oTxt.AgregarProfesional);
-                        this.Acto = Modo.Modificar;
-                        this.oProfessional.IdProfessional = oQuery.UltimoIdProfessional();
-                        this.IdProfessional = 0;
-                        this.ini();
+                        Acto = Modo.Update;
+                        oProfessional.IdProfessional = oQuery.UltimoIdProfessional();
+                        IdProfessional = 0;
+                        ini();
                     }
                     else
                         MessageBox.Show(oTxt.ErrorAgregarConsulta);
 
                 }   //-------------------------------------------------
-                else if (Acto == Modo.Modificar)
+                else if (Acto == Modo.Update)
                 {   //-------------------------------------------------
                     // Actualiza
-                    if ((bool)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Update))
+                    if (0 != (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Update))
                     {
                         MessageBox.Show(oTxt.ModificarProfesional);
-                        this.Acto = Modo.Modificar;
-                        this.ini();
+                        Acto = Modo.Update;
+                        ini();
                     }
                     else
                         MessageBox.Show(oTxt.ErrorActualizarConsulta);
@@ -97,33 +100,14 @@ namespace myExplorer.Formularios
             }
         }
 
-        //OK 11/06/12
+        // OK 11/06/12
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.LimpiarFrm();
-            this.Acto = Modo.Nuevo;
+            LimpiarFrm();
+            Acto = Modo.Add;
         }
 
-        //OK 11/06/12
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            frmListProfessional frmVer = new frmListProfessional();
-            frmVer.oConsulta = this.oQuery;
-            frmVer.oUtil = this.oUtil;
-
-            if (frmVer.ShowDialog() == DialogResult.OK)
-            {
-                if (frmVer.IdSelecionado != 0)
-                {
-                    //oProfessional = oConsulta.SelectProfessional(
-                    //    new classProfessional(frmVer.IdSelecionado, 0,"", "", "", "", "", "", "",false));
-                    this.Acto = Modo.Modificar;
-                    this.ini();
-                }
-            }
-        }
-
-        //OK 11/06/12
+        // OK 11/06/12
         private void btnBloquear_Click(object sender, EventArgs e)
         {
             if (oProfessional != null)
@@ -142,21 +126,16 @@ namespace myExplorer.Formularios
             }
         }
 
-        #endregion
-
-        // REVISAR 17/09/09
-        #region Botones Auxiliares
-
-        // REVISAR 17/09/09
+        // OK 17/09/09
         private void btnLocalitation_Click(object sender, EventArgs e)
         {
-            frmLocation fLocalitation = new frmLocation("", frmLocation.eLocation.Select);
+            frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
             if (DialogResult.OK == fLocalitation.ShowDialog())
             {
                 txtLocation.Text = fLocalitation.toStringLocation();
-                oProfessional.IdLocationCountry = fLocalitation.getIdCountry();
-                oProfessional.IdLocationProvince = fLocalitation.getIdProvince();
-                oProfessional.IdLocationCity = fLocalitation.getIdCity();
+                IdCountry = fLocalitation.getIdCountry();
+                IdProvince = fLocalitation.getIdProvince();
+                IdCity = fLocalitation.getIdCity();
             }
         }
 
@@ -170,32 +149,26 @@ namespace myExplorer.Formularios
         /// </summary>
         private void ini()
         {
-            if (this.IdProfessional != 0)
-            {
-                oProfessional.IdProfessional = this.IdProfessional;
-                oProfessional = (classProfessional)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Select);
-                btnBloquear.Enabled = true;
-            }
-
             // Modo en el que se mostrara el formulario
-            if (Acto == Modo.Ver && oProfessional.IdProfessional != 0)
+            if (Acto == Modo.Select && oUtil.oProfessional.IdProfessional != 0)
             {
-                this.EnableFrm(false);
+                oProfessional = (classProfessional)oQuery.AbmProfessional(new classProfessional(oUtil.oProfessional.IdProfessional), classQuery.eAbm.Select);
+                EnableFrm(false);
                 btnBloquear.Enabled = true;
-                this.EscribirEnFrm();
+                EscribirEnFrm();
             }
-            else if (Acto == Modo.Modificar && oProfessional.IdProfessional != 0)
+            else if (Acto == Modo.Update && oUtil.oProfessional.IdProfessional != 0)
             {
-                this.EnableFrm(true);
+                EnableFrm(true);
                 btnBloquear.Enabled = true;
-                this.EscribirEnFrm();
+                EscribirEnFrm();
             }
-            else if (Acto == Modo.Nuevo)
+            else if (Acto == Modo.Add)
             {
                 oProfessional = new classProfessional();
-                this.EnableFrm(true);
+                EnableFrm(true);
                 btnBloquear.Enabled = false;
-                this.EscribirEnFrm();
+                EscribirEnFrm();
             }
         }
 
@@ -205,7 +178,7 @@ namespace myExplorer.Formularios
         /// </summary>
         private void LimpiarFrm()
         {
-            foreach (Control oC in this.tlpTab.Controls)
+            foreach (Control oC in tlpTab.Controls)
             {
                 if (oC is TextBox)
                     oC.Text = "";
@@ -219,7 +192,7 @@ namespace myExplorer.Formularios
         /// <param name="X"></param>
         private void EnableFrm(bool X)
         {
-            foreach (Control C in this.tlpPanel.Controls)
+            foreach (Control C in tlpPanel.Controls)
             {
                 if (!(C is Label))
                     C.Enabled = X;
@@ -227,23 +200,26 @@ namespace myExplorer.Formularios
         }
 
         /// <summary>
-        /// OK 07/06/12
+        /// OK 17/09/14
         /// </summary>
         private void CargarObjeto()
         {
             oProfessional.ProfessionalRegistration = Convert.ToInt32(txtProfessionalRegistration.Text);
-            oProfessional.Name = this.oValidarSql.ValidaString(txtName.Text);
-            oProfessional.LastName = this.oValidarSql.ValidaString(txtLastName.Text);
-            oProfessional.Address = this.oValidarSql.ValidaString(txtAddress.Text);
-            oProfessional.Phone = this.oValidarSql.ValidaString(txtPhone.Text);
-            oProfessional.Mail = this.oValidarSql.ValidaString(txtMail.Text);
-            oProfessional.User = this.oValidarSql.ValidaString(txtUser.Text);
-            oProfessional.Password = this.oValidarSql.ValidaString(txtPassword.Text);
+            oProfessional.Name = txtName.Text;
+            oProfessional.LastName = txtLastName.Text;
+            oProfessional.IdLocationCountry = IdCountry;
+            oProfessional.IdLocationProvince = IdProvince;
+            oProfessional.IdLocationCity = IdCity;
+            oProfessional.Address = txtAddress.Text;
+            oProfessional.Phone = txtPhone.Text;
+            oProfessional.Mail = txtMail.Text;
+            oProfessional.User = txtUser.Text;
+            oProfessional.Password = txtPassword.Text;
         }
 
         /// <summary>
         /// Carga los elementos de formulario desde objeto.
-        /// OK 07/06/12
+        /// OK 17/09/14
         /// </summary>
         private void EscribirEnFrm()
         {
@@ -256,6 +232,11 @@ namespace myExplorer.Formularios
             txtUser.Text = oProfessional.User;
             txtPassword.Text = oProfessional.Password;
 
+            txtLocation.Text = frmLocation.toStringLocation(
+                oQuery.ConexionString,
+                oProfessional.IdLocationCountry,
+                oProfessional.IdLocationProvince,
+                oProfessional.IdLocationCity);
 
             if (oProfessional.Visible)
                 btnBloquear.Text = "Desbloquear";
@@ -291,5 +272,6 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
     }
 }

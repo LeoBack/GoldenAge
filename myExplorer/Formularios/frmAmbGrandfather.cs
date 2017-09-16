@@ -11,6 +11,7 @@ using Entidades;
 using Entidades.Clases;
 using Reportes;
 using Controles;
+using libLocalitation.Forms;
 
 namespace myExplorer.Formularios
 {
@@ -34,6 +35,10 @@ namespace myExplorer.Formularios
         private classValidaSqlite oValidarSql = new classValidaSqlite();
         private classTextos oTxt = new classTextos();
         private int SelectRow;
+
+        private int IdCountry;
+        private int IdProvince;
+        private int IdCity;
 
         #endregion
 
@@ -316,6 +321,18 @@ namespace myExplorer.Formularios
             }
         }
 
+        private void btnLocalitation_Click(object sender, EventArgs e)
+        {
+            frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
+            if (DialogResult.OK == fLocalitation.ShowDialog())
+            {
+                txtLocation.Text = fLocalitation.toStringLocation();
+                IdCountry = fLocalitation.getIdCountry();
+                IdProvince = fLocalitation.getIdProvince();
+                IdCity = fLocalitation.getIdCity();
+            }
+        }
+
         #endregion
 
         #region Validaciones
@@ -472,6 +489,8 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
+
 
         //-----------------------------------------------------------------------
         #endregion

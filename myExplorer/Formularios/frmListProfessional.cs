@@ -18,7 +18,7 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         #region Atributos y Propiedades
 
-        public classQuery oConsulta { set; get; }
+        public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         public int IdSelecionado { set; get; }
 
@@ -48,7 +48,7 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         private void frmAux_Load(object sender, EventArgs e)
         {
-            if (oConsulta != null && oUtil != null)
+            if (oQuery != null && oUtil != null)
             {
                 this.Text = oTxt.TituloListaProfesionales;
                 this.IdSelecionado = 0;
@@ -138,6 +138,17 @@ namespace myExplorer.Formularios
                 this.SelectRow = e.RowIndex;
         }
 
+        private void tsbAdd_Click(object sender, EventArgs e)
+        {
+            frmProfessional frmA = new frmProfessional();
+            frmA.oQuery = oQuery;
+            frmA.oUtil = oUtil;
+            frmA.Acto = frmProfessional.Modo.Add;
+            frmA.ShowDialog();
+
+            frmAux_Load(sender, e);
+        }
+
         #endregion
 
         // REVISADO - 17/09/09
@@ -149,17 +160,17 @@ namespace myExplorer.Formularios
         /// </summary>
         public void Filtrar()
         {
-            lProfesional = oConsulta.FiltroProfesionalesLimite(
+            lProfesional = oQuery.FiltroProfesionalesLimite(
                 this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text),
                 this.Hiden, this.Desde, this.Hasta);
 
-            decimal Cont = oConsulta.CountProfesionales(this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text), this.Hiden);
+            decimal Cont = oQuery.CountProfesionales(this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text), this.Hiden);
             decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
             this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
 
             this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
 
-            if (oConsulta.Error)
+            if (oQuery.Error)
             {
                 dgvLista.Columns.Clear();
                 this.GenerarGrilla(lProfesional);
@@ -250,5 +261,7 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
+
     }
 }

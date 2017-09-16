@@ -32,20 +32,22 @@
             this.tabDatos = new System.Windows.Forms.TabControl();
             this.tbpPerfil = new System.Windows.Forms.TabPage();
             this.tlpTab = new System.Windows.Forms.TableLayoutPanel();
-            this.txtMail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblLastName = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
+            this.txtLastName = new System.Windows.Forms.TextBox();
             this.lblProfessionalRegistration = new System.Windows.Forms.Label();
             this.txtProfessionalRegistration = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblLocation = new System.Windows.Forms.Label();
+            this.txtLocation = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtMail = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.btnLocalitation = new System.Windows.Forms.Button();
             this.tbpLogin = new System.Windows.Forms.TabPage();
             this.tlpLogin = new System.Windows.Forms.TableLayoutPanel();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -58,9 +60,6 @@
             this.lblDescriptionSpeciality = new System.Windows.Forms.Label();
             this.clbSpeciality = new System.Windows.Forms.CheckedListBox();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.lblLocation = new System.Windows.Forms.Label();
-            this.txtLocation = new System.Windows.Forms.TextBox();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.tlpPanel.SuspendLayout();
             this.tabDatos.SuspendLayout();
             this.tbpPerfil.SuspendLayout();
@@ -100,7 +99,7 @@
             this.tabDatos.Name = "tabDatos";
             this.tabDatos.SelectedIndex = 0;
             this.tabDatos.Size = new System.Drawing.Size(600, 407);
-            this.tabDatos.TabIndex = 12;
+            this.tabDatos.TabIndex = 0;
             // 
             // tbpPerfil
             // 
@@ -134,9 +133,8 @@
             this.tlpTab.Controls.Add(this.txtPhone, 1, 6);
             this.tlpTab.Controls.Add(this.lblEmail, 0, 7);
             this.tlpTab.Controls.Add(this.txtMail, 1, 7);
-            this.tlpTab.Controls.Add(this.btnBuscar, 2, 1);
             this.tlpTab.Controls.Add(this.btnEditar, 2, 8);
-            this.tlpTab.Controls.Add(this.btnEdit, 2, 5);
+            this.tlpTab.Controls.Add(this.btnLocalitation, 2, 5);
             this.tlpTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpTab.Location = new System.Drawing.Point(4, 5);
             this.tlpTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -154,48 +152,17 @@
             this.tlpTab.Size = new System.Drawing.Size(584, 364);
             this.tlpTab.TabIndex = 0;
             // 
-            // txtMail
+            // lblName
             // 
-            this.txtMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMail.Location = new System.Drawing.Point(120, 268);
-            this.txtMail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(334, 26);
-            this.txtMail.TabIndex = 4;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEmail.Location = new System.Drawing.Point(4, 260);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(108, 43);
-            this.lblEmail.TabIndex = 11;
-            this.lblEmail.Text = "E-mail";
-            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscar.Location = new System.Drawing.Point(468, 25);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnBuscar.Name = "btnBuscar";
-            this.tlpTab.SetRowSpan(this.btnBuscar, 2);
-            this.btnBuscar.Size = new System.Drawing.Size(112, 69);
-            this.btnBuscar.TabIndex = 0;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // txtLastName
-            // 
-            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLastName.Location = new System.Drawing.Point(120, 107);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(334, 26);
-            this.txtLastName.TabIndex = 2;
+            this.lblName.AutoSize = true;
+            this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblName.Location = new System.Drawing.Point(4, 60);
+            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(108, 40);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "Nombre";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtName
             // 
@@ -204,7 +171,7 @@
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(334, 26);
-            this.txtName.TabIndex = 1;
+            this.txtName.TabIndex = 3;
             // 
             // lblLastName
             // 
@@ -214,21 +181,18 @@
             this.lblLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(108, 40);
-            this.lblLastName.TabIndex = 9;
+            this.lblLastName.TabIndex = 4;
             this.lblLastName.Text = "Apellido";
             this.lblLastName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblName
+            // txtLastName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblName.Location = new System.Drawing.Point(4, 60);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(108, 40);
-            this.lblName.TabIndex = 8;
-            this.lblName.Text = "Nombre";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLastName.Location = new System.Drawing.Point(120, 107);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(334, 26);
+            this.txtLastName.TabIndex = 5;
             // 
             // lblProfessionalRegistration
             // 
@@ -237,7 +201,7 @@
             this.lblProfessionalRegistration.Location = new System.Drawing.Point(3, 20);
             this.lblProfessionalRegistration.Name = "lblProfessionalRegistration";
             this.lblProfessionalRegistration.Size = new System.Drawing.Size(110, 40);
-            this.lblProfessionalRegistration.TabIndex = 12;
+            this.lblProfessionalRegistration.TabIndex = 0;
             this.lblProfessionalRegistration.Text = "Nº MP";
             this.lblProfessionalRegistration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -247,23 +211,7 @@
             this.txtProfessionalRegistration.Location = new System.Drawing.Point(119, 27);
             this.txtProfessionalRegistration.Name = "txtProfessionalRegistration";
             this.txtProfessionalRegistration.Size = new System.Drawing.Size(336, 26);
-            this.txtProfessionalRegistration.TabIndex = 13;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddress.Location = new System.Drawing.Point(119, 147);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(336, 26);
-            this.txtAddress.TabIndex = 14;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPhone.Location = new System.Drawing.Point(119, 227);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(336, 26);
-            this.txtPhone.TabIndex = 15;
+            this.txtProfessionalRegistration.TabIndex = 1;
             // 
             // lblAddress
             // 
@@ -272,9 +220,37 @@
             this.lblAddress.Location = new System.Drawing.Point(3, 140);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(110, 40);
-            this.lblAddress.TabIndex = 16;
+            this.lblAddress.TabIndex = 6;
             this.lblAddress.Text = "Domicilio";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAddress.Location = new System.Drawing.Point(119, 147);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(336, 26);
+            this.txtAddress.TabIndex = 7;
+            // 
+            // lblLocation
+            // 
+            this.lblLocation.AutoSize = true;
+            this.lblLocation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblLocation.Location = new System.Drawing.Point(3, 180);
+            this.lblLocation.Name = "lblLocation";
+            this.lblLocation.Size = new System.Drawing.Size(110, 40);
+            this.lblLocation.TabIndex = 8;
+            this.lblLocation.Text = "Localidad";
+            this.lblLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtLocation
+            // 
+            this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLocation.Location = new System.Drawing.Point(119, 187);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.ReadOnly = true;
+            this.txtLocation.Size = new System.Drawing.Size(336, 26);
+            this.txtLocation.TabIndex = 9;
             // 
             // lblPhone
             // 
@@ -283,9 +259,38 @@
             this.lblPhone.Location = new System.Drawing.Point(3, 220);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(110, 40);
-            this.lblPhone.TabIndex = 17;
+            this.lblPhone.TabIndex = 11;
             this.lblPhone.Text = "Telefono";
             this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPhone.Location = new System.Drawing.Point(119, 227);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(336, 26);
+            this.txtPhone.TabIndex = 12;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEmail.Location = new System.Drawing.Point(4, 260);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(108, 43);
+            this.lblEmail.TabIndex = 13;
+            this.lblEmail.Text = "E-mail";
+            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtMail
+            // 
+            this.txtMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMail.Location = new System.Drawing.Point(120, 268);
+            this.txtMail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(334, 26);
+            this.txtMail.TabIndex = 14;
             // 
             // btnEditar
             // 
@@ -294,17 +299,27 @@
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(112, 35);
-            this.btnEditar.TabIndex = 7;
+            this.btnEditar.TabIndex = 15;
             this.btnEditar.Text = "Limpiar";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // btnLocalitation
+            // 
+            this.btnLocalitation.Location = new System.Drawing.Point(461, 183);
+            this.btnLocalitation.Name = "btnLocalitation";
+            this.btnLocalitation.Size = new System.Drawing.Size(86, 34);
+            this.btnLocalitation.TabIndex = 10;
+            this.btnLocalitation.Text = "Cambiar";
+            this.btnLocalitation.UseVisualStyleBackColor = true;
+            this.btnLocalitation.Click += new System.EventHandler(this.btnLocalitation_Click);
             // 
             // tbpLogin
             // 
             this.tbpLogin.Controls.Add(this.tlpLogin);
             this.tbpLogin.Location = new System.Drawing.Point(4, 29);
             this.tbpLogin.Name = "tbpLogin";
-            this.tbpLogin.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tbpLogin.Padding = new System.Windows.Forms.Padding(3);
             this.tbpLogin.Size = new System.Drawing.Size(592, 374);
             this.tbpLogin.TabIndex = 1;
             this.tbpLogin.Text = "Datos de Acceso";
@@ -340,7 +355,7 @@
             this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(92, 42);
-            this.lblPassword.TabIndex = 11;
+            this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Contraseña";
             this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -351,7 +366,7 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(356, 26);
-            this.txtPassword.TabIndex = 4;
+            this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblUser
@@ -361,7 +376,7 @@
             this.lblUser.Location = new System.Drawing.Point(3, 142);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(94, 42);
-            this.lblUser.TabIndex = 12;
+            this.lblUser.TabIndex = 0;
             this.lblUser.Text = "Usuario";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -371,7 +386,7 @@
             this.txtUser.Location = new System.Drawing.Point(103, 150);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(358, 26);
-            this.txtUser.TabIndex = 13;
+            this.txtUser.TabIndex = 1;
             // 
             // btnBloquear
             // 
@@ -380,7 +395,7 @@
             this.btnBloquear.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBloquear.Name = "btnBloquear";
             this.btnBloquear.Size = new System.Drawing.Size(111, 35);
-            this.btnBloquear.TabIndex = 14;
+            this.btnBloquear.TabIndex = 4;
             this.btnBloquear.Text = "Bloquear";
             this.btnBloquear.UseVisualStyleBackColor = true;
             // 
@@ -389,7 +404,7 @@
             this.tabSpeciality.Controls.Add(this.tlpSpeciality);
             this.tabSpeciality.Location = new System.Drawing.Point(4, 29);
             this.tabSpeciality.Name = "tabSpeciality";
-            this.tabSpeciality.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabSpeciality.Padding = new System.Windows.Forms.Padding(3);
             this.tabSpeciality.Size = new System.Drawing.Size(592, 374);
             this.tabSpeciality.TabIndex = 2;
             this.tabSpeciality.Text = "Especiadades";
@@ -435,47 +450,20 @@
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(112, 35);
-            this.btnGuardar.TabIndex = 5;
+            this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // lblLocation
-            // 
-            this.lblLocation.AutoSize = true;
-            this.lblLocation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLocation.Location = new System.Drawing.Point(3, 180);
-            this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(110, 40);
-            this.lblLocation.TabIndex = 18;
-            this.lblLocation.Text = "Localidad";
-            this.lblLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtLocation
-            // 
-            this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLocation.Location = new System.Drawing.Point(119, 187);
-            this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(336, 26);
-            this.txtLocation.TabIndex = 19;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(461, 183);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(86, 34);
-            this.btnEdit.TabIndex = 20;
-            this.btnEdit.Text = "Cambiar";
-            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // frmProfessional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 464);
-            this.ControlBox = false;
             this.Controls.Add(this.tlpPanel);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmProfessional";
             this.Text = "Profesional (ABM)";
             this.Load += new System.EventHandler(this.frmProfessional_Load);
@@ -508,7 +496,6 @@
         private System.Windows.Forms.Label lblLastName;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TabPage tbpLogin;
         private System.Windows.Forms.TableLayoutPanel tlpLogin;
         private System.Windows.Forms.Label lblPassword;
@@ -528,6 +515,6 @@
         private System.Windows.Forms.Button btnBloquear;
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.TextBox txtLocation;
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnLocalitation;
     }
 }

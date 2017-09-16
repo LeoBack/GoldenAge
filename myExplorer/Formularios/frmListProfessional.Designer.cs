@@ -41,6 +41,7 @@
             this.tsbSiguiente = new System.Windows.Forms.ToolStripButton();
             this.tsbAnterior = new System.Windows.Forms.ToolStripButton();
             this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tlpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.tsMenu.SuspendLayout();
@@ -99,6 +100,7 @@
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
+            this.tsbAdd,
             this.tstxtNombre,
             this.tsbBuscar,
             this.tsbUsuario,
@@ -183,6 +185,15 @@
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
+            // tsbAdd
+            // 
+            this.tsbAdd.Image = global::myExplorer.Properties.Resources.Plus;
+            this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAdd.Name = "tsbAdd";
+            this.tsbAdd.Size = new System.Drawing.Size(112, 36);
+            this.tsbAdd.Text = "Agregar";
+            this.tsbAdd.Click += new System.EventHandler(this.tsbAdd_Click);
+            // 
             // frmListProfessional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -219,5 +230,6 @@
         private System.Windows.Forms.ToolStripLabel tslPagina;
         private System.Windows.Forms.ToolStripButton tsbSiguiente;
         private System.Windows.Forms.ToolStripButton tsbAnterior;
+        private System.Windows.Forms.ToolStripButton tsbAdd;
     }
 }

@@ -202,6 +202,7 @@ namespace myExplorer.Formularios
         private void tsmiAddProfessional_Click(object sender, EventArgs e)
         {
             frmProfessional fU = new frmProfessional();
+            fU.Acto = frmProfessional.Modo.Select;
             fU.oQuery = oQuery;
             fU.oUtil = oUtil;
             fU.Show();
