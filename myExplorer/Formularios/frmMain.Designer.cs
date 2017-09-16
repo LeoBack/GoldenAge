@@ -76,6 +76,7 @@
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
+            this.tsmiDataBase = new System.Windows.Forms.ToolStripMenuItem();
             this.mspBarraTareas.SuspendLayout();
             this.tsPrincipal.SuspendLayout();
             this.ssEstado.SuspendLayout();
@@ -91,13 +92,15 @@
             // 
             // mspBarraTareas
             // 
+            this.mspBarraTareas.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mspBarraTareas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiArchivo,
             this.tsmiMenu,
             this.tsmiAyuda});
             this.mspBarraTareas.Location = new System.Drawing.Point(0, 0);
             this.mspBarraTareas.Name = "mspBarraTareas";
-            this.mspBarraTareas.Size = new System.Drawing.Size(1193, 24);
+            this.mspBarraTareas.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.mspBarraTareas.Size = new System.Drawing.Size(1790, 35);
             this.mspBarraTareas.TabIndex = 1;
             this.mspBarraTareas.Text = "msMenu";
             // 
@@ -107,19 +110,19 @@
             this.toolStripSeparator1,
             this.tsmiSalir});
             this.tsmiArchivo.Name = "tsmiArchivo";
-            this.tsmiArchivo.Size = new System.Drawing.Size(60, 20);
+            this.tsmiArchivo.Size = new System.Drawing.Size(84, 29);
             this.tsmiArchivo.Text = "Archivo";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(93, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(126, 6);
             // 
             // tsmiSalir
             // 
             this.tsmiSalir.Image = global::myExplorer.Properties.Resources.Error;
             this.tsmiSalir.Name = "tsmiSalir";
-            this.tsmiSalir.Size = new System.Drawing.Size(96, 22);
+            this.tsmiSalir.Size = new System.Drawing.Size(129, 30);
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
@@ -136,7 +139,7 @@
             this.toolStripSeparator2,
             this.tsmiBaseDeDatos});
             this.tsmiMenu.Name = "tsmiMenu";
-            this.tsmiMenu.Size = new System.Drawing.Size(50, 20);
+            this.tsmiMenu.Size = new System.Drawing.Size(69, 29);
             this.tsmiMenu.Text = "Menu";
             // 
             // tsmiPaciente
@@ -146,14 +149,14 @@
             this.tsmiAgregar});
             this.tsmiPaciente.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
             this.tsmiPaciente.Name = "tsmiPaciente";
-            this.tsmiPaciente.Size = new System.Drawing.Size(150, 22);
+            this.tsmiPaciente.Size = new System.Drawing.Size(212, 30);
             this.tsmiPaciente.Text = "Paciente";
             // 
             // tsmiBuscar
             // 
             this.tsmiBuscar.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsmiBuscar.Name = "tsmiBuscar";
-            this.tsmiBuscar.Size = new System.Drawing.Size(116, 22);
+            this.tsmiBuscar.Size = new System.Drawing.Size(160, 30);
             this.tsmiBuscar.Text = "Buscar";
             this.tsmiBuscar.Click += new System.EventHandler(this.tsbListGrandfather_Click);
             // 
@@ -161,7 +164,7 @@
             // 
             this.tsmiAgregar.Image = global::myExplorer.Properties.Resources.Search;
             this.tsmiAgregar.Name = "tsmiAgregar";
-            this.tsmiAgregar.Size = new System.Drawing.Size(116, 22);
+            this.tsmiAgregar.Size = new System.Drawing.Size(160, 30);
             this.tsmiAgregar.Text = "Agregar";
             this.tsmiAgregar.Click += new System.EventHandler(this.tsbAddGrandfather_Click);
             // 
@@ -169,7 +172,7 @@
             // 
             this.tsmiOS.Image = global::myExplorer.Properties.Resources.Burn;
             this.tsmiOS.Name = "tsmiOS";
-            this.tsmiOS.Size = new System.Drawing.Size(150, 22);
+            this.tsmiOS.Size = new System.Drawing.Size(212, 30);
             this.tsmiOS.Text = "Obras Sociales";
             this.tsmiOS.Click += new System.EventHandler(this.tsgAddSocialWork_Click);
             // 
@@ -179,34 +182,34 @@
             this.tsmiAsignarTurno});
             this.tsmiTurnos.Image = global::myExplorer.Properties.Resources.Clipboard;
             this.tsmiTurnos.Name = "tsmiTurnos";
-            this.tsmiTurnos.Size = new System.Drawing.Size(150, 22);
+            this.tsmiTurnos.Size = new System.Drawing.Size(212, 30);
             this.tsmiTurnos.Text = "Turnos";
             // 
             // tsmiAsignarTurno
             // 
             this.tsmiAsignarTurno.Image = global::myExplorer.Properties.Resources.Clipboard;
             this.tsmiAsignarTurno.Name = "tsmiAsignarTurno";
-            this.tsmiAsignarTurno.Size = new System.Drawing.Size(149, 22);
+            this.tsmiAsignarTurno.Size = new System.Drawing.Size(207, 30);
             this.tsmiAsignarTurno.Text = "Asignar Turno";
             this.tsmiAsignarTurno.Click += new System.EventHandler(this.tsbAsignarTurno_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(147, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(209, 6);
             // 
             // tsmiEstadisticas
             // 
             this.tsmiEstadisticas.Image = global::myExplorer.Properties.Resources.GraficoDeBarras;
             this.tsmiEstadisticas.Name = "tsmiEstadisticas";
-            this.tsmiEstadisticas.Size = new System.Drawing.Size(150, 22);
+            this.tsmiEstadisticas.Size = new System.Drawing.Size(212, 30);
             this.tsmiEstadisticas.Text = "Estadisticas";
             this.tsmiEstadisticas.Click += new System.EventHandler(this.tsEstadisticas_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(147, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(209, 6);
             // 
             // tsmiUsuarios
             // 
@@ -215,14 +218,14 @@
             this.tsmiSesion});
             this.tsmiUsuarios.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
             this.tsmiUsuarios.Name = "tsmiUsuarios";
-            this.tsmiUsuarios.Size = new System.Drawing.Size(150, 22);
+            this.tsmiUsuarios.Size = new System.Drawing.Size(212, 30);
             this.tsmiUsuarios.Text = "Usuarios";
             // 
             // tsmiAdministrador
             // 
             this.tsmiAdministrador.Image = global::myExplorer.Properties.Resources.Clipboard;
             this.tsmiAdministrador.Name = "tsmiAdministrador";
-            this.tsmiAdministrador.Size = new System.Drawing.Size(150, 22);
+            this.tsmiAdministrador.Size = new System.Drawing.Size(210, 30);
             this.tsmiAdministrador.Text = "Administrador";
             this.tsmiAdministrador.Click += new System.EventHandler(this.tsmiAddProfessional_Click);
             // 
@@ -230,14 +233,14 @@
             // 
             this.tsmiSesion.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
             this.tsmiSesion.Name = "tsmiSesion";
-            this.tsmiSesion.Size = new System.Drawing.Size(150, 22);
+            this.tsmiSesion.Size = new System.Drawing.Size(210, 30);
             this.tsmiSesion.Text = "Sesion";
             this.tsmiSesion.Click += new System.EventHandler(this.tsbProfessional_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(147, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(209, 6);
             // 
             // tsmiBaseDeDatos
             // 
@@ -246,14 +249,14 @@
             this.tsmiRestaurar2});
             this.tsmiBaseDeDatos.Image = global::myExplorer.Properties.Resources.Database3;
             this.tsmiBaseDeDatos.Name = "tsmiBaseDeDatos";
-            this.tsmiBaseDeDatos.Size = new System.Drawing.Size(150, 22);
+            this.tsmiBaseDeDatos.Size = new System.Drawing.Size(212, 30);
             this.tsmiBaseDeDatos.Text = "Base de Datos";
             // 
             // tsmiCopiar2
             // 
             this.tsmiCopiar2.Image = global::myExplorer.Properties.Resources.UploadDatabase;
             this.tsmiCopiar2.Name = "tsmiCopiar2";
-            this.tsmiCopiar2.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCopiar2.Size = new System.Drawing.Size(212, 30);
             this.tsmiCopiar2.Text = "Realizar Copiar";
             this.tsmiCopiar2.Click += new System.EventHandler(this.tsmiCopiar_Click);
             // 
@@ -261,23 +264,24 @@
             // 
             this.tsmiRestaurar2.Image = global::myExplorer.Properties.Resources.DownloadDatabase;
             this.tsmiRestaurar2.Name = "tsmiRestaurar2";
-            this.tsmiRestaurar2.Size = new System.Drawing.Size(152, 22);
+            this.tsmiRestaurar2.Size = new System.Drawing.Size(212, 30);
             this.tsmiRestaurar2.Text = "Restaurar";
             this.tsmiRestaurar2.Click += new System.EventHandler(this.tsmiRestaurar_Click);
             // 
             // tsmiAyuda
             // 
             this.tsmiAyuda.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAcercaDe});
+            this.tsmiAcercaDe,
+            this.tsmiDataBase});
             this.tsmiAyuda.Name = "tsmiAyuda";
-            this.tsmiAyuda.Size = new System.Drawing.Size(53, 20);
+            this.tsmiAyuda.Size = new System.Drawing.Size(75, 29);
             this.tsmiAyuda.Text = "Ayuda";
             // 
             // tsmiAcercaDe
             // 
             this.tsmiAcercaDe.Image = global::myExplorer.Properties.Resources.Info;
             this.tsmiAcercaDe.Name = "tsmiAcercaDe";
-            this.tsmiAcercaDe.Size = new System.Drawing.Size(129, 22);
+            this.tsmiAcercaDe.Size = new System.Drawing.Size(210, 30);
             this.tsmiAcercaDe.Text = "Acerca de ";
             this.tsmiAcercaDe.Click += new System.EventHandler(this.tsmiAcercaDe_Click);
             // 
@@ -289,10 +293,11 @@
             this.tsddbPaciente,
             this.toolStripSeparator3,
             this.tsgAgregarOB});
-            this.tsPrincipal.Location = new System.Drawing.Point(159, 24);
+            this.tsPrincipal.Location = new System.Drawing.Point(238, 37);
             this.tsPrincipal.Name = "tsPrincipal";
+            this.tsPrincipal.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.tsPrincipal.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsPrincipal.Size = new System.Drawing.Size(234, 39);
+            this.tsPrincipal.Size = new System.Drawing.Size(309, 39);
             this.tsPrincipal.TabIndex = 2;
             this.tsPrincipal.Text = "tsMenu";
             // 
@@ -304,14 +309,14 @@
             this.tsddbPaciente.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
             this.tsddbPaciente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddbPaciente.Name = "tsddbPaciente";
-            this.tsddbPaciente.Size = new System.Drawing.Size(97, 36);
+            this.tsddbPaciente.Size = new System.Drawing.Size(126, 36);
             this.tsddbPaciente.Text = "Paciente";
             // 
             // tsbBuscar
             // 
             this.tsbBuscar.Image = global::myExplorer.Properties.Resources.Search;
             this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(116, 22);
+            this.tsbBuscar.Size = new System.Drawing.Size(160, 30);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.Click += new System.EventHandler(this.tsbListGrandfather_Click);
             // 
@@ -319,7 +324,7 @@
             // 
             this.tsbAgregar.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsbAgregar.Name = "tsbAgregar";
-            this.tsbAgregar.Size = new System.Drawing.Size(116, 22);
+            this.tsbAgregar.Size = new System.Drawing.Size(160, 30);
             this.tsbAgregar.Text = "Agregar";
             this.tsbAgregar.Click += new System.EventHandler(this.tsbAddGrandfather_Click);
             // 
@@ -333,24 +338,26 @@
             this.tsgAgregarOB.Image = global::myExplorer.Properties.Resources.Burn;
             this.tsgAgregarOB.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsgAgregarOB.Name = "tsgAgregarOB";
-            this.tsgAgregarOB.Size = new System.Drawing.Size(119, 36);
+            this.tsgAgregarOB.Size = new System.Drawing.Size(164, 36);
             this.tsgAgregarOB.Text = "Obras Sociales";
             this.tsgAgregarOB.Click += new System.EventHandler(this.tsgAddSocialWork_Click);
             // 
             // ssEstado
             // 
+            this.ssEstado.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.ssEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslPath});
-            this.ssEstado.Location = new System.Drawing.Point(0, 533);
+            this.ssEstado.Location = new System.Drawing.Point(0, 824);
             this.ssEstado.Name = "ssEstado";
-            this.ssEstado.Size = new System.Drawing.Size(1193, 22);
+            this.ssEstado.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
+            this.ssEstado.Size = new System.Drawing.Size(1790, 30);
             this.ssEstado.TabIndex = 5;
             this.ssEstado.Text = "statusStrip1";
             // 
             // tsslPath
             // 
             this.tsslPath.Name = "tsslPath";
-            this.tsslPath.Size = new System.Drawing.Size(31, 17);
+            this.tsslPath.Size = new System.Drawing.Size(47, 25);
             this.tsslPath.Text = "CNX";
             // 
             // tscContenedor
@@ -360,11 +367,13 @@
             // 
             this.tscContenedor.ContentPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.tscContenedor.ContentPanel.Controls.Add(this.pcbBackgraund);
-            this.tscContenedor.ContentPanel.Size = new System.Drawing.Size(1193, 470);
+            this.tscContenedor.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tscContenedor.ContentPanel.Size = new System.Drawing.Size(1790, 750);
             this.tscContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tscContenedor.Location = new System.Drawing.Point(0, 24);
+            this.tscContenedor.Location = new System.Drawing.Point(0, 35);
+            this.tscContenedor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tscContenedor.Name = "tscContenedor";
-            this.tscContenedor.Size = new System.Drawing.Size(1193, 509);
+            this.tscContenedor.Size = new System.Drawing.Size(1790, 789);
             this.tscContenedor.TabIndex = 6;
             this.tscContenedor.Text = "tscContenedor";
             // 
@@ -377,8 +386,9 @@
             this.pcbBackgraund.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pcbBackgraund.Image = global::myExplorer.Properties.Resources.ammo4;
             this.pcbBackgraund.Location = new System.Drawing.Point(0, 0);
+            this.pcbBackgraund.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pcbBackgraund.Name = "pcbBackgraund";
-            this.pcbBackgraund.Size = new System.Drawing.Size(1193, 470);
+            this.pcbBackgraund.Size = new System.Drawing.Size(1790, 750);
             this.pcbBackgraund.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pcbBackgraund.TabIndex = 0;
             this.pcbBackgraund.TabStop = false;
@@ -391,7 +401,7 @@
             this.tsbUsuario});
             this.tsUsuario.Location = new System.Drawing.Point(3, 0);
             this.tsUsuario.Name = "tsUsuario";
-            this.tsUsuario.Size = new System.Drawing.Size(124, 39);
+            this.tsUsuario.Size = new System.Drawing.Size(163, 39);
             this.tsUsuario.TabIndex = 3;
             // 
             // tsbUsuario
@@ -399,7 +409,7 @@
             this.tsbUsuario.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
             this.tsbUsuario.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbUsuario.Name = "tsbUsuario";
-            this.tsbUsuario.Size = new System.Drawing.Size(112, 36);
+            this.tsbUsuario.Size = new System.Drawing.Size(151, 36);
             this.tsbUsuario.Text = "Iniciar Sesion";
             this.tsbUsuario.Click += new System.EventHandler(this.tsbProfessional_Click);
             // 
@@ -409,9 +419,10 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsEstadisticas});
-            this.toolStrip1.Location = new System.Drawing.Point(404, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(606, 37);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(115, 39);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(151, 39);
             this.toolStrip1.TabIndex = 4;
             // 
             // tsEstadisticas
@@ -419,7 +430,7 @@
             this.tsEstadisticas.Image = global::myExplorer.Properties.Resources.GraficoDeBarras;
             this.tsEstadisticas.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsEstadisticas.Name = "tsEstadisticas";
-            this.tsEstadisticas.Size = new System.Drawing.Size(103, 36);
+            this.tsEstadisticas.Size = new System.Drawing.Size(138, 36);
             this.tsEstadisticas.Text = "Estadisticas";
             this.tsEstadisticas.Click += new System.EventHandler(this.tsEstadisticas_Click);
             // 
@@ -430,9 +441,10 @@
             this.tsBaseDatos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbRestaurar,
             this.tsbCopiar});
-            this.tsBaseDatos.Location = new System.Drawing.Point(529, 24);
+            this.tsBaseDatos.Location = new System.Drawing.Point(794, 37);
             this.tsBaseDatos.Name = "tsBaseDatos";
-            this.tsBaseDatos.Size = new System.Drawing.Size(221, 39);
+            this.tsBaseDatos.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.tsBaseDatos.Size = new System.Drawing.Size(292, 39);
             this.tsBaseDatos.TabIndex = 1;
             // 
             // tsbRestaurar
@@ -440,7 +452,7 @@
             this.tsbRestaurar.Image = global::myExplorer.Properties.Resources.DownloadDatabase;
             this.tsbRestaurar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRestaurar.Name = "tsbRestaurar";
-            this.tsbRestaurar.Size = new System.Drawing.Size(92, 36);
+            this.tsbRestaurar.Size = new System.Drawing.Size(121, 36);
             this.tsbRestaurar.Text = "Restaurar";
             this.tsbRestaurar.Click += new System.EventHandler(this.tsmiRestaurar_Click);
             // 
@@ -449,7 +461,7 @@
             this.tsbCopiar.Image = global::myExplorer.Properties.Resources.UploadDatabase;
             this.tsbCopiar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCopiar.Name = "tsbCopiar";
-            this.tsbCopiar.Size = new System.Drawing.Size(117, 36);
+            this.tsbCopiar.Size = new System.Drawing.Size(158, 36);
             this.tsbCopiar.Text = "Realizar Copia";
             this.tsbCopiar.Click += new System.EventHandler(this.tsmiCopiar_Click);
             // 
@@ -459,9 +471,10 @@
             this.tspTurnos.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tspTurnos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAsignarTurno});
-            this.tspTurnos.Location = new System.Drawing.Point(761, 24);
+            this.tspTurnos.Location = new System.Drawing.Point(1142, 37);
             this.tspTurnos.Name = "tspTurnos";
-            this.tspTurnos.Size = new System.Drawing.Size(135, 39);
+            this.tspTurnos.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.tspTurnos.Size = new System.Drawing.Size(180, 39);
             this.tspTurnos.TabIndex = 0;
             // 
             // tsbAsignarTurno
@@ -469,7 +482,7 @@
             this.tsbAsignarTurno.Image = global::myExplorer.Properties.Resources.Clipboard;
             this.tsbAsignarTurno.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAsignarTurno.Name = "tsbAsignarTurno";
-            this.tsbAsignarTurno.Size = new System.Drawing.Size(123, 36);
+            this.tsbAsignarTurno.Size = new System.Drawing.Size(167, 36);
             this.tsbAsignarTurno.Text = "Asignar Turnos";
             this.tsbAsignarTurno.Click += new System.EventHandler(this.tsbAsignarTurno_Click);
             // 
@@ -509,11 +522,18 @@
             // 
             this.ContentPanel.Size = new System.Drawing.Size(150, 150);
             // 
+            // tsmiDataBase
+            // 
+            this.tsmiDataBase.Name = "tsmiDataBase";
+            this.tsmiDataBase.Size = new System.Drawing.Size(210, 30);
+            this.tsmiDataBase.Text = "Base de Datos";
+            this.tsmiDataBase.Click += new System.EventHandler(this.tsmiDataBase_Click);
+            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 555);
+            this.ClientSize = new System.Drawing.Size(1790, 854);
             this.Controls.Add(this.tsBaseDatos);
             this.Controls.Add(this.tspTurnos);
             this.Controls.Add(this.toolStrip1);
@@ -524,6 +544,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mspBarraTareas;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMain";
             this.Text = "MyExplorer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
@@ -602,6 +623,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiEstadisticas;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsEstadisticas;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDataBase;
     }
 }
 

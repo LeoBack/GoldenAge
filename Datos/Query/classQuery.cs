@@ -18,9 +18,6 @@ namespace Datos.Query
 
         #region Atributos y Metodos
 
-        public string Path { set; get; }
-        public string DBname { set; get; }
-
         public enum eAbm { SelectAll = 0, Select = 1, Insert = 2, Update = 3, Delete = 4, LoadCmb = 5 }
 
         public string ConexionString { set; get; }
@@ -38,11 +35,6 @@ namespace Datos.Query
 
         #region Constructores
 
-        //public static string BuildConecctionString(string PathBd, string NameBd)
-        //{
-        //    string Route = System.IO.Path.Combine(PathBd, NameBd); //C:\Users\leona\AppData\Roaming\LAB\Data.mdf
-        //    return "Data Source=(LocalDB)\v11.0;AttachDbFilename=" + Route + ";Integrated Security=True;Connect Timeout=30";
-        //}
         public classQuery()
         {
             ActivarLog = true;
@@ -70,6 +62,11 @@ namespace Datos.Query
             lParam = new List<SqlParameter>();
         }
 
+        /// <summary>
+        /// Consulta la edicion con la base de datos
+        /// OK 17/09/16
+        /// </summary>
+        /// <returns></returns>
         public string ServerVersion()
         {
             string A = string.Empty;

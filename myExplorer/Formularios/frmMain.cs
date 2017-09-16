@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Entidades;
 using Datos.Query;
 using Controles;
+using libData.SqlServer;
+using System.Configuration;
 
 namespace myExplorer.Formularios
 {
@@ -23,10 +25,6 @@ namespace myExplorer.Formularios
         private classUtiles oUtil;
         private eUser User = eUser.Invalido;
         private classTextos oTxt = new classTextos();
-
-        private bool EanbleLog = true;
-        private string PathBd = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LAB\\";
-        private string NameBd = "Data.mdf";
 
         #endregion
 
@@ -47,12 +45,7 @@ namespace myExplorer.Formularios
         private void frmMain_Load(object sender, EventArgs e)
         {
             tsBaseDatos.Visible = false;
-
-            if (!System.IO.Directory.Exists(PathBd))
-                System.IO.Directory.CreateDirectory(PathBd);
-            if (!System.IO.File.Exists(System.IO.Path.Combine(PathBd, NameBd)))
-                DialogRestoreDataBase();
-            oQuery = new classQuery(PathBd, NameBd, EanbleLog);
+            oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
             tsslPath.Text = oQuery.ServerVersion();
             oUtil = new classUtiles();
             // Inicia Secion.
@@ -90,6 +83,13 @@ namespace myExplorer.Formularios
         {
             frmAcercaDe frmAcercaDe = new frmAcercaDe();
             frmAcercaDe.ShowDialog();
+        }
+
+        private void tsmiDataBase_Click(object sender, EventArgs e)
+        {
+            frmConect fc = new frmConect(ConfigurationManager.ConnectionStrings[0].ConnectionString);
+            if (fc.ShowDialog() == DialogResult.OK)
+                this.oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
         }
 
         #endregion
@@ -309,23 +309,23 @@ namespace myExplorer.Formularios
         /// </summary>
         private void DialogRestoreDataBase()
         {
-            OpenFileDialog openFileData = new OpenFileDialog();
-            openFileData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            openFileData.Filter = "mdf files (*.mdf)|*.mdf|All files (*.*)|*.*";
-            openFileData.FilterIndex = 2;
-            openFileData.RestoreDirectory = true;
+            //OpenFileDialog openFileData = new OpenFileDialog();
+            //openFileData.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //openFileData.Filter = "mdf files (*.mdf)|*.mdf|All files (*.*)|*.*";
+            //openFileData.FilterIndex = 2;
+            //openFileData.RestoreDirectory = true;
 
-            if (openFileData.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    System.IO.File.Copy(openFileData.FileName, System.IO.Path.Combine(PathBd, NameBd));
-                }
-                catch (System.IO.IOException ex) { MessageBox.Show(ex.ToString()); }
-                catch (System.ArgumentException ex) { MessageBox.Show(ex.ToString()); }
-                catch (System.UnauthorizedAccessException ex) { MessageBox.Show(ex.ToString()); }
-                catch (System.NotSupportedException ex) { MessageBox.Show(ex.ToString()); }
-            }
+            //if (openFileData.ShowDialog() == DialogResult.OK)
+            //{
+            //    try
+            //    {
+            //        System.IO.File.Copy(openFileData.FileName, System.IO.Path.Combine(PathBd, NameBd));
+            //    }
+            //    catch (System.IO.IOException ex) { MessageBox.Show(ex.ToString()); }
+            //    catch (System.ArgumentException ex) { MessageBox.Show(ex.ToString()); }
+            //    catch (System.UnauthorizedAccessException ex) { MessageBox.Show(ex.ToString()); }
+            //    catch (System.NotSupportedException ex) { MessageBox.Show(ex.ToString()); }
+            //}
         }
 
         /// <summary>
@@ -334,26 +334,27 @@ namespace myExplorer.Formularios
         /// </summary>
         private void DialogCopiDataBase()
         {
-            OpenFileDialog openFileData = new OpenFileDialog();
-            openFileData.InitialDirectory = PathBd;
-            openFileData.Filter = "mdf files (*.mdf)|*.mdf|All files (*.*)|*.*";
-            openFileData.FilterIndex = 2;
-            openFileData.RestoreDirectory = true;
+            //OpenFileDialog openFileData = new OpenFileDialog();
+            //openFileData.InitialDirectory = PathBd;
+            //openFileData.Filter = "mdf files (*.mdf)|*.mdf|All files (*.*)|*.*";
+            //openFileData.FilterIndex = 2;
+            //openFileData.RestoreDirectory = true;
 
-            if (openFileData.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    System.IO.Directory.Move(openFileData.FileName,
-                        Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-                }
-                catch (System.IO.IOException ex) { MessageBox.Show(ex.ToString()); }
-                catch (System.ArgumentException ex) { MessageBox.Show(ex.ToString()); }
-                catch (System.UnauthorizedAccessException ex) { MessageBox.Show(ex.ToString()); }
-            }
+            //if (openFileData.ShowDialog() == DialogResult.OK)
+            //{
+            //    try
+            //    {
+            //        System.IO.Directory.Move(openFileData.FileName,
+            //            Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            //    }
+            //    catch (System.IO.IOException ex) { MessageBox.Show(ex.ToString()); }
+            //    catch (System.ArgumentException ex) { MessageBox.Show(ex.ToString()); }
+            //    catch (System.UnauthorizedAccessException ex) { MessageBox.Show(ex.ToString()); }
+            //}
         }
 
         #endregion
+
         //-----------------------------------------------------------------
     }
 }

@@ -91,14 +91,10 @@ namespace myExplorer.Formularios
                 {   //***********Eliminar*************************
                     if (this.IdSocialWork != 0)
                     {   // Consulta de eliminacion
-                        //oQuery.DeleteSocialWork(
-                        //    new classSocialWork(
-                        //        this.IdSocialWork, "", "", "", "", "", true), false);
                         oQuery.AbmSocialWork(new classSocialWork(IdSocialWork), classQuery.eAbm.Delete);
                     }
                     else if (oSocialWork != null)
                     {   // Consulta de eliminacion
-                        //oQuery.DeleteSocialWork(oSocialWork, false);
                         oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Delete);
                     }
                     else
@@ -301,8 +297,5 @@ namespace myExplorer.Formularios
         }
 
         #endregion
-
-
-
     }
 }
