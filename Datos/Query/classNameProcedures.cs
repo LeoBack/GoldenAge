@@ -22,8 +22,8 @@ namespace Datos.Query
 
         //
         public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
-        //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
-        //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
+        public string FiltroProfesionalesLimite = "[spListProfessional-v1.0]";
+        public string FiltroGrandfatherLimite = "[spListGrandfather-v1.0]";
         //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
         //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]"; 
     }
