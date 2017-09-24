@@ -1,6 +1,6 @@
 USE [C:\USERS\MARCOS\DOCUMENTS\GITHUB\GOLDENAGE\DATOS\DEFAULT.MDF]
 GO
-/****** Object:  StoredProcedure [dbo].[spListSocialWorks-v1.0]    Script Date: 16/09/2017 07:55:57 p.m. ******/
+/****** Object:  StoredProcedure [dbo].[spListSocialWorks-v1.0]    Script Date: 24/09/2017 05:39:10 p.m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10,9 +10,11 @@ GO
 -- Create date: <2017/09/16 17:36>
 -- Description:	<Altas, Bajas y Modificaciones>
 -- =============================================
-CREATE PROCEDURE [dbo].[spListSocialWorks-v1.0] 
+ALTER PROCEDURE [dbo].[spListSocialWorks-v1.0] 
 	-- Add the parameters for the stored procedure here
 	@Name varchar(20) = null,
+	@Desde int=1,
+	@Hasta int=1,
 	@Visible int = 1
 AS
 BEGIN

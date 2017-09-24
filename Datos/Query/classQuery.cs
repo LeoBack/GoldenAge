@@ -2158,61 +2158,28 @@ namespace Datos.Query
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public List<classSocialWork> FiltroSocialWorkLimite(string Nombre, int Desde, int Hasta)
+        public bool FiltroSocialWorkLimite(string Name, int Desde, int Hasta)
         {
-            List<classSocialWork> oPa = new List<classSocialWork>();
-            Error = false;
+            string SPname = sp.FiltroSocialWorkLimite;
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@Desde", Desde));
+            lParam.Add(new SqlParameter("@Hasta", Hasta));
 
-            #region Consulta
-
-            string Consulta = "";
-
-            if (Nombre != "")
-            {   // OK 21/03/12
-                Consulta = "SELECT IdObraSocial, Nombre, Descripcion, IdCiudad, IdBarrio, Visible, Telefono1, Telefono2, Direccion " +
-                    " FROM ObraSocial WHERE Visible = 1 AND Nombre LIKE '" + Nombre + "%'" +
-                    " AND IdObraSocial != 1 LIMIT " + Desde + ", " + Hasta + " ;";
-            }
-
-            else
-            {   // OK 21/03/12
-                Consulta = "SELECT IdObraSocial, Nombre, Descripcion, IdCiudad, IdBarrio, Visible, Telefono1, Telefono2, Direccion " +
-                    " FROM ObraSocial WHERE Visible = 1 " +
-                    " AND IdObraSocial != 1 LIMIT " + Desde + ", " + Hasta + " ;";
-            }
-
-            #endregion
-
-            if (oSql.SelectRaeder(Consulta, null))
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                while (oSql.Reader.Read())
-                {
-                    classSocialWork oPr = new classSocialWork(
-                        Convert.ToInt32(oSql.Reader["IdSocialWork"])
-                        , oSql.Reader["Name"].ToString()
-                        , oSql.Reader["Description"].ToString()
-                        , Convert.ToInt32(oSql.Reader["vIdLocationCountry"])
-                        , Convert.ToInt32(oSql.Reader["IdLocationProvince"])
-                        , Convert.ToInt32(oSql.Reader["IdLocationCity"])
-                        , oSql.Reader["Address"].ToString()
-                        , oSql.Reader["Phone"].ToString()
-                        , oSql.Reader["AlternativePhone"].ToString()
-                        , Convert.ToBoolean(oSql.Reader["Visible"])
-                        );
-                    oPa.Add(oPr);
-                }
-                Error = true;
-
-                oSql.Reader.Close();
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
                 oSql.Close();
+                return true;
             }
-
-            return oPa;
-        }
-
-        public bool rListaGrandfatherLimite(string p1, classGrandfather oP, int p2, int p3)
-        {
-            throw new NotImplementedException();
+            else
+            {
+                oSql.Close();
+                return false;
+            }
         }
 
         /// <summary>
@@ -2224,275 +2191,10 @@ namespace Datos.Query
         /// <returns></returns>
         public List<grvGrandfather> FiltroGrandfatherLimite(classGrandfather oPersona, int Desde, int Hasta)
         {
-            ///// <summary>
-            ///// Filtra Personas por coincidencia de la primera letras.
-            ///// OK 26/05/12
-            ///// </summary>
-            ///// <param name="Nombre"></param>
-            ///// <returns></returns>
-            //public List<grvPersona> FiltroPersonaLimite(classPersona oP, int Desde, int Hasta)
-            //{
-            //    Error = false;
-            //    List<grvPersona> oPa = new List<grvPersona>();
-
-            //    #region Consulta
-
-            //    string Consulta = "SELECT oP.IdPersona, oP.Nombre, oP.Apellido, oP.Direccion, oP.FechaNacimiento, "
-            //        + "oP.Sexo, oS.Nombre [ObraSocial], oP.nAfiliado, oP.IdTipoPersona"
-            //        + " FROM Persona as oP INNER JOIN  ObraSocial as oS ON   oP.IdObraSocial = oS.IdObraSocial ";
-
-            //    if (oP.nAfiliado != "" && oP.Apellido != "")
-            //    {
-            //        Consulta += " WHERE oP.Apellido LIKE '" + oP.Apellido
-            //            + "%' AND oP.nAfiliado LIKE '" + oP.nAfiliado + "%' ";
-            //    }
-            //    else if (oP.Apellido != "")
-            //    {   // OK 21/03/12
-            //        Consulta += " WHERE oP.Apellido LIKE '" + oP.Apellido + "%' ";
-            //    }
-            //    else if (oP.nAfiliado != "")
-            //    {   // OK 21/03/12
-            //        Consulta += " WHERE oP.nAfiliado LIKE '" + oP.nAfiliado + "%'";
-            //    }
-            //    else
-            //    {   // OK 21/03/12
-            //        //Consulta += " WHERE oP.IdObraSocial = " + oP.ObraSocial;
-            //    }
-
-            //    if (oP.ObraSocial != 1)
-            //    {
-            //        Consulta += " AND oP.IdObraSocial = " + oP.ObraSocial + " ORDER BY oP.Apellido";
-            //    }
-            //    else
-            //    {
-            //        Consulta += " ORDER BY oP.Apellido";
-            //    }
-
-            //    Consulta += " LIMIT " + Desde + ", " + Hasta + " ;";
-            //    #endregion
-
-            //    if (Sql.SelectReader(Consulta, null, "FiltroPacienteLimite"))
-            //    {
-            //        while (Sql.Reader.Read())
-            //        {
-            //            grvPersona oPr = new grvPersona(
-            //                  Convert.ToInt32(Sql.Reader["IdPersona"])
-            //                , Sql.Reader["ObraSocial"].ToString()
-            //                , Convert.ToInt32(Sql.Reader["IdTipoPersona"])
-            //                , Sql.Reader["Nombre"].ToString()
-            //                , Sql.Reader["Apellido"].ToString()
-            //                , Sql.Reader["Direccion"].ToString()
-            //                , Convert.ToDateTime(Sql.Reader["FechaNacimiento"])
-            //                , oP.toSexo(Convert.ToInt32(Sql.Reader["Sexo"]))
-            //                , Sql.Reader["nAfiliado"].ToString()
-            //                );
-            //            /*
-            //            oPr.IdPersona = Convert.ToInt32(Sql.Reader["IdPersona"]);
-            //            oPr.ObraSocial = Sql.Reader["ObraSocial"].ToString();
-            //            oPr.TipoPaciente = Convert.ToInt32(Sql.Reader["IdTipoPersona"]);
-            //            oPr.Nombre = Sql.Reader["Nombre"].ToString();
-            //            oPr.Apellido = Sql.Reader["Apellido"].ToString();
-            //            oPr.Direccion = Sql.Reader["Direccion"].ToString();
-            //            oPr.FechaNac = Convert.ToDateTime(Sql.Reader["FechaNacimiento"]);
-            //            oPr.Sexo = Convert.ToInt32(Sql.Reader["Sexo"]);
-            //            oPr.nAfiliado = Sql.Reader["nAfiliado"].ToString();
-            //            */
-            //            oPa.Add(oPr);
-            //        }
-            //        Error = true;
-
-            //        Sql.Reader.Close();
-            //        Sql.Close();
-            //    }
-            //    return oPa;
-            //}
+            
             throw new NotImplementedException();
 
         }
-
-        ///// <summary>
-        ///// Filtra Obras Sociales por coincidencia de la primera letras.
-        ///// OK 22/03/12
-        ///// </summary>
-        ///// <param name="Nombre"></param>
-        ///// <returns></returns>
-        //public List<classUsuarios> FiltroUsuario(string Nombre, bool Bloqueado)
-        //{
-        //    List<classUsuarios> oUa = new List<classUsuarios>();
-        //    Error = false;
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT IdUsuario, Nombre, Apellido, Email, Bloqueado, Contrasenia FROM Usuario ";
-
-        //    if (Nombre != "")// OK 21/03/12 
-        //        Consulta = Consulta + "WHERE Bloqueado = " + Convert.ToInt32(Bloqueado) + " AND Nombre LIKE '" + Nombre + "%' ;";
-        //    else// OK 21/03/12  
-        //        Consulta = Consulta + " WHERE Bloqueado = " + Convert.ToInt32(Bloqueado) + " ;";
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "FiltroUsuario"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            classUsuarios oU = new classUsuarios(
-        //                Convert.ToInt32(Sql.Reader["IdUsuario"])
-        //                , Sql.Reader["Nombre"].ToString()
-        //                , Sql.Reader["Apellido"].ToString()
-        //                , Sql.Reader["Contrasenia"].ToString()
-        //                , Sql.Reader["Email"].ToString()
-        //                , Convert.ToBoolean(Sql.Reader["Bloqueado"])
-        //                );
-        //            oUa.Add(oU);
-        //        }
-        //        Error = true;
-
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-        //    }
-
-        //    return oUa;
-        //}
-
-        ///// <summary>
-        ///// Filtra Obras Sociales por coincidencia de la primera letras.
-        ///// OK 22/03/12
-        ///// </summary>
-        ///// <param name="Nombre"></param>
-        ///// <returns></returns>
-        //public List<classObraSocial> FiltroObraSocial(string Nombre)
-        //{
-        //    List<classObraSocial> oPa = new List<classObraSocial>();
-        //    Error = false;
-
-        //    #region Consulta
-
-        //    string Consulta = "";
-
-        //    if (Nombre != "")
-        //    {   // OK 21/03/12
-        //        Consulta = "SELECT IdObraSocial, Nombre, Descripcion, IdCiudad, IdBarrio, Visible, Telefono1, Telefono2, Direccion " +
-        //            " FROM ObraSocial WHERE Visible = 1 AND Nombre LIKE '" + Nombre + "%'" +
-        //            " AND IdObraSocial != 1;";
-        //    }
-
-        //    else
-        //    {   // OK 21/03/12
-        //        Consulta = "SELECT IdObraSocial, Nombre, Descripcion, IdCiudad, IdBarrio, Visible, Telefono1, Telefono2, Direccion " +
-        //            " FROM ObraSocial WHERE Visible = 1 " +
-        //            " AND IdObraSocial != 1;";
-        //    }
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "FiltroObraSocial"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            classObraSocial oPr = new classObraSocial(
-        //                Convert.ToInt32(Sql.Reader["IdObraSocial"])
-        //                , Sql.Reader["Nombre"].ToString()
-        //                , Sql.Reader["Descripcion"].ToString()
-        //                , Convert.ToInt32(Sql.Reader["IdCiudad"])
-        //                , Convert.ToInt32(Sql.Reader["IdBarrio"])
-        //                , Sql.Reader["Direccion"].ToString()
-        //                , Sql.Reader["Telefono1"].ToString()
-        //                , Sql.Reader["Telefono2"].ToString()
-        //                , Convert.ToInt32(Sql.Reader["Visible"])
-        //                );
-        //            oPa.Add(oPr);
-        //        }
-        //        Error = true;
-
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-        //    }
-
-        //    return oPa;
-        //}
-
-
-        ///// <summary>
-        ///// Filtra Personas por coincidencia de la primera letras.
-        ///// OK 26/05/12
-        ///// </summary>
-        ///// <param name="Nombre"></param>
-        ///// <returns></returns>
-        //public List<grvPersona> FiltroPersona(classPersona oP)
-        //{
-        //    Error = false;
-        //    List<grvPersona> oPa = new List<grvPersona>();
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT oP.IdPersona, oP.Nombre, oP.Apellido, oP.Direccion, oP.FechaNacimiento, " 
-        //        + "oP.Sexo, oS.Nombre [ObraSocial], oP.nAfiliado, oP.IdTipoPersona"
-        //        + " FROM Persona as oP INNER JOIN  ObraSocial as oS ON   oP.IdObraSocial = oS.IdObraSocial ";
-
-        //    if (oP.nAfiliado != "" && oP.Apellido != "")
-        //    {
-        //        Consulta += " WHERE oP.Apellido LIKE '" + oP.Apellido 
-        //            + "%' AND oP.nAfiliado LIKE '" + oP.nAfiliado + "%' ";
-        //    }
-        //    else if (oP.Apellido != "")
-        //    {   // OK 21/03/12
-        //        Consulta += " WHERE oP.Apellido LIKE '" + oP.Apellido + "%' ";
-        //    }
-        //    else if (oP.nAfiliado != "")
-        //    {   // OK 21/03/12
-        //        Consulta += " WHERE oP.nAfiliado LIKE '" + oP.nAfiliado + "%'";  
-        //    }
-        //    else
-        //    {   // OK 21/03/12
-        //        Consulta += " WHERE oP.IdObraSocial = " + oP.ObraSocial ;
-        //    }
-
-        //    if (oP.ObraSocial != 1)
-        //    {
-        //        Consulta += " AND oP.IdObraSocial = " + oP.ObraSocial + " ORDER BY oP.Apellido;";
-        //    }
-        //    else
-        //    {
-        //        Consulta += " ORDER BY oP.Apellido;";
-        //    }
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "FiltroPaciente"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            grvPersona oPr = new grvPersona(
-        //                  Convert.ToInt32(Sql.Reader["IdPersona"])
-        //                , Sql.Reader["ObraSocial"].ToString()
-        //                , Convert.ToInt32(Sql.Reader["IdTipoPersona"])
-        //                , Sql.Reader["Nombre"].ToString()
-        //                , Sql.Reader["Apellido"].ToString()
-        //                , Sql.Reader["Direccion"].ToString()
-        //                , Convert.ToDateTime(Sql.Reader["FechaNacimiento"])
-        //                , oP.toSexo(Convert.ToInt32(Sql.Reader["Sexo"]))
-        //                , Sql.Reader["nAfiliado"].ToString()
-        //                );
-        //            /*
-        //            oPr.IdPersona = Convert.ToInt32(Sql.Reader["IdPersona"]);
-        //            oPr.ObraSocial = Sql.Reader["ObraSocial"].ToString();
-        //            oPr.TipoPaciente = Convert.ToInt32(Sql.Reader["IdTipoPersona"]);
-        //            oPr.Nombre = Sql.Reader["Nombre"].ToString();
-        //            oPr.Apellido = Sql.Reader["Apellido"].ToString();
-        //            oPr.Direccion = Sql.Reader["Direccion"].ToString();
-        //            oPr.FechaNac = Convert.ToDateTime(Sql.Reader["FechaNacimiento"]);
-        //            oPr.Sexo = Convert.ToInt32(Sql.Reader["Sexo"]);
-        //            oPr.nAfiliado = Sql.Reader["nAfiliado"].ToString();
-        //            */
-        //            oPa.Add(oPr);
-        //        }
-        //        Error = true;
-
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-        //    }
-        //    return oPa;
-        //}
 
         #endregion
 

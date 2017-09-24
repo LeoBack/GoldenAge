@@ -34,15 +34,14 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPaciente = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiBuscar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAgregar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiOS = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiGrandfather = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProfessional = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSocialWorks = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiEstadisticas = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiStatics = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiUsuarios = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAdministrador = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNowUser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiAyuda = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,86 +116,77 @@
             // tsmiMenu
             // 
             this.tsmiMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiPaciente,
-            this.tsmiOS,
+            this.tsmiGrandfather,
+            this.tsmiProfessional,
+            this.tsmiSocialWorks,
             this.toolStripSeparator8,
-            this.tsmiEstadisticas,
+            this.tsmiStatics,
             this.toolStripSeparator4,
-            this.tsmiUsuarios,
+            this.tsmiUser,
             this.toolStripSeparator2});
             this.tsmiMenu.Name = "tsmiMenu";
             this.tsmiMenu.Size = new System.Drawing.Size(69, 29);
             this.tsmiMenu.Text = "Menu";
             // 
-            // tsmiPaciente
+            // tsmiGrandfather
             // 
-            this.tsmiPaciente.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiBuscar,
-            this.tsmiAgregar});
-            this.tsmiPaciente.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
-            this.tsmiPaciente.Name = "tsmiPaciente";
-            this.tsmiPaciente.Size = new System.Drawing.Size(212, 30);
-            this.tsmiPaciente.Text = "Paciente";
+            this.tsmiGrandfather.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsmiGrandfather.Name = "tsmiGrandfather";
+            this.tsmiGrandfather.Size = new System.Drawing.Size(212, 30);
+            this.tsmiGrandfather.Text = "Abuelos";
+            this.tsmiGrandfather.Click += new System.EventHandler(this.tsmiGrandfather_Click);
             // 
-            // tsmiBuscar
+            // tsmiProfessional
             // 
-            this.tsmiBuscar.Image = global::myExplorer.Properties.Resources.Plus;
-            this.tsmiBuscar.Name = "tsmiBuscar";
-            this.tsmiBuscar.Size = new System.Drawing.Size(210, 30);
-            this.tsmiBuscar.Text = "Buscar";
-            this.tsmiBuscar.Click += new System.EventHandler(this.tsbListGrandfather_Click);
+            this.tsmiProfessional.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsmiProfessional.Name = "tsmiProfessional";
+            this.tsmiProfessional.Size = new System.Drawing.Size(212, 30);
+            this.tsmiProfessional.Text = "Profesionales";
+            this.tsmiProfessional.Click += new System.EventHandler(this.tsmiProfessional_Click);
             // 
-            // tsmiAgregar
+            // tsmiSocialWorks
             // 
-            this.tsmiAgregar.Image = global::myExplorer.Properties.Resources.Search;
-            this.tsmiAgregar.Name = "tsmiAgregar";
-            this.tsmiAgregar.Size = new System.Drawing.Size(210, 30);
-            this.tsmiAgregar.Text = "Agregar";
-            this.tsmiAgregar.Click += new System.EventHandler(this.tsbAddGrandfather_Click);
-            // 
-            // tsmiOS
-            // 
-            this.tsmiOS.Image = global::myExplorer.Properties.Resources.Burn;
-            this.tsmiOS.Name = "tsmiOS";
-            this.tsmiOS.Size = new System.Drawing.Size(212, 30);
-            this.tsmiOS.Text = "Obras Sociales";
-            this.tsmiOS.Click += new System.EventHandler(this.tsgAddSocialWork_Click);
+            this.tsmiSocialWorks.Image = global::myExplorer.Properties.Resources.ammo4;
+            this.tsmiSocialWorks.Name = "tsmiSocialWorks";
+            this.tsmiSocialWorks.Size = new System.Drawing.Size(212, 30);
+            this.tsmiSocialWorks.Text = "Obras Sociales";
+            this.tsmiSocialWorks.Click += new System.EventHandler(this.tsbSocialWork_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(209, 6);
             // 
-            // tsmiEstadisticas
+            // tsmiStatics
             // 
-            this.tsmiEstadisticas.Image = global::myExplorer.Properties.Resources.GraficoDeBarras;
-            this.tsmiEstadisticas.Name = "tsmiEstadisticas";
-            this.tsmiEstadisticas.Size = new System.Drawing.Size(212, 30);
-            this.tsmiEstadisticas.Text = "Estadisticas";
-            this.tsmiEstadisticas.Click += new System.EventHandler(this.tsEstadisticas_Click);
+            this.tsmiStatics.Image = global::myExplorer.Properties.Resources.GraficoDeBarras;
+            this.tsmiStatics.Name = "tsmiStatics";
+            this.tsmiStatics.Size = new System.Drawing.Size(212, 30);
+            this.tsmiStatics.Text = "Estadisticas";
+            this.tsmiStatics.Click += new System.EventHandler(this.tsbStatics_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(209, 6);
             // 
-            // tsmiUsuarios
+            // tsmiUser
             // 
-            this.tsmiUsuarios.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAdministrador,
+            this.tsmiUser.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNowUser,
             this.tsmiSesion});
-            this.tsmiUsuarios.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
-            this.tsmiUsuarios.Name = "tsmiUsuarios";
-            this.tsmiUsuarios.Size = new System.Drawing.Size(212, 30);
-            this.tsmiUsuarios.Text = "Usuarios";
+            this.tsmiUser.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
+            this.tsmiUser.Name = "tsmiUser";
+            this.tsmiUser.Size = new System.Drawing.Size(212, 30);
+            this.tsmiUser.Text = "Usuario";
             // 
-            // tsmiAdministrador
+            // tsmiNowUser
             // 
-            this.tsmiAdministrador.Image = global::myExplorer.Properties.Resources.Clipboard;
-            this.tsmiAdministrador.Name = "tsmiAdministrador";
-            this.tsmiAdministrador.Size = new System.Drawing.Size(210, 30);
-            this.tsmiAdministrador.Text = "Administrador";
-            this.tsmiAdministrador.Click += new System.EventHandler(this.tsmiAddProfessional_Click);
+            this.tsmiNowUser.Image = global::myExplorer.Properties.Resources.Clipboard;
+            this.tsmiNowUser.Name = "tsmiNowUser";
+            this.tsmiNowUser.Size = new System.Drawing.Size(210, 30);
+            this.tsmiNowUser.Text = "Usuario Actual";
+            this.tsmiNowUser.Click += new System.EventHandler(this.tsmiNowUser_Click);
             // 
             // tsmiSesion
             // 
@@ -268,7 +258,6 @@
             this.tsbBuscar.Name = "tsbBuscar";
             this.tsbBuscar.Size = new System.Drawing.Size(160, 30);
             this.tsbBuscar.Text = "Buscar";
-            this.tsbBuscar.Click += new System.EventHandler(this.tsbListGrandfather_Click);
             // 
             // tsbAgregar
             // 
@@ -276,7 +265,6 @@
             this.tsbAgregar.Name = "tsbAgregar";
             this.tsbAgregar.Size = new System.Drawing.Size(160, 30);
             this.tsbAgregar.Text = "Agregar";
-            this.tsbAgregar.Click += new System.EventHandler(this.tsbAddGrandfather_Click);
             // 
             // toolStripSeparator3
             // 
@@ -290,7 +278,7 @@
             this.tsgAgregarOB.Name = "tsgAgregarOB";
             this.tsgAgregarOB.Size = new System.Drawing.Size(164, 36);
             this.tsgAgregarOB.Text = "Obras Sociales";
-            this.tsgAgregarOB.Click += new System.EventHandler(this.tsgAddSocialWork_Click);
+            this.tsgAgregarOB.Click += new System.EventHandler(this.tsbSocialWork_Click);
             // 
             // ssEstado
             // 
@@ -381,7 +369,7 @@
             this.tsEstadisticas.Name = "tsEstadisticas";
             this.tsEstadisticas.Size = new System.Drawing.Size(138, 36);
             this.tsEstadisticas.Text = "Estadisticas";
-            this.tsEstadisticas.Click += new System.EventHandler(this.tsEstadisticas_Click);
+            this.tsEstadisticas.Click += new System.EventHandler(this.tsbStatics_Click);
             // 
             // BottomToolStripPanel
             // 
@@ -469,15 +457,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmiSalir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem tsmiOS;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSocialWorks;
         private System.Windows.Forms.ToolStripMenuItem tsmiAcercaDe;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripDropDownButton tsddbPaciente;
         private System.Windows.Forms.ToolStripMenuItem tsbAgregar;
         private System.Windows.Forms.ToolStripMenuItem tsbBuscar;
-        private System.Windows.Forms.ToolStripMenuItem tsmiPaciente;
-        private System.Windows.Forms.ToolStripMenuItem tsmiBuscar;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAgregar;
+        private System.Windows.Forms.ToolStripMenuItem tsmiGrandfather;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.StatusStrip ssEstado;
         private System.Windows.Forms.ToolStripStatusLabel tsslPath;
@@ -490,14 +476,15 @@
         private System.Windows.Forms.ToolStripButton tsbUsuario;
         private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem tsmiUsuarios;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAdministrador;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUser;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNowUser;
         private System.Windows.Forms.ToolStripMenuItem tsmiSesion;
         private System.Windows.Forms.PictureBox pcbBackgraund;
-        private System.Windows.Forms.ToolStripMenuItem tsmiEstadisticas;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStatics;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsEstadisticas;
         private System.Windows.Forms.ToolStripMenuItem tsmiDataBase;
+        private System.Windows.Forms.ToolStripMenuItem tsmiProfessional;
     }
 }
 
