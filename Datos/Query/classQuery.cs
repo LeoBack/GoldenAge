@@ -2103,52 +2103,53 @@ namespace Datos.Query
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public List<classProfessional> FiltroProfesionalesLimite(string Nombre, bool Bloqueado, int Desde, int Hasta)
+        public bool FiltroProfesionalesLimite(string Name, int Desde, int Hasta)
         {
-            List<classProfessional> oUa = new List<classProfessional>();
-            Error = false;
+            //List<classProfessional> oUa = new List<classProfessional>();
+            //Error = false;
 
-            #region Consulta
+            //#region Consulta
 
-            string Consulta = "SELECT IdUsuario, Nombre, Apellido, Email, Bloqueado, Contrasenia FROM Usuario ";
+            //string Consulta = "SELECT IdUsuario, Nombre, Apellido, Email, Bloqueado, Contrasenia FROM Usuario ";
 
-            if (Nombre != "")
-                Consulta = Consulta + "WHERE Bloqueado = " + Convert.ToInt32(Bloqueado) + " AND Nombre LIKE '" + Nombre + "%'";
-            else
-                Consulta = Consulta + " WHERE Bloqueado = " + Convert.ToInt32(Bloqueado);
+            //if (Nombre != "")
+            //    Consulta = Consulta + "WHERE Bloqueado = " + Convert.ToInt32(Bloqueado) + " AND Nombre LIKE '" + Nombre + "%'";
+            //else
+            //    Consulta = Consulta + " WHERE Bloqueado = " + Convert.ToInt32(Bloqueado);
 
-            Consulta += " LIMIT " + Desde + " ," + Hasta + " ;";
+            //Consulta += " LIMIT " + Desde + " ," + Hasta + " ;";
 
-            #endregion
+            //#endregion
 
-            if (oSql.SelectRaeder(Consulta, null))
-            {
-                while (oSql.Reader.Read())
-                {
-                    classProfessional oU = new classProfessional(
-                        Convert.ToInt32(oSql.Reader["IdProfessional"])
-                        , Convert.ToInt32(oSql.Reader["ProfessionalRegistration"])
-                        , oSql.Reader["Nome"].ToString()
-                        , oSql.Reader["LastName"].ToString()
-                        , Convert.ToInt32(oSql.Reader["IdLocationCountry"])
-                        , Convert.ToInt32(oSql.Reader["IdLocationProvince"])
-                        , Convert.ToInt32(oSql.Reader["IdLocationCity"])
-                        , oSql.Reader["Address"].ToString()
-                        , oSql.Reader["Phone"].ToString()
-                        , oSql.Reader["Mail"].ToString()
-                        , oSql.Reader["User "].ToString()
-                        , oSql.Reader["Password"].ToString()
-                        , Convert.ToBoolean(oSql.Reader["Visible"])
-                        );
-                    oUa.Add(oU);
-                }
-                Error = true;
+            //if (oSql.SelectRaeder(Consulta, null))
+            //{
+            //    while (oSql.Reader.Read())
+            //    {
+            //        classProfessional oU = new classProfessional(
+            //            Convert.ToInt32(oSql.Reader["IdProfessional"])
+            //            , Convert.ToInt32(oSql.Reader["ProfessionalRegistration"])
+            //            , oSql.Reader["Nome"].ToString()
+            //            , oSql.Reader["LastName"].ToString()
+            //            , Convert.ToInt32(oSql.Reader["IdLocationCountry"])
+            //            , Convert.ToInt32(oSql.Reader["IdLocationProvince"])
+            //            , Convert.ToInt32(oSql.Reader["IdLocationCity"])
+            //            , oSql.Reader["Address"].ToString()
+            //            , oSql.Reader["Phone"].ToString()
+            //            , oSql.Reader["Mail"].ToString()
+            //            , oSql.Reader["User "].ToString()
+            //            , oSql.Reader["Password"].ToString()
+            //            , Convert.ToBoolean(oSql.Reader["Visible"])
+            //            );
+            //        oUa.Add(oU);
+            //    }
+            //    Error = true;
 
-                oSql.Reader.Close();
-                oSql.Close();
-            }
+            //    oSql.Reader.Close();
+            //    oSql.Close();
+            //}
 
-            return oUa;
+            //return oUa;
+            return true;
         }
 
         /// <summary>
@@ -2189,11 +2190,9 @@ namespace Datos.Query
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public List<grvGrandfather> FiltroGrandfatherLimite(classGrandfather oPersona, int Desde, int Hasta)
+        public bool FiltroGrandfatherLimite(string Name, int Desde, int Hasta)
         {
-            
-            throw new NotImplementedException();
-
+            return true;
         }
 
         #endregion
