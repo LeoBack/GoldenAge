@@ -2103,53 +2103,30 @@ namespace Datos.Query
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public bool FiltroProfesionalesLimite(string Name, int Desde, int Hasta)
+        public bool FiltroProfesionalesLimite(string Name, string LastName, int Desde, int Hasta, int Visible)
         {
-            //List<classProfessional> oUa = new List<classProfessional>();
-            //Error = false;
+            string SPname = sp.FiltroProfesionalesLimite;
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@LastName", LastName));
+            lParam.Add(new SqlParameter("@Desde", Desde));
+            lParam.Add(new SqlParameter("@Hasta", Hasta));
+            lParam.Add(new SqlParameter("@Visible", Visible));
 
-            //#region Consulta
-
-            //string Consulta = "SELECT IdUsuario, Nombre, Apellido, Email, Bloqueado, Contrasenia FROM Usuario ";
-
-            //if (Nombre != "")
-            //    Consulta = Consulta + "WHERE Bloqueado = " + Convert.ToInt32(Bloqueado) + " AND Nombre LIKE '" + Nombre + "%'";
-            //else
-            //    Consulta = Consulta + " WHERE Bloqueado = " + Convert.ToInt32(Bloqueado);
-
-            //Consulta += " LIMIT " + Desde + " ," + Hasta + " ;";
-
-            //#endregion
-
-            //if (oSql.SelectRaeder(Consulta, null))
-            //{
-            //    while (oSql.Reader.Read())
-            //    {
-            //        classProfessional oU = new classProfessional(
-            //            Convert.ToInt32(oSql.Reader["IdProfessional"])
-            //            , Convert.ToInt32(oSql.Reader["ProfessionalRegistration"])
-            //            , oSql.Reader["Nome"].ToString()
-            //            , oSql.Reader["LastName"].ToString()
-            //            , Convert.ToInt32(oSql.Reader["IdLocationCountry"])
-            //            , Convert.ToInt32(oSql.Reader["IdLocationProvince"])
-            //            , Convert.ToInt32(oSql.Reader["IdLocationCity"])
-            //            , oSql.Reader["Address"].ToString()
-            //            , oSql.Reader["Phone"].ToString()
-            //            , oSql.Reader["Mail"].ToString()
-            //            , oSql.Reader["User "].ToString()
-            //            , oSql.Reader["Password"].ToString()
-            //            , Convert.ToBoolean(oSql.Reader["Visible"])
-            //            );
-            //        oUa.Add(oU);
-            //    }
-            //    Error = true;
-
-            //    oSql.Reader.Close();
-            //    oSql.Close();
-            //}
-
-            //return oUa;
-            return true;
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
         }
 
         /// <summary>
@@ -2159,12 +2136,13 @@ namespace Datos.Query
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public bool FiltroSocialWorkLimite(string Name, int Desde, int Hasta)
+        public bool FiltroSocialWorkLimite(string Name, int Desde, int Hasta, int Visible)
         {
             string SPname = sp.FiltroSocialWorkLimite;
             lParam.Add(new SqlParameter("@Name", Name));
             lParam.Add(new SqlParameter("@Desde", Desde));
             lParam.Add(new SqlParameter("@Hasta", Hasta));
+            lParam.Add(new SqlParameter("@Visible", Visible));
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
@@ -2190,9 +2168,32 @@ namespace Datos.Query
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public bool FiltroGrandfatherLimite(string Name, int Desde, int Hasta)
+        public bool FiltroGrandfatherLimite(string Name, string LastName, int AffiliateNumber, int IdSocialWork, int Desde, int Hasta, int Visible)
         {
-            return true;
+            string SPname = sp.FiltroGrandfatherLimite;
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@LastName", LastName));
+            lParam.Add(new SqlParameter("@AffiliateNumber", Desde));
+            lParam.Add(new SqlParameter("@IdSocialWork", Desde));
+            lParam.Add(new SqlParameter("@Desde", Desde));
+            lParam.Add(new SqlParameter("@Hasta", Hasta));
+            lParam.Add(new SqlParameter("@Visible", Visible));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
         }
 
         #endregion
