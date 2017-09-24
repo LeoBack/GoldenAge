@@ -21,8 +21,10 @@ namespace Datos.Query
         public string Login = "[spLoguin-v1.0]";
 
         //
-        public string AbmLocationCity = "[spAbmLocationCity-v1.0]";
-
-        
+        public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
+        //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
+        //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
+        //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
+        //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]"; 
     }
 }

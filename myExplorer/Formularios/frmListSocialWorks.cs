@@ -20,9 +20,7 @@ namespace myExplorer.Formularios
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
-        private List<classSocialWork> lSocialWork;
         private classValidaSqlite oValidarSql = new classValidaSqlite();
-
         private classTextos oTxt = new classTextos();
 
         private int SelectRow;
@@ -46,18 +44,18 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         private void frmAux_Load(object sender, EventArgs e)
         {
-            this.Text = oTxt.TituloSocialWorks;
+            Text = oTxt.TituloSocialWorks;
 
             if (oQuery != null)
             {
-                this.SelectRow = 0;
+                SelectRow = 0;
                 lblInfo.Text = "";
 
-                this.Hasta = this.oUtil.CantRegistrosGrilla;
-                this.tslPagina.Text = "Página: 0 de 0";
+                Hasta = oUtil.CantRegistrosGrilla;
+                tslPagina.Text = "Página: 0 de 0";
             }
             else
-                this.Close();
+                Close();
         }
 
         #endregion
@@ -73,7 +71,7 @@ namespace myExplorer.Formularios
                 frmDialogoImprecion fIm = new frmDialogoImprecion();
                 fIm.oQuery = oQuery;
                 fIm.oUtil = oUtil;
-                fIm.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
+                fIm.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
 
                 if (fIm.IdSocialWork != 0)
                     fIm.ShowDialog();
@@ -83,29 +81,29 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (this.Pag < this.cantPag)
+            if (Pag < cantPag)
             {
-                this.Pag++;
-                this.Desde = this.Desde + this.oUtil.CantRegistrosGrilla;
-                this.Filtrar();
+                Pag++;
+                Desde = Desde + oUtil.CantRegistrosGrilla;
+                Filtrar();
             }
         }
 
         // REVISADO - 17/09/09
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            if (this.Pag > 1)
+            if (Pag > 1)
             {
-                this.Pag--;
-                this.Desde = this.Desde - this.oUtil.CantRegistrosGrilla;
-                this.Filtrar();
+                Pag--;
+                Desde = Desde - oUtil.CantRegistrosGrilla;
+                Filtrar();
             }
         }
 
         // REVISADO - 17/09/09
         private void tsbBuscar_Click(object sender, EventArgs e)
         {
-           this.Filtrar();
+            Filtrar();
         }
 
         // REVISADO - 17/09/09
@@ -127,7 +125,7 @@ namespace myExplorer.Formularios
 
             if (dgvLista.Rows.Count != 0)
             {
-                oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
+                oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells["grvId"].Value);
                 oSw = (classSocialWork)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Select);
             }
 
@@ -145,7 +143,7 @@ namespace myExplorer.Formularios
             else
             {
                 MessageBox.Show(oTxt.ErrorListaConsulta);
-                this.Close();
+                Close();
             }
         }
 
@@ -156,7 +154,7 @@ namespace myExplorer.Formularios
 
             if (dgvLista.Rows.Count != 0)
             {
-                oOS.IdSocialWork = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells["grvId"].Value);
+                oOS.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells["grvId"].Value);
                 oOS = (classSocialWork)oQuery.AbmSocialWork(oOS, classQuery.eAbm.Select);
             }
 
@@ -174,7 +172,7 @@ namespace myExplorer.Formularios
             else
             {
                 MessageBox.Show(oTxt.ErrorListaConsulta);
-                this.Close();
+                Close();
             }
         }
 
@@ -187,13 +185,13 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            //this.Close();
+            //Close();
         }
 
         // REVISADO - 17/09/09
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.SelectRow = e.RowIndex;
+            SelectRow = e.RowIndex;
         }
 
         #endregion
@@ -207,20 +205,16 @@ namespace myExplorer.Formularios
         /// </summary>
         public void Filtrar()
         {
-            lSocialWork = oQuery.FiltroSocialWorkLimite(
-                this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text),
-                this.Desde, this.Hasta);
-
-            decimal Cont = oQuery.CountSocialWork(tstxtNombre.TextBox.Text);
-            decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
-            this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
-
-            this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
-
-            if (oQuery.Error)
+            if (oQuery.FiltroSocialWorkLimite(tstxtNombre.TextBox.Text, Desde, Hasta))
             {
+                //decimal Cont = oQuery.CountSocialWork(tstxtNombre.TextBox.Text);
+                //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
+                //cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+
+                //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
+
                 dgvLista.Columns.Clear();
-                this.GenerarGrilla(lSocialWork);
+                GenerarGrilla(oQuery.Table);
             }
             else
                 MessageBox.Show(oTxt.ErrorListaConsulta);
@@ -233,33 +227,33 @@ namespace myExplorer.Formularios
         /// <param name="Source"></param>
         public void GenerarGrilla(object Source)
         {
-            //
-            //Columna Oculta ID
-            //
-            dgvLista.Columns.Add("grvId", "ID");
-            dgvLista.Columns["grvId"].DataPropertyName = "IdSocialWork";
-            dgvLista.Columns["grvId"].Visible = false;
-            dgvLista.Columns["grvId"].DefaultCellStyle.NullValue = "0";
-            //
-            //Columna Nome
-            //
-            dgvLista.Columns.Add("grvNombre", "Nombre");
-            dgvLista.Columns["grvNome"].DataPropertyName = "Name";
-            dgvLista.Columns["grvNome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvNome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvLista.Columns["grvNome"].DefaultCellStyle.NullValue = "No especificado";
-            //
-            //Columna Description
-            //
-            dgvLista.Columns.Add("grvDescription", "Descripcion");
-            dgvLista.Columns["grvDescription"].DataPropertyName = "Descripcion";
-            dgvLista.Columns["grvDescription"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvDescription"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvLista.Columns["grvDescription"].DefaultCellStyle.NullValue = "No especificado";
+            ////
+            ////Columna Oculta ID
+            ////
+            //dgvLista.Columns.Add("grvId", "ID");
+            //dgvLista.Columns["grvId"].DataPropertyName = "IdSocialWork";
+            //dgvLista.Columns["grvId"].Visible = false;
+            //dgvLista.Columns["grvId"].DefaultCellStyle.NullValue = "0";
+            ////
+            ////Columna Nome
+            ////
+            //dgvLista.Columns.Add("grvNombre", "Nombre");
+            //dgvLista.Columns["grvNome"].DataPropertyName = "Name";
+            //dgvLista.Columns["grvNome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            //dgvLista.Columns["grvNome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            //dgvLista.Columns["grvNome"].DefaultCellStyle.NullValue = "No especificado";
+            ////
+            ////Columna Description
+            ////
+            //dgvLista.Columns.Add("grvDescription", "Descripcion");
+            //dgvLista.Columns["grvDescription"].DataPropertyName = "Descripcion";
+            //dgvLista.Columns["grvDescription"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            //dgvLista.Columns["grvDescription"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dgvLista.Columns["grvDescription"].DefaultCellStyle.NullValue = "No especificado";
             //
             //Configuracion del DataListView
             //
-            dgvLista.AutoGenerateColumns = false;
+            dgvLista.AutoGenerateColumns = true;
             dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvLista.ReadOnly = true;

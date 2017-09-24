@@ -94,28 +94,9 @@ namespace myExplorer.Formularios
         #endregion
         //-----------------------------------------------------------------
 
-        //-----------------------------------------------------------------
-        // OK - 17/09/14
-        #region tspPrincipal
-        //-----------------------------------------------------------------
-
-        // Formulario de Carga
-        // OK - 17/09/14
-        private void tsbAddGrandfather_Click(object sender, EventArgs e)
-        {
-            if (User == eUser.Valido)
-            {
-                frmGrandfather frmAbmGrandfather = new frmGrandfather();
-                frmAbmGrandfather.oQuery = oQuery;
-                frmAbmGrandfather.Modo = frmGrandfather.Vista.Nuevo;
-                frmAbmGrandfather.oUtil = oUtil;
-                frmAbmGrandfather.ShowDialog();
-            }
-        }
-
         // Formulario de Busqueda
         // OK - 17/09/14
-        private void tsbListGrandfather_Click(object sender, EventArgs e)
+        private void tsmiGrandfather_Click(object sender, EventArgs e)
         {
             if (User == eUser.Valido)
             {
@@ -128,7 +109,7 @@ namespace myExplorer.Formularios
 
         // Formulario de Carga de Obras Sociales
         // OK - 17/09/14
-        private void tsgAddSocialWork_Click(object sender, EventArgs e)
+        private void tsbSocialWork_Click(object sender, EventArgs e)
         {
             if (User == eUser.Valido)
             {
@@ -139,14 +120,35 @@ namespace myExplorer.Formularios
             }
         }
 
-        #endregion
-        //-----------------------------------------------------------------
+        private void tsmiProfessional_Click(object sender, EventArgs e)
+        {
+            frmListProfessional frmProfessional = new frmListProfessional();
+            frmProfessional.oQuery = oQuery;
+            frmProfessional.oUtil = oUtil;
+            frmProfessional.ShowDialog();
+        }
 
-        //-----------------------------------------------------------------
-        // OK - 17/09/16
-        #region tspProfessional
-        //-----------------------------------------------------------------
-        
+        //OK 18/06/12
+        private void tsbStatics_Click(object sender, EventArgs e)
+        {
+            if (this.User == eUser.Valido)
+            {
+                frmEstadistica fE = new frmEstadistica();
+                fE.oQuery = oQuery;
+                fE.oUtil = oUtil;
+                fE.ShowDialog();
+            }
+        }
+
+        private void tsmiNowUser_Click(object sender, EventArgs e)
+        {
+            frmProfessional frmPro = new frmProfessional();
+            frmPro.Acto = frmProfessional.Modo.Select;
+            frmPro.oQuery = oQuery;
+            frmPro.oUtil = oUtil;
+            frmPro.ShowDialog();
+        }
+
         // OK 08/06/12
         private void tsbProfessional_Click(object sender, EventArgs e)
         {
@@ -177,7 +179,7 @@ namespace myExplorer.Formularios
                             // Abre todas los frm
                             EnableUser(true);
                             oUtil.oProfessional = (Entidades.Clases.classProfessional)oQuery.AbmProfessional(
-                                new Entidades.Clases.classProfessional(Id), classQuery.eAbm.Select); 
+                                new Entidades.Clases.classProfessional(Id), classQuery.eAbm.Select);
                             // Ventana por defecto al inicio
                             frmAlInicio(sender, e);
                             H = false;
@@ -192,45 +194,14 @@ namespace myExplorer.Formularios
                         }
                     }
                     else
-                    H = false;
+                        H = false;
                 }
             }
             tsmiSesion.Text = tsbUsuario.Text;
         }
 
-        // OK 08/06/12
-        private void tsmiAddProfessional_Click(object sender, EventArgs e)
-        {
-            frmProfessional fU = new frmProfessional();
-            fU.Acto = frmProfessional.Modo.Select;
-            fU.oQuery = oQuery;
-            fU.oUtil = oUtil;
-            fU.Show();
-        }
-
-        #endregion
         //-----------------------------------------------------------------
 
-        //-----------------------------------------------------------------
-        #region tsEstadistica
-        //-----------------------------------------------------------------
-
-        //OK 18/06/12
-        private void tsEstadisticas_Click(object sender, EventArgs e)
-        {
-            if (this.User == eUser.Valido)
-            {
-                frmEstadistica fE = new frmEstadistica();
-                fE.oQuery = oQuery;
-                fE.oUtil = oUtil;
-                fE.ShowDialog();
-            }
-        }
-
-        #endregion
-        //-----------------------------------------------------------------
-
-        //-----------------------------------------------------------------
         #region Metodos
         //-----------------------------------------------------------------
 
@@ -250,10 +221,10 @@ namespace myExplorer.Formularios
             tsEstadisticas.Enabled = X;
             tsUsuario.Enabled = true;
 
-            tsmiPaciente.Enabled = X;
-            tsmiOS.Enabled = X;
-            tsmiAdministrador.Enabled = X;
-            tsmiEstadisticas.Enabled = X;
+            tsmiGrandfather.Enabled = X;
+            tsmiSocialWorks.Enabled = X;
+            tsmiNowUser.Enabled = X;
+            tsmiStatics.Enabled = X;
         }
 
         /// <summary>
@@ -307,7 +278,5 @@ namespace myExplorer.Formularios
         }
 
         #endregion
-
-        //-----------------------------------------------------------------
     }
 }
