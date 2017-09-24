@@ -49,7 +49,7 @@ namespace myExplorer.Formularios
             oUtil = new classUtiles();
             // Inicia Secion.
             EnableUser(false);
-            tsbProfessional_Click(sender, e);
+            tsbLoginProfessional_Click(sender, e);
         }
 
         // Cierra Formulario
@@ -107,8 +107,8 @@ namespace myExplorer.Formularios
             }
         }
 
-        // Formulario de Carga de Obras Sociales
-        // OK - 17/09/14
+        // Formulario de Busqueda
+        // OK - 24/09/14
         private void tsbSocialWork_Click(object sender, EventArgs e)
         {
             if (User == eUser.Valido)
@@ -120,15 +120,20 @@ namespace myExplorer.Formularios
             }
         }
 
+        // Formulario de Busqueda
+        // OK - 24/09/14
         private void tsmiProfessional_Click(object sender, EventArgs e)
         {
-            frmListProfessional frmProfessional = new frmListProfessional();
-            frmProfessional.oQuery = oQuery;
-            frmProfessional.oUtil = oUtil;
-            frmProfessional.ShowDialog();
+            if (User == eUser.Valido)
+            {
+                frmListProfessional frmProfessional = new frmListProfessional();
+                frmProfessional.oQuery = oQuery;
+                frmProfessional.oUtil = oUtil;
+                frmProfessional.ShowDialog();
+            }
         }
 
-        //OK 18/06/12
+        //OK - 18/06/12
         private void tsbStatics_Click(object sender, EventArgs e)
         {
             if (this.User == eUser.Valido)
@@ -140,23 +145,27 @@ namespace myExplorer.Formularios
             }
         }
 
+        // OK - 24/09/14
         private void tsmiNowUser_Click(object sender, EventArgs e)
         {
-            frmProfessional frmPro = new frmProfessional();
-            frmPro.Acto = frmProfessional.Modo.Select;
-            frmPro.oQuery = oQuery;
-            frmPro.oUtil = oUtil;
-            frmPro.ShowDialog();
+            if (User == eUser.Valido)
+            {
+                frmProfessional frmPro = new frmProfessional();
+                frmPro.Acto = frmProfessional.Modo.Select;
+                frmPro.oQuery = oQuery;
+                frmPro.oUtil = oUtil;
+                frmPro.ShowDialog();
+            }
         }
 
         // OK 08/06/12
-        private void tsbProfessional_Click(object sender, EventArgs e)
+        private void tsbLoginProfessional_Click(object sender, EventArgs e)
         {
             if (User == eUser.Valido)
             {
                 User = eUser.Invalido;
                 tsbUsuario.Text = oTxt.IniciarSesion;
-                Text = oTxt.TituloVentana + oTxt.TituloLogin;
+                Text = oTxt.TituloVentana + oTxt.TitleLogin;
                 // Cerrar odas los frm
                 EnableUser(false);
                 oUtil.oProfessional = null;
@@ -175,7 +184,7 @@ namespace myExplorer.Formularios
                         {
                             User = eUser.Valido;
                             tsbUsuario.Text = oTxt.CerrarSesion;
-                            Text = oTxt.TituloVentana + oTxt.SeparadorTitulo + fLogin.oProfessional.User.ToString();
+                            Text = oTxt.TituloVentana + oTxt.SeparadorTitle + fLogin.oProfessional.User.ToString();
                             // Abre todas los frm
                             EnableUser(true);
                             oUtil.oProfessional = (Entidades.Clases.classProfessional)oQuery.AbmProfessional(
@@ -188,7 +197,7 @@ namespace myExplorer.Formularios
                         {
                             User = eUser.Invalido;
                             tsbUsuario.Text = oTxt.IniciarSesion;
-                            Text = oTxt.TituloVentana + oTxt.TituloLogin;
+                            Text = oTxt.TituloVentana + oTxt.TitleLogin;
                             oUtil.oProfessional = null; ;
                             MessageBox.Show(oTxt.LoginInvalido);
                         }

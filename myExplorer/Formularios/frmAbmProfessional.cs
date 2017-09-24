@@ -49,7 +49,7 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null)
             {
-                Text = oTxt.TituloAdministradorUsuario;
+                Text = oTxt.TitleAdministradorUsuario;
                 oValidar = new classValidaciones();
                 ini();
             }

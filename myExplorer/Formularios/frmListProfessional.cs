@@ -15,55 +15,52 @@ namespace myExplorer.Formularios
 {
     public partial class frmListProfessional : Form
     {
-        // REVISADO - 17/09/09
+        // OK - 24/09/17
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
-        public int IdSelecionado { set; get; }
 
-        private List<classProfessional> lProfesional;
-        private bool Hiden;
-        private int SelectRow;
-
-        private classValidaSqlite oValidarSql = new classValidaSqlite();
         private classTextos oTxt = new classTextos();
 
+        private int SelectRow;
         private int Desde = 0;
         private int Hasta = 0;
         private int cantPag = 0;
         private int Pag = 1;
+
+        private bool Hiden;
 
         #endregion
 
         // REVISADO - 17/09/09
         #region Formulario
 
-        // REVISADO - 17/09/09
+        // OK - 17/09/09
         public frmListProfessional()
         {
             InitializeComponent();
         }
 
         // REVISADO - 17/09/09
-        private void frmAux_Load(object sender, EventArgs e)
+        private void frmListProfessional_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
             {
-                this.Text = oTxt.TituloListaProfesionales;
-                this.IdSelecionado = 0;
-                this.SelectRow = 0;
+                ConfiguracionInicial();
+                Text = oTxt.TitleListProfessional;
+                SelectRow = 0;
+                Hasta = oUtil.CantRegistrosGrilla;
+                tslPagina.Text = "Página: 0 de 0";
 
                 tsbUsuario.Text = oTxt.OcultarProfesionalesBloqueados;
-                this.Hiden = true;
+                Hiden = true;
 
-                this.Hasta = this.oUtil.CantRegistrosGrilla;
-                this.tslPagina.Text = "Página: 0 de 0";
             }
             else
             {
                 MessageBox.Show(oTxt.ErrorObjetoIndefinido);
-                this.Close();
+                Close();
             }
         }
 
@@ -75,67 +72,67 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         private void tsbUsuario_Click(object sender, EventArgs e)
         {
-            if (this.Hiden)
+            if (Hiden)
             {
                 tsbUsuario.Text = oTxt.MostrarProfesionalesBloqueados;
-                this.Hiden = false;
+                Hiden = false;
             }
             else
             {
                 tsbUsuario.Text = oTxt.OcultarProfesionalesBloqueados;
-                this.Hiden = true;
+                Hiden = true;
             }
-            this.Filtrar();
+            Filtrar();
         }
 
         // REVISADO - 17/09/09
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            if (dgvLista.Rows.Count != 0)
-                this.IdSelecionado = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
-            else
-                this.IdSelecionado = 0;
+            //if (dgvLista.Rows.Count != 0)
+            //    IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+            //else
+            //    IdSelecionado = 0;
         }
 
         // REVISADO - 17/09/09
         private void tsbBuscar_Click(object sender, EventArgs e)
         {
-           this.Filtrar();
+           Filtrar();
         }
 
         // REVISADO - 17/09/09
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (this.Pag < this.cantPag)
+            if (Pag < cantPag)
             {
-                this.Pag++;
-                this.Desde = this.Desde + this.oUtil.CantRegistrosGrilla;
-                this.Filtrar();
+                Pag++;
+                Desde = Desde + oUtil.CantRegistrosGrilla;
+                Filtrar();
             }
         }
 
         // REVISADO - 17/09/09
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            if (this.Pag > 1)
+            if (Pag > 1)
             {
-                this.Pag--;
-                this.Desde = this.Desde - this.oUtil.CantRegistrosGrilla;
-                this.Filtrar();
+                Pag--;
+                Desde = Desde - oUtil.CantRegistrosGrilla;
+                Filtrar();
             }
         }
 
         // REVISADO - 17/09/09
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         // REVISADO - 17/09/09
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dgvLista.Rows.Count != 0)
-                this.SelectRow = e.RowIndex;
+                SelectRow = e.RowIndex;
         }
 
         private void tsbAdd_Click(object sender, EventArgs e)
@@ -146,7 +143,7 @@ namespace myExplorer.Formularios
             frmA.Acto = frmProfessional.Modo.Add;
             frmA.ShowDialog();
 
-            frmAux_Load(sender, e);
+            frmListProfessional_Load(sender, e);
         }
 
         #endregion
@@ -155,26 +152,34 @@ namespace myExplorer.Formularios
         #region Metodos
 
         /// <summary>
+        /// Configura el formulario.
+        /// OK - 24/09/17
+        /// </summary>
+        public void ConfiguracionInicial()
+        {
+            Size sBtn = new Size(75, 42);
+            //btnBuscar.Size = sBtn;
+            //btnSeleccionar.Size = sBtn;
+            //btnCancelar.Size = sBtn;
+        }
+
+        /// <summary>
         /// Aplica Filtros de busqueda
         /// REVISADO - 17/09/09
         /// </summary>
         public void Filtrar()
         {
-            lProfesional = oQuery.FiltroProfesionalesLimite(
-                this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text),
-                this.Hiden, this.Desde, this.Hasta);
+            if (oQuery.FiltroProfesionalesLimite(tstxtNombre.TextBox.Text, Desde, Hasta))
+            { 
+                //decimal Cont = oQuery.CountProfesionales(oValidarSql.ValidaString(tstxtNombre.TextBox.Text), Hiden);
+                //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
+                //cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
 
-            decimal Cont = oQuery.CountProfesionales(this.oValidarSql.ValidaString(tstxtNombre.TextBox.Text), this.Hiden);
-            decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
-            this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+                //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
 
-            this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
-
-            if (oQuery.Error)
-            {
                 dgvLista.Columns.Clear();
-                this.GenerarGrilla(lProfesional);
-                this.PintarBloqueados(Color.Gray);
+                GenerarGrilla(oQuery.Table);
+                PintarBloqueados(Color.Gray);
             }
             else
                 MessageBox.Show(oTxt.ErrorListaConsulta);
@@ -191,12 +196,12 @@ namespace myExplorer.Formularios
 
             for (int Fila = 0; Fila < dgvLista.Rows.Count; Fila++)
             {
-                Bloqueado = Convert.ToInt32(dgvLista.Rows[Fila].Cells[0].Value);
+                //Bloqueado = Convert.ToInt32(dgvLista.Rows[Fila].Cells[0].Value);
                 
-                if (Bloqueado == lProfesional[Fila].IdProfessional)
-                    if (lProfesional[Fila].Visible == true)
-                        for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
-                           dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
+                //if (Bloqueado == lProfesional[Fila].IdProfessional)
+                //    if (lProfesional[Fila].Visible == true)
+                //        for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
+                //           dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
             }
         }
 

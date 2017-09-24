@@ -206,7 +206,7 @@
             this.MinimizeBox = false;
             this.Name = "frmListProfessional";
             this.Text = "Lista de Profesionales";
-            this.Load += new System.EventHandler(this.frmAux_Load);
+            this.Load += new System.EventHandler(this.frmListProfessional_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tlpPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();

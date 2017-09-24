@@ -9,13 +9,14 @@ namespace Controles
         public string TituloVentana = "MyExplorer";
 
         //TitulosFrm
-        public string SeparadorTitulo = " -> Dr. ";
-        public string TituloLogin = " -> Sesion No Iniciada";
-        public string TituloAdministradorUsuario = "Administrador de Usuarios.";
-        public string TituloListaProfesionales = "Planilla de Profesionales.";
-        public string TituloSocialWorks = "Obras Sociales";
-        public string TituloSocialWork = "Obra Social - Detalles";
-        public string TituloFichaPaciente = "Ficha Medica";
+        public string SeparadorTitle = " -> Dr. ";
+        public string TitleLogin = " -> Sesion No Iniciada";
+        public string TitleAdministradorUsuario = "Administrador de Usuarios.";
+        public string TitleSocialWorks = "Obras Sociales";
+        public string TitleSocialWork = "Obra Social - Detalles";
+        public string TitleFichaGrandfather = "Ficha Medica";
+        public string TitleListGrandfather = "Lista de Pacientes";
+        public string TitleListProfessional = "Planilla de Profesionales.";
 
         //
         public string Nombre = "Nombre";
@@ -88,5 +89,7 @@ namespace Controles
         public string RestauracionErronea = "A ocurrido un error al realizar la copia.";
         public string CopiaExitosa = "Copia realizada con Exito!";
         public string CopiaErronea = "A ocurrido un error al realizar la copia.";
+
+        
     }
 }

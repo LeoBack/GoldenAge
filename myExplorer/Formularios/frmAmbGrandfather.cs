@@ -57,7 +57,7 @@ namespace myExplorer.Formularios
         //OK 24/05/12
         private void frmGrandfather_Load(object sender, EventArgs e)
         {
-            this.Text = oTxt.TituloFichaPaciente;
+            this.Text = oTxt.TitleFichaGrandfather;
             if (oQuery != null)
             {
                 oGrandfather = new classGrandfather();

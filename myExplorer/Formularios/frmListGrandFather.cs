@@ -18,20 +18,18 @@ namespace myExplorer.Formularios
 {
     public partial class frmListGrandfather : Form
     {
-        // REVISADO - 17/09/09
+        // OK - 24/09/17
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
-        public int IdGrandfather { set; get; }
-        public classUtiles oUtil { set; get; }
 
-        private List<grvGrandfather> lGrandfather;
-        private classControlComboBoxes oCombos;
-        private classValidaSqlite oValidarSql = new classValidaSqlite();
-        private int SelectRow;
+        public classUtiles oUtil { set; get; }
 
         private classTextos oTxt = new classTextos();
 
+        private classControlComboBoxes oCombos;
+        
+        private int SelectRow;
         private int Desde = 0;
         private int Hasta = 0;
         private int cantPag = 0;
@@ -42,27 +40,28 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         #region Formulario
 
-        // REVISADO - 17/09/09
+        // OK - 17/09/09
         public frmListGrandfather()
         {
             InitializeComponent();
         }
 
         // REVISADO - 17/09/09
-        private void frmSearch_Load(object sender, EventArgs e)
+        private void frmListGrandfather_Load(object sender, EventArgs e)
         {
-            if (oQuery != null)
+            if (oQuery != null && oUtil != null)
             {
-                this.ConfiguracionInicial();
+                ConfiguracionInicial();
+                Text = oTxt.TitleListGrandfather;
+                Hasta = oUtil.CantRegistrosGrilla;
+                tslPagina.Text = "Página: 0 de 0";
+
                 oCombos = new classControlComboBoxes();
                 oCombos.CargaCombo(tcmbSocialWork.ComboBox, oQuery.ListSpecialty(true), oQuery.Table);
-
-                this.Hasta = this.oUtil.CantRegistrosGrilla;
-                this.tslPagina.Text = "Página: 0 de 0";
-                this.tsbImprimir.Enabled = false;
+                tsbImprimir.Enabled = false;
             }
             else
-                this.Close();
+                Close();
         }
 
         #endregion
@@ -74,16 +73,16 @@ namespace myExplorer.Formularios
         private void tsbImprimir_Click(object sender, EventArgs e)
         {
             classGrandfather oP = new classGrandfather();
-            oP.LastName = this.oValidarSql.ValidaString(txtbApellido.Text);
-            oP.AffiliateNumber = Convert.ToInt32(this.oValidarSql.ValidaString(txtbNafiliado.Text));
+            oP.LastName = txtbApellido.Text;
+            oP.AffiliateNumber = Convert.ToInt32(txtbNafiliado.Text);
             oP.IdSocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
 
-            if (oQuery.rListaGrandfatherLimite("dtPersona", oP, this.Desde, this.Hasta))
-            {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
-                fReport.Show();
-            }
-            else
+            //if (oQuery.rListaGrandfatherLimite("dtPersona", oP, Desde, Hasta))
+            //{
+            //    frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
+            //    fReport.Show();
+            //}
+            //else
                 MessageBox.Show(oTxt.ErrorListaConsulta);
         }
 
@@ -95,54 +94,54 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            if (dgvLista.Rows.Count != 0)
-            {
-                this.IdGrandfather = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
-                txtEstado.Text = oTxt.PacienteSeleccionado + dgvLista.Rows[this.SelectRow].Cells["dgvLastName"].Value.ToString();
-            }
+            //if (dgvLista.Rows.Count != 0)
+            //{
+            //    IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+            //    txtEstado.Text = oTxt.PacienteSeleccionado + dgvLista.Rows[SelectRow].Cells["dgvLastName"].Value.ToString();
+            //}
 
         }
 
         // REVISADO - 17/09/09
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (this.Pag < this.cantPag)
+            if (Pag < cantPag)
             {
-                this.Pag++;
-                this.Desde = this.Desde + this.oUtil.CantRegistrosGrilla;
-                this.Filtrar();
+                Pag++;
+                Desde = Desde + oUtil.CantRegistrosGrilla;
+                Filtrar();
             }
         }
 
         // REVISADO - 17/09/09
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            if (this.Pag > 1)
+            if (Pag > 1)
             {
-                this.Pag--;
-                this.Desde = this.Desde - this.oUtil.CantRegistrosGrilla;
-                this.Filtrar();
+                Pag--;
+                Desde = Desde - oUtil.CantRegistrosGrilla;
+                Filtrar();
             }
         }
 
         // REVISADO - 17/09/09
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            this.Filtrar();
+            Filtrar();
         }
 
         // REVISADO - 17/09/09
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            IdGrandfather = 0;
-            this.Close();
+            //IdSelecionado = 0;
+            Close();
         }
 
         // REVISADO - 17/09/09
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvLista.Rows.Count != 0)
-                this.SelectRow = e.RowIndex;
+                SelectRow = e.RowIndex;
         }
 
         #endregion
@@ -155,17 +154,17 @@ namespace myExplorer.Formularios
         {
             if (dgvLista.Rows.Count != 0)
             {
-                this.IdGrandfather = Convert.ToInt32(dgvLista.Rows[this.SelectRow].Cells[0].Value);
-                txtEstado.Text = "Paciente Seleccionado : " + dgvLista.Rows[this.SelectRow].Cells["dgvLastName"].Value.ToString();
+                //IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                //txtEstado.Text = "Paciente Seleccionado : " + dgvLista.Rows[SelectRow].Cells["dgvLastName"].Value.ToString();
 
-                frmGrandfather frmGrandfatherulario = new frmGrandfather();
-                frmGrandfatherulario.Modo = frmGrandfather.Vista.Ver;
-                frmGrandfatherulario.oQuery = this.oQuery;
-                frmGrandfatherulario.IdPaciente = this.IdGrandfather;
-                frmGrandfatherulario.oUtil = this.oUtil;
-                frmGrandfatherulario.ShowDialog();
+                //frmGrandfather frmGrandfatherulario = new frmGrandfather();
+                //frmGrandfatherulario.Modo = frmGrandfather.Vista.Ver;
+                //frmGrandfatherulario.oQuery = oQuery;
+                //frmGrandfatherulario.IdPaciente = IdSelecionado;
+                //frmGrandfatherulario.oUtil = oUtil;
+                //frmGrandfatherulario.ShowDialog();
 
-                this.frmSearch_Load(sender, e);
+                //frmListGrandfather_Load(sender, e);
             }
         }
 
@@ -176,7 +175,7 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Configura el formulario.
-        /// REVISADO - 17/09/09
+        /// OK - 24/09/17
         /// </summary>
         public void ConfiguracionInicial()
         {
@@ -192,28 +191,22 @@ namespace myExplorer.Formularios
         /// </summary>
         public void Filtrar()
         {
-            this.SelectRow = 0;
+            SelectRow = 0;
+            //classGrandfather oGrandfather = new classGrandfather();
+            //oGrandfather.LastName = oValidarSql.ValidaString(txtbApellido.Text);
+            //oGrandfather.AffiliateNumber = Convert.ToInt32(oValidarSql.ValidaString(txtbNafiliado.Text));
+            //oGrandfather.IdSocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
 
-            if (dgvLista.Columns.Count != 0)
-                dgvLista.Columns.Clear();
-
-            classGrandfather oGrandfather = new classGrandfather();
-            oGrandfather.LastName = this.oValidarSql.ValidaString(txtbApellido.Text);
-            oGrandfather.AffiliateNumber = Convert.ToInt32(this.oValidarSql.ValidaString(txtbNafiliado.Text));
-            oGrandfather.IdSocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
-
-            lGrandfather = oQuery.FiltroGrandfatherLimite(oGrandfather, this.Desde, this.Hasta);
-
-            decimal Cont = oQuery.CountGrandfather(oGrandfather);
-            decimal Div = Math.Ceiling((Cont / this.oUtil.CantRegistrosGrilla));
-            this.cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
-
-            this.tslPagina.Text = "Página: " + Convert.ToString(this.Pag) + " de " + Convert.ToString(this.cantPag);
-
-            this.GenerarGrilla(lGrandfather);
-
-            if (dgvLista.Rows.Count == 0)
+            if (oQuery.FiltroGrandfatherLimite(txtbApellido.Text, Desde, Hasta))
             {
+                //decimal Cont = oQuery.CountGrandfather(oGrandfather);
+                //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
+                //cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+
+                //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
+
+                dgvLista.Columns.Clear();
+                GenerarGrilla(oQuery.Table);
                 tsbImprimir.Enabled = false;
                 btnSeleccionar.Enabled = false;
                 tsmiTurnos.Enabled = false;

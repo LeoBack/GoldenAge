@@ -194,7 +194,7 @@
             this.tsmiSesion.Name = "tsmiSesion";
             this.tsmiSesion.Size = new System.Drawing.Size(210, 30);
             this.tsmiSesion.Text = "Sesion";
-            this.tsmiSesion.Click += new System.EventHandler(this.tsbProfessional_Click);
+            this.tsmiSesion.Click += new System.EventHandler(this.tsbLoginProfessional_Click);
             // 
             // toolStripSeparator2
             // 
@@ -348,7 +348,7 @@
             this.tsbUsuario.Name = "tsbUsuario";
             this.tsbUsuario.Size = new System.Drawing.Size(151, 36);
             this.tsbUsuario.Text = "Iniciar Sesion";
-            this.tsbUsuario.Click += new System.EventHandler(this.tsbProfessional_Click);
+            this.tsbUsuario.Click += new System.EventHandler(this.tsbLoginProfessional_Click);
             // 
             // toolStrip1
             // 

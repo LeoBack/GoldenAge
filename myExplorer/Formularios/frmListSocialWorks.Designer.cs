@@ -242,7 +242,7 @@
             this.MinimizeBox = false;
             this.Name = "frmListSocialWorks";
             this.Text = "Lista de Obras Sociales";
-            this.Load += new System.EventHandler(this.frmAux_Load);
+            this.Load += new System.EventHandler(this.frmListSocialWorks_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tlpPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();

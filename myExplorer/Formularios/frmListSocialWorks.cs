@@ -15,16 +15,15 @@ namespace myExplorer.Formularios
 {
     public partial class frmListSocialWorks : Form
     {
-        // REVISADO - 17/09/09
+        // OK - 24/09/17
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
-        private classValidaSqlite oValidarSql = new classValidaSqlite();
+
         private classTextos oTxt = new classTextos();
 
         private int SelectRow;
-
         private int Desde = 0;
         private int Hasta = 0;
         private int cantPag = 0;
@@ -35,24 +34,24 @@ namespace myExplorer.Formularios
         // REVISADO - 17/09/09
         #region Formulario
 
-        // REVISADO - 17/09/09
+        // OK - 17/09/09
         public frmListSocialWorks()
         {
             InitializeComponent();
         }
 
         // REVISADO - 17/09/09
-        private void frmAux_Load(object sender, EventArgs e)
+        private void frmListSocialWorks_Load(object sender, EventArgs e)
         {
-            Text = oTxt.TituloSocialWorks;
-
-            if (oQuery != null)
+            if (oQuery != null && oUtil != null)
             {
+                ConfiguracionInicial();
+                Text = oTxt.TitleSocialWorks;
                 SelectRow = 0;
-                lblInfo.Text = "";
-
                 Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
+
+                lblInfo.Text = "";
             }
             else
                 Close();
@@ -115,7 +114,7 @@ namespace myExplorer.Formularios
             frmA.Acto = frmAbmSocialWork.Accion.Nuevo;
             frmA.ShowDialog();
 
-            frmAux_Load(sender, e);
+            frmListSocialWorks_Load(sender, e);
         }
 
         // REVISADO - 17/09/09
@@ -138,7 +137,7 @@ namespace myExplorer.Formularios
                 frmA.Acto = frmAbmSocialWork.Accion.Eliminar;
                 frmA.ShowDialog();
 
-                frmAux_Load(sender, e);
+                frmListSocialWorks_Load(sender, e);
             }
             else
             {
@@ -167,7 +166,7 @@ namespace myExplorer.Formularios
                 frmA.Acto = frmAbmSocialWork.Accion.Modificar;
                 frmA.ShowDialog();
 
-                frmAux_Load(sender, e);
+                frmListSocialWorks_Load(sender, e);
             }
             else
             {
@@ -198,6 +197,18 @@ namespace myExplorer.Formularios
 
         // REVISADO - 17/09/09
         #region Metodos
+
+        /// <summary>
+        /// Configura el formulario.
+        /// OK - 24/09/17
+        /// </summary>
+        public void ConfiguracionInicial()
+        {
+            Size sBtn = new Size(75, 42);
+            //btnBuscar.Size = sBtn;
+            //btnSeleccionar.Size = sBtn;
+            //btnCancelar.Size = sBtn;
+        }
 
         /// <summary>
         /// Aplica Filtros de busqueda

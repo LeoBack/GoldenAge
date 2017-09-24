@@ -48,7 +48,7 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         private void frmAuxABM_Load(object sender, EventArgs e)
         {
-            Text = oTxt.TituloSocialWork;
+            Text = oTxt.TitleSocialWork;
 
             oComboBox = new classControlComboBoxes();
 

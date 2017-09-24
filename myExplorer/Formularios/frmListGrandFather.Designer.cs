@@ -264,7 +264,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSearch";
             this.Text = "Buscar Pacientes";
-            this.Load += new System.EventHandler(this.frmSearch_Load);
+            this.Load += new System.EventHandler(this.frmListGrandfather_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tlpPanel.PerformLayout();
             this.tsMenu.ResumeLayout(false);
