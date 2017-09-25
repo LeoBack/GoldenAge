@@ -147,7 +147,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDiagnostic";
             this.Text = "Diagnostico";
-            this.Load += new System.EventHandler(this.frmDiagnostic_Load);
+            this.Load += new System.EventHandler(this.frmAbmDiagnostic_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tlpPanel.PerformLayout();
             this.ResumeLayout(false);

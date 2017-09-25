@@ -40,7 +40,7 @@ namespace Controles
         {
             if (Consulta)
             {
-                Control.DisplayMember = "Valor";
+                Control.DisplayMember = "Value";
                 Control.ValueMember = "Id";
                 Control.DataSource = Table;
             }

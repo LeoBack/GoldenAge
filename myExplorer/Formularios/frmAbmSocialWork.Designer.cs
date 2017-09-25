@@ -255,7 +255,7 @@
             this.MinimizeBox = false;
             this.Name = "frmAbmSocialWork";
             this.Text = "Obra Social (ABM)";
-            this.Load += new System.EventHandler(this.frmAuxABM_Load);
+            this.Load += new System.EventHandler(this.frmAbmSocialWork_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tlpPanel.PerformLayout();
             this.ResumeLayout(false);

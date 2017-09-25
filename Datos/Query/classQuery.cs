@@ -84,6 +84,7 @@ namespace Datos.Query
         // CONSULTAS PARA CADA FUNCION
         //----------------------------------------------------------
 
+        // OK - 24/09/17
         #region ABM
 
         public object AbmDiagnostic(classDiagnostic oP, eAbm Abm)
@@ -1609,23 +1610,28 @@ namespace Datos.Query
 
         #endregion
 
-        #region Listas
+        // OK - 24/09/17
+        # region Filtros
 
-        public bool ListDiagnostic(bool Filtro)
+        /// <summary>
+        /// Filtra por coincidencia.
+        /// OK - 24/09/17
+        /// </summary>
+        /// <param name="Nombre"></param>
+        /// <param name="Bloqueado"></param>
+        /// <param name="Desde"></param>
+        /// <param name="Hasta"></param>
+        /// <returns></returns>
+        public bool FiltroProfesionalesLimite(string Name, string LastName, int Desde, int Hasta)
         {
-            #region Consulta
+            string SPname = sp.FiltroProfesionalesLimite;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@LastName", LastName));
+            lParam.Add(new SqlParameter("@Desde", Desde));
+            lParam.Add(new SqlParameter("@Hasta", Hasta));
 
-            string Consulta = "SELECT IdDiagnostic[Id], IdDiagnostic[Valor] FROM Diagnostic WHERE Visible = 1 ";
-
-            if (Filtro)
-                Consulta += " ORDER BY IdDiagnostic";
-            else
-                Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdDiagnostic) FROM Specialty AS I) " +
-                    " ORDER BY IdDiagnostic";
-
-            #endregion
-
-            if (oSql.SelectAdapterDB(Consulta, null))
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
                 Table = new DataTable();
@@ -1642,83 +1648,23 @@ namespace Datos.Query
             }
         }
 
-        public bool ListProfessionalSpeciality(bool Filtro)
+        /// <summary>
+        /// Filtra por coincidencia.
+        /// OK - 24/09/17
+        /// </summary>
+        /// <param name="Nombre"></param>
+        /// <param name="Desde"></param>
+        /// <param name="Hasta"></param>
+        /// <returns></returns>
+        public bool FiltroSocialWorkLimite(string Name, int Desde, int Hasta)
         {
-            #region Consulta
+            string SPname = sp.FiltroSocialWorkLimite;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@Desde", Desde));
+            lParam.Add(new SqlParameter("@Hasta", Hasta));
 
-            string Consulta = "SELECT IdProfessionalSpeciality[Id], IdProfessional[Valor] FROM ProfessionalSpeciality WHERE Visible = 1 ";
-
-            if (Filtro)
-                Consulta += " ORDER BY IdProfessional";
-            else
-                Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdProfessionalSpeciality) FROM Specialty AS I) " +
-                    " ORDER BY IdProfessional";
-
-            #endregion
-
-            if (oSql.SelectAdapterDB(Consulta, null))
-            {
-                DataSet set = new DataSet();
-                Table = new DataTable();
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
-                oSql.Close();
-                return true;
-            }
-            else
-            {
-                oSql.Close();
-                return false;
-            }
-
-            //public bool ListParentRelationship(bool Filtro)
-            //{
-            //    #region Consulta
-
-            //    string Consulta = "SELECT IdParentRelationship[Id], IdParent[Valor] FROM ParentRelationship WHERE Visible = 1 ";
-
-            //    if (Filtro)
-            //        Consulta += " ORDER BY IdParent";
-            //    else
-            //        Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdParentRelationship) FROM Specialty AS I) " +
-            //            " ORDER BY IdParent";
-
-            //    #endregion
-
-            //    if (Sql.SelectAdapterDB(Consulta, "ListParentRelationship"))
-            //    {
-            //        DataSet set = new DataSet();
-            //        Table = new DataTable();
-            //        set.Reset();
-            //        Sql.Adapter.Fill(set);
-            //        Table = set.Tables[0];
-            //        Sql.Close();
-            //        return true;
-            //    }
-            //    else
-            //    {
-            //        Sql.Close();
-            //        return false;
-            //    }
-            //}
-        }
-
-        public bool ListRelationship(bool Filtro)
-        {
-            #region Consulta
-
-            string Consulta = "SELECT IdRelationship[Id], Description[Valor] FROM Relationship WHERE Visible = 1 ";
-
-            if (Filtro)
-                Consulta += " ORDER BY Description";
-            else
-                Consulta += " AND IdRelationship BETWEEN 2 AND (SELECT MAX(I.IdRelationship) FROM Relationship AS I) " +
-                    " ORDER BY Description";
-
-            #endregion
-
-            if (oSql.SelectAdapterDB(Consulta, null))
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
                 Table = new DataTable();
@@ -1735,21 +1681,26 @@ namespace Datos.Query
             }
         }
 
-        public bool ListSocialWork(bool Filtro)
+        /// <summary>
+        /// Filtra por coincidencia.
+        /// OK - 24/09/17
+        /// </summary>
+        /// <param name="oPersona"></param>
+        /// <param name="Desde"></param>
+        /// <param name="Hasta"></param>
+        /// <returns></returns>
+        public bool FiltroGrandfatherLimite(string Name, string LastName, int AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
         {
-            #region Consulta
+            string SPname = sp.FiltroGrandfatherLimite;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@LastName", LastName));
+            lParam.Add(new SqlParameter("@AffiliateNumber", Desde));
+            lParam.Add(new SqlParameter("@IdSocialWork", Desde));
+            lParam.Add(new SqlParameter("@Desde", Desde));
+            lParam.Add(new SqlParameter("@Hasta", Hasta));
 
-            string Consulta = "SELECT IdSocialWork[Id], Description[Valor] FROM SocialWork WHERE Visible = 1 ";
-
-            if (Filtro)
-                Consulta += " ORDER BY Description";
-            else
-                Consulta += " AND IdSocialWork BETWEEN 2 AND (SELECT MAX(I.IdSocialWork) FROM SocialWork AS I) " +
-                    " ORDER BY Description";
-
-            #endregion
-
-            if (oSql.SelectAdapterDB(Consulta, null))
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
                 Table = new DataTable();
@@ -1765,149 +1716,10 @@ namespace Datos.Query
                 return false;
             }
         }
-
-        public bool ListSpecialty(bool Filtro)
-        {
-            #region Consulta
-
-            string Consulta = "SELECT IdSpecialty[Id], Description[Valor] FROM Specialty WHERE Visible = 1 ";
-
-            if (Filtro)
-                Consulta += " ORDER BY Description";
-            else
-                Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdSpecialty) FROM Specialty AS I) " +
-                    " ORDER BY Description";
-
-            #endregion
-
-            if (oSql.SelectAdapterDB(Consulta, null))
-            {
-                DataSet set = new DataSet();
-                Table = new DataTable();
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
-                oSql.Close();
-                return true;
-            }
-            else
-            {
-                oSql.Close();
-                return false;
-            }
-        }
-
-        public bool ListTypeDocument(bool Filtro)
-        {
-            #region Consulta
-
-            string Consulta = "SELECT IdTypeDocument[Id], Description[Valor] FROM TypeDocument WHERE Visible = 1 ";
-
-            if (Filtro)
-                Consulta += " ORDER BY Description";
-            else
-                Consulta += " AND IdSpecialty BETWEEN 2 AND (SELECT MAX(I.IdTypeDocument) FROM Specialty AS I) " +
-                    " ORDER BY Description";
-
-            #endregion
-
-            if (oSql.SelectAdapterDB(Consulta, null))
-            {
-                DataSet set = new DataSet();
-                Table = new DataTable();
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
-                oSql.Close();
-                return true;
-            }
-            else
-            {
-                oSql.Close();
-                return false;
-            }
-        }
-
-        ///// <summary>
-        ///// Carga un objeto DataTable
-        ///// OK 20/06/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool listaPacientesObraSocial(string nameDataTable, DateTime Desde, DateTime Hasta, bool filtrar)
-        //{
-        //    #region Table
-
-        //    DataTable TablaAuxiliar = new DataTable(nameDataTable);
-        //    TablaAuxiliar.Columns.Add(new DataColumn("IdPersona", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("nNombre", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("nObraSocial", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Dia", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Hora", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Direccion", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Expediente", typeof(string)));
-
-        //    #endregion
-
-        //    string Consulta = "";
-
-        //    if (filtrar)
-        //    {
-        //        Consulta = "SELECT P.IdPersona, (P.Apellido||', '||P.Nombre) [nNombre], O.Nombre [nObraSocial]"
-        //       + ", T.Fecha [Fecha], C.Nombre||' - '||B.Nombre||' -' ||P.Direccion [Direccion], P.nAfiliado [Expediente]"
-        //       + " FROM Persona AS P INNER JOIN ObraSocial AS O"
-        //       + " ON P.IdObraSocial = O.IdObraSocial "
-        //       + " INNER JOIN Ciudad AS C"
-        //       + " ON P.IdCiudad = C.IdCiudad"
-        //       + " INNER JOIN Barrio AS B"
-        //       + " ON P.IdBarrio = B.iIdBarrio"
-        //        + " INNER JOIN Turno AS T"
-        //        + " ON P.IdPersona =  T.IdPersona"
-        //        + " WHERE P.Visible = 1 AND O.Visible = 1"
-        //        + " AND T.Fecha BETWEEN ('" + String.Format("{0:yyyy'-'MM'-'dd}", Desde) + "')"
-        //        + " AND ('" + String.Format("{0:yyyy'-'MM'-'dd}", Hasta) + "');";
-        //    }
-        //    else
-        //    {
-        //        Consulta = "SELECT P.IdPersona, (P.Apellido||', '||P.Nombre) [nNombre], O.Nombre [nObraSocial]"
-        //       + ", P.FechaAlta [Fecha], C.Nombre||' - '||B.Nombre||' -' ||P.Direccion [Direccion], P.nAfiliado [Expediente]"
-        //       + " FROM Persona AS P INNER JOIN ObraSocial AS O"
-        //       + " ON P.IdObraSocial = O.IdObraSocial "
-        //       + " INNER JOIN Ciudad AS C"
-        //       + " ON P.IdCiudad = C.IdCiudad"
-        //       + " INNER JOIN Barrio AS B"
-        //       + " ON P.IdBarrio = B.iIdBarrio";
-        //    }
-
-        //    if (Sql.SelectReader(Consulta, null, "listaPacientesObraSocial"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            DataRow Row = TablaAuxiliar.NewRow();
-
-        //            Row[0] = Sql.Reader["IdPersona"].ToString();
-        //            Row[1] = Sql.Reader["nNombre"].ToString();
-        //            Row[2] = Sql.Reader["nObraSocial"].ToString();
-        //            Row[3] = String.Format("{0:m}", Convert.ToDateTime(Sql.Reader["Fecha"]));
-        //            Row[4] = String.Format("{0:T}", Convert.ToDateTime(Sql.Reader["Fecha"]));
-        //            Row[5] = Sql.Reader["Direccion"].ToString();
-        //            Row[6] = Sql.Reader["Expediente"].ToString();
-
-        //            TablaAuxiliar.Rows.Add(Row);
-        //        }
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-
-        //        Table = TablaAuxiliar;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Close();
-        //        return false;
-        //    }
-        //}
 
         #endregion
+
+
 
         #region Contadores
 
@@ -2089,111 +1901,6 @@ namespace Datos.Query
             }
 
             return A;
-        }
-
-        #endregion
-
-        # region Filtros
-
-        /// <summary>
-        /// Filtra por coincidencia de la primera letras.
-        /// </summary>
-        /// <param name="Nombre"></param>
-        /// <param name="Bloqueado"></param>
-        /// <param name="Desde"></param>
-        /// <param name="Hasta"></param>
-        /// <returns></returns>
-        public bool FiltroProfesionalesLimite(string Name, string LastName, int Desde, int Hasta, int Visible)
-        {
-            string SPname = sp.FiltroProfesionalesLimite;
-            lParam.Add(new SqlParameter("@Name", Name));
-            lParam.Add(new SqlParameter("@LastName", LastName));
-            lParam.Add(new SqlParameter("@Desde", Desde));
-            lParam.Add(new SqlParameter("@Hasta", Hasta));
-            lParam.Add(new SqlParameter("@Visible", Visible));
-
-            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
-            {
-                DataSet set = new DataSet();
-                Table = new DataTable();
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
-                oSql.Close();
-                return true;
-            }
-            else
-            {
-                oSql.Close();
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Filtra por coincidencia de la primera letras.
-        /// </summary>
-        /// <param name="Nombre"></param>
-        /// <param name="Desde"></param>
-        /// <param name="Hasta"></param>
-        /// <returns></returns>
-        public bool FiltroSocialWorkLimite(string Name, int Desde, int Hasta, int Visible)
-        {
-            string SPname = sp.FiltroSocialWorkLimite;
-            lParam.Add(new SqlParameter("@Name", Name));
-            lParam.Add(new SqlParameter("@Desde", Desde));
-            lParam.Add(new SqlParameter("@Hasta", Hasta));
-            lParam.Add(new SqlParameter("@Visible", Visible));
-
-            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
-            {
-                DataSet set = new DataSet();
-                Table = new DataTable();
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
-                oSql.Close();
-                return true;
-            }
-            else
-            {
-                oSql.Close();
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Filtra por coincidencia de la primera letras.
-        /// </summary>
-        /// <param name="oPersona"></param>
-        /// <param name="Desde"></param>
-        /// <param name="Hasta"></param>
-        /// <returns></returns>
-        public bool FiltroGrandfatherLimite(string Name, string LastName, int AffiliateNumber, int IdSocialWork, int Desde, int Hasta, int Visible)
-        {
-            string SPname = sp.FiltroGrandfatherLimite;
-            lParam.Add(new SqlParameter("@Name", Name));
-            lParam.Add(new SqlParameter("@LastName", LastName));
-            lParam.Add(new SqlParameter("@AffiliateNumber", Desde));
-            lParam.Add(new SqlParameter("@IdSocialWork", Desde));
-            lParam.Add(new SqlParameter("@Desde", Desde));
-            lParam.Add(new SqlParameter("@Hasta", Hasta));
-            lParam.Add(new SqlParameter("@Visible", Visible));
-
-            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
-            {
-                DataSet set = new DataSet();
-                Table = new DataTable();
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
-                oSql.Close();
-                return true;
-            }
-            else
-            {
-                oSql.Close();
-                return false;
-            }
         }
 
         #endregion

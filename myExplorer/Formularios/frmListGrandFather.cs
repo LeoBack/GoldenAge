@@ -57,7 +57,9 @@ namespace myExplorer.Formularios
                 tslPagina.Text = "Página: 0 de 0";
 
                 oCombos = new classControlComboBoxes();
-                oCombos.CargaCombo(tcmbSocialWork.ComboBox, oQuery.ListSpecialty(true), oQuery.Table);
+                oCombos.CargaCombo(tscmbSocialWork.ComboBox,
+                    (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
+                    oQuery.Table);
                 tsbImprimir.Enabled = false;
             }
             else
@@ -66,41 +68,93 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // REVISADO - 17/09/09
-        #region Menu
+        // OK - 24/09/17
+        #region Menu Contextual Botones
 
-        // REVISADO - 17/09/09
-        private void tsbImprimir_Click(object sender, EventArgs e)
+        // OK - 24/09/17
+        private void tsmiVerFicha_Click(object sender, EventArgs e)
         {
-            classGrandfather oP = new classGrandfather();
-            oP.LastName = txtbApellido.Text;
-            oP.AffiliateNumber = Convert.ToInt32(txtbNafiliado.Text);
-            oP.IdSocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
+            if (dgvLista.Rows.Count != 0)
+            {
+                int IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
 
-            //if (oQuery.rListaGrandfatherLimite("dtPersona", oP, Desde, Hasta))
-            //{
-            //    frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
-            //    fReport.Show();
-            //}
-            //else
-                MessageBox.Show(oTxt.ErrorListaConsulta);
+                frmAbmGrandfather frmGrandfatherulario = new frmAbmGrandfather();
+                frmGrandfatherulario.eModo = frmAbmGrandfather.Modo.Select;
+                frmGrandfatherulario.oQuery = oQuery;
+                frmGrandfatherulario.IdGrandfather = IdSelecionado;
+                frmGrandfatherulario.oUtil = oUtil;
+                frmGrandfatherulario.ShowDialog();
+
+                frmListGrandfather_Load(sender, e);
+            }
+        }
+
+        // OK - 24/09/17
+        private void tsmiDelete_Click(object sender, EventArgs e)
+        {
+            classGrandfather oGf = new classGrandfather();
+
+            if (dgvLista.Rows.Count != 0)
+            {
+                oGf.IdGrandfather = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf = (classGrandfather)oQuery.AbmGrandfather(oGf, classQuery.eAbm.Select);
+
+                if (oGf != null)
+                {
+                    frmAbmGrandfather frmA = new frmAbmGrandfather();
+                    frmA.oQuery = oQuery;
+                    frmA.oUtil = oUtil;
+                    frmA.oGrandfather = oGf;
+                    frmA.eModo = frmAbmGrandfather.Modo.Delete;
+                    frmA.ShowDialog();
+
+                    frmListGrandfather_Load(sender, e);
+                }
+                else
+                    MessageBox.Show(oTxt.ErrorListaConsulta);
+
+            }
+        }
+
+        // OK - 24/09/17
+        private void tsmiUpdate_Click(object sender, EventArgs e)
+        {
+            classGrandfather oGf = new classGrandfather();
+
+            if (dgvLista.Rows.Count != 0)
+            {
+                oGf.IdGrandfather = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf = (classGrandfather)oQuery.AbmGrandfather(oGf, classQuery.eAbm.Select);
+
+                if (oGf != null)
+                {
+                    frmAbmGrandfather frmA = new frmAbmGrandfather();
+                    frmA.oQuery = oQuery;
+                    frmA.oUtil = oUtil;
+                    frmA.oGrandfather = oGf;
+                    frmA.eModo = frmAbmGrandfather.Modo.Update;
+                    frmA.ShowDialog();
+
+                    frmListGrandfather_Load(sender, e);
+                }
+                else
+                    MessageBox.Show(oTxt.ErrorListaConsulta);
+            }
+        }
+
+        // OK - 24/09/17
+        private void tsmiAdd_Click(object sender, EventArgs e)
+        {
+            frmAbmGrandfather frmA = new frmAbmGrandfather();
+            frmA.oQuery = oQuery;
+            frmA.oUtil = oUtil;
+            frmA.eModo = frmAbmGrandfather.Modo.Add;
+            frmA.ShowDialog();
         }
 
         #endregion
 
-        // REVISADO - 17/09/09
-        #region Botones
-
-        // REVISADO - 17/09/09
-        private void btnSeleccionar_Click(object sender, EventArgs e)
-        {
-            //if (dgvLista.Rows.Count != 0)
-            //{
-            //    IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-            //    txtEstado.Text = oTxt.PacienteSeleccionado + dgvLista.Rows[SelectRow].Cells["dgvLastName"].Value.ToString();
-            //}
-
-        }
+        #region Paginador
 
         // REVISADO - 17/09/09
         private void btnSiguiente_Click(object sender, EventArgs e)
@@ -130,14 +184,35 @@ namespace myExplorer.Formularios
             Filtrar();
         }
 
-        // REVISADO - 17/09/09
-        private void btnCancelar_Click(object sender, EventArgs e)
+        #endregion
+
+        // OK - 24/09/17
+        #region Botones
+
+        // OK - 24/09/17
+        private void tsbImprimir_Click(object sender, EventArgs e)
         {
-            //IdSelecionado = 0;
+            classGrandfather oP = new classGrandfather();
+            oP.LastName = tstxtLastName.Text;
+            oP.AffiliateNumber = Convert.ToInt32(tstxtAffiliateNumber.Text);
+            oP.IdSocialWork = Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue);
+
+            //if (oQuery.rListaGrandfatherLimite("dtPersona", oP, Desde, Hasta))
+            //{
+            //    frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
+            //    fReport.Show();
+            //}
+            //else
+            MessageBox.Show(oTxt.ErrorListaConsulta);
+        }
+
+        // OK - 24/09/17
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
             Close();
         }
 
-        // REVISADO - 17/09/09
+        // OK - 24/09/17
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvLista.Rows.Count != 0)
@@ -146,31 +221,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // REVISADO - 17/09/09
-        #region MenuEmergente
-
-        // REVISADO - 17/09/09
-        private void tsmiVerFicha_Click(object sender, EventArgs e)
-        {
-            if (dgvLista.Rows.Count != 0)
-            {
-                //IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-                //txtEstado.Text = "Paciente Seleccionado : " + dgvLista.Rows[SelectRow].Cells["dgvLastName"].Value.ToString();
-
-                //frmGrandfather frmGrandfatherulario = new frmGrandfather();
-                //frmGrandfatherulario.Modo = frmGrandfather.Vista.Ver;
-                //frmGrandfatherulario.oQuery = oQuery;
-                //frmGrandfatherulario.IdPaciente = IdSelecionado;
-                //frmGrandfatherulario.oUtil = oUtil;
-                //frmGrandfatherulario.ShowDialog();
-
-                //frmListGrandfather_Load(sender, e);
-            }
-        }
-
-        #endregion
-
-        // REVISADO - 17/09/09
+        // OK - 24/09/17
         #region Metodos
 
         /// <summary>
@@ -180,24 +231,25 @@ namespace myExplorer.Formularios
         public void ConfiguracionInicial()
         {
             Size sBtn = new Size(75, 42);
-            btnBuscar.Size = sBtn;
-            btnSeleccionar.Size = sBtn;
+            //btnBuscar.Size = sBtn;
+            //btnSeleccionar.Size = sBtn;
             btnCancelar.Size = sBtn;
         }
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// REVISADO - 17/09/09
+        /// OK - 24/09/17
         /// </summary>
         public void Filtrar()
         {
             SelectRow = 0;
-            //classGrandfather oGrandfather = new classGrandfather();
-            //oGrandfather.LastName = oValidarSql.ValidaString(txtbApellido.Text);
-            //oGrandfather.AffiliateNumber = Convert.ToInt32(oValidarSql.ValidaString(txtbNafiliado.Text));
-            //oGrandfather.IdSocialWork = Convert.ToInt32(tcmbSocialWork.ComboBox.SelectedValue);
 
-            if (oQuery.FiltroGrandfatherLimite(txtbApellido.Text, Desde, Hasta))
+            if (oQuery.FiltroGrandfatherLimite(
+                tstxtName.TextBox.Text, 
+                tstxtLastName.TextBox.Text, 
+                Convert.ToInt32(tstxtAffiliateNumber.TextBox.Text), 
+                Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue),
+                Desde, Hasta))
             {
                 //decimal Cont = oQuery.CountGrandfather(oGrandfather);
                 //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
@@ -207,77 +259,49 @@ namespace myExplorer.Formularios
 
                 dgvLista.Columns.Clear();
                 GenerarGrilla(oQuery.Table);
+                PintarBloqueados(Color.Gray);
                 tsbImprimir.Enabled = false;
-                btnSeleccionar.Enabled = false;
-                tsmiTurnos.Enabled = false;
+                tsmiUpdate.Enabled = false;
                 tsmiVerFicha.Enabled = false;
             }
             else
             {
-                tsmiTurnos.Enabled = true;
+                tsmiUpdate.Enabled = true;
                 tsmiVerFicha.Enabled = true;
                 tsbImprimir.Enabled = true;
-                btnSeleccionar.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Colorea la Fila de Color
+        /// OK - 24/09/17
+        /// </summary>
+        /// <param name="Color"></param>
+        public void PintarBloqueados(Color Color)
+        {
+            bool Block = false;
+            int nCell = dgvLista.ColumnCount;
+
+            for (int Fila = 0; Fila < dgvLista.Rows.Count; Fila++)
+            {
+                Block = Convert.ToBoolean(dgvLista.Rows[Fila].Cells[nCell - 1].Value);
+                if (Block == false)
+                    for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
+                        dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
             }
         }
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// REVISADO - 17/09/09
+        /// OK - 24/09/17
         /// </summary>
         /// <param name="Source"></param>
         public int GenerarGrilla(object Source)
         {
-            if (dgvLista.Columns.Count != 0)
-
-                dgvLista.Columns.Clear();
-            //
-            // Columna Oculta ID
-            //
-            dgvLista.Columns.Add("grvId", "ID");
-            dgvLista.Columns["grvId"].DataPropertyName = "IdGrandfather";
-            dgvLista.Columns["grvId"].Visible = false;
-            dgvLista.Columns["grvId"].DefaultCellStyle.NullValue = "0";
-            //
-            // Columna SocialWork
-            //
-            dgvLista.Columns.Add("drvSocialWork", "Obra Social");
-            dgvLista.Columns["drvSocialWork"].DataPropertyName = "SocialWork";
-            dgvLista.Columns["drvSocialWork"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["drvSocialWork"].DefaultCellStyle.NullValue = "No especificado";
-            dgvLista.Columns["drvSocialWork"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            //
-            //Columna AffiliateNumber
-            //
-            dgvLista.Columns.Add("grvAffiliateNumber", "N° Afiliado");
-            dgvLista.Columns["grvAffiliateNumber"].DataPropertyName = "AffiliateNumber";
-            dgvLista.Columns["grvAffiliateNumber"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvAffiliateNumber"].DefaultCellStyle.NullValue = "No especificado";
-            //
-            //Columna LastName
-            //
-            dgvLista.Columns.Add("dgvLastName", "Apellido");
-            dgvLista.Columns["dgvLastName"].DataPropertyName = "LastName";
-            dgvLista.Columns["dgvLastName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["dgvLastName"].DefaultCellStyle.NullValue = "No especificado";
-            //
-            //Columna Nome
-            //
-            dgvLista.Columns.Add("grvNome", "Nombre");
-            dgvLista.Columns["grvNome"].DataPropertyName = "Name";
-            dgvLista.Columns["grvNome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvNome"].DefaultCellStyle.NullValue = "No especificado";
-            //
-            //Columna Sex
-            //
-            dgvLista.Columns.Add("grvSex", "Sexo");
-            dgvLista.Columns["grvSex"].DataPropertyName = "Sex";
-            dgvLista.Columns["grvSex"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvSex"].DefaultCellStyle.NullValue = "No especificado";
             //
             //Configuracion del DataListView
             //
-            dgvLista.AutoGenerateColumns = false;
+            dgvLista.AutoGenerateColumns = true;
             dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvLista.ReadOnly = true;
@@ -286,7 +310,8 @@ namespace myExplorer.Formularios
             dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLista.MultiSelect = false;
             dgvLista.DataSource = Source;
-
+            dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[dgvLista.ColumnCount - 1].Visible = false;
             return dgvLista.Rows.Count;
         }
 

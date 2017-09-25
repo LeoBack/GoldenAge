@@ -1,6 +1,6 @@
 ﻿namespace myExplorer.Formularios
 {
-    partial class frmGrandfather
+    partial class frmAbmGrandfather
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGrandfather));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbmGrandfather));
             this.btnClose = new System.Windows.Forms.Button();
             this.tlpPanlData = new System.Windows.Forms.TableLayoutPanel();
             this.grpDataPersonal = new System.Windows.Forms.GroupBox();
@@ -1028,7 +1028,7 @@
             this.MinimumSize = new System.Drawing.Size(139, 124);
             this.Name = "frmGrandfather";
             this.Text = "Abuelo (ABM)";
-            this.Load += new System.EventHandler(this.frmGrandfather_Load);
+            this.Load += new System.EventHandler(this.frmAbmGrandfather_Load);
             this.tlpPanlData.ResumeLayout(false);
             this.grpDataPersonal.ResumeLayout(false);
             this.tlpDataPersonal.ResumeLayout(false);

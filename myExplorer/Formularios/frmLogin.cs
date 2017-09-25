@@ -18,7 +18,6 @@ namespace myExplorer.Formularios
         #region Atributos y Propiedades
 
         public classProfessional oProfessional { set; get; }
-        private classValidaSqlite oValidarSql = new classValidaSqlite();
         private classTextos oTxt = new classTextos();
 
         #endregion
@@ -43,8 +42,8 @@ namespace myExplorer.Formularios
         {
             if (txtNombre.Text != "" || txtPasw.Text != "")
                 oProfessional = new classProfessional();
-                oProfessional.User = oValidarSql.ValidaString(txtNombre.Text);
-                oProfessional.Password = oValidarSql.ValidaString(txtPasw.Text);
+                oProfessional.User = txtNombre.Text;
+                oProfessional.Password = txtPasw.Text;
         }
 
         #endregion

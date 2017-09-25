@@ -15,13 +15,13 @@ using libLocalitation.Forms;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmProfessional : Form
+    public partial class frmAbmProfessional : Form
     {
         #region Atributos y Propiedades
 
-        public enum Modo { Add, Select, Update }
+        public enum Modo { Add, Select, Update, Delete }
 
-        public Modo Acto { set; get; }
+        public Modo eModo { set; get; }
         public int IdProfessional { set; get; }
 
         public classQuery oQuery { set; get; }
@@ -39,13 +39,13 @@ namespace myExplorer.Formularios
 
         #region Formulario
 
-        public frmProfessional()
+        public frmAbmProfessional()
         {
             InitializeComponent();
         }
 
         //OK 11/06/12
-        private void frmProfessional_Load(object sender, EventArgs e)
+        private void frmAbmProfessional_Load(object sender, EventArgs e)
         {
             if (oQuery != null)
             {
@@ -68,13 +68,13 @@ namespace myExplorer.Formularios
             {
                 CargarObjeto();
 
-                if (Acto == Modo.Add)
+                if (eModo == Modo.Add)
                 {   //-------------------------------------------------
                     // Guarda
                     if (0 != (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Insert))
                     {
                         MessageBox.Show(oTxt.AgregarProfesional);
-                        Acto = Modo.Update;
+                        eModo = Modo.Update;
                         oProfessional.IdProfessional = oQuery.UltimoIdProfessional();
                         IdProfessional = 0;
                         ini();
@@ -83,13 +83,13 @@ namespace myExplorer.Formularios
                         MessageBox.Show(oTxt.ErrorAgregarConsulta);
 
                 }   //-------------------------------------------------
-                else if (Acto == Modo.Update)
+                else if (eModo == Modo.Update)
                 {   //-------------------------------------------------
                     // Actualiza
                     if (0 != (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Update))
                     {
                         MessageBox.Show(oTxt.ModificarProfesional);
-                        Acto = Modo.Update;
+                        eModo = Modo.Update;
                         ini();
                     }
                     else
@@ -104,7 +104,7 @@ namespace myExplorer.Formularios
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             LimpiarFrm();
-            Acto = Modo.Add;
+            eModo = Modo.Add;
         }
 
         // OK 11/06/12
@@ -150,20 +150,20 @@ namespace myExplorer.Formularios
         private void ini()
         {
             // Modo en el que se mostrara el formulario
-            if (Acto == Modo.Select && oUtil.oProfessional.IdProfessional != 0)
+            if (eModo == Modo.Select && oUtil.oProfessional.IdProfessional != 0)
             {
                 oProfessional = (classProfessional)oQuery.AbmProfessional(new classProfessional(oUtil.oProfessional.IdProfessional), classQuery.eAbm.Select);
                 EnableFrm(false);
                 btnBloquear.Enabled = true;
                 EscribirEnFrm();
             }
-            else if (Acto == Modo.Update && oUtil.oProfessional.IdProfessional != 0)
+            else if (eModo == Modo.Update && oUtil.oProfessional.IdProfessional != 0)
             {
                 EnableFrm(true);
                 btnBloquear.Enabled = true;
                 EscribirEnFrm();
             }
-            else if (Acto == Modo.Add)
+            else if (eModo == Modo.Add)
             {
                 oProfessional = new classProfessional();
                 EnableFrm(true);

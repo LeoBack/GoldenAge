@@ -60,14 +60,14 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classProfessional(int vIdProfessional, int vProfessionalRegistration, string vName, string vLastNames,
+        public classProfessional(int vIdProfessional, int vProfessionalRegistration, string vName, string vLastName,
             int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone, 
             string vMail, string vUser, string vPassword, bool vVisible)
         {
             this.IdProfessional = vIdProfessional;
             this.ProfessionalRegistration = vProfessionalRegistration;
             this.Name = vName;
-            this.LastName = LastName;
+            this.LastName = vLastName;
             this.IdLocationCountry = vIdLocationCountry;
             this.IdLocationProvince = vIdLocationProvince;
             this.IdLocationCity = vIdLocationCity;
