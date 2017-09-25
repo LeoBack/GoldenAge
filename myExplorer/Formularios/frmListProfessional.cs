@@ -29,8 +29,6 @@ namespace myExplorer.Formularios
         private int cantPag = 0;
         private int Pag = 1;
 
-        private bool Hiden;
-
         #endregion
 
         // REVISADO - 17/09/09
@@ -52,10 +50,6 @@ namespace myExplorer.Formularios
                 SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
-
-                tsbUsuario.Text = oTxt.OcultarProfesionalesBloqueados;
-                Hiden = true;
-
             }
             else
             {
@@ -66,33 +60,76 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // REVISADO - 17/09/09
-        #region Botones
+        // OK - 24/09/17
+        #region Menu Contextual Botones
 
-        // REVISADO - 17/09/09
-        private void tsbUsuario_Click(object sender, EventArgs e)
+        // OK - 24/09/17
+        private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            if (Hiden)
+            classProfessional oP = new classProfessional();
+
+            if (dgvLista.Rows.Count != 0)
             {
-                tsbUsuario.Text = oTxt.MostrarProfesionalesBloqueados;
-                Hiden = false;
+                oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oP = (classProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
+
+                if (oP != null)
+                {
+                    frmAbmProfessional frmA = new frmAbmProfessional();
+                    frmA.oQuery = oQuery;
+                    frmA.oUtil = oUtil;
+                    frmA.oProfessional = oP;
+                    frmA.eModo = frmAbmProfessional.Modo.Delete;
+                    frmA.ShowDialog();
+
+                    frmListProfessional_Load(sender, e);
+                }
+                else
+                    MessageBox.Show(oTxt.ErrorListaConsulta);
+
             }
-            else
-            {
-                tsbUsuario.Text = oTxt.OcultarProfesionalesBloqueados;
-                Hiden = true;
-            }
-            Filtrar();
         }
 
-        // REVISADO - 17/09/09
-        private void btnSeleccionar_Click(object sender, EventArgs e)
+        // OK - 24/09/17
+        private void tsmiUpdate_Click(object sender, EventArgs e)
         {
-            //if (dgvLista.Rows.Count != 0)
-            //    IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-            //else
-            //    IdSelecionado = 0;
+            classProfessional oP = new classProfessional();
+
+            if (dgvLista.Rows.Count != 0)
+            {
+                oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oP = (classProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
+
+                if (oP != null)
+                {
+                    frmAbmProfessional frmA = new frmAbmProfessional();
+                    frmA.oQuery = oQuery;
+                    frmA.oUtil = oUtil;
+                    frmA.oProfessional = oP;
+                    frmA.eModo = frmAbmProfessional.Modo.Update;
+                    frmA.ShowDialog();
+
+                    frmListProfessional_Load(sender, e);
+                }
+                else
+                    MessageBox.Show(oTxt.ErrorListaConsulta);
+            }
         }
+
+        // OK - 24/09/17
+        private void tsmiAdd_Click(object sender, EventArgs e)
+        {
+            frmAbmProfessional frmA = new frmAbmProfessional();
+            frmA.oQuery = oQuery;
+            frmA.oUtil = oUtil;
+            frmA.eModo = frmAbmProfessional.Modo.Add;
+            frmA.ShowDialog();
+        }
+
+        #endregion
+
+
+        #region Paginador
 
         // REVISADO - 17/09/09
         private void tsbBuscar_Click(object sender, EventArgs e)
@@ -122,33 +159,27 @@ namespace myExplorer.Formularios
             }
         }
 
-        // REVISADO - 17/09/09
+        #endregion
+
+        // OK - 24/09/17
+        #region Botones
+
+        // OK - 24/09/17
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        // REVISADO - 17/09/09
+        // OK - 24/09/17
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dgvLista.Rows.Count != 0)
                 SelectRow = e.RowIndex;
         }
 
-        private void tsbAdd_Click(object sender, EventArgs e)
-        {
-            frmProfessional frmA = new frmProfessional();
-            frmA.oQuery = oQuery;
-            frmA.oUtil = oUtil;
-            frmA.Acto = frmProfessional.Modo.Add;
-            frmA.ShowDialog();
-
-            frmListProfessional_Load(sender, e);
-        }
-
         #endregion
 
-        // REVISADO - 17/09/09
+        // OK - 24/09/17
         #region Metodos
 
         /// <summary>
@@ -165,11 +196,13 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// REVISADO - 17/09/09
+        /// OK - 24/09/17
         /// </summary>
         public void Filtrar()
         {
-            if (oQuery.FiltroProfesionalesLimite(tstxtNombre.TextBox.Text, Desde, Hasta))
+            SelectRow = 0;
+
+            if (oQuery.FiltroProfesionalesLimite(tstxtNombre.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta))
             { 
                 //decimal Cont = oQuery.CountProfesionales(oValidarSql.ValidaString(tstxtNombre.TextBox.Text), Hiden);
                 //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
@@ -187,86 +220,47 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Colorea la Fila de Color
-        /// REVISADO - 17/09/09
+        /// OK - 24/09/17
         /// </summary>
         /// <param name="Color"></param>
         public void PintarBloqueados(Color Color)
         {
-            int Bloqueado = 0;
+            bool Block = false;
+            int nCell = dgvLista.ColumnCount;
 
             for (int Fila = 0; Fila < dgvLista.Rows.Count; Fila++)
             {
-                //Bloqueado = Convert.ToInt32(dgvLista.Rows[Fila].Cells[0].Value);
-                
-                //if (Bloqueado == lProfesional[Fila].IdProfessional)
-                //    if (lProfesional[Fila].Visible == true)
-                //        for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
-                //           dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
+                Block = Convert.ToBoolean(dgvLista.Rows[Fila].Cells[nCell-1].Value);
+                if (Block == false)
+                    for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
+                        dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
             }
         }
 
         /// <summary>
         /// Carga la Lista de Obras Sociales
-        /// REVISADO - 17/09/09
+        /// OK - 24/09/17
         /// </summary>
         /// <param name="Source"></param>
-        public void GenerarGrilla(object Source)
+        public int GenerarGrilla(object Source)
         {
-            //
-            //Columna Oculta ID
-            //
-            dgvLista.Columns.Add("grvId", "ID");
-            dgvLista.Columns["grvId"].DataPropertyName = "IdProfessional";
-            dgvLista.Columns["grvId"].Visible = false;
-            dgvLista.Columns["grvId"].DefaultCellStyle.NullValue = "0";
-            //
-            //Columna Name
-            //
-            dgvLista.Columns.Add("grvName", "Nombre");
-            dgvLista.Columns["grvName"].DataPropertyName = "Name";
-            dgvLista.Columns["grvName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvLista.Columns["grvName"].DefaultCellStyle.NullValue = "No especificado";
-            //
-            //Columna LastName
-            //
-            dgvLista.Columns.Add("grvLastName", "Apellido");
-            dgvLista.Columns["grvLastName"].DataPropertyName = "LastName";
-            dgvLista.Columns["grvLastName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvLastName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvLista.Columns["grvLastName"].DefaultCellStyle.NullValue = "No especificado";
-            //
-            //Columna ProfessionalRegistration
-            //
-            dgvLista.Columns.Add("grvEmail", "Matricula");
-            dgvLista.Columns["grvRegistration"].DataPropertyName = "ProfessionalRegistration";
-            dgvLista.Columns["grvRegistration"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvRegistration"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvLista.Columns["grvRegistration"].DefaultCellStyle.NullValue = "No especificado";
-            //
-            //Columna Phone
-            //
-            dgvLista.Columns.Add("grvPhone", "Telefono");
-            dgvLista.Columns["grvPhone"].DataPropertyName = "Phone";
-            dgvLista.Columns["grvPhone"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvLista.Columns["grvPhone"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvLista.Columns["grvPhone"].DefaultCellStyle.NullValue = "No especificado";
             //
             //Configuracion del DataListView
             //
-            dgvLista.AutoGenerateColumns = false;
+            dgvLista.AutoGenerateColumns = true;
             dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvLista.ReadOnly = true;
             dgvLista.ScrollBars = ScrollBars.Both;
-            //dgvLista.ContextMenuStrip = cmsMenuEmergente;
-            //dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dgvLista.ContextMenuStrip = cmsMenuEmergente;
+            dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLista.MultiSelect = false;
             dgvLista.DataSource = Source;
+            dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
+            return dgvLista.Rows.Count;
         }
 
         #endregion
-
-
     }
 }

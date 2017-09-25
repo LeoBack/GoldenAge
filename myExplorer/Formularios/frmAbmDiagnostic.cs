@@ -17,15 +17,14 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
-        public enum Vista { Nuevo, Ver, Modificar }
+        public enum Modo { Add, Select, Update, Delete }
 
-        public Vista Modo { set; get; }
+        public Modo eModo { set; get; }
         public classDiagnostic oDiagnostico { set; get; }
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
 
         private classControlComboBoxes oCombo;
-        private classValidaSqlite oValidarSql = new classValidaSqlite();
         private classTextos oTxt = new classTextos();
 
         #endregion
@@ -40,7 +39,7 @@ namespace myExplorer.Formularios
         }
 
         //OK 24/05/12
-        private void frmDiagnostic_Load(object sender, EventArgs e)
+        private void frmAbmDiagnostic_Load(object sender, EventArgs e)
         {
             if (oQuery != null)
             {
@@ -53,7 +52,7 @@ namespace myExplorer.Formularios
 
                 //oCombo.CargaCombo(cmbPatologia, oQuery.ListaPatologias(), oQuery.Table);
 
-                if (Modo == Vista.Modificar)
+                if (eModo == Modo.Update)
                 {
                     if (this.oDiagnostico != null)
                     {

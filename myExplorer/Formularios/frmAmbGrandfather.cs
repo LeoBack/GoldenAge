@@ -15,14 +15,14 @@ using libLocalitation.Forms;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmGrandfather : Form
+    public partial class frmAbmGrandfather : Form
     {
         #region Atributos y Propiedades
 
-        public enum Vista { Nuevo, Ver, Modificar }
+        public enum Modo { Add, Select, Update, Delete }
 
-        public Vista Modo { set; get; }
-        public int IdPaciente { set; get; }
+        public Modo eModo { set; get; }
+        public int IdGrandfather { set; get; }
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
@@ -32,7 +32,6 @@ namespace myExplorer.Formularios
 
         private classControlComboBoxes oComboBox;
         private classValidaciones oValidar;
-        private classValidaSqlite oValidarSql = new classValidaSqlite();
         private classTextos oTxt = new classTextos();
         private int SelectRow;
 
@@ -49,13 +48,13 @@ namespace myExplorer.Formularios
         #region Formulario
 
         //OK 24/05/12
-        public frmGrandfather()
+        public frmAbmGrandfather()
         {
             InitializeComponent();
         }
 
         //OK 24/05/12
-        private void frmGrandfather_Load(object sender, EventArgs e)
+        private void frmAbmGrandfather_Load(object sender, EventArgs e)
         {
             this.Text = oTxt.TitleFichaGrandfather;
             if (oQuery != null)
@@ -69,7 +68,9 @@ namespace myExplorer.Formularios
 
                 // Cargo los Combos
                 oComboBox = new classControlComboBoxes();
-                oComboBox.CargaCombo(cmbSocialWork, oQuery.ListSpecialty(false), oQuery.Table);
+                oComboBox.CargaCombo(cmbSocialWork,
+                (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), 
+                oQuery.Table);
                 //oComboBox.CargaCombo(cmbTipoPaciente, oQuery.ListaTipoDePersonas(), oQuery.Table);
 
                 this.ini();
@@ -124,7 +125,7 @@ namespace myExplorer.Formularios
                 //oDs = oQuery.SelectDiagnostic(oDs);
 
                 // LLamo al formulario Diagnostico
-                frmD.Modo = Formularios.frmAbmDiagnostic.Vista.Modificar;
+                frmD.eModo = Formularios.frmAbmDiagnostic.Modo.Update;
                // frmD.oDiagnostic = oDs;
                 frmD.oQuery = oQuery;
                 frmD.oUtil = oUtil;
@@ -157,7 +158,7 @@ namespace myExplorer.Formularios
             }
 
             // LLamo al formulario Diagnostico
-            frmD.Modo = Formularios.frmAbmDiagnostic.Vista.Nuevo;
+            frmD.eModo = Formularios.frmAbmDiagnostic.Modo.Add;
            // frmD.oDiagnostic = oDs;
             frmD.ShowDialog();
 
@@ -314,10 +315,10 @@ namespace myExplorer.Formularios
 
         private void btnModificarPerfil_Click(object sender, EventArgs e)
         {
-            if (Modo == Vista.Ver)
+            if (eModo == Modo.Select)
             {
-                this.Modo = Vista.Modificar;
-                this.frmGrandfather_Load(sender, e);
+                this.eModo = Modo.Update;
+                this.frmAbmGrandfather_Load(sender, e);
             }
         }
 
@@ -364,28 +365,28 @@ namespace myExplorer.Formularios
         /// </summary>
         private void ini()
         {
-            if (this.IdPaciente != 0)
+            if (this.IdGrandfather != 0)
             {
-                oGrandfather.IdGrandfather = this.IdPaciente;
+                oGrandfather.IdGrandfather = this.IdGrandfather;
                 //oGrandfather = oQuery.SelectPersona(oGrandfather);
             }
 
             // Modo en el que se mostrara el formulario
-            if (Modo == Vista.Ver && oGrandfather.IdGrandfather != 0)
+            if (eModo == Modo.Select && oGrandfather.IdGrandfather != 0)
             {
                 this.EnableFicha(false, true);
                 this.EnableDiagnostico(true);
                 this.EscribirEnFrm();
                 this.CargarDiagnostico();
             }
-            else if (Modo == Vista.Modificar && oGrandfather.IdGrandfather != 0)
+            else if (eModo == Modo.Update && oGrandfather.IdGrandfather != 0)
             {
                 this.EnableFicha(true, false);
                 this.EnableDiagnostico(true);
                 this.EscribirEnFrm();
                 this.CargarDiagnostico();
             }
-            else if (Modo == Vista.Nuevo)
+            else if (eModo == Modo.Add)
             {
                 oGrandfather = new classGrandfather();
 

@@ -18,17 +18,16 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
+        public enum Modo { Add, Select, Update, Delete }
+
+        public Modo eModo { set; get; }
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         public classSocialWork oSocialWork { set; get; }
-
-        public enum Accion { Nuevo = 1, Modificar = 2, Eliminar = 3 }
-        public Accion Acto { set; get; }
         public int IdSocialWork { set; get; }
 
         private classControlComboBoxes oComboBox;
         private classTextos oTxt = new classTextos();
-        private classValidaSqlite oValidarSql = new classValidaSqlite();
 
         private int IdCountry = 0;
         private int IdProvince = 0;
@@ -46,7 +45,7 @@ namespace myExplorer.Formularios
         }
 
         // OK 03/06/12
-        private void frmAuxABM_Load(object sender, EventArgs e)
+        private void frmAbmSocialWork_Load(object sender, EventArgs e)
         {
             Text = oTxt.TitleSocialWork;
 
@@ -54,13 +53,13 @@ namespace myExplorer.Formularios
 
             if (oQuery != null)
             {   //-------------------------------------------------
-                if (Acto == Accion.Nuevo)
+                if (eModo == Modo.Add)
                 {   //***************Nuevo****************************
                     btnAgregar.Text = oTxt.Aplicar;
                     // Cargo el Formulario Limpio
                     LimpiarFrm();
                 }   //****************Fin*****************************
-                else if (Acto == Accion.Modificar)
+                else if (eModo == Modo.Update)
                 {
                     if (IdSocialWork != 0)
                     {   //***********Modifica*************************
@@ -91,7 +90,7 @@ namespace myExplorer.Formularios
                         Close();
                     }
                 }
-                else if (Acto == Accion.Eliminar)
+                else if (eModo == Modo.Delete)
                 {   //***********Eliminar*************************
                     if (IdSocialWork != 0)
                     {   // Consulta de eliminacion
@@ -128,13 +127,13 @@ namespace myExplorer.Formularios
         {
             if (ValidarCampos())
             {
-                if (Acto == Accion.Nuevo)
+                if (eModo == Modo.Add)
                 {   //-------------------------------------------------
                     if (btnAgregar.Text == oTxt.Limpiar)
                     {
                         btnAgregar.Text = oTxt.Aplicar;
                         LimpiarFrm();
-                        Acto = Accion.Nuevo;
+                        eModo = Modo.Add;
                     }
                     else
                     {
@@ -151,13 +150,13 @@ namespace myExplorer.Formularios
                             MessageBox.Show(oQuery.Menssage);
                     }
                 }   //-------------------------------------------------
-                else if (Acto == Accion.Modificar)
+                else if (eModo == Modo.Update)
                 {   //-------------------------------------------------
                     if (btnAgregar.Text == oTxt.Editar)
                     {
                         btnAgregar.Text = oTxt.Aplicar;
                         EnableFrm(true);
-                        Acto = Accion.Modificar;
+                        eModo = Modo.Update;
                     }
                     else
                     {
@@ -234,9 +233,9 @@ namespace myExplorer.Formularios
             oSocialWork.IdLocationCountry = IdCountry;
             oSocialWork.IdLocationProvince = IdProvince;
             oSocialWork.IdLocationCity = IdCity;
-            oSocialWork.Address = oValidarSql.ValidaString(txtAddress.Text);
-            oSocialWork.Phone = oValidarSql.ValidaString(txtPhone.Text);
-            oSocialWork.AlternativePhone = oValidarSql.ValidaString(txtAlternativePhone.Text);
+            oSocialWork.Address = txtAddress.Text;
+            oSocialWork.Phone = txtPhone.Text;
+            oSocialWork.AlternativePhone = txtAlternativePhone.Text;
             //oSocialWork.Visible = true;
         }
 

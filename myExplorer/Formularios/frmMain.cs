@@ -49,7 +49,7 @@ namespace myExplorer.Formularios
             oUtil = new classUtiles();
             // Inicia Secion.
             EnableUser(false);
-            tsbLoginProfessional_Click(sender, e);
+            tsmiLoginProfessional_Click(sender, e);
         }
 
         // Cierra Formulario
@@ -109,7 +109,7 @@ namespace myExplorer.Formularios
 
         // Formulario de Busqueda
         // OK - 24/09/14
-        private void tsbSocialWork_Click(object sender, EventArgs e)
+        private void tsmiSocialWork_Click(object sender, EventArgs e)
         {
             if (User == eUser.Valido)
             {
@@ -134,7 +134,7 @@ namespace myExplorer.Formularios
         }
 
         //OK - 18/06/12
-        private void tsbStatics_Click(object sender, EventArgs e)
+        private void tsmiStatics_Click(object sender, EventArgs e)
         {
             if (this.User == eUser.Valido)
             {
@@ -150,8 +150,8 @@ namespace myExplorer.Formularios
         {
             if (User == eUser.Valido)
             {
-                frmProfessional frmPro = new frmProfessional();
-                frmPro.Acto = frmProfessional.Modo.Select;
+                frmAbmProfessional frmPro = new frmAbmProfessional();
+                frmPro.eModo = frmAbmProfessional.Modo.Select;
                 frmPro.oQuery = oQuery;
                 frmPro.oUtil = oUtil;
                 frmPro.ShowDialog();
@@ -159,7 +159,7 @@ namespace myExplorer.Formularios
         }
 
         // OK 08/06/12
-        private void tsbLoginProfessional_Click(object sender, EventArgs e)
+        private void tsmiLoginProfessional_Click(object sender, EventArgs e)
         {
             if (User == eUser.Valido)
             {
@@ -287,5 +287,6 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
     }
 }

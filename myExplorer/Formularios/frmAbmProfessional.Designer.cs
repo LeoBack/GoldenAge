@@ -1,6 +1,6 @@
 ﻿namespace myExplorer.Formularios
 {
-    partial class frmProfessional
+    partial class frmAbmProfessional
     {
         /// <summary>
         /// Required designer variable.
@@ -467,7 +467,7 @@
             this.MinimizeBox = false;
             this.Name = "frmProfessional";
             this.Text = "Profesional (ABM)";
-            this.Load += new System.EventHandler(this.frmProfessional_Load);
+            this.Load += new System.EventHandler(this.frmAbmProfessional_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tabDatos.ResumeLayout(false);
             this.tbpPerfil.ResumeLayout(false);

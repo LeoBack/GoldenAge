@@ -44,9 +44,9 @@
             this.tsbAnterior = new System.Windows.Forms.ToolStripButton();
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiModificar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAgregar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.tsMenu.SuspendLayout();
@@ -136,7 +136,7 @@
             this.tsbAdd.Name = "tsbAdd";
             this.tsbAdd.Size = new System.Drawing.Size(112, 36);
             this.tsbAdd.Text = "Agregar";
-            this.tsbAdd.Click += new System.EventHandler(this.tsbAgregar_Click);
+            this.tsbAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
             // toolStripSeparator1
             // 
@@ -200,35 +200,35 @@
             // 
             this.cmsMenuEmergente.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsMenuEmergente.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiModificar,
-            this.tsmiEliminar,
-            this.tsmiAgregar});
+            this.tsmiUpdate,
+            this.tsmiDelete,
+            this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(168, 94);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(207, 127);
             // 
-            // tsmiModificar
+            // tsmiUpdate
             // 
-            this.tsmiModificar.Image = global::myExplorer.Properties.Resources.EditFile;
-            this.tsmiModificar.Name = "tsmiModificar";
-            this.tsmiModificar.Size = new System.Drawing.Size(167, 30);
-            this.tsmiModificar.Text = "Modificar";
-            this.tsmiModificar.Click += new System.EventHandler(this.tsmiModificar_Click);
+            this.tsmiUpdate.Image = global::myExplorer.Properties.Resources.EditFile;
+            this.tsmiUpdate.Name = "tsmiUpdate";
+            this.tsmiUpdate.Size = new System.Drawing.Size(206, 30);
+            this.tsmiUpdate.Text = "Modificar";
+            this.tsmiUpdate.Click += new System.EventHandler(this.tsmiUpdate_Click);
             // 
-            // tsmiEliminar
+            // tsmiDelete
             // 
-            this.tsmiEliminar.Image = global::myExplorer.Properties.Resources.Error;
-            this.tsmiEliminar.Name = "tsmiEliminar";
-            this.tsmiEliminar.Size = new System.Drawing.Size(167, 30);
-            this.tsmiEliminar.Text = "Eliminar";
-            this.tsmiEliminar.Click += new System.EventHandler(this.tsmiEliminar_Click);
+            this.tsmiDelete.Image = global::myExplorer.Properties.Resources.Error;
+            this.tsmiDelete.Name = "tsmiDelete";
+            this.tsmiDelete.Size = new System.Drawing.Size(206, 30);
+            this.tsmiDelete.Text = "Eliminar";
+            this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
-            // tsmiAgregar
+            // tsmiAdd
             // 
-            this.tsmiAgregar.Image = global::myExplorer.Properties.Resources.Plus;
-            this.tsmiAgregar.Name = "tsmiAgregar";
-            this.tsmiAgregar.Size = new System.Drawing.Size(167, 30);
-            this.tsmiAgregar.Text = "Agregar";
-            this.tsmiAgregar.Click += new System.EventHandler(this.tsmiAgregar_Click);
+            this.tsmiAdd.Image = global::myExplorer.Properties.Resources.Plus;
+            this.tsmiAdd.Name = "tsmiAdd";
+            this.tsmiAdd.Size = new System.Drawing.Size(206, 30);
+            this.tsmiAdd.Text = "Agregar";
+            this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
             // frmListSocialWorks
             // 
@@ -265,9 +265,9 @@
         private System.Windows.Forms.ToolStripButton tsbAdd;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ContextMenuStrip cmsMenuEmergente;
-        private System.Windows.Forms.ToolStripMenuItem tsmiModificar;
-        private System.Windows.Forms.ToolStripMenuItem tsmiEliminar;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAgregar;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUpdate;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAdd;
         private System.Windows.Forms.ToolStripButton tsbSiguiente;
         private System.Windows.Forms.ToolStripLabel tslPagina;
         private System.Windows.Forms.ToolStripButton tsbAnterior;
