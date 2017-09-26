@@ -231,14 +231,14 @@ namespace Datos.Query
             return Result;
         }
 
-        public object AbmGrandfather(classGrandfather oP, eAbm Abm)
+        public object AbmPatient(classPatient oP, eAbm Abm)
         {
             object Result = null;
-            string SPname = sp.AbmGrandfather;
+            string SPname = sp.AbmPatient;
 
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@IdGrandfather", oP.IdGrandfather));
+            lParam.Add(new SqlParameter("@IdPatient", oP.IdPatient));
             lParam.Add(new SqlParameter("@Name", oP.Name));
             lParam.Add(new SqlParameter("@LastName", oP.LastName));
             lParam.Add(new SqlParameter("@Birthdate", oP.Birthdate));
@@ -261,16 +261,16 @@ namespace Datos.Query
             {
                 case eAbm.SelectAll:
                     {
-                        List<classGrandfather> lGrandfather = null;
+                        List<classPatient> lGrandfather = null;
                         if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                         {
-                            lGrandfather = new List<classGrandfather>();
+                            lGrandfather = new List<classPatient>();
                             while (oSql.Reader.Read())
                             {
                                 try
                                 {
-                                    classGrandfather oGrandfather = new classGrandfather(
-                                    Convert.ToInt32(oSql.Reader["IdGrandfather"]),
+                                    classPatient oGrandfather = new classPatient(
+                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["LastName"]),
                                     Convert.ToDateTime(oSql.Reader["Birthdate"]),
@@ -316,15 +316,15 @@ namespace Datos.Query
                     }
                 case eAbm.Select:
                     {
-                        classGrandfather oGrandfather = null;
+                        classPatient oGrandfather = null;
                         if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                         {
                             if (oSql.Reader.Read())
                             {
                                 try
                                 {
-                                    oGrandfather = new classGrandfather(
-                                    Convert.ToInt32(oSql.Reader["IdGrandfather"]),
+                                    oGrandfather = new classPatient(
+                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["LastName"]),
                                     Convert.ToDateTime(oSql.Reader["Birthdate"]),
@@ -414,15 +414,15 @@ namespace Datos.Query
             return Result;
         }
 
-        public object AbmGrandfatherParent(classGrandfatherParent oP, eAbm Abm)
+        public object AbmPatientParent(classPatientParent oP, eAbm Abm)
         {
             object Result = null;
-            string SPname = sp.AbmGrandfatherParent;
+            string SPname = sp.AbmPatientParent;
 
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@idGrandfatherParent", oP.IdGrandfatherParent));
-            lParam.Add(new SqlParameter("@IdGrandfather", oP.IdGrandfather));
+            lParam.Add(new SqlParameter("@idPatientParent", oP.IdPatientParent));
+            lParam.Add(new SqlParameter("@IdPatient", oP.IdPatient));
             lParam.Add(new SqlParameter("@IdParent", oP.IdParent));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
 
@@ -430,35 +430,35 @@ namespace Datos.Query
             {
                 case eAbm.SelectAll:
                     {
-                        List<classGrandfatherParent> lGrandfatherParent = null;
+                        List<classPatientParent> lPatientParent = null;
                         if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                         {
-                            lGrandfatherParent = new List<classGrandfatherParent>();
+                            lPatientParent = new List<classPatientParent>();
                             while (oSql.Reader.Read())
                             {
                                 try
                                 {
-                                    classGrandfatherParent oGrandfatherParent = new classGrandfatherParent(
-                                    Convert.ToInt32(oSql.Reader["idGrandfatherParent"]),
-                                    Convert.ToInt32(oSql.Reader["IdGrandfather"]),
+                                    classPatientParent oPatientParent = new classPatientParent(
+                                    Convert.ToInt32(oSql.Reader["idPatientParent"]),
+                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToInt32(oSql.Reader["IdParent"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lGrandfatherParent.Add(oGrandfatherParent);
+                                    lPatientParent.Add(oPatientParent);
                                 }
                                 catch (FormatException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    lGrandfatherParent = null;
+                                    lPatientParent = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    lGrandfatherParent = null;
+                                    lPatientParent = null;
                                 }
                                 catch (OverflowException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    lGrandfatherParent = null;
+                                    lPatientParent = null;
                                 }
                             }
                         }
@@ -466,38 +466,38 @@ namespace Datos.Query
                             Menssage = oSql.Mensage;
 
                         oSql.Close();
-                        Result = lGrandfatherParent;
+                        Result = lPatientParent;
                         break;
                     }
                 case eAbm.Select:
                     {
-                        classGrandfatherParent oGrandfatherParent = null;
+                        classPatientParent oPatientParent = null;
                         if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                         {
                             if (oSql.Reader.Read())
                             {
                                 try
                                 {
-                                    oGrandfatherParent = new classGrandfatherParent(
-                                    Convert.ToInt32(oSql.Reader["idGrandfatherParent"]),
-                                    Convert.ToInt32(oSql.Reader["IdGrandfather"]),
+                                    oPatientParent = new classPatientParent(
+                                    Convert.ToInt32(oSql.Reader["idPatientParent"]),
+                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToInt32(oSql.Reader["IdParent"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
                                 }
                                 catch (FormatException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    oGrandfatherParent = null;
+                                    oPatientParent = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    oGrandfatherParent = null;
+                                    oPatientParent = null;
                                 }
                                 catch (OverflowException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    oGrandfatherParent = null;
+                                    oPatientParent = null;
                                 }
                             }
                         }
@@ -505,7 +505,7 @@ namespace Datos.Query
                             Menssage = oSql.Mensage;
 
                         oSql.Close();
-                        Result = oGrandfatherParent;
+                        Result = oPatientParent;
                         break;
                     }
                 case eAbm.Insert:
@@ -734,9 +734,9 @@ namespace Datos.Query
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
             lParam.Add(new SqlParameter("@IdProfessional", oP.IdProfessional));
-            lParam.Add(new SqlParameter("@ProfessionalRegistration", oP.ProfessionalRegistration));
             lParam.Add(new SqlParameter("@Name", oP.Name));
             lParam.Add(new SqlParameter("@LastName", oP.LastName));
+            lParam.Add(new SqlParameter("@ProfessionalRegistration", oP.ProfessionalRegistration));
             lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
             lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
             lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
@@ -761,9 +761,9 @@ namespace Datos.Query
                                 {
                                     classProfessional oProfessional = new classProfessional(
                                     Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                    Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["LastName"]),
+                                    Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),
@@ -810,9 +810,9 @@ namespace Datos.Query
                                 {
                                     oProfessional = new classProfessional(
                                     Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                    Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["LastName"]),
+                                    Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),
@@ -1188,7 +1188,7 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
             lParam.Add(new SqlParameter("@Address", oP.Address));
             lParam.Add(new SqlParameter("@Phone", oP.Phone));
-            lParam.Add(new SqlParameter("@AlternativePhone", oP.AlternativePhone));
+            lParam.Add(new SqlParameter("@Contact", oP.Contact));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
 
             switch (Abm)
@@ -1212,7 +1212,7 @@ namespace Datos.Query
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),
                                     Convert.ToString(oSql.Reader["Address"]),
                                     Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["AlternativePhone"]),
+                                    Convert.ToString(oSql.Reader["Contact"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
                                     lSocialWork.Add(oSocialWork);
                                 }
@@ -1258,7 +1258,7 @@ namespace Datos.Query
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),
                                     Convert.ToString(oSql.Reader["Address"]),
                                     Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["AlternativePhone"]),
+                                    Convert.ToString(oSql.Reader["Contact"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
                                 }
                                 catch (FormatException ex)
@@ -1689,14 +1689,14 @@ namespace Datos.Query
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public bool FiltroGrandfatherLimite(string Name, string LastName, int AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
+        public bool FiltroPatientLimite(string Name, string LastName, int AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
         {
-            string SPname = sp.FiltroGrandfatherLimite;
+            string SPname = sp.FiltroPatientLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Name", Name));
             lParam.Add(new SqlParameter("@LastName", LastName));
-            lParam.Add(new SqlParameter("@AffiliateNumber", Desde));
-            lParam.Add(new SqlParameter("@IdSocialWork", Desde));
+            lParam.Add(new SqlParameter("@AffiliateNumber", AffiliateNumber));
+            lParam.Add(new SqlParameter("@IdSocialWork", IdSocialWork));
             lParam.Add(new SqlParameter("@Desde", Desde));
             lParam.Add(new SqlParameter("@Hasta", Hasta));
 
@@ -1733,7 +1733,7 @@ namespace Datos.Query
             throw new NotImplementedException();
         }
 
-        public decimal CountGrandfather(classGrandfather oPersona)
+        public decimal CountGrandfather(classPatient oPersona)
         {
             throw new NotImplementedException();
         }

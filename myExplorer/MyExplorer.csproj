@@ -150,11 +150,11 @@
     <Compile Include="Formularios\frmAbmDiagnostic.Designer.cs">
       <DependentUpon>frmAbmDiagnostic.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAmbGrandfather.cs">
+    <Compile Include="Formularios\frmAbmPatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAmbGrandfather.Designer.cs">
-      <DependentUpon>frmAmbGrandfather.cs</DependentUpon>
+    <Compile Include="Formularios\frmAbmPatient.Designer.cs">
+      <DependentUpon>frmAbmPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmMain.cs">
       <SubType>Form</SubType>
@@ -201,8 +201,8 @@
     <EmbeddedResource Include="Formularios\frmAbmDiagnostic.resx">
       <DependentUpon>frmAbmDiagnostic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAmbGrandfather.resx">
-      <DependentUpon>frmAmbGrandfather.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmAbmPatient.resx">
+      <DependentUpon>frmAbmPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

@@ -39,12 +39,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\classDiagnostic.cs" />
-    <Compile Include="Clases\classGrandfatherParent.cs" />
+    <Compile Include="Clases\classPatientParent.cs" />
     <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
     <Compile Include="Clases\classProfessional.cs" />
     <Compile Include="Grillas\grvGrandfather.cs" />
-    <Compile Include="Clases\classGrandfather.cs" />
+    <Compile Include="Clases\classPatient.cs" />
     <Compile Include="Clases\classRelationship.cs" />
     <Compile Include="Clases\classSpecialty.cs" />
     <Compile Include="Clases\classProfessionalSpeciality.cs" />

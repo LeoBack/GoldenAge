@@ -9,9 +9,9 @@ namespace Entidades.Clases
     {
         #region Atributos y Metodos
         public int IdProfessional { set; get; }
-        public int ProfessionalRegistration{ set; get; }
         public string Name { set; get; }
         public string LastName { set; get; }
+        public int ProfessionalRegistration { set; get; }
         public int IdLocationCountry { set; get; }
         public int IdLocationProvince { set; get; }
         public int IdLocationCity { set; get; }
@@ -29,9 +29,9 @@ namespace Entidades.Clases
         public classProfessional()
         {
             this.IdProfessional = 0;
-            this.ProfessionalRegistration = 1;
             this.Name = string.Empty;
             this.LastName = string.Empty;
+            this.ProfessionalRegistration = 1;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -46,9 +46,9 @@ namespace Entidades.Clases
         public classProfessional(int vIdProfessional)
         {
             this.IdProfessional = vIdProfessional;
-            this.ProfessionalRegistration = 1;
             this.Name = string.Empty;
             this.LastName = string.Empty;
+            this.ProfessionalRegistration = 1;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -60,14 +60,14 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classProfessional(int vIdProfessional, int vProfessionalRegistration, string vName, string vLastName,
+        public classProfessional(int vIdProfessional, string vName, string vLastName, int vProfessionalRegistration, 
             int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone, 
             string vMail, string vUser, string vPassword, bool vVisible)
         {
             this.IdProfessional = vIdProfessional;
-            this.ProfessionalRegistration = vProfessionalRegistration;
             this.Name = vName;
             this.LastName = vLastName;
+            this.ProfessionalRegistration = vProfessionalRegistration;
             this.IdLocationCountry = vIdLocationCountry;
             this.IdLocationProvince = vIdLocationProvince;
             this.IdLocationCity = vIdLocationCity;
@@ -86,8 +86,8 @@ namespace Entidades.Clases
         {
             return
                 "IdProfessional: " + this.IdProfessional.ToString() +
-                "\nMatriculaProfesional: " + this.ProfessionalRegistration +
                 "\nApellido y Nombre: " + this.LastName + ", " + this.Name +
+                "\nMatriculaProfesional: " + this.ProfessionalRegistration +
                 "\nPais: " + this.IdLocationCountry +
                 "\nProvincia: " + this.IdLocationProvince +
                 "\nCiudad: " + this.IdLocationCity +

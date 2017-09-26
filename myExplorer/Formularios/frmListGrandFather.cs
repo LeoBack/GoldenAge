@@ -78,8 +78,8 @@ namespace myExplorer.Formularios
             {
                 int IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
 
-                frmAbmGrandfather frmGrandfatherulario = new frmAbmGrandfather();
-                frmGrandfatherulario.eModo = frmAbmGrandfather.Modo.Select;
+                frmAbmPatient frmGrandfatherulario = new frmAbmPatient();
+                frmGrandfatherulario.eModo = frmAbmPatient.Modo.Select;
                 frmGrandfatherulario.oQuery = oQuery;
                 frmGrandfatherulario.IdGrandfather = IdSelecionado;
                 frmGrandfatherulario.oUtil = oUtil;
@@ -92,20 +92,20 @@ namespace myExplorer.Formularios
         // OK - 24/09/17
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            classGrandfather oGf = new classGrandfather();
+            classPatient oGf = new classPatient();
 
             if (dgvLista.Rows.Count != 0)
             {
-                oGf.IdGrandfather = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-                oGf = (classGrandfather)oQuery.AbmGrandfather(oGf, classQuery.eAbm.Select);
+                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
 
                 if (oGf != null)
                 {
-                    frmAbmGrandfather frmA = new frmAbmGrandfather();
+                    frmAbmPatient frmA = new frmAbmPatient();
                     frmA.oQuery = oQuery;
                     frmA.oUtil = oUtil;
                     frmA.oGrandfather = oGf;
-                    frmA.eModo = frmAbmGrandfather.Modo.Delete;
+                    frmA.eModo = frmAbmPatient.Modo.Delete;
                     frmA.ShowDialog();
 
                     frmListGrandfather_Load(sender, e);
@@ -119,20 +119,20 @@ namespace myExplorer.Formularios
         // OK - 24/09/17
         private void tsmiUpdate_Click(object sender, EventArgs e)
         {
-            classGrandfather oGf = new classGrandfather();
+            classPatient oGf = new classPatient();
 
             if (dgvLista.Rows.Count != 0)
             {
-                oGf.IdGrandfather = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-                oGf = (classGrandfather)oQuery.AbmGrandfather(oGf, classQuery.eAbm.Select);
+                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
 
                 if (oGf != null)
                 {
-                    frmAbmGrandfather frmA = new frmAbmGrandfather();
+                    frmAbmPatient frmA = new frmAbmPatient();
                     frmA.oQuery = oQuery;
                     frmA.oUtil = oUtil;
                     frmA.oGrandfather = oGf;
-                    frmA.eModo = frmAbmGrandfather.Modo.Update;
+                    frmA.eModo = frmAbmPatient.Modo.Update;
                     frmA.ShowDialog();
 
                     frmListGrandfather_Load(sender, e);
@@ -145,10 +145,10 @@ namespace myExplorer.Formularios
         // OK - 24/09/17
         private void tsmiAdd_Click(object sender, EventArgs e)
         {
-            frmAbmGrandfather frmA = new frmAbmGrandfather();
+            frmAbmPatient frmA = new frmAbmPatient();
             frmA.oQuery = oQuery;
             frmA.oUtil = oUtil;
-            frmA.eModo = frmAbmGrandfather.Modo.Add;
+            frmA.eModo = frmAbmPatient.Modo.Add;
             frmA.ShowDialog();
         }
 
@@ -192,7 +192,7 @@ namespace myExplorer.Formularios
         // OK - 24/09/17
         private void tsbImprimir_Click(object sender, EventArgs e)
         {
-            classGrandfather oP = new classGrandfather();
+            classPatient oP = new classPatient();
             oP.LastName = tstxtLastName.Text;
             oP.AffiliateNumber = Convert.ToInt32(tstxtAffiliateNumber.Text);
             oP.IdSocialWork = Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue);
@@ -244,7 +244,7 @@ namespace myExplorer.Formularios
         {
             SelectRow = 0;
 
-            if (oQuery.FiltroGrandfatherLimite(
+            if (oQuery.FiltroPatientLimite(
                 tstxtName.TextBox.Text, 
                 tstxtLastName.TextBox.Text, 
                 Convert.ToInt32(tstxtAffiliateNumber.TextBox.Text), 

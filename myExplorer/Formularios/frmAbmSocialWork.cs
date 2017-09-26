@@ -235,7 +235,7 @@ namespace myExplorer.Formularios
             oSocialWork.IdLocationCity = IdCity;
             oSocialWork.Address = txtAddress.Text;
             oSocialWork.Phone = txtPhone.Text;
-            oSocialWork.AlternativePhone = txtAlternativePhone.Text;
+            oSocialWork.Contact = txtAlternativePhone.Text;
             //oSocialWork.Visible = true;
         }
 
@@ -249,7 +249,7 @@ namespace myExplorer.Formularios
             txtDescription.Text = oSocialWork.Description;
             txtAddress.Text = oSocialWork.Address;
             txtPhone.Text = oSocialWork.Phone;
-            txtAlternativePhone.Text = oSocialWork.AlternativePhone;
+            txtAlternativePhone.Text = oSocialWork.Contact;
             
             txtLocation.Text = frmLocation.toStringLocation(
                 oQuery.ConexionString,

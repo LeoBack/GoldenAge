@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classGrandfather
+    public class classPatient
     {
         #region Atributos y Metodos
-        public int IdGrandfather { set; get; }
+        public int IdPatient { set; get; }
         public string Name { set; get; }
         public string LastName { set; get; }
         public DateTime Birthdate { set; get; }
@@ -30,9 +30,9 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classGrandfather()
+        public classPatient()
         {
-            this.IdGrandfather = 0;
+            this.IdPatient = 0;
             this.Name = string.Empty;
             this.LastName = string.Empty;
             this.Birthdate = DateTime.Now.AddYears(-65);
@@ -52,9 +52,9 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classGrandfather(int vIdGrandfather)
+        public classPatient(int vIdPatient)
         {
-            this.IdGrandfather = vIdGrandfather;
+            this.IdPatient = vIdPatient;
             this.Name = string.Empty;
             this.LastName = string.Empty;
             this.Birthdate = DateTime.Now.AddYears(-65);
@@ -74,11 +74,11 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classGrandfather( int vIdGrandfather, string vName, string vLastName, DateTime vBirthdate,
+        public classPatient(int vIdPatient, string vName, string vLastName, DateTime vBirthdate,
             int vIdTypeDocument, int vNumberDocument, int vSex, int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, int vAffiliateNumber,
             DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, bool vVisible)
         {
-            this.IdGrandfather = vIdGrandfather;
+            this.IdPatient = vIdPatient;
             this.Name = vName;
             this.LastName = vLastName;
             this.Birthdate = DateTime.Now.AddYears(-65);
@@ -104,7 +104,7 @@ namespace Entidades.Clases
         public override string ToString()
         {
             return
-                "Id: " + this.IdGrandfather.ToString() +
+                "Id: " + this.IdPatient.ToString() +
                 "\nApellido y Nombre: " + this.LastName + ", " + this.Name +
                 "\nFecha de Nacimiento: " +this.Birthdate.ToShortDateString() +
                 "\nTipo y Nro Doc: " + this.IdTypeDocument.ToString() + "-" + this.NumberDocument.ToString() +

@@ -9,8 +9,8 @@ namespace Datos.Query
     {
         // ABM
         public string AbmDiagnostic = "[spAbmDiagnostic-v1.0]";
-        public string AbmGrandfather = "[spAbmGrandfather-v1.0]";
-        public string AbmGrandfatherParent = "[spAbmGrandfatherParent-v1.0]";
+        public string AbmPatient = "[spAbmPatient-v1.0]";
+        public string AbmPatientParent = "[spAbmPatientParent-v1.0]";
         public string AbmParent = "[spAbmParent-v1.0]";
         public string AbmProfessional = "[spAbmProfessional-v1.0]";
         public string AbmProfessionalSpeciality = "[spAbmProfessionalSpeciality-v1.0]";
@@ -23,7 +23,7 @@ namespace Datos.Query
         //
         public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
         public string FiltroProfesionalesLimite = "[spListProfessional-v1.0]";
-        public string FiltroGrandfatherLimite = "[spListGrandfather-v1.0]";
+        public string FiltroPatientLimite = "[spListPatient-v1.0]";
         //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
         //public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]"; 
     }

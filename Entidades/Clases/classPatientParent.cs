@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classGrandfatherParent
+    public class classPatientParent
     {
         #region Atributos y Metodos
-        public int IdGrandfatherParent { set; get; }
-        public int IdGrandfather { set; get; }
+        public int IdPatientParent { set; get; }
+        public int IdPatient { set; get; }
         public int IdParent { set; get; }
         public bool Visible { set; get; }
 
@@ -17,26 +17,26 @@ namespace Entidades.Clases
 
         #region Constructores
         
-        public classGrandfatherParent()
+        public classPatientParent()
         {
-            this.IdGrandfatherParent = 0;
-            this.IdGrandfather = 0;
+            this.IdPatientParent = 0;
+            this.IdPatient = 0;
             this.IdParent = 0;
             this.Visible = true;
         }
 
-        public classGrandfatherParent(int vIdGrandfatherParent)
+        public classPatientParent(int vIdPatientParent)
         {
-            this.IdGrandfatherParent = vIdGrandfatherParent;
-            this.IdGrandfather = 0;
+            this.IdPatientParent = vIdPatientParent;
+            this.IdPatient = 0;
             this.IdParent = 0;
             this.Visible = true;
         }
 
-        public classGrandfatherParent(int vIdIdGrandfatherParent, int vIdGrandfather, int vIdParent, bool vVisible)
+        public classPatientParent(int vIdIdPatientParent, int vIdPatient, int vIdParent, bool vVisible)
         {
-            this.IdGrandfatherParent = IdGrandfatherParent;
-            this.IdGrandfather = vIdGrandfather;
+            this.IdPatientParent = IdPatientParent;
+            this.IdPatient = vIdPatient;
             this.IdParent = vIdParent;
             this.Visible = vVisible;
         }
@@ -46,8 +46,8 @@ namespace Entidades.Clases
 
         public override string ToString()
         {
-            return "Id: " + this.IdGrandfatherParent.ToString() +
-            "\nGrandfather: " + this.IdGrandfather.ToString() +
+            return "Id: " + this.IdPatientParent.ToString() +
+            "\nPatient: " + this.IdPatient.ToString() +
                 "\nParentezco: " + this.IdParent.ToString() +
              "\nVisible: " + this.Visible.ToString();
         }

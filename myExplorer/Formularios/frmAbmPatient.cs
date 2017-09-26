@@ -15,19 +15,19 @@ using libLocalitation.Forms;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmAbmGrandfather : Form
+    public partial class frmAbmPatient : Form
     {
         #region Atributos y Propiedades
 
         public enum Modo { Add, Select, Update, Delete }
 
         public Modo eModo { set; get; }
-        public int IdGrandfather { set; get; }
+        public int IdPatient { set; get; }
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
 
-        public classGrandfather oGrandfather { set; get; }
+        public classPatient oPatient { set; get; }
         private classDiagnostic oDiagnostic;
 
         private classControlComboBoxes oComboBox;
@@ -48,18 +48,18 @@ namespace myExplorer.Formularios
         #region Formulario
 
         //OK 24/05/12
-        public frmAbmGrandfather()
+        public frmAbmPatient()
         {
             InitializeComponent();
         }
 
         //OK 24/05/12
-        private void frmAbmGrandfather_Load(object sender, EventArgs e)
+        private void frmAbmPatient_Load(object sender, EventArgs e)
         {
             this.Text = oTxt.TitleFichaGrandfather;
             if (oQuery != null)
             {
-                oGrandfather = new classGrandfather();
+                oPatient = new classPatient();
                 oDiagnostic = new classDiagnostic();
                 oValidar = new classValidaciones();
 
@@ -324,7 +324,7 @@ namespace myExplorer.Formularios
             if (eModo == Modo.Select)
             {
                 this.eModo = Modo.Update;
-                this.frmAbmGrandfather_Load(sender, e);
+                this.frmAbmPatient_Load(sender, e);
             }
         }
 
@@ -371,21 +371,21 @@ namespace myExplorer.Formularios
         /// </summary>
         private void ini()
         {
-            if (this.IdGrandfather != 0)
+            if (this.IdPatient != 0)
             {
-                oGrandfather.IdGrandfather = this.IdGrandfather;
+                oPatient.IdPatient = this.IdPatient;
                 //oGrandfather = oQuery.SelectPersona(oGrandfather);
             }
 
             // Modo en el que se mostrara el formulario
-            if (eModo == Modo.Select && oGrandfather.IdGrandfather != 0)
+            if (eModo == Modo.Select && oPatient.IdPatient != 0)
             {
                 this.EnableFicha(false, true);
                 this.EnableDiagnostico(true);
                 this.EscribirEnFrm();
                 this.CargarDiagnostico();
             }
-            else if (eModo == Modo.Update && oGrandfather.IdGrandfather != 0)
+            else if (eModo == Modo.Update && oPatient.IdPatient != 0)
             {
                 this.EnableFicha(true, false);
                 this.EnableDiagnostico(true);
@@ -394,7 +394,7 @@ namespace myExplorer.Formularios
             }
             else if (eModo == Modo.Add)
             {
-                oGrandfather = new classGrandfather();
+                oPatient = new classPatient();
 
                 this.EnableFicha(true, false);
                 this.EnableDiagnostico(false);

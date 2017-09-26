@@ -17,7 +17,7 @@ namespace Entidades.Clases
         public int IdLocationCity { set; get; }
         public string Address { set; get; }
         public string Phone { set; get; }
-        public string AlternativePhone { set; get; }
+        public string Contact { set; get; }
         public bool Visible { set; get; }
         
         #endregion
@@ -34,7 +34,7 @@ namespace Entidades.Clases
             this.IdLocationCity = 0;
             this.Address = string.Empty;
             this.Phone = string.Empty;
-            this.AlternativePhone = string.Empty;
+            this.Contact = string.Empty;
             this.Visible = true;
         }
 
@@ -48,12 +48,12 @@ namespace Entidades.Clases
             this.IdLocationCity = 0;
             this.Address = string.Empty;
             this.Phone = string.Empty;
-            this.AlternativePhone = string.Empty;
+            this.Contact = string.Empty;
             this.Visible = true;
         }
 
         public classSocialWork(int vIdSocialWork, string vName, string vDescription,
-            int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone, string vAlternativePhone, bool vVisible)
+            int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone, string vContact, bool vVisible)
         {
             this.IdSocialWork = vIdSocialWork;
             this.Name = vName;
@@ -63,7 +63,7 @@ namespace Entidades.Clases
             this.IdLocationCity = vIdLocationCity;
             this.Address = vAddress;
             this.Phone = vPhone;
-            this.AlternativePhone = vAlternativePhone;
+            this.Contact = vContact;
             this.Visible = vVisible;
         }
 
@@ -81,7 +81,7 @@ namespace Entidades.Clases
             "\nCiudad: " + this.IdLocationCity +
             "\nDomicilio: " + this.Address +
             "\nTelefono: " + this.Phone +
-            "\nTelefono Alternativo: " + this.AlternativePhone +
+            "\nContacto: " + this.Contact +
             "\nVisible: " + this.Visible.ToString();
         }
 
