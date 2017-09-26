@@ -69,10 +69,16 @@ namespace myExplorer.Formularios
                 // Cargo los Combos
                 oComboBox = new classControlComboBoxes();
                 oComboBox.CargaCombo(cmbSocialWork,
-                (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), 
+                //(bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), 
+                //oQuery.Table);
+                //Modificado por Marcos.
+                (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
                 oQuery.Table);
                 //oComboBox.CargaCombo(cmbTipoPaciente, oQuery.ListaTipoDePersonas(), oQuery.Table);
-
+                //Modificado por Marcos.
+                oComboBox.CargaCombo(cmbTypeDocument,
+                (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb), 
+                oQuery.Table);
                 this.ini();
             }
             else

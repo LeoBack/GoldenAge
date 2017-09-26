@@ -57,29 +57,27 @@
             // tlpPanel
             // 
             this.tlpPanel.ColumnCount = 2;
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1071F));
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 714F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
             this.tlpPanel.Controls.Add(this.btnCerrar, 1, 2);
             this.tlpPanel.Controls.Add(this.dgvLista, 0, 1);
             this.tlpPanel.Controls.Add(this.tsMenu, 0, 0);
             this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanel.Location = new System.Drawing.Point(0, 0);
-            this.tlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tlpPanel.Name = "tlpPanel";
             this.tlpPanel.RowCount = 3;
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.tlpPanel.Size = new System.Drawing.Size(1204, 692);
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tlpPanel.Size = new System.Drawing.Size(803, 450);
             this.tlpPanel.TabIndex = 0;
             // 
             // btnCerrar
             // 
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCerrar.Location = new System.Drawing.Point(1075, 611);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCerrar.Location = new System.Drawing.Point(717, 397);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(112, 76);
+            this.btnCerrar.Size = new System.Drawing.Size(75, 49);
             this.btnCerrar.TabIndex = 3;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
@@ -90,10 +88,9 @@
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tlpPanel.SetColumnSpan(this.dgvLista, 2);
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(4, 65);
-            this.dgvLista.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvLista.Location = new System.Drawing.Point(3, 42);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(1196, 536);
+            this.dgvLista.Size = new System.Drawing.Size(797, 349);
             this.dgvLista.TabIndex = 5;
             this.dgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
             // 
@@ -114,8 +111,7 @@
             this.tsbAnterior});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.tsMenu.Size = new System.Drawing.Size(1204, 39);
+            this.tsMenu.Size = new System.Drawing.Size(803, 39);
             this.tsMenu.TabIndex = 7;
             this.tsMenu.Text = "Menu";
             // 
@@ -129,38 +125,39 @@
             this.tsbAdd.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAdd.Name = "tsbAdd";
-            this.tsbAdd.Size = new System.Drawing.Size(112, 36);
+            this.tsbAdd.Size = new System.Drawing.Size(85, 36);
             this.tsbAdd.Text = "Agregar";
+            this.tsbAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
             // tslblName
             // 
             this.tslblName.Name = "tslblName";
-            this.tslblName.Size = new System.Drawing.Size(78, 36);
+            this.tslblName.Size = new System.Drawing.Size(51, 36);
             this.tslblName.Text = "Nombre";
             // 
             // tstxtNombre
             // 
             this.tstxtNombre.Name = "tstxtNombre";
-            this.tstxtNombre.Size = new System.Drawing.Size(148, 39);
+            this.tstxtNombre.Size = new System.Drawing.Size(100, 39);
             this.tstxtNombre.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tslblLastName
             // 
             this.tslblLastName.Name = "tslblLastName";
-            this.tslblLastName.Size = new System.Drawing.Size(78, 36);
+            this.tslblLastName.Size = new System.Drawing.Size(51, 36);
             this.tslblLastName.Text = "Apellido";
             // 
             // tstxtLastName
             // 
             this.tstxtLastName.Name = "tstxtLastName";
-            this.tstxtLastName.Size = new System.Drawing.Size(100, 39);
+            this.tstxtLastName.Size = new System.Drawing.Size(68, 39);
             // 
             // tsbBuscar
             // 
             this.tsbBuscar.Image = global::myExplorer.Properties.Resources.Search;
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(99, 36);
+            this.tsbBuscar.Size = new System.Drawing.Size(78, 36);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
             // 
@@ -168,7 +165,7 @@
             // 
             this.tslPagina.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tslPagina.Name = "tslPagina";
-            this.tslPagina.Size = new System.Drawing.Size(82, 36);
+            this.tslPagina.Size = new System.Drawing.Size(55, 36);
             this.tslPagina.Text = "tslPagina";
             // 
             // tsbSiguiente
@@ -201,13 +198,13 @@
             this.tsmiDelete,
             this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(168, 94);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(134, 94);
             // 
             // tsmiUpdate
             // 
             this.tsmiUpdate.Image = global::myExplorer.Properties.Resources.EditFile;
             this.tsmiUpdate.Name = "tsmiUpdate";
-            this.tsmiUpdate.Size = new System.Drawing.Size(167, 30);
+            this.tsmiUpdate.Size = new System.Drawing.Size(133, 30);
             this.tsmiUpdate.Text = "Modificar";
             this.tsmiUpdate.Click += new System.EventHandler(this.tsmiUpdate_Click);
             // 
@@ -215,7 +212,7 @@
             // 
             this.tsmiDelete.Image = global::myExplorer.Properties.Resources.Error;
             this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(167, 30);
+            this.tsmiDelete.Size = new System.Drawing.Size(133, 30);
             this.tsmiDelete.Text = "Eliminar";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
@@ -223,18 +220,17 @@
             // 
             this.tsmiAdd.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsmiAdd.Name = "tsmiAdd";
-            this.tsmiAdd.Size = new System.Drawing.Size(167, 30);
+            this.tsmiAdd.Size = new System.Drawing.Size(133, 30);
             this.tsmiAdd.Text = "Agregar";
             this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
             // frmListProfessional
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 692);
+            this.ClientSize = new System.Drawing.Size(803, 450);
             this.Controls.Add(this.tlpPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmListProfessional";
