@@ -100,7 +100,7 @@ namespace myExplorer.Formularios
         {
             if (User == eUser.Valido)
             {
-                frmListGrandfather frmBuscar = new frmListGrandfather();
+                frmListPatient frmBuscar = new frmListPatient();
                 frmBuscar.oQuery = oQuery;
                 frmBuscar.oUtil = oUtil;
                 frmBuscar.ShowDialog();

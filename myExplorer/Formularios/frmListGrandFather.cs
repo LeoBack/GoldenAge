@@ -16,7 +16,7 @@ using Controles;
 
 namespace myExplorer.Formularios
 {
-    public partial class frmListGrandfather : Form
+    public partial class frmListPatient : Form
     {
         // OK - 24/09/17
         #region Atributos y Propiedades
@@ -41,7 +41,7 @@ namespace myExplorer.Formularios
         #region Formulario
 
         // OK - 17/09/09
-        public frmListGrandfather()
+        public frmListPatient()
         {
             InitializeComponent();
         }
@@ -78,12 +78,12 @@ namespace myExplorer.Formularios
             {
                 int IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
 
-                frmAbmPatient frmGrandfatherulario = new frmAbmPatient();
-                frmGrandfatherulario.eModo = frmAbmPatient.Modo.Select;
-                frmGrandfatherulario.oQuery = oQuery;
-                frmGrandfatherulario.IdGrandfather = IdSelecionado;
-                frmGrandfatherulario.oUtil = oUtil;
-                frmGrandfatherulario.ShowDialog();
+                frmAbmPatient frmIdPatientulario = new frmAbmPatient();
+                frmIdPatientulario.eModo = frmAbmPatient.Modo.Select;
+                frmIdPatientulario.oQuery = oQuery;
+                frmIdPatientulario.IdPatient = IdSelecionado;
+                frmIdPatientulario.oUtil = oUtil;
+                frmIdPatientulario.ShowDialog();
 
                 frmListGrandfather_Load(sender, e);
             }
@@ -104,7 +104,7 @@ namespace myExplorer.Formularios
                     frmAbmPatient frmA = new frmAbmPatient();
                     frmA.oQuery = oQuery;
                     frmA.oUtil = oUtil;
-                    frmA.oGrandfather = oGf;
+                    frmA.oPatient = oGf;
                     frmA.eModo = frmAbmPatient.Modo.Delete;
                     frmA.ShowDialog();
 
@@ -131,7 +131,7 @@ namespace myExplorer.Formularios
                     frmAbmPatient frmA = new frmAbmPatient();
                     frmA.oQuery = oQuery;
                     frmA.oUtil = oUtil;
-                    frmA.oGrandfather = oGf;
+                    frmA.oPatient = oGf;
                     frmA.eModo = frmAbmPatient.Modo.Update;
                     frmA.ShowDialog();
 

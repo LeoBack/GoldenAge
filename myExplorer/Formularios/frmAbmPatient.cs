@@ -56,7 +56,7 @@ namespace myExplorer.Formularios
         //OK 24/05/12
         private void frmAbmPatient_Load(object sender, EventArgs e)
         {
-            this.Text = oTxt.TitleFichaGrandfather;
+            this.Text = oTxt.TitleFichaPatient;
             if (oQuery != null)
             {
                 oPatient = new classPatient();

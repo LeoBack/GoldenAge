@@ -14,7 +14,7 @@ namespace Controles
         public string TitleAdministradorUsuario = "Administrador de Usuarios.";
         public string TitleSocialWorks = "Obras Sociales";
         public string TitleSocialWork = "Obra Social - Detalles";
-        public string TitleFichaGrandfather = "Ficha Medica";
+        public string TitleFichaPatient = "Ficha Medica";
         public string TitleListGrandfather = "Lista de Pacientes";
         public string TitleListProfessional = "Planilla de Profesionales.";
 
