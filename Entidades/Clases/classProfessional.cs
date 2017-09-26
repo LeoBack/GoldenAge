@@ -20,6 +20,7 @@ namespace Entidades.Clases
         public string Mail { set; get; }
         public string User { set; get; }
         public string Password { set; get; }
+        public int Admin { set; get; }
         public bool Visible { set; get; }
         
         #endregion
@@ -40,6 +41,7 @@ namespace Entidades.Clases
             this.Mail = string.Empty;
             this.User = string.Empty;
             this.Password = string.Empty;
+            this.Admin = 0;
             this.Visible = true;
         }
 
@@ -57,12 +59,13 @@ namespace Entidades.Clases
             this.Mail = string.Empty;
             this.User = string.Empty;
             this.Password = string.Empty;
+            this.Admin = 0;
             this.Visible = true;
         }
 
         public classProfessional(int vIdProfessional, string vName, string vLastName, int vProfessionalRegistration, 
             int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone, 
-            string vMail, string vUser, string vPassword, bool vVisible)
+            string vMail, string vUser, string vPassword, int vAdmin,bool vVisible)
         {
             this.IdProfessional = vIdProfessional;
             this.Name = vName;
@@ -76,6 +79,7 @@ namespace Entidades.Clases
             this.Mail = vMail;
             this.User = vUser;
             this.Password = vPassword;
+            this.Admin = vAdmin;
             this.Visible = vVisible;
         }
 
@@ -96,6 +100,7 @@ namespace Entidades.Clases
                 "\nE-Mail: " + this.Mail + "" +
                 "\nUsuario: " + this.User + "" +
                 "\nClave: " + this.Password + "" +
+                "\nAdmin: " + this.Admin + "" +
                 "\nVisible: " + this.Visible.ToString();
         }
 

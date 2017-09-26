@@ -745,6 +745,7 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@Mail", oP.Mail));
             lParam.Add(new SqlParameter("@User", oP.User));
             lParam.Add(new SqlParameter("@Password", oP.Password));
+            lParam.Add(new SqlParameter("Admin", oP.Admin));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
 
             switch (Abm)
@@ -772,6 +773,7 @@ namespace Datos.Query
                                     Convert.ToString(oSql.Reader["Mail"]),
                                     Convert.ToString(oSql.Reader["User"]),
                                     Convert.ToString(oSql.Reader["Password"]),
+                                    Convert.ToInt32(oSql.Reader["Admin"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
                                     lProfessional.Add(oProfessional);
                                 }
@@ -821,6 +823,7 @@ namespace Datos.Query
                                     Convert.ToString(oSql.Reader["Mail"]),
                                     Convert.ToString(oSql.Reader["User"]),
                                     Convert.ToString(oSql.Reader["Password"]),
+                                    Convert.ToInt32(oSql.Reader["Admin"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
                                 }
                                 catch (FormatException ex)
