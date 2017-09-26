@@ -26,7 +26,6 @@ namespace myExplorer.Formularios
         public classSocialWork oSocialWork { set; get; }
         public int IdSocialWork { set; get; }
 
-        private classControlComboBoxes oComboBox;
         private classTextos oTxt = new classTextos();
 
         private int IdCountry = 0;
@@ -48,8 +47,6 @@ namespace myExplorer.Formularios
         private void frmAbmSocialWork_Load(object sender, EventArgs e)
         {
             Text = oTxt.TitleSocialWork;
-
-            oComboBox = new classControlComboBoxes();
 
             if (oQuery != null)
             {   //-------------------------------------------------

@@ -30,7 +30,6 @@ namespace myExplorer.Formularios
         public classPatient oPatient { set; get; }
         private classDiagnostic oDiagnostic;
 
-        private classControlComboBoxes oComboBox;
         private classValidaciones oValidar;
         private classTextos oTxt = new classTextos();
         private int SelectRow;
@@ -67,18 +66,12 @@ namespace myExplorer.Formularios
                 this.ConfiguracionFicha();
 
                 // Cargo los Combos
-                oComboBox = new classControlComboBoxes();
-                oComboBox.CargaCombo(cmbSocialWork,
-                //(bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), 
-                //oQuery.Table);
-                //Modificado por Marcos.
-                (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
-                oQuery.Table);
-                //oComboBox.CargaCombo(cmbTipoPaciente, oQuery.ListaTipoDePersonas(), oQuery.Table);
-                //Modificado por Marcos.
-                oComboBox.CargaCombo(cmbTypeDocument,
-                (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb), 
-                oQuery.Table);
+                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSocialWork,
+                    (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
+                    oQuery.Table);
+                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocument,
+                    (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb), 
+                    oQuery.Table);
                 this.ini();
             }
             else

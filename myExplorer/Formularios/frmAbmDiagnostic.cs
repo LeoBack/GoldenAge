@@ -24,7 +24,6 @@ namespace myExplorer.Formularios
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
 
-        private classControlComboBoxes oCombo;
         private classTextos oTxt = new classTextos();
 
         #endregion
@@ -43,8 +42,6 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null)
             {
-                oCombo = new classControlComboBoxes();
-
                 Size sBtn = new Size(75, 42);
                 btnCerrar.Size = sBtn;
                 btnEliminar.Size = sBtn;
