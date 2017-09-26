@@ -104,7 +104,7 @@
             this.tbpPerfil.Controls.Add(this.tlpTab);
             this.tbpPerfil.Location = new System.Drawing.Point(4, 22);
             this.tbpPerfil.Name = "tbpPerfil";
-            this.tbpPerfil.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tbpPerfil.Padding = new System.Windows.Forms.Padding(3);
             this.tbpPerfil.Size = new System.Drawing.Size(391, 239);
             this.tbpPerfil.TabIndex = 0;
             this.tbpPerfil.Text = "Perfil";
@@ -202,7 +202,7 @@
             // 
             this.txtProfessionalRegistration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProfessionalRegistration.Location = new System.Drawing.Point(79, 15);
-            this.txtProfessionalRegistration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProfessionalRegistration.Margin = new System.Windows.Forms.Padding(2);
             this.txtProfessionalRegistration.Name = "txtProfessionalRegistration";
             this.txtProfessionalRegistration.Size = new System.Drawing.Size(220, 20);
             this.txtProfessionalRegistration.TabIndex = 1;
@@ -223,7 +223,7 @@
             // 
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAddress.Location = new System.Drawing.Point(79, 93);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(220, 20);
             this.txtAddress.TabIndex = 7;
@@ -244,7 +244,7 @@
             // 
             this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLocation.Location = new System.Drawing.Point(79, 119);
-            this.txtLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(2);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ReadOnly = true;
             this.txtLocation.Size = new System.Drawing.Size(220, 20);
@@ -266,7 +266,7 @@
             // 
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPhone.Location = new System.Drawing.Point(79, 145);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(220, 20);
             this.txtPhone.TabIndex = 12;
@@ -304,7 +304,7 @@
             // btnLocalitation
             // 
             this.btnLocalitation.Location = new System.Drawing.Point(303, 118);
-            this.btnLocalitation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLocalitation.Margin = new System.Windows.Forms.Padding(2);
             this.btnLocalitation.Name = "btnLocalitation";
             this.btnLocalitation.Size = new System.Drawing.Size(57, 22);
             this.btnLocalitation.TabIndex = 10;
@@ -316,9 +316,9 @@
             // 
             this.tbpLogin.Controls.Add(this.tlpLogin);
             this.tbpLogin.Location = new System.Drawing.Point(4, 22);
-            this.tbpLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbpLogin.Margin = new System.Windows.Forms.Padding(2);
             this.tbpLogin.Name = "tbpLogin";
-            this.tbpLogin.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbpLogin.Padding = new System.Windows.Forms.Padding(2);
             this.tbpLogin.Size = new System.Drawing.Size(391, 239);
             this.tbpLogin.TabIndex = 1;
             this.tbpLogin.Text = "Datos de Acceso";
@@ -337,7 +337,7 @@
             this.tlpLogin.Controls.Add(this.btnBloquear, 2, 3);
             this.tlpLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpLogin.Location = new System.Drawing.Point(2, 2);
-            this.tlpLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpLogin.Margin = new System.Windows.Forms.Padding(2);
             this.tlpLogin.Name = "tlpLogin";
             this.tlpLogin.RowCount = 4;
             this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -383,7 +383,7 @@
             // 
             this.txtUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUser.Location = new System.Drawing.Point(69, 93);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(2);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(236, 20);
             this.txtUser.TabIndex = 1;
@@ -402,9 +402,9 @@
             // 
             this.tabSpeciality.Controls.Add(this.tlpSpeciality);
             this.tabSpeciality.Location = new System.Drawing.Point(4, 22);
-            this.tabSpeciality.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabSpeciality.Margin = new System.Windows.Forms.Padding(2);
             this.tabSpeciality.Name = "tabSpeciality";
-            this.tabSpeciality.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabSpeciality.Padding = new System.Windows.Forms.Padding(2);
             this.tabSpeciality.Size = new System.Drawing.Size(391, 239);
             this.tabSpeciality.TabIndex = 2;
             this.tabSpeciality.Text = "Especiadades";
@@ -418,7 +418,7 @@
             this.tlpSpeciality.Controls.Add(this.clbSpeciality, 0, 1);
             this.tlpSpeciality.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpSpeciality.Location = new System.Drawing.Point(2, 2);
-            this.tlpSpeciality.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpSpeciality.Margin = new System.Windows.Forms.Padding(2);
             this.tlpSpeciality.Name = "tlpSpeciality";
             this.tlpSpeciality.RowCount = 2;
             this.tlpSpeciality.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.31522F));
@@ -441,7 +441,7 @@
             this.clbSpeciality.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbSpeciality.FormattingEnabled = true;
             this.clbSpeciality.Location = new System.Drawing.Point(2, 33);
-            this.clbSpeciality.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clbSpeciality.Margin = new System.Windows.Forms.Padding(2);
             this.clbSpeciality.Name = "clbSpeciality";
             this.clbSpeciality.Size = new System.Drawing.Size(383, 200);
             this.clbSpeciality.TabIndex = 1;
@@ -457,7 +457,7 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // frmProfessional
+            // frmAbmProfessional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -465,7 +465,7 @@
             this.Controls.Add(this.tlpPanel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmProfessional";
+            this.Name = "frmAbmProfessional";
             this.Text = "Profesional (ABM)";
             this.Load += new System.EventHandler(this.frmAbmProfessional_Load);
             this.tlpPanel.ResumeLayout(false);
