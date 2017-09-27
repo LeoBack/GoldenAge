@@ -231,6 +231,177 @@ namespace Datos.Query
             return Result;
         }
 
+        public object AbmParent(classParent oP, eAbm Abm)
+        {
+            object Result = null;
+            string SPname = sp.AbmParent;
+
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Abm", (int)Abm));
+            lParam.Add(new SqlParameter("@IdParent", oP.IdParent));
+            lParam.Add(new SqlParameter("@Name", oP.Name));
+            lParam.Add(new SqlParameter("@LastName", oP.LastName));
+            lParam.Add(new SqlParameter("@IdTypeDocument", oP.IdTypeDocument));
+            lParam.Add(new SqlParameter("@NumberDocument", oP.NumberDocument));
+            lParam.Add(new SqlParameter("@Phone", oP.Phone));
+            lParam.Add(new SqlParameter("@AlternativePhone", oP.AlternativePhone));
+            lParam.Add(new SqlParameter("@Email", oP.Email));
+            lParam.Add(new SqlParameter("@IdRelationship", oP.IdRelationship));
+            lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
+            lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
+            lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
+            lParam.Add(new SqlParameter("@Address", oP.Address));
+            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+
+            switch (Abm)
+            {
+                case eAbm.SelectAll:
+                    {
+                        List<classParent> lParent = null;
+                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        {
+                            lParent = new List<classParent>();
+                            while (oSql.Reader.Read())
+                            {
+                                try
+                                {
+                                    classParent oParent = new classParent(
+                                    Convert.ToInt32(oSql.Reader["IdParent"]),
+                                    Convert.ToString(oSql.Reader["Name"]),
+                                    Convert.ToString(oSql.Reader["LastName"]),
+                                    Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
+                                    Convert.ToInt32(oSql.Reader["NumberDocument"]),
+                                    Convert.ToString(oSql.Reader["Phone"]),
+                                    Convert.ToString(oSql.Reader["AlternativePhone"]),
+                                    Convert.ToString(oSql.Reader["Email"]),
+                                    Convert.ToInt32(oSql.Reader["IdRelationship"]),
+                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                    Convert.ToString(oSql.Reader["Address"]),
+                                    Convert.ToBoolean(oSql.Reader["Visible"]));
+                                    lParent.Add(oParent);
+                                }
+                                catch (FormatException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    lParent = null;
+                                }
+                                catch (InvalidCastException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    lParent = null;
+                                }
+                                catch (OverflowException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    lParent = null;
+                                }
+                            }
+                        }
+                        else
+                            Menssage = oSql.Mensage;
+
+                        oSql.Close();
+                        Result = lParent;
+                        break;
+                    }
+                case eAbm.Select:
+                    {
+                        classParent oParent = null;
+                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        {
+                            if (oSql.Reader.Read())
+                            {
+                                try
+                                {
+                                    oParent = new classParent(
+                                    Convert.ToInt32(oSql.Reader["IdParent"]),
+                                    Convert.ToString(oSql.Reader["Name"]),
+                                    Convert.ToString(oSql.Reader["LastName"]),
+                                    Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
+                                    Convert.ToInt32(oSql.Reader["NumberDocument"]),
+                                    Convert.ToString(oSql.Reader["Phone"]),
+                                    Convert.ToString(oSql.Reader["AlternativePhone"]),
+                                    Convert.ToString(oSql.Reader["Email"]),
+                                    Convert.ToInt32(oSql.Reader["IdRelationship"]),
+                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                    Convert.ToString(oSql.Reader["Address"]),
+                                    Convert.ToBoolean(oSql.Reader["Visible"]));
+                                }
+                                catch (FormatException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    oParent = null;
+                                }
+                                catch (InvalidCastException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    oParent = null;
+                                }
+                                catch (OverflowException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    oParent = null;
+                                }
+                            }
+                        }
+                        else
+                            Menssage = oSql.Mensage;
+
+                        oSql.Close();
+                        Result = oParent;
+                        break;
+                    }
+                case eAbm.Insert:
+                    {
+                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                        if (UltimoId == 0)
+                            Menssage = oSql.Mensage;
+
+                        Result = UltimoId;
+                        break;
+                    }
+                case eAbm.Update:
+                    {
+                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                        if (UltimoId == 0)
+                            Menssage = oSql.Mensage;
+
+                        Result = UltimoId;
+                        break;
+                    }
+                case eAbm.Delete:
+                    {
+                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                        if (UltimoId == 0)
+                            Menssage = oSql.Mensage;
+
+                        Result = UltimoId;
+                        break;
+                    }
+                case eAbm.LoadCmb:
+                    {
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+            return Result;
+        }
+
         public object AbmPatient(classPatient oP, eAbm Abm)
         {
             object Result = null;
@@ -555,71 +726,49 @@ namespace Datos.Query
             return Result;
         }
 
-        public object AbmParent(classParent oP, eAbm Abm)
+        public object AbmPermission(classPermission oP, eAbm Abm)
         {
             object Result = null;
-            string SPname = sp.AbmParent;
+            string SPname = sp.AbmPermission;
 
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@IdParent", oP.IdParent));
-            lParam.Add(new SqlParameter("@Name", oP.Name));
-            lParam.Add(new SqlParameter("@LastName", oP.LastName));
-            lParam.Add(new SqlParameter("@IdTypeDocument", oP.IdTypeDocument));
-            lParam.Add(new SqlParameter("@NumberDocument", oP.NumberDocument));
-            lParam.Add(new SqlParameter("@Phone", oP.Phone));
-            lParam.Add(new SqlParameter("@AlternativePhone", oP.AlternativePhone));
-            lParam.Add(new SqlParameter("@Email", oP.Email));
-            lParam.Add(new SqlParameter("@IdRelationship", oP.IdRelationship));
-            lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
-            lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
-            lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
-            lParam.Add(new SqlParameter("@Address", oP.Address));
+            lParam.Add(new SqlParameter("@idPermission", oP.IdPermission));
+            lParam.Add(new SqlParameter("@Description", oP.Description));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
                     {
-                        List<classParent> lParent = null;
+                        List<classPermission> lPermission = null;
                         if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                         {
-                            lParent = new List<classParent>();
+                            lPermission = new List<classPermission>();
                             while (oSql.Reader.Read())
                             {
                                 try
                                 {
-                                    classParent oParent = new classParent(
-                                    Convert.ToInt32(oSql.Reader["IdParent"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["LastName"]),
-                                    Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                    Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["AlternativePhone"]),
-                                    Convert.ToString(oSql.Reader["Email"]),
-                                    Convert.ToInt32(oSql.Reader["IdRelationship"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
+                                    classPermission oPermission = new classPermission(
+                                    Convert.ToInt32(oSql.Reader["idPermission"]),
+                                    Convert.ToString(oSql.Reader["Description"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lParent.Add(oParent);
+                                    lPermission.Add(oPermission);
                                 }
                                 catch (FormatException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    lParent = null;
+                                    lPermission = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    lParent = null;
+                                    lPermission = null;
                                 }
                                 catch (OverflowException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    lParent = null;
+                                    lPermission = null;
                                 }
                             }
                         }
@@ -627,48 +776,37 @@ namespace Datos.Query
                             Menssage = oSql.Mensage;
 
                         oSql.Close();
-                        Result = lParent;
+                        Result = lPermission;
                         break;
                     }
                 case eAbm.Select:
                     {
-                        classParent oParent = null;
+                        classPermission oPermission = null;
                         if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                         {
                             if (oSql.Reader.Read())
                             {
                                 try
                                 {
-                                    oParent = new classParent(
-                                    Convert.ToInt32(oSql.Reader["IdParent"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["LastName"]),
-                                    Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                    Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["AlternativePhone"]),
-                                    Convert.ToString(oSql.Reader["Email"]),
-                                    Convert.ToInt32(oSql.Reader["IdRelationship"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
+                                    oPermission = new classPermission(
+                                    Convert.ToInt32(oSql.Reader["idPermission"]),
+                                    Convert.ToString(oSql.Reader["Description"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
                                 }
                                 catch (FormatException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    oParent = null;
+                                    oPermission = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    oParent = null;
+                                    oPermission = null;
                                 }
                                 catch (OverflowException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    oParent = null;
+                                    oPermission = null;
                                 }
                             }
                         }
@@ -676,7 +814,7 @@ namespace Datos.Query
                             Menssage = oSql.Mensage;
 
                         oSql.Close();
-                        Result = oParent;
+                        Result = oPermission;
                         break;
                     }
                 case eAbm.Insert:
@@ -711,11 +849,24 @@ namespace Datos.Query
                     }
                 case eAbm.LoadCmb:
                     {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
+                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        //if (oSql.Table.Rows.Count != 0)
+                        //    Table = oSql.Table;
+                        //else
+                        //    Table = null;
+                        DataTable dT = new DataTable(SPname);
+                        dT.Columns.Add("Id");
+                        dT.Columns.Add("Value");
+                        DataRow dr = dT.NewRow();
+                        dr[0] = 1;
+                        dr[1] = "Usuario";
+                        dT.Rows.Add(dr);
+                        DataRow ds = dT.NewRow();
+                        ds[0] = 2;
+                        ds[1] = "Administrador";
+                        dT.Rows.Add(ds);
+                        Table = dT;
+                        Result = true;
                         break;
                     }
                 default:

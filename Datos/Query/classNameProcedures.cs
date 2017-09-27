@@ -9,9 +9,10 @@ namespace Datos.Query
     {
         // ABM
         public string AbmDiagnostic = "[spAbmDiagnostic-v1.0]";
+        public string AbmParent = "[spAbmParent-v1.0]";
         public string AbmPatient = "[spAbmPatient-v1.0]";
         public string AbmPatientParent = "[spAbmPatientParent-v1.0]";
-        public string AbmParent = "[spAbmParent-v1.0]";
+        public string AbmPermission = "[spAbmPermission-v1.0]";
         public string AbmProfessional = "[spAbmProfessional-v1.0]";
         public string AbmProfessionalSpeciality = "[spAbmProfessionalSpeciality-v1.0]";
         public string AbmRelationship = "[spAbmRelationship-v1.0]";

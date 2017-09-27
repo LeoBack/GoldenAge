@@ -32,7 +32,7 @@ namespace Entidades.Clases
             this.IdProfessional = 0;
             this.Name = string.Empty;
             this.LastName = string.Empty;
-            this.ProfessionalRegistration = 1;
+            this.ProfessionalRegistration = 0;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -50,7 +50,7 @@ namespace Entidades.Clases
             this.IdProfessional = vIdProfessional;
             this.Name = string.Empty;
             this.LastName = string.Empty;
-            this.ProfessionalRegistration = 1;
+            this.ProfessionalRegistration = 0;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
