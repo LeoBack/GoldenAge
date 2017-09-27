@@ -153,6 +153,15 @@ namespace myExplorer.Formularios
                 (bool)oQuery.AbmPermission(new classPermission(), classQuery.eAbm.LoadCmb),
                 oQuery.Table);
 
+            if ((bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb))
+            {
+                DataTable dT = oQuery.Table;
+                dT.Rows.Add(new object[] { 0, "Nuevo" });
+                clbSpeciality.DataSource = dT;
+                clbSpeciality.DisplayMember = "Value";
+                clbSpeciality.ValueMember = "Id";
+            }
+
             // Modo en el que se mostrara el formulario
             if (eModo == Modo.Select && oUtil.oProfessional.IdProfessional != 0)
             {
@@ -278,6 +287,15 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
+        private void btnUpdateSpeciality_Click(object sender, EventArgs e)
+        {
+            bool Error = false;
+            Error = (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.Update);
+
+            Error = (bool)oQuery.AbmSpeciality(new classSpecialty(0, txtDescription.Text, true), classQuery.eAbm.Insert);
+
+        }
 
     }
 }

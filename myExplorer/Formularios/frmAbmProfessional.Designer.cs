@@ -32,12 +32,6 @@
             this.tabDatos = new System.Windows.Forms.TabControl();
             this.tbpPerfil = new System.Windows.Forms.TabPage();
             this.tlpTab = new System.Windows.Forms.TableLayoutPanel();
-            this.lblName = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblLastName = new System.Windows.Forms.Label();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.lblProfessionalRegistration = new System.Windows.Forms.Label();
-            this.txtProfessionalRegistration = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblLocation = new System.Windows.Forms.Label();
@@ -48,6 +42,12 @@
             this.txtMail = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnLocalitation = new System.Windows.Forms.Button();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtProfessionalRegistration = new System.Windows.Forms.TextBox();
+            this.lblLastName = new System.Windows.Forms.Label();
+            this.lblProfessionalRegistration = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.tbpLogin = new System.Windows.Forms.TabPage();
             this.tlpLogin = new System.Windows.Forms.TableLayoutPanel();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -55,13 +55,15 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.btnBloquear = new System.Windows.Forms.Button();
+            this.cmbTypeAccess = new System.Windows.Forms.ComboBox();
+            this.lblTypeAccess = new System.Windows.Forms.Label();
             this.tabSpeciality = new System.Windows.Forms.TabPage();
             this.tlpSpeciality = new System.Windows.Forms.TableLayoutPanel();
             this.lblDescriptionSpeciality = new System.Windows.Forms.Label();
             this.clbSpeciality = new System.Windows.Forms.CheckedListBox();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.lblTypeAccess = new System.Windows.Forms.Label();
-            this.cmbTypeAccess = new System.Windows.Forms.ComboBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.btnUpdateSpeciality = new System.Windows.Forms.Button();
             this.tlpPanel.SuspendLayout();
             this.tabDatos.SuspendLayout();
             this.tbpPerfil.SuspendLayout();
@@ -153,67 +155,6 @@
             this.tlpTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpTab.Size = new System.Drawing.Size(584, 364);
             this.tlpTab.TabIndex = 0;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblName.Location = new System.Drawing.Point(4, 20);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(108, 40);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Nombre";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtName
-            // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(120, 27);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(334, 26);
-            this.txtName.TabIndex = 1;
-            // 
-            // lblLastName
-            // 
-            this.lblLastName.AutoSize = true;
-            this.lblLastName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLastName.Location = new System.Drawing.Point(4, 60);
-            this.lblLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(108, 40);
-            this.lblLastName.TabIndex = 2;
-            this.lblLastName.Text = "Apellido";
-            this.lblLastName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtLastName
-            // 
-            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLastName.Location = new System.Drawing.Point(120, 67);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(334, 26);
-            this.txtLastName.TabIndex = 3;
-            // 
-            // lblProfessionalRegistration
-            // 
-            this.lblProfessionalRegistration.AutoSize = true;
-            this.lblProfessionalRegistration.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblProfessionalRegistration.Location = new System.Drawing.Point(3, 100);
-            this.lblProfessionalRegistration.Name = "lblProfessionalRegistration";
-            this.lblProfessionalRegistration.Size = new System.Drawing.Size(110, 40);
-            this.lblProfessionalRegistration.TabIndex = 4;
-            this.lblProfessionalRegistration.Text = "Nº MP";
-            this.lblProfessionalRegistration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtProfessionalRegistration
-            // 
-            this.txtProfessionalRegistration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProfessionalRegistration.Location = new System.Drawing.Point(119, 107);
-            this.txtProfessionalRegistration.Name = "txtProfessionalRegistration";
-            this.txtProfessionalRegistration.Size = new System.Drawing.Size(336, 26);
-            this.txtProfessionalRegistration.TabIndex = 5;
             // 
             // lblAddress
             // 
@@ -316,12 +257,73 @@
             this.btnLocalitation.UseVisualStyleBackColor = true;
             this.btnLocalitation.Click += new System.EventHandler(this.btnLocalitation_Click);
             // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.Location = new System.Drawing.Point(120, 27);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(334, 26);
+            this.txtName.TabIndex = 1;
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLastName.Location = new System.Drawing.Point(120, 67);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(334, 26);
+            this.txtLastName.TabIndex = 3;
+            // 
+            // txtProfessionalRegistration
+            // 
+            this.txtProfessionalRegistration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProfessionalRegistration.Location = new System.Drawing.Point(119, 107);
+            this.txtProfessionalRegistration.Name = "txtProfessionalRegistration";
+            this.txtProfessionalRegistration.Size = new System.Drawing.Size(336, 26);
+            this.txtProfessionalRegistration.TabIndex = 5;
+            // 
+            // lblLastName
+            // 
+            this.lblLastName.AutoSize = true;
+            this.lblLastName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblLastName.Location = new System.Drawing.Point(4, 60);
+            this.lblLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLastName.Name = "lblLastName";
+            this.lblLastName.Size = new System.Drawing.Size(108, 40);
+            this.lblLastName.TabIndex = 2;
+            this.lblLastName.Text = "Apellido";
+            this.lblLastName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblProfessionalRegistration
+            // 
+            this.lblProfessionalRegistration.AutoSize = true;
+            this.lblProfessionalRegistration.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblProfessionalRegistration.Location = new System.Drawing.Point(3, 100);
+            this.lblProfessionalRegistration.Name = "lblProfessionalRegistration";
+            this.lblProfessionalRegistration.Size = new System.Drawing.Size(110, 40);
+            this.lblProfessionalRegistration.TabIndex = 4;
+            this.lblProfessionalRegistration.Text = "Nº MP";
+            this.lblProfessionalRegistration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblName.Location = new System.Drawing.Point(4, 20);
+            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(108, 40);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Nombre";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // tbpLogin
             // 
             this.tbpLogin.Controls.Add(this.tlpLogin);
             this.tbpLogin.Location = new System.Drawing.Point(4, 29);
             this.tbpLogin.Name = "tbpLogin";
-            this.tbpLogin.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tbpLogin.Padding = new System.Windows.Forms.Padding(3);
             this.tbpLogin.Size = new System.Drawing.Size(592, 374);
             this.tbpLogin.TabIndex = 1;
             this.tbpLogin.Text = "Datos de Acceso";
@@ -404,12 +406,33 @@
             this.btnBloquear.Text = "Bloquear";
             this.btnBloquear.UseVisualStyleBackColor = true;
             // 
+            // cmbTypeAccess
+            // 
+            this.cmbTypeAccess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbTypeAccess.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTypeAccess.FormattingEnabled = true;
+            this.cmbTypeAccess.Location = new System.Drawing.Point(139, 212);
+            this.cmbTypeAccess.Name = "cmbTypeAccess";
+            this.cmbTypeAccess.Size = new System.Drawing.Size(331, 28);
+            this.cmbTypeAccess.TabIndex = 6;
+            // 
+            // lblTypeAccess
+            // 
+            this.lblTypeAccess.AutoSize = true;
+            this.lblTypeAccess.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTypeAccess.Location = new System.Drawing.Point(3, 205);
+            this.lblTypeAccess.Name = "lblTypeAccess";
+            this.lblTypeAccess.Size = new System.Drawing.Size(130, 42);
+            this.lblTypeAccess.TabIndex = 5;
+            this.lblTypeAccess.Text = "Tipo de Acceso";
+            this.lblTypeAccess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // tabSpeciality
             // 
             this.tabSpeciality.Controls.Add(this.tlpSpeciality);
             this.tabSpeciality.Location = new System.Drawing.Point(4, 29);
             this.tabSpeciality.Name = "tabSpeciality";
-            this.tabSpeciality.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabSpeciality.Padding = new System.Windows.Forms.Padding(3);
             this.tabSpeciality.Size = new System.Drawing.Size(592, 374);
             this.tabSpeciality.TabIndex = 2;
             this.tabSpeciality.Text = "Especiadades";
@@ -417,22 +440,27 @@
             // 
             // tlpSpeciality
             // 
-            this.tlpSpeciality.ColumnCount = 1;
-            this.tlpSpeciality.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpSpeciality.ColumnCount = 2;
+            this.tlpSpeciality.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 314F));
+            this.tlpSpeciality.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpSpeciality.Controls.Add(this.lblDescriptionSpeciality, 0, 0);
             this.tlpSpeciality.Controls.Add(this.clbSpeciality, 0, 1);
+            this.tlpSpeciality.Controls.Add(this.txtDescription, 0, 2);
+            this.tlpSpeciality.Controls.Add(this.btnUpdateSpeciality, 1, 2);
             this.tlpSpeciality.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpSpeciality.Location = new System.Drawing.Point(3, 3);
             this.tlpSpeciality.Name = "tlpSpeciality";
-            this.tlpSpeciality.RowCount = 2;
+            this.tlpSpeciality.RowCount = 3;
             this.tlpSpeciality.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.31522F));
             this.tlpSpeciality.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.68478F));
+            this.tlpSpeciality.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpSpeciality.Size = new System.Drawing.Size(586, 368);
             this.tlpSpeciality.TabIndex = 0;
             // 
             // lblDescriptionSpeciality
             // 
             this.lblDescriptionSpeciality.AutoSize = true;
+            this.tlpSpeciality.SetColumnSpan(this.lblDescriptionSpeciality, 2);
             this.lblDescriptionSpeciality.Location = new System.Drawing.Point(3, 0);
             this.lblDescriptionSpeciality.Name = "lblDescriptionSpeciality";
             this.lblDescriptionSpeciality.Size = new System.Drawing.Size(424, 20);
@@ -441,11 +469,12 @@
             // 
             // clbSpeciality
             // 
+            this.tlpSpeciality.SetColumnSpan(this.clbSpeciality, 2);
             this.clbSpeciality.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbSpeciality.FormattingEnabled = true;
-            this.clbSpeciality.Location = new System.Drawing.Point(3, 52);
+            this.clbSpeciality.Location = new System.Drawing.Point(3, 46);
             this.clbSpeciality.Name = "clbSpeciality";
-            this.clbSpeciality.Size = new System.Drawing.Size(580, 313);
+            this.clbSpeciality.Size = new System.Drawing.Size(580, 276);
             this.clbSpeciality.TabIndex = 1;
             // 
             // btnGuardar
@@ -460,26 +489,23 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // lblTypeAccess
+            // txtDescription
             // 
-            this.lblTypeAccess.AutoSize = true;
-            this.lblTypeAccess.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTypeAccess.Location = new System.Drawing.Point(3, 205);
-            this.lblTypeAccess.Name = "lblTypeAccess";
-            this.lblTypeAccess.Size = new System.Drawing.Size(130, 42);
-            this.lblTypeAccess.TabIndex = 5;
-            this.lblTypeAccess.Text = "Tipo de Acceso";
-            this.lblTypeAccess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.Location = new System.Drawing.Point(3, 333);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(308, 26);
+            this.txtDescription.TabIndex = 2;
             // 
-            // cmbTypeAccess
+            // btnUpdateSpeciality
             // 
-            this.cmbTypeAccess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbTypeAccess.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTypeAccess.FormattingEnabled = true;
-            this.cmbTypeAccess.Location = new System.Drawing.Point(139, 212);
-            this.cmbTypeAccess.Name = "cmbTypeAccess";
-            this.cmbTypeAccess.Size = new System.Drawing.Size(331, 28);
-            this.cmbTypeAccess.TabIndex = 6;
+            this.btnUpdateSpeciality.Location = new System.Drawing.Point(317, 328);
+            this.btnUpdateSpeciality.Name = "btnUpdateSpeciality";
+            this.btnUpdateSpeciality.Size = new System.Drawing.Size(99, 37);
+            this.btnUpdateSpeciality.TabIndex = 3;
+            this.btnUpdateSpeciality.Text = "Modificar";
+            this.btnUpdateSpeciality.UseVisualStyleBackColor = true;
+            this.btnUpdateSpeciality.Click += new System.EventHandler(this.btnUpdateSpeciality_Click);
             // 
             // frmAbmProfessional
             // 
@@ -544,5 +570,7 @@
         private System.Windows.Forms.Button btnLocalitation;
         private System.Windows.Forms.ComboBox cmbTypeAccess;
         private System.Windows.Forms.Label lblTypeAccess;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Button btnUpdateSpeciality;
     }
 }
