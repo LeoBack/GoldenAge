@@ -1337,6 +1337,7 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@IdSocialWork", oP.IdSocialWork));
             lParam.Add(new SqlParameter("@Name", oP.Name));
             lParam.Add(new SqlParameter("@Description", oP.Description));
+            lParam.Add(new SqlParameter("@IdIvaType", oP.IdIvaType));
             lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
             lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
             lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
@@ -1361,6 +1362,7 @@ namespace Datos.Query
                                     Convert.ToInt32(oSql.Reader["IdSocialWork"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["Description"]),
+                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),
@@ -1407,6 +1409,7 @@ namespace Datos.Query
                                     Convert.ToInt32(oSql.Reader["IdSocialWork"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["Description"]),
+                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),
@@ -1713,6 +1716,144 @@ namespace Datos.Query
 
                         oSql.Close();
                         Result = oTypeDocument;
+                        break;
+                    }
+                case eAbm.Insert:
+                    {
+                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                        if (UltimoId == 0)
+                            Menssage = oSql.Mensage;
+
+                        Result = UltimoId;
+                        break;
+                    }
+                case eAbm.Update:
+                    {
+                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                        if (UltimoId == 0)
+                            Menssage = oSql.Mensage;
+
+                        Result = UltimoId;
+                        break;
+                    }
+                case eAbm.Delete:
+                    {
+                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                        if (UltimoId == 0)
+                            Menssage = oSql.Mensage;
+
+                        Result = UltimoId;
+                        break;
+                    }
+                case eAbm.LoadCmb:
+                    {
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+            return Result;
+        }
+
+        public object AbmIvaType(classIvaType oP, eAbm Abm)
+        {
+            object Result = null;
+            string SPname = sp.AbmIvaType;
+
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Abm", (int)Abm));
+            lParam.Add(new SqlParameter("@IdIvaType", oP.IdIvaType));
+            lParam.Add(new SqlParameter("@Description", oP.Description));
+            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+
+            switch (Abm)
+            {
+                case eAbm.SelectAll:
+                    {
+                        List<classIvaType> lIvaType = null;
+                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        {
+                            lIvaType = new List<classIvaType>();
+                            while (oSql.Reader.Read())
+                            {
+                                try
+                                {
+                                    classIvaType oIvaType = new classIvaType(
+                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
+                                    Convert.ToString(oSql.Reader["Description"]),
+                                    Convert.ToBoolean(oSql.Reader["Visible"]));
+                                    lIvaType.Add(oIvaType);
+                                }
+                                catch (FormatException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    lIvaType = null;
+                                }
+                                catch (InvalidCastException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    lIvaType = null;
+                                }
+                                catch (OverflowException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    lIvaType = null;
+                                }
+                            }
+                        }
+                        else
+                            Menssage = oSql.Mensage;
+
+                        oSql.Close();
+                        Result = lIvaType;
+                        break;
+                    }
+                case eAbm.Select:
+                    {
+                        classIvaType oIvaType = null;
+                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        {
+                            if (oSql.Reader.Read())
+                            {
+                                try
+                                {
+                                    oIvaType = new classIvaType(
+                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
+                                    Convert.ToString(oSql.Reader["Description"]),
+                                    Convert.ToBoolean(oSql.Reader["Visible"]));
+                                }
+                                catch (FormatException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    oIvaType = null;
+                                }
+                                catch (InvalidCastException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    oIvaType = null;
+                                }
+                                catch (OverflowException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    oIvaType = null;
+                                }
+                            }
+                        }
+                        else
+                            Menssage = oSql.Mensage;
+
+                        oSql.Close();
+                        Result = oIvaType;
                         break;
                     }
                 case eAbm.Insert:
