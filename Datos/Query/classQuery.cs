@@ -855,16 +855,10 @@ namespace Datos.Query
                         //else
                         //    Table = null;
                         DataTable dT = new DataTable(SPname);
-                        dT.Columns.Add("Id");
-                        dT.Columns.Add("Value");
-                        DataRow dr = dT.NewRow();
-                        dr[0] = 1;
-                        dr[1] = "Usuario";
-                        dT.Rows.Add(dr);
-                        DataRow ds = dT.NewRow();
-                        ds[0] = 2;
-                        ds[1] = "Administrador";
-                        dT.Rows.Add(ds);
+                        dT.Columns.Add("Id", typeof(Int32));
+                        dT.Columns.Add("Value", typeof(string));
+                        dT.Rows.Add(new object[] { 1, "Usuario" });
+                        dT.Rows.Add(new object[] { 2, "Administrador" });
                         Table = dT;
                         Result = true;
                         break;
