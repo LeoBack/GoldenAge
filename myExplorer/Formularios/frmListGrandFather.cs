@@ -26,8 +26,6 @@ namespace myExplorer.Formularios
         public classUtiles oUtil { set; get; }
 
         private classTextos oTxt = new classTextos();
-
-        private classControlComboBoxes oCombos;
         
         private int SelectRow;
         private int Desde = 0;
@@ -56,8 +54,7 @@ namespace myExplorer.Formularios
                 Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
 
-                oCombos = new classControlComboBoxes();
-                oCombos.CargaCombo(tscmbSocialWork.ComboBox,
+                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(tscmbSocialWork.ComboBox,
                     (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
                     oQuery.Table);
                 tsbImprimir.Enabled = false;
