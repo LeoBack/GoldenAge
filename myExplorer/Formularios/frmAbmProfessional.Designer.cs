@@ -61,9 +61,9 @@
             this.tlpSpeciality = new System.Windows.Forms.TableLayoutPanel();
             this.lblDescriptionSpeciality = new System.Windows.Forms.Label();
             this.clbSpeciality = new System.Windows.Forms.CheckedListBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnUpdateSpeciality = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.tlpPanel.SuspendLayout();
             this.tabDatos.SuspendLayout();
             this.tbpPerfil.SuspendLayout();
@@ -476,18 +476,7 @@
             this.clbSpeciality.Name = "clbSpeciality";
             this.clbSpeciality.Size = new System.Drawing.Size(580, 276);
             this.clbSpeciality.TabIndex = 1;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnGuardar.Location = new System.Drawing.Point(489, 422);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(112, 35);
-            this.btnGuardar.TabIndex = 1;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.clbSpeciality.SelectedIndexChanged += new System.EventHandler(this.clbSpeciality_SelectedIndexChanged);
             // 
             // txtDescription
             // 
@@ -506,6 +495,18 @@
             this.btnUpdateSpeciality.Text = "Modificar";
             this.btnUpdateSpeciality.UseVisualStyleBackColor = true;
             this.btnUpdateSpeciality.Click += new System.EventHandler(this.btnUpdateSpeciality_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnGuardar.Location = new System.Drawing.Point(489, 422);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(112, 35);
+            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // frmAbmProfessional
             // 

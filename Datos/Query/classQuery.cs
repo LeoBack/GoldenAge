@@ -1331,6 +1331,7 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@IdSocialWork", oP.IdSocialWork));
             lParam.Add(new SqlParameter("@Name", oP.Name));
             lParam.Add(new SqlParameter("@Description", oP.Description));
+            lParam.Add(new SqlParameter("@IdIvaType", oP.IdIvaType));
             lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
             lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
             lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
@@ -1355,6 +1356,7 @@ namespace Datos.Query
                                     Convert.ToInt32(oSql.Reader["IdSocialWork"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["Description"]),
+                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),
@@ -1401,6 +1403,7 @@ namespace Datos.Query
                                     Convert.ToInt32(oSql.Reader["IdSocialWork"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["Description"]),
+                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),

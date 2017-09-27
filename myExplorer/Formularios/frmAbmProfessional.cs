@@ -153,6 +153,7 @@ namespace myExplorer.Formularios
                 (bool)oQuery.AbmPermission(new classPermission(), classQuery.eAbm.LoadCmb),
                 oQuery.Table);
 
+            clbSpeciality.SelectedIndexChanged -= clbSpeciality_SelectedIndexChanged;
             if ((bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb))
             {
                 DataTable dT = oQuery.Table;
@@ -161,6 +162,7 @@ namespace myExplorer.Formularios
                 clbSpeciality.DisplayMember = "Value";
                 clbSpeciality.ValueMember = "Id";
             }
+            clbSpeciality.SelectedIndexChanged += clbSpeciality_SelectedIndexChanged;
 
             // Modo en el que se mostrara el formulario
             if (eModo == Modo.Select && oUtil.oProfessional.IdProfessional != 0)
@@ -294,6 +296,19 @@ namespace myExplorer.Formularios
             Error = (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.Update);
 
             Error = (bool)oQuery.AbmSpeciality(new classSpecialty(0, txtDescription.Text, true), classQuery.eAbm.Insert);
+
+        }
+
+        private void clbSpeciality_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //MessageBox.Show(Convert.ToString(clbSpeciality.SelectedItem) + " - " + Convert.ToString(clbSpeciality.SelectedValue) + " - " + clbSpeciality.SelectedIndex.ToString());
+
+            if (Convert.ToString(clbSpeciality.SelectedValue) != "" &
+                Convert.ToInt32(clbSpeciality.SelectedValue) != 0)
+                txtDescription.Text = Convert.ToString(clbSpeciality.SelectedItem);
+            else
+                txtDescription.Text = string.Empty;
 
         }
 
