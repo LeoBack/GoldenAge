@@ -41,6 +41,7 @@
     <Compile Include="Clases\classDiagnostic.cs" />
     <Compile Include="Clases\classPatientParent.cs" />
     <Compile Include="Clases\classSocialWork.cs" />
+    <Compile Include="Clases\classPermission.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
     <Compile Include="Clases\classProfessional.cs" />
     <Compile Include="Grillas\grvGrandfather.cs" />

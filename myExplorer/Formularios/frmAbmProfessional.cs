@@ -149,6 +149,10 @@ namespace myExplorer.Formularios
         /// </summary>
         private void ini()
         {
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeAccess,
+                (bool)oQuery.AbmPermission(new classPermission(), classQuery.eAbm.LoadCmb),
+                oQuery.Table);
+
             // Modo en el que se mostrara el formulario
             if (eModo == Modo.Select && oUtil.oProfessional.IdProfessional != 0)
             {
@@ -214,6 +218,7 @@ namespace myExplorer.Formularios
             oProfessional.Phone = txtPhone.Text;
             oProfessional.Mail = txtMail.Text;
             oProfessional.User = txtUser.Text;
+            oProfessional.Admin = Convert.ToInt32(cmbTypeAccess.SelectedValue);
             oProfessional.Password = txtPassword.Text;
         }
 
@@ -230,6 +235,7 @@ namespace myExplorer.Formularios
             txtPhone.Text = oProfessional.Phone;
             txtMail.Text = oProfessional.Mail;
             txtUser.Text = oProfessional.User;
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeAccess, oProfessional.Admin);
             txtPassword.Text = oProfessional.Password;
 
             txtLocation.Text = frmLocation.toStringLocation(
