@@ -83,7 +83,7 @@ namespace myExplorer.Formularios
                     }
                     else
                     {
-                        MessageBox.Show(oTxt.ErrorObjetoIndefinido);
+                        MessageBox.Show(oTxt.ErrorObjetIndefinido);
                         Close();
                     }
                 }
@@ -99,14 +99,14 @@ namespace myExplorer.Formularios
                     }
                     else
                     {
-                        MessageBox.Show(oTxt.ErrorObjetoIndefinido);
+                        MessageBox.Show(oTxt.ErrorObjetIndefinido);
                         Close();
                     }
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show(oTxt.ErrorObjetoIndefinido);
+                    MessageBox.Show(oTxt.ErrorObjetIndefinido);
                     Close();
                 }
             }   //-------------------------------------------------
@@ -140,7 +140,7 @@ namespace myExplorer.Formularios
                         // INSERTAR OBJETO;
                         if (0 != (int)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Insert))
                         {
-                            MessageBox.Show(oTxt.AgregarSocialWork);
+                            MessageBox.Show(oTxt.AddSocialWork);
                             btnAgregar.Text = oTxt.Limpiar;
                         }
                         else
@@ -161,7 +161,7 @@ namespace myExplorer.Formularios
                         // Modifica OBJETO;
                         if (0 != (int)oQuery.AbmSocialWork(oSocialWork, classQuery.eAbm.Update))
                         {
-                            MessageBox.Show(oTxt.ModificarSocialWork);
+                            MessageBox.Show(oTxt.UpdateSocialWork);
                             Close();
                         }
                         else

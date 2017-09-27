@@ -333,8 +333,8 @@
             // 
             this.tlpLogin.ColumnCount = 3;
             this.tlpLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
-            this.tlpLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tlpLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.77778F));
+            this.tlpLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.22222F));
             this.tlpLogin.Controls.Add(this.lblPassword, 0, 2);
             this.tlpLogin.Controls.Add(this.txtPassword, 1, 2);
             this.tlpLogin.Controls.Add(this.lblUser, 0, 1);
@@ -372,7 +372,7 @@
             this.txtPassword.Location = new System.Drawing.Point(140, 171);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(329, 26);
+            this.txtPassword.Size = new System.Drawing.Size(315, 26);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -392,7 +392,7 @@
             this.txtUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUser.Location = new System.Drawing.Point(139, 129);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(331, 26);
+            this.txtUser.Size = new System.Drawing.Size(317, 26);
             this.txtUser.TabIndex = 1;
             // 
             // btnBloquear
@@ -405,6 +405,7 @@
             this.btnBloquear.TabIndex = 4;
             this.btnBloquear.Text = "Bloquear";
             this.btnBloquear.UseVisualStyleBackColor = true;
+            this.btnBloquear.Click += new System.EventHandler(this.btnBloquear_Click);
             // 
             // cmbTypeAccess
             // 
@@ -413,7 +414,7 @@
             this.cmbTypeAccess.FormattingEnabled = true;
             this.cmbTypeAccess.Location = new System.Drawing.Point(139, 212);
             this.cmbTypeAccess.Name = "cmbTypeAccess";
-            this.cmbTypeAccess.Size = new System.Drawing.Size(331, 28);
+            this.cmbTypeAccess.Size = new System.Drawing.Size(317, 28);
             this.cmbTypeAccess.TabIndex = 6;
             // 
             // lblTypeAccess
@@ -499,6 +500,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnGuardar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnGuardar.Location = new System.Drawing.Point(489, 422);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGuardar.Name = "btnGuardar";

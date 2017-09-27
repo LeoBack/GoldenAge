@@ -183,7 +183,7 @@ namespace myExplorer.Formularios
                         if (Id != 0)
                         {
                             User = eUser.Valido;
-                            tsbUsuario.Text = oTxt.CerrarSesion;
+                            tsbUsuario.Text = oTxt.Logout;
                             Text = oTxt.TituloVentana + oTxt.SeparadorTitle + fLogin.oProfessional.User.ToString();
                             // Abre todas los frm
                             EnableUser(true);

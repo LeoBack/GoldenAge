@@ -1871,7 +1871,6 @@ namespace Datos.Query
         #endregion
 
 
-
         #region Contadores
 
         public decimal CountProfesionales(string p1, bool p2)
@@ -1993,66 +1992,6 @@ namespace Datos.Query
         //    }
         //    return C;
         //}
-
-        #endregion
-
-        #region Ultimos
-
-        ///// <summary>
-        ///// Trae el ultimo usuario insertado
-        ///// OK 07/06/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public int UltimoIdUsuario()
-        //{
-        //    int A = 0;
-
-        //    if (Sql.SelectReader("SELECT MAX(IdUsuario) AS Id FROM Usuario", null, "UltimoIdUsuario"))
-        //    {
-        //        Sql.Reader.Read();
-        //        A = Convert.ToInt32(Sql.Reader["Id"]);
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-        //    }
-
-        //    return A;
-        //}
-
-        //// OK 25/05/12
-        //public int UltimoIdPersona()
-        //{
-        //    int A = 0;
-
-        //    if (Sql.SelectReader("SELECT MAX(IdPersona) AS Id FROM Persona", null, "UltimoIdPaciente"))
-        //    {
-        //        Sql.Reader.Read();
-        //        A = Convert.ToInt32(Sql.Reader["Id"]);
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-        //    }
-
-        //    return A;
-        //}
-
-        /// <summary>
-        /// Trae el ultimo usuario insertado
-        /// OK 07/06/12
-        /// </summary>
-        /// <returns></returns>
-        public int UltimoIdProfessional()
-        {
-            int A = 0;
-
-            if (oSql.SelectRaeder("SELECT MAX(IdProfessional) AS Id FROM Professional", null))
-            {
-                oSql.Reader.Read();
-                A = Convert.ToInt32(oSql.Reader["Id"]);
-                oSql.Reader.Close();
-                oSql.Close();
-            }
-
-            return A;
-        }
 
         #endregion
 

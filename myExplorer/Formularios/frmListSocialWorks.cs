@@ -84,7 +84,7 @@ namespace myExplorer.Formularios
                     frmListSocialWorks_Load(sender, e);
                 }
                 else
-                    MessageBox.Show(oTxt.ErrorListaConsulta);
+                    MessageBox.Show(oTxt.ErrorQueryList);
 
             }
         }
@@ -111,7 +111,7 @@ namespace myExplorer.Formularios
                     frmListSocialWorks_Load(sender, e);
                 }
                 else
-                    MessageBox.Show(oTxt.ErrorListaConsulta);
+                    MessageBox.Show(oTxt.ErrorQueryList);
             }
         }
 
@@ -228,7 +228,7 @@ namespace myExplorer.Formularios
                 PintarBloqueados(Color.Gray);
             }
             else
-                MessageBox.Show(oTxt.ErrorListaConsulta);
+                MessageBox.Show(oTxt.ErrorQueryList);
         }
 
         /// <summary>

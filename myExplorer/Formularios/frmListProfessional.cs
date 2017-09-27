@@ -53,7 +53,7 @@ namespace myExplorer.Formularios
             }
             else
             {
-                MessageBox.Show(oTxt.ErrorObjetoIndefinido);
+                MessageBox.Show(oTxt.ErrorObjetIndefinido);
                 Close();
             }
         }
@@ -85,7 +85,7 @@ namespace myExplorer.Formularios
                     frmListProfessional_Load(sender, e);
                 }
                 else
-                    MessageBox.Show(oTxt.ErrorListaConsulta);
+                    MessageBox.Show(oTxt.ErrorQueryList);
 
             }
         }
@@ -112,7 +112,7 @@ namespace myExplorer.Formularios
                     frmListProfessional_Load(sender, e);
                 }
                 else
-                    MessageBox.Show(oTxt.ErrorListaConsulta);
+                    MessageBox.Show(oTxt.ErrorQueryList);
             }
         }
 
@@ -215,7 +215,7 @@ namespace myExplorer.Formularios
                 PintarBloqueados(Color.Gray);
             }
             else
-                MessageBox.Show(oTxt.ErrorListaConsulta);
+                MessageBox.Show(oTxt.ErrorQueryList);
         }
 
         /// <summary>
