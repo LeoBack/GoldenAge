@@ -19,6 +19,7 @@ namespace Datos.Query
         public string AbmSocialWork = "[spAbmSocialWork-v1.0]";
         public string AbmSpeciality = "[spAbmSpecialty-v1.0]";
         public string AbmTypeDocument = "[spAbmTypeDocument-v1.0]";
+        public string AbmIvaType = "[spAbmIvaType-v1.0]";
         public string Login = "[spLoguin-v1.0]";
 
         //
