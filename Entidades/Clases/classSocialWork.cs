@@ -12,6 +12,7 @@ namespace Entidades.Clases
         public int IdSocialWork { set; get; }
         public string Name { set; get; }
         public string Description { set; get; }
+        public int IdIvaType { set; get; }
         public int IdLocationCountry { set; get; }
         public int IdLocationProvince { set; get; }
         public int IdLocationCity { set; get; }
@@ -29,6 +30,7 @@ namespace Entidades.Clases
             this.IdSocialWork = 0;
             this.Name = string.Empty;
             this.Description = string.Empty;
+            this.IdIvaType = 0;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -43,6 +45,7 @@ namespace Entidades.Clases
             this.IdSocialWork = vIdSocialWork;
             this.Name = string.Empty;
             this.Description = string.Empty;
+            this.IdIvaType = 0;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -52,12 +55,13 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classSocialWork(int vIdSocialWork, string vName, string vDescription,
+        public classSocialWork(int vIdSocialWork, string vName, string vDescription, int vIdIvaType,
             int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone, string vContact, bool vVisible)
         {
             this.IdSocialWork = vIdSocialWork;
             this.Name = vName;
             this.Description = vDescription;
+            this.IdIvaType = vIdIvaType;
             this.IdLocationCountry = vIdLocationCountry;
             this.IdLocationProvince = vIdLocationProvince;
             this.IdLocationCity = vIdLocationCity;
@@ -76,6 +80,7 @@ namespace Entidades.Clases
             "Id: " + this.IdSocialWork.ToString() +
             "\nNombre: " + this.Name +
             "\nDescripcion: " + this.Description +
+            "\nTipo Iva: " + this.IdIvaType +
             "\nPais: " + this.IdLocationCountry +
             "\nProvincia: " + this.IdLocationProvince +
             "\nCiudad: " + this.IdLocationCity +

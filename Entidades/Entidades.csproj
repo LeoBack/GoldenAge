@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\classDiagnostic.cs" />
+    <Compile Include="Clases\classIvaType.cs" />
     <Compile Include="Clases\classPatientParent.cs" />
     <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classPermission.cs" />
