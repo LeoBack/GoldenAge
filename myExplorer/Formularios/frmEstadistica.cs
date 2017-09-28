@@ -38,7 +38,7 @@ namespace myExplorer.Formularios
         {
             if (oQuery == null)
             {
-                MessageBox.Show(oTxt.ErrorObjetoIndefinido);
+                MessageBox.Show(oTxt.ErrorObjetIndefinido);
                 this.Close();
             }
             else

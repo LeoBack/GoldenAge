@@ -29,35 +29,25 @@ namespace Controles
         public string AccionIndefinida = "Accion no definida";
 
         // Errores
-        public string ErrorListaConsulta = "Error al obtener registros.";
-        public string ErrorActualizarConsulta = "Error al actualizar registros.";
-        public string ErrorEliminarConsulta = "Error al eliminar registros.";
-        public string ErrorAgregarConsulta = "Error al agregar registros.";
-        public string ErrorObjetoIndefinido = "Error: Objeto indefinido";
+        public string ErrorQueryList = "Error al obtener registros.";
+        public string ErrorQueryUpdate = "Error al actualizar registros.";
+        public string ErrorQueryDelete = "Error al eliminar registros.";
+        public string ErrorQueryAdd = "Error al agregar registros.";
+        public string ErrorObjetIndefinido = "Error: Objeto indefinido";
 
         // Validaciones
         public string CasillaBusquedaVacia = "Ingrese un criterio de búsqueda.";
         public string CaillasVacias = "Se encontraron casillas vacias";
         public string None = "No Aplica";
         public string LoginInvalido = "El nombre de usuario o contraseña no es valido.";
-        public string CerrarSesion = "Cerrar Sesion";
+        public string Logout = "Cerrar Sesion";
         public string IniciarSesion = "Iniciar Sesion";
 
         // Profesionales
-        public string AgregarProfesional = "El Profesional a sido grabado con exito.";
-        public string ModificarProfesional = "El Profesional a sido actualizado con exito.";
+        public string AddProfessional = "El Profesional a sido grabado con exito.";
+        public string UpdateProfessional = "El Profesional a sido actualizado con exito.";
         public string MostrarProfesionalesBloqueados = "Mostrar Profesionales bloqueados";
         public string OcultarProfesionalesBloqueados = "Ocultar Profesionales bloqueados";
-
-        //Barrio
-        public string Barrio = "Barrio";
-        public string ModificarBarrio = "Modificar barrio.";
-        public string AgregarBarrio = "Agregar barrio.";
-
-        //Ciudad
-        public string Ciudad = "Ciudad";
-        public string ModificarCiudad = "Modificar ciudad.";
-        public string AgregarCiudad = "Agregar ciudad.";
 
         //patología
         public string Patología = "Patología";
@@ -65,8 +55,8 @@ namespace Controles
         public string AgregarPatología = "Agregar patología.";
 
         //SocialWork
-        public string AgregarSocialWork = "Obra Social agregada con exito.";
-        public string ModificarSocialWork = "Obra Social actualizada con exito.";
+        public string AddSocialWork = "Obra Social agregada con exito.";
+        public string UpdateSocialWork = "Obra Social actualizada con exito.";
 
         //Mensajes
         public string MsgTituloCerrarAplicacion = "Atencion";

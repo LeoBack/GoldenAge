@@ -17,41 +17,64 @@ namespace myExplorer.Formularios
 {
     public partial class frmAbmProfessional : Form
     {
+        // OK 17/09/27
         #region Atributos y Propiedades
 
-        public enum Modo { Add, Select, Update, Delete }
-
-        public Modo eModo { set; get; }
-        public int IdProfessional { set; get; }
-
-        public classQuery oQuery { set; get; }
         public classProfessional oProfessional { set; get; }
+        public enum Modo { Add, Select, Update, Delete }
+        public Modo eModo { set; get; }
+        public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
-
-        private classValidaciones oValidar;
-        private classTextos oTxt = new classTextos();
-
+        private classTextos oTxt;
         private int IdCountry = 0;
         private int IdProvince = 0;
         private int IdCity = 0;
 
         #endregion
 
+        // OK 17/09/27
         #region Formulario
 
+        // OK 17/09/27
         public frmAbmProfessional()
         {
             InitializeComponent();
+            oTxt = new classTextos();
         }
 
-        //OK 11/06/12
+        // OK 17/09/27
         private void frmAbmProfessional_Load(object sender, EventArgs e)
         {
             if (oQuery != null)
             {
                 Text = oTxt.TitleAdministradorUsuario;
-                oValidar = new classValidaciones();
-                ini();
+
+                initAccess();
+                initSpeciality();
+
+                // Modo en el que se mostrara el formulario
+                if (eModo == Modo.Select && oUtil.oProfessional.IdProfessional != 0)
+                {
+                    oProfessional = (classProfessional)oQuery.AbmProfessional(new classProfessional(oUtil.oProfessional.IdProfessional), classQuery.eAbm.Select);
+                    EnableFrm(false);
+                    btnBloquear.Enabled = true;
+                    EscribirEnFrm();
+                    CheckedSpeciality();
+                }
+                else if (eModo == Modo.Update && oUtil.oProfessional.IdProfessional != 0)
+                {
+                    EnableFrm(true);
+                    btnBloquear.Enabled = true;
+                    EscribirEnFrm();
+                    CheckedSpeciality();
+                }
+                else if (eModo == Modo.Add)
+                {
+                    oProfessional = new classProfessional();
+                    EnableFrm(true);
+                    btnBloquear.Enabled = false;
+                    EscribirEnFrm();
+                }
             }
             else
                 Close();
@@ -61,7 +84,7 @@ namespace myExplorer.Formularios
 
         #region Botones
 
-        //OK 17/09/16
+        // OK 17/09/16
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
@@ -69,31 +92,18 @@ namespace myExplorer.Formularios
                 CargarObjeto();
 
                 if (eModo == Modo.Add)
-                {   //-------------------------------------------------
-                    // Guarda
+                {
                     if (0 != (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Insert))
-                    {
-                        MessageBox.Show(oTxt.AgregarProfesional);
-                        eModo = Modo.Update;
-                        oProfessional.IdProfessional = oQuery.UltimoIdProfessional();
-                        IdProfessional = 0;
-                        ini();
-                    }
+                        MessageBox.Show(oTxt.AddProfessional);
                     else
-                        MessageBox.Show(oTxt.ErrorAgregarConsulta);
-
-                }   //-------------------------------------------------
+                        MessageBox.Show(oTxt.ErrorQueryAdd);
+                }
                 else if (eModo == Modo.Update)
-                {   //-------------------------------------------------
-                    // Actualiza
+                {
                     if (0 != (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Update))
-                    {
-                        MessageBox.Show(oTxt.ModificarProfesional);
-                        eModo = Modo.Update;
-                        ini();
-                    }
+                        MessageBox.Show(oTxt.UpdateProfessional);
                     else
-                        MessageBox.Show(oTxt.ErrorActualizarConsulta);
+                        MessageBox.Show(oTxt.ErrorQueryUpdate);
                 }
                 else
                     MessageBox.Show(oTxt.AccionIndefinida);
@@ -110,20 +120,21 @@ namespace myExplorer.Formularios
         // OK 11/06/12
         private void btnBloquear_Click(object sender, EventArgs e)
         {
-            if (oProfessional != null)
-            {
-                if (btnBloquear.Text == oTxt.Bloquear)
-                {
-                    oProfessional.Visible = true;
-                    btnBloquear.Text = oTxt.Desbloquear;
-                }
-                else
-                {
-                    oProfessional.Visible = false;
-                    btnBloquear.Text = oTxt.Bloquear;
-                }
-                btnGuardar_Click(sender, e);
-            }
+            //if (oProfessional != null)
+            //{
+            //    if (btnBloquear.Text == oTxt.Bloquear)
+            //    {
+            //        oProfessional.Visible = true;
+            //        btnBloquear.Text = oTxt.Desbloquear;
+            //    }
+            //    else
+            //    {
+            //        oProfessional.Visible = false;
+            //        btnBloquear.Text = oTxt.Bloquear;
+            //    }
+            //    btnGuardar_Click(sender, e);
+            //}
+            GuardarSpeciality();
         }
 
         // OK 17/09/09
@@ -139,21 +150,63 @@ namespace myExplorer.Formularios
             }
         }
 
+        // OK 17/09/27
+        private void btnUpdateSpeciality_Click(object sender, EventArgs e)
+        {
+            bool Error = false;
+
+            if (txtDescription.Text != string.Empty)
+            {
+                classSpecialty oS;
+                switch ((Modo)clbSpeciality.Tag)
+                {
+                    case Modo.Add:
+                        oS = new classSpecialty(0, txtDescription.Text, true);
+                        Error = ((int)oQuery.AbmSpeciality(oS, classQuery.eAbm.Insert) == 0);
+                        break;
+                    case Modo.Update:
+                        oS = new classSpecialty(Convert.ToInt32(clbSpeciality.SelectedValue), txtDescription.Text, true);
+                        Error = ((int)oQuery.AbmSpeciality(oS, classQuery.eAbm.Update) == 0);
+                        break;
+                }
+            }
+            else
+                MessageBox.Show("Campo vacio");
+
+            if (Error)
+                MessageBox.Show(oQuery.Menssage);
+            else
+                initSpeciality();
+        }
+
+        // OK 17/09/27
+        private void clbSpeciality_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((Convert.ToString(clbSpeciality.SelectedValue) != "") &
+                (Convert.ToInt32(clbSpeciality.SelectedValue) != 0))
+            {
+                clbSpeciality.Tag = Modo.Update;
+                txtDescription.Text = clbSpeciality.Text;
+            }
+            else
+            {
+                clbSpeciality.Tag = Modo.Add;
+                txtDescription.Text = string.Empty;
+            }
+        }
+
         #endregion
 
         #region Metodos
 
         /// <summary>
-        /// Actualiza el formulario
-        /// OK 07/06/12  REVISAR
+        /// Inicializa Speciality.
+        /// OK 17/09/27
         /// </summary>
-        private void ini()
+        private void initSpeciality()
         {
-            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeAccess,
-                (bool)oQuery.AbmPermission(new classPermission(), classQuery.eAbm.LoadCmb),
-                oQuery.Table);
-
             clbSpeciality.SelectedIndexChanged -= clbSpeciality_SelectedIndexChanged;
+            clbSpeciality.DataSource = null;
             if ((bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb))
             {
                 DataTable dT = oQuery.Table;
@@ -163,28 +216,17 @@ namespace myExplorer.Formularios
                 clbSpeciality.ValueMember = "Id";
             }
             clbSpeciality.SelectedIndexChanged += clbSpeciality_SelectedIndexChanged;
+        }
 
-            // Modo en el que se mostrara el formulario
-            if (eModo == Modo.Select && oUtil.oProfessional.IdProfessional != 0)
-            {
-                oProfessional = (classProfessional)oQuery.AbmProfessional(new classProfessional(oUtil.oProfessional.IdProfessional), classQuery.eAbm.Select);
-                EnableFrm(false);
-                btnBloquear.Enabled = true;
-                EscribirEnFrm();
-            }
-            else if (eModo == Modo.Update && oUtil.oProfessional.IdProfessional != 0)
-            {
-                EnableFrm(true);
-                btnBloquear.Enabled = true;
-                EscribirEnFrm();
-            }
-            else if (eModo == Modo.Add)
-            {
-                oProfessional = new classProfessional();
-                EnableFrm(true);
-                btnBloquear.Enabled = false;
-                EscribirEnFrm();
-            }
+        /// <summary>
+        /// Inicializa Access.
+        /// OK 17/09/27
+        /// </summary>
+        private void initAccess()
+        {
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeAccess,
+                (bool)oQuery.AbmPermission(new classPermission(), classQuery.eAbm.LoadCmb),
+                oQuery.Table);
         }
 
         /// <summary>
@@ -290,27 +332,91 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        private void btnUpdateSpeciality_Click(object sender, EventArgs e)
+        private void GuardarSpeciality()
         {
-            bool Error = false;
-            Error = (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.Update);
+            classProfessionalSpeciality oPs = new classProfessionalSpeciality();
+            oPs.IdProfessional = oProfessional.IdProfessional;
+            List<classProfessionalSpeciality> lConsulta = (List<classProfessionalSpeciality>)oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll);
+            
+            List<classProfessionalSpeciality> oListaAgregar = new List<classProfessionalSpeciality>();
+            List<classProfessionalSpeciality> oListaEliminar = new List<classProfessionalSpeciality>();
+            List<classProfessionalSpeciality> oListaDepurada = new List<classProfessionalSpeciality>();
 
-            Error = (bool)oQuery.AbmSpeciality(new classSpecialty(0, txtDescription.Text, true), classQuery.eAbm.Insert);
+            oListaDepurada.AddRange(lConsulta);
 
+            // Elimino lo que coincide entre BD y Frm
+            //foreach (classProfessionalSpeciality iPs in lPs)
+            //{
+            //    foreach (int indexChecked in clbSpeciality.CheckedIndices)
+            //    {
+            //        DataRowView dataRow = clbSpeciality.Items[indexChecked] as DataRowView;
+            //        if (iPs.IdSpeciality == Convert.ToInt32(dataRow[0]))
+            //        {
+            //            oListaDepurada.RemoveAt(indexChecked);
+            //        }
+            //    }
+            //}
+            for (int i = 0; i < lConsulta.Count; i++)
+            {
+                foreach (int indexChecked in clbSpeciality.CheckedIndices)
+                {
+                    DataRowView dataRow = clbSpeciality.Items[indexChecked] as DataRowView;
+                    if (lConsulta[i].IdSpeciality == Convert.ToInt32(dataRow[0]))
+                        oListaDepurada.Remove(lConsulta[i]);      // Elimino lo que coincide entre BD y Frm
+                    break;
+                }
+            }
+
+            // Agrego lo que NO coincide entre BD y Frm
+            //foreach (classProfessionalSpeciality iPs in oListaDepurada)
+            for (int i = 0; i < oListaDepurada.Count; i++)
+            {
+                foreach (int indexChecked in clbSpeciality.CheckedIndices)
+                {
+                    DataRowView dataRow = clbSpeciality.Items[indexChecked] as DataRowView;
+                    if (oListaDepurada[i].IdSpeciality != Convert.ToInt32(dataRow[0]))
+                    {
+                        oListaAgregar.Add(oListaDepurada[i]);
+                        oListaDepurada.Remove(oListaDepurada[i]);
+                    }
+                }
+            }
+
+            // Elimino lo que NO coincide entre BD y Frm
+            //foreach (classProfessionalSpeciality iPs in oListaDepurada)
+            //{
+            //    oListaEliminar.Add(iPs);
+            //    oListaDepurada.Remove(iPs);
+            //}
+            //for (int i = 0; i < lConsulta.Count; i++)
+            //{
+            //    oListaEliminar.Add(oListaDepurada[i]);
+            //    oListaDepurada.Remove(oListaDepurada[i]);
+            //}
+
+            MessageBox.Show(
+                "Add: " + oListaAgregar.Count.ToString() + 
+                "Remove: " + oListaEliminar.Count.ToString() +
+                "Depurado: " + oListaDepurada.Count.ToString());
         }
 
-        private void clbSpeciality_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// OK 17/09/27
+        /// </summary>
+        private void CheckedSpeciality()
         {
+            classProfessionalSpeciality oPs = new classProfessionalSpeciality();
+            oPs.IdProfessional = oProfessional.IdProfessional;
+            List<classProfessionalSpeciality> lPs = (List<classProfessionalSpeciality>)oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll);
 
-            //MessageBox.Show(Convert.ToString(clbSpeciality.SelectedItem) + " - " + Convert.ToString(clbSpeciality.SelectedValue) + " - " + clbSpeciality.SelectedIndex.ToString());
-
-            if (Convert.ToString(clbSpeciality.SelectedValue) != "" &
-                Convert.ToInt32(clbSpeciality.SelectedValue) != 0)
-                txtDescription.Text = Convert.ToString(clbSpeciality.SelectedItem);
-            else
-                txtDescription.Text = string.Empty;
-
+            foreach (classProfessionalSpeciality iPs in lPs)
+            {
+                for(int index = 0; index < clbSpeciality.Items.Count; index++)
+                {
+                    DataRowView dataRow = clbSpeciality.Items[index] as DataRowView;
+                    clbSpeciality.SetItemChecked(index, (Convert.ToInt32(dataRow[0]) == iPs.IdSpeciality));
+                }
+            }
         }
-
     }
 }

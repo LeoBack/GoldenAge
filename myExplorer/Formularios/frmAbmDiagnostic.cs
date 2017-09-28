@@ -60,7 +60,7 @@ namespace myExplorer.Formularios
             }
             else
             {
-                MessageBox.Show(oTxt.ErrorObjetoIndefinido);
+                MessageBox.Show(oTxt.ErrorObjetIndefinido);
                 this.Close();
             }
         }
@@ -81,7 +81,7 @@ namespace myExplorer.Formularios
             error = (bool)oQuery.AbmDiagnostic(oDiagnostico, classQuery.eAbm.Delete);
 
             if (!error)
-                MessageBox.Show(oTxt.ErrorEliminarConsulta);
+                MessageBox.Show(oTxt.ErrorQueryDelete);
             else
                 this.Close();
         }

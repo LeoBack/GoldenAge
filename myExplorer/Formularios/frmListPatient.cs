@@ -108,7 +108,7 @@ namespace myExplorer.Formularios
                     frmListGrandfather_Load(sender, e);
                 }
                 else
-                    MessageBox.Show(oTxt.ErrorListaConsulta);
+                    MessageBox.Show(oTxt.ErrorQueryList);
 
             }
         }
@@ -135,7 +135,7 @@ namespace myExplorer.Formularios
                     frmListGrandfather_Load(sender, e);
                 }
                 else
-                    MessageBox.Show(oTxt.ErrorListaConsulta);
+                    MessageBox.Show(oTxt.ErrorQueryList);
             }
         }
 
@@ -200,7 +200,7 @@ namespace myExplorer.Formularios
             //    fReport.Show();
             //}
             //else
-            MessageBox.Show(oTxt.ErrorListaConsulta);
+            MessageBox.Show(oTxt.ErrorQueryList);
         }
 
         // OK - 24/09/17

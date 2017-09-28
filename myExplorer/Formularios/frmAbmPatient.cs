@@ -76,7 +76,7 @@ namespace myExplorer.Formularios
             }
             else
             {
-                MessageBox.Show(oTxt.ErrorObjetoIndefinido);
+                MessageBox.Show(oTxt.ErrorObjetIndefinido);
                 this.Close();
             }
         }
