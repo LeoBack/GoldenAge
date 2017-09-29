@@ -890,7 +890,7 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@Mail", oP.Mail));
             lParam.Add(new SqlParameter("@User", oP.User));
             lParam.Add(new SqlParameter("@Password", oP.Password));
-            lParam.Add(new SqlParameter("Admin", oP.Admin));
+            lParam.Add(new SqlParameter("@Admin", oP.Admin));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
 
             switch (Abm)
