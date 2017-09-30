@@ -32,7 +32,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/27
+        // OK 17/09/30
         #region Formulario
 
         // OK 17/09/27
@@ -53,27 +53,27 @@ namespace myExplorer.Formularios
                 initSpeciality();
 
                 // Modo en el que se mostrara el formulario
-                if (eModo == Modo.Select && oUtil.oProfessional.IdProfessional != 0)
+                switch (eModo)
                 {
-                    oProfessional = (classProfessional)oQuery.AbmProfessional(new classProfessional(oUtil.oProfessional.IdProfessional), classQuery.eAbm.Select);
-                    EnableFrm(false);
-                    btnBloquear.Enabled = true;
-                    EscribirEnFrm();
-                    setCheckedSpeciality();
-                }
-                else if (eModo == Modo.Update && oUtil.oProfessional.IdProfessional != 0)
-                {
-                    EnableFrm(true);
-                    btnBloquear.Enabled = true;
-                    EscribirEnFrm();
-                    setCheckedSpeciality();
-                }
-                else if (eModo == Modo.Add)
-                {
-                    oProfessional = new classProfessional();
-                    EnableFrm(true);
-                    btnBloquear.Enabled = false;
-                    EscribirEnFrm();
+                    case Modo.Select:
+                        oProfessional = oQuery.AbmProfessional(new classProfessional(oUtil.oProfessional.IdProfessional), classQuery.eAbm.Select) as classProfessional;
+                        EnableFrm(false);
+                        btnBloquear.Enabled = true;
+                        EscribirEnFrm();
+                        setCheckedSpeciality();
+                        break;
+                    case Modo.Update:
+                        EnableFrm(true);
+                        btnBloquear.Enabled = true;
+                        EscribirEnFrm();
+                        setCheckedSpeciality();
+                        break;
+                    case Modo.Add:
+                        oProfessional = new classProfessional();
+                        EnableFrm(true);
+                        btnBloquear.Enabled = false;
+                        EscribirEnFrm();
+                        break;
                 }
             }
             else
@@ -82,10 +82,10 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/29
+        // OK 17/09/30
         #region Botones
 
-        // OK 17/09/16
+        // OK 17/09/30
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
@@ -102,6 +102,8 @@ namespace myExplorer.Formularios
                             SaveCheckedSpeciality(IdQuery);
                             MessageBox.Show(oTxt.AddProfessional);
                         }
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryAdd);
                         break;
                     case Modo.Update:
                         IdQuery = (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Update);
@@ -110,6 +112,8 @@ namespace myExplorer.Formularios
                             SaveCheckedSpeciality(IdQuery);
                             MessageBox.Show(oTxt.UpdateProfessional);
                         }
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryUpdate);
                         break;
                     default:
                         MessageBox.Show(oTxt.AccionIndefinida);
@@ -117,18 +121,17 @@ namespace myExplorer.Formularios
                 }
 
                 if(IdQuery == 0)
-                    MessageBox.Show(oTxt.ErrorQueryAdd);
+                    MessageBox.Show(oQuery.Menssage);
             }
         }
 
-        // OK 11/06/12
+        // OK 17/09/30
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             LimpiarFrm();
-            eModo = Modo.Add;
         }
 
-        // OK 11/06/12
+        // OK 17/09/30
         private void btnBloquear_Click(object sender, EventArgs e)
         {
             if (oProfessional != null)
@@ -206,7 +209,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/29
+        // OK 17/09/30
         #region Metodos
 
         /// <summary>

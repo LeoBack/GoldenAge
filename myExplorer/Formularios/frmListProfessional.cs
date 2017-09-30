@@ -72,16 +72,20 @@ namespace myExplorer.Formularios
             {
                 oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
                 oP = (classProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
+                oP.Visible = false;
 
                 if (oP != null)
                 {
-                    frmAbmProfessional frmA = new frmAbmProfessional();
-                    frmA.oQuery = oQuery;
-                    frmA.oUtil = oUtil;
-                    frmA.oProfessional = oP;
-                    frmA.eModo = frmAbmProfessional.Modo.Delete;
-                    frmA.ShowDialog();
-
+                    if (0 != (int)oQuery.AbmProfessional(oP, classQuery.eAbm.Update))
+                        MessageBox.Show(oTxt.UpdateProfessional);
+                    else
+                        MessageBox.Show(oTxt.ErrorQueryUpdate);
+                    //frmAbmProfessional frmA = new frmAbmProfessional();
+                    //frmA.oQuery = oQuery;
+                    //frmA.oUtil = oUtil;
+                    //frmA.oProfessional = oP;
+                    //frmA.eModo = frmAbmProfessional.Modo.Delete;
+                    //frmA.ShowDialog();
                     frmListProfessional_Load(sender, e);
                 }
                 else
