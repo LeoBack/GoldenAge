@@ -240,11 +240,15 @@ namespace myExplorer.Formularios
         public void Filtrar()
         {
             SelectRow = 0;
+            int affNumber = 0;
+            if (tstxtAffiliateNumber.TextBox.Text != "")
+                affNumber = Convert.ToInt32(tstxtAffiliateNumber.TextBox.Text);
 
             if (oQuery.FiltroPatientLimite(
                 tstxtName.TextBox.Text, 
                 tstxtLastName.TextBox.Text, 
-                Convert.ToInt32(tstxtAffiliateNumber.TextBox.Text), 
+                //Convert.ToInt32(tstxtAffiliateNumber.TextBox.Text), 
+                affNumber,
                 Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue),
                 Desde, Hasta))
             {
