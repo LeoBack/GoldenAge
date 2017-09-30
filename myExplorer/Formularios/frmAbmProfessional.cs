@@ -91,29 +91,33 @@ namespace myExplorer.Formularios
             if (ValidarCampos())
             {
                 CargarObjeto();
+                int IdQuery = 0;
 
-                if (eModo == Modo.Add)
+                switch(eModo)
                 {
-                    if (0 != (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Insert))
-                    {
-                        SaveCheckedSpeciality();
-                        MessageBox.Show(oTxt.AddProfessional);
-                    }
-                    else
-                        MessageBox.Show(oTxt.ErrorQueryAdd);
+                    case Modo.Add:
+                        IdQuery = (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Insert);
+                        if (0 != IdQuery)
+                        {
+                            SaveCheckedSpeciality(IdQuery);
+                            MessageBox.Show(oTxt.AddProfessional);
+                        }
+                        break;
+                    case Modo.Update:
+                        IdQuery = (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Update);
+                        if (0 != IdQuery)
+                        {
+                            SaveCheckedSpeciality(IdQuery);
+                            MessageBox.Show(oTxt.UpdateProfessional);
+                        }
+                        break;
+                    default:
+                        MessageBox.Show(oTxt.AccionIndefinida);
+                        break;
                 }
-                else if (eModo == Modo.Update)
-                {
-                    if (0 != (int)oQuery.AbmProfessional(oProfessional, classQuery.eAbm.Update))
-                    {
-                        SaveCheckedSpeciality();
-                        MessageBox.Show(oTxt.UpdateProfessional);
-                    }
-                    else
-                        MessageBox.Show(oTxt.ErrorQueryUpdate);
-                }
-                else
-                    MessageBox.Show(oTxt.AccionIndefinida);
+
+                if(IdQuery == 0)
+                    MessageBox.Show(oTxt.ErrorQueryAdd);
             }
         }
 
@@ -131,15 +135,14 @@ namespace myExplorer.Formularios
             {
                 if (btnBloquear.Text == oTxt.Bloquear)
                 {
-                    oProfessional.Visible = true;
+                    Enable = false;
                     btnBloquear.Text = oTxt.Desbloquear;
                 }
                 else
                 {
-                    oProfessional.Visible = false;
+                    Enable = true;
                     btnBloquear.Text = oTxt.Bloquear;
                 }
-                btnGuardar_Click(sender, e);
             }
         }
 
@@ -209,10 +212,10 @@ namespace myExplorer.Formularios
         /// <summary>
         /// OK 17/09/28
         /// </summary>
-        private void SaveCheckedSpeciality()
+        private void SaveCheckedSpeciality(int IdProfessional)
         {
             classProfessionalSpeciality oPs = new classProfessionalSpeciality();
-            oPs.IdProfessional = oProfessional.IdProfessional;
+            oPs.IdProfessional = IdProfessional;
             List<classProfessionalSpeciality> lConsulta = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<classProfessionalSpeciality>;
             List<classProfessionalSpeciality> lDelete = new List<classProfessionalSpeciality>();
             List<classProfessionalSpeciality> lAdd = new List<classProfessionalSpeciality>();
@@ -221,7 +224,7 @@ namespace myExplorer.Formularios
             foreach (DataRowView dRa in clbSpeciality.CheckedItems)
             {
                 lAdd.Add(new classProfessionalSpeciality(
-                    1, oProfessional.IdProfessional, Convert.ToInt32(dRa[0]), true));
+                    1, IdProfessional, Convert.ToInt32(dRa[0]), true));
             }
 
             for (int iA = 0; iA < lDelete.Count; iA++)
@@ -252,12 +255,13 @@ namespace myExplorer.Formularios
                 if (0 == (int)oQuery.AbmProfessionalSpeciality(oI, classQuery.eAbm.Insert))
                     MessageBox.Show(oQuery.Menssage);
             }
-
-            //MessageBox.Show(
-            //    "# Checked: " + clbSpeciality.CheckedIndices.Count.ToString() +
-            //    "\n# Query: " + lConsulta.Count.ToString() +
-            //    "\nBD->Delete: " + lDelete.Count.ToString() +
-            //    "\nBD->Add: " + lAdd.Count.ToString());
+#if DEBUG
+            MessageBox.Show(
+                "# Checked: " + clbSpeciality.CheckedIndices.Count.ToString() +
+                "\n# Query: " + lConsulta.Count.ToString() +
+                "\nBD->Delete: " + lDelete.Count.ToString() +
+                "\nBD->Add: " + lAdd.Count.ToString());
+#endif
         }
 
         /// <summary>
@@ -343,14 +347,14 @@ namespace myExplorer.Formularios
         private void CargarObjeto()
         {
             oProfessional.ProfessionalRegistration = Convert.ToInt32(txtProfessionalRegistration.Text);
-            oProfessional.Name = txtName.Text;
-            oProfessional.LastName = txtLastName.Text;
+            oProfessional.Name = txtName.Text.ToUpper();
+            oProfessional.LastName = txtLastName.Text.ToUpper();
             oProfessional.IdLocationCountry = IdCountry;
             oProfessional.IdLocationProvince = IdProvince;
             oProfessional.IdLocationCity = IdCity;
-            oProfessional.Address = txtAddress.Text;
+            oProfessional.Address = txtAddress.Text.ToUpper();
             oProfessional.Phone = txtPhone.Text;
-            oProfessional.Mail = txtMail.Text;
+            oProfessional.Mail = txtMail.Text.ToUpper();
             oProfessional.User = txtUser.Text;
             oProfessional.Admin = Convert.ToInt32(cmbTypeAccess.SelectedValue);
             oProfessional.Password = txtPassword.Text;
@@ -364,11 +368,11 @@ namespace myExplorer.Formularios
         private void EscribirEnFrm()
         {
             txtProfessionalRegistration.Text = Convert.ToString(oProfessional.ProfessionalRegistration);
-            txtName.Text = oProfessional.Name;
-            txtLastName.Text = oProfessional.LastName;
+            txtName.Text = oProfessional.Name.ToUpper();
+            txtLastName.Text = oProfessional.LastName.ToUpper();
             txtAddress.Text = oProfessional.Address;
             txtPhone.Text = oProfessional.Phone;
-            txtMail.Text = oProfessional.Mail;
+            txtMail.Text = oProfessional.Mail.ToUpper();
             txtUser.Text = oProfessional.User;
             libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeAccess, oProfessional.Admin);
             txtPassword.Text = oProfessional.Password;
@@ -389,26 +393,31 @@ namespace myExplorer.Formularios
         /// <summary>
         /// Valida los campos del Formulario.
         /// False -> Vacio - True -> Ok
-        /// OK 04/03/12
+        /// OK 30/09/17
         /// </summary>
         /// <returns></returns>
         private bool ValidarCampos()
         {
-            bool V = true;
+            bool V = false;
 
-            if ((txtLastName.Text == "") || (txtName.Text == "") ||
-                (txtPassword.Text == "") || (txtMail.Text == ""))
-            {
-                V = false;
-                MessageBox.Show("Se encontraron casillas vacias.");
-            }
-            else if (txtPassword.TextLength <= 7)
-            {
-                V = false;
-                MessageBox.Show("La contraseña debe tener como minimo 8 caracteres.");
-            }
+            if (txtName.Text.Length >= 50 || (txtName.Text == ""))
+                MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
+            else if (txtLastName.Text.Length >= 50 || (txtLastName.Text == ""))
+                MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
+            else if (txtMail.Text.Length >= 50 || (txtMail.Text == ""))
+                MessageBox.Show("La direccion de Correo esta vacia o supera los 50 caracteres");
+            else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
+                MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
+            else if ((txtPassword.Text.Length < 8) || (txtPassword.Text.Length >= 20) || (txtPassword.Text == ""))
+                MessageBox.Show("La Contraseña esta vacia y//o debe tener como minimo 8 caracteres.");
+            else if ((txtProfessionalRegistration.Text.Length >= 6) || (txtProfessionalRegistration.Text == ""))
+                MessageBox.Show("El Numero de Registro esta vacio o no supera los 6 caracteres.");
+            else if (txtPhone.Text.Length >= 20)
+                MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
+            else if (txtUser.Text.Length >= 20 || txtUser.Text == "")
+                MessageBox.Show("El Nombre de Usuario esta vacio o supera los 20 caracteres");
             else
-            { }
+                V = true;
 
             return V;
         }
