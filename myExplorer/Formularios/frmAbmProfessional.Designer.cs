@@ -110,13 +110,10 @@
             this.tbpPerfil.Location = new System.Drawing.Point(4, 29);
             this.tbpPerfil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbpPerfil.Name = "tbpPerfil";
-<<<<<<< HEAD
             this.tbpPerfil.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbpPerfil.Size = new System.Drawing.Size(592, 374);
-=======
             this.tbpPerfil.Padding = new System.Windows.Forms.Padding(3);
             this.tbpPerfil.Size = new System.Drawing.Size(391, 239);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
             this.tbpPerfil.TabIndex = 0;
             this.tbpPerfil.Text = "Perfil";
             this.tbpPerfil.UseVisualStyleBackColor = true;
@@ -173,12 +170,10 @@
             // txtAddress
             // 
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< HEAD
+
             this.txtAddress.Location = new System.Drawing.Point(119, 147);
-=======
             this.txtAddress.Location = new System.Drawing.Point(79, 93);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(336, 26);
             this.txtAddress.TabIndex = 7;
@@ -197,12 +192,12 @@
             // txtLocation
             // 
             this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< HEAD
+
             this.txtLocation.Location = new System.Drawing.Point(119, 187);
-=======
+
             this.txtLocation.Location = new System.Drawing.Point(79, 119);
             this.txtLocation.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ReadOnly = true;
             this.txtLocation.Size = new System.Drawing.Size(336, 26);
@@ -222,12 +217,9 @@
             // txtPhone
             // 
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< HEAD
             this.txtPhone.Location = new System.Drawing.Point(119, 227);
-=======
             this.txtPhone.Location = new System.Drawing.Point(79, 145);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(336, 26);
             this.txtPhone.TabIndex = 12;
@@ -255,12 +247,12 @@
             // 
             // btnLocalitation
             // 
-<<<<<<< HEAD
+
             this.btnLocalitation.Location = new System.Drawing.Point(461, 183);
-=======
+
             this.btnLocalitation.Location = new System.Drawing.Point(303, 118);
             this.btnLocalitation.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.btnLocalitation.Name = "btnLocalitation";
             this.btnLocalitation.Size = new System.Drawing.Size(86, 34);
             this.btnLocalitation.TabIndex = 10;
@@ -289,12 +281,12 @@
             // txtProfessionalRegistration
             // 
             this.txtProfessionalRegistration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< HEAD
+
             this.txtProfessionalRegistration.Location = new System.Drawing.Point(119, 107);
-=======
+
             this.txtProfessionalRegistration.Location = new System.Drawing.Point(79, 67);
             this.txtProfessionalRegistration.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.txtProfessionalRegistration.Name = "txtProfessionalRegistration";
             this.txtProfessionalRegistration.Size = new System.Drawing.Size(336, 26);
             this.txtProfessionalRegistration.TabIndex = 5;
@@ -337,18 +329,18 @@
             // tbpLogin
             // 
             this.tbpLogin.Controls.Add(this.tlpLogin);
-<<<<<<< HEAD
+
             this.tbpLogin.Location = new System.Drawing.Point(4, 29);
             this.tbpLogin.Name = "tbpLogin";
             this.tbpLogin.Padding = new System.Windows.Forms.Padding(3);
             this.tbpLogin.Size = new System.Drawing.Size(592, 374);
-=======
+
             this.tbpLogin.Location = new System.Drawing.Point(4, 22);
             this.tbpLogin.Margin = new System.Windows.Forms.Padding(2);
             this.tbpLogin.Name = "tbpLogin";
             this.tbpLogin.Padding = new System.Windows.Forms.Padding(2);
             this.tbpLogin.Size = new System.Drawing.Size(391, 239);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.tbpLogin.TabIndex = 1;
             this.tbpLogin.Text = "Datos de Acceso";
             this.tbpLogin.UseVisualStyleBackColor = true;
@@ -367,12 +359,12 @@
             this.tlpLogin.Controls.Add(this.cmbTypeAccess, 1, 3);
             this.tlpLogin.Controls.Add(this.lblTypeAccess, 0, 3);
             this.tlpLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
+
             this.tlpLogin.Location = new System.Drawing.Point(3, 3);
-=======
+
             this.tlpLogin.Location = new System.Drawing.Point(2, 2);
             this.tlpLogin.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.tlpLogin.Name = "tlpLogin";
             this.tlpLogin.RowCount = 5;
             this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -380,11 +372,11 @@
             this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-<<<<<<< HEAD
+
             this.tlpLogin.Size = new System.Drawing.Size(586, 368);
-=======
+
             this.tlpLogin.Size = new System.Drawing.Size(387, 235);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.tlpLogin.TabIndex = 0;
             // 
             // lblPassword
@@ -405,11 +397,11 @@
             this.txtPassword.Location = new System.Drawing.Point(140, 171);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
-<<<<<<< HEAD
+
             this.txtPassword.Size = new System.Drawing.Size(315, 26);
-=======
+
             this.txtPassword.Size = new System.Drawing.Size(206, 20);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -427,21 +419,21 @@
             // txtUser
             // 
             this.txtUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< HEAD
+
             this.txtUser.Location = new System.Drawing.Point(139, 129);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(317, 26);
-=======
+
             this.txtUser.Location = new System.Drawing.Point(93, 80);
             this.txtUser.Margin = new System.Windows.Forms.Padding(2);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(208, 20);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.txtUser.TabIndex = 1;
             // 
             // btnBlocked
             // 
-<<<<<<< HEAD
+
             this.btnBlocked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBlocked.Location = new System.Drawing.Point(477, 328);
             this.btnBlocked.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -451,7 +443,7 @@
             this.btnBlocked.Text = "Bloquear";
             this.btnBlocked.UseVisualStyleBackColor = true;
             this.btnBlocked.Click += new System.EventHandler(this.btnBlocked_Click);
-=======
+
             this.btnBloquear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBloquear.Location = new System.Drawing.Point(314, 209);
             this.btnBloquear.Name = "btnBloquear";
@@ -460,23 +452,23 @@
             this.btnBloquear.Text = "Bloquear";
             this.btnBloquear.UseVisualStyleBackColor = true;
             this.btnBloquear.Click += new System.EventHandler(this.btnBloquear_Click);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             // 
             // cmbTypeAccess
             // 
             this.cmbTypeAccess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbTypeAccess.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTypeAccess.FormattingEnabled = true;
-<<<<<<< HEAD
+
             this.cmbTypeAccess.Location = new System.Drawing.Point(139, 212);
             this.cmbTypeAccess.Name = "cmbTypeAccess";
             this.cmbTypeAccess.Size = new System.Drawing.Size(317, 28);
-=======
+
             this.cmbTypeAccess.Location = new System.Drawing.Point(93, 134);
             this.cmbTypeAccess.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTypeAccess.Name = "cmbTypeAccess";
             this.cmbTypeAccess.Size = new System.Drawing.Size(208, 21);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.cmbTypeAccess.TabIndex = 6;
             // 
             // lblTypeAccess
@@ -493,18 +485,18 @@
             // tabSpeciality
             // 
             this.tabSpeciality.Controls.Add(this.tlpSpeciality);
-<<<<<<< HEAD
+
             this.tabSpeciality.Location = new System.Drawing.Point(4, 29);
             this.tabSpeciality.Name = "tabSpeciality";
             this.tabSpeciality.Padding = new System.Windows.Forms.Padding(3);
             this.tabSpeciality.Size = new System.Drawing.Size(592, 374);
-=======
+
             this.tabSpeciality.Location = new System.Drawing.Point(4, 22);
             this.tabSpeciality.Margin = new System.Windows.Forms.Padding(2);
             this.tabSpeciality.Name = "tabSpeciality";
             this.tabSpeciality.Padding = new System.Windows.Forms.Padding(2);
             this.tabSpeciality.Size = new System.Drawing.Size(391, 239);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.tabSpeciality.TabIndex = 2;
             this.tabSpeciality.Text = "Especiadades";
             this.tabSpeciality.UseVisualStyleBackColor = true;
@@ -519,23 +511,23 @@
             this.tlpSpeciality.Controls.Add(this.txtDescription, 0, 2);
             this.tlpSpeciality.Controls.Add(this.btnUpdateSpeciality, 1, 2);
             this.tlpSpeciality.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
+
             this.tlpSpeciality.Location = new System.Drawing.Point(3, 3);
-=======
+
             this.tlpSpeciality.Location = new System.Drawing.Point(2, 2);
             this.tlpSpeciality.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.tlpSpeciality.Name = "tlpSpeciality";
             this.tlpSpeciality.RowCount = 3;
             this.tlpSpeciality.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.31522F));
             this.tlpSpeciality.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.68478F));
-<<<<<<< HEAD
+
             this.tlpSpeciality.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpSpeciality.Size = new System.Drawing.Size(586, 368);
-=======
+
             this.tlpSpeciality.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tlpSpeciality.Size = new System.Drawing.Size(387, 235);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.tlpSpeciality.TabIndex = 0;
             // 
             // lblDescriptionSpeciality
@@ -553,40 +545,40 @@
             this.tlpSpeciality.SetColumnSpan(this.clbSpeciality, 2);
             this.clbSpeciality.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbSpeciality.FormattingEnabled = true;
-<<<<<<< HEAD
+
             this.clbSpeciality.Location = new System.Drawing.Point(3, 46);
             this.clbSpeciality.Name = "clbSpeciality";
             this.clbSpeciality.Size = new System.Drawing.Size(580, 276);
-=======
+
             this.clbSpeciality.Location = new System.Drawing.Point(2, 29);
             this.clbSpeciality.Margin = new System.Windows.Forms.Padding(2);
             this.clbSpeciality.Name = "clbSpeciality";
             this.clbSpeciality.Size = new System.Drawing.Size(383, 176);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.clbSpeciality.TabIndex = 1;
             this.clbSpeciality.SelectedIndexChanged += new System.EventHandler(this.clbSpeciality_SelectedIndexChanged);
             // 
             // txtDescription
             // 
             this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< HEAD
+
             this.txtDescription.Location = new System.Drawing.Point(3, 333);
-=======
+
             this.txtDescription.Location = new System.Drawing.Point(2, 211);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(308, 26);
             this.txtDescription.TabIndex = 2;
             // 
             // btnUpdateSpeciality
             // 
-<<<<<<< HEAD
+
             this.btnUpdateSpeciality.Location = new System.Drawing.Point(317, 328);
-=======
+
             this.btnUpdateSpeciality.Location = new System.Drawing.Point(211, 209);
             this.btnUpdateSpeciality.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> f785ecefbc6b6be1d350dc0fe7ef5c3c0386b14a
+
             this.btnUpdateSpeciality.Name = "btnUpdateSpeciality";
             this.btnUpdateSpeciality.Size = new System.Drawing.Size(99, 37);
             this.btnUpdateSpeciality.TabIndex = 3;
