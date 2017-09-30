@@ -405,15 +405,52 @@ namespace myExplorer.Formularios
         /// OK 04/03/12
         /// </summary>
         /// <returns></returns>
-        private bool ValidarCampos()
+        private bool ValidarCamposPatient()
         {
-            if ((txtLastName.Text == "") ||
-                (txtName.Text == "") ||
-                (txtAddress.Text == "") ||
-                (txtAffiliateNumber.Text == ""))
-                return false;
+            bool V = false;
+
+            if (txtName.Text.Length >= 50 || (txtName.Text == ""))
+                MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
+            else if (txtLastName.Text.Length >= 50 || (txtLastName.Text == ""))
+                MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
+            else if (txtPhone.Text.Length >= 20)
+                MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
+            else if ((txtAffiliateNumber.Text.Length >= 6) || (txtAffiliateNumber.Text == ""))
+                MessageBox.Show("El Numero de Afiliado esta vacio o no supera los 6 caracteres.");
+            else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
+                MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
+            else if (txtLocation.Text == "")
+                MessageBox.Show("Seleccione Pais - Provincia - Localidad");
+            else if (txtReasonExit.Text.Length >= 50)
+                MessageBox.Show("El Motivo de Alta Debe tener como minimo 8 caracteres.");
             else
-                return true;
+                V = true;
+
+            return V;
+        }
+
+        private bool ValidarCamposParent()
+        {
+            bool V = false;
+
+            if (txtParentName.Text.Length >= 50 || (txtParentName.Text == ""))
+                MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
+            else if (txtParentLastName.Text.Length >= 50 || (txtParentLastName.Text == ""))
+                MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
+            //else if (txtPhone.Text.Length >= 20)
+            //    MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
+            //else if ((txtAffiliateNumber.Text.Length >= 6) || (txtAffiliateNumber.Text == ""))
+            //    MessageBox.Show("El Numero de Afiliado esta vacio o no supera los 6 caracteres.");
+            //else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
+            //    MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
+            //else if (txtLocation.Text == "")
+            //    MessageBox.Show("Seleccione Pais - Provincia - Localidad");
+            //else if (txtReasonExit.Text.Length >= 50)
+            //    MessageBox.Show("El Motivo de Alta Debe tener como minimo 8 caracteres.");
+            else
+                V = true;
+
+            return V;
         }
 
         // OK 04/03/12
