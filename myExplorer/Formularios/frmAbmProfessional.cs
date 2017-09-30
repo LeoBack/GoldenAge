@@ -58,21 +58,24 @@ namespace myExplorer.Formularios
                     case Modo.Select:
                         oProfessional = oQuery.AbmProfessional(new classProfessional(oUtil.oProfessional.IdProfessional), classQuery.eAbm.Select) as classProfessional;
                         EnableFrm(false);
-                        btnBloquear.Enabled = true;
+                        btnBlocked.Enabled = true;
                         EscribirEnFrm();
                         setCheckedSpeciality();
                         break;
                     case Modo.Update:
                         EnableFrm(true);
-                        btnBloquear.Enabled = true;
+                        btnBlocked.Visible = true;
                         EscribirEnFrm();
                         setCheckedSpeciality();
                         break;
                     case Modo.Add:
                         oProfessional = new classProfessional();
                         EnableFrm(true);
-                        btnBloquear.Enabled = false;
+                        btnBlocked.Visible = false;
                         EscribirEnFrm();
+                        break;
+                    default:
+                        MessageBox.Show(oTxt.ErrorObjetIndefinido);
                         break;
                 }
             }
@@ -86,7 +89,7 @@ namespace myExplorer.Formularios
         #region Botones
 
         // OK 17/09/30
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
@@ -120,31 +123,28 @@ namespace myExplorer.Formularios
                         break;
                 }
 
-                if(IdQuery == 0)
+                if (IdQuery == 0)
                     MessageBox.Show(oQuery.Menssage);
+                else
+                    Close();
             }
+            
         }
 
         // OK 17/09/30
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            LimpiarFrm();
-        }
-
-        // OK 17/09/30
-        private void btnBloquear_Click(object sender, EventArgs e)
+        private void btnBlocked_Click(object sender, EventArgs e)
         {
             if (oProfessional != null)
             {
-                if (btnBloquear.Text == oTxt.Bloquear)
+                if (btnBlocked.Text == oTxt.Bloquear)
                 {
                     Enable = false;
-                    btnBloquear.Text = oTxt.Desbloquear;
+                    btnBlocked.Text = oTxt.Desbloquear;
                 }
                 else
                 {
                     Enable = true;
-                    btnBloquear.Text = oTxt.Bloquear;
+                    btnBlocked.Text = oTxt.Bloquear;
                 }
             }
         }
@@ -388,9 +388,9 @@ namespace myExplorer.Formularios
                 oQuery.ConexionString, IdCountry, IdProvince, IdCity);
 
             if (Enable)
-                btnBloquear.Text = "Bloquear";
+                btnBlocked.Text = "Bloquear";
             else
-                btnBloquear.Text = "Desbloquear";
+                btnBlocked.Text = "Desbloquear";
         }
 
         /// <summary>
@@ -413,12 +413,14 @@ namespace myExplorer.Formularios
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
             else if ((txtPassword.Text.Length < 8) || (txtPassword.Text.Length >= 20) || (txtPassword.Text == ""))
                 MessageBox.Show("La Contraseña esta vacia y//o debe tener como minimo 8 caracteres.");
-            else if ((txtProfessionalRegistration.Text.Length >= 6) || (txtProfessionalRegistration.Text == ""))
+            else if ((txtProfessionalRegistration.Text.Length < 6) || (txtProfessionalRegistration.Text == ""))
                 MessageBox.Show("El Numero de Registro esta vacio o no supera los 6 caracteres.");
             else if (txtPhone.Text.Length >= 20)
                 MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
             else if (txtUser.Text.Length >= 20 || txtUser.Text == "")
                 MessageBox.Show("El Nombre de Usuario esta vacio o supera los 20 caracteres");
+            else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
+                MessageBox.Show("La Localidad no esta seleccionada.");
             else
                 V = true;
 

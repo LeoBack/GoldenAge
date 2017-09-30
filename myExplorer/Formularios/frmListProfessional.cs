@@ -15,14 +15,12 @@ namespace myExplorer.Formularios
 {
     public partial class frmListProfessional : Form
     {
-        // OK - 24/09/17
+        // OK 17/09/30
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
-
-        private classTextos oTxt = new classTextos();
-
+        private classTextos oTxt;
         private int SelectRow;
         private int Desde = 0;
         private int Hasta = 0;
@@ -31,16 +29,17 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // REVISADO - 17/09/09
+        // OK 17/09/30
         #region Formulario
 
-        // OK - 17/09/09
+        // OK 17/09/30
         public frmListProfessional()
         {
             InitializeComponent();
+            oTxt = new classTextos();
         }
 
-        // REVISADO - 17/09/09
+        // OK 17/09/30
         private void frmListProfessional_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
@@ -260,8 +259,10 @@ namespace myExplorer.Formularios
             dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLista.MultiSelect = false;
             dgvLista.DataSource = Source;
+#if RELEASE
             dgvLista.Columns[0].Visible = false;
             dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
+#endif
             return dgvLista.Rows.Count;
         }
 

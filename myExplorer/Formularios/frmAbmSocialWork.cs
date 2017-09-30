@@ -54,11 +54,18 @@ namespace myExplorer.Formularios
                 switch (eModo)
                 {
                     case Modo.Update:
-                        EnableFrm(false);
+                        EnableFrm(true);
+                        btnBlocked.Visible = true;
                         EscribirEnFrm();
                         break;
                     case Modo.Add:
+                        oSocialWork = new classSocialWork();
+                        EnableFrm(true);
+                        btnBlocked.Visible = false;
                         LimpiarFrm();
+                        break;
+                    default:
+                        MessageBox.Show(oTxt.ErrorObjetIndefinido);
                         break;
                 }
             }
@@ -68,7 +75,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 03/06/12
+        // OK 17/09/30
         #region Botones
 
         // OK 17/09/30
@@ -102,29 +109,25 @@ namespace myExplorer.Formularios
 
                 if (IdQuery == 0)
                     MessageBox.Show(oQuery.Menssage);
+                else
+                    Close();
             }
         }
 
         // OK 17/09/30
-        private void btnClosed_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        // OK 17/09/30
-        private void btnBloquear_Click(object sender, EventArgs e)
+        private void btnBlocked_Click(object sender, EventArgs e)
         {
             if (oSocialWork != null)
             {
-                if (btnBloquear.Text == oTxt.Bloquear)
+                if (btnBlocked.Text == oTxt.Bloquear)
                 {
                     Enable = false;
-                    btnBloquear.Text = oTxt.Desbloquear;
+                    btnBlocked.Text = oTxt.Desbloquear;
                 }
                 else
                 {
                     Enable = true;
-                    btnBloquear.Text = oTxt.Bloquear;
+                    btnBlocked.Text = oTxt.Bloquear;
                 }
             }
         }
@@ -144,7 +147,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/16
+        // OK 17/09/30
         #region Metodos
 
         /// <summary>
@@ -166,16 +169,18 @@ namespace myExplorer.Formularios
         {
             bool V = false;
 
-            if (txtName.Text.Length >= 50 || (txtName.Text == ""))
-                MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
-            else if (txtDescription.Text.Length >= 50 || (txtDescription.Text == ""))
-                MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
-            else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
-                MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
+            if ((txtName.Text.Length >= 50) || (txtName.Text == ""))
+                MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres.");
+            else if ((txtDescription.Text.Length >= 50) || (txtDescription.Text == ""))
+                MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres.");
+            else if ((txtAddress.Text.Length >= 50) || (txtAddress.Text == ""))
+                MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres.");
             else if (txtPhone.Text.Length >= 20)
-                MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
-            //else if ((txtContact.Text.Length > 50) (txtContact.Text == ""))
-            //    MessageBox.Show("La Contraseña esta vacia y//o debe tener como minimo 8 caracteres.");
+                MessageBox.Show("El Numero de Telefono supera los 20 caracteres.");
+            else if ((txtContact.Text.Length > 50))
+                MessageBox.Show("La Contacto debe supera los 50 caracteres.");
+            else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
+                MessageBox.Show("La Localidad no esta seleccionada.");
             else
                 V = true;
 
@@ -214,16 +219,16 @@ namespace myExplorer.Formularios
             IdCountry = oSocialWork.IdLocationCountry;
             IdProvince = oSocialWork.IdLocationProvince;
             IdCity = oSocialWork.IdLocationCity;
-            
+            Enable = oSocialWork.Visible;
             txtLocation.Text = frmLocation.toStringLocation(
                 oQuery.ConexionString, IdCountry, IdProvince, IdCity);
 
             libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbIvaType, oSocialWork.IdIvaType);
 
             if (Enable)
-                btnBloquear.Text = "Bloquear";
+                btnBlocked.Text = "Bloquear";
             else
-                btnBloquear.Text = "Desbloquear";
+                btnBlocked.Text = "Desbloquear";
         }
 
         /// <summary>

@@ -34,7 +34,6 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblContact = new System.Windows.Forms.Label();
-            this.btnClosed = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtContact = new System.Windows.Forms.TextBox();
             this.lblTelefono1 = new System.Windows.Forms.Label();
@@ -46,7 +45,7 @@
             this.btnLocalitation = new System.Windows.Forms.Button();
             this.cmbIvaType = new System.Windows.Forms.ComboBox();
             this.lblIvaType = new System.Windows.Forms.Label();
-            this.btnBloquear = new System.Windows.Forms.Button();
+            this.btnBlocked = new System.Windows.Forms.Button();
             this.tlpPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,19 +60,18 @@
             this.tlpPanel.Controls.Add(this.txtDescription, 1, 2);
             this.tlpPanel.Controls.Add(this.txtName, 1, 1);
             this.tlpPanel.Controls.Add(this.lblContact, 0, 6);
-            this.tlpPanel.Controls.Add(this.btnClosed, 2, 8);
             this.tlpPanel.Controls.Add(this.txtPhone, 1, 5);
             this.tlpPanel.Controls.Add(this.txtContact, 1, 6);
             this.tlpPanel.Controls.Add(this.lblTelefono1, 0, 5);
             this.tlpPanel.Controls.Add(this.lblAddress, 0, 3);
             this.tlpPanel.Controls.Add(this.txtAddress, 1, 3);
-            this.tlpPanel.Controls.Add(this.btnSave, 1, 8);
             this.tlpPanel.Controls.Add(this.lblLocation, 0, 4);
             this.tlpPanel.Controls.Add(this.txtLocation, 1, 4);
             this.tlpPanel.Controls.Add(this.btnLocalitation, 2, 4);
             this.tlpPanel.Controls.Add(this.cmbIvaType, 1, 7);
             this.tlpPanel.Controls.Add(this.lblIvaType, 0, 7);
-            this.tlpPanel.Controls.Add(this.btnBloquear, 0, 8);
+            this.tlpPanel.Controls.Add(this.btnBlocked, 0, 8);
+            this.tlpPanel.Controls.Add(this.btnSave, 2, 8);
             this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanel.Location = new System.Drawing.Point(0, 0);
             this.tlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -88,7 +86,7 @@
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.Size = new System.Drawing.Size(582, 401);
+            this.tlpPanel.Size = new System.Drawing.Size(582, 421);
             this.tlpPanel.TabIndex = 0;
             // 
             // lblName
@@ -145,18 +143,6 @@
             this.lblContact.Text = "Contacto";
             this.lblContact.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnClosed
-            // 
-            this.btnClosed.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnClosed.Location = new System.Drawing.Point(466, 347);
-            this.btnClosed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClosed.Name = "btnClosed";
-            this.btnClosed.Size = new System.Drawing.Size(112, 42);
-            this.btnClosed.TabIndex = 7;
-            this.btnClosed.Text = "Cerrar";
-            this.btnClosed.UseVisualStyleBackColor = true;
-            this.btnClosed.Click += new System.EventHandler(this.btnClosed_Click);
-            // 
             // txtPhone
             // 
             this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -210,9 +196,8 @@
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(337, 347);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(466, 374);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(112, 42);
@@ -272,23 +257,22 @@
             this.lblIvaType.Text = "Tipo de IVA";
             this.lblIvaType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnBloquear
+            // btnBlocked
             // 
-            this.btnBloquear.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnBloquear.Location = new System.Drawing.Point(3, 347);
-            this.btnBloquear.Name = "btnBloquear";
-            this.btnBloquear.Size = new System.Drawing.Size(112, 42);
-            this.btnBloquear.TabIndex = 17;
-            this.btnBloquear.Text = "Bloquear";
-            this.btnBloquear.UseVisualStyleBackColor = true;
-            this.btnBloquear.Click += new System.EventHandler(this.btnBloquear_Click);
+            this.btnBlocked.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnBlocked.Location = new System.Drawing.Point(4, 376);
+            this.btnBlocked.Name = "btnBlocked";
+            this.btnBlocked.Size = new System.Drawing.Size(112, 42);
+            this.btnBlocked.TabIndex = 17;
+            this.btnBlocked.Text = "Bloquear";
+            this.btnBlocked.UseVisualStyleBackColor = true;
+            this.btnBlocked.Click += new System.EventHandler(this.btnBlocked_Click);
             // 
             // frmAbmSocialWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 401);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(582, 421);
             this.Controls.Add(this.tlpPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -314,7 +298,6 @@
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label lblContact;
-        private System.Windows.Forms.Button btnClosed;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.Label lblTelefono1;
@@ -323,6 +306,6 @@
         private System.Windows.Forms.Button btnLocalitation;
         private System.Windows.Forms.ComboBox cmbIvaType;
         private System.Windows.Forms.Label lblIvaType;
-        private System.Windows.Forms.Button btnBloquear;
+        private System.Windows.Forms.Button btnBlocked;
     }
 }
