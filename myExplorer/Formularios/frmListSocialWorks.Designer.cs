@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListSocialWorks));
             this.tlpPanel = new System.Windows.Forms.TableLayoutPanel();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.lblInfo = new System.Windows.Forms.Label();
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
@@ -60,7 +59,6 @@
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tlpPanel.Controls.Add(this.btnCerrar, 2, 2);
-            this.tlpPanel.Controls.Add(this.lblInfo, 0, 2);
             this.tlpPanel.Controls.Add(this.dgvLista, 0, 1);
             this.tlpPanel.Controls.Add(this.tsMenu, 0, 0);
             this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -84,18 +82,7 @@
             this.btnCerrar.TabIndex = 3;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(4, 639);
-            this.lblInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(37, 20);
-            this.lblInfo.TabIndex = 4;
-            this.lblInfo.Text = "Info";
+            this.btnCerrar.Click += new System.EventHandler(this.btnClosed_Click);
             // 
             // dgvLista
             // 
@@ -204,13 +191,13 @@
             this.tsmiDelete,
             this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(207, 127);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(168, 94);
             // 
             // tsmiUpdate
             // 
             this.tsmiUpdate.Image = global::myExplorer.Properties.Resources.EditFile;
             this.tsmiUpdate.Name = "tsmiUpdate";
-            this.tsmiUpdate.Size = new System.Drawing.Size(206, 30);
+            this.tsmiUpdate.Size = new System.Drawing.Size(167, 30);
             this.tsmiUpdate.Text = "Modificar";
             this.tsmiUpdate.Click += new System.EventHandler(this.tsmiUpdate_Click);
             // 
@@ -218,7 +205,7 @@
             // 
             this.tsmiDelete.Image = global::myExplorer.Properties.Resources.Error;
             this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(206, 30);
+            this.tsmiDelete.Size = new System.Drawing.Size(167, 30);
             this.tsmiDelete.Text = "Eliminar";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
@@ -226,7 +213,7 @@
             // 
             this.tsmiAdd.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsmiAdd.Name = "tsmiAdd";
-            this.tsmiAdd.Size = new System.Drawing.Size(206, 30);
+            this.tsmiAdd.Size = new System.Drawing.Size(167, 30);
             this.tsmiAdd.Text = "Agregar";
             this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
@@ -257,7 +244,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpPanel;
         private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.ToolStrip tsMenu;
         private System.Windows.Forms.ToolStripTextBox tstxtNombre;

@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
+// De la solucion
 using Datos.Query;
 using Entidades;
 using Entidades.Clases;
@@ -18,15 +18,12 @@ namespace myExplorer.Formularios
 {
     public partial class frmListPatient : Form
     {
-        // OK - 24/09/17
+        // OK 17/09/30
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
-
         public classUtiles oUtil { set; get; }
-
-        private classTextos oTxt = new classTextos();
-        
+        private classTextos oTxt;
         private int SelectRow;
         private int Desde = 0;
         private int Hasta = 0;
@@ -35,22 +32,24 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // REVISADO - 17/09/09
+        // OK 17/09/30
         #region Formulario
 
-        // OK - 17/09/09
+        // OK 17/09/30
         public frmListPatient()
         {
             InitializeComponent();
+            oTxt = new classTextos();
         }
 
-        // REVISADO - 17/09/09
-        private void frmListGrandfather_Load(object sender, EventArgs e)
+        // OK 17/09/30
+        private void frmListPatient_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
             {
                 ConfiguracionInicial();
-                Text = oTxt.TitleListGrandfather;
+                Text = oTxt.TitleListPatient;
+                SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
 
@@ -65,29 +64,11 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 24/09/17
+        // OK 17/09/30
         #region Menu Contextual Botones
 
-        // OK - 24/09/17
+        // OK 17/09/30
         private void tsmiVerFicha_Click(object sender, EventArgs e)
-        {
-            if (dgvLista.Rows.Count != 0)
-            {
-                int IdSelecionado = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-
-                frmAbmPatient frmIdPatientulario = new frmAbmPatient();
-                frmIdPatientulario.eModo = frmAbmPatient.Modo.Select;
-                frmIdPatientulario.oQuery = oQuery;
-                frmIdPatientulario.IdPatient = IdSelecionado;
-                frmIdPatientulario.oUtil = oUtil;
-                frmIdPatientulario.ShowDialog();
-
-                frmListGrandfather_Load(sender, e);
-            }
-        }
-
-        // OK - 24/09/17
-        private void tsmiDelete_Click(object sender, EventArgs e)
         {
             classPatient oGf = new classPatient();
 
@@ -96,16 +77,41 @@ namespace myExplorer.Formularios
                 oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
                 oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
 
+                frmAbmPatient frmPatient = new frmAbmPatient();
+                frmPatient.eModo = frmAbmPatient.Modo.Select;
+                frmPatient.oQuery = oQuery;
+                frmPatient.oPatient = oGf;
+                frmPatient.oUtil = oUtil;
+                frmPatient.ShowDialog();
+
+                frmListPatient_Load(sender, e);
+            }
+        }
+
+        // OK 17/09/30
+        private void tsmiDelete_Click(object sender, EventArgs e)
+        {
+            classPatient oGf = new classPatient();
+
+            if (dgvLista.Rows.Count != 0)
+            {
+                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
+                oGf.Visible = false;
+
                 if (oGf != null)
                 {
-                    frmAbmPatient frmA = new frmAbmPatient();
-                    frmA.oQuery = oQuery;
-                    frmA.oUtil = oUtil;
-                    frmA.oPatient = oGf;
-                    frmA.eModo = frmAbmPatient.Modo.Delete;
-                    frmA.ShowDialog();
-
-                    frmListGrandfather_Load(sender, e);
+                    if (0 != (int)oQuery.AbmPatient(oGf, classQuery.eAbm.Update))
+                        MessageBox.Show(oTxt.UpdateSocialWork);
+                    else
+                        MessageBox.Show(oTxt.ErrorQueryUpdate);
+                    //frmAbmPatient frmA = new frmAbmPatient();
+                    //frmA.oQuery = oQuery;
+                    //frmA.oUtil = oUtil;
+                    //frmA.oPatient = oGf;
+                    //frmA.eModo = frmAbmPatient.Modo.Delete;
+                    //frmA.ShowDialog();
+                    frmListPatient_Load(sender, e);
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);
@@ -132,7 +138,7 @@ namespace myExplorer.Formularios
                     frmA.eModo = frmAbmPatient.Modo.Update;
                     frmA.ShowDialog();
 
-                    frmListGrandfather_Load(sender, e);
+                    frmListPatient_Load(sender, e);
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);
@@ -203,13 +209,13 @@ namespace myExplorer.Formularios
             MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK - 24/09/17
-        private void btnCerrar_Click(object sender, EventArgs e)
+        // OK 17/09/30
+        private void btnClosed_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        // OK - 24/09/17
+        // OK 17/09/30
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvLista.Rows.Count != 0)
@@ -218,7 +224,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 24/09/17
+        // OK 17/09/30
         #region Metodos
 
         /// <summary>
@@ -294,7 +300,7 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// OK - 24/09/17
+        // OK 17/09/30
         /// </summary>
         /// <param name="Source"></param>
         public int GenerarGrilla(object Source)
@@ -311,8 +317,10 @@ namespace myExplorer.Formularios
             dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLista.MultiSelect = false;
             dgvLista.DataSource = Source;
+#if RELEASE
             dgvLista.Columns[0].Visible = false;
-            dgvLista.Columns[dgvLista.ColumnCount - 1].Visible = false;
+            dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
+#endif
             return dgvLista.Rows.Count;
         }
 
