@@ -209,13 +209,22 @@ namespace myExplorer.Formularios
         /// <returns></returns>
         private bool ValidarCampos()
         {
-            if ((txtName.Text == "") ||
-                (txtDescription.Text == "") ||
-                (txtAddress.Text == "") ||
-                (txtPhone.Text == ""))
-                return false;
+            bool V = false;
+
+            if (txtName.Text.Length >= 50 || (txtName.Text == ""))
+                MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
+            else if (txtDescription.Text.Length >= 50 || (txtDescription.Text == ""))
+                MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
+            else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
+                MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
+            else if (txtPhone.Text.Length >= 20)
+                MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
+            //else if ((txtContact.Text.Length > 50) (txtContact.Text == ""))
+            //    MessageBox.Show("La Contraseña esta vacia y//o debe tener como minimo 8 caracteres.");
             else
-                return true;
+                V = true;
+
+            return V;
         }
 
         /// <summary>
