@@ -71,16 +71,20 @@ namespace myExplorer.Formularios
             {
                 oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
                 oSw = (classSocialWork)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Select);
+                oSw.Visible = false;
 
                 if (oSw != null)
                 {
-                    frmAbmSocialWork frmA = new frmAbmSocialWork();
-                    frmA.oQuery = oQuery;
-                    frmA.oUtil = oUtil;
-                    frmA.oSocialWork = oSw;
-                    frmA.eModo = frmAbmSocialWork.Modo.Delete;
-                    frmA.ShowDialog();
-
+                    if (0 != (int)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Update))
+                        MessageBox.Show(oTxt.UpdateSocialWork);
+                    else
+                        MessageBox.Show(oTxt.ErrorQueryUpdate);
+                    //frmAbmSocialWork frmA = new frmAbmSocialWork();
+                    //frmA.oQuery = oQuery;
+                    //frmA.oUtil = oUtil;
+                    //frmA.oSocialWork = oSw;
+                    //frmA.eModo = frmAbmSocialWork.Modo.Delete;
+                    //frmA.ShowDialog();
                     frmListSocialWorks_Load(sender, e);
                 }
                 else

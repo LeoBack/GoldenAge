@@ -33,17 +33,20 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.lblTelefonos = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.lblContact = new System.Windows.Forms.Label();
+            this.btnClosed = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtAlternativePhone = new System.Windows.Forms.TextBox();
+            this.txtContact = new System.Windows.Forms.TextBox();
             this.lblTelefono1 = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.lblLocation = new System.Windows.Forms.Label();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.btnLocalitation = new System.Windows.Forms.Button();
+            this.cmbIvaType = new System.Windows.Forms.ComboBox();
+            this.lblIvaType = new System.Windows.Forms.Label();
+            this.btnBloquear = new System.Windows.Forms.Button();
             this.tlpPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,22 +60,26 @@
             this.tlpPanel.Controls.Add(this.lblDescription, 0, 2);
             this.tlpPanel.Controls.Add(this.txtDescription, 1, 2);
             this.tlpPanel.Controls.Add(this.txtName, 1, 1);
-            this.tlpPanel.Controls.Add(this.lblTelefonos, 0, 6);
-            this.tlpPanel.Controls.Add(this.btnCancelar, 2, 7);
+            this.tlpPanel.Controls.Add(this.lblContact, 0, 6);
+            this.tlpPanel.Controls.Add(this.btnClosed, 2, 8);
             this.tlpPanel.Controls.Add(this.txtPhone, 1, 5);
-            this.tlpPanel.Controls.Add(this.txtAlternativePhone, 1, 6);
+            this.tlpPanel.Controls.Add(this.txtContact, 1, 6);
             this.tlpPanel.Controls.Add(this.lblTelefono1, 0, 5);
             this.tlpPanel.Controls.Add(this.lblAddress, 0, 3);
             this.tlpPanel.Controls.Add(this.txtAddress, 1, 3);
-            this.tlpPanel.Controls.Add(this.btnAgregar, 1, 7);
+            this.tlpPanel.Controls.Add(this.btnSave, 1, 8);
             this.tlpPanel.Controls.Add(this.lblLocation, 0, 4);
             this.tlpPanel.Controls.Add(this.txtLocation, 1, 4);
             this.tlpPanel.Controls.Add(this.btnLocalitation, 2, 4);
+            this.tlpPanel.Controls.Add(this.cmbIvaType, 1, 7);
+            this.tlpPanel.Controls.Add(this.lblIvaType, 0, 7);
+            this.tlpPanel.Controls.Add(this.btnBloquear, 0, 8);
             this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanel.Location = new System.Drawing.Point(0, 0);
             this.tlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tlpPanel.Name = "tlpPanel";
-            this.tlpPanel.RowCount = 8;
+            this.tlpPanel.RowCount = 9;
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
@@ -81,7 +88,7 @@
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.Size = new System.Drawing.Size(582, 373);
+            this.tlpPanel.Size = new System.Drawing.Size(582, 401);
             this.tlpPanel.TabIndex = 0;
             // 
             // lblName
@@ -126,28 +133,29 @@
             this.txtName.Size = new System.Drawing.Size(325, 26);
             this.txtName.TabIndex = 0;
             // 
-            // lblTelefonos
+            // lblContact
             // 
-            this.lblTelefonos.AutoSize = true;
-            this.lblTelefonos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTelefonos.Location = new System.Drawing.Point(4, 252);
-            this.lblTelefonos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTelefonos.Name = "lblTelefonos";
-            this.lblTelefonos.Size = new System.Drawing.Size(112, 42);
-            this.lblTelefonos.TabIndex = 13;
-            this.lblTelefonos.Text = "Telefono Alternativo";
-            this.lblTelefonos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblContact.AutoSize = true;
+            this.lblContact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblContact.Location = new System.Drawing.Point(4, 252);
+            this.lblContact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblContact.Name = "lblContact";
+            this.lblContact.Size = new System.Drawing.Size(112, 42);
+            this.lblContact.TabIndex = 13;
+            this.lblContact.Text = "Contacto";
+            this.lblContact.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnCancelar
+            // btnClosed
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(457, 299);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(112, 42);
-            this.btnCancelar.TabIndex = 7;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnClosed.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnClosed.Location = new System.Drawing.Point(466, 347);
+            this.btnClosed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClosed.Name = "btnClosed";
+            this.btnClosed.Size = new System.Drawing.Size(112, 42);
+            this.btnClosed.TabIndex = 7;
+            this.btnClosed.Text = "Cerrar";
+            this.btnClosed.UseVisualStyleBackColor = true;
+            this.btnClosed.Click += new System.EventHandler(this.btnClosed_Click);
             // 
             // txtPhone
             // 
@@ -158,14 +166,14 @@
             this.txtPhone.Size = new System.Drawing.Size(325, 26);
             this.txtPhone.TabIndex = 4;
             // 
-            // txtAlternativePhone
+            // txtContact
             // 
-            this.txtAlternativePhone.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAlternativePhone.Location = new System.Drawing.Point(124, 260);
-            this.txtAlternativePhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtAlternativePhone.Name = "txtAlternativePhone";
-            this.txtAlternativePhone.Size = new System.Drawing.Size(325, 26);
-            this.txtAlternativePhone.TabIndex = 5;
+            this.txtContact.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtContact.Location = new System.Drawing.Point(124, 260);
+            this.txtContact.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Size = new System.Drawing.Size(325, 26);
+            this.txtContact.TabIndex = 5;
             // 
             // lblTelefono1
             // 
@@ -200,17 +208,18 @@
             this.txtAddress.Size = new System.Drawing.Size(325, 26);
             this.txtAddress.TabIndex = 2;
             // 
-            // btnAgregar
+            // btnSave
             // 
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.Location = new System.Drawing.Point(337, 299);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(112, 42);
-            this.btnAgregar.TabIndex = 6;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSave.Location = new System.Drawing.Point(337, 347);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(112, 42);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblLocation
             // 
@@ -242,11 +251,43 @@
             this.btnLocalitation.UseVisualStyleBackColor = true;
             this.btnLocalitation.Click += new System.EventHandler(this.btnLocalitation_Click);
             // 
+            // cmbIvaType
+            // 
+            this.cmbIvaType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbIvaType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIvaType.FormattingEnabled = true;
+            this.cmbIvaType.Location = new System.Drawing.Point(123, 301);
+            this.cmbIvaType.Name = "cmbIvaType";
+            this.cmbIvaType.Size = new System.Drawing.Size(327, 28);
+            this.cmbIvaType.TabIndex = 16;
+            // 
+            // lblIvaType
+            // 
+            this.lblIvaType.AutoSize = true;
+            this.lblIvaType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblIvaType.Location = new System.Drawing.Point(3, 294);
+            this.lblIvaType.Name = "lblIvaType";
+            this.lblIvaType.Size = new System.Drawing.Size(114, 42);
+            this.lblIvaType.TabIndex = 15;
+            this.lblIvaType.Text = "Tipo de IVA";
+            this.lblIvaType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnBloquear
+            // 
+            this.btnBloquear.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnBloquear.Location = new System.Drawing.Point(3, 347);
+            this.btnBloquear.Name = "btnBloquear";
+            this.btnBloquear.Size = new System.Drawing.Size(112, 42);
+            this.btnBloquear.TabIndex = 17;
+            this.btnBloquear.Text = "Bloquear";
+            this.btnBloquear.UseVisualStyleBackColor = true;
+            this.btnBloquear.Click += new System.EventHandler(this.btnBloquear_Click);
+            // 
             // frmAbmSocialWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 373);
+            this.ClientSize = new System.Drawing.Size(582, 401);
             this.ControlBox = false;
             this.Controls.Add(this.tlpPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -269,16 +310,19 @@
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.Label lblTelefonos;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblContact;
+        private System.Windows.Forms.Button btnClosed;
         private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.TextBox txtAlternativePhone;
+        private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.Label lblTelefono1;
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.Button btnLocalitation;
+        private System.Windows.Forms.ComboBox cmbIvaType;
+        private System.Windows.Forms.Label lblIvaType;
+        private System.Windows.Forms.Button btnBloquear;
     }
 }
