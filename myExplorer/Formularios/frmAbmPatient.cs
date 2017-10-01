@@ -25,12 +25,6 @@ namespace myExplorer.Formularios
         public Modo eModo { set; get; }
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
-<<<<<<< HEAD
-=======
-
-        public classPatient oPatient { set; get; }
-        
->>>>>>> 32714c4f960848bf9b618075575b009562618870
         private classDiagnostic oDiagnostic;
         private classTextos oTxt;
         private bool Enable = true;
@@ -174,7 +168,7 @@ namespace myExplorer.Formularios
             frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
             if (DialogResult.OK == fLocalitation.ShowDialog())
             {
-                txtLocation.Text = fLocalitation.toStringLocation();
+                txtLocationPatient.Text = fLocalitation.toStringLocation();
                 IdCountry = fLocalitation.getIdCountry();
                 IdProvince = fLocalitation.getIdProvince();
                 IdCity = fLocalitation.getIdCity();
@@ -187,7 +181,7 @@ namespace myExplorer.Formularios
             frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
             if (DialogResult.OK == fLocalitation.ShowDialog())
             {
-                txtLocation.Text = fLocalitation.toStringLocation();
+                txtLocationPatient.Text = fLocalitation.toStringLocation();
                 IdCountryParent = fLocalitation.getIdCountry();
                 IdProvinceParent = fLocalitation.getIdProvince();
                 IdCityParent = fLocalitation.getIdCity();
@@ -451,6 +445,9 @@ namespace myExplorer.Formularios
             txtReasonExit.Text = oPatient.ReasonExit.ToUpper();
             Enable = oPatient.Visible;
             txtYearOld.Text = Convert.ToString(oPatient.YearsOld());
+
+            txtLocationPatient.Text = frmLocation.toStringLocation(
+                oQuery.ConexionString, IdCountry, IdProvince, IdCity);  
         }
 
         /// <summary>
@@ -477,9 +474,9 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
             else if (txtReasonExit.Text.Length >= 50)
                 MessageBox.Show("El Motivo de Alta Debe tener como minimo 8 caracteres.");
-            else if (cmbTypeDocument.SelectedIndex == 0)
+            else if (cmbTypeDocument.SelectedIndex == -1)
                 MessageBox.Show("Typo Docuemnte Invalido.");
-            else if (cmbSocialWork.SelectedIndex == 0)
+            else if (cmbSocialWork.SelectedIndex == -1)
                 MessageBox.Show("Obra Social Invalida.");
             else
                 V = true;
@@ -507,7 +504,7 @@ namespace myExplorer.Formularios
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
             else if ((IdCountryParent == 0) || (IdProvinceParent == 0) || (IdCityParent == 0))
                 MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
-            else if (txtParentPhone.Text.Length >= 15 )
+            else if (txtParentPhone.Text.Length >= 15)
                 MessageBox.Show("El Numero de Telefono supera los 15 caracteres");
             else if (txtParentAlternativePhone.Text.Length >= 15)
                 MessageBox.Show("El Numero de Telefono Alternativo supera los 15 caracteres");
@@ -515,14 +512,15 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El E-mail supera los 50 caracteres");
             else if (txtParentEmail.Text.Length >= 50)
                 MessageBox.Show("El E-mail supera los 50 caracteres");
+            else if (cmbParentRelationship.SelectedIndex== -1)
+                MessageBox.Show("Parentesco Invalida.");
+
             else
                 V = true;
 
             return V;
         }
 
-<<<<<<< HEAD
-=======
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
@@ -563,10 +561,11 @@ namespace myExplorer.Formularios
             oParent.Phone = txtParentPhone.Text;
             oParent.AlternativePhone = txtParentAlternativePhone.Text;
             oParent.Email = txtParentEmail.Text;
-            //oParent.IdTypeParent = Convert.ToInt32(IdTypeParent.text);
+            oParent.IdTypeParent = Convert.ToInt32(cmbParentRelationship.SelectedValue);
         }
         public classParent oParent { set; get; }
         public classPatientParent oTypeParent { set; get; }
+
         /// <summary>
         /// Carga los elementos de formulario desde objeto.
         /// OK 04/04/12
@@ -577,24 +576,19 @@ namespace myExplorer.Formularios
             txtParentLastName.Text = oParent.LastName;
             txtParentNumberDocument.Text = Convert.ToString(oParent.NumberDocument);
             txtParentAddress.Text = oParent.Address;
-
             IdCountryParent = oParent.IdLocationCountry;
             IdProvinceParent = oParent.IdLocationProvince;
             IdCityParent = oParent.IdLocationCity;
-
-            txtLocation.Text = frmLocation.toStringLocation(
-            oQuery.ConexionString, IdCountry, IdProvince, IdCity);
-
             txtParentPhone.Text = oParent.Phone;
             txtParentAlternativePhone.Text = oParent.AlternativePhone;
             txtParentAlternativePhone.Text = oParent.AlternativePhone;
             txtParentEmail.Text = oParent.Email;
-            
-            // oComboBox.IndexCombos(cmbParentRelationship, oTypeParent.IdTypeParent);
-           
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbParentRelationship, oParent.IdTypeParent);
+
+            txtLocationParent.Text = frmLocation.toStringLocation(
+                oQuery.ConexionString, IdCountryParent, IdProvinceParent, IdCityParent);  
         }
 
->>>>>>> 32714c4f960848bf9b618075575b009562618870
         /// <summary>
         /// Habilita TabFicha
         /// OK 18/04/12
