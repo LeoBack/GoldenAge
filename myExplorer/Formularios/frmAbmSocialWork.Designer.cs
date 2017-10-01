@@ -39,13 +39,13 @@
             this.lblTelefono1 = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
             this.lblLocation = new System.Windows.Forms.Label();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.btnLocalitation = new System.Windows.Forms.Button();
             this.cmbIvaType = new System.Windows.Forms.ComboBox();
             this.lblIvaType = new System.Windows.Forms.Label();
             this.btnBlocked = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tlpPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,18 +194,6 @@
             this.txtAddress.Size = new System.Drawing.Size(325, 26);
             this.txtAddress.TabIndex = 2;
             // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(466, 374);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 42);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
@@ -267,6 +255,18 @@
             this.btnBlocked.Text = "Bloquear";
             this.btnBlocked.UseVisualStyleBackColor = true;
             this.btnBlocked.Click += new System.EventHandler(this.btnBlocked_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(466, 381);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(112, 35);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmAbmSocialWork
             // 

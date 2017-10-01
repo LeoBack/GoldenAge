@@ -432,22 +432,22 @@ namespace Datos.Query
             {
                 case eAbm.SelectAll:
                     {
-                        List<classPatient> lGrandfather = null;
+                        List<classPatient> lPatient = null;
                         if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                         {
-                            lGrandfather = new List<classPatient>();
+                            lPatient = new List<classPatient>();
                             while (oSql.Reader.Read())
                             {
                                 try
                                 {
-                                    classPatient oGrandfather = new classPatient(
+                                    classPatient oPatient = new classPatient(
                                     Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["LastName"]),
                                     Convert.ToDateTime(oSql.Reader["Birthdate"]),
                                     Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
                                     Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                    Convert.ToInt32(oSql.Reader["Sex"]),
+                                    Convert.ToBoolean(oSql.Reader["Sex"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),
@@ -459,22 +459,22 @@ namespace Datos.Query
                                     Convert.ToDateTime(oSql.Reader["EgressDate"]),
                                     Convert.ToString(oSql.Reader["ReasonExit"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lGrandfather.Add(oGrandfather);
+                                    lPatient.Add(oPatient);
                                 }
                                 catch (FormatException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    lGrandfather = null;
+                                    lPatient = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    lGrandfather = null;
+                                    lPatient = null;
                                 }
                                 catch (OverflowException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    lGrandfather = null;
+                                    lPatient = null;
                                 }
                             }
                         }
@@ -482,26 +482,26 @@ namespace Datos.Query
                             Menssage = oSql.Mensage;
 
                         oSql.Close();
-                        Result = lGrandfather;
+                        Result = lPatient;
                         break;
                     }
                 case eAbm.Select:
                     {
-                        classPatient oGrandfather = null;
+                        classPatient oPatient = null;
                         if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                         {
                             if (oSql.Reader.Read())
                             {
                                 try
                                 {
-                                    oGrandfather = new classPatient(
+                                    oPatient = new classPatient(
                                     Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["LastName"]),
                                     Convert.ToDateTime(oSql.Reader["Birthdate"]),
                                     Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
                                     Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                    Convert.ToInt32(oSql.Reader["Sex"]),
+                                    Convert.ToBoolean(oSql.Reader["Sex"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                     Convert.ToInt32(oSql.Reader["IdLocationCity"]),
@@ -517,17 +517,17 @@ namespace Datos.Query
                                 catch (FormatException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    oGrandfather = null;
+                                    oPatient = null;
                                 }
                                 catch (InvalidCastException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    oGrandfather = null;
+                                    oPatient = null;
                                 }
                                 catch (OverflowException ex)
                                 {
                                     Menssage = ex.ToString();
-                                    oGrandfather = null;
+                                    oPatient = null;
                                 }
                             }
                         }
@@ -535,7 +535,7 @@ namespace Datos.Query
                             Menssage = oSql.Mensage;
 
                         oSql.Close();
-                        Result = oGrandfather;
+                        Result = oPatient;
                         break;
                     }
                 case eAbm.Insert:

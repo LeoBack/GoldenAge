@@ -17,85 +17,186 @@ namespace myExplorer.Formularios
 {
     public partial class frmAbmPatient : Form
     {
+        // OK 17/09/30
         #region Atributos y Propiedades
 
+        public classPatient oPatient { set; get; }
         public enum Modo { Add, Select, Update, Delete }
-
         public Modo eModo { set; get; }
-        public int IdPatient { set; get; }
-
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
-
-        public classPatient oPatient { set; get; }
         private classDiagnostic oDiagnostic;
-
-        private classValidaciones oValidar;
-        private classTextos oTxt = new classTextos();
+        private classTextos oTxt;
+        private bool Enable = true;
         private int SelectRow;
-
         private int IdCountry;
         private int IdProvince;
         private int IdCity;
-
         private int IdCountryParent;
         private int IdProvinceParent;
         private int IdCityParent;
 
         #endregion
 
-        //-----------------------------------------------------------------------
-        #region Base Formulario
-        //-----------------------------------------------------------------------
-        // Finalizado
+        // OK 17/09/30
         #region Formulario
 
-        //OK 24/05/12
+        // OK 17/09/30
         public frmAbmPatient()
         {
             InitializeComponent();
+            oTxt = new classTextos();
         }
 
-        //OK 24/05/12
+        // OK 17/09/30
         private void frmAbmPatient_Load(object sender, EventArgs e)
         {
-            this.Text = oTxt.TitleFichaPatient;
             if (oQuery != null)
             {
-                oPatient = new classPatient();
-                oDiagnostic = new classDiagnostic();
-                oValidar = new classValidaciones();
+                Text = oTxt.TitleFichaPatient;
 
-                // Inicio Ficha
-                this.ConfiguracionFicha();
+                initSocialWork();
+                initTypeDocument();
+                initParentRelationship();
 
-                // Cargo los Combos
-                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSocialWork,
-                    (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
-                    oQuery.Table);
-                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocument,
-                    (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb), 
-                    oQuery.Table);
-                this.ini();
+                // Modo en el que se mostrara el formulario
+                switch (eModo)
+                {
+                    case Modo.Select:
+                        btnEdit.Visible = true;
+                        EnablePatient(false);
+                        EscribirEnFrmPatient();
+                        //EnableDiagnostico(true);
+                        //CargarDiagnostico();
+                        break;
+                    case Modo.Update:
+                        btnEdit.Visible = false;
+                        EnablePatient(true);
+                        EscribirEnFrmPatient();
+                        //EnableDiagnostico(true);
+                        //CargarDiagnostico();
+                        break;
+                    case Modo.Add:
+                        btnEdit.Visible = false;
+                        oPatient = new classPatient();
+                        EnablePatient(true);
+                        //EscribirEnFrmPatient();
+                        //EnableDiagnostico(false);
+                        break;
+                    default:
+                        MessageBox.Show(oTxt.ErrorObjetIndefinido);
+                        break;
+                }
             }
             else
+
+                Close();
+        }
+
+        #endregion
+
+        // OK 17/09/30
+        #region Botones
+
+        // OK 17/09/30
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (ValidarCamposPatient())
             {
-                MessageBox.Show(oTxt.ErrorObjetIndefinido);
-                this.Close();
+                CargarObjetoPatient();
+                int IdQuery = 0;
+
+                switch (eModo)
+                {
+                    case Modo.Add:
+                        IdQuery = (int)oQuery.AbmPatient(oPatient, classQuery.eAbm.Insert);
+                        if (0 != IdQuery)
+                            MessageBox.Show(oTxt.AddPatient);
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryAdd);
+                        break;
+                    case Modo.Update:
+                        IdQuery = (int)oQuery.AbmPatient(oPatient, classQuery.eAbm.Update);
+                        if (0 != IdQuery)
+                            MessageBox.Show(oTxt.UpdatePatient);
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryUpdate);
+                        break;
+                    default:
+                        MessageBox.Show(oTxt.AccionIndefinida);
+                        break;
+                }
+
+                if (IdQuery == 0)
+                    MessageBox.Show(oQuery.Menssage);
+                else
+                    Close();
             }
         }
 
-        //OK 24/05/12
-        private void btnCerrar_Click(object sender, EventArgs e)
+        // OK 17/09/30
+        private void btnBlocked_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (oPatient != null)
+            {
+                if (btnBlocked.Text == oTxt.Bloquear)
+                {
+                    Enable = false;
+                    btnBlocked.Text = oTxt.Desbloquear;
+                }
+                else
+                {
+                    Enable = true;
+                    btnBlocked.Text = oTxt.Bloquear;
+                }
+            }
+        }
+
+        // OK 17/09/30
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (eModo == Modo.Select)
+            {
+                eModo = Modo.Update;
+                EnablePatient(true);
+            }
+        }
+
+        // OK 17/09/30
+        private void btnLocalitationPatient_Click(object sender, EventArgs e)
+        {
+            frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
+            if (DialogResult.OK == fLocalitation.ShowDialog())
+            {
+                txtLocation.Text = fLocalitation.toStringLocation();
+                IdCountry = fLocalitation.getIdCountry();
+                IdProvince = fLocalitation.getIdProvince();
+                IdCity = fLocalitation.getIdCity();
+            }
+        }
+
+        // OK 17/09/30
+        private void btnLocalitationParent_Click(object sender, EventArgs e)
+        {
+            frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
+            if (DialogResult.OK == fLocalitation.ShowDialog())
+            {
+                txtLocation.Text = fLocalitation.toStringLocation();
+                IdCountryParent = fLocalitation.getIdCountry();
+                IdProvinceParent = fLocalitation.getIdProvince();
+                IdCityParent = fLocalitation.getIdCity();
+            }
+        }
+
+        private void btnApplyParent_Click(object sender, EventArgs e)
+        {
+            if(ValidarCamposParent())
+            {
+
+            }
         }
 
         #endregion
-
-        //-----------------------------------------------------------------------
-        #endregion
-        //-----------------------------------------------------------------------
 
         //-----------------------------------------------------------------------
         #region TabDiagnostico
@@ -272,141 +373,84 @@ namespace myExplorer.Formularios
         #endregion
         //-----------------------------------------------------------------------
 
-        //-----------------------------------------------------------------------
-        #region TabPerfil
-        //-----------------------------------------------------------------------
-
-        #region Botones
-
-        // OK AGREGAR 26/05/12
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            //if (ValidarCampos())
-            //{
-            //    this.LeerDesdeFrm();
-
-            //    if (Modo == Vista.Nuevo)
-            //    {   // Guarda
-            //        if (!oQuery.AddGrandfather(oGrandfather, oUtil.IdUsuario))
-            //            MessageBox.Show(oQuery.Menssage);
-            //        else
-            //        {
-            //            MessageBox.Show(oTxt.AgregarPaciente);
-            //            this.Modo = Vista.Modificar;
-            //            this.oGrandfather.IdGrandfather = oQuery.UltimoIdGrandfather();
-            //            this.IdPaciente = 0;
-            //            this.ini();
-            //        }
-            //    }
-            //    else if (Modo == Vista.Modificar)
-            //    {   // Actualiza
-            //        if (!oQuery.ModificarPersona(oGrandfather))
-            //            MessageBox.Show(oQuery.Menssage);
-            //        else
-            //        {
-            //            MessageBox.Show(oTxt.ModificarPaciente);
-            //            this.Modo = Vista.Modificar;
-            //            this.ini();
-            //        }
-            //    }
-            //    else
-            //        MessageBox.Show(oTxt.AccionIndefinida);
-            //}
-            //else
-            //    MessageBox.Show(oTxt.CaillasVacias);
-        }
-
-        private void btnModificarPerfil_Click(object sender, EventArgs e)
-        {
-            if (eModo == Modo.Select)
-            {
-                this.eModo = Modo.Update;
-                this.frmAbmPatient_Load(sender, e);
-            }
-        }
-
-        private void btnLocalitation_Click(object sender, EventArgs e)
-        {
-            frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
-            if (DialogResult.OK == fLocalitation.ShowDialog())
-            {
-                txtLocation.Text = fLocalitation.toStringLocation();
-                IdCountry = fLocalitation.getIdCountry();
-                IdProvince = fLocalitation.getIdProvince();
-                IdCity = fLocalitation.getIdCity();
-            }
-        }
-
-        #endregion
-
-        #region Validaciones
-
-        private void txtNumeroAfiliado_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (oValidar.isChar(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (oValidar.isNumeric(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void dtpFechaNacimiento_CloseUp(object sender, EventArgs e)
-        {
-            //txtEdad.Text = Convert.ToString(oGrandfather.Edad(dtpFechaNacimiento.Value));
-        }
-
-        #endregion
-
         #region Metodos
 
-        /// <summary>
-        /// Actualiza el formulario
-        /// OK 24/05/12  REVISAR
-        /// </summary>
-        private void ini()
+        // OK 17/09/30
+        private void initTypeDocument()
         {
-            if (this.IdPatient != 0)
-            {
-                oPatient.IdPatient = this.IdPatient;
-                //oGrandfather = oQuery.SelectPersona(oGrandfather);
-            }
-
-            // Modo en el que se mostrara el formulario
-            if (eModo == Modo.Select && oPatient.IdPatient != 0)
-            {
-                this.EnableFicha(false, true);
-                this.EnableDiagnostico(true);
-                this.EscribirEnFrm();
-                this.CargarDiagnostico();
-            }
-            else if (eModo == Modo.Update && oPatient.IdPatient != 0)
-            {
-                this.EnableFicha(true, false);
-                this.EnableDiagnostico(true);
-                this.EscribirEnFrm();
-                this.CargarDiagnostico();
-            }
-            else if (eModo == Modo.Add)
-            {
-                oPatient = new classPatient();
-
-                this.EnableFicha(true, false);
-                this.EnableDiagnostico(false);
-                this.EscribirEnFrm();
-                btnExport.Enabled = false;
-            }
-            else
-                MessageBox.Show("Error de typo");
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSocialWork,
+            (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb),
+            oQuery.Table);
         }
 
-        
+        // OK 17/09/30
+        private void initSocialWork()
+        {
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocument,
+            (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
+            oQuery.Table);
+        }
+
+        private void initParentRelationship()
+        {
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocument,
+            (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
+            oQuery.Table);
+        }
+
+        // OK 17/09/30
+        private void CargarObjetoPatient()
+        {
+            oPatient.Name = txtName.Text.ToUpper();
+            oPatient.LastName = txtLastName.Text.ToUpper();
+            oPatient.Birthdate = dtpBirthdate.Value;
+            oPatient.IdTypeDocument = Convert.ToInt32(cmbTypeDocument.SelectedValue);
+            oPatient.NumberDocument = Convert.ToInt32(txtNumberDocument.Text);
+            oPatient.Sex = rbtMale.Checked;
+            oPatient.IdLocationCountry = IdCountry;
+            oPatient.IdLocationProvince = IdProvince;
+            oPatient.IdLocationCity = IdCity;
+            oPatient.Address = txtAddress.Text.ToUpper();
+            oPatient.Phone = txtPhone.Text;
+            oPatient.IdSocialWork = Convert.ToInt32(cmbSocialWork.SelectedValue);
+            oPatient.AffiliateNumber = Convert.ToInt32(txtAffiliateNumber.Text);
+            oPatient.DateAdmission = dtpDateAdmission.Value;
+            oPatient.EgressDate = dtpEgressDate.Value;
+            oPatient.ReasonExit = txtReasonExit.Text.ToUpper();
+            oPatient.Visible = Enable;
+        }
+
+        /// <summary>
+        /// Carga los elementos de formulario desde objeto.
+        /// OK 17/09/30
+        /// </summary>
+        private void EscribirEnFrmPatient()
+        {
+            txtName.Text = oPatient.Name.ToUpper();
+            txtLastName.Text = oPatient.LastName.ToUpper();
+            dtpBirthdate.Value = oPatient.Birthdate;
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeDocument, oPatient.IdTypeDocument);
+            txtNumberDocument.Text = Convert.ToString(oPatient.NumberDocument);
+            rbtMale.Checked = oPatient.Sex;
+            rbtFemale.Checked = !oPatient.Sex;
+            IdCountry = oPatient.IdLocationCountry;
+            IdProvince = oPatient.IdLocationProvince;
+            IdCity = oPatient.IdLocationCity;
+            txtAddress.Text = oPatient.Address.ToUpper();
+            txtPhone.Text = oPatient.Phone;
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbSocialWork, oPatient.IdSocialWork);
+            txtAffiliateNumber.Text = Convert.ToString(oPatient.AffiliateNumber);
+            dtpDateAdmission.Value = oPatient.DateAdmission;
+            dtpEgressDate.Value = oPatient.EgressDate;
+            txtReasonExit.Text = oPatient.ReasonExit.ToUpper();
+            Enable = oPatient.Visible;
+            txtYearOld.Text = Convert.ToString(oPatient.YearsOld());
+        }
+
         /// <summary>
         /// Valida los campos del Formulario.
         /// False -> Vacio - True -> Ok
-        /// OK 04/03/12
+        /// OK 17/09/30
         /// </summary>
         /// <returns></returns>
         private bool ValidarCamposPatient()
@@ -423,16 +467,26 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Numero de Afiliado esta vacio o no supera los 6 caracteres.");
             else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
-            else if ((IdCountry != 0) || (IdProvince != 0) || (IdCity!= 0))
+            else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
                 MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
             else if (txtReasonExit.Text.Length >= 50)
                 MessageBox.Show("El Motivo de Alta Debe tener como minimo 8 caracteres.");
+            else if (cmbTypeDocument.SelectedIndex == 0)
+                MessageBox.Show("Typo Docuemnte Invalido.");
+            else if (cmbSocialWork.SelectedIndex == 0)
+                MessageBox.Show("Obra Social Invalida.");
             else
                 V = true;
 
             return V;
         }
 
+        /// <summary>
+        /// Valida los campos del Formulario.
+        /// False -> Vacio - True -> Ok
+        /// OK 17/09/30
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarCamposParent()
         {
             bool V = false;
@@ -461,84 +515,20 @@ namespace myExplorer.Formularios
             return V;
         }
 
-        // OK 04/03/12
-        private void LeerDesdeFrm()
-        {
-            //oGrandfather.nAfiliado = this.oValidarSql.ValidaString(txtNumeroAfiliado.Text);
-            //oGrandfather.Apellido = this.oValidarSql.ValidaString(txtApellido.Text);
-            //oGrandfather.Nombre = this.oValidarSql.ValidaString(txtNombre.Text);
-            //oGrandfather.FechaNac = dtpFechaNacimiento.Value;
-            //oGrandfather.FechaAlta = DateTime.Now;
-            //oGrandfather.Sexo = Convert.ToInt32(rbtMasculino.Checked);
-            //oGrandfather.Direccion = this.oValidarSql.ValidaString(txtDomicilio.Text);
-            //oGrandfather.SocialWork = Convert.ToInt32(cmbSocialWork.SelectedValue);
-            //oGrandfather.TipoPaciente = Convert.ToInt32(cmbTipoPaciente.SelectedValue);
-            //oGrandfather.IdCiudad = Convert.ToInt32(cmbCiudad.SelectedValue);
-            //oGrandfather.IdBarrio = Convert.ToInt32(cmbBarrio.SelectedValue);
-            //oGrandfather.Telefono = this.oValidarSql.ValidaString(txtTelefono.Text);
-            //oGrandfather.TelefonoParticular = this.oValidarSql.ValidaString(txtTelefonoParticular.Text);
-        }
-
-        /// <summary>
-        /// Carga los elementos de formulario desde objeto.
-        /// OK 04/04/12
-        /// </summary>
-        private void EscribirEnFrm()
-        {
-            //txtNumeroAfiliado.Text = oGrandfather.nAfiliado;
-            //txtApellido.Text = oGrandfather.Apellido;
-            //txtNombre.Text = oGrandfather.Nombre;
-            //dtpFechaNacimiento.Value = oGrandfather.FechaNac;
-            //rbtMasculino.Checked = Convert.ToBoolean(oGrandfather.Sexo);
-            //rbtFemenino.Checked = !Convert.ToBoolean(oGrandfather.Sexo);
-            //txtDomicilio.Text = oGrandfather.Direccion;
-            //txtEdad.Text = Convert.ToString(oGrandfather.Edad());
-
-            //oComboBox.IndexCombos(cmbSocialWork, oGrandfather.SocialWork);
-            //oComboBox.IndexCombos(cmbTipoPaciente, oGrandfather.TipoPaciente);
-            //oComboBox.IndexCombos(cmbCiudad, oGrandfather.IdCiudad);
-            //oComboBox.IndexCombos(cmbBarrio, oGrandfather.IdBarrio);
-
-            //txtTelefono.Text = oGrandfather.Telefono;
-            //txtTelefonoParticular.Text = oGrandfather.TelefonoParticular;
-
-            //txtIdentificacion.Text = oGrandfather.Apellido + ", " + oGrandfather.Nombre;
-        }
-
         /// <summary>
         /// Habilita TabFicha
         /// OK 18/04/12
         /// </summary>
         /// <param name="X"></param>
-        private void EnableFicha(bool X, bool Ver)
+        private void EnablePatient(bool X)
         {
             foreach (Control C in this.tlpPanlData.Controls)
             {
                 if (!(C is Label))
                     C.Enabled = X;
             }
-            this.btnSave.Enabled = !Ver;
-            this.btnEdit.Enabled = Ver;
-        }
-
-        /// <summary>
-        /// Carga y estableze los limites y valores de los componentes.
-        /// OK 04/04/12
-        /// </summary>
-        private void ConfiguracionFicha()
-        {
-            Size sBtn = new Size(75, 42);
-            btnEdit.Size = sBtn;
-            btnSave.Size = sBtn;
-            btnClose.Size = sBtn;
         }
 
         #endregion
-
-
-
-        //-----------------------------------------------------------------------
-        #endregion
-        //-----------------------------------------------------------------------
     }
 }

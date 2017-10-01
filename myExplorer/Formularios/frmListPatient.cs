@@ -47,7 +47,6 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null && oUtil != null)
             {
-                ConfiguracionInicial();
                 Text = oTxt.TitleListPatient;
                 SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
@@ -70,10 +69,11 @@ namespace myExplorer.Formularios
         // OK 17/09/30
         private void tsmiVerFicha_Click(object sender, EventArgs e)
         {
-            classPatient oGf = new classPatient();
+            classPatient oGf = null;
 
             if (dgvLista.Rows.Count != 0)
             {
+                oGf = new classPatient();
                 oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
                 oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
 
@@ -91,10 +91,11 @@ namespace myExplorer.Formularios
         // OK 17/09/30
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            classPatient oGf = new classPatient();
+            classPatient oGf = null;
 
             if (dgvLista.Rows.Count != 0)
             {
+                oGf = new classPatient();
                 oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
                 oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
                 oGf.Visible = false;
@@ -189,10 +190,10 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 24/09/17
+        // OK 17/09/30
         #region Botones
 
-        // OK - 24/09/17
+        // OK 17/09/30
         private void tsbImprimir_Click(object sender, EventArgs e)
         {
             classPatient oP = new classPatient();
@@ -228,18 +229,6 @@ namespace myExplorer.Formularios
         #region Metodos
 
         /// <summary>
-        /// Configura el formulario.
-        /// OK - 24/09/17
-        /// </summary>
-        public void ConfiguracionInicial()
-        {
-            Size sBtn = new Size(75, 42);
-            //btnBuscar.Size = sBtn;
-            //btnSeleccionar.Size = sBtn;
-            btnCancelar.Size = sBtn;
-        }
-
-        /// <summary>
         /// Aplica Filtros de busqueda
         /// OK - 24/09/17
         /// </summary>
@@ -268,13 +257,13 @@ namespace myExplorer.Formularios
                 GenerarGrilla(oQuery.Table);
                 PintarBloqueados(Color.Gray);
                 tsbImprimir.Enabled = false;
-                tsmiUpdate.Enabled = false;
-                tsmiVerFicha.Enabled = false;
+                //tsmiUpdate.Enabled = false;
+                //tsmiVerFicha.Enabled = false;
             }
             else
             {
-                tsmiUpdate.Enabled = true;
-                tsmiVerFicha.Enabled = true;
+                //tsmiUpdate.Enabled = true;
+                //tsmiVerFicha.Enabled = true;
                 tsbImprimir.Enabled = true;
             }
         }

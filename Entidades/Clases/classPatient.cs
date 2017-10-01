@@ -14,7 +14,7 @@ namespace Entidades.Clases
         public DateTime Birthdate { set; get; }
         public int IdTypeDocument { set; get; }
         public int NumberDocument { set; get; }
-        public int Sex { set; get; }
+        public bool Sex { set; get; }
         public int IdLocationCountry { set; get; }
         public int IdLocationProvince { set; get; }
         public int IdLocationCity { set; get; }
@@ -38,7 +38,7 @@ namespace Entidades.Clases
             this.Birthdate = DateTime.Now.AddYears(-65);
             this.IdTypeDocument = 0;
             this.NumberDocument = 0;
-            this.Sex = 0;
+            this.Sex = true;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -60,7 +60,7 @@ namespace Entidades.Clases
             this.Birthdate = DateTime.Now.AddYears(-65);
             this.IdTypeDocument = 0;
             this.NumberDocument = 0;
-            this.Sex = 0;
+            this.Sex = true;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -75,7 +75,7 @@ namespace Entidades.Clases
         }
 
         public classPatient(int vIdPatient, string vName, string vLastName, DateTime vBirthdate,
-            int vIdTypeDocument, int vNumberDocument, int vSex, int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, int vAffiliateNumber,
+            int vIdTypeDocument, int vNumberDocument, bool vSex, int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, int vAffiliateNumber,
             DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, bool vVisible)
         {
             this.IdPatient = vIdPatient;
@@ -120,6 +120,11 @@ namespace Entidades.Clases
                 "\nFecha de Egreso: " +this.EgressDate.ToShortDateString() +
                 "\nMotivo de Egreso: " +this.ReasonExit +
                 "\nVisible: " + this.Visible.ToString();
+        }
+
+        public int YearsOld()
+        {
+            return DateTime.Now.Year - this.Birthdate.Year;
         }
 
         #endregion

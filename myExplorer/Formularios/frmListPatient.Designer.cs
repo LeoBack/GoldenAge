@@ -46,14 +46,13 @@
             this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.btnClosed = new System.Windows.Forms.Button();
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiVerFicha = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tlpPanel.SuspendLayout();
             this.tsMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
@@ -65,11 +64,10 @@
             this.tlpPanel.ColumnCount = 3;
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.55109F));
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.89783F));
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tlpPanel.Controls.Add(this.tsMenu, 0, 0);
             this.tlpPanel.Controls.Add(this.dgvLista, 0, 1);
-            this.tlpPanel.Controls.Add(this.btnCancelar, 2, 2);
-            this.tlpPanel.Controls.Add(this.txtEstado, 0, 2);
+            this.tlpPanel.Controls.Add(this.btnClosed, 2, 2);
             this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanel.Location = new System.Drawing.Point(0, 0);
             this.tlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -212,26 +210,17 @@
             this.dgvLista.TabIndex = 1;
             this.dgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
             // 
-            // btnCancelar
+            // btnClosed
             // 
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(1227, 535);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(112, 65);
-            this.btnCancelar.TabIndex = 2;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnClosed_Click);
-            // 
-            // txtEstado
-            // 
-            this.txtEstado.Location = new System.Drawing.Point(4, 535);
-            this.txtEstado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.ReadOnly = true;
-            this.txtEstado.Size = new System.Drawing.Size(376, 26);
-            this.txtEstado.TabIndex = 5;
+            this.btnClosed.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClosed.Location = new System.Drawing.Point(1226, 535);
+            this.btnClosed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClosed.Name = "btnClosed";
+            this.btnClosed.Size = new System.Drawing.Size(112, 65);
+            this.btnClosed.TabIndex = 2;
+            this.btnClosed.Text = "Cerrar";
+            this.btnClosed.UseVisualStyleBackColor = true;
+            this.btnClosed.Click += new System.EventHandler(this.btnClosed_Click);
             // 
             // cmsMenuEmergente
             // 
@@ -243,21 +232,26 @@
             this.tsmiDelete,
             this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(207, 163);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(168, 130);
             // 
             // tsmiVerFicha
             // 
             this.tsmiVerFicha.Image = global::myExplorer.Properties.Resources.EditFile;
             this.tsmiVerFicha.Name = "tsmiVerFicha";
-            this.tsmiVerFicha.Size = new System.Drawing.Size(206, 30);
+            this.tsmiVerFicha.Size = new System.Drawing.Size(167, 30);
             this.tsmiVerFicha.Text = "Ficha";
             this.tsmiVerFicha.Click += new System.EventHandler(this.tsmiVerFicha_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
             // 
             // tsmiUpdate
             // 
             this.tsmiUpdate.Image = global::myExplorer.Properties.Resources.EditFile;
             this.tsmiUpdate.Name = "tsmiUpdate";
-            this.tsmiUpdate.Size = new System.Drawing.Size(206, 30);
+            this.tsmiUpdate.Size = new System.Drawing.Size(167, 30);
             this.tsmiUpdate.Text = "Modificar";
             this.tsmiUpdate.Click += new System.EventHandler(this.tsmiUpdate_Click);
             // 
@@ -265,7 +259,7 @@
             // 
             this.tsmiDelete.Image = global::myExplorer.Properties.Resources.Error;
             this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(206, 30);
+            this.tsmiDelete.Size = new System.Drawing.Size(167, 30);
             this.tsmiDelete.Text = "Eliminar";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
@@ -273,16 +267,11 @@
             // 
             this.tsmiAdd.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsmiAdd.Name = "tsmiAdd";
-            this.tsmiAdd.Size = new System.Drawing.Size(206, 30);
+            this.tsmiAdd.Size = new System.Drawing.Size(167, 30);
             this.tsmiAdd.Text = "Agregar";
             this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(203, 6);
-            // 
-            // frmListGrandfather
+            // frmListPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -290,7 +279,7 @@
             this.Controls.Add(this.tlpPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmListGrandfather";
+            this.Name = "frmListPatient";
             this.Text = "Buscar Pacientes";
             this.Load += new System.EventHandler(this.frmListPatient_Load);
             this.tlpPanel.ResumeLayout(false);
@@ -314,10 +303,9 @@
         private System.Windows.Forms.ToolStripLabel tslblSocialWork;
         private System.Windows.Forms.ToolStripTextBox tstxtAffiliateNumber;
         private System.Windows.Forms.DataGridView dgvLista;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnClosed;
         private System.Windows.Forms.ContextMenuStrip cmsMenuEmergente;
         private System.Windows.Forms.ToolStripMenuItem tsmiVerFicha;
-        private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripButton tsbBuscar;
         private System.Windows.Forms.ToolStripMenuItem tsmiUpdate;

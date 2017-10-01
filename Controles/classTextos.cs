@@ -49,10 +49,9 @@ namespace Controles
         public string MostrarProfesionalesBloqueados = "Mostrar Profesionales bloqueados";
         public string OcultarProfesionalesBloqueados = "Ocultar Profesionales bloqueados";
 
-        //patología
-        public string Patología = "Patología";
-        public string ModificarPatología = "Modificar patología.";
-        public string AgregarPatología = "Agregar patología.";
+        //Patient
+        public string AddPatient = "Paciente agregado con exito.";
+        public string UpdatePatient = "PAciente actualizado con exito.";
 
         //SocialWork
         public string AddSocialWork = "Obra Social agregada con exito.";
