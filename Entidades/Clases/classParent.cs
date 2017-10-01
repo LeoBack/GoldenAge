@@ -21,6 +21,7 @@ namespace Entidades.Clases
         public int IdLocationProvince { set; get; }
         public int IdLocationCity { set; get; }
         public string Address { set; get; }
+        public int IdTypeParent { set; get; }
         public bool Visible { set; get; }
         #endregion
 
