@@ -49,8 +49,6 @@ namespace myExplorer.Formularios
                 SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
-
-                lblInfo.Text = "";
             }
             else
                 Close();
@@ -58,10 +56,10 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 24/09/17
+        // OK 17/09/30
         #region Menu Contextual Botones
 
-        // OK - 24/09/17
+        // OK 17/09/30
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
             classSocialWork oSw = new classSocialWork();
@@ -162,7 +160,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 24/09/17
+        // OK 17/09/30
         #region Botones
 
         // OK - 24/09/17
@@ -180,13 +178,13 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 24/09/17
-        private void btnCerrar_Click(object sender, EventArgs e)
+        // OK 17/09/30
+        private void btnClosed_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        // OK - 24/09/17
+        // OK 17/09/30
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvLista.Rows.Count != 0)
@@ -255,7 +253,7 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Carga la Lista de Obras Sociales
-        /// OK - 24/09/17
+        /// OK 17/09/30
         /// </summary>
         /// <param name="Source"></param>
         public int GenerarGrilla(object Source)

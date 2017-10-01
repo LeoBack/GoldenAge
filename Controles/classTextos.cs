@@ -80,6 +80,8 @@ namespace Controles
         public string CopiaExitosa = "Copia realizada con Exito!";
         public string CopiaErronea = "A ocurrido un error al realizar la copia.";
 
-        
+
+
+        public string TitleListPatient { get; set; }
     }
 }

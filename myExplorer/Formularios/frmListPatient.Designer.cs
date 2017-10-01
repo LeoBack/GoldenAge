@@ -222,7 +222,7 @@
             this.btnCancelar.TabIndex = 2;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCancelar.Click += new System.EventHandler(this.btnClosed_Click);
             // 
             // txtEstado
             // 
@@ -292,7 +292,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmListGrandfather";
             this.Text = "Buscar Pacientes";
-            this.Load += new System.EventHandler(this.frmListGrandfather_Load);
+            this.Load += new System.EventHandler(this.frmListPatient_Load);
             this.tlpPanel.ResumeLayout(false);
             this.tlpPanel.PerformLayout();
             this.tsMenu.ResumeLayout(false);
