@@ -28,6 +28,7 @@ namespace myExplorer.Formularios
         public classUtiles oUtil { set; get; }
 
         public classPatient oPatient { set; get; }
+        
         private classDiagnostic oDiagnostic;
 
         private classValidaciones oValidar;
@@ -461,48 +462,75 @@ namespace myExplorer.Formularios
             return V;
         }
 
-        // OK 04/03/12
-        private void LeerDesdeFrm()
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //oGrandfather.nAfiliado = this.oValidarSql.ValidaString(txtNumeroAfiliado.Text);
-            //oGrandfather.Apellido = this.oValidarSql.ValidaString(txtApellido.Text);
-            //oGrandfather.Nombre = this.oValidarSql.ValidaString(txtNombre.Text);
-            //oGrandfather.FechaNac = dtpFechaNacimiento.Value;
-            //oGrandfather.FechaAlta = DateTime.Now;
-            //oGrandfather.Sexo = Convert.ToInt32(rbtMasculino.Checked);
-            //oGrandfather.Direccion = this.oValidarSql.ValidaString(txtDomicilio.Text);
-            //oGrandfather.SocialWork = Convert.ToInt32(cmbSocialWork.SelectedValue);
-            //oGrandfather.TipoPaciente = Convert.ToInt32(cmbTipoPaciente.SelectedValue);
-            //oGrandfather.IdCiudad = Convert.ToInt32(cmbCiudad.SelectedValue);
-            //oGrandfather.IdBarrio = Convert.ToInt32(cmbBarrio.SelectedValue);
-            //oGrandfather.Telefono = this.oValidarSql.ValidaString(txtTelefono.Text);
-            //oGrandfather.TelefonoParticular = this.oValidarSql.ValidaString(txtTelefonoParticular.Text);
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+            
         }
 
+        private void txtParentPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtParentAlternativePhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        // OK 04/03/12
+        private void LeerDesdeFrmParent()
+        {
+            oParent.Name = txtParentName.Text;
+            oParent.LastName = txtParentLastName.Text;
+            oParent.NumberDocument = Convert.ToInt32(txtNumberDocument.Text);
+            oParent.Address = txtParentAddress.Text;
+            oParent.IdLocationCountry = Convert.ToInt32(IdCountryParent);
+            oParent.IdLocationCity = Convert.ToInt32(IdCityParent);
+            oParent.IdLocationProvince = Convert.ToInt32(IdProvinceParent);
+            oParent.Phone = txtParentPhone.Text;
+            oParent.AlternativePhone = txtParentAlternativePhone.Text;
+            oParent.Email = txtParentEmail.Text;
+            //oParent.IdTypeParent = Convert.ToInt32(IdTypeParent.text);
+        }
+        public classParent oParent { set; get; }
+        public classPatientParent oTypeParent { set; get; }
         /// <summary>
         /// Carga los elementos de formulario desde objeto.
         /// OK 04/04/12
         /// </summary>
-        private void EscribirEnFrm()
+        private void EscribirEnFrmParent()
         {
-            //txtNumeroAfiliado.Text = oGrandfather.nAfiliado;
-            //txtApellido.Text = oGrandfather.Apellido;
-            //txtNombre.Text = oGrandfather.Nombre;
-            //dtpFechaNacimiento.Value = oGrandfather.FechaNac;
-            //rbtMasculino.Checked = Convert.ToBoolean(oGrandfather.Sexo);
-            //rbtFemenino.Checked = !Convert.ToBoolean(oGrandfather.Sexo);
-            //txtDomicilio.Text = oGrandfather.Direccion;
-            //txtEdad.Text = Convert.ToString(oGrandfather.Edad());
+            txtParentName.Text = oParent.Name;
+            txtParentLastName.Text = oParent.LastName;
+            txtParentNumberDocument.Text = Convert.ToString(oParent.NumberDocument);
+            txtParentAddress.Text = oParent.Address;
 
-            //oComboBox.IndexCombos(cmbSocialWork, oGrandfather.SocialWork);
-            //oComboBox.IndexCombos(cmbTipoPaciente, oGrandfather.TipoPaciente);
-            //oComboBox.IndexCombos(cmbCiudad, oGrandfather.IdCiudad);
-            //oComboBox.IndexCombos(cmbBarrio, oGrandfather.IdBarrio);
+            IdCountryParent = oParent.IdLocationCountry;
+            IdProvinceParent = oParent.IdLocationProvince;
+            IdCityParent = oParent.IdLocationCity;
 
-            //txtTelefono.Text = oGrandfather.Telefono;
-            //txtTelefonoParticular.Text = oGrandfather.TelefonoParticular;
+            txtLocation.Text = frmLocation.toStringLocation(
+            oQuery.ConexionString, IdCountry, IdProvince, IdCity);
 
-            //txtIdentificacion.Text = oGrandfather.Apellido + ", " + oGrandfather.Nombre;
+            txtParentPhone.Text = oParent.Phone;
+            txtParentAlternativePhone.Text = oParent.AlternativePhone;
+            txtParentAlternativePhone.Text = oParent.AlternativePhone;
+            txtParentEmail.Text = oParent.Email;
+            
+            // oComboBox.IndexCombos(cmbParentRelationship, oTypeParent.IdTypeParent);
+           
         }
 
         /// <summary>

@@ -20,6 +20,7 @@ namespace Datos.Query
         public string AbmSpeciality = "[spAbmSpecialty-v1.0]";
         public string AbmTypeDocument = "[spAbmTypeDocument-v1.0]";
         public string AbmIvaType = "[spAbmIvaType-v1.0]";
+        public string AbmTypeParent = "[spAbmTypeParent-v1.0]";
         public string Login = "[spLoguin-v1.0]";
 
         //
