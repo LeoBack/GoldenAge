@@ -124,6 +124,21 @@
             this.cmsMenuEmergente.SuspendLayout();
             this.SuspendLayout();
             // 
+<<<<<<< HEAD
+=======
+            // btnClose
+            // 
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnClose.Location = new System.Drawing.Point(691, 322);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 42);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Cerrar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             // tlpPanlData
             // 
             this.tlpPanlData.ColumnCount = 3;
@@ -136,14 +151,13 @@
             this.tlpPanlData.Controls.Add(this.btnEdit, 1, 2);
             this.tlpPanlData.Controls.Add(this.btnBlocked, 2, 2);
             this.tlpPanlData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpPanlData.Location = new System.Drawing.Point(4, 5);
-            this.tlpPanlData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tlpPanlData.Location = new System.Drawing.Point(3, 3);
             this.tlpPanlData.Name = "tlpPanlData";
             this.tlpPanlData.RowCount = 3;
             this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.84655F));
             this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.15345F));
-            this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpPanlData.Size = new System.Drawing.Size(1138, 434);
+            this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tlpPanlData.Size = new System.Drawing.Size(755, 279);
             this.tlpPanlData.TabIndex = 0;
             // 
             // grpDataPersonal
@@ -151,9 +165,11 @@
             this.tlpPanlData.SetColumnSpan(this.grpDataPersonal, 3);
             this.grpDataPersonal.Controls.Add(this.tlpDataPersonal);
             this.grpDataPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpDataPersonal.Location = new System.Drawing.Point(3, 3);
+            this.grpDataPersonal.Location = new System.Drawing.Point(2, 2);
+            this.grpDataPersonal.Margin = new System.Windows.Forms.Padding(2);
             this.grpDataPersonal.Name = "grpDataPersonal";
-            this.grpDataPersonal.Size = new System.Drawing.Size(1132, 228);
+            this.grpDataPersonal.Padding = new System.Windows.Forms.Padding(2);
+            this.grpDataPersonal.Size = new System.Drawing.Size(751, 146);
             this.grpDataPersonal.TabIndex = 50;
             this.grpDataPersonal.TabStop = false;
             this.grpDataPersonal.Text = "Datos Personales";
@@ -161,12 +177,12 @@
             // tlpDataPersonal
             // 
             this.tlpDataPersonal.ColumnCount = 7;
-            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
-            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
-            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 195F));
-            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 368F));
+            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 245F));
             this.tlpDataPersonal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpDataPersonal.Controls.Add(this.lblName, 4, 0);
             this.tlpDataPersonal.Controls.Add(this.txtName, 5, 0);
@@ -189,24 +205,24 @@
             this.tlpDataPersonal.Controls.Add(this.lblAddress, 4, 3);
             this.tlpDataPersonal.Controls.Add(this.txtLocation, 1, 3);
             this.tlpDataPersonal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpDataPersonal.Location = new System.Drawing.Point(3, 22);
+            this.tlpDataPersonal.Location = new System.Drawing.Point(2, 15);
+            this.tlpDataPersonal.Margin = new System.Windows.Forms.Padding(2);
             this.tlpDataPersonal.Name = "tlpDataPersonal";
             this.tlpDataPersonal.RowCount = 4;
             this.tlpDataPersonal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpDataPersonal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpDataPersonal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpDataPersonal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpDataPersonal.Size = new System.Drawing.Size(1126, 203);
+            this.tlpDataPersonal.Size = new System.Drawing.Size(747, 129);
             this.tlpDataPersonal.TabIndex = 0;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblName.Location = new System.Drawing.Point(555, 0);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(371, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(115, 50);
+            this.lblName.Size = new System.Drawing.Size(76, 32);
             this.lblName.TabIndex = 14;
             this.lblName.Text = "Nombre";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -215,20 +231,18 @@
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpDataPersonal.SetColumnSpan(this.txtName, 2);
-            this.txtName.Location = new System.Drawing.Point(678, 12);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.Location = new System.Drawing.Point(453, 6);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(444, 26);
+            this.txtName.Size = new System.Drawing.Size(291, 20);
             this.txtName.TabIndex = 2;
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLastName.Location = new System.Drawing.Point(4, 0);
-            this.lblLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLastName.Location = new System.Drawing.Point(3, 0);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(116, 50);
+            this.lblLastName.Size = new System.Drawing.Size(77, 32);
             this.lblLastName.TabIndex = 13;
             this.lblLastName.Text = "Apellido";
             this.lblLastName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -237,19 +251,19 @@
             // 
             this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpDataPersonal.SetColumnSpan(this.txtLastName, 3);
-            this.txtLastName.Location = new System.Drawing.Point(128, 12);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLastName.Location = new System.Drawing.Point(86, 6);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(419, 26);
+            this.txtLastName.Size = new System.Drawing.Size(279, 20);
             this.txtLastName.TabIndex = 1;
             // 
             // lblDocument
             // 
             this.lblDocument.AutoSize = true;
             this.lblDocument.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDocument.Location = new System.Drawing.Point(3, 100);
+            this.lblDocument.Location = new System.Drawing.Point(2, 64);
+            this.lblDocument.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDocument.Name = "lblDocument";
-            this.lblDocument.Size = new System.Drawing.Size(118, 50);
+            this.lblDocument.Size = new System.Drawing.Size(79, 32);
             this.lblDocument.TabIndex = 39;
             this.lblDocument.Text = "Nº Documento";
             this.lblDocument.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -259,19 +273,26 @@
             this.cmbTypeDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbTypeDocument.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTypeDocument.FormattingEnabled = true;
-            this.cmbTypeDocument.Location = new System.Drawing.Point(127, 111);
+            this.cmbTypeDocument.Location = new System.Drawing.Point(85, 69);
+            this.cmbTypeDocument.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTypeDocument.Name = "cmbTypeDocument";
-            this.cmbTypeDocument.Size = new System.Drawing.Size(120, 28);
+            this.cmbTypeDocument.Size = new System.Drawing.Size(80, 21);
             this.cmbTypeDocument.TabIndex = 53;
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.lblAddress.Location = new System.Drawing.Point(555, 150);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(115, 53);
+=======
+            this.lblAddress.Location = new System.Drawing.Point(3, 96);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(77, 33);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.lblAddress.TabIndex = 18;
             this.lblAddress.Text = "Domicilio";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -279,20 +300,35 @@
             // txtAddress
             // 
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.txtAddress.Location = new System.Drawing.Point(678, 163);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ReadOnly = true;
             this.txtAddress.Size = new System.Drawing.Size(360, 26);
+=======
+            this.tlpDataPersonal.SetColumnSpan(this.txtAddress, 2);
+            this.txtAddress.Location = new System.Drawing.Point(86, 102);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
+            this.txtAddress.Size = new System.Drawing.Size(208, 20);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.txtAddress.TabIndex = 7;
             // 
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
             this.lblLocation.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.lblLocation.Location = new System.Drawing.Point(3, 150);
             this.lblLocation.Name = "lblLocation";
             this.lblLocation.Size = new System.Drawing.Size(118, 53);
+=======
+            this.lblLocation.Location = new System.Drawing.Point(370, 96);
+            this.lblLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLocation.Name = "lblLocation";
+            this.lblLocation.Size = new System.Drawing.Size(78, 33);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.lblLocation.TabIndex = 48;
             this.lblLocation.Text = "localidad";
             this.lblLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -301,19 +337,25 @@
             // 
             this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpDataPersonal.SetColumnSpan(this.txtLocation, 2);
+<<<<<<< HEAD
             this.txtLocation.Location = new System.Drawing.Point(127, 163);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(315, 26);
+=======
+            this.txtLocation.Location = new System.Drawing.Point(452, 102);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.Size = new System.Drawing.Size(293, 20);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.txtLocation.TabIndex = 49;
             // 
             // lblSexo
             // 
             this.lblSexo.AutoSize = true;
             this.lblSexo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSexo.Location = new System.Drawing.Point(4, 50);
-            this.lblSexo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSexo.Location = new System.Drawing.Point(3, 32);
             this.lblSexo.Name = "lblSexo";
-            this.lblSexo.Size = new System.Drawing.Size(116, 50);
+            this.lblSexo.Size = new System.Drawing.Size(77, 32);
             this.lblSexo.TabIndex = 16;
             this.lblSexo.Text = "Sexo";
             this.lblSexo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -322,10 +364,9 @@
             // 
             this.rbtMale.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbtMale.AutoSize = true;
-            this.rbtMale.Location = new System.Drawing.Point(128, 63);
-            this.rbtMale.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rbtMale.Location = new System.Drawing.Point(86, 39);
             this.rbtMale.Name = "rbtMale";
-            this.rbtMale.Size = new System.Drawing.Size(105, 24);
+            this.rbtMale.Size = new System.Drawing.Size(73, 17);
             this.rbtMale.TabIndex = 4;
             this.rbtMale.TabStop = true;
             this.rbtMale.Text = "Masculino";
@@ -335,10 +376,9 @@
             // 
             this.lblBirthdate.AutoSize = true;
             this.lblBirthdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBirthdate.Location = new System.Drawing.Point(555, 50);
-            this.lblBirthdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBirthdate.Location = new System.Drawing.Point(371, 32);
             this.lblBirthdate.Name = "lblBirthdate";
-            this.lblBirthdate.Size = new System.Drawing.Size(115, 50);
+            this.lblBirthdate.Size = new System.Drawing.Size(76, 32);
             this.lblBirthdate.TabIndex = 15;
             this.lblBirthdate.Text = "Fecha de Nacimiento";
             this.lblBirthdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -346,38 +386,36 @@
             // dtpBirthdate
             // 
             this.dtpBirthdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpBirthdate.Location = new System.Drawing.Point(678, 62);
-            this.dtpBirthdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtpBirthdate.Location = new System.Drawing.Point(453, 38);
             this.dtpBirthdate.Name = "dtpBirthdate";
-            this.dtpBirthdate.Size = new System.Drawing.Size(360, 26);
+            this.dtpBirthdate.Size = new System.Drawing.Size(239, 20);
             this.dtpBirthdate.TabIndex = 3;
             // 
             // txtYearOld
             // 
             this.txtYearOld.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtYearOld.Location = new System.Drawing.Point(1046, 62);
-            this.txtYearOld.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtYearOld.Location = new System.Drawing.Point(698, 38);
             this.txtYearOld.Name = "txtYearOld";
             this.txtYearOld.ReadOnly = true;
-            this.txtYearOld.Size = new System.Drawing.Size(76, 26);
+            this.txtYearOld.Size = new System.Drawing.Size(46, 20);
             this.txtYearOld.TabIndex = 6;
             // 
             // txtPhone
             // 
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPhone.Location = new System.Drawing.Point(678, 112);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPhone.Location = new System.Drawing.Point(453, 70);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(360, 26);
+            this.txtPhone.Size = new System.Drawing.Size(239, 20);
             this.txtPhone.TabIndex = 36;
             // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPhone.Location = new System.Drawing.Point(554, 100);
+            this.lblPhone.Location = new System.Drawing.Point(370, 64);
+            this.lblPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(117, 50);
+            this.lblPhone.Size = new System.Drawing.Size(78, 32);
             this.lblPhone.TabIndex = 54;
             this.lblPhone.Text = "Telefono";
             this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -386,10 +424,9 @@
             // 
             this.rbtFemale.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbtFemale.AutoSize = true;
-            this.rbtFemale.Location = new System.Drawing.Point(254, 63);
-            this.rbtFemale.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rbtFemale.Location = new System.Drawing.Point(170, 39);
             this.rbtFemale.Name = "rbtFemale";
-            this.rbtFemale.Size = new System.Drawing.Size(105, 24);
+            this.rbtFemale.Size = new System.Drawing.Size(71, 17);
             this.rbtFemale.TabIndex = 5;
             this.rbtFemale.TabStop = true;
             this.rbtFemale.Text = "Femenino";
@@ -399,17 +436,19 @@
             // 
             this.txtNumberDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpDataPersonal.SetColumnSpan(this.txtNumberDocument, 2);
-            this.txtNumberDocument.Location = new System.Drawing.Point(253, 112);
+            this.txtNumberDocument.Location = new System.Drawing.Point(169, 70);
+            this.txtNumberDocument.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumberDocument.Name = "txtNumberDocument";
-            this.txtNumberDocument.Size = new System.Drawing.Size(295, 26);
+            this.txtNumberDocument.Size = new System.Drawing.Size(197, 20);
             this.txtNumberDocument.TabIndex = 40;
             // 
             // btnLocalitation
             // 
             this.btnLocalitation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLocalitation.Location = new System.Drawing.Point(448, 159);
+            this.btnLocalitation.Location = new System.Drawing.Point(299, 101);
+            this.btnLocalitation.Margin = new System.Windows.Forms.Padding(2);
             this.btnLocalitation.Name = "btnLocalitation";
-            this.btnLocalitation.Size = new System.Drawing.Size(100, 35);
+            this.btnLocalitation.Size = new System.Drawing.Size(67, 23);
             this.btnLocalitation.TabIndex = 55;
             this.btnLocalitation.Text = "Cambiar";
             this.btnLocalitation.UseVisualStyleBackColor = true;
@@ -419,9 +458,15 @@
             // 
             this.grpSocialWork.Controls.Add(this.tlpSocialWork);
             this.grpSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpSocialWork.Location = new System.Drawing.Point(3, 237);
+            this.grpSocialWork.Location = new System.Drawing.Point(2, 152);
+            this.grpSocialWork.Margin = new System.Windows.Forms.Padding(2);
             this.grpSocialWork.Name = "grpSocialWork";
+<<<<<<< HEAD
             this.grpSocialWork.Size = new System.Drawing.Size(602, 151);
+=======
+            this.grpSocialWork.Padding = new System.Windows.Forms.Padding(2);
+            this.grpSocialWork.Size = new System.Drawing.Size(400, 97);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.grpSocialWork.TabIndex = 51;
             this.grpSocialWork.TabStop = false;
             this.grpSocialWork.Text = "Datos Obra Social";
@@ -431,29 +476,42 @@
             this.tlpSocialWork.ColumnCount = 3;
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.24852F));
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.75148F));
+<<<<<<< HEAD
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+=======
+            this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.tlpSocialWork.Controls.Add(this.lblSocialWork, 0, 0);
             this.tlpSocialWork.Controls.Add(this.cmbSocialWork, 1, 0);
             this.tlpSocialWork.Controls.Add(this.lblAffiliateNumber, 0, 1);
             this.tlpSocialWork.Controls.Add(this.txtAffiliateNumber, 1, 1);
             this.tlpSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpSocialWork.Location = new System.Drawing.Point(3, 22);
+            this.tlpSocialWork.Location = new System.Drawing.Point(2, 15);
+            this.tlpSocialWork.Margin = new System.Windows.Forms.Padding(2);
             this.tlpSocialWork.Name = "tlpSocialWork";
             this.tlpSocialWork.RowCount = 2;
             this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+<<<<<<< HEAD
             this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpSocialWork.Size = new System.Drawing.Size(596, 126);
+=======
+            this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
+            this.tlpSocialWork.Size = new System.Drawing.Size(396, 80);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.tlpSocialWork.TabIndex = 22;
             // 
             // lblSocialWork
             // 
             this.lblSocialWork.AutoSize = true;
             this.lblSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSocialWork.Location = new System.Drawing.Point(4, 0);
-            this.lblSocialWork.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSocialWork.Location = new System.Drawing.Point(3, 0);
             this.lblSocialWork.Name = "lblSocialWork";
+<<<<<<< HEAD
             this.lblSocialWork.Size = new System.Drawing.Size(152, 63);
+=======
+            this.lblSocialWork.Size = new System.Drawing.Size(101, 40);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.lblSocialWork.TabIndex = 21;
             this.lblSocialWork.Text = "Obra Social";
             this.lblSocialWork.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -463,20 +521,29 @@
             this.cmbSocialWork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSocialWork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSocialWork.FormattingEnabled = true;
+<<<<<<< HEAD
             this.cmbSocialWork.Location = new System.Drawing.Point(164, 17);
             this.cmbSocialWork.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbSocialWork.Name = "cmbSocialWork";
             this.cmbSocialWork.Size = new System.Drawing.Size(329, 28);
+=======
+            this.cmbSocialWork.Location = new System.Drawing.Point(110, 9);
+            this.cmbSocialWork.Name = "cmbSocialWork";
+            this.cmbSocialWork.Size = new System.Drawing.Size(219, 21);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.cmbSocialWork.TabIndex = 9;
             // 
             // lblAffiliateNumber
             // 
             this.lblAffiliateNumber.AutoSize = true;
             this.lblAffiliateNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAffiliateNumber.Location = new System.Drawing.Point(4, 63);
-            this.lblAffiliateNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAffiliateNumber.Location = new System.Drawing.Point(3, 40);
             this.lblAffiliateNumber.Name = "lblAffiliateNumber";
+<<<<<<< HEAD
             this.lblAffiliateNumber.Size = new System.Drawing.Size(152, 63);
+=======
+            this.lblAffiliateNumber.Size = new System.Drawing.Size(101, 40);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.lblAffiliateNumber.TabIndex = 12;
             this.lblAffiliateNumber.Text = "N° Afiliado";
             this.lblAffiliateNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -484,10 +551,16 @@
             // txtAffiliateNumber
             // 
             this.txtAffiliateNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.txtAffiliateNumber.Location = new System.Drawing.Point(164, 81);
             this.txtAffiliateNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAffiliateNumber.Name = "txtAffiliateNumber";
             this.txtAffiliateNumber.Size = new System.Drawing.Size(329, 26);
+=======
+            this.txtAffiliateNumber.Location = new System.Drawing.Point(110, 50);
+            this.txtAffiliateNumber.Name = "txtAffiliateNumber";
+            this.txtAffiliateNumber.Size = new System.Drawing.Size(219, 20);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.txtAffiliateNumber.TabIndex = 0;
             // 
             // grpStatus
@@ -495,9 +568,17 @@
             this.tlpPanlData.SetColumnSpan(this.grpStatus, 2);
             this.grpStatus.Controls.Add(this.tlpStatus);
             this.grpStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.grpStatus.Location = new System.Drawing.Point(611, 237);
             this.grpStatus.Name = "grpStatus";
             this.grpStatus.Size = new System.Drawing.Size(524, 151);
+=======
+            this.grpStatus.Location = new System.Drawing.Point(406, 152);
+            this.grpStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.grpStatus.Name = "grpStatus";
+            this.grpStatus.Padding = new System.Windows.Forms.Padding(2);
+            this.grpStatus.Size = new System.Drawing.Size(347, 97);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.grpStatus.TabIndex = 52;
             this.grpStatus.TabStop = false;
             this.grpStatus.Text = "Estado";
@@ -507,7 +588,11 @@
             this.tlpStatus.ColumnCount = 3;
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.47581F));
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.52419F));
+<<<<<<< HEAD
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+=======
+            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.tlpStatus.Controls.Add(this.lblReasonExit, 0, 2);
             this.tlpStatus.Controls.Add(this.txtReasonExit, 1, 2);
             this.tlpStatus.Controls.Add(this.lblDateAdmission, 0, 0);
@@ -515,22 +600,32 @@
             this.tlpStatus.Controls.Add(this.lblEgressDate, 0, 1);
             this.tlpStatus.Controls.Add(this.dtpEgressDate, 1, 1);
             this.tlpStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpStatus.Location = new System.Drawing.Point(3, 22);
+            this.tlpStatus.Location = new System.Drawing.Point(2, 15);
+            this.tlpStatus.Margin = new System.Windows.Forms.Padding(2);
             this.tlpStatus.Name = "tlpStatus";
             this.tlpStatus.RowCount = 3;
             this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+<<<<<<< HEAD
             this.tlpStatus.Size = new System.Drawing.Size(518, 126);
+=======
+            this.tlpStatus.Size = new System.Drawing.Size(343, 80);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.tlpStatus.TabIndex = 48;
             // 
             // lblReasonExit
             // 
             this.lblReasonExit.AutoSize = true;
             this.lblReasonExit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblReasonExit.Location = new System.Drawing.Point(3, 84);
+            this.lblReasonExit.Location = new System.Drawing.Point(2, 52);
+            this.lblReasonExit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblReasonExit.Name = "lblReasonExit";
+<<<<<<< HEAD
             this.lblReasonExit.Size = new System.Drawing.Size(156, 42);
+=======
+            this.lblReasonExit.Size = new System.Drawing.Size(104, 28);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.lblReasonExit.TabIndex = 44;
             this.lblReasonExit.Text = "Motivo del Egreso";
             this.lblReasonExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -538,18 +633,30 @@
             // txtReasonExit
             // 
             this.txtReasonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.txtReasonExit.Location = new System.Drawing.Point(165, 92);
             this.txtReasonExit.Name = "txtReasonExit";
             this.txtReasonExit.Size = new System.Drawing.Size(303, 26);
+=======
+            this.txtReasonExit.Location = new System.Drawing.Point(110, 56);
+            this.txtReasonExit.Margin = new System.Windows.Forms.Padding(2);
+            this.txtReasonExit.Name = "txtReasonExit";
+            this.txtReasonExit.Size = new System.Drawing.Size(202, 20);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.txtReasonExit.TabIndex = 47;
             // 
             // lblDateAdmission
             // 
             this.lblDateAdmission.AutoSize = true;
             this.lblDateAdmission.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDateAdmission.Location = new System.Drawing.Point(3, 0);
+            this.lblDateAdmission.Location = new System.Drawing.Point(2, 0);
+            this.lblDateAdmission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateAdmission.Name = "lblDateAdmission";
+<<<<<<< HEAD
             this.lblDateAdmission.Size = new System.Drawing.Size(156, 42);
+=======
+            this.lblDateAdmission.Size = new System.Drawing.Size(104, 26);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.lblDateAdmission.TabIndex = 42;
             this.lblDateAdmission.Text = "Fecha Ingreso";
             this.lblDateAdmission.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -557,18 +664,30 @@
             // dtpDateAdmission
             // 
             this.dtpDateAdmission.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.dtpDateAdmission.Location = new System.Drawing.Point(165, 3);
             this.dtpDateAdmission.Name = "dtpDateAdmission";
             this.dtpDateAdmission.Size = new System.Drawing.Size(303, 26);
+=======
+            this.dtpDateAdmission.Location = new System.Drawing.Point(110, 2);
+            this.dtpDateAdmission.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpDateAdmission.Name = "dtpDateAdmission";
+            this.dtpDateAdmission.Size = new System.Drawing.Size(202, 20);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.dtpDateAdmission.TabIndex = 45;
             // 
             // lblEgressDate
             // 
             this.lblEgressDate.AutoSize = true;
             this.lblEgressDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEgressDate.Location = new System.Drawing.Point(3, 42);
+            this.lblEgressDate.Location = new System.Drawing.Point(2, 26);
+            this.lblEgressDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEgressDate.Name = "lblEgressDate";
+<<<<<<< HEAD
             this.lblEgressDate.Size = new System.Drawing.Size(156, 42);
+=======
+            this.lblEgressDate.Size = new System.Drawing.Size(104, 26);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.lblEgressDate.TabIndex = 43;
             this.lblEgressDate.Text = "Fecha Egreso";
             this.lblEgressDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -576,18 +695,31 @@
             // dtpEgressDate
             // 
             this.dtpEgressDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.dtpEgressDate.Location = new System.Drawing.Point(165, 50);
             this.dtpEgressDate.Name = "dtpEgressDate";
             this.dtpEgressDate.Size = new System.Drawing.Size(303, 26);
+=======
+            this.dtpEgressDate.Location = new System.Drawing.Point(110, 29);
+            this.dtpEgressDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpEgressDate.Name = "dtpEgressDate";
+            this.dtpEgressDate.Size = new System.Drawing.Size(202, 20);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.dtpEgressDate.TabIndex = 46;
             // 
             // btnEdit
             // 
             this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
+<<<<<<< HEAD
             this.btnEdit.Location = new System.Drawing.Point(901, 396);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 32);
+=======
+            this.btnEdit.Location = new System.Drawing.Point(605, 254);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 21);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.btnEdit.TabIndex = 13;
             this.btnEdit.Text = "Editar";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -607,10 +739,16 @@
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
+<<<<<<< HEAD
             this.btnSave.Location = new System.Drawing.Point(1046, 510);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(112, 35);
+=======
+            this.btnSave.Location = new System.Drawing.Point(686, 254);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(66, 21);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -623,33 +761,35 @@
             this.tabCarpeta.Controls.Add(this.tabDiagnosticos);
             this.tabCarpeta.Controls.Add(this.tbpResponsables);
             this.tabCarpeta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabCarpeta.Location = new System.Drawing.Point(4, 5);
-            this.tabCarpeta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabCarpeta.Location = new System.Drawing.Point(3, 3);
             this.tabCarpeta.Name = "tabCarpeta";
             this.tabCarpeta.SelectedIndex = 0;
-            this.tabCarpeta.Size = new System.Drawing.Size(1154, 477);
+            this.tabCarpeta.Size = new System.Drawing.Size(769, 311);
             this.tabCarpeta.TabIndex = 0;
             // 
             // tabData
             // 
             this.tabData.BackColor = System.Drawing.SystemColors.Control;
             this.tabData.Controls.Add(this.tlpPanlData);
-            this.tabData.Location = new System.Drawing.Point(4, 29);
-            this.tabData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabData.Location = new System.Drawing.Point(4, 22);
             this.tabData.Name = "tabData";
-            this.tabData.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabData.Size = new System.Drawing.Size(1146, 444);
+            this.tabData.Padding = new System.Windows.Forms.Padding(3);
+            this.tabData.Size = new System.Drawing.Size(761, 285);
             this.tabData.TabIndex = 0;
             this.tabData.Text = "Datos Personales";
             // 
             // tabDiagnosticos
             // 
             this.tabDiagnosticos.Controls.Add(this.tlpPanelDiagnostico);
-            this.tabDiagnosticos.Location = new System.Drawing.Point(4, 29);
-            this.tabDiagnosticos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabDiagnosticos.Location = new System.Drawing.Point(4, 22);
             this.tabDiagnosticos.Name = "tabDiagnosticos";
+<<<<<<< HEAD
             this.tabDiagnosticos.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabDiagnosticos.Size = new System.Drawing.Size(1146, 444);
+=======
+            this.tabDiagnosticos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDiagnosticos.Size = new System.Drawing.Size(761, 285);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.tabDiagnosticos.TabIndex = 1;
             this.tabDiagnosticos.Text = "Diagnosticos";
             this.tabDiagnosticos.UseVisualStyleBackColor = true;
@@ -658,29 +798,37 @@
             // 
             this.tlpPanelDiagnostico.ColumnCount = 3;
             this.tlpPanelDiagnostico.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanelDiagnostico.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
-            this.tlpPanelDiagnostico.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 141F));
+            this.tlpPanelDiagnostico.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tlpPanelDiagnostico.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tlpPanelDiagnostico.Controls.Add(this.btnAddDiagnostic, 2, 1);
             this.tlpPanelDiagnostico.Controls.Add(this.btnUpdateDiagnostic, 1, 1);
             this.tlpPanelDiagnostico.Controls.Add(this.btnExport, 0, 1);
             this.tlpPanelDiagnostico.Controls.Add(this.dgvDiagnostic, 0, 0);
             this.tlpPanelDiagnostico.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpPanelDiagnostico.Location = new System.Drawing.Point(4, 5);
-            this.tlpPanelDiagnostico.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tlpPanelDiagnostico.Location = new System.Drawing.Point(3, 3);
             this.tlpPanelDiagnostico.Name = "tlpPanelDiagnostico";
             this.tlpPanelDiagnostico.RowCount = 1;
             this.tlpPanelDiagnostico.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+<<<<<<< HEAD
             this.tlpPanelDiagnostico.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpPanelDiagnostico.Size = new System.Drawing.Size(1138, 434);
+=======
+            this.tlpPanelDiagnostico.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tlpPanelDiagnostico.Size = new System.Drawing.Size(755, 279);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.tlpPanelDiagnostico.TabIndex = 0;
             // 
             // btnAddDiagnostic
             // 
             this.btnAddDiagnostic.Anchor = System.Windows.Forms.AnchorStyles.Left;
+<<<<<<< HEAD
             this.btnAddDiagnostic.Location = new System.Drawing.Point(1001, 386);
             this.btnAddDiagnostic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+=======
+            this.btnAddDiagnostic.Location = new System.Drawing.Point(664, 248);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.btnAddDiagnostic.Name = "btnAddDiagnostic";
-            this.btnAddDiagnostic.Size = new System.Drawing.Size(112, 35);
+            this.btnAddDiagnostic.Size = new System.Drawing.Size(75, 23);
             this.btnAddDiagnostic.TabIndex = 3;
             this.btnAddDiagnostic.Text = "Agregar";
             this.btnAddDiagnostic.UseVisualStyleBackColor = true;
@@ -689,10 +837,14 @@
             // btnUpdateDiagnostic
             // 
             this.btnUpdateDiagnostic.Anchor = System.Windows.Forms.AnchorStyles.Left;
+<<<<<<< HEAD
             this.btnUpdateDiagnostic.Location = new System.Drawing.Point(866, 386);
             this.btnUpdateDiagnostic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+=======
+            this.btnUpdateDiagnostic.Location = new System.Drawing.Point(574, 248);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.btnUpdateDiagnostic.Name = "btnUpdateDiagnostic";
-            this.btnUpdateDiagnostic.Size = new System.Drawing.Size(112, 35);
+            this.btnUpdateDiagnostic.Size = new System.Drawing.Size(75, 23);
             this.btnUpdateDiagnostic.TabIndex = 2;
             this.btnUpdateDiagnostic.Text = "Modificar";
             this.btnUpdateDiagnostic.UseVisualStyleBackColor = true;
@@ -702,10 +854,14 @@
             // 
             this.btnExport.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+<<<<<<< HEAD
             this.btnExport.Location = new System.Drawing.Point(4, 386);
             this.btnExport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+=======
+            this.btnExport.Location = new System.Drawing.Point(3, 248);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(154, 35);
+            this.btnExport.Size = new System.Drawing.Size(103, 23);
             this.btnExport.TabIndex = 1;
             this.btnExport.Text = "Historia Clinica";
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -717,20 +873,29 @@
             this.dgvDiagnostic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tlpPanelDiagnostico.SetColumnSpan(this.dgvDiagnostic, 3);
             this.dgvDiagnostic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDiagnostic.Location = new System.Drawing.Point(4, 5);
-            this.dgvDiagnostic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvDiagnostic.Location = new System.Drawing.Point(3, 3);
             this.dgvDiagnostic.Name = "dgvDiagnostic";
+<<<<<<< HEAD
             this.dgvDiagnostic.Size = new System.Drawing.Size(1130, 364);
+=======
+            this.dgvDiagnostic.Size = new System.Drawing.Size(749, 234);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.dgvDiagnostic.TabIndex = 0;
             this.dgvDiagnostic.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiagnostico_CellClick);
             // 
             // tbpResponsables
             // 
             this.tbpResponsables.Controls.Add(this.tableLayoutPanel1);
-            this.tbpResponsables.Location = new System.Drawing.Point(4, 29);
+            this.tbpResponsables.Location = new System.Drawing.Point(4, 22);
+            this.tbpResponsables.Margin = new System.Windows.Forms.Padding(2);
             this.tbpResponsables.Name = "tbpResponsables";
+<<<<<<< HEAD
             this.tbpResponsables.Padding = new System.Windows.Forms.Padding(3);
             this.tbpResponsables.Size = new System.Drawing.Size(1146, 444);
+=======
+            this.tbpResponsables.Padding = new System.Windows.Forms.Padding(2);
+            this.tbpResponsables.Size = new System.Drawing.Size(761, 285);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.tbpResponsables.TabIndex = 2;
             this.tbpResponsables.Text = "Responsables";
             this.tbpResponsables.UseVisualStyleBackColor = true;
@@ -738,9 +903,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.lblParentName, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtParentName, 1, 0);
@@ -764,25 +929,27 @@
             this.tableLayoutPanel1.Controls.Add(this.lblParentAddress, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnLocalitationParent, 2, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1140, 438);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(757, 281);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblParentName
             // 
             this.lblParentName.AutoSize = true;
             this.lblParentName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblParentName.Location = new System.Drawing.Point(3, 0);
+            this.lblParentName.Location = new System.Drawing.Point(2, 0);
+            this.lblParentName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParentName.Name = "lblParentName";
-            this.lblParentName.Size = new System.Drawing.Size(130, 46);
+            this.lblParentName.Size = new System.Drawing.Size(87, 30);
             this.lblParentName.TabIndex = 3;
             this.lblParentName.Text = "Nombre";
             this.lblParentName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -790,18 +957,20 @@
             // txtParentName
             // 
             this.txtParentName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtParentName.Location = new System.Drawing.Point(139, 10);
+            this.txtParentName.Location = new System.Drawing.Point(93, 5);
+            this.txtParentName.Margin = new System.Windows.Forms.Padding(2);
             this.txtParentName.Name = "txtParentName";
-            this.txtParentName.Size = new System.Drawing.Size(420, 26);
+            this.txtParentName.Size = new System.Drawing.Size(278, 20);
             this.txtParentName.TabIndex = 10;
             // 
             // lblParentLastName
             // 
             this.lblParentLastName.AutoSize = true;
             this.lblParentLastName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblParentLastName.Location = new System.Drawing.Point(3, 46);
+            this.lblParentLastName.Location = new System.Drawing.Point(2, 30);
+            this.lblParentLastName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParentLastName.Name = "lblParentLastName";
-            this.lblParentLastName.Size = new System.Drawing.Size(130, 46);
+            this.lblParentLastName.Size = new System.Drawing.Size(87, 30);
             this.lblParentLastName.TabIndex = 4;
             this.lblParentLastName.Text = "Apellido";
             this.lblParentLastName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -810,20 +979,37 @@
             // 
             this.lblParentNumberDocument.AutoSize = true;
             this.lblParentNumberDocument.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblParentNumberDocument.Location = new System.Drawing.Point(3, 92);
+            this.lblParentNumberDocument.Location = new System.Drawing.Point(2, 60);
+            this.lblParentNumberDocument.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParentNumberDocument.Name = "lblParentNumberDocument";
-            this.lblParentNumberDocument.Size = new System.Drawing.Size(130, 46);
+            this.lblParentNumberDocument.Size = new System.Drawing.Size(87, 30);
             this.lblParentNumberDocument.TabIndex = 5;
             this.lblParentNumberDocument.Text = "DNI";
             this.lblParentNumberDocument.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+<<<<<<< HEAD
+=======
+            // lblParentAddress
+            // 
+            this.lblParentAddress.AutoSize = true;
+            this.lblParentAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblParentAddress.Location = new System.Drawing.Point(2, 90);
+            this.lblParentAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblParentAddress.Name = "lblParentAddress";
+            this.lblParentAddress.Size = new System.Drawing.Size(87, 30);
+            this.lblParentAddress.TabIndex = 7;
+            this.lblParentAddress.Text = "Domicilio";
+            this.lblParentAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             // lblParentPhone
             // 
             this.lblParentPhone.AutoSize = true;
             this.lblParentPhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblParentPhone.Location = new System.Drawing.Point(565, 0);
+            this.lblParentPhone.Location = new System.Drawing.Point(375, 0);
+            this.lblParentPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParentPhone.Name = "lblParentPhone";
-            this.lblParentPhone.Size = new System.Drawing.Size(146, 46);
+            this.lblParentPhone.Size = new System.Drawing.Size(97, 30);
             this.lblParentPhone.TabIndex = 2;
             this.lblParentPhone.Text = "Telefono";
             this.lblParentPhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -832,9 +1018,10 @@
             // 
             this.lblParentAlternativePhone.AutoSize = true;
             this.lblParentAlternativePhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblParentAlternativePhone.Location = new System.Drawing.Point(565, 46);
+            this.lblParentAlternativePhone.Location = new System.Drawing.Point(375, 30);
+            this.lblParentAlternativePhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParentAlternativePhone.Name = "lblParentAlternativePhone";
-            this.lblParentAlternativePhone.Size = new System.Drawing.Size(146, 46);
+            this.lblParentAlternativePhone.Size = new System.Drawing.Size(97, 30);
             this.lblParentAlternativePhone.TabIndex = 6;
             this.lblParentAlternativePhone.Text = "Telefono Alt";
             this.lblParentAlternativePhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -843,9 +1030,10 @@
             // 
             this.lblParentEmail.AutoSize = true;
             this.lblParentEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblParentEmail.Location = new System.Drawing.Point(565, 92);
+            this.lblParentEmail.Location = new System.Drawing.Point(375, 60);
+            this.lblParentEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParentEmail.Name = "lblParentEmail";
-            this.lblParentEmail.Size = new System.Drawing.Size(146, 46);
+            this.lblParentEmail.Size = new System.Drawing.Size(97, 30);
             this.lblParentEmail.TabIndex = 8;
             this.lblParentEmail.Text = "Correo";
             this.lblParentEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -854,9 +1042,10 @@
             // 
             this.lblParentRelationship.AutoSize = true;
             this.lblParentRelationship.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblParentRelationship.Location = new System.Drawing.Point(565, 138);
+            this.lblParentRelationship.Location = new System.Drawing.Point(375, 90);
+            this.lblParentRelationship.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblParentRelationship.Name = "lblParentRelationship";
-            this.lblParentRelationship.Size = new System.Drawing.Size(146, 46);
+            this.lblParentRelationship.Size = new System.Drawing.Size(97, 30);
             this.lblParentRelationship.TabIndex = 9;
             this.lblParentRelationship.Text = "Parentesco";
             this.lblParentRelationship.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -866,50 +1055,68 @@
             this.dtvParent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dtvParent, 4);
             this.dtvParent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtvParent.Location = new System.Drawing.Point(3, 233);
+            this.dtvParent.Location = new System.Drawing.Point(2, 152);
+            this.dtvParent.Margin = new System.Windows.Forms.Padding(2);
             this.dtvParent.Name = "dtvParent";
             this.dtvParent.RowTemplate.Height = 28;
-            this.dtvParent.Size = new System.Drawing.Size(1134, 202);
+            this.dtvParent.Size = new System.Drawing.Size(753, 127);
             this.dtvParent.TabIndex = 0;
             // 
             // txtParentLastName
             // 
             this.txtParentLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtParentLastName.Location = new System.Drawing.Point(139, 56);
+            this.txtParentLastName.Location = new System.Drawing.Point(93, 35);
+            this.txtParentLastName.Margin = new System.Windows.Forms.Padding(2);
             this.txtParentLastName.Name = "txtParentLastName";
-            this.txtParentLastName.Size = new System.Drawing.Size(420, 26);
+            this.txtParentLastName.Size = new System.Drawing.Size(278, 20);
             this.txtParentLastName.TabIndex = 11;
             // 
             // txtParentNumberDocument
             // 
             this.txtParentNumberDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtParentNumberDocument.Location = new System.Drawing.Point(139, 102);
+            this.txtParentNumberDocument.Location = new System.Drawing.Point(93, 65);
+            this.txtParentNumberDocument.Margin = new System.Windows.Forms.Padding(2);
             this.txtParentNumberDocument.Name = "txtParentNumberDocument";
-            this.txtParentNumberDocument.Size = new System.Drawing.Size(420, 26);
+            this.txtParentNumberDocument.Size = new System.Drawing.Size(278, 20);
             this.txtParentNumberDocument.TabIndex = 12;
             // 
+<<<<<<< HEAD
+=======
+            // txtParentAddress
+            // 
+            this.txtParentAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtParentAddress.Location = new System.Drawing.Point(93, 95);
+            this.txtParentAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.txtParentAddress.Name = "txtParentAddress";
+            this.txtParentAddress.Size = new System.Drawing.Size(278, 20);
+            this.txtParentAddress.TabIndex = 13;
+            // 
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             // txtParentEmail
             // 
             this.txtParentEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtParentEmail.Location = new System.Drawing.Point(717, 102);
+            this.txtParentEmail.Location = new System.Drawing.Point(476, 65);
+            this.txtParentEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtParentEmail.Name = "txtParentEmail";
-            this.txtParentEmail.Size = new System.Drawing.Size(420, 26);
+            this.txtParentEmail.Size = new System.Drawing.Size(279, 20);
             this.txtParentEmail.TabIndex = 14;
             // 
             // txtParentAlternativePhone
             // 
             this.txtParentAlternativePhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtParentAlternativePhone.Location = new System.Drawing.Point(717, 56);
+            this.txtParentAlternativePhone.Location = new System.Drawing.Point(476, 35);
+            this.txtParentAlternativePhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtParentAlternativePhone.Name = "txtParentAlternativePhone";
-            this.txtParentAlternativePhone.Size = new System.Drawing.Size(420, 26);
+            this.txtParentAlternativePhone.Size = new System.Drawing.Size(279, 20);
             this.txtParentAlternativePhone.TabIndex = 15;
             // 
             // txtParentPhone
             // 
             this.txtParentPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtParentPhone.Location = new System.Drawing.Point(717, 10);
+            this.txtParentPhone.Location = new System.Drawing.Point(476, 5);
+            this.txtParentPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtParentPhone.Name = "txtParentPhone";
-            this.txtParentPhone.Size = new System.Drawing.Size(420, 26);
+            this.txtParentPhone.Size = new System.Drawing.Size(279, 20);
             this.txtParentPhone.TabIndex = 16;
             // 
             // cmbParentRelationship
@@ -917,11 +1124,13 @@
             this.cmbParentRelationship.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbParentRelationship.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbParentRelationship.FormattingEnabled = true;
-            this.cmbParentRelationship.Location = new System.Drawing.Point(717, 147);
+            this.cmbParentRelationship.Location = new System.Drawing.Point(476, 94);
+            this.cmbParentRelationship.Margin = new System.Windows.Forms.Padding(2);
             this.cmbParentRelationship.Name = "cmbParentRelationship";
-            this.cmbParentRelationship.Size = new System.Drawing.Size(420, 28);
+            this.cmbParentRelationship.Size = new System.Drawing.Size(279, 21);
             this.cmbParentRelationship.TabIndex = 17;
             // 
+<<<<<<< HEAD
             // btnApplyParent
             // 
             this.btnApplyParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -932,14 +1141,40 @@
             this.btnApplyParent.Text = "Aplicar";
             this.btnApplyParent.UseVisualStyleBackColor = true;
             this.btnApplyParent.Click += new System.EventHandler(this.btnApplyParent_Click);
+=======
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(690, 122);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(65, 26);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Agregar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // txtParentLocation
+            // 
+            this.txtParentLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtParentLocation.Location = new System.Drawing.Point(93, 125);
+            this.txtParentLocation.Margin = new System.Windows.Forms.Padding(2);
+            this.txtParentLocation.Name = "txtParentLocation";
+            this.txtParentLocation.Size = new System.Drawing.Size(278, 20);
+            this.txtParentLocation.TabIndex = 19;
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             // 
             // lblParentLocation
             // 
             this.lblParentLocation.AutoSize = true;
             this.lblParentLocation.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.lblParentLocation.Location = new System.Drawing.Point(3, 138);
+=======
+            this.lblParentLocation.Location = new System.Drawing.Point(2, 120);
+            this.lblParentLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.lblParentLocation.Name = "lblParentLocation";
-            this.lblParentLocation.Size = new System.Drawing.Size(130, 46);
+            this.lblParentLocation.Size = new System.Drawing.Size(87, 30);
             this.lblParentLocation.TabIndex = 18;
             this.lblParentLocation.Text = "Localidad";
             this.lblParentLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -985,17 +1220,21 @@
             // 
             this.tlpPanelPrincipal.ColumnCount = 2;
             this.tlpPanelPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+<<<<<<< HEAD
             this.tlpPanelPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+=======
+            this.tlpPanelPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tlpPanelPrincipal.Controls.Add(this.btnClose, 1, 1);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.tlpPanelPrincipal.Controls.Add(this.tabCarpeta, 0, 0);
             this.tlpPanelPrincipal.Controls.Add(this.btnSave, 1, 1);
             this.tlpPanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.tlpPanelPrincipal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tlpPanelPrincipal.Name = "tlpPanelPrincipal";
             this.tlpPanelPrincipal.RowCount = 2;
             this.tlpPanelPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanelPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tlpPanelPrincipal.Size = new System.Drawing.Size(1162, 569);
+            this.tlpPanelPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tlpPanelPrincipal.Size = new System.Drawing.Size(775, 370);
             this.tlpPanelPrincipal.TabIndex = 0;
             // 
             // cmsMenuEmergente
@@ -1005,13 +1244,13 @@
             this.modificarToolStripMenuItem,
             this.agregarToolStripMenuItem});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(168, 64);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(134, 64);
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Image = global::myExplorer.Properties.Resources.EditFile;
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(167, 30);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(133, 30);
             this.modificarToolStripMenuItem.Text = "Modificar";
             this.modificarToolStripMenuItem.Click += new System.EventHandler(this.btnModificar_Click);
             // 
@@ -1019,14 +1258,15 @@
             // 
             this.agregarToolStripMenuItem.Image = global::myExplorer.Properties.Resources.Plus;
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(167, 30);
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(133, 30);
             this.agregarToolStripMenuItem.Text = "Agregar";
             this.agregarToolStripMenuItem.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // frmAbmPatient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1162, 569);
             this.Controls.Add(this.tlpPanelPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1035,6 +1275,13 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(136, 114);
+=======
+            this.ClientSize = new System.Drawing.Size(775, 370);
+            this.ControlBox = false;
+            this.Controls.Add(this.tlpPanelPrincipal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(96, 88);
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
             this.Name = "frmAbmPatient";
             this.Text = "Abuelo (ABM)";
             this.Load += new System.EventHandler(this.frmAbmPatient_Load);

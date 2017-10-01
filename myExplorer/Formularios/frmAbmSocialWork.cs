@@ -11,6 +11,7 @@ using Entidades.Clases;
 using Controles;
 using Datos.Query;
 using libLocalitation.Forms;
+using System.Text.RegularExpressions;
 
 namespace myExplorer.Formularios
 {
@@ -175,8 +176,8 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres.");
             else if ((txtAddress.Text.Length >= 50) || (txtAddress.Text == ""))
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres.");
-            else if (txtPhone.Text.Length >= 20)
-                MessageBox.Show("El Numero de Telefono supera los 20 caracteres.");
+            else if (txtPhone.Text.Length >= 11)
+                MessageBox.Show("El Numero de Telefono supera los 11 caracteres.");
             else if ((txtContact.Text.Length > 50))
                 MessageBox.Show("La Contacto debe supera los 50 caracteres.");
             else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
@@ -254,6 +255,30 @@ namespace myExplorer.Formularios
             }
         }
 
-        #endregion
+       #endregion
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {      
+        
+            ////Regex regex = new Regex("(042)+[-]{1}[0-9]{8,8}$");
+            ////Match match = regex.Match(txtPhone.Text);
+
+            //Regex rex = new Regex("(042)+[-]{1}[0-9]{8,8}$");
+            //if (!rex.IsMatch(txtPhone.Text))
+            //if (match.Success) 
+            //{
+            
+            //    Si no es número Y NO ES
+            //    la tecla borrar
+                if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+                    {
+                        e.Handled = true;
+                    }
+            //}
+            
+            
+        }
+
+
     }
 }

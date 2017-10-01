@@ -25,6 +25,12 @@ namespace myExplorer.Formularios
         public Modo eModo { set; get; }
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
+<<<<<<< HEAD
+=======
+
+        public classPatient oPatient { set; get; }
+        
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
         private classDiagnostic oDiagnostic;
         private classTextos oTxt;
         private bool Enable = true;
@@ -515,6 +521,80 @@ namespace myExplorer.Formularios
             return V;
         }
 
+<<<<<<< HEAD
+=======
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+            
+        }
+
+        private void txtParentPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtParentAlternativePhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        // OK 04/03/12
+        private void LeerDesdeFrmParent()
+        {
+            oParent.Name = txtParentName.Text;
+            oParent.LastName = txtParentLastName.Text;
+            oParent.NumberDocument = Convert.ToInt32(txtNumberDocument.Text);
+            oParent.Address = txtParentAddress.Text;
+            oParent.IdLocationCountry = Convert.ToInt32(IdCountryParent);
+            oParent.IdLocationCity = Convert.ToInt32(IdCityParent);
+            oParent.IdLocationProvince = Convert.ToInt32(IdProvinceParent);
+            oParent.Phone = txtParentPhone.Text;
+            oParent.AlternativePhone = txtParentAlternativePhone.Text;
+            oParent.Email = txtParentEmail.Text;
+            //oParent.IdTypeParent = Convert.ToInt32(IdTypeParent.text);
+        }
+        public classParent oParent { set; get; }
+        public classPatientParent oTypeParent { set; get; }
+        /// <summary>
+        /// Carga los elementos de formulario desde objeto.
+        /// OK 04/04/12
+        /// </summary>
+        private void EscribirEnFrmParent()
+        {
+            txtParentName.Text = oParent.Name;
+            txtParentLastName.Text = oParent.LastName;
+            txtParentNumberDocument.Text = Convert.ToString(oParent.NumberDocument);
+            txtParentAddress.Text = oParent.Address;
+
+            IdCountryParent = oParent.IdLocationCountry;
+            IdProvinceParent = oParent.IdLocationProvince;
+            IdCityParent = oParent.IdLocationCity;
+
+            txtLocation.Text = frmLocation.toStringLocation(
+            oQuery.ConexionString, IdCountry, IdProvince, IdCity);
+
+            txtParentPhone.Text = oParent.Phone;
+            txtParentAlternativePhone.Text = oParent.AlternativePhone;
+            txtParentAlternativePhone.Text = oParent.AlternativePhone;
+            txtParentEmail.Text = oParent.Email;
+            
+            // oComboBox.IndexCombos(cmbParentRelationship, oTypeParent.IdTypeParent);
+           
+        }
+
+>>>>>>> 32714c4f960848bf9b618075575b009562618870
         /// <summary>
         /// Habilita TabFicha
         /// OK 18/04/12

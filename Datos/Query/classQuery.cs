@@ -1897,6 +1897,144 @@ namespace Datos.Query
             return Result;
         }
 
+        public object AbmTypeParent(classTypeParent oP, eAbm Abm)
+        {
+            object Result = null;
+            string SPname = sp.AbmTypeParent;
+
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Abm", (int)Abm));
+            lParam.Add(new SqlParameter("@IdTypeParent", oP.IdTypeParent));
+            lParam.Add(new SqlParameter("@Description", oP.Description));
+            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+
+            switch (Abm)
+            {
+                case eAbm.SelectAll:
+                    {
+                        List<classTypeParent> lTypeParent = null;
+                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        {
+                            lTypeParent = new List<classTypeParent>();
+                            while (oSql.Reader.Read())
+                            {
+                                try
+                                {
+                                    classTypeParent oTypeParent = new classTypeParent(
+                                    Convert.ToInt32(oSql.Reader["IdTypeParent"]),
+                                    Convert.ToString(oSql.Reader["Description"]),
+                                    Convert.ToBoolean(oSql.Reader["Visible"]));
+                                    lTypeParent.Add(oTypeParent);
+                                }
+                                catch (FormatException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    lTypeParent = null;
+                                }
+                                catch (InvalidCastException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    lTypeParent = null;
+                                }
+                                catch (OverflowException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    lTypeParent = null;
+                                }
+                            }
+                        }
+                        else
+                            Menssage = oSql.Mensage;
+
+                        oSql.Close();
+                        Result = lTypeParent;
+                        break;
+                    }
+                case eAbm.Select:
+                    {
+                        classTypeParent oTypeParent = null;
+                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        {
+                            if (oSql.Reader.Read())
+                            {
+                                try
+                                {
+                                    oTypeParent = new classTypeParent(
+                                    Convert.ToInt32(oSql.Reader["IdTypeParent"]),
+                                    Convert.ToString(oSql.Reader["Description"]),
+                                    Convert.ToBoolean(oSql.Reader["Visible"]));
+                                }
+                                catch (FormatException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    oTypeParent = null;
+                                }
+                                catch (InvalidCastException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    oTypeParent = null;
+                                }
+                                catch (OverflowException ex)
+                                {
+                                    Menssage = ex.ToString();
+                                    oTypeParent = null;
+                                }
+                            }
+                        }
+                        else
+                            Menssage = oSql.Mensage;
+
+                        oSql.Close();
+                        Result = oTypeParent;
+                        break;
+                    }
+                case eAbm.Insert:
+                    {
+                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                        if (UltimoId == 0)
+                            Menssage = oSql.Mensage;
+
+                        Result = UltimoId;
+                        break;
+                    }
+                case eAbm.Update:
+                    {
+                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                        if (UltimoId == 0)
+                            Menssage = oSql.Mensage;
+
+                        Result = UltimoId;
+                        break;
+                    }
+                case eAbm.Delete:
+                    {
+                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                        if (UltimoId == 0)
+                            Menssage = oSql.Mensage;
+
+                        Result = UltimoId;
+                        break;
+                    }
+                case eAbm.LoadCmb:
+                    {
+                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                        if (oSql.Table.Rows.Count != 0)
+                            Table = oSql.Table;
+                        else
+                            Table = null;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+            return Result;
+        }
+
         #endregion
 
         // OK - 24/09/17
