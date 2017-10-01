@@ -432,7 +432,7 @@
             this.tlpSocialWork.ColumnCount = 3;
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.24852F));
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.75148F));
-            this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tlpSocialWork.Controls.Add(this.lblSocialWork, 0, 0);
             this.tlpSocialWork.Controls.Add(this.cmbSocialWork, 1, 0);
             this.tlpSocialWork.Controls.Add(this.lblAffiliateNumber, 0, 1);
@@ -467,7 +467,7 @@
             this.cmbSocialWork.Location = new System.Drawing.Point(163, 17);
             this.cmbSocialWork.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbSocialWork.Name = "cmbSocialWork";
-            this.cmbSocialWork.Size = new System.Drawing.Size(328, 28);
+            this.cmbSocialWork.Size = new System.Drawing.Size(327, 28);
             this.cmbSocialWork.TabIndex = 9;
             // 
             // lblAffiliateNumber
@@ -488,7 +488,7 @@
             this.txtAffiliateNumber.Location = new System.Drawing.Point(163, 81);
             this.txtAffiliateNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAffiliateNumber.Name = "txtAffiliateNumber";
-            this.txtAffiliateNumber.Size = new System.Drawing.Size(328, 26);
+            this.txtAffiliateNumber.Size = new System.Drawing.Size(327, 26);
             this.txtAffiliateNumber.TabIndex = 0;
             // 
             // grpStatus
@@ -508,7 +508,7 @@
             this.tlpStatus.ColumnCount = 3;
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.47581F));
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.52419F));
-            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tlpStatus.Controls.Add(this.lblReasonExit, 0, 2);
             this.tlpStatus.Controls.Add(this.txtReasonExit, 1, 2);
             this.tlpStatus.Controls.Add(this.lblDateAdmission, 0, 0);
@@ -531,7 +531,7 @@
             this.lblReasonExit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblReasonExit.Location = new System.Drawing.Point(3, 84);
             this.lblReasonExit.Name = "lblReasonExit";
-            this.lblReasonExit.Size = new System.Drawing.Size(156, 42);
+            this.lblReasonExit.Size = new System.Drawing.Size(155, 42);
             this.lblReasonExit.TabIndex = 44;
             this.lblReasonExit.Text = "Motivo del Egreso";
             this.lblReasonExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -539,7 +539,7 @@
             // txtReasonExit
             // 
             this.txtReasonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReasonExit.Location = new System.Drawing.Point(165, 92);
+            this.txtReasonExit.Location = new System.Drawing.Point(164, 92);
             this.txtReasonExit.Name = "txtReasonExit";
             this.txtReasonExit.Size = new System.Drawing.Size(301, 26);
             this.txtReasonExit.TabIndex = 47;
@@ -550,7 +550,7 @@
             this.lblDateAdmission.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDateAdmission.Location = new System.Drawing.Point(3, 0);
             this.lblDateAdmission.Name = "lblDateAdmission";
-            this.lblDateAdmission.Size = new System.Drawing.Size(156, 42);
+            this.lblDateAdmission.Size = new System.Drawing.Size(155, 42);
             this.lblDateAdmission.TabIndex = 42;
             this.lblDateAdmission.Text = "Fecha Ingreso";
             this.lblDateAdmission.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -558,7 +558,7 @@
             // dtpDateAdmission
             // 
             this.dtpDateAdmission.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpDateAdmission.Location = new System.Drawing.Point(165, 3);
+            this.dtpDateAdmission.Location = new System.Drawing.Point(164, 3);
             this.dtpDateAdmission.Name = "dtpDateAdmission";
             this.dtpDateAdmission.Size = new System.Drawing.Size(301, 26);
             this.dtpDateAdmission.TabIndex = 45;
@@ -569,7 +569,7 @@
             this.lblEgressDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblEgressDate.Location = new System.Drawing.Point(3, 42);
             this.lblEgressDate.Name = "lblEgressDate";
-            this.lblEgressDate.Size = new System.Drawing.Size(156, 42);
+            this.lblEgressDate.Size = new System.Drawing.Size(155, 42);
             this.lblEgressDate.TabIndex = 43;
             this.lblEgressDate.Text = "Fecha Egreso";
             this.lblEgressDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -577,7 +577,7 @@
             // dtpEgressDate
             // 
             this.dtpEgressDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpEgressDate.Location = new System.Drawing.Point(165, 50);
+            this.dtpEgressDate.Location = new System.Drawing.Point(164, 50);
             this.dtpEgressDate.Name = "dtpEgressDate";
             this.dtpEgressDate.Size = new System.Drawing.Size(301, 26);
             this.dtpEgressDate.TabIndex = 46;
