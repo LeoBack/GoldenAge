@@ -185,9 +185,14 @@ namespace myExplorer.Formularios
                 MessageBox.Show("La Contacto debe supera los 50 caracteres.");
             else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
                 MessageBox.Show("La Localidad no esta seleccionada.");
+<<<<<<< HEAD
             else if ((IdIvaType == 0))
                 MessageBox.Show("El Tipo de IVA No esta Seleccionado.");
                 
+=======
+            else if (cmbIvaType.SelectedIndex == -1)
+                MessageBox.Show("Tipo de Iva no valido.");
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             else
                 V = true;
 

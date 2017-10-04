@@ -85,7 +85,6 @@ namespace myExplorer.Formularios
                     //frmA.oProfessional = oP;
                     //frmA.eModo = frmAbmProfessional.Modo.Delete;
                     //frmA.ShowDialog();
-                    frmListProfessional_Load(sender, e);
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);
@@ -111,8 +110,6 @@ namespace myExplorer.Formularios
                     frmA.oProfessional = oP;
                     frmA.eModo = frmAbmProfessional.Modo.Update;
                     frmA.ShowDialog();
-
-                    frmListProfessional_Load(sender, e);
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);
@@ -176,8 +173,7 @@ namespace myExplorer.Formularios
         // OK - 24/09/17
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvLista.Rows.Count != 0)
-                SelectRow = e.RowIndex;
+            SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
         }
 
         #endregion
@@ -241,8 +237,8 @@ namespace myExplorer.Formularios
         }
 
         /// <summary>
-        /// Carga la Lista de Obras Sociales
-        /// OK - 24/09/17
+        /// Carga la Lista debuelve la cantidad de filas.
+        /// OK 17/10/03
         /// </summary>
         /// <param name="Source"></param>
         public int GenerarGrilla(object Source)
@@ -251,6 +247,8 @@ namespace myExplorer.Formularios
             //Configuracion del DataListView
             //
             dgvLista.AutoGenerateColumns = true;
+            dgvLista.AllowUserToAddRows = false;
+            dgvLista.RowHeadersVisible = false;
             dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvLista.ReadOnly = true;

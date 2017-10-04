@@ -17,14 +17,13 @@ namespace myExplorer.Formularios
     {
         #region Atributos y Propiedades
 
+        public classPatient oPatient { set; get; }
         public enum Modo { Add, Select, Update, Delete }
-
         public Modo eModo { set; get; }
-        public classDiagnostic oDiagnostico { set; get; }
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
-
-        private classTextos oTxt = new classTextos();
+        private classTextos oTxt;
+        private int SelectRow;
 
         #endregion
 
@@ -35,34 +34,30 @@ namespace myExplorer.Formularios
         public frmAbmDiagnostic()
         {
             InitializeComponent();
+            oTxt = new classTextos();
         }
 
         //OK 24/05/12
         private void frmAbmDiagnostic_Load(object sender, EventArgs e)
         {
-            if (oQuery != null)
-            {
-                Size sBtn = new Size(75, 42);
-                btnCerrar.Size = sBtn;
-                btnEliminar.Size = sBtn;
-                btnGuardar.Size = sBtn;
+            //if (oQuery != null)
+            //{
+            //    //oCombo.CargaCombo(cmbPatologia, oQuery.ListaPatologias(), oQuery.Table);
 
-                //oCombo.CargaCombo(cmbPatologia, oQuery.ListaPatologias(), oQuery.Table);
-
-                if (eModo == Modo.Update)
-                {
-                    if (this.oDiagnostico != null)
-                    {
-                        //oCombo.IndexCombos(cmbPatologia, this.oDiagnostico.IdDetalle);
-                        rtxtDiagnostico.Text = this.oDiagnostico.Detail;
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show(oTxt.ErrorObjetIndefinido);
-                this.Close();
-            }
+            //    if (eModo == Modo.Update)
+            //    {
+            //        if (this.oDiagnostico != null)
+            //        {
+            //            //oCombo.IndexCombos(cmbPatologia, this.oDiagnostico.IdDetalle);
+            //            rtxtDiagnostico.Text = this.oDiagnostico.Detail;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show(oTxt.ErrorObjetIndefinido);
+            //    this.Close();
+            //}
         }
 
         #endregion
@@ -73,17 +68,17 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            bool error = false;
-            // Eliminar el Diagnostico
-            if (MessageBox.Show(oTxt.MsgEliminarDiagnostico, oTxt.MsgTituloDiagnostico, 
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                //error = oQuery.DeleteDiagnostic(oDiagnostico, false);
-            error = (bool)oQuery.AbmDiagnostic(oDiagnostico, classQuery.eAbm.Delete);
+            //bool error = false;
+            //// Eliminar el Diagnostico
+            //if (MessageBox.Show(oTxt.MsgEliminarDiagnostico, oTxt.MsgTituloDiagnostico, 
+            //    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            //    //error = oQuery.DeleteDiagnostic(oDiagnostico, false);
+            //error = (bool)oQuery.AbmDiagnostic(oDiagnostico, classQuery.eAbm.Delete);
 
-            if (!error)
-                MessageBox.Show(oTxt.ErrorQueryDelete);
-            else
-                this.Close();
+            //if (!error)
+            //    MessageBox.Show(oTxt.ErrorQueryDelete);
+            //else
+            //    this.Close();
         }
 
         // OK 03/06/12
@@ -117,7 +112,7 @@ namespace myExplorer.Formularios
         // OK 03/06/12
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         // OK 03/06/12

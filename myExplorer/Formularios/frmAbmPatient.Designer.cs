@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbmPatient));
+            this.btnSave = new System.Windows.Forms.Button();
+            this.tlpPanelPrincipal = new System.Windows.Forms.TableLayoutPanel();
+            this.tabCarpeta = new System.Windows.Forms.TabControl();
+            this.tabData = new System.Windows.Forms.TabPage();
             this.tlpPanlData = new System.Windows.Forms.TableLayoutPanel();
             this.grpDataPersonal = new System.Windows.Forms.GroupBox();
             this.tlpDataPersonal = new System.Windows.Forms.TableLayoutPanel();
@@ -67,17 +71,7 @@
             this.dtpDateAdmission = new System.Windows.Forms.DateTimePicker();
             this.lblEgressDate = new System.Windows.Forms.Label();
             this.dtpEgressDate = new System.Windows.Forms.DateTimePicker();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.btnBlocked = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.tabCarpeta = new System.Windows.Forms.TabControl();
-            this.tabData = new System.Windows.Forms.TabPage();
-            this.tabDiagnosticos = new System.Windows.Forms.TabPage();
-            this.tlpPanelDiagnostico = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAddDiagnostic = new System.Windows.Forms.Button();
-            this.btnUpdateDiagnostic = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.dgvDiagnostic = new System.Windows.Forms.DataGridView();
             this.tbpResponsables = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblParentName = new System.Windows.Forms.Label();
@@ -101,10 +95,12 @@
             this.txtLocationParent = new System.Windows.Forms.TextBox();
             this.lblParentAddress = new System.Windows.Forms.Label();
             this.btnLocalitationParent = new System.Windows.Forms.Button();
-            this.tlpPanelPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlpPanelPrincipal.SuspendLayout();
+            this.tabCarpeta.SuspendLayout();
+            this.tabData.SuspendLayout();
             this.tlpPanlData.SuspendLayout();
             this.grpDataPersonal.SuspendLayout();
             this.tlpDataPersonal.SuspendLayout();
@@ -112,17 +108,65 @@
             this.tlpSocialWork.SuspendLayout();
             this.grpStatus.SuspendLayout();
             this.tlpStatus.SuspendLayout();
-            this.tabCarpeta.SuspendLayout();
-            this.tabData.SuspendLayout();
-            this.tabDiagnosticos.SuspendLayout();
-            this.tlpPanelDiagnostico.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnostic)).BeginInit();
             this.tbpResponsables.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtvParent)).BeginInit();
-            this.tlpPanelPrincipal.SuspendLayout();
             this.cmsMenuEmergente.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSave.Location = new System.Drawing.Point(1046, 522);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(112, 35);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // tlpPanelPrincipal
+            // 
+            this.tlpPanelPrincipal.ColumnCount = 2;
+            this.tlpPanelPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpPanelPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tlpPanelPrincipal.Controls.Add(this.tabCarpeta, 0, 0);
+            this.tlpPanelPrincipal.Controls.Add(this.btnSave, 1, 1);
+            this.tlpPanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpPanelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.tlpPanelPrincipal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tlpPanelPrincipal.Name = "tlpPanelPrincipal";
+            this.tlpPanelPrincipal.RowCount = 2;
+            this.tlpPanelPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpPanelPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.tlpPanelPrincipal.Size = new System.Drawing.Size(1162, 569);
+            this.tlpPanelPrincipal.TabIndex = 0;
+            // 
+            // tabCarpeta
+            // 
+            this.tlpPanelPrincipal.SetColumnSpan(this.tabCarpeta, 2);
+            this.tabCarpeta.Controls.Add(this.tabData);
+            this.tabCarpeta.Controls.Add(this.tbpResponsables);
+            this.tabCarpeta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabCarpeta.Location = new System.Drawing.Point(4, 5);
+            this.tabCarpeta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabCarpeta.Name = "tabCarpeta";
+            this.tabCarpeta.SelectedIndex = 0;
+            this.tabCarpeta.Size = new System.Drawing.Size(1154, 501);
+            this.tabCarpeta.TabIndex = 0;
+            // 
+            // tabData
+            // 
+            this.tabData.BackColor = System.Drawing.SystemColors.Control;
+            this.tabData.Controls.Add(this.tlpPanlData);
+            this.tabData.Location = new System.Drawing.Point(4, 29);
+            this.tabData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabData.Name = "tabData";
+            this.tabData.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabData.Size = new System.Drawing.Size(1146, 468);
+            this.tabData.TabIndex = 0;
+            this.tabData.Text = "Datos Personales";
             // 
             // tlpPanlData
             // 
@@ -133,16 +177,22 @@
             this.tlpPanlData.Controls.Add(this.grpDataPersonal, 0, 0);
             this.tlpPanlData.Controls.Add(this.grpSocialWork, 0, 1);
             this.tlpPanlData.Controls.Add(this.grpStatus, 1, 1);
-            this.tlpPanlData.Controls.Add(this.btnEdit, 1, 2);
             this.tlpPanlData.Controls.Add(this.btnBlocked, 2, 2);
             this.tlpPanlData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanlData.Location = new System.Drawing.Point(3, 3);
             this.tlpPanlData.Name = "tlpPanlData";
             this.tlpPanlData.RowCount = 3;
+<<<<<<< HEAD
             this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.84655F));
             this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.15345F));
             this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tlpPanlData.Size = new System.Drawing.Size(755, 279);
+=======
+            this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.92771F));
+            this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.07229F));
+            this.tlpPanlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tlpPanlData.Size = new System.Drawing.Size(1138, 458);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.tlpPanlData.TabIndex = 0;
             // 
             // grpDataPersonal
@@ -153,8 +203,12 @@
             this.grpDataPersonal.Location = new System.Drawing.Point(2, 2);
             this.grpDataPersonal.Margin = new System.Windows.Forms.Padding(2);
             this.grpDataPersonal.Name = "grpDataPersonal";
+<<<<<<< HEAD
             this.grpDataPersonal.Padding = new System.Windows.Forms.Padding(2);
             this.grpDataPersonal.Size = new System.Drawing.Size(751, 146);
+=======
+            this.grpDataPersonal.Size = new System.Drawing.Size(1132, 251);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.grpDataPersonal.TabIndex = 50;
             this.grpDataPersonal.TabStop = false;
             this.grpDataPersonal.Text = "Datos Personales";
@@ -198,7 +252,11 @@
             this.tlpDataPersonal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpDataPersonal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpDataPersonal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+<<<<<<< HEAD
             this.tlpDataPersonal.Size = new System.Drawing.Size(747, 129);
+=======
+            this.tlpDataPersonal.Size = new System.Drawing.Size(1126, 226);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.tlpDataPersonal.TabIndex = 0;
             // 
             // lblName
@@ -207,7 +265,11 @@
             this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblName.Location = new System.Drawing.Point(371, 0);
             this.lblName.Name = "lblName";
+<<<<<<< HEAD
             this.lblName.Size = new System.Drawing.Size(76, 32);
+=======
+            this.lblName.Size = new System.Drawing.Size(115, 56);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblName.TabIndex = 14;
             this.lblName.Text = "Nombre";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -216,7 +278,12 @@
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpDataPersonal.SetColumnSpan(this.txtName, 2);
+<<<<<<< HEAD
             this.txtName.Location = new System.Drawing.Point(453, 6);
+=======
+            this.txtName.Location = new System.Drawing.Point(678, 15);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(291, 20);
             this.txtName.TabIndex = 2;
@@ -227,7 +294,11 @@
             this.lblLastName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblLastName.Location = new System.Drawing.Point(3, 0);
             this.lblLastName.Name = "lblLastName";
+<<<<<<< HEAD
             this.lblLastName.Size = new System.Drawing.Size(77, 32);
+=======
+            this.lblLastName.Size = new System.Drawing.Size(116, 56);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblLastName.TabIndex = 13;
             this.lblLastName.Text = "Apellido";
             this.lblLastName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -235,7 +306,12 @@
             // txtAddress
             // 
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.txtAddress.Location = new System.Drawing.Point(453, 102);
+=======
+            this.txtAddress.Location = new System.Drawing.Point(678, 184);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ReadOnly = true;
             this.txtAddress.Size = new System.Drawing.Size(239, 20);
@@ -245,7 +321,12 @@
             // 
             this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpDataPersonal.SetColumnSpan(this.txtLastName, 3);
+<<<<<<< HEAD
             this.txtLastName.Location = new System.Drawing.Point(86, 6);
+=======
+            this.txtLastName.Location = new System.Drawing.Point(128, 15);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(279, 20);
             this.txtLastName.TabIndex = 1;
@@ -254,10 +335,16 @@
             // 
             this.lblDocument.AutoSize = true;
             this.lblDocument.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.lblDocument.Location = new System.Drawing.Point(2, 64);
             this.lblDocument.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDocument.Name = "lblDocument";
             this.lblDocument.Size = new System.Drawing.Size(79, 32);
+=======
+            this.lblDocument.Location = new System.Drawing.Point(3, 112);
+            this.lblDocument.Name = "lblDocument";
+            this.lblDocument.Size = new System.Drawing.Size(118, 56);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblDocument.TabIndex = 39;
             this.lblDocument.Text = "Nº Documento";
             this.lblDocument.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -266,10 +353,16 @@
             // 
             this.lblLocation.AutoSize = true;
             this.lblLocation.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.lblLocation.Location = new System.Drawing.Point(2, 96);
             this.lblLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLocation.Name = "lblLocation";
             this.lblLocation.Size = new System.Drawing.Size(79, 33);
+=======
+            this.lblLocation.Location = new System.Drawing.Point(3, 168);
+            this.lblLocation.Name = "lblLocation";
+            this.lblLocation.Size = new System.Drawing.Size(118, 58);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblLocation.TabIndex = 48;
             this.lblLocation.Text = "localidad";
             this.lblLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -279,8 +372,12 @@
             this.cmbTypeDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbTypeDocument.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTypeDocument.FormattingEnabled = true;
+<<<<<<< HEAD
             this.cmbTypeDocument.Location = new System.Drawing.Point(85, 69);
             this.cmbTypeDocument.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.cmbTypeDocument.Location = new System.Drawing.Point(127, 126);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.cmbTypeDocument.Name = "cmbTypeDocument";
             this.cmbTypeDocument.Size = new System.Drawing.Size(80, 21);
             this.cmbTypeDocument.TabIndex = 53;
@@ -289,9 +386,16 @@
             // 
             this.lblSexo.AutoSize = true;
             this.lblSexo.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.lblSexo.Location = new System.Drawing.Point(3, 32);
             this.lblSexo.Name = "lblSexo";
             this.lblSexo.Size = new System.Drawing.Size(77, 32);
+=======
+            this.lblSexo.Location = new System.Drawing.Point(4, 56);
+            this.lblSexo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSexo.Name = "lblSexo";
+            this.lblSexo.Size = new System.Drawing.Size(116, 56);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblSexo.TabIndex = 16;
             this.lblSexo.Text = "Sexo";
             this.lblSexo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -300,7 +404,12 @@
             // 
             this.rbtMale.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbtMale.AutoSize = true;
+<<<<<<< HEAD
             this.rbtMale.Location = new System.Drawing.Point(86, 39);
+=======
+            this.rbtMale.Location = new System.Drawing.Point(128, 72);
+            this.rbtMale.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.rbtMale.Name = "rbtMale";
             this.rbtMale.Size = new System.Drawing.Size(73, 17);
             this.rbtMale.TabIndex = 4;
@@ -312,9 +421,16 @@
             // 
             this.lblBirthdate.AutoSize = true;
             this.lblBirthdate.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.lblBirthdate.Location = new System.Drawing.Point(371, 32);
             this.lblBirthdate.Name = "lblBirthdate";
             this.lblBirthdate.Size = new System.Drawing.Size(76, 32);
+=======
+            this.lblBirthdate.Location = new System.Drawing.Point(555, 56);
+            this.lblBirthdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBirthdate.Name = "lblBirthdate";
+            this.lblBirthdate.Size = new System.Drawing.Size(115, 56);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblBirthdate.TabIndex = 15;
             this.lblBirthdate.Text = "Fecha de Nacimiento";
             this.lblBirthdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -322,7 +438,12 @@
             // dtpBirthdate
             // 
             this.dtpBirthdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.dtpBirthdate.Location = new System.Drawing.Point(453, 38);
+=======
+            this.dtpBirthdate.Location = new System.Drawing.Point(678, 71);
+            this.dtpBirthdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(239, 20);
             this.dtpBirthdate.TabIndex = 3;
@@ -330,7 +451,12 @@
             // txtYearOld
             // 
             this.txtYearOld.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.txtYearOld.Location = new System.Drawing.Point(698, 38);
+=======
+            this.txtYearOld.Location = new System.Drawing.Point(1046, 71);
+            this.txtYearOld.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.txtYearOld.Name = "txtYearOld";
             this.txtYearOld.ReadOnly = true;
             this.txtYearOld.Size = new System.Drawing.Size(46, 20);
@@ -339,7 +465,12 @@
             // txtPhone
             // 
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.txtPhone.Location = new System.Drawing.Point(453, 70);
+=======
+            this.txtPhone.Location = new System.Drawing.Point(678, 127);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(239, 20);
             this.txtPhone.TabIndex = 36;
@@ -348,10 +479,16 @@
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.lblPhone.Location = new System.Drawing.Point(370, 64);
             this.lblPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(78, 32);
+=======
+            this.lblPhone.Location = new System.Drawing.Point(554, 112);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(117, 56);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblPhone.TabIndex = 54;
             this.lblPhone.Text = "Telefono";
             this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -360,7 +497,12 @@
             // 
             this.rbtFemale.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbtFemale.AutoSize = true;
+<<<<<<< HEAD
             this.rbtFemale.Location = new System.Drawing.Point(170, 39);
+=======
+            this.rbtFemale.Location = new System.Drawing.Point(254, 72);
+            this.rbtFemale.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.rbtFemale.Name = "rbtFemale";
             this.rbtFemale.Size = new System.Drawing.Size(71, 17);
             this.rbtFemale.TabIndex = 5;
@@ -372,8 +514,12 @@
             // 
             this.txtNumberDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpDataPersonal.SetColumnSpan(this.txtNumberDocument, 2);
+<<<<<<< HEAD
             this.txtNumberDocument.Location = new System.Drawing.Point(169, 70);
             this.txtNumberDocument.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.txtNumberDocument.Location = new System.Drawing.Point(253, 127);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.txtNumberDocument.Name = "txtNumberDocument";
             this.txtNumberDocument.Size = new System.Drawing.Size(197, 20);
             this.txtNumberDocument.TabIndex = 40;
@@ -381,8 +527,12 @@
             // btnLocalitation
             // 
             this.btnLocalitation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.btnLocalitation.Location = new System.Drawing.Point(299, 101);
             this.btnLocalitation.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.btnLocalitation.Location = new System.Drawing.Point(448, 179);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.btnLocalitation.Name = "btnLocalitation";
             this.btnLocalitation.Size = new System.Drawing.Size(67, 23);
             this.btnLocalitation.TabIndex = 55;
@@ -394,9 +544,16 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.lblAddress.Location = new System.Drawing.Point(371, 96);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(76, 33);
+=======
+            this.lblAddress.Location = new System.Drawing.Point(555, 168);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(115, 58);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblAddress.TabIndex = 18;
             this.lblAddress.Text = "Domicilio";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -405,8 +562,12 @@
             // 
             this.txtLocationPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpDataPersonal.SetColumnSpan(this.txtLocationPatient, 2);
+<<<<<<< HEAD
             this.txtLocationPatient.Location = new System.Drawing.Point(85, 102);
             this.txtLocationPatient.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.txtLocationPatient.Location = new System.Drawing.Point(127, 184);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.txtLocationPatient.Name = "txtLocationPatient";
             this.txtLocationPatient.ReadOnly = true;
             this.txtLocationPatient.Size = new System.Drawing.Size(210, 20);
@@ -416,11 +577,17 @@
             // 
             this.grpSocialWork.Controls.Add(this.tlpSocialWork);
             this.grpSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.grpSocialWork.Location = new System.Drawing.Point(2, 152);
             this.grpSocialWork.Margin = new System.Windows.Forms.Padding(2);
             this.grpSocialWork.Name = "grpSocialWork";
             this.grpSocialWork.Padding = new System.Windows.Forms.Padding(2);
             this.grpSocialWork.Size = new System.Drawing.Size(399, 97);
+=======
+            this.grpSocialWork.Location = new System.Drawing.Point(3, 260);
+            this.grpSocialWork.Name = "grpSocialWork";
+            this.grpSocialWork.Size = new System.Drawing.Size(602, 152);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.grpSocialWork.TabIndex = 51;
             this.grpSocialWork.TabStop = false;
             this.grpSocialWork.Text = "Datos Obra Social";
@@ -430,7 +597,11 @@
             this.tlpSocialWork.ColumnCount = 3;
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.24852F));
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.75148F));
+<<<<<<< HEAD
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+=======
+            this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.tlpSocialWork.Controls.Add(this.lblSocialWork, 0, 0);
             this.tlpSocialWork.Controls.Add(this.cmbSocialWork, 1, 0);
             this.tlpSocialWork.Controls.Add(this.lblAffiliateNumber, 0, 1);
@@ -442,8 +613,13 @@
             this.tlpSocialWork.RowCount = 2;
             this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+<<<<<<< HEAD
             this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.tlpSocialWork.Size = new System.Drawing.Size(395, 80);
+=======
+            this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpSocialWork.Size = new System.Drawing.Size(596, 127);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.tlpSocialWork.TabIndex = 22;
             // 
             // lblSocialWork
@@ -452,7 +628,11 @@
             this.lblSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSocialWork.Location = new System.Drawing.Point(3, 0);
             this.lblSocialWork.Name = "lblSocialWork";
+<<<<<<< HEAD
             this.lblSocialWork.Size = new System.Drawing.Size(99, 40);
+=======
+            this.lblSocialWork.Size = new System.Drawing.Size(150, 63);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblSocialWork.TabIndex = 21;
             this.lblSocialWork.Text = "Obra Social";
             this.lblSocialWork.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -462,9 +642,16 @@
             this.cmbSocialWork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSocialWork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSocialWork.FormattingEnabled = true;
+<<<<<<< HEAD
             this.cmbSocialWork.Location = new System.Drawing.Point(108, 9);
             this.cmbSocialWork.Name = "cmbSocialWork";
             this.cmbSocialWork.Size = new System.Drawing.Size(215, 21);
+=======
+            this.cmbSocialWork.Location = new System.Drawing.Point(162, 17);
+            this.cmbSocialWork.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbSocialWork.Name = "cmbSocialWork";
+            this.cmbSocialWork.Size = new System.Drawing.Size(324, 28);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.cmbSocialWork.TabIndex = 9;
             // 
             // lblAffiliateNumber
@@ -473,7 +660,11 @@
             this.lblAffiliateNumber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblAffiliateNumber.Location = new System.Drawing.Point(3, 40);
             this.lblAffiliateNumber.Name = "lblAffiliateNumber";
+<<<<<<< HEAD
             this.lblAffiliateNumber.Size = new System.Drawing.Size(99, 40);
+=======
+            this.lblAffiliateNumber.Size = new System.Drawing.Size(150, 64);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblAffiliateNumber.TabIndex = 12;
             this.lblAffiliateNumber.Text = "N° Afiliado";
             this.lblAffiliateNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -481,9 +672,16 @@
             // txtAffiliateNumber
             // 
             this.txtAffiliateNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.txtAffiliateNumber.Location = new System.Drawing.Point(108, 50);
             this.txtAffiliateNumber.Name = "txtAffiliateNumber";
             this.txtAffiliateNumber.Size = new System.Drawing.Size(215, 20);
+=======
+            this.txtAffiliateNumber.Location = new System.Drawing.Point(162, 82);
+            this.txtAffiliateNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAffiliateNumber.Name = "txtAffiliateNumber";
+            this.txtAffiliateNumber.Size = new System.Drawing.Size(324, 26);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.txtAffiliateNumber.TabIndex = 0;
             // 
             // grpStatus
@@ -491,11 +689,17 @@
             this.tlpPanlData.SetColumnSpan(this.grpStatus, 2);
             this.grpStatus.Controls.Add(this.tlpStatus);
             this.grpStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.grpStatus.Location = new System.Drawing.Point(405, 152);
             this.grpStatus.Margin = new System.Windows.Forms.Padding(2);
             this.grpStatus.Name = "grpStatus";
             this.grpStatus.Padding = new System.Windows.Forms.Padding(2);
             this.grpStatus.Size = new System.Drawing.Size(348, 97);
+=======
+            this.grpStatus.Location = new System.Drawing.Point(611, 260);
+            this.grpStatus.Name = "grpStatus";
+            this.grpStatus.Size = new System.Drawing.Size(524, 152);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.grpStatus.TabIndex = 52;
             this.grpStatus.TabStop = false;
             this.grpStatus.Text = "Estado";
@@ -505,7 +709,11 @@
             this.tlpStatus.ColumnCount = 3;
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.47581F));
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.52419F));
+<<<<<<< HEAD
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+=======
+            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.tlpStatus.Controls.Add(this.lblReasonExit, 0, 2);
             this.tlpStatus.Controls.Add(this.txtReasonExit, 1, 2);
             this.tlpStatus.Controls.Add(this.lblDateAdmission, 0, 0);
@@ -520,7 +728,11 @@
             this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+<<<<<<< HEAD
             this.tlpStatus.Size = new System.Drawing.Size(344, 80);
+=======
+            this.tlpStatus.Size = new System.Drawing.Size(518, 127);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.tlpStatus.TabIndex = 48;
             // 
             // lblReasonExit
@@ -530,7 +742,11 @@
             this.lblReasonExit.Location = new System.Drawing.Point(2, 52);
             this.lblReasonExit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblReasonExit.Name = "lblReasonExit";
+<<<<<<< HEAD
             this.lblReasonExit.Size = new System.Drawing.Size(102, 28);
+=======
+            this.lblReasonExit.Size = new System.Drawing.Size(154, 43);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblReasonExit.TabIndex = 44;
             this.lblReasonExit.Text = "Motivo del Egreso";
             this.lblReasonExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -538,10 +754,16 @@
             // txtReasonExit
             // 
             this.txtReasonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.txtReasonExit.Location = new System.Drawing.Point(108, 56);
             this.txtReasonExit.Margin = new System.Windows.Forms.Padding(2);
             this.txtReasonExit.Name = "txtReasonExit";
             this.txtReasonExit.Size = new System.Drawing.Size(199, 20);
+=======
+            this.txtReasonExit.Location = new System.Drawing.Point(163, 92);
+            this.txtReasonExit.Name = "txtReasonExit";
+            this.txtReasonExit.Size = new System.Drawing.Size(298, 26);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.txtReasonExit.TabIndex = 47;
             // 
             // lblDateAdmission
@@ -551,7 +773,11 @@
             this.lblDateAdmission.Location = new System.Drawing.Point(2, 0);
             this.lblDateAdmission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateAdmission.Name = "lblDateAdmission";
+<<<<<<< HEAD
             this.lblDateAdmission.Size = new System.Drawing.Size(102, 26);
+=======
+            this.lblDateAdmission.Size = new System.Drawing.Size(154, 42);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblDateAdmission.TabIndex = 42;
             this.lblDateAdmission.Text = "Fecha Ingreso";
             this.lblDateAdmission.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -559,10 +785,16 @@
             // dtpDateAdmission
             // 
             this.dtpDateAdmission.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.dtpDateAdmission.Location = new System.Drawing.Point(108, 2);
             this.dtpDateAdmission.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateAdmission.Name = "dtpDateAdmission";
             this.dtpDateAdmission.Size = new System.Drawing.Size(199, 20);
+=======
+            this.dtpDateAdmission.Location = new System.Drawing.Point(163, 3);
+            this.dtpDateAdmission.Name = "dtpDateAdmission";
+            this.dtpDateAdmission.Size = new System.Drawing.Size(298, 26);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.dtpDateAdmission.TabIndex = 45;
             // 
             // lblEgressDate
@@ -572,7 +804,11 @@
             this.lblEgressDate.Location = new System.Drawing.Point(2, 26);
             this.lblEgressDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEgressDate.Name = "lblEgressDate";
+<<<<<<< HEAD
             this.lblEgressDate.Size = new System.Drawing.Size(102, 26);
+=======
+            this.lblEgressDate.Size = new System.Drawing.Size(154, 42);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.lblEgressDate.TabIndex = 43;
             this.lblEgressDate.Text = "Fecha Egreso";
             this.lblEgressDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -580,6 +816,7 @@
             // dtpEgressDate
             // 
             this.dtpEgressDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.dtpEgressDate.Location = new System.Drawing.Point(108, 29);
             this.dtpEgressDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpEgressDate.Name = "dtpEgressDate";
@@ -600,6 +837,17 @@
             // btnBlocked
             // 
             this.btnBlocked.Location = new System.Drawing.Point(669, 254);
+=======
+            this.dtpEgressDate.Location = new System.Drawing.Point(163, 50);
+            this.dtpEgressDate.Name = "dtpEgressDate";
+            this.dtpEgressDate.Size = new System.Drawing.Size(298, 26);
+            this.dtpEgressDate.TabIndex = 46;
+            // 
+            // btnBlocked
+            // 
+            this.btnBlocked.Location = new System.Drawing.Point(1009, 420);
+            this.btnBlocked.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.btnBlocked.Name = "btnBlocked";
             this.btnBlocked.Size = new System.Drawing.Size(67, 21);
             this.btnBlocked.TabIndex = 53;
@@ -607,6 +855,7 @@
             this.btnBlocked.UseVisualStyleBackColor = true;
             this.btnBlocked.Click += new System.EventHandler(this.btnBlocked_Click);
             // 
+<<<<<<< HEAD
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -718,14 +967,21 @@
             this.dgvDiagnostic.TabIndex = 0;
             this.dgvDiagnostic.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiagnostico_CellClick);
             // 
+=======
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             // tbpResponsables
             // 
             this.tbpResponsables.Controls.Add(this.tableLayoutPanel1);
             this.tbpResponsables.Location = new System.Drawing.Point(4, 22);
             this.tbpResponsables.Margin = new System.Windows.Forms.Padding(2);
             this.tbpResponsables.Name = "tbpResponsables";
+<<<<<<< HEAD
             this.tbpResponsables.Padding = new System.Windows.Forms.Padding(2);
             this.tbpResponsables.Size = new System.Drawing.Size(761, 285);
+=======
+            this.tbpResponsables.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpResponsables.Size = new System.Drawing.Size(1146, 468);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.tbpResponsables.TabIndex = 2;
             this.tbpResponsables.Text = "Responsables";
             this.tbpResponsables.UseVisualStyleBackColor = true;
@@ -769,7 +1025,11 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+<<<<<<< HEAD
             this.tableLayoutPanel1.Size = new System.Drawing.Size(757, 281);
+=======
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1140, 462);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblParentName
@@ -874,7 +1134,11 @@
             this.dtvParent.Margin = new System.Windows.Forms.Padding(2);
             this.dtvParent.Name = "dtvParent";
             this.dtvParent.RowTemplate.Height = 28;
+<<<<<<< HEAD
             this.dtvParent.Size = new System.Drawing.Size(753, 127);
+=======
+            this.dtvParent.Size = new System.Drawing.Size(1134, 226);
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             this.dtvParent.TabIndex = 0;
             // 
             // txtParentLastName
@@ -998,6 +1262,7 @@
             this.btnLocalitationParent.UseVisualStyleBackColor = true;
             this.btnLocalitationParent.Click += new System.EventHandler(this.btnLocalitationParent_Click);
             // 
+<<<<<<< HEAD
             // tlpPanelPrincipal
             // 
             this.tlpPanelPrincipal.ColumnCount = 2;
@@ -1014,6 +1279,8 @@
             this.tlpPanelPrincipal.Size = new System.Drawing.Size(775, 370);
             this.tlpPanelPrincipal.TabIndex = 0;
             // 
+=======
+>>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
             // cmsMenuEmergente
             // 
             this.cmsMenuEmergente.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -1029,7 +1296,6 @@
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
             this.modificarToolStripMenuItem.Size = new System.Drawing.Size(133, 30);
             this.modificarToolStripMenuItem.Text = "Modificar";
-            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // agregarToolStripMenuItem
             // 
@@ -1037,7 +1303,6 @@
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
             this.agregarToolStripMenuItem.Size = new System.Drawing.Size(133, 30);
             this.agregarToolStripMenuItem.Text = "Agregar";
-            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // frmAbmPatient
             // 
@@ -1053,6 +1318,9 @@
             this.Name = "frmAbmPatient";
             this.Text = "Abuelo (ABM)";
             this.Load += new System.EventHandler(this.frmAbmPatient_Load);
+            this.tlpPanelPrincipal.ResumeLayout(false);
+            this.tabCarpeta.ResumeLayout(false);
+            this.tabData.ResumeLayout(false);
             this.tlpPanlData.ResumeLayout(false);
             this.grpDataPersonal.ResumeLayout(false);
             this.tlpDataPersonal.ResumeLayout(false);
@@ -1063,16 +1331,10 @@
             this.grpStatus.ResumeLayout(false);
             this.tlpStatus.ResumeLayout(false);
             this.tlpStatus.PerformLayout();
-            this.tabCarpeta.ResumeLayout(false);
-            this.tabData.ResumeLayout(false);
-            this.tabDiagnosticos.ResumeLayout(false);
-            this.tlpPanelDiagnostico.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnostic)).EndInit();
             this.tbpResponsables.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtvParent)).EndInit();
-            this.tlpPanelPrincipal.ResumeLayout(false);
             this.cmsMenuEmergente.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1080,81 +1342,74 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tlpPanlData;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox txtYearOld;
-        private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.Label lblBirthdate;
-        private System.Windows.Forms.Label lblAffiliateNumber;
-        private System.Windows.Forms.Label lblLastName;
-        private System.Windows.Forms.Label lblSexo;
-        private System.Windows.Forms.RadioButton rbtMale;
-        private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.TextBox txtAffiliateNumber;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.RadioButton rbtFemale;
-        private System.Windows.Forms.TabControl tabCarpeta;
-        private System.Windows.Forms.TabPage tabData;
-        private System.Windows.Forms.TabPage tabDiagnosticos;
         private System.Windows.Forms.TableLayoutPanel tlpPanelPrincipal;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TableLayoutPanel tlpPanelDiagnostico;
-        private System.Windows.Forms.Button btnExport;
-        private System.Windows.Forms.Button btnAddDiagnostic;
-        private System.Windows.Forms.Button btnUpdateDiagnostic;
         private System.Windows.Forms.ContextMenuStrip cmsMenuEmergente;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
-        private System.Windows.Forms.DateTimePicker dtpBirthdate;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.ComboBox cmbSocialWork;
-        private System.Windows.Forms.Label lblSocialWork;
-        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.TabControl tabCarpeta;
+        private System.Windows.Forms.TabPage tabData;
+        private System.Windows.Forms.TableLayoutPanel tlpPanlData;
+        private System.Windows.Forms.GroupBox grpDataPersonal;
+        private System.Windows.Forms.TableLayoutPanel tlpDataPersonal;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblLastName;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label lblDocument;
+        private System.Windows.Forms.Label lblLocation;
+        private System.Windows.Forms.ComboBox cmbTypeDocument;
+        private System.Windows.Forms.Label lblSexo;
+        private System.Windows.Forms.RadioButton rbtMale;
+        private System.Windows.Forms.Label lblBirthdate;
+        private System.Windows.Forms.DateTimePicker dtpBirthdate;
+        private System.Windows.Forms.TextBox txtYearOld;
+        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.RadioButton rbtFemale;
         private System.Windows.Forms.TextBox txtNumberDocument;
+        private System.Windows.Forms.Button btnLocalitation;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.TextBox txtLocationPatient;
+        private System.Windows.Forms.GroupBox grpSocialWork;
+        private System.Windows.Forms.TableLayoutPanel tlpSocialWork;
+        private System.Windows.Forms.Label lblSocialWork;
+        private System.Windows.Forms.ComboBox cmbSocialWork;
+        private System.Windows.Forms.Label lblAffiliateNumber;
+        private System.Windows.Forms.TextBox txtAffiliateNumber;
+        private System.Windows.Forms.GroupBox grpStatus;
+        private System.Windows.Forms.TableLayoutPanel tlpStatus;
+        private System.Windows.Forms.Label lblReasonExit;
+        private System.Windows.Forms.TextBox txtReasonExit;
+        private System.Windows.Forms.Label lblDateAdmission;
+        private System.Windows.Forms.DateTimePicker dtpDateAdmission;
+        private System.Windows.Forms.Label lblEgressDate;
+        private System.Windows.Forms.DateTimePicker dtpEgressDate;
+        private System.Windows.Forms.Button btnBlocked;
         private System.Windows.Forms.TabPage tbpResponsables;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lblParentName;
+        private System.Windows.Forms.TextBox txtParentName;
         private System.Windows.Forms.Label lblParentLastName;
         private System.Windows.Forms.Label lblParentNumberDocument;
-        private System.Windows.Forms.Label lblParentAddress;
         private System.Windows.Forms.Label lblParentPhone;
         private System.Windows.Forms.Label lblParentAlternativePhone;
         private System.Windows.Forms.Label lblParentEmail;
         private System.Windows.Forms.Label lblParentRelationship;
         private System.Windows.Forms.DataGridView dtvParent;
-        private System.Windows.Forms.Button btnApplyParent;
-        private System.Windows.Forms.TextBox txtParentName;
         private System.Windows.Forms.TextBox txtParentLastName;
         private System.Windows.Forms.TextBox txtParentNumberDocument;
-        private System.Windows.Forms.TextBox txtParentAddress;
         private System.Windows.Forms.TextBox txtParentEmail;
         private System.Windows.Forms.TextBox txtParentAlternativePhone;
         private System.Windows.Forms.TextBox txtParentPhone;
         private System.Windows.Forms.ComboBox cmbParentRelationship;
-        private System.Windows.Forms.Label lblReasonExit;
-        private System.Windows.Forms.Label lblEgressDate;
-        private System.Windows.Forms.DateTimePicker dtpDateAdmission;
-        private System.Windows.Forms.DateTimePicker dtpEgressDate;
-        private System.Windows.Forms.TextBox txtReasonExit;
-        private System.Windows.Forms.Label lblLocation;
-        private System.Windows.Forms.TextBox txtLocationPatient;
-        private System.Windows.Forms.TextBox txtLocationParent;
+        private System.Windows.Forms.Button btnApplyParent;
         private System.Windows.Forms.Label lblParentLocation;
-        private System.Windows.Forms.GroupBox grpDataPersonal;
-        private System.Windows.Forms.TableLayoutPanel tlpDataPersonal;
-        private System.Windows.Forms.GroupBox grpSocialWork;
-        private System.Windows.Forms.GroupBox grpStatus;
-        private System.Windows.Forms.ComboBox cmbTypeDocument;
-        private System.Windows.Forms.Label lblPhone;
-        private System.Windows.Forms.TableLayoutPanel tlpSocialWork;
-        private System.Windows.Forms.TableLayoutPanel tlpStatus;
-        private System.Windows.Forms.DataGridView dgvDiagnostic;
-        private System.Windows.Forms.Button btnLocalitation;
-        private System.Windows.Forms.Label lblDateAdmission;
+        private System.Windows.Forms.TextBox txtParentAddress;
+        private System.Windows.Forms.TextBox txtLocationParent;
+        private System.Windows.Forms.Label lblParentAddress;
         private System.Windows.Forms.Button btnLocalitationParent;
-        private System.Windows.Forms.Button btnBlocked;
 
     }
 }

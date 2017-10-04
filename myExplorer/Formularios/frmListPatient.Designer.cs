@@ -48,7 +48,8 @@
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.btnClosed = new System.Windows.Forms.Button();
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiVerFicha = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDiagnostic = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +65,7 @@
             this.tlpPanel.ColumnCount = 3;
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.55109F));
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.89783F));
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.tlpPanel.Controls.Add(this.tsMenu, 0, 0);
             this.tlpPanel.Controls.Add(this.dgvLista, 0, 1);
             this.tlpPanel.Controls.Add(this.btnClosed, 2, 2);
@@ -213,7 +214,7 @@
             // btnClosed
             // 
             this.btnClosed.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClosed.Location = new System.Drawing.Point(1226, 535);
+            this.btnClosed.Location = new System.Drawing.Point(1224, 535);
             this.btnClosed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClosed.Name = "btnClosed";
             this.btnClosed.Size = new System.Drawing.Size(112, 65);
@@ -226,32 +227,41 @@
             // 
             this.cmsMenuEmergente.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsMenuEmergente.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiVerFicha,
+            this.tsmiSelect,
+            this.tsmiDiagnostic,
             this.toolStripSeparator1,
             this.tsmiUpdate,
             this.tsmiDelete,
             this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(168, 130);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(196, 160);
             // 
-            // tsmiVerFicha
+            // tsmiSelect
             // 
-            this.tsmiVerFicha.Image = global::myExplorer.Properties.Resources.EditFile;
-            this.tsmiVerFicha.Name = "tsmiVerFicha";
-            this.tsmiVerFicha.Size = new System.Drawing.Size(167, 30);
-            this.tsmiVerFicha.Text = "Ficha";
-            this.tsmiVerFicha.Click += new System.EventHandler(this.tsmiVerFicha_Click);
+            this.tsmiSelect.Image = global::myExplorer.Properties.Resources.Clipboard;
+            this.tsmiSelect.Name = "tsmiSelect";
+            this.tsmiSelect.Size = new System.Drawing.Size(195, 30);
+            this.tsmiSelect.Text = "Ver Ficha";
+            this.tsmiSelect.Click += new System.EventHandler(this.tsmiSelect_Click);
+            // 
+            // tsmiDiagnostic
+            // 
+            this.tsmiDiagnostic.Image = global::myExplorer.Properties.Resources.Clipboard;
+            this.tsmiDiagnostic.Name = "tsmiDiagnostic";
+            this.tsmiDiagnostic.Size = new System.Drawing.Size(195, 30);
+            this.tsmiDiagnostic.Text = "Diagnosticos";
+            this.tsmiDiagnostic.Click += new System.EventHandler(this.tsmiDiagnostic_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(192, 6);
             // 
             // tsmiUpdate
             // 
             this.tsmiUpdate.Image = global::myExplorer.Properties.Resources.EditFile;
             this.tsmiUpdate.Name = "tsmiUpdate";
-            this.tsmiUpdate.Size = new System.Drawing.Size(167, 30);
+            this.tsmiUpdate.Size = new System.Drawing.Size(195, 30);
             this.tsmiUpdate.Text = "Modificar";
             this.tsmiUpdate.Click += new System.EventHandler(this.tsmiUpdate_Click);
             // 
@@ -259,7 +269,7 @@
             // 
             this.tsmiDelete.Image = global::myExplorer.Properties.Resources.Error;
             this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(167, 30);
+            this.tsmiDelete.Size = new System.Drawing.Size(195, 30);
             this.tsmiDelete.Text = "Eliminar";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
@@ -267,7 +277,7 @@
             // 
             this.tsmiAdd.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsmiAdd.Name = "tsmiAdd";
-            this.tsmiAdd.Size = new System.Drawing.Size(167, 30);
+            this.tsmiAdd.Size = new System.Drawing.Size(195, 30);
             this.tsmiAdd.Text = "Agregar";
             this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
@@ -305,7 +315,7 @@
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.Button btnClosed;
         private System.Windows.Forms.ContextMenuStrip cmsMenuEmergente;
-        private System.Windows.Forms.ToolStripMenuItem tsmiVerFicha;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSelect;
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripButton tsbBuscar;
         private System.Windows.Forms.ToolStripMenuItem tsmiUpdate;
@@ -317,5 +327,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiDelete;
         private System.Windows.Forms.ToolStripMenuItem tsmiAdd;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDiagnostic;
     }
 }

@@ -15,7 +15,7 @@ namespace Controles
         public string TitleSocialWorks = "Obras Sociales";
         public string TitleSocialWork = "Obra Social - Detalles";
         public string TitleFichaPatient = "Ficha Medica";
-        public string TitleListGrandfather = "Lista de Pacientes";
+        public string TitleListPatient = "Lista de Pacientes";
         public string TitleListProfessional = "Planilla de Profesionales.";
 
         //
@@ -49,11 +49,14 @@ namespace Controles
         public string MostrarProfesionalesBloqueados = "Mostrar Profesionales bloqueados";
         public string OcultarProfesionalesBloqueados = "Ocultar Profesionales bloqueados";
 
-        //Patient
+        // Patient
         public string AddPatient = "Paciente agregado con exito.";
-        public string UpdatePatient = "PAciente actualizado con exito.";
+        public string UpdatePatient = "Paciente actualizado con exito.";
+        public string AddParent = "Pariente agregado con exito.";
+        public string UpdateParent = "Pariente actualizado con exito.";
+        public string PacienteSeleccionado = "Paciente Seleccionado : ";
 
-        //SocialWork
+        // SocialWork
         public string AddSocialWork = "Obra Social agregada con exito.";
         public string UpdateSocialWork = "Obra Social actualizada con exito.";
 
@@ -65,11 +68,6 @@ namespace Controles
         public string MsgTituloHistoriClinica = "Armando planilla";
         public string MsgHistoriaClinica = "SI - La planilla mostrara los registros visualizados.\nNO - La planilla mostrara los registros que cumplan la condicion.";
 
-        //Pacientes
-        public string AgregarPaciente = "El Paciente a sido grabado con exito.";
-        public string ModificarPaciente = "El Paciente a sido actualizado con exito.";
-        public string PacienteSeleccionado = "Paciente Seleccionado : ";
-
         //Conexciones
         public string ConexionExitosa = "Conexion establecida";
         public string ConexionNuevaExitosa = "Nueva coneccion establecida";
@@ -79,8 +77,6 @@ namespace Controles
         public string CopiaExitosa = "Copia realizada con Exito!";
         public string CopiaErronea = "A ocurrido un error al realizar la copia.";
 
-
-
-        public string TitleListPatient { get; set; }
+        
     }
 }
