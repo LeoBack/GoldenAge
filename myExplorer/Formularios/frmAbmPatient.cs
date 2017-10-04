@@ -63,21 +63,18 @@ namespace myExplorer.Formularios
                 switch (eModo)
                 {
                     case Modo.Select:
-                        btnEdit.Visible = true;
                         EnablePatient(false);
                         EscribirEnFrmPatient();
                         //EnableDiagnostico(true);
                         //CargarDiagnostico();
                         break;
                     case Modo.Update:
-                        btnEdit.Visible = false;
                         EnablePatient(true);
                         EscribirEnFrmPatient();
                         //EnableDiagnostico(true);
                         //CargarDiagnostico();
                         break;
                     case Modo.Add:
-                        btnEdit.Visible = false;
                         oPatient = new classPatient();
                         EnablePatient(true);
                         //EscribirEnFrmPatient();
@@ -313,7 +310,7 @@ namespace myExplorer.Formularios
             else if (txtReasonExit.Text.Length >= 50)
                 MessageBox.Show("El Motivo de Alta Debe tener como minimo 8 caracteres.");
             else if (cmbTypeDocument.SelectedIndex == -1)
-                MessageBox.Show("Typo Docuemnte Invalido.");
+                MessageBox.Show("Tipo Docuemento Invalido.");
             else if (cmbSocialWork.SelectedIndex == -1)
                 MessageBox.Show("Obra Social Invalida.");
             else

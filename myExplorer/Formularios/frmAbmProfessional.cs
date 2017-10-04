@@ -421,6 +421,8 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Nombre de Usuario esta vacio o supera los 20 caracteres");
             else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
                 MessageBox.Show("La Localidad no esta seleccionada.");
+            else if (cmbTypeAccess.SelectedIndex == -1)
+                MessageBox.Show("Tipo de Aceso Invalida.");
             else
                 V = true;
 
