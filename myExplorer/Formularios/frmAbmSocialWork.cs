@@ -30,6 +30,7 @@ namespace myExplorer.Formularios
         private int IdCountry = 0;
         private int IdProvince = 0;
         private int IdCity = 0;
+        private int IdIvaType = 0;
 
         #endregion
 
@@ -159,6 +160,7 @@ namespace myExplorer.Formularios
             libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbIvaType,
                 (bool)oQuery.AbmIvaType(new classIvaType(), classQuery.eAbm.LoadCmb),
                 oQuery.Table);
+            IdIvaType = Convert.ToInt32(cmbIvaType.SelectedValue); ;
         }
 
         /// <summary>
@@ -169,6 +171,7 @@ namespace myExplorer.Formularios
         private bool ValidarCampos()
         {
             bool V = false;
+            //IdIvaType = Convert.ToInt32(cmbIvaType.SelectedValue); ;
 
             if ((txtName.Text.Length >= 50) || (txtName.Text == ""))
                 MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres.");
@@ -176,12 +179,15 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres.");
             else if ((txtAddress.Text.Length >= 50) || (txtAddress.Text == ""))
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres.");
-            else if (txtPhone.Text.Length >= 11)
-                MessageBox.Show("El Numero de Telefono supera los 11 caracteres.");
+            else if (txtPhone.Text.Length >= 15)
+                MessageBox.Show("El Numero de Telefono supera los 15 caracteres.");
             else if ((txtContact.Text.Length > 50))
                 MessageBox.Show("La Contacto debe supera los 50 caracteres.");
             else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
                 MessageBox.Show("La Localidad no esta seleccionada.");
+            else if ((IdIvaType == 0))
+                MessageBox.Show("El Tipo de IVA No esta Seleccionado.");
+                
             else
                 V = true;
 
@@ -277,6 +283,50 @@ namespace myExplorer.Formularios
             //}
             
             
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (Char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
+
+        }
+
+        private void txtNamee_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
         }
 
 

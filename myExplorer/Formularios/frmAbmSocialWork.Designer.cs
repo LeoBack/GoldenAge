@@ -52,9 +52,9 @@
             // tlpPanel
             // 
             this.tlpPanel.ColumnCount = 3;
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.tlpPanel.Controls.Add(this.lblName, 0, 1);
             this.tlpPanel.Controls.Add(this.lblDescription, 0, 2);
             this.tlpPanel.Controls.Add(this.txtDescription, 1, 2);
@@ -74,29 +74,27 @@
             this.tlpPanel.Controls.Add(this.btnSave, 2, 8);
             this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPanel.Location = new System.Drawing.Point(0, 0);
-            this.tlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tlpPanel.Name = "tlpPanel";
             this.tlpPanel.RowCount = 9;
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.Size = new System.Drawing.Size(582, 421);
+            this.tlpPanel.Size = new System.Drawing.Size(388, 274);
             this.tlpPanel.TabIndex = 0;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblName.Location = new System.Drawing.Point(4, 42);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(3, 27);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(112, 42);
+            this.lblName.Size = new System.Drawing.Size(74, 27);
             this.lblName.TabIndex = 8;
             this.lblName.Text = "Nombre";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -105,10 +103,9 @@
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDescription.Location = new System.Drawing.Point(4, 84);
-            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescription.Location = new System.Drawing.Point(3, 54);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(112, 42);
+            this.lblDescription.Size = new System.Drawing.Size(74, 27);
             this.lblDescription.TabIndex = 9;
             this.lblDescription.Text = "Descripcion";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -116,29 +113,27 @@
             // txtDescription
             // 
             this.txtDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtDescription.Location = new System.Drawing.Point(124, 92);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDescription.Location = new System.Drawing.Point(83, 57);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(325, 26);
+            this.txtDescription.Size = new System.Drawing.Size(216, 20);
             this.txtDescription.TabIndex = 1;
             // 
             // txtName
             // 
             this.txtName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtName.Location = new System.Drawing.Point(124, 50);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.Location = new System.Drawing.Point(83, 30);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(325, 26);
+            this.txtName.Size = new System.Drawing.Size(216, 20);
             this.txtName.TabIndex = 0;
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNamee_KeyPress);
             // 
             // lblContact
             // 
             this.lblContact.AutoSize = true;
             this.lblContact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblContact.Location = new System.Drawing.Point(4, 252);
-            this.lblContact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblContact.Location = new System.Drawing.Point(3, 162);
             this.lblContact.Name = "lblContact";
-            this.lblContact.Size = new System.Drawing.Size(112, 42);
+            this.lblContact.Size = new System.Drawing.Size(74, 27);
             this.lblContact.TabIndex = 13;
             this.lblContact.Text = "Contacto";
             this.lblContact.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -146,29 +141,27 @@
             // txtPhone
             // 
             this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtPhone.Location = new System.Drawing.Point(124, 218);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPhone.Location = new System.Drawing.Point(83, 138);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(325, 26);
+            this.txtPhone.Size = new System.Drawing.Size(216, 20);
             this.txtPhone.TabIndex = 4;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // txtContact
             // 
             this.txtContact.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtContact.Location = new System.Drawing.Point(124, 260);
-            this.txtContact.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtContact.Location = new System.Drawing.Point(83, 165);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(325, 26);
+            this.txtContact.Size = new System.Drawing.Size(216, 20);
             this.txtContact.TabIndex = 5;
             // 
             // lblTelefono1
             // 
             this.lblTelefono1.AutoSize = true;
             this.lblTelefono1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTelefono1.Location = new System.Drawing.Point(4, 210);
-            this.lblTelefono1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTelefono1.Location = new System.Drawing.Point(3, 135);
             this.lblTelefono1.Name = "lblTelefono1";
-            this.lblTelefono1.Size = new System.Drawing.Size(112, 42);
+            this.lblTelefono1.Size = new System.Drawing.Size(74, 27);
             this.lblTelefono1.TabIndex = 12;
             this.lblTelefono1.Text = "Telefono";
             this.lblTelefono1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -177,10 +170,9 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAddress.Location = new System.Drawing.Point(4, 126);
-            this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddress.Location = new System.Drawing.Point(3, 81);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(112, 42);
+            this.lblAddress.Size = new System.Drawing.Size(74, 27);
             this.lblAddress.TabIndex = 10;
             this.lblAddress.Text = "Domicilio";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -188,19 +180,19 @@
             // txtAddress
             // 
             this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAddress.Location = new System.Drawing.Point(124, 134);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAddress.Location = new System.Drawing.Point(83, 84);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(325, 26);
+            this.txtAddress.Size = new System.Drawing.Size(216, 20);
             this.txtAddress.TabIndex = 2;
             // 
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
             this.lblLocation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLocation.Location = new System.Drawing.Point(3, 168);
+            this.lblLocation.Location = new System.Drawing.Point(2, 108);
+            this.lblLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(114, 42);
+            this.lblLocation.Size = new System.Drawing.Size(76, 27);
             this.lblLocation.TabIndex = 11;
             this.lblLocation.Text = "Localidad";
             this.lblLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -208,17 +200,19 @@
             // txtLocation
             // 
             this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLocation.Location = new System.Drawing.Point(123, 176);
+            this.txtLocation.Location = new System.Drawing.Point(82, 111);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ReadOnly = true;
-            this.txtLocation.Size = new System.Drawing.Size(327, 26);
+            this.txtLocation.Size = new System.Drawing.Size(218, 20);
             this.txtLocation.TabIndex = 14;
             // 
             // btnLocalitation
             // 
-            this.btnLocalitation.Location = new System.Drawing.Point(456, 171);
+            this.btnLocalitation.Location = new System.Drawing.Point(304, 110);
+            this.btnLocalitation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLocalitation.Name = "btnLocalitation";
-            this.btnLocalitation.Size = new System.Drawing.Size(86, 36);
+            this.btnLocalitation.Size = new System.Drawing.Size(57, 23);
             this.btnLocalitation.TabIndex = 3;
             this.btnLocalitation.Text = "Cambiar";
             this.btnLocalitation.UseVisualStyleBackColor = true;
@@ -229,18 +223,20 @@
             this.cmbIvaType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbIvaType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIvaType.FormattingEnabled = true;
-            this.cmbIvaType.Location = new System.Drawing.Point(123, 301);
+            this.cmbIvaType.Location = new System.Drawing.Point(82, 192);
+            this.cmbIvaType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbIvaType.Name = "cmbIvaType";
-            this.cmbIvaType.Size = new System.Drawing.Size(327, 28);
+            this.cmbIvaType.Size = new System.Drawing.Size(218, 21);
             this.cmbIvaType.TabIndex = 16;
             // 
             // lblIvaType
             // 
             this.lblIvaType.AutoSize = true;
             this.lblIvaType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblIvaType.Location = new System.Drawing.Point(3, 294);
+            this.lblIvaType.Location = new System.Drawing.Point(2, 189);
+            this.lblIvaType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIvaType.Name = "lblIvaType";
-            this.lblIvaType.Size = new System.Drawing.Size(114, 42);
+            this.lblIvaType.Size = new System.Drawing.Size(76, 27);
             this.lblIvaType.TabIndex = 15;
             this.lblIvaType.Text = "Tipo de IVA";
             this.lblIvaType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -248,9 +244,10 @@
             // btnBlocked
             // 
             this.btnBlocked.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnBlocked.Location = new System.Drawing.Point(4, 376);
+            this.btnBlocked.Location = new System.Drawing.Point(2, 245);
+            this.btnBlocked.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBlocked.Name = "btnBlocked";
-            this.btnBlocked.Size = new System.Drawing.Size(112, 42);
+            this.btnBlocked.Size = new System.Drawing.Size(75, 27);
             this.btnBlocked.TabIndex = 17;
             this.btnBlocked.Text = "Bloquear";
             this.btnBlocked.UseVisualStyleBackColor = true;
@@ -259,10 +256,9 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(466, 381);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSave.Location = new System.Drawing.Point(310, 248);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 35);
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -270,12 +266,11 @@
             // 
             // frmAbmSocialWork
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 421);
+            this.ClientSize = new System.Drawing.Size(388, 274);
             this.Controls.Add(this.tlpPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAbmSocialWork";

@@ -428,5 +428,15 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtNameE_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
