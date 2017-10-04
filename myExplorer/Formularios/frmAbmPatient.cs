@@ -21,7 +21,6 @@ namespace myExplorer.Formularios
         #region Atributos y Propiedades
 
         public classPatient oPatient { set; get; }
-        private classDiagnostic oDiagnostic;
         private classParent oParent;
         public enum Modo { Add, Select, Update, Delete }
         public Modo eModo { set; get; }
@@ -154,16 +153,6 @@ namespace myExplorer.Formularios
         }
 
         // OK 17/09/30
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (eModo == Modo.Select)
-            {
-                eModo = Modo.Update;
-                EnablePatient(true);
-            }
-        }
-
-        // OK 17/09/30
         private void btnLocalitationPatient_Click(object sender, EventArgs e)
         {
             frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
@@ -223,181 +212,6 @@ namespace myExplorer.Formularios
         }
 
         #endregion
-
-        //-----------------------------------------------------------------------
-        #region TabDiagnostico
-        //-----------------------------------------------------------------------
-
-        #region Botones
-
-        //OK 21/06/12
-        private void btnExportar_Click(object sender, EventArgs e)
-        {
-            //if (oQuery.rHistoriaClinica("dtHistoriaClinica", oGrandfather.IdGrandfather))
-            //{
-            //    frmVisor fReport = new frmVisor(frmVisor.Reporte.HistoriaClinica, oQuery.Table);
-            //    fReport.Show();
-            //}
-            //else
-            //    MessageBox.Show(oTxt.ErrorListaConsulta);
-        }
-
-        //OK 24/05/12
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            if (dgvDiagnostic.Rows.Count != 0)
-            {
-                classDiagnostic oDs = new classDiagnostic();
-                Formularios.frmAbmDiagnostic frmD = new Formularios.frmAbmDiagnostic();
-
-                // Traigo el diagnostico del paciente solicitado 
-                oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostic.Rows[SelectRow].Cells["dgvID"].Value);
-                //oDs = oQuery.SelectDiagnostic(oDs);
-
-                // LLamo al formulario Diagnostico
-                frmD.eModo = Formularios.frmAbmDiagnostic.Modo.Update;
-               // frmD.oDiagnostic = oDs;
-                frmD.oQuery = oQuery;
-                frmD.oUtil = oUtil;
-                frmD.ShowDialog();
-
-                // Actualizo la grilla
-                //this.GenerarGrillaDiagnostico(oQuery.SelectDiagnosticoGrandfather(oDiagnostic));
-                this.CargarDiagnostico();
-            }
-        }
-
-        //OK 24/05/12
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            classDiagnostic oDs = new classDiagnostic();
-            Formularios.frmAbmDiagnostic frmD = new Formularios.frmAbmDiagnostic();
-            frmD.oQuery = oQuery;
-            frmD.oUtil = oUtil;
-
-            if (dgvDiagnostic.Rows.Count != 0)
-            {
-                // Traigo el diagnostico del paciente solicitado 
-                oDs.IdDiagnostic = Convert.ToInt32(dgvDiagnostic.Rows[SelectRow].Cells["dgvID"].Value);
-                oDs = (classDiagnostic)oQuery.AbmDiagnostic(oDs, classQuery.eAbm.Select);
-            }
-            else
-            {
-                // No Existe Diagnostico Previo
-               // oDs.IdGrandfather = oGrandfather.IdGrandfather;
-            }
-
-            // LLamo al formulario Diagnostico
-            frmD.eModo = Formularios.frmAbmDiagnostic.Modo.Add;
-           // frmD.oDiagnostic = oDs;
-            frmD.ShowDialog();
-
-            // Actualizo la grilla
-            //this.GenerarGrillaDiagnostico(oQuery.SelectDiagnosticoGrandfather(oDiagnostic));
-            this.CargarDiagnostico();
-        }
-
-        //OK 24/05/12
-        private void dgvDiagnostico_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.SelectRow = e.RowIndex;
-        }
-
-        #endregion
-
-        #region Metodos
-
-        /// <summary>
-        /// Enlaza los datos al los controles del formulario.
-        /// OK 26/05/12
-        /// </summary>
-        private void CargarDiagnostico()
-        {
-            // Carga Fechas
-            //-------------------------------------------------
-            //dtpUltimaVisita.Value = oQuery.UltimaVisita(oGrandfather);
-            //dtpPrimeraVisita.Value = oQuery.PrimeraVisita(oGrandfather);
-            //// Carga Visita
-            ////-------------------------------------------------
-            //txtNvisitas.Text = Convert.ToString(oQuery.CantidadVisitas(oGrandfather));
-            //txtNvisitas.Enabled = false;
-            //// Carga Grilla Paciente
-            ////-------------------------------------------------
-            //oDiagnostic.IdGrandfather = oGrandfather.IdGrandfather;
-            //int C = this.GenerarGrillaDiagnostico(oQuery.SelectDiagnosticoGrandfather(oDiagnostic));
-
-            //if (C == 0)
-            //    btnExportar.Enabled = false;
-            //else
-            //    btnExportar.Enabled = true;
-        }
-
-        /// <summary>
-        /// Habilita TabDiagnostico
-        /// OK 18/04/12
-        /// </summary>
-        /// <param name="X"></param>
-        private void EnableDiagnostico(bool X)
-        {
-            foreach (Control C in this.tlpPanelDiagnostico.Controls)
-            {
-                if (!(C is DateTimePicker || C is Label))
-                    C.Enabled = X;
-            }
-        }
-
-        /// <summary>
-        /// Carga la La Lista devuelve la cantidad de filas
-        /// OK 24/05/12
-        /// </summary>
-        /// <param name="Source"></param>
-        public int GenerarGrillaDiagnostico(object Source)
-        {
-            if (dgvDiagnostic.Columns.Count != 0)
-                dgvDiagnostic.Columns.Clear();
-            //
-            //Columna Oculta ID
-            //
-            dgvDiagnostic.Columns.Add("dgvId", "ID");
-            dgvDiagnostic.Columns["dgvId"].DataPropertyName = "IdDiagnostic";
-            dgvDiagnostic.Columns["dgvId"].Visible = false;
-            dgvDiagnostic.Columns["dgvId"].DefaultCellStyle.NullValue = "0";
-            //
-            //Columna Nombre
-            //
-            dgvDiagnostic.Columns.Add("dgvFecha", "Fecha");
-            dgvDiagnostic.Columns["dgvFecha"].DataPropertyName = "Fecha";
-            dgvDiagnostic.Columns["dgvFecha"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvDiagnostic.Columns["dgvFecha"].DefaultCellStyle.NullValue = "No especificado";
-            dgvDiagnostic.Columns["dgvFecha"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            //
-            //Columna  Obra Social
-            //
-            dgvDiagnostic.Columns.Add("dgvDiagnostico", "Diagnostico");
-            dgvDiagnostic.Columns["dgvDiagnostico"].DataPropertyName = "Diagnostico";
-            dgvDiagnostic.Columns["dgvDiagnostico"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvDiagnostic.Columns["dgvDiagnostico"].DefaultCellStyle.NullValue = "No especificado";
-            //
-            //Configuracion del DataListView
-            //
-            dgvDiagnostic.AutoGenerateColumns = false;
-            dgvDiagnostic.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvDiagnostic.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDiagnostic.ReadOnly = true;
-            dgvDiagnostic.ScrollBars = ScrollBars.Both;
-            dgvDiagnostic.ContextMenuStrip = cmsMenuEmergente;
-            dgvDiagnostic.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvDiagnostic.MultiSelect = false;
-            dgvDiagnostic.DataSource = Source;
-
-            return dgvDiagnostic.Rows.Count;
-        }
-
-        #endregion
-
-        //-----------------------------------------------------------------------
-        #endregion
-        //-----------------------------------------------------------------------
 
         #region Metodos Patient
 

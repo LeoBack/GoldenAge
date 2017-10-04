@@ -64,10 +64,7 @@ namespace myExplorer.Formularios
         #endregion
 
         // OK 17/09/30
-        #region Menu Contextual Botones
-
-        // OK 17/09/30
-        private void tsmiVerFicha_Click(object sender, EventArgs e)
+        private void tsmiSelect_Click(object sender, EventArgs e)
         {
             classPatient oGf = null;
 
@@ -83,10 +80,17 @@ namespace myExplorer.Formularios
                 frmPatient.oPatient = oGf;
                 frmPatient.oUtil = oUtil;
                 frmPatient.ShowDialog();
-
-                frmListPatient_Load(sender, e);
             }
         }
+
+        private void tsmiDiagnostic_Click(object sender, EventArgs e)
+        {
+            frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic();
+            fDiagnostic.ShowDialog();
+        }
+
+        // OK 17/09/30
+        #region Menu Contextual Botones
 
         // OK 17/09/30
         private void tsmiDelete_Click(object sender, EventArgs e)
@@ -138,8 +142,6 @@ namespace myExplorer.Formularios
                     frmA.oPatient = oGf;
                     frmA.eModo = frmAbmPatient.Modo.Update;
                     frmA.ShowDialog();
-
-                    frmListPatient_Load(sender, e);
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);
@@ -219,8 +221,7 @@ namespace myExplorer.Formularios
         // OK 17/09/30
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLista.Rows.Count != 0)
-                SelectRow = e.RowIndex;
+            SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
         }
 
         #endregion
@@ -235,15 +236,11 @@ namespace myExplorer.Formularios
         public void Filtrar()
         {
             SelectRow = 0;
-            int affNumber = 0;
-            if (tstxtAffiliateNumber.TextBox.Text != "")
-                affNumber = Convert.ToInt32(tstxtAffiliateNumber.TextBox.Text);
+
+            int affNumber = tstxtAffiliateNumber.TextBox.Text != "" ? Convert.ToInt32(tstxtAffiliateNumber.TextBox.Text) : 0; 
 
             if (oQuery.FiltroPatientLimite(
-                tstxtName.TextBox.Text, 
-                tstxtLastName.TextBox.Text, 
-                //Convert.ToInt32(tstxtAffiliateNumber.TextBox.Text), 
-                affNumber,
+                tstxtName.TextBox.Text,  tstxtLastName.TextBox.Text, affNumber,
                 Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue),
                 Desde, Hasta))
             {
@@ -257,12 +254,10 @@ namespace myExplorer.Formularios
                 GenerarGrilla(oQuery.Table);
                 PintarBloqueados(Color.Gray);
                 tsbImprimir.Enabled = false;
-                //tsmiUpdate.Enabled = false;
                 //tsmiVerFicha.Enabled = false;
             }
             else
             {
-                //tsmiUpdate.Enabled = true;
                 //tsmiVerFicha.Enabled = true;
                 tsbImprimir.Enabled = true;
             }
@@ -289,7 +284,7 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        // OK 17/09/30
+        /// OK 17/10/03
         /// </summary>
         /// <param name="Source"></param>
         public int GenerarGrilla(object Source)
@@ -298,6 +293,8 @@ namespace myExplorer.Formularios
             //Configuracion del DataListView
             //
             dgvLista.AutoGenerateColumns = true;
+            dgvLista.AllowUserToAddRows = false;
+            dgvLista.RowHeadersVisible = false;
             dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvLista.ReadOnly = true;
@@ -314,5 +311,7 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
+
     }
 }

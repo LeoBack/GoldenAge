@@ -75,13 +75,15 @@ namespace Entidades.Clases
         }
 
         public classPatient(int vIdPatient, string vName, string vLastName, DateTime vBirthdate,
-            int vIdTypeDocument, int vNumberDocument, bool vSex, int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, int vAffiliateNumber,
-            DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, bool vVisible)
+            int vIdTypeDocument, int vNumberDocument, bool vSex, int IdLocationCountry, 
+            int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, 
+            int vAffiliateNumber, DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, 
+            bool vVisible)
         {
             this.IdPatient = vIdPatient;
             this.Name = vName;
             this.LastName = vLastName;
-            this.Birthdate = DateTime.Now.AddYears(-65);
+            this.Birthdate = vBirthdate;
             this.IdTypeDocument = vIdTypeDocument;
             this.NumberDocument = vNumberDocument;
             this.Sex = vSex;

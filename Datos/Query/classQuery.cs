@@ -402,6 +402,7 @@ namespace Datos.Query
             return Result;
         }
 
+        // OK - 17-10-03
         public object AbmPatient(classPatient oP, eAbm Abm)
         {
             object Result = null;
@@ -444,7 +445,7 @@ namespace Datos.Query
                                     Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["LastName"]),
-                                    Convert.ToDateTime(oSql.Reader["Birthdate"]),
+                                    oSql.Reader["Birthdate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["Birthdate"].ToString()) : DateTime.MinValue,
                                     Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
                                     Convert.ToInt32(oSql.Reader["NumberDocument"]),
                                     Convert.ToBoolean(oSql.Reader["Sex"]),
@@ -455,8 +456,8 @@ namespace Datos.Query
                                     Convert.ToString(oSql.Reader["Phone"]),
                                     Convert.ToInt32(oSql.Reader["IdSocialWork"]),
                                     Convert.ToInt32(oSql.Reader["AffiliateNumber"]),
-                                    Convert.ToDateTime(oSql.Reader["DateAdmission"]),
-                                    Convert.ToDateTime(oSql.Reader["EgressDate"]),
+                                    oSql.Reader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["DateAdmission"].ToString()) : DateTime.MinValue,
+                                    oSql.Reader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["EgressDate"].ToString()) : DateTime.MinValue,
                                     Convert.ToString(oSql.Reader["ReasonExit"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
                                     lPatient.Add(oPatient);
@@ -498,7 +499,7 @@ namespace Datos.Query
                                     Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToString(oSql.Reader["Name"]),
                                     Convert.ToString(oSql.Reader["LastName"]),
-                                    Convert.ToDateTime(oSql.Reader["Birthdate"]),
+                                    oSql.Reader["Birthdate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["Birthdate"].ToString()) : DateTime.MinValue,
                                     Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
                                     Convert.ToInt32(oSql.Reader["NumberDocument"]),
                                     Convert.ToBoolean(oSql.Reader["Sex"]),
@@ -509,8 +510,8 @@ namespace Datos.Query
                                     Convert.ToString(oSql.Reader["Phone"]),
                                     Convert.ToInt32(oSql.Reader["IdSocialWork"]),
                                     Convert.ToInt32(oSql.Reader["AffiliateNumber"]),
-                                    Convert.ToDateTime(oSql.Reader["DateAdmission"]),
-                                    Convert.ToDateTime(oSql.Reader["EgressDate"]),
+                                    oSql.Reader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["DateAdmission"].ToString()) : DateTime.MinValue,
+                                    oSql.Reader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["EgressDate"].ToString()) : DateTime.MinValue,
                                     Convert.ToString(oSql.Reader["ReasonExit"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
                                 }
@@ -871,6 +872,7 @@ namespace Datos.Query
             return Result;
         }
 
+        // OK - 17-10-03
         public object AbmProfessional(classProfessional oP, eAbm Abm)
         {
             object Result = null;
@@ -1042,6 +1044,7 @@ namespace Datos.Query
             return Result;
         }
 
+        // OK - 17-10-03
         public object AbmProfessionalSpeciality(classProfessionalSpeciality oP, eAbm Abm)
         {
             object Result = null;
@@ -1321,6 +1324,7 @@ namespace Datos.Query
             return Result;
         }
 
+        // OK - 17-10-03
         public object AbmSocialWork(classSocialWork oP, eAbm Abm)
         {
             object Result = null;
@@ -1483,6 +1487,7 @@ namespace Datos.Query
             return Result;
         }
 
+        // OK - 17-10-03
         public object AbmSpeciality(classSpecialty oP, eAbm Abm)
         {
             object Result = null;
@@ -1621,6 +1626,7 @@ namespace Datos.Query
             return Result;
         }
 
+        // OK - 17-10-03
         public object AbmTypeDocument(classTypeDocument oP, eAbm Abm)
         {
             object Result = null;
@@ -1759,6 +1765,7 @@ namespace Datos.Query
             return Result;
         }
 
+        // OK - 17-10-03
         public object AbmIvaType(classIvaType oP, eAbm Abm)
         {
             object Result = null;
@@ -2302,9 +2309,8 @@ namespace Datos.Query
 
         #endregion
 
-        #region CONSULTAS COMETADAS
 
-        //// OK 21/06/12
+        // OK 21/06/12
         #region Estadisticas
 
         ///// <summary>
@@ -2471,7 +2477,7 @@ namespace Datos.Query
 
         #endregion
 
-        //// OK 21/06/12
+        // OK 21/06/12
         #region Consulta Reportes
 
         ///// <summary>
@@ -3023,8 +3029,6 @@ namespace Datos.Query
         //        return false;
         //    }
         //}
-
-        #endregion
 
         #endregion
     }
