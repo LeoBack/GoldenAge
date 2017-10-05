@@ -107,7 +107,7 @@ namespace myExplorer.Formularios
                 if (oGf != null)
                 {
                     if (0 != (int)oQuery.AbmPatient(oGf, classQuery.eAbm.Update))
-                        MessageBox.Show(oTxt.UpdateSocialWork);
+                        MessageBox.Show(oTxt.UpdateParent);
                     else
                         MessageBox.Show(oTxt.ErrorQueryUpdate);
                     //frmAbmPatient frmA = new frmAbmPatient();
@@ -116,7 +116,6 @@ namespace myExplorer.Formularios
                     //frmA.oPatient = oGf;
                     //frmA.eModo = frmAbmPatient.Modo.Delete;
                     //frmA.ShowDialog();
-                    frmListPatient_Load(sender, e);
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);
