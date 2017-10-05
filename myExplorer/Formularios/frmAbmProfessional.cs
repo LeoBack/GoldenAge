@@ -431,14 +431,40 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        #region Validaciones
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (Char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
-
+        
         private void txtNameE_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+
         }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
     }
 }

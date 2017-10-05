@@ -176,7 +176,7 @@ namespace myExplorer.Formularios
             if ((txtName.Text.Length >= 50) || (txtName.Text == ""))
                 MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres.");
             else if ((txtDescription.Text.Length >= 50) || (txtDescription.Text == ""))
-                MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres.");
+                MessageBox.Show("La Descripcion esta vacio o supera los 50 caracteres.");
             else if ((txtAddress.Text.Length >= 50) || (txtAddress.Text == ""))
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres.");
             else if (txtPhone.Text.Length >= 15)
@@ -185,14 +185,10 @@ namespace myExplorer.Formularios
                 MessageBox.Show("La Contacto debe supera los 50 caracteres.");
             else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
                 MessageBox.Show("La Localidad no esta seleccionada.");
-<<<<<<< HEAD
             else if ((IdIvaType == 0))
                 MessageBox.Show("El Tipo de IVA No esta Seleccionado.");
-                
-=======
             else if (cmbIvaType.SelectedIndex == -1)
-                MessageBox.Show("Tipo de Iva no valido.");
->>>>>>> ea649f88a68d900111bcc2e1bb679310a2d77fb0
+                MessageBox.Show("Tipo de IVA Invalida.");
             else
                 V = true;
 
@@ -268,6 +264,7 @@ namespace myExplorer.Formularios
 
        #endregion
 
+        #region Validaciones
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {      
         
@@ -333,7 +330,7 @@ namespace myExplorer.Formularios
             }
 
         }
-
+        #endregion
 
     }
 }

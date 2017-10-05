@@ -319,6 +319,7 @@ namespace myExplorer.Formularios
             return V;
         }
 
+        
         /// <summary>
         /// Habilita TabFicha
         /// OK 18/04/12
@@ -452,6 +453,38 @@ namespace myExplorer.Formularios
 
         }
 
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (Char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
+
+        }
+
+
+
+
+
         #endregion
+
+        private void tabCarpeta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
