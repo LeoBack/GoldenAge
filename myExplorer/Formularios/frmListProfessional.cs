@@ -44,7 +44,6 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null && oUtil != null)
             {
-                ConfiguracionInicial();
                 Text = oTxt.TitleListProfessional;
                 SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
@@ -180,18 +179,6 @@ namespace myExplorer.Formularios
 
         // OK - 24/09/17
         #region Metodos
-
-        /// <summary>
-        /// Configura el formulario.
-        /// OK - 24/09/17
-        /// </summary>
-        public void ConfiguracionInicial()
-        {
-            Size sBtn = new Size(75, 42);
-            //btnBuscar.Size = sBtn;
-            //btnSeleccionar.Size = sBtn;
-            //btnCancelar.Size = sBtn;
-        }
 
         /// <summary>
         /// Aplica Filtros de busqueda

@@ -83,10 +83,28 @@ namespace myExplorer.Formularios
             }
         }
 
+        // OK 17/10/05
         private void tsmiDiagnostic_Click(object sender, EventArgs e)
         {
-            frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic();
-            fDiagnostic.ShowDialog();
+            classPatient oGf = null;
+
+            if (dgvLista.Rows.Count != 0)
+            {
+                oGf = new classPatient();
+                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
+
+                if (oGf != null)
+                {
+                    frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic();
+                    fDiagnostic.oQuery = oQuery;
+                    fDiagnostic.oUtil = oUtil;
+                    fDiagnostic.oPatient = oGf;
+                    fDiagnostic.ShowDialog();
+                }
+                else
+                    MessageBox.Show(oTxt.ErrorQueryList);
+            }
         }
 
         // OK 17/09/30
@@ -107,7 +125,7 @@ namespace myExplorer.Formularios
                 if (oGf != null)
                 {
                     if (0 != (int)oQuery.AbmPatient(oGf, classQuery.eAbm.Update))
-                        MessageBox.Show(oTxt.UpdateSocialWork);
+                        MessageBox.Show(oTxt.UpdateParent);
                     else
                         MessageBox.Show(oTxt.ErrorQueryUpdate);
                     //frmAbmPatient frmA = new frmAbmPatient();
@@ -116,7 +134,6 @@ namespace myExplorer.Formularios
                     //frmA.oPatient = oGf;
                     //frmA.eModo = frmAbmPatient.Modo.Delete;
                     //frmA.ShowDialog();
-                    frmListPatient_Load(sender, e);
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);

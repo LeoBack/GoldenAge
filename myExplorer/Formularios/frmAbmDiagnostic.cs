@@ -15,6 +15,7 @@ namespace myExplorer.Formularios
 {
     public partial class frmAbmDiagnostic : Form
     {
+        // OK 17/10/05
         #region Atributos y Propiedades
 
         public classPatient oPatient { set; get; }
@@ -24,40 +25,73 @@ namespace myExplorer.Formularios
         public classUtiles oUtil { set; get; }
         private classTextos oTxt;
         private int SelectRow;
+        private int Desde = 0;
+        private int Hasta = 0;
+        private int cantPag = 0;
+        private int Pag = 1;
 
         #endregion
 
-        // OK 03/06/12
+        // OK 17/10/05
         #region Formulario
 
-        //OK 24/05/12
+        // OK 17/10/05
         public frmAbmDiagnostic()
         {
             InitializeComponent();
             oTxt = new classTextos();
         }
 
-        //OK 24/05/12
+        // OK 17/10/05
         private void frmAbmDiagnostic_Load(object sender, EventArgs e)
         {
-            //if (oQuery != null)
-            //{
-            //    //oCombo.CargaCombo(cmbPatologia, oQuery.ListaPatologias(), oQuery.Table);
+            if (oQuery != null && oUtil != null)
+            {
+                Text = oTxt.TitleDiagnostic;
+                SelectRow = 0;
+                Hasta = oUtil.CantRegistrosGrilla;
+                //tslPagina.Text = "Página: 0 de 0";
+                initCmbSpecialty();
+                txtPatient.Text = oPatient.LastName + "," + oPatient.Name;
+            }
+            else
+            {
+                MessageBox.Show(oTxt.ErrorObjetIndefinido);
+                Close();
+            }
+        }
 
-            //    if (eModo == Modo.Update)
-            //    {
-            //        if (this.oDiagnostico != null)
-            //        {
-            //            //oCombo.IndexCombos(cmbPatologia, this.oDiagnostico.IdDetalle);
-            //            rtxtDiagnostico.Text = this.oDiagnostico.Detail;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show(oTxt.ErrorObjetIndefinido);
-            //    this.Close();
-            //}
+        #endregion
+
+
+        #region Paginador
+
+        // REVISADO - 17/09/09
+        private void tsbBuscar_Click(object sender, EventArgs e)
+        {
+            Filtrar();
+        }
+
+        // REVISADO - 17/09/09
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (Pag < cantPag)
+            {
+                Pag++;
+                Desde = Desde + oUtil.CantRegistrosGrilla;
+                Filtrar();
+            }
+        }
+
+        // REVISADO - 17/09/09
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (Pag > 1)
+            {
+                Pag--;
+                Desde = Desde - oUtil.CantRegistrosGrilla;
+                Filtrar();
+            }
         }
 
         #endregion
@@ -66,7 +100,7 @@ namespace myExplorer.Formularios
         #region Botones
 
         // OK 03/06/12
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnDeleteDiagnostic_Click(object sender, EventArgs e)
         {
             //bool error = false;
             //// Eliminar el Diagnostico
@@ -82,7 +116,7 @@ namespace myExplorer.Formularios
         }
 
         // OK 03/06/12
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnSaveDiagnostic_Click(object sender, EventArgs e)
         {
             //bool error = false;
             //// Guardar el nuevo diagnostico.
@@ -110,26 +144,79 @@ namespace myExplorer.Formularios
         }
 
         // OK 03/06/12
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void btnAccept_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        // OK 03/06/12
-        private void btnAddPatologia_Click(object sender, EventArgs e)
+        private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //frmAuxiliar frmA = new frmAuxiliar();
-            //frmA.oQuery = this.oQuery;
-            //frmA.tipoObjeto = frmAuxiliar.Tipo.Patologias;
-            //frmA.Id = Convert.ToInt32(cmbPatologia.SelectedValue);
+            SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
+        }
 
-            //if (frmA.ShowDialog() == DialogResult.OK)
-            //{
-            //    oCombo.CargaCombo(
-            //        cmbPatologia,
-            //        oQuery.ListaPatologias(),
-            //        oQuery.Table);
-            //}
+
+        #endregion
+
+
+        #region Metodos
+
+        private void initCmbSpecialty()
+        {
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSpecialty, 
+                (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), 
+                oQuery.Table);
+        }
+
+        /// <summary>
+        /// Aplica Filtros de busqueda
+        /// OK - 24/09/17
+        /// </summary>
+        public void Filtrar()
+        {
+            SelectRow = 0;
+
+            //if (oQuery.FiltroProfesionalesLimite(tstxtNombre.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta))
+            if(SelectRow!=0)
+            {
+                //decimal Cont = oQuery.CountProfesionales(oValidarSql.ValidaString(tstxtNombre.TextBox.Text), Hiden);
+                //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
+                //cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+
+                //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
+
+                dgvLista.Columns.Clear();
+                GenerarGrilla(oQuery.Table);
+            }
+            else
+                MessageBox.Show(oTxt.ErrorQueryList);
+        }
+
+        /// <summary>
+        /// Carga la Lista debuelve la cantidad de filas.
+        /// OK 17/10/03
+        /// </summary>
+        /// <param name="Source"></param>
+        public int GenerarGrilla(object Source)
+        {
+            //
+            //Configuracion del DataListView
+            //
+            dgvLista.AutoGenerateColumns = true;
+            dgvLista.AllowUserToAddRows = false;
+            dgvLista.RowHeadersVisible = false;
+            dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLista.ReadOnly = true;
+            dgvLista.ScrollBars = ScrollBars.Both;
+            //dgvLista.ContextMenuStrip = cmsMenuEmergente;
+            dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvLista.MultiSelect = false;
+            dgvLista.DataSource = Source;
+#if RELEASE
+            dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
+#endif
+            return dgvLista.Rows.Count;
         }
 
         #endregion
