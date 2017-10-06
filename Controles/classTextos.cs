@@ -17,6 +17,7 @@ namespace Controles
         public string TitleFichaPatient = "Ficha Medica";
         public string TitleListPatient = "Lista de Pacientes";
         public string TitleListProfessional = "Planilla de Profesionales.";
+        public string TitleDiagnostic = "Diagnosticos.";
 
         //
         public string Nombre = "Nombre";
