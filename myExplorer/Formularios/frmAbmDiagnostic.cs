@@ -47,7 +47,7 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null && oUtil != null)
             {
-                Text = oTxt.TitleDiagnostic;
+                //Text = oTxt.TitleDiagnostic;
                 SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
                 //tslPagina.Text = "Página: 0 de 0";

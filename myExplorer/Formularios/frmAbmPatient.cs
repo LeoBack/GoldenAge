@@ -301,9 +301,10 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
             else if (txtPhone.Text.Length >= 20)
                 MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
-            else if ((txtAffiliateNumber.Text.Length >= 6) || (txtAffiliateNumber.Text == ""))
-                MessageBox.Show("El Numero de Afiliado esta vacio o no supera los 6 caracteres.");
-            else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
+            else if ((txtAffiliateNumber.Text.Length < 8) || (txtAffiliateNumber.Text == ""))
+                MessageBox.Show("El Numero de Afiliado esta vacio o no supera los 7 caracteres.");
+           // else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
+            else if (txtAddress.Text.Length >= 50)
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
             else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
                 MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
@@ -351,7 +352,7 @@ namespace myExplorer.Formularios
         {
             oParent.Name = txtParentName.Text.ToUpper();
             oParent.LastName = txtParentLastName.Text.ToUpper();
-            oParent.NumberDocument = Convert.ToInt32(txtNumberDocument.Text);
+            oParent.NumberDocument = Convert.ToInt32(txtParentNumberDocument.Text);
             oParent.Address = txtParentAddress.Text.ToUpper();
             oParent.IdLocationCountry = Convert.ToInt32(IdCountryParent);
             oParent.IdLocationCity = Convert.ToInt32(IdCityParent);
