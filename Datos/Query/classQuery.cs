@@ -84,9 +84,10 @@ namespace Datos.Query
         // CONSULTAS PARA CADA FUNCION
         //----------------------------------------------------------
 
-        // OK - 24/09/17
+        // OK - 17/10/03
         #region ABM
 
+        // OK - 17/10/03
         public object AbmDiagnostic(classDiagnostic oP, eAbm Abm)
         {
             object Result = null;
@@ -96,143 +97,118 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
             lParam.Add(new SqlParameter("@IdDiagnostic", oP.IdDiagnostic));
             lParam.Add(new SqlParameter("@IdSpeciality", oP.IdSpeciality));
+            lParam.Add(new SqlParameter("@IdPatient", oP.IdPatient));
+            lParam.Add(new SqlParameter("@IdProfessional", oP.IdProfessional));
             lParam.Add(new SqlParameter("@Detail", oP.Detail));
-            lParam.Add(new SqlParameter("@DiagnosticDate", oP.DiagnosticDate));
+            lParam.Add(new SqlParameter("@Date", oP.Date));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classDiagnostic> lDiagnostic = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classDiagnostic> lDiagnostic = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lDiagnostic = new List<classDiagnostic>();
+                        while (oSql.Reader.Read())
                         {
-                            lDiagnostic = new List<classDiagnostic>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classDiagnostic oDiagnostic = new classDiagnostic(
-                                    Convert.ToInt32(oSql.Reader["IdDiagnostic"]),
-                                    Convert.ToInt32(oSql.Reader["IdSpeciality"]),
-                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                    Convert.ToString(oSql.Reader["Detail"]),
-                                    Convert.ToDateTime(oSql.Reader["DiagnosticDate"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lDiagnostic.Add(oDiagnostic);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lDiagnostic = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lDiagnostic = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lDiagnostic = null;
-                                }
+                                classDiagnostic oDiagnostic = new classDiagnostic(
+                                Convert.ToInt32(oSql.Reader["IdDiagnostic"]),
+                                Convert.ToInt32(oSql.Reader["IdSpeciality"]),
+                                Convert.ToInt32(oSql.Reader["IdPatient"]),
+                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
+                                Convert.ToString(oSql.Reader["Detail"]),
+                                Convert.ToDateTime(oSql.Reader["Date"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lDiagnostic.Add(oDiagnostic);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lDiagnostic = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lDiagnostic = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lDiagnostic = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lDiagnostic;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+                    oSql.Close();
+                    Result = lDiagnostic;
+                    break;
                 case eAbm.Select:
+                    classDiagnostic oDiagnosti = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classDiagnostic oDiagnostic = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oDiagnostic = new classDiagnostic(
-                                    Convert.ToInt32(oSql.Reader["IdDiagnostic"]),
-                                    Convert.ToInt32(oSql.Reader["IdSpeciality"]),
-                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                    Convert.ToString(oSql.Reader["Detail"]),
-                                    Convert.ToDateTime(oSql.Reader["DiagnosticDate"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oDiagnostic = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oDiagnostic = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oDiagnostic = null;
-                                }
+                                oDiagnosti = new classDiagnostic(
+                                Convert.ToInt32(oSql.Reader["IdDiagnostic"]),
+                                Convert.ToInt32(oSql.Reader["IdSpeciality"]),
+                                Convert.ToInt32(oSql.Reader["IdPatient"]),
+                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
+                                Convert.ToString(oSql.Reader["Detail"]),
+                                Convert.ToDateTime(oSql.Reader["Date"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oDiagnosti = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oDiagnosti = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oDiagnosti = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oDiagnostic;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+                    oSql.Close();
+                    Result = oDiagnosti;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
+        // OK - 17/10/03
         public object AbmParent(classParent oP, eAbm Abm)
         {
             object Result = null;
@@ -258,153 +234,124 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classParent> lParent = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classParent> lParent = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lParent = new List<classParent>();
+                        while (oSql.Reader.Read())
                         {
-                            lParent = new List<classParent>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classParent oParent = new classParent(
-                                    Convert.ToInt32(oSql.Reader["IdParent"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["LastName"]),
-                                    Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                    Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["AlternativePhone"]),
-                                    Convert.ToString(oSql.Reader["Email"]),
-                                    Convert.ToInt32(oSql.Reader["IdRelationship"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lParent.Add(oParent);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lParent = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lParent = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lParent = null;
-                                }
+                                classParent oParent = new classParent(
+                                Convert.ToInt32(oSql.Reader["IdParent"]),
+                                Convert.ToString(oSql.Reader["Name"]),
+                                Convert.ToString(oSql.Reader["LastName"]),
+                                Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
+                                Convert.ToInt32(oSql.Reader["NumberDocument"]),
+                                Convert.ToString(oSql.Reader["Phone"]),
+                                Convert.ToString(oSql.Reader["AlternativePhone"]),
+                                Convert.ToString(oSql.Reader["Email"]),
+                                Convert.ToInt32(oSql.Reader["IdRelationship"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                Convert.ToString(oSql.Reader["Address"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lParent.Add(oParent);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lParent = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lParent = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lParent = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lParent;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lParent;
+                    break;
                 case eAbm.Select:
+                    classParent oParen = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classParent oParent = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oParent = new classParent(
-                                    Convert.ToInt32(oSql.Reader["IdParent"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["LastName"]),
-                                    Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                    Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["AlternativePhone"]),
-                                    Convert.ToString(oSql.Reader["Email"]),
-                                    Convert.ToInt32(oSql.Reader["IdRelationship"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oParent = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oParent = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oParent = null;
-                                }
+                                oParen = new classParent(
+                                Convert.ToInt32(oSql.Reader["IdParent"]),
+                                Convert.ToString(oSql.Reader["Name"]),
+                                Convert.ToString(oSql.Reader["LastName"]),
+                                Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
+                                Convert.ToInt32(oSql.Reader["NumberDocument"]),
+                                Convert.ToString(oSql.Reader["Phone"]),
+                                Convert.ToString(oSql.Reader["AlternativePhone"]),
+                                Convert.ToString(oSql.Reader["Email"]),
+                                Convert.ToInt32(oSql.Reader["IdRelationship"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                Convert.ToString(oSql.Reader["Address"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oParen = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oParen = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oParen = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oParent;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+                    oSql.Close();
+                    Result = oParen;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
-        // OK - 17-10-03
+        // OK - 17/10/03
         public object AbmPatient(classPatient oP, eAbm Abm)
         {
             object Result = null;
@@ -434,156 +381,128 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classPatient> lPatient = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classPatient> lPatient = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lPatient = new List<classPatient>();
+                        while (oSql.Reader.Read())
                         {
-                            lPatient = new List<classPatient>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classPatient oPatient = new classPatient(
-                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["LastName"]),
-                                    oSql.Reader["Birthdate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["Birthdate"].ToString()) : DateTime.MinValue,
-                                    Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                    Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                    Convert.ToBoolean(oSql.Reader["Sex"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToInt32(oSql.Reader["IdSocialWork"]),
-                                    Convert.ToInt32(oSql.Reader["AffiliateNumber"]),
-                                    oSql.Reader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["DateAdmission"].ToString()) : DateTime.MinValue,
-                                    oSql.Reader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["EgressDate"].ToString()) : DateTime.MinValue,
-                                    Convert.ToString(oSql.Reader["ReasonExit"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lPatient.Add(oPatient);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lPatient = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lPatient = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lPatient = null;
-                                }
+                                classPatient oPatient = new classPatient(
+                                Convert.ToInt32(oSql.Reader["IdPatient"]),
+                                Convert.ToString(oSql.Reader["Name"]),
+                                Convert.ToString(oSql.Reader["LastName"]),
+                                oSql.Reader["Birthdate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["Birthdate"].ToString()) : DateTime.MinValue,
+                                Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
+                                Convert.ToInt32(oSql.Reader["NumberDocument"]),
+                                Convert.ToBoolean(oSql.Reader["Sex"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                Convert.ToString(oSql.Reader["Address"]),
+                                Convert.ToString(oSql.Reader["Phone"]),
+                                Convert.ToInt32(oSql.Reader["IdSocialWork"]),
+                                Convert.ToInt32(oSql.Reader["AffiliateNumber"]),
+                                oSql.Reader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["DateAdmission"].ToString()) : DateTime.MinValue,
+                                oSql.Reader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["EgressDate"].ToString()) : DateTime.MinValue,
+                                Convert.ToString(oSql.Reader["ReasonExit"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lPatient.Add(oPatient);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatient = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatient = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatient = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lPatient;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lPatient;
+                    break;
                 case eAbm.Select:
+                    classPatient oPatien = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classPatient oPatient = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oPatient = new classPatient(
-                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["LastName"]),
-                                    oSql.Reader["Birthdate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["Birthdate"].ToString()) : DateTime.MinValue,
-                                    Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                    Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                    Convert.ToBoolean(oSql.Reader["Sex"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToInt32(oSql.Reader["IdSocialWork"]),
-                                    Convert.ToInt32(oSql.Reader["AffiliateNumber"]),
-                                    oSql.Reader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["DateAdmission"].ToString()) : DateTime.MinValue,
-                                    oSql.Reader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["EgressDate"].ToString()) : DateTime.MinValue,
-                                    Convert.ToString(oSql.Reader["ReasonExit"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oPatient = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oPatient = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oPatient = null;
-                                }
+                                oPatien = new classPatient(
+                                Convert.ToInt32(oSql.Reader["IdPatient"]),
+                                Convert.ToString(oSql.Reader["Name"]),
+                                Convert.ToString(oSql.Reader["LastName"]),
+                                oSql.Reader["Birthdate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["Birthdate"].ToString()) : DateTime.MinValue,
+                                Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
+                                Convert.ToInt32(oSql.Reader["NumberDocument"]),
+                                Convert.ToBoolean(oSql.Reader["Sex"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                Convert.ToString(oSql.Reader["Address"]),
+                                Convert.ToString(oSql.Reader["Phone"]),
+                                Convert.ToInt32(oSql.Reader["IdSocialWork"]),
+                                Convert.ToInt32(oSql.Reader["AffiliateNumber"]),
+                                oSql.Reader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["DateAdmission"].ToString()) : DateTime.MinValue,
+                                oSql.Reader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["EgressDate"].ToString()) : DateTime.MinValue,
+                                Convert.ToString(oSql.Reader["ReasonExit"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatien = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatien = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatien = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oPatient;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oPatien;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
@@ -603,132 +522,105 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classPatientParent> lPatientParent = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classPatientParent> lPatientParent = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lPatientParent = new List<classPatientParent>();
+                        while (oSql.Reader.Read())
                         {
-                            lPatientParent = new List<classPatientParent>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classPatientParent oPatientParent = new classPatientParent(
-                                    Convert.ToInt32(oSql.Reader["idPatientParent"]),
-                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                    Convert.ToInt32(oSql.Reader["IdParent"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lPatientParent.Add(oPatientParent);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lPatientParent = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lPatientParent = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lPatientParent = null;
-                                }
+                                classPatientParent oPatientParent = new classPatientParent(
+                                Convert.ToInt32(oSql.Reader["idPatientParent"]),
+                                Convert.ToInt32(oSql.Reader["IdPatient"]),
+                                Convert.ToInt32(oSql.Reader["IdParent"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lPatientParent.Add(oPatientParent);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatientParent = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatientParent = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatientParent = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lPatientParent;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lPatientParent;
+                    break;
                 case eAbm.Select:
+                    classPatientParent oPatientParen = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classPatientParent oPatientParent = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oPatientParent = new classPatientParent(
-                                    Convert.ToInt32(oSql.Reader["idPatientParent"]),
-                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                    Convert.ToInt32(oSql.Reader["IdParent"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oPatientParent = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oPatientParent = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oPatientParent = null;
-                                }
+                                oPatientParen = new classPatientParent(
+                                Convert.ToInt32(oSql.Reader["idPatientParent"]),
+                                Convert.ToInt32(oSql.Reader["IdPatient"]),
+                                Convert.ToInt32(oSql.Reader["IdParent"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatientParen = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatientParen = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatientParen = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oPatientParent;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oPatientParen;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
+                default: 
+                    break;
             }
             return Result;
         }
 
+        // OK - 17/10/03
         public object AbmPermission(classPermission oP, eAbm Abm)
         {
             object Result = null;
@@ -743,138 +635,110 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classPermission> lPermission = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classPermission> lPermission = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lPermission = new List<classPermission>();
+                        while (oSql.Reader.Read())
                         {
-                            lPermission = new List<classPermission>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classPermission oPermission = new classPermission(
-                                    Convert.ToInt32(oSql.Reader["idPermission"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lPermission.Add(oPermission);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lPermission = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lPermission = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lPermission = null;
-                                }
+                                classPermission oPermission = new classPermission(
+                                Convert.ToInt32(oSql.Reader["idPermission"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lPermission.Add(oPermission);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPermission = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPermission = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPermission = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lPermission;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lPermission;
+                    break;
                 case eAbm.Select:
+                    classPermission oPermissio = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classPermission oPermission = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oPermission = new classPermission(
-                                    Convert.ToInt32(oSql.Reader["idPermission"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oPermission = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oPermission = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oPermission = null;
-                                }
+                                oPermissio = new classPermission(
+                                Convert.ToInt32(oSql.Reader["idPermission"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPermissio = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPermissio = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPermissio = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oPermission;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oPermissio;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        //if (oSql.Table.Rows.Count != 0)
-                        //    Table = oSql.Table;
-                        //else
-                        //    Table = null;
-                        DataTable dT = new DataTable(SPname);
-                        dT.Columns.Add("Id", typeof(Int32));
-                        dT.Columns.Add("Value", typeof(string));
-                        dT.Rows.Add(new object[] { 1, "Usuario" });
-                        dT.Rows.Add(new object[] { 2, "Administrador" });
-                        Table = dT;
-                        Result = true;
-                        break;
-                    }
+                    //Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    //if (oSql.Table.Rows.Count != 0)
+                    //    Table = oSql.Table;
+                    //else
+                    //    Table = null;
+                    DataTable dT = new DataTable(SPname);
+                    dT.Columns.Add("Id", typeof(Int32));
+                    dT.Columns.Add("Value", typeof(string));
+                    dT.Rows.Add(new object[] { 1, "Usuario" });
+                    dT.Rows.Add(new object[] { 2, "Administrador" });
+                    Table = dT;
+                    Result = true;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
-        // OK - 17-10-03
+        // OK - 17/10/03
         public object AbmProfessional(classProfessional oP, eAbm Abm)
         {
             object Result = null;
@@ -900,153 +764,125 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classProfessional> lProfessional = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classProfessional> lProfessional = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lProfessional = new List<classProfessional>();
+                        while (oSql.Reader.Read())
                         {
-                            lProfessional = new List<classProfessional>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classProfessional oProfessional = new classProfessional(
-                                    Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["LastName"]),
-                                    Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["Mail"]),
-                                    Convert.ToString(oSql.Reader["User"]),
-                                    Convert.ToString(oSql.Reader["Password"]),
-                                    Convert.ToInt32(oSql.Reader["Admin"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lProfessional.Add(oProfessional);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lProfessional = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lProfessional = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lProfessional = null;
-                                }
+                                classProfessional oProfessional = new classProfessional(
+                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
+                                Convert.ToString(oSql.Reader["Name"]),
+                                Convert.ToString(oSql.Reader["LastName"]),
+                                Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                Convert.ToString(oSql.Reader["Address"]),
+                                Convert.ToString(oSql.Reader["Phone"]),
+                                Convert.ToString(oSql.Reader["Mail"]),
+                                Convert.ToString(oSql.Reader["User"]),
+                                Convert.ToString(oSql.Reader["Password"]),
+                                Convert.ToInt32(oSql.Reader["Admin"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lProfessional.Add(oProfessional);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lProfessional = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lProfessional = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lProfessional = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lProfessional;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lProfessional;
+                    break;
                 case eAbm.Select:
+                    classProfessional oProfessiona = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classProfessional oProfessional = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oProfessional = new classProfessional(
-                                    Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["LastName"]),
-                                    Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["Mail"]),
-                                    Convert.ToString(oSql.Reader["User"]),
-                                    Convert.ToString(oSql.Reader["Password"]),
-                                    Convert.ToInt32(oSql.Reader["Admin"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oProfessional = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oProfessional = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oProfessional = null;
-                                }
+                                oProfessiona = new classProfessional(
+                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
+                                Convert.ToString(oSql.Reader["Name"]),
+                                Convert.ToString(oSql.Reader["LastName"]),
+                                Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                Convert.ToString(oSql.Reader["Address"]),
+                                Convert.ToString(oSql.Reader["Phone"]),
+                                Convert.ToString(oSql.Reader["Mail"]),
+                                Convert.ToString(oSql.Reader["User"]),
+                                Convert.ToString(oSql.Reader["Password"]),
+                                Convert.ToInt32(oSql.Reader["Admin"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oProfessiona = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oProfessiona = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oProfessiona = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oProfessional;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oProfessiona;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
-        // OK - 17-10-03
+        // OK - 17/10/03
         public object AbmProfessionalSpeciality(classProfessionalSpeciality oP, eAbm Abm)
         {
             object Result = null;
@@ -1062,132 +898,105 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classProfessionalSpeciality> lProfessionalSpeciality = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classProfessionalSpeciality> lProfessionalSpeciality = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lProfessionalSpeciality = new List<classProfessionalSpeciality>();
+                        while (oSql.Reader.Read())
                         {
-                            lProfessionalSpeciality = new List<classProfessionalSpeciality>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classProfessionalSpeciality oProfessionalSpeciality = new classProfessionalSpeciality(
-                                    Convert.ToInt32(oSql.Reader["idProfessionalSpeciality"]),
-                                    Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                    Convert.ToInt32(oSql.Reader["IdSpeciality"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lProfessionalSpeciality.Add(oProfessionalSpeciality);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lProfessionalSpeciality = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lProfessionalSpeciality = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lProfessionalSpeciality = null;
-                                }
+                                classProfessionalSpeciality oProfessionalSpeciality = new classProfessionalSpeciality(
+                                Convert.ToInt32(oSql.Reader["idProfessionalSpeciality"]),
+                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
+                                Convert.ToInt32(oSql.Reader["IdSpeciality"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lProfessionalSpeciality.Add(oProfessionalSpeciality);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lProfessionalSpeciality = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lProfessionalSpeciality = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lProfessionalSpeciality = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lProfessionalSpeciality;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lProfessionalSpeciality;
+                    break;
                 case eAbm.Select:
+                    classProfessionalSpeciality oProfessionalSpecialit = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classProfessionalSpeciality oProfessionalSpeciality = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oProfessionalSpeciality = new classProfessionalSpeciality(
-                                    Convert.ToInt32(oSql.Reader["idProfessionalSpeciality"]),
-                                    Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                    Convert.ToInt32(oSql.Reader["IdSpeciality"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oProfessionalSpeciality = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oProfessionalSpeciality = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oProfessionalSpeciality = null;
-                                }
+                                oProfessionalSpecialit = new classProfessionalSpeciality(
+                                Convert.ToInt32(oSql.Reader["idProfessionalSpeciality"]),
+                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
+                                Convert.ToInt32(oSql.Reader["IdSpeciality"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oProfessionalSpecialit = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oProfessionalSpecialit = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oProfessionalSpecialit = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oProfessionalSpeciality;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oProfessionalSpecialit;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
+        // OK - 17/10/03
         public object AbmRelationship(classRelationship oP, eAbm Abm)
         {
             object Result = null;
@@ -1202,131 +1011,103 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classRelationship> lRelationship = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classRelationship> lRelationship = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lRelationship = new List<classRelationship>();
+                        while (oSql.Reader.Read())
                         {
-                            lRelationship = new List<classRelationship>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classRelationship oRelationship = new classRelationship(
-                                    Convert.ToInt32(oSql.Reader["idRelationship"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lRelationship.Add(oRelationship);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lRelationship = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lRelationship = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lRelationship = null;
-                                }
+                                classRelationship oRelationship = new classRelationship(
+                                Convert.ToInt32(oSql.Reader["idRelationship"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lRelationship.Add(oRelationship);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lRelationship = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lRelationship = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lRelationship = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lRelationship;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lRelationship;
+                    break;
                 case eAbm.Select:
+                    classRelationship oRelationshi = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classRelationship oRelationship = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oRelationship = new classRelationship(
-                                    Convert.ToInt32(oSql.Reader["idRelationship"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oRelationship = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oRelationship = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oRelationship = null;
-                                }
+                                oRelationshi = new classRelationship(
+                                Convert.ToInt32(oSql.Reader["idRelationship"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oRelationshi = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oRelationshi = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oRelationshi = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oRelationship;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oRelationshi;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
-        // OK - 17-10-03
+        // OK - 17/10/03
         public object AbmSocialWork(classSocialWork oP, eAbm Abm)
         {
             object Result = null;
@@ -1349,147 +1130,119 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classSocialWork> lSocialWork = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classSocialWork> lSocialWork = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lSocialWork = new List<classSocialWork>();
+                        while (oSql.Reader.Read())
                         {
-                            lSocialWork = new List<classSocialWork>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classSocialWork oSocialWork = new classSocialWork(
-                                    Convert.ToInt32(oSql.Reader["IdSocialWork"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["Contact"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lSocialWork.Add(oSocialWork);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lSocialWork = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lSocialWork = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lSocialWork = null;
-                                }
+                                classSocialWork oSocialWork = new classSocialWork(
+                                Convert.ToInt32(oSql.Reader["IdSocialWork"]),
+                                Convert.ToString(oSql.Reader["Name"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToInt32(oSql.Reader["IdIvaType"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                Convert.ToString(oSql.Reader["Address"]),
+                                Convert.ToString(oSql.Reader["Phone"]),
+                                Convert.ToString(oSql.Reader["Contact"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lSocialWork.Add(oSocialWork);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lSocialWork = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lSocialWork = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lSocialWork = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lSocialWork;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lSocialWork;
+                    break;
                 case eAbm.Select:
+                    classSocialWork oSocialWor = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classSocialWork oSocialWork = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oSocialWork = new classSocialWork(
-                                    Convert.ToInt32(oSql.Reader["IdSocialWork"]),
-                                    Convert.ToString(oSql.Reader["Name"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                    Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                    Convert.ToString(oSql.Reader["Address"]),
-                                    Convert.ToString(oSql.Reader["Phone"]),
-                                    Convert.ToString(oSql.Reader["Contact"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oSocialWork = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oSocialWork = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oSocialWork = null;
-                                }
+                                oSocialWor = new classSocialWork(
+                                Convert.ToInt32(oSql.Reader["IdSocialWork"]),
+                                Convert.ToString(oSql.Reader["Name"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToInt32(oSql.Reader["IdIvaType"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
+                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
+                                Convert.ToString(oSql.Reader["Address"]),
+                                Convert.ToString(oSql.Reader["Phone"]),
+                                Convert.ToString(oSql.Reader["Contact"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oSocialWor = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oSocialWor = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oSocialWor = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oSocialWork;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oSocialWor;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
-        // OK - 17-10-03
+        // OK - 17/10/03
         public object AbmSpeciality(classSpecialty oP, eAbm Abm)
         {
             object Result = null;
@@ -1504,131 +1257,103 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classSpecialty> lSpecialty = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classSpecialty> lSpecialty = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lSpecialty = new List<classSpecialty>();
+                        while (oSql.Reader.Read())
                         {
-                            lSpecialty = new List<classSpecialty>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classSpecialty oSpecialty = new classSpecialty(
-                                    Convert.ToInt32(oSql.Reader["idSpecialty"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lSpecialty.Add(oSpecialty);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lSpecialty = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lSpecialty = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lSpecialty = null;
-                                }
+                                classSpecialty oSpecialty = new classSpecialty(
+                                Convert.ToInt32(oSql.Reader["idSpecialty"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lSpecialty.Add(oSpecialty);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lSpecialty = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lSpecialty = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lSpecialty = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lSpecialty;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lSpecialty;
+                    break;
                 case eAbm.Select:
+                    classSpecialty oSpecialt = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classSpecialty oSpecialty = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oSpecialty = new classSpecialty(
-                                    Convert.ToInt32(oSql.Reader["idSpecialty"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oSpecialty = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oSpecialty = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oSpecialty = null;
-                                }
+                                oSpecialt = new classSpecialty(
+                                Convert.ToInt32(oSql.Reader["idSpecialty"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oSpecialt = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oSpecialt = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oSpecialt = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oSpecialty;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oSpecialt;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
-        // OK - 17-10-03
+        // OK - 17/10/03
         public object AbmTypeDocument(classTypeDocument oP, eAbm Abm)
         {
             object Result = null;
@@ -1643,131 +1368,103 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classTypeDocument> lTypeDocument = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classTypeDocument> lTypeDocument = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lTypeDocument = new List<classTypeDocument>();
+                        while (oSql.Reader.Read())
                         {
-                            lTypeDocument = new List<classTypeDocument>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classTypeDocument oTypeDocument = new classTypeDocument(
-                                    Convert.ToInt32(oSql.Reader["idTypeDocument"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lTypeDocument.Add(oTypeDocument);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lTypeDocument = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lTypeDocument = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lTypeDocument = null;
-                                }
+                                classTypeDocument oTypeDocument = new classTypeDocument(
+                                Convert.ToInt32(oSql.Reader["idTypeDocument"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lTypeDocument.Add(oTypeDocument);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lTypeDocument = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lTypeDocument = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lTypeDocument = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lTypeDocument;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lTypeDocument;
+                    break;
                 case eAbm.Select:
+                    classTypeDocument oTypeDocumen = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classTypeDocument oTypeDocument = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oTypeDocument = new classTypeDocument(
-                                    Convert.ToInt32(oSql.Reader["idTypeDocument"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oTypeDocument = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oTypeDocument = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oTypeDocument = null;
-                                }
+                                oTypeDocumen = new classTypeDocument(
+                                Convert.ToInt32(oSql.Reader["idTypeDocument"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oTypeDocumen = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oTypeDocumen = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oTypeDocumen = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oTypeDocument;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oTypeDocumen;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
-        // OK - 17-10-03
+        // OK - 17/10/03
         public object AbmIvaType(classIvaType oP, eAbm Abm)
         {
             object Result = null;
@@ -1782,130 +1479,103 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classIvaType> lIvaType = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classIvaType> lIvaType = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lIvaType = new List<classIvaType>();
+                        while (oSql.Reader.Read())
                         {
-                            lIvaType = new List<classIvaType>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classIvaType oIvaType = new classIvaType(
-                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lIvaType.Add(oIvaType);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lIvaType = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lIvaType = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lIvaType = null;
-                                }
+                                classIvaType oIvaType = new classIvaType(
+                                Convert.ToInt32(oSql.Reader["IdIvaType"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lIvaType.Add(oIvaType);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lIvaType = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lIvaType = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lIvaType = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lIvaType;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lIvaType;
+                    break;
                 case eAbm.Select:
+                    classIvaType oIvaTyp = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classIvaType oIvaType = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oIvaType = new classIvaType(
-                                    Convert.ToInt32(oSql.Reader["IdIvaType"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oIvaType = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oIvaType = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oIvaType = null;
-                                }
+                                oIvaTyp = new classIvaType(
+                                Convert.ToInt32(oSql.Reader["IdIvaType"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oIvaTyp = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oIvaTyp = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oIvaTyp = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oIvaType;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oIvaTyp;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }
 
+        // OK - 17/10/03
         public object AbmTypeParent(classTypeParent oP, eAbm Abm)
         {
             object Result = null;
@@ -1920,126 +1590,98 @@ namespace Datos.Query
             switch (Abm)
             {
                 case eAbm.SelectAll:
+                    List<classTypeParent> lTypeParent = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        List<classTypeParent> lTypeParent = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        lTypeParent = new List<classTypeParent>();
+                        while (oSql.Reader.Read())
                         {
-                            lTypeParent = new List<classTypeParent>();
-                            while (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    classTypeParent oTypeParent = new classTypeParent(
-                                    Convert.ToInt32(oSql.Reader["IdTypeParent"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                    lTypeParent.Add(oTypeParent);
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lTypeParent = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lTypeParent = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    lTypeParent = null;
-                                }
+                                classTypeParent oTypeParent = new classTypeParent(
+                                Convert.ToInt32(oSql.Reader["IdTypeParent"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                lTypeParent.Add(oTypeParent);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lTypeParent = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lTypeParent = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lTypeParent = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = lTypeParent;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lTypeParent;
+                    break;
                 case eAbm.Select:
+                    classTypeParent oTypeParen = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        classTypeParent oTypeParent = null;
-                        if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                        if (oSql.Reader.Read())
                         {
-                            if (oSql.Reader.Read())
+                            try
                             {
-                                try
-                                {
-                                    oTypeParent = new classTypeParent(
-                                    Convert.ToInt32(oSql.Reader["IdTypeParent"]),
-                                    Convert.ToString(oSql.Reader["Description"]),
-                                    Convert.ToBoolean(oSql.Reader["Visible"]));
-                                }
-                                catch (FormatException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oTypeParent = null;
-                                }
-                                catch (InvalidCastException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oTypeParent = null;
-                                }
-                                catch (OverflowException ex)
-                                {
-                                    Menssage = ex.ToString();
-                                    oTypeParent = null;
-                                }
+                                oTypeParen = new classTypeParent(
+                                Convert.ToInt32(oSql.Reader["IdTypeParent"]),
+                                Convert.ToString(oSql.Reader["Description"]),
+                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oTypeParen = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oTypeParen = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oTypeParen = null;
                             }
                         }
-                        else
-                            Menssage = oSql.Mensage;
-
-                        oSql.Close();
-                        Result = oTypeParent;
-                        break;
                     }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oTypeParen;
+                    break;
                 case eAbm.Insert:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Update:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
-
-                        Result = UltimoId;
-                        break;
-                    }
                 case eAbm.Delete:
-                    {
-                        int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
-                        if (UltimoId == 0)
-                            Menssage = oSql.Mensage;
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
 
-                        Result = UltimoId;
-                        break;
-                    }
+                    Result = UltimoId;
+                    break;
                 case eAbm.LoadCmb:
-                    {
-                        Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                        if (oSql.Table.Rows.Count != 0)
-                            Table = oSql.Table;
-                        else
-                            Table = null;
-                        break;
-                    }
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
             return Result;
         }

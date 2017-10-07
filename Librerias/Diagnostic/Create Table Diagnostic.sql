@@ -1,5 +1,5 @@
-USE [C:\USERS\MARCOS\DOCUMENTS\GITHUB\GOLDENAGE\DATOS\DEFAULT.MDF]
-GO
+--USE [C:\USERS\MARCOS\DOCUMENTS\GITHUB\GOLDENAGE\DATOS\DEFAULT.MDF]
+--GO
 
 /****** Object:  Table [dbo].[Diagnostic]    Script Date: 06/10/2017 10:03:01 p.m. ******/
 SET ANSI_NULLS ON
@@ -15,8 +15,9 @@ CREATE TABLE [dbo].[Diagnostic](
 	[idDiagnostic] [int] IDENTITY(1,1) NOT NULL,
 	[IdPatient][int] NOT NULL,
 	[IdSpeciality] [int] NOT NULL,
-	[DiagnosticDate] [datetime] NOT NULL,
-	[Detail] [varchar](300) NOT NULL,
+	[IdProfessional] [int] NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[Detail] [Text] NOT NULL,
 	[Visible] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (

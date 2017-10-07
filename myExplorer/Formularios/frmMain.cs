@@ -11,6 +11,7 @@ using Datos.Query;
 using Controles;
 using libData.SqlServer;
 using System.Configuration;
+using libLocalitation.Forms;
 
 namespace myExplorer.Formularios
 {
@@ -65,7 +66,7 @@ namespace myExplorer.Formularios
         //-----------------------------------------------------------------
 
         //-----------------------------------------------------------------
-        // OK - 17/09/14
+        // OK - 17/10/07
         #region msMenu
         //-----------------------------------------------------------------
         
@@ -84,11 +85,37 @@ namespace myExplorer.Formularios
             frmAcercaDe.ShowDialog();
         }
 
+        // Configuracion Base de Dtos
+        // OK - 17/09/14
         private void tsmiDataBase_Click(object sender, EventArgs e)
         {
             frmConect fc = new frmConect(ConfigurationManager.ConnectionStrings[0].ConnectionString);
             if (fc.ShowDialog() == DialogResult.OK)
-                this.oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
+                oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
+        }
+
+        // ABM Pais
+        // OK - 17/10/07
+        private void tsmiAbmCountry_Click(object sender, EventArgs e)
+        {
+            frmLocation floc = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Country);
+            floc.ShowDialog();
+        }
+
+        // ABM Provincia
+        // OK - 17/10/07
+        private void tsmiAbmProvince_Click(object sender, EventArgs e)
+        {
+            frmLocation floc = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Province);
+            floc.ShowDialog();
+        }
+
+        // ABM Ciudad
+        // OK - 17/10/07
+        private void tsmiAbmCity_Click(object sender, EventArgs e)
+        {
+            frmLocation floc = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.City);
+            floc.ShowDialog();
         }
 
         #endregion
@@ -158,7 +185,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK 08/06/12
+        // OK - 08/06/12
         private void tsmiLoginProfessional_Click(object sender, EventArgs e)
         {
             if (User == eUser.Valido)
@@ -287,6 +314,7 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
 
     }
 }

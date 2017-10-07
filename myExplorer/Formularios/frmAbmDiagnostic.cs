@@ -25,10 +25,6 @@ namespace myExplorer.Formularios
         public classUtiles oUtil { set; get; }
         private classTextos oTxt;
         private int SelectRow;
-        private int Desde = 0;
-        private int Hasta = 0;
-        private int cantPag = 0;
-        private int Pag = 1;
 
         #endregion
 
@@ -47,50 +43,28 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null && oUtil != null)
             {
-                //Text = oTxt.TitleDiagnostic;
+                Text = oTxt.TitleDiagnostic;
                 SelectRow = 0;
-                Hasta = oUtil.CantRegistrosGrilla;
-                //tslPagina.Text = "Página: 0 de 0";
                 initCmbSpecialty();
                 txtPatient.Text = oPatient.LastName + "," + oPatient.Name;
+
+                classDiagnostic oD = new classDiagnostic();
+                oD.IdPatient = oPatient.IdPatient;
+
+                List<classDiagnostic> lDiagnostic = oQuery.AbmDiagnostic(oD, classQuery.eAbm.SelectAll) as List<classDiagnostic>;
+                DataTable dT = new DataTable("AbmDiagnostic");
+                dT.Columns.Add("Id", typeof(Int32));
+                dT.Columns.Add("Fecha", typeof(DateTime));
+                dT.Columns.Add("Profesional", typeof(string));
+                dT.Columns.Add("Diagnostico", typeof(string));
+                foreach(classDiagnostic iD in lDiagnostic)
+                    dT.Rows.Add(new object[] { iD.IdDiagnostic, iD.Date, "", iD.Detail });
+                GenerarGrilla(dT);
             }
             else
             {
                 MessageBox.Show(oTxt.ErrorObjetIndefinido);
                 Close();
-            }
-        }
-
-        #endregion
-
-
-        #region Paginador
-
-        // REVISADO - 17/09/09
-        private void tsbBuscar_Click(object sender, EventArgs e)
-        {
-            Filtrar();
-        }
-
-        // REVISADO - 17/09/09
-        private void btnSiguiente_Click(object sender, EventArgs e)
-        {
-            if (Pag < cantPag)
-            {
-                Pag++;
-                Desde = Desde + oUtil.CantRegistrosGrilla;
-                Filtrar();
-            }
-        }
-
-        // REVISADO - 17/09/09
-        private void btnAnterior_Click(object sender, EventArgs e)
-        {
-            if (Pag > 1)
-            {
-                Pag--;
-                Desde = Desde - oUtil.CantRegistrosGrilla;
-                Filtrar();
             }
         }
 

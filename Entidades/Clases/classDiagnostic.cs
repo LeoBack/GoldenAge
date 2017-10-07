@@ -11,8 +11,9 @@ namespace Entidades.Clases
         public int IdDiagnostic { set; get; }
         public int IdSpeciality { set; get; }
         public int IdPatient { set; get; }
+        public int IdProfessional { set; get; }
         public string Detail { set; get; }
-        public DateTime DiagnosticDate { set; get; }
+        public DateTime Date { set; get; }
         public bool Visible { set; get; }
         #endregion
 
@@ -23,8 +24,9 @@ namespace Entidades.Clases
             this.IdDiagnostic = 0;
             this.IdSpeciality = 0;
             this.IdPatient = 0;
-            this.Detail = "";
-            this.DiagnosticDate = DateTime.Now.Date;
+            this.IdProfessional = 0;
+            this.Detail = string.Empty;
+            this.Date = DateTime.Now.Date;
             this.Visible = true;
         }
 
@@ -33,31 +35,36 @@ namespace Entidades.Clases
             this.IdDiagnostic = vIdDiagnostic;
             this.IdSpeciality = 0;
             this.IdPatient = 0;
-            this.Detail = "";
-            this.DiagnosticDate = DateTime.Now.Date;
+            this.IdProfessional = 0;
+            this.Detail = string.Empty;
+            this.Date = DateTime.Now.Date;
             this.Visible = true;
         }
 
-        public classDiagnostic(int vIdDiagnostic, int vIdSpeciality, int vIdPatient, string vDetail, DateTime vDiagnosticDate, bool vVisible)
+        public classDiagnostic(int vIdDiagnostic, int vIdSpeciality, int vIdPatient, int vProfessional,
+            string vDetail, DateTime vDate, bool vVisible)
         {
             this.IdDiagnostic = vIdDiagnostic;
             this.IdSpeciality = vIdSpeciality;
             this.IdPatient = vIdPatient;
+            this.IdProfessional = vProfessional;
             this.Detail = vDetail;
-            this.DiagnosticDate = vDiagnosticDate;
+            this.Date = vDate;
             this.Visible = vVisible;
         }
+
         #endregion
 
         #region Methods
         public override string ToString()
         {
-            return "Id: " + this.IdDiagnostic.ToString()+
-            "\nEspecialidad: " + this.IdSpeciality.ToString()+
-            "\nPaciente: " + this.IdPatient.ToString() +
-            "\nDetalle: " + this.Detail +
-            "\nFecha: " + this.DiagnosticDate.ToString()+
-            "\nVisible: " + this.Visible.ToString();
+            return "Id: " + IdDiagnostic.ToString()+
+            "\nEspecialidad: " + IdSpeciality.ToString()+
+            "\nPaciente: " + IdPatient.ToString() +
+            "\nProfessional: " + IdProfessional.ToString() +
+            "\nDetalle: " + Detail +
+            "\nFecha: " + Date.ToString()+
+            "\nVisible: " + Visible.ToString();
         
         }
 

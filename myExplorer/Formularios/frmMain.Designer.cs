@@ -64,6 +64,10 @@
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
+            this.tsmiLocation = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbmCountry = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbmProvince = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbmCity = new System.Windows.Forms.ToolStripMenuItem();
             this.mspBarraTareas.SuspendLayout();
             this.tsPrincipal.SuspendLayout();
             this.ssEstado.SuspendLayout();
@@ -121,7 +125,8 @@
             this.tsmiStatics,
             this.toolStripSeparator4,
             this.tsmiUser,
-            this.toolStripSeparator2});
+            this.toolStripSeparator2,
+            this.tsmiLocation});
             this.tsmiMenu.Name = "tsmiMenu";
             this.tsmiMenu.Size = new System.Drawing.Size(69, 29);
             this.tsmiMenu.Text = "Menu";
@@ -212,14 +217,14 @@
             // 
             this.tsmiAcercaDe.Image = global::myExplorer.Properties.Resources.Info;
             this.tsmiAcercaDe.Name = "tsmiAcercaDe";
-            this.tsmiAcercaDe.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAcercaDe.Size = new System.Drawing.Size(209, 30);
             this.tsmiAcercaDe.Text = "Acerca de ";
             this.tsmiAcercaDe.Click += new System.EventHandler(this.tsmiAcercaDe_Click);
             // 
             // tsmiDataBase
             // 
             this.tsmiDataBase.Name = "tsmiDataBase";
-            this.tsmiDataBase.Size = new System.Drawing.Size(210, 30);
+            this.tsmiDataBase.Size = new System.Drawing.Size(209, 30);
             this.tsmiDataBase.Text = "Base de Datos";
             this.tsmiDataBase.Click += new System.EventHandler(this.tsmiDataBase_Click);
             // 
@@ -389,6 +394,38 @@
             // 
             this.ContentPanel.Size = new System.Drawing.Size(150, 150);
             // 
+            // tsmiLocation
+            // 
+            this.tsmiLocation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAbmCountry,
+            this.tsmiAbmProvince,
+            this.tsmiAbmCity});
+            this.tsmiLocation.Image = global::myExplorer.Properties.Resources.Database3;
+            this.tsmiLocation.Name = "tsmiLocation";
+            this.tsmiLocation.Size = new System.Drawing.Size(212, 30);
+            this.tsmiLocation.Text = "Localidades";
+            // 
+            // tsmiAbmCountry
+            // 
+            this.tsmiAbmCountry.Name = "tsmiAbmCountry";
+            this.tsmiAbmCountry.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAbmCountry.Text = "ABM Pais";
+            this.tsmiAbmCountry.Click += new System.EventHandler(this.tsmiAbmCountry_Click);
+            // 
+            // tsmiAbmProvince
+            // 
+            this.tsmiAbmProvince.Name = "tsmiAbmProvince";
+            this.tsmiAbmProvince.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAbmProvince.Text = "ABM Provincia";
+            this.tsmiAbmProvince.Click += new System.EventHandler(this.tsmiAbmProvince_Click);
+            // 
+            // tsmiAbmCity
+            // 
+            this.tsmiAbmCity.Name = "tsmiAbmCity";
+            this.tsmiAbmCity.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAbmCity.Text = "ABM Ciudad";
+            this.tsmiAbmCity.Click += new System.EventHandler(this.tsmiAbmCity_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -465,6 +502,10 @@
         private System.Windows.Forms.ToolStripButton tsEstadisticas;
         private System.Windows.Forms.ToolStripMenuItem tsmiDataBase;
         private System.Windows.Forms.ToolStripMenuItem tsmiProfessional;
+        private System.Windows.Forms.ToolStripMenuItem tsmiLocation;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAbmCountry;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAbmProvince;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAbmCity;
     }
 }
 

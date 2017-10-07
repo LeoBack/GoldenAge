@@ -89,7 +89,7 @@
     <Reference Include="libFeaturesComponents">
       <HintPath>..\Librerias\libFeaturesComponents.dll</HintPath>
     </Reference>
-    <Reference Include="libLocalitation, Version=2.8.6485.36341, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="libLocalitation, Version=2.8.6487.35213, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>F:\VisualStudio\Librerias\libLocalitation\bin\Release\libLocalitation.dll</HintPath>
     </Reference>
