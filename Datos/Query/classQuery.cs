@@ -115,6 +115,7 @@ namespace Datos.Query
                                     classDiagnostic oDiagnostic = new classDiagnostic(
                                     Convert.ToInt32(oSql.Reader["IdDiagnostic"]),
                                     Convert.ToInt32(oSql.Reader["IdSpeciality"]),
+                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToString(oSql.Reader["Detail"]),
                                     Convert.ToDateTime(oSql.Reader["DiagnosticDate"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
@@ -156,6 +157,7 @@ namespace Datos.Query
                                     oDiagnostic = new classDiagnostic(
                                     Convert.ToInt32(oSql.Reader["IdDiagnostic"]),
                                     Convert.ToInt32(oSql.Reader["IdSpeciality"]),
+                                    Convert.ToInt32(oSql.Reader["IdPatient"]),
                                     Convert.ToString(oSql.Reader["Detail"]),
                                     Convert.ToDateTime(oSql.Reader["DiagnosticDate"]),
                                     Convert.ToBoolean(oSql.Reader["Visible"]));
