@@ -15,7 +15,7 @@ namespace myExplorer.Formularios
 {
     public partial class frmAbmDiagnostic : Form
     {
-        // OK 17/10/05
+        // OK - 17/10/05
         #region Atributos y Propiedades
 
         public classPatient oPatient { set; get; }
@@ -24,42 +24,38 @@ namespace myExplorer.Formularios
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         private classTextos oTxt;
+        private classDiagnostic oDiagnostic;
         private int SelectRow;
 
         #endregion
 
-        // OK 17/10/05
+        // OK - 17/10/07
         #region Formulario
 
-        // OK 17/10/05
+        // OK - 17/10/05
         public frmAbmDiagnostic()
         {
             InitializeComponent();
             oTxt = new classTextos();
         }
 
-        // OK 17/10/05
+        // OK - 17/10/07
         private void frmAbmDiagnostic_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
             {
                 Text = oTxt.TitleDiagnostic;
                 SelectRow = 0;
-                initCmbSpecialty();
+                initCmbSpecialty(oUtil.oProfessional.IdProfessional);
+                txtProfessional.Text = oUtil.oProfessional.LastName + ", " + oUtil.oProfessional.Name;
                 txtPatient.Text = oPatient.LastName + "," + oPatient.Name;
-
-                classDiagnostic oD = new classDiagnostic();
-                oD.IdPatient = oPatient.IdPatient;
-
-                List<classDiagnostic> lDiagnostic = oQuery.AbmDiagnostic(oD, classQuery.eAbm.SelectAll) as List<classDiagnostic>;
-                DataTable dT = new DataTable("AbmDiagnostic");
-                dT.Columns.Add("Id", typeof(Int32));
-                dT.Columns.Add("Fecha", typeof(DateTime));
-                dT.Columns.Add("Profesional", typeof(string));
-                dT.Columns.Add("Diagnostico", typeof(string));
-                foreach(classDiagnostic iD in lDiagnostic)
-                    dT.Rows.Add(new object[] { iD.IdDiagnostic, iD.Date, "", iD.Detail });
-                GenerarGrilla(dT);
+                
+                if (LoadViewDiagnostic())
+                {
+                    eModo = Modo.Add;
+                    oDiagnostic = new classDiagnostic();
+                    rtxtDiagnostic.Text = string.Empty;
+                }
             }
             else
             {
@@ -68,106 +64,147 @@ namespace myExplorer.Formularios
             }
         }
 
+
         #endregion
 
-        // OK 03/06/12
+        // OK - 17/10/07
         #region Botones
 
-        // OK 03/06/12
-        private void btnDeleteDiagnostic_Click(object sender, EventArgs e)
+        // OK - 17/10/07
+        private void btnNew_Click(object sender, EventArgs e)
         {
-            //bool error = false;
-            //// Eliminar el Diagnostico
-            //if (MessageBox.Show(oTxt.MsgEliminarDiagnostico, oTxt.MsgTituloDiagnostico, 
-            //    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            //    //error = oQuery.DeleteDiagnostic(oDiagnostico, false);
-            //error = (bool)oQuery.AbmDiagnostic(oDiagnostico, classQuery.eAbm.Delete);
-
-            //if (!error)
-            //    MessageBox.Show(oTxt.ErrorQueryDelete);
-            //else
-            //    this.Close();
+            eModo = Modo.Add;
+            rtxtDiagnostic.Text = string.Empty;
         }
 
-        // OK 03/06/12
+        // OK - 17/10/07
         private void btnSaveDiagnostic_Click(object sender, EventArgs e)
         {
-            //bool error = false;
-            //// Guardar el nuevo diagnostico.
-            //if ((rtxtDiagnostico.Text != ""))
-            //{
-            //    if (Modo == Vista.Nuevo)
-            //    {
-            //        this.oDiagnostico.Diagnostico = this.oValidarSql.ValidaString(rtxtDiagnostico.Text);
-            //        this.oDiagnostico.IdDetalle = Convert.ToInt32(cmbPatologia.SelectedValue);
-            //        this.oDiagnostico.Fecha = DateTime.Now;
-            //        error = oQuery.AgregarDiagnostico(oDiagnostico);
-            //    }
-            //    if (Modo == Vista.Modificar)
-            //    {
-            //        this.oDiagnostico.Diagnostico = this.oValidarSql.ValidaString(rtxtDiagnostico.Text);
-            //        this.oDiagnostico.IdDetalle = Convert.ToInt32(cmbPatologia.SelectedValue);
-            //        error = oQuery.ModificarDiagnostico(oDiagnostico);
-            //    }
-            //}
+            if ((rtxtDiagnostic.Text != ""))
+            {
+                CargarObjeto();
+                int IdQuery = 0;
 
-            //if (!error)
-            //    MessageBox.Show(oTxt.ErrorAgregarConsulta);
-            //else
-            //    this.Close();
+                switch(eModo)
+                {
+                    case Modo.Add:
+
+                        IdQuery = (int)oQuery.AbmDiagnostic(oDiagnostic, classQuery.eAbm.Insert);
+                        if (0 != IdQuery)
+                            MessageBox.Show(oTxt.AddDiagnostic);
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryAdd);
+                        break;
+                    case Modo.Update:
+                        IdQuery = (int)oQuery.AbmDiagnostic(oDiagnostic, classQuery.eAbm.Update);
+                        if (0 != IdQuery)
+                            MessageBox.Show(oTxt.UpdateDiagnostic);
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryUpdate);
+                        break;
+                    default:
+                        MessageBox.Show(oTxt.AccionIndefinida);
+                        break;
+                }
+                LoadViewDiagnostic();
+            }    
         }
 
-        // OK 03/06/12
+        // OK - 17/10/07
         private void btnAccept_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        // OK - 17/10/07
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
-        }
 
+            oDiagnostic = oQuery.AbmDiagnostic(new classDiagnostic(
+                Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)), 
+                classQuery.eAbm.Select) as classDiagnostic;
+
+            eModo = oDiagnostic != null ? Modo.Update : Modo.Add;
+            oDiagnostic = oDiagnostic != null ? oDiagnostic : new classDiagnostic();
+
+            EscribirEnFrm();
+        }
 
         #endregion
 
-
+        // OK - 17/10/07
         #region Metodos
 
-        private void initCmbSpecialty()
+        // OK - 17/10/07
+        private bool LoadViewDiagnostic()
         {
-            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSpecialty, 
-                (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), 
-                oQuery.Table);
+            classDiagnostic oD = new classDiagnostic();
+            oD.IdPatient = oPatient.IdPatient;
+            List<classDiagnostic> lDiagnostic = oQuery.AbmDiagnostic(oD, classQuery.eAbm.SelectAll) as List<classDiagnostic>;
+            DataTable dT = new DataTable("AbmDiagnostic");
+            dT.Columns.Add("Id", typeof(Int32));
+            dT.Columns.Add("Fecha", typeof(DateTime));
+            dT.Columns.Add("Profesional", typeof(string));
+            dT.Columns.Add("Speciliadad", typeof(string));
+            dT.Columns.Add("Diagnostico", typeof(string));
+            foreach (classDiagnostic iD in lDiagnostic)
+            {
+                classProfessional oP = oQuery.AbmProfessional(new classProfessional(iD.IdProfessional), classQuery.eAbm.Select) as classProfessional;
+                oP = oP == null ? new classProfessional() : oP;
+                classSpecialty oS = oQuery.AbmSpeciality(new classSpecialty(iD.IdSpeciality), classQuery.eAbm.Select) as classSpecialty;
+                oS = oS == null ? new classSpecialty() : oS;
+                dT.Rows.Add(new object[] { iD.IdDiagnostic, iD.Date, oP.LastName + ", " + oP.Name, oS.Description, iD.Detail });
+            }
+            GenerarGrilla(dT);
+            return lDiagnostic != null;
+        }
+
+        // OK - 17/10/07
+        private void CargarObjeto()
+        {
+            oDiagnostic.IdPatient = oPatient.IdPatient;
+            oDiagnostic.Date = DateTime.Now;
+            oDiagnostic.IdProfessional = oUtil.oProfessional.IdProfessional;
+            oDiagnostic.Detail = rtxtDiagnostic.Text;
+            oDiagnostic.IdSpeciality = Convert.ToInt32(cmbSpecialty.SelectedValue);
+            oDiagnostic.Visible = true;
+            
         }
 
         /// <summary>
-        /// Aplica Filtros de busqueda
-        /// OK - 24/09/17
+        /// Carga los elementos de formulario desde objeto.
+        /// OK - 17/10/07
         /// </summary>
-        public void Filtrar()
+        private void EscribirEnFrm()
         {
-            SelectRow = 0;
+            rtxtDiagnostic.Text = oDiagnostic.Detail;
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbSpecialty, oDiagnostic.IdSpeciality);
+        }
 
-            //if (oQuery.FiltroProfesionalesLimite(tstxtNombre.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta))
-            if(SelectRow!=0)
+        // OK - 17/10/07
+        private void initCmbSpecialty(int IdProfessional)
+        {
+            classProfessionalSpeciality oPs = new classProfessionalSpeciality();
+            oPs.IdProfessional = IdProfessional;
+
+            List<classProfessionalSpeciality> lPs = null;
+            lPs = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<classProfessionalSpeciality>;
+
+            DataTable dT = new DataTable("AbmDiagnostic");
+            dT.Columns.Add("Id", typeof(Int32));
+            dT.Columns.Add("Value", typeof(string));
+            foreach (classProfessionalSpeciality iPs in lPs)
             {
-                //decimal Cont = oQuery.CountProfesionales(oValidarSql.ValidaString(tstxtNombre.TextBox.Text), Hiden);
-                //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
-                //cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
-
-                //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
-
-                dgvLista.Columns.Clear();
-                GenerarGrilla(oQuery.Table);
+                classSpecialty oS = oQuery.AbmSpeciality(new classSpecialty(iPs.IdSpeciality), classQuery.eAbm.Select) as classSpecialty;
+                dT.Rows.Add(new object[] { oS.IdSpecialty, oS.Description });
             }
-            else
-                MessageBox.Show(oTxt.ErrorQueryList);
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSpecialty, dT.Rows.Count != 0, dT);
         }
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// OK 17/10/03
+        /// OK - 17/10/03
         /// </summary>
         /// <param name="Source"></param>
         public int GenerarGrilla(object Source)

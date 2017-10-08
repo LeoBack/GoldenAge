@@ -482,10 +482,5 @@ namespace myExplorer.Formularios
 
 
         #endregion
-
-        private void tabCarpeta_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

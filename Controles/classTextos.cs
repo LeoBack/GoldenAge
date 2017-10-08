@@ -44,6 +44,10 @@ namespace Controles
         public string Logout = "Cerrar Sesion";
         public string IniciarSesion = "Iniciar Sesion";
 
+        // Diagnostic
+        public string AddDiagnostic = "Diagnostico grabado.";
+        public string UpdateDiagnostic = "Diagnostico Actualizado.";
+
         // Profesionales
         public string AddProfessional = "El Profesional a sido grabado con exito.";
         public string UpdateProfessional = "El Profesional a sido actualizado con exito.";
@@ -77,7 +81,5 @@ namespace Controles
         public string RestauracionErronea = "A ocurrido un error al realizar la copia.";
         public string CopiaExitosa = "Copia realizada con Exito!";
         public string CopiaErronea = "A ocurrido un error al realizar la copia.";
-
-        
     }
 }
