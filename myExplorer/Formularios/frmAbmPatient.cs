@@ -22,8 +22,10 @@ namespace myExplorer.Formularios
 
         public classPatient oPatient { set; get; }
         private classParent oParent;
+        private List<classPatientParent> lPatienParent;
         public enum Modo { Add, Select, Update, Delete }
         public Modo eModo { set; get; }
+        public Modo eModoParent { set; get; }
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         private classTextos oTxt;
@@ -58,27 +60,24 @@ namespace myExplorer.Formularios
                 initSocialWork();
                 initTypeDocument();
                 initParentRelationship();
+                initParentList();
 
-                // Modo en el que se mostrara el formulario
                 switch (eModo)
                 {
                     case Modo.Select:
                         EnablePatient(false);
+                        EnableParent(false);
                         EscribirEnFrmPatient();
-                        //EnableDiagnostico(true);
-                        //CargarDiagnostico();
                         break;
                     case Modo.Update:
                         EnablePatient(true);
+                        EnableParent(false);
                         EscribirEnFrmPatient();
-                        //EnableDiagnostico(true);
-                        //CargarDiagnostico();
                         break;
                     case Modo.Add:
                         oPatient = new classPatient();
                         EnablePatient(true);
-                        //EscribirEnFrmPatient();
-                        //EnableDiagnostico(false);
+                        EnableParent(false);
                         break;
                     default:
                         MessageBox.Show(oTxt.ErrorObjetIndefinido);
@@ -86,7 +85,6 @@ namespace myExplorer.Formularios
                 }
             }
             else
-
                 Close();
         }
 
@@ -175,37 +173,97 @@ namespace myExplorer.Formularios
             }
         }
 
-        private void btnApplyParent_Click(object sender, EventArgs e)
+        // OK - 17/10/08
+        private void btnAcceptParent_Click(object sender, EventArgs e)
         {
             if(ValidarCamposParent())
             {
                 CargarObjetoParent();
                 int IdQuery = 0;
 
-                //switch (eModo)
-                //{
-                //    case Modo.Add:
-                //        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Insert);
-                //        if (0 != IdQuery)
-                //            MessageBox.Show(oTxt.AddParent);
-                //        else
-                //            MessageBox.Show(oTxt.ErrorQueryAdd);
-                //        break;
-                //    case Modo.Update:
-                //        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Update);
-                //        if (0 != IdQuery)
-                //            MessageBox.Show(oTxt.UpdateParent);
-                //        else
-                //            MessageBox.Show(oTxt.ErrorQueryUpdate);
-                //        break;
-                //    default:
-                //        MessageBox.Show(oTxt.AccionIndefinida);
-                //        break;
-                //}
+                switch (eModoParent)
+                {
+                    case Modo.Add:
+                        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Insert);
+                        if (0 != IdQuery)
+                        {
+                            classPatientParent oPp = new classPatientParent(0, oPatient.IdPatient, IdQuery, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
+                            if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Insert))
+                            {
+                                MessageBox.Show(oTxt.AddParent);
+                                initParentList();
+                            }
+                        }
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryAdd);
+                        break;
+                    case Modo.Update:
+                        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Update);
+                        if (0 != IdQuery)
+                        {
+                            classPatientParent oPp =null;
+                            foreach(classPatientParent iPp in lPatienParent)
+                            {
+                                if ((iPp.IdParent == oParent.IdParent) & (iPp.IdPatient == oPatient.IdPatient))
+                                    oPp = new classPatientParent(iPp.IdPatientParent, oPatient.IdPatient, IdQuery, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
+                            }
+
+                            if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Update))
+                            {
+                                MessageBox.Show(oTxt.UpdateParent);
+                                initParentList();
+                            }
+                        }
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryUpdate);
+                        break;
+                    case Modo.Delete:
+
+                        break;
+                    default:
+                        MessageBox.Show(oTxt.AccionIndefinida);
+                        break;
+                }
 
                 if (IdQuery == 0)
                     MessageBox.Show(oQuery.Menssage);
             }
+        }
+
+        // OK - 17/10/08
+        private void btnNewParent_Click(object sender, EventArgs e)
+        {
+            eModoParent = Modo.Add;
+            oParent = new classParent();
+            IdCountryParent = 0;
+            IdProvinceParent = 0;
+            IdCityParent = 0;
+
+            foreach (Control ctrl in tlpParent.Controls)
+            {
+                if (ctrl is TextBox)
+                {
+                    TextBox t = ctrl as TextBox;
+                    t.Text = string.Empty;
+                }
+            }
+            EnableParent(true);
+        }
+
+        // OK - 17/10/08
+        private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
+
+            oParent = oQuery.AbmParent(new classParent(
+                Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)),
+                classQuery.eAbm.Select) as classParent;
+
+            eModoParent = oParent != null ? Modo.Update : Modo.Add;
+            oParent = oParent != null ? oParent : new classParent();
+
+            EscribirEnFrmParent();
+            EnableParent(true);
         }
 
         #endregion
@@ -339,6 +397,71 @@ namespace myExplorer.Formularios
 
         #region Metodos Parent
 
+        /// <summary>
+        /// Habilita TabFicha
+        /// OK 18/04/12
+        /// </summary>
+        /// <param name="X"></param>
+        private void EnableParent(bool X)
+        {
+            foreach (Control C in this.tlpParent.Controls)
+            {
+                if (!(C is Label))
+                    C.Enabled = X;
+            }
+            btnNewParent.Enabled = true;
+            dgvLista.Enabled = true;
+        }
+
+        // OK - 17/10/08
+        private void initParentList()
+        {
+            classPatientParent oPp = new classPatientParent();
+            oPp.IdPatient = oPatient.IdPatient;
+
+            lPatienParent = oQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<classPatientParent>;
+
+            DataTable dT = new DataTable("AbmPatientParent");
+            dT.Columns.Add("Id", typeof(Int32));
+            dT.Columns.Add("Parentesco", typeof(string));
+            dT.Columns.Add("Nombre", typeof(string));
+            foreach (classPatientParent iPp in lPatienParent)
+            {
+                classParent oP = oQuery.AbmParent(new classParent(iPp.IdParent), classQuery.eAbm.Select) as classParent;
+                classRelationship oR = oQuery.AbmRelationship(new classRelationship(iPp.IdRelationship), classQuery.eAbm.Select) as classRelationship;
+                dT.Rows.Add(new object[] { oP.IdParent, oR.Description, oP.LastName + ", " + oP.Name });
+            }
+            GenerarGrilla(dT);
+        }
+
+        /// <summary>
+        /// Carga la Lista debuelve la cantidad de filas.
+        /// OK - 17/10/03
+        /// </summary>
+        /// <param name="Source"></param>
+        public int GenerarGrilla(object Source)
+        {
+            //
+            //Configuracion del DataListView
+            //
+            dgvLista.AutoGenerateColumns = true;
+            dgvLista.AllowUserToAddRows = false;
+            dgvLista.RowHeadersVisible = false;
+            dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLista.ReadOnly = true;
+            dgvLista.ScrollBars = ScrollBars.Both;
+            //dgvLista.ContextMenuStrip = cmsMenuEmergente;
+            dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvLista.MultiSelect = false;
+            dgvLista.DataSource = Source;
+#if RELEASE
+            dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
+#endif
+            return dgvLista.Rows.Count;
+        }
+
         // OK 17/09/30
         private void initParentRelationship()
         {
@@ -354,13 +477,12 @@ namespace myExplorer.Formularios
             oParent.LastName = txtParentLastName.Text.ToUpper();
             oParent.NumberDocument = Convert.ToInt32(txtParentNumberDocument.Text);
             oParent.Address = txtParentAddress.Text.ToUpper();
-            oParent.IdLocationCountry = Convert.ToInt32(IdCountryParent);
-            oParent.IdLocationCity = Convert.ToInt32(IdCityParent);
-            oParent.IdLocationProvince = Convert.ToInt32(IdProvinceParent);
+            oParent.IdLocationCountry = IdCountryParent;
+            oParent.IdLocationCity = IdCityParent;
+            oParent.IdLocationProvince = IdProvinceParent;
             oParent.Phone = txtParentPhone.Text;
             oParent.AlternativePhone = txtParentAlternativePhone.Text;
             oParent.Email = txtParentEmail.Text.ToUpper();
-            oParent.IdTypeParent = Convert.ToInt32(cmbParentRelationship.SelectedValue);
         }
 
         /// <summary>
@@ -378,12 +500,17 @@ namespace myExplorer.Formularios
             IdCityParent = oParent.IdLocationCity;
             txtParentPhone.Text = oParent.Phone;
             txtParentAlternativePhone.Text = oParent.AlternativePhone;
-            txtParentAlternativePhone.Text = oParent.AlternativePhone;
             txtParentEmail.Text = oParent.Email.ToUpper();
-            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbParentRelationship, oParent.IdTypeParent);
 
             txtLocationParent.Text = frmLocation.toStringLocation(
                 oQuery.ConexionString, IdCountryParent, IdProvinceParent, IdCityParent);
+
+            foreach (classPatientParent iPp in lPatienParent)
+            {
+                if(iPp.IdParent == oParent.IdParent)
+                    libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(
+                        cmbParentRelationship, iPp.IdRelationship);
+            }
         }
 
         /// <summary>
@@ -410,8 +537,6 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Numero de Telefono supera los 15 caracteres");
             else if (txtParentAlternativePhone.Text.Length >= 15)
                 MessageBox.Show("El Numero de Telefono Alternativo supera los 15 caracteres");
-            else if (txtParentEmail.Text.Length >= 50)
-                MessageBox.Show("El E-mail supera los 50 caracteres");
             else if (txtParentEmail.Text.Length >= 50)
                 MessageBox.Show("El E-mail supera los 50 caracteres");
             else if (cmbParentRelationship.SelectedIndex== -1)
@@ -476,10 +601,6 @@ namespace myExplorer.Formularios
 
 
         }
-
-
-
-
 
         #endregion
     }
