@@ -55,6 +55,7 @@ namespace myExplorer.Formularios
                     eModo = Modo.Add;
                     oDiagnostic = new classDiagnostic();
                     rtxtDiagnostic.Text = string.Empty;
+                    EnableText(false);
                 }
             }
             else
@@ -75,6 +76,7 @@ namespace myExplorer.Formularios
         {
             eModo = Modo.Add;
             rtxtDiagnostic.Text = string.Empty;
+            EnableText(true);
         }
 
         // OK - 17/10/07
@@ -107,6 +109,7 @@ namespace myExplorer.Formularios
                         break;
                 }
                 LoadViewDiagnostic();
+                EnableText(false);
             }    
         }
 
@@ -129,12 +132,21 @@ namespace myExplorer.Formularios
             oDiagnostic = oDiagnostic != null ? oDiagnostic : new classDiagnostic();
 
             EscribirEnFrm();
+            EnableText(true);
         }
 
         #endregion
 
         // OK - 17/10/07
         #region Metodos
+
+        // OK - 17/10/07
+        private void EnableText(bool X)
+        {
+            rtxtDiagnostic.Enabled = X;
+            cmbSpecialty.Enabled = X;
+            btnSaveDiagnostic.Enabled = X;
+        }
 
         // OK - 17/10/07
         private bool LoadViewDiagnostic()
