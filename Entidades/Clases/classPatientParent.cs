@@ -11,6 +11,7 @@ namespace Entidades.Clases
         public int IdPatientParent { set; get; }
         public int IdPatient { set; get; }
         public int IdParent { set; get; }
+        public int IdRelationship { set; get; }
         public bool Visible { set; get; }
 
         #endregion
@@ -22,6 +23,7 @@ namespace Entidades.Clases
             this.IdPatientParent = 0;
             this.IdPatient = 0;
             this.IdParent = 0;
+            this.IdRelationship = 0;
             this.Visible = true;
         }
 
@@ -30,16 +32,19 @@ namespace Entidades.Clases
             this.IdPatientParent = vIdPatientParent;
             this.IdPatient = 0;
             this.IdParent = 0;
+            this.IdRelationship = 0;
             this.Visible = true;
         }
 
-        public classPatientParent(int vIdIdPatientParent, int vIdPatient, int vIdParent, bool vVisible)
+        public classPatientParent(int vIdPatientParent, int vIdPatient, int vIdParent, int vIdRelationship, bool vVisible)
         {
-            this.IdPatientParent = IdPatientParent;
+            this.IdPatientParent = vIdPatientParent;
             this.IdPatient = vIdPatient;
             this.IdParent = vIdParent;
+            this.IdRelationship = vIdRelationship;
             this.Visible = vVisible;
         }
+        
         #endregion
 
         #region Methods
@@ -47,9 +52,10 @@ namespace Entidades.Clases
         public override string ToString()
         {
             return "Id: " + this.IdPatientParent.ToString() +
-            "\nPatient: " + this.IdPatient.ToString() +
+                "\nPatient: " + this.IdPatient.ToString() +
                 "\nParentezco: " + this.IdParent.ToString() +
-             "\nVisible: " + this.Visible.ToString();
+                "\nRelación: " + this.IdRelationship.ToString() +
+                "\nVisible: " + this.Visible.ToString();
         }
 
         #endregion

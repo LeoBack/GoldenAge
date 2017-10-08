@@ -45,7 +45,6 @@
     <Compile Include="Clases\classPermission.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
     <Compile Include="Clases\classProfessional.cs" />
-    <Compile Include="Clases\classTypeParent.cs" />
     <Compile Include="Grillas\grvGrandfather.cs" />
     <Compile Include="Clases\classPatient.cs" />
     <Compile Include="Clases\classRelationship.cs" />

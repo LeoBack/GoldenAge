@@ -224,7 +224,6 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@Phone", oP.Phone));
             lParam.Add(new SqlParameter("@AlternativePhone", oP.AlternativePhone));
             lParam.Add(new SqlParameter("@Email", oP.Email));
-            lParam.Add(new SqlParameter("@IdRelationship", oP.IdRelationship));
             lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
             lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
             lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
@@ -251,7 +250,6 @@ namespace Datos.Query
                                 Convert.ToString(oSql.Reader["Phone"]),
                                 Convert.ToString(oSql.Reader["AlternativePhone"]),
                                 Convert.ToString(oSql.Reader["Email"]),
-                                Convert.ToInt32(oSql.Reader["IdRelationship"]),
                                 Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                 Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                 Convert.ToInt32(oSql.Reader["IdLocationCity"]),
@@ -299,7 +297,6 @@ namespace Datos.Query
                                 Convert.ToString(oSql.Reader["Phone"]),
                                 Convert.ToString(oSql.Reader["AlternativePhone"]),
                                 Convert.ToString(oSql.Reader["Email"]),
-                                Convert.ToInt32(oSql.Reader["IdRelationship"]),
                                 Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
                                 Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
                                 Convert.ToInt32(oSql.Reader["IdLocationCity"]),
@@ -507,6 +504,7 @@ namespace Datos.Query
             return Result;
         }
 
+        // OK - 17/10/03
         public object AbmPatientParent(classPatientParent oP, eAbm Abm)
         {
             object Result = null;
@@ -517,6 +515,7 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@idPatientParent", oP.IdPatientParent));
             lParam.Add(new SqlParameter("@IdPatient", oP.IdPatient));
             lParam.Add(new SqlParameter("@IdParent", oP.IdParent));
+            lParam.Add(new SqlParameter("@IdRelationship", oP.IdRelationship));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
 
             switch (Abm)
@@ -534,6 +533,7 @@ namespace Datos.Query
                                 Convert.ToInt32(oSql.Reader["idPatientParent"]),
                                 Convert.ToInt32(oSql.Reader["IdPatient"]),
                                 Convert.ToInt32(oSql.Reader["IdParent"]),
+                                Convert.ToInt32(oSql.Reader["IdRelationship"]),
                                 Convert.ToBoolean(oSql.Reader["Visible"]));
                                 lPatientParent.Add(oPatientParent);
                             }
@@ -572,6 +572,7 @@ namespace Datos.Query
                                 Convert.ToInt32(oSql.Reader["idPatientParent"]),
                                 Convert.ToInt32(oSql.Reader["IdPatient"]),
                                 Convert.ToInt32(oSql.Reader["IdParent"]),
+                                Convert.ToInt32(oSql.Reader["IdRelationship"]),
                                 Convert.ToBoolean(oSql.Reader["Visible"]));
                             }
                             catch (FormatException ex)
@@ -1551,117 +1552,6 @@ namespace Datos.Query
 
                     oSql.Close();
                     Result = oIvaTyp;
-                    break;
-                case eAbm.Insert:
-                case eAbm.Update:
-                case eAbm.Delete:
-                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                    if (UltimoId == 0)
-                        Menssage = oSql.Mensage;
-
-                    Result = UltimoId;
-                    break;
-                case eAbm.LoadCmb:
-                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                    if (oSql.Table.Rows.Count != 0)
-                        Table = oSql.Table;
-                    else
-                        Table = null;
-                    break;
-                default:
-                    break;
-            }
-            return Result;
-        }
-
-        // OK - 17/10/03
-        public object AbmTypeParent(classTypeParent oP, eAbm Abm)
-        {
-            object Result = null;
-            string SPname = sp.AbmTypeParent;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@IdTypeParent", oP.IdTypeParent));
-            lParam.Add(new SqlParameter("@Description", oP.Description));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
-
-            switch (Abm)
-            {
-                case eAbm.SelectAll:
-                    List<classTypeParent> lTypeParent = null;
-                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
-                    {
-                        lTypeParent = new List<classTypeParent>();
-                        while (oSql.Reader.Read())
-                        {
-                            try
-                            {
-                                classTypeParent oTypeParent = new classTypeParent(
-                                Convert.ToInt32(oSql.Reader["IdTypeParent"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lTypeParent.Add(oTypeParent);
-                            }
-                            catch (FormatException ex)
-                            {
-                                Menssage = ex.ToString();
-                                lTypeParent = null;
-                            }
-                            catch (InvalidCastException ex)
-                            {
-                                Menssage = ex.ToString();
-                                lTypeParent = null;
-                            }
-                            catch (OverflowException ex)
-                            {
-                                Menssage = ex.ToString();
-                                lTypeParent = null;
-                            }
-                        }
-                    }
-                    else
-                        Menssage = oSql.Mensage;
-
-                    oSql.Close();
-                    Result = lTypeParent;
-                    break;
-                case eAbm.Select:
-                    classTypeParent oTypeParen = null;
-                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
-                    {
-                        if (oSql.Reader.Read())
-                        {
-                            try
-                            {
-                                oTypeParen = new classTypeParent(
-                                Convert.ToInt32(oSql.Reader["IdTypeParent"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                            }
-                            catch (FormatException ex)
-                            {
-                                Menssage = ex.ToString();
-                                oTypeParen = null;
-                            }
-                            catch (InvalidCastException ex)
-                            {
-                                Menssage = ex.ToString();
-                                oTypeParen = null;
-                            }
-                            catch (OverflowException ex)
-                            {
-                                Menssage = ex.ToString();
-                                oTypeParen = null;
-                            }
-                        }
-                    }
-                    else
-                        Menssage = oSql.Mensage;
-
-                    oSql.Close();
-                    Result = oTypeParen;
                     break;
                 case eAbm.Insert:
                 case eAbm.Update:

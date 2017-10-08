@@ -16,12 +16,10 @@ namespace Entidades.Clases
         public string Phone { set; get; }
         public string AlternativePhone { set; get; }
         public string Email { set; get; }
-        public int IdRelationship { set; get; }
         public int IdLocationCountry { set; get; }
         public int IdLocationProvince { set; get; }
         public int IdLocationCity { set; get; }
         public string Address { set; get; }
-        public int IdTypeParent { set; get; }
         public bool Visible { set; get; }
         #endregion
 
@@ -37,7 +35,6 @@ namespace Entidades.Clases
             this.Phone = string.Empty;
             this.AlternativePhone = string.Empty;
             this.Email = string.Empty;
-            this.IdRelationship = 0;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -55,7 +52,6 @@ namespace Entidades.Clases
             this.Phone = string.Empty;
             this.AlternativePhone = string.Empty;
             this.Email = string.Empty;
-            this.IdRelationship = 0;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -64,7 +60,8 @@ namespace Entidades.Clases
         }
 
         public classParent(int vIdParent, string vName, string vLastName, int vIdTypeDocument, int vNumberDocument,
-            string vPhone, string vAlternativePhone, string vEmail, int vIdRelationship, int IdLocationCountry, int IdLocationProvince, int IdLocationCity, string vAddress, bool vVisible)
+            string vPhone, string vAlternativePhone, string vEmail, int IdLocationCountry, int IdLocationProvince, 
+            int IdLocationCity, string vAddress, bool vVisible)
         {
             this.IdParent = vIdParent;
             this.Name = vName;
@@ -74,7 +71,6 @@ namespace Entidades.Clases
             this.Phone = vPhone;
             this.AlternativePhone = vAlternativePhone;
             this.Email = vEmail;
-            this.IdRelationship = vIdRelationship;
             this.IdLocationCountry = IdLocationCountry;
             this.IdLocationProvince = IdLocationProvince;
             this.IdLocationCity = IdLocationCity;
@@ -94,7 +90,6 @@ namespace Entidades.Clases
                 "\nTelefono: " +this.Phone +
                 "\nTelefono Alternativo: " + this.AlternativePhone +
                 "\nEmail: " + this.Email +
-                "\nRelación: " + this.IdRelationship.ToString() +
                 "\nPais: " + this.IdLocationCountry +
                 "\nProvincia: " + this.IdLocationProvince +
                 "\nCiudad: " + this.IdLocationCity +
