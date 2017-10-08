@@ -132,7 +132,7 @@ namespace myExplorer.Formularios
             oDiagnostic = oDiagnostic != null ? oDiagnostic : new classDiagnostic();
 
             EscribirEnFrm();
-            EnableText(true);
+            EnableText(oDiagnostic.IdProfessional == oUtil.oProfessional.IdProfessional);
         }
 
         #endregion
