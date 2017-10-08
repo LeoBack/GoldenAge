@@ -145,7 +145,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(216, 20);
             this.txtPhone.TabIndex = 4;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phoneNumber_KeyPress);
             // 
             // txtContact
             // 
@@ -201,7 +201,7 @@
             // 
             this.txtLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLocation.Location = new System.Drawing.Point(82, 111);
-            this.txtLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(2);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ReadOnly = true;
             this.txtLocation.Size = new System.Drawing.Size(218, 20);
@@ -210,7 +210,7 @@
             // btnLocalitation
             // 
             this.btnLocalitation.Location = new System.Drawing.Point(304, 110);
-            this.btnLocalitation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLocalitation.Margin = new System.Windows.Forms.Padding(2);
             this.btnLocalitation.Name = "btnLocalitation";
             this.btnLocalitation.Size = new System.Drawing.Size(57, 23);
             this.btnLocalitation.TabIndex = 3;
@@ -224,7 +224,7 @@
             this.cmbIvaType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIvaType.FormattingEnabled = true;
             this.cmbIvaType.Location = new System.Drawing.Point(82, 192);
-            this.cmbIvaType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbIvaType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbIvaType.Name = "cmbIvaType";
             this.cmbIvaType.Size = new System.Drawing.Size(218, 21);
             this.cmbIvaType.TabIndex = 16;
@@ -245,7 +245,7 @@
             // 
             this.btnBlocked.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnBlocked.Location = new System.Drawing.Point(2, 245);
-            this.btnBlocked.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBlocked.Margin = new System.Windows.Forms.Padding(2);
             this.btnBlocked.Name = "btnBlocked";
             this.btnBlocked.Size = new System.Drawing.Size(75, 27);
             this.btnBlocked.TabIndex = 17;

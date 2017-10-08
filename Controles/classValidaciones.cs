@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Controles
 {
@@ -83,18 +84,58 @@ namespace Controles
 
         /// <summary>
         /// Valida si es direccion de mail valida.
+        /// Caracteres Permitidos: @ .
         /// Agregar en el evento escritura.
         /// OK 01/11/11
         /// </summary>
         /// <param name="C"></param>
         /// <returns></returns>
-        public bool eMail(string email)
+        public bool eMail(char email)
         {
-            if (!email.Contains("@"))
+            String allowedLetter = email.ToString();
+            if ((!allowedLetter.Contains("@")) && (!allowedLetter.Contains(".")))
             {
                 return true;
             }
             return false;
         }
+        
+        /// <summary>
+        /// Valida si es Retroseso.
+        /// Agregar en el evento escritura.
+        /// OK 07/10/17
+        /// </summary>
+        /// <param name="retro"></param>
+        /// <returns></returns>
+        public bool isRetroceso(char retro)
+        {
+            if (retro != Convert.ToChar(Keys.Back))
+            {
+                return true;
+            }
+            return false;
+
+        }
+
+        /// <summary>
+        /// Valida Carecteres aceptados de un Numero de Telefono + - () 
+        /// Agregar en el evento escritura.
+        /// OK 07/10/17
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns></returns>
+        public bool isPhone(char symbol)
+        {
+            String comp = symbol.ToString();
+            if ((!comp.Contains("+")) && ((!comp.Contains("("))) && ((!comp.Contains(")"))) && ((!comp.Contains("-"))))
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+
+
     }
 }
