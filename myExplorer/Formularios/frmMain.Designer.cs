@@ -44,11 +44,14 @@
             this.tsmiNowUser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiLocation = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbmCountry = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbmProvince = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbmCity = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDataBase = new System.Windows.Forms.ToolStripMenuItem();
             this.tsPrincipal = new System.Windows.Forms.ToolStrip();
-            this.tsddbPaciente = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsgAgregarOB = new System.Windows.Forms.ToolStripButton();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
@@ -64,10 +67,7 @@
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
-            this.tsmiLocation = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAbmCountry = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAbmProvince = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAbmCity = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsddbPaciente = new System.Windows.Forms.ToolStripButton();
             this.mspBarraTareas.SuspendLayout();
             this.tsPrincipal.SuspendLayout();
             this.ssEstado.SuspendLayout();
@@ -204,6 +204,38 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(209, 6);
             // 
+            // tsmiLocation
+            // 
+            this.tsmiLocation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAbmCountry,
+            this.tsmiAbmProvince,
+            this.tsmiAbmCity});
+            this.tsmiLocation.Image = global::myExplorer.Properties.Resources.Database3;
+            this.tsmiLocation.Name = "tsmiLocation";
+            this.tsmiLocation.Size = new System.Drawing.Size(212, 30);
+            this.tsmiLocation.Text = "Localidades";
+            // 
+            // tsmiAbmCountry
+            // 
+            this.tsmiAbmCountry.Name = "tsmiAbmCountry";
+            this.tsmiAbmCountry.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAbmCountry.Text = "ABM Pais";
+            this.tsmiAbmCountry.Click += new System.EventHandler(this.tsmiAbmCountry_Click);
+            // 
+            // tsmiAbmProvince
+            // 
+            this.tsmiAbmProvince.Name = "tsmiAbmProvince";
+            this.tsmiAbmProvince.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAbmProvince.Text = "ABM Provincia";
+            this.tsmiAbmProvince.Click += new System.EventHandler(this.tsmiAbmProvince_Click);
+            // 
+            // tsmiAbmCity
+            // 
+            this.tsmiAbmCity.Name = "tsmiAbmCity";
+            this.tsmiAbmCity.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAbmCity.Text = "ABM Ciudad";
+            this.tsmiAbmCity.Click += new System.EventHandler(this.tsmiAbmCity_Click);
+            // 
             // tsmiAyuda
             // 
             this.tsmiAyuda.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -240,18 +272,9 @@
             this.tsPrincipal.Name = "tsPrincipal";
             this.tsPrincipal.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.tsPrincipal.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsPrincipal.Size = new System.Drawing.Size(310, 39);
+            this.tsPrincipal.Size = new System.Drawing.Size(342, 39);
             this.tsPrincipal.TabIndex = 2;
             this.tsPrincipal.Text = "tsMenu";
-            // 
-            // tsddbPaciente
-            // 
-            this.tsddbPaciente.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
-            this.tsddbPaciente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsddbPaciente.Name = "tsddbPaciente";
-            this.tsddbPaciente.Size = new System.Drawing.Size(127, 36);
-            this.tsddbPaciente.Text = "Abuelos";
-            this.tsddbPaciente.Click += new System.EventHandler(this.tsmiGrandfather_Click);
             // 
             // toolStripSeparator3
             // 
@@ -394,37 +417,14 @@
             // 
             this.ContentPanel.Size = new System.Drawing.Size(150, 150);
             // 
-            // tsmiLocation
+            // tsddbPaciente
             // 
-            this.tsmiLocation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAbmCountry,
-            this.tsmiAbmProvince,
-            this.tsmiAbmCity});
-            this.tsmiLocation.Image = global::myExplorer.Properties.Resources.Database3;
-            this.tsmiLocation.Name = "tsmiLocation";
-            this.tsmiLocation.Size = new System.Drawing.Size(212, 30);
-            this.tsmiLocation.Text = "Localidades";
-            // 
-            // tsmiAbmCountry
-            // 
-            this.tsmiAbmCountry.Name = "tsmiAbmCountry";
-            this.tsmiAbmCountry.Size = new System.Drawing.Size(210, 30);
-            this.tsmiAbmCountry.Text = "ABM Pais";
-            this.tsmiAbmCountry.Click += new System.EventHandler(this.tsmiAbmCountry_Click);
-            // 
-            // tsmiAbmProvince
-            // 
-            this.tsmiAbmProvince.Name = "tsmiAbmProvince";
-            this.tsmiAbmProvince.Size = new System.Drawing.Size(210, 30);
-            this.tsmiAbmProvince.Text = "ABM Provincia";
-            this.tsmiAbmProvince.Click += new System.EventHandler(this.tsmiAbmProvince_Click);
-            // 
-            // tsmiAbmCity
-            // 
-            this.tsmiAbmCity.Name = "tsmiAbmCity";
-            this.tsmiAbmCity.Size = new System.Drawing.Size(210, 30);
-            this.tsmiAbmCity.Text = "ABM Ciudad";
-            this.tsmiAbmCity.Click += new System.EventHandler(this.tsmiAbmCity_Click);
+            this.tsddbPaciente.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsddbPaciente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddbPaciente.Name = "tsddbPaciente";
+            this.tsddbPaciente.Size = new System.Drawing.Size(113, 36);
+            this.tsddbPaciente.Text = "Abuelos";
+            this.tsddbPaciente.Click += new System.EventHandler(this.tsmiGrandfather_Click);
             // 
             // frmMain
             // 
@@ -479,7 +479,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiSocialWorks;
         private System.Windows.Forms.ToolStripMenuItem tsmiAcercaDe;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripDropDownButton tsddbPaciente;
         private System.Windows.Forms.ToolStripMenuItem tsmiGrandfather;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.StatusStrip ssEstado;
@@ -506,6 +505,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiAbmCountry;
         private System.Windows.Forms.ToolStripMenuItem tsmiAbmProvince;
         private System.Windows.Forms.ToolStripMenuItem tsmiAbmCity;
+        private System.Windows.Forms.ToolStripButton tsddbPaciente;
     }
 }
 
