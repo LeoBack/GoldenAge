@@ -402,13 +402,16 @@ namespace myExplorer.Formularios
         private bool ValidarCampos()
         {
             bool V = false;
-
+            classValidaciones oClassValidas = new classValidaciones();
             if (txtName.Text.Length >= 50 || (txtName.Text == ""))
                 MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
             else if (txtLastName.Text.Length >= 50 || (txtLastName.Text == ""))
                 MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
-            else if (txtMail.Text.Length >= 50 || (txtMail.Text == ""))
-                MessageBox.Show("La direccion de Correo esta vacia o supera los 50 caracteres");
+            else if (oClassValidas.ComprobarFormatoEmail(txtMail.Text) == false)
+            {
+                MessageBox.Show("Formato de Direccion de Correo invalido");
+            }
+                
             else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
             else if ((txtPassword.Text.Length < 8) || (txtPassword.Text.Length >= 20) || (txtPassword.Text == ""))
@@ -466,5 +469,27 @@ namespace myExplorer.Formularios
             }
         }
         #endregion
+
+        private void ValidarCorreos(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void ValidarCorreoLeave(object sender, EventArgs e)
+        {
+
+            String lEmailCorrecto = "";
+            classValidaciones oClassValidas = new classValidaciones();
+            if (oClassValidas.ComprobarFormatoEmail(txtMail.Text)==false)
+            {
+                lEmailCorrecto = "Dirección no valida";
+                //lEmailCorrecto.ForeColor = Color.Red;
+            }
+            else
+            {
+                lEmailCorrecto= "Dirección valida";
+                //lEmailCorrecto.ForeColor = Color.Green;
+            }
+        }
     }
 }
