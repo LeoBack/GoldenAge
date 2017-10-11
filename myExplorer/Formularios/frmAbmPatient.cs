@@ -58,7 +58,8 @@ namespace myExplorer.Formularios
                 Text = oTxt.TitleFichaPatient;
 
                 initSocialWork();
-                initTypeDocument();
+                initTypeDocumentPatient();
+                initTypeDocumentParent();
                 initParentRelationship();
                 initParentList();
 
@@ -67,12 +68,12 @@ namespace myExplorer.Formularios
                     case Modo.Select:
                         EnablePatient(false);
                         EnableParent(false);
-                        EscribirEnFrmPatient();
+                        LoadFrmPatient();
                         break;
                     case Modo.Update:
                         EnablePatient(true);
                         EnableParent(false);
-                        EscribirEnFrmPatient();
+                        LoadFrmPatient();
                         break;
                     case Modo.Add:
                         oPatient = new classPatient();
@@ -90,46 +91,57 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/10/10
         #region Botones
 
-        // OK 17/09/30
+        // OK - 17/10/10
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (ValidarCamposPatient())
-            {
-                CargarObjetoPatient();
-                int IdQuery = 0;
-
-                switch (eModo)
-                {
-                    case Modo.Add:
-                        IdQuery = (int)oQuery.AbmPatient(oPatient, classQuery.eAbm.Insert);
-                        if (0 != IdQuery)
-                            MessageBox.Show(oTxt.AddPatient);
-                        else
-                            MessageBox.Show(oTxt.ErrorQueryAdd);
-                        break;
-                    case Modo.Update:
-                        IdQuery = (int)oQuery.AbmPatient(oPatient, classQuery.eAbm.Update);
-                        if (0 != IdQuery)
-                            MessageBox.Show(oTxt.UpdatePatient);
-                        else
-                            MessageBox.Show(oTxt.ErrorQueryUpdate);
-                        break;
-                    default:
-                        MessageBox.Show(oTxt.AccionIndefinida);
-                        break;
-                }
-
-                if (IdQuery == 0)
-                    MessageBox.Show(oQuery.Menssage);
-                else
-                    Close();
-            }
+            if (SavePatient())
+                Close();
         }
 
-        // OK 17/09/30
+        // OK - 17/10/10
+        private void btnAcceptParent_Click(object sender, EventArgs e)
+        {
+            SaveParent();
+        }
+
+        private void tsmiDelete_Click(object sender, EventArgs e)
+        {
+            //classProfessional oP = new classProfessional();
+            MessageBox.Show("Eliminar\n"+oParent.ToString());
+            //if (dgvLista.Rows.Count != 0)
+            //{
+            //    oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+            //    oP = (classProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
+            //    oP.Visible = false;
+
+            //    if (oP != null)
+            //    {
+            //        if (0 != (int)oQuery.AbmProfessional(oP, classQuery.eAbm.Update))
+            //            MessageBox.Show(oTxt.UpdateProfessional);
+            //        else
+            //            MessageBox.Show(oTxt.ErrorQueryUpdate);
+            //        //frmAbmProfessional frmA = new frmAbmProfessional();
+            //        //frmA.oQuery = oQuery;
+            //        //frmA.oUtil = oUtil;
+            //        //frmA.oProfessional = oP;
+            //        //frmA.eModo = frmAbmProfessional.Modo.Delete;
+            //        //frmA.ShowDialog();
+            //    }
+            //    else
+            //        MessageBox.Show(oTxt.ErrorQueryList);
+
+            //}
+        }
+
+        private void btnSearchParent_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Busca por Tipo y Nº de Documento.");
+        }
+
+        // OK - 17/09/30
         private void btnBlocked_Click(object sender, EventArgs e)
         {
             if (oPatient != null)
@@ -147,7 +159,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK 17/09/30
+        // OK - 17/09/30
         private void btnLocalitationPatient_Click(object sender, EventArgs e)
         {
             frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
@@ -160,7 +172,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK 17/09/30
+        // OK - 17/09/30
         private void btnLocalitationParent_Click(object sender, EventArgs e)
         {
             frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
@@ -174,80 +186,40 @@ namespace myExplorer.Formularios
         }
 
         // OK - 17/10/08
-        private void btnAcceptParent_Click(object sender, EventArgs e)
-        {
-            if(ValidarCamposParent())
-            {
-                CargarObjetoParent();
-                int IdQuery = 0;
-
-                switch (eModoParent)
-                {
-                    case Modo.Add:
-                        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Insert);
-                        if (0 != IdQuery)
-                        {
-                            classPatientParent oPp = new classPatientParent(0, oPatient.IdPatient, IdQuery, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
-                            if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Insert))
-                            {
-                                MessageBox.Show(oTxt.AddParent);
-                                initParentList();
-                            }
-                        }
-                        else
-                            MessageBox.Show(oTxt.ErrorQueryAdd);
-                        break;
-                    case Modo.Update:
-                        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Update);
-                        if (0 != IdQuery)
-                        {
-                            classPatientParent oPp =null;
-                            foreach(classPatientParent iPp in lPatienParent)
-                            {
-                                if ((iPp.IdParent == oParent.IdParent) & (iPp.IdPatient == oPatient.IdPatient))
-                                    oPp = new classPatientParent(iPp.IdPatientParent, oPatient.IdPatient, IdQuery, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
-                            }
-
-                            if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Update))
-                            {
-                                MessageBox.Show(oTxt.UpdateParent);
-                                initParentList();
-                            }
-                        }
-                        else
-                            MessageBox.Show(oTxt.ErrorQueryUpdate);
-                        break;
-                    case Modo.Delete:
-
-                        break;
-                    default:
-                        MessageBox.Show(oTxt.AccionIndefinida);
-                        break;
-                }
-
-                if (IdQuery == 0)
-                    MessageBox.Show(oQuery.Menssage);
-            }
-        }
-
-        // OK - 17/10/08
         private void btnNewParent_Click(object sender, EventArgs e)
         {
-            eModoParent = Modo.Add;
-            oParent = new classParent();
-            IdCountryParent = 0;
-            IdProvinceParent = 0;
-            IdCityParent = 0;
+            bool Ok = true;
 
-            foreach (Control ctrl in tlpParent.Controls)
+            if (eModo == Modo.Add)
             {
-                if (ctrl is TextBox)
+                if (MessageBox.Show("Es necesario guardar el paciente actual antes de continuar con la carga de parientes.\n¿Guardar paciente actual?"
+                    , "Atencion", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    TextBox t = ctrl as TextBox;
-                    t.Text = string.Empty;
+                    Ok = SavePatient();
+                    eModo = (Ok == true) ? Modo.Update : Modo.Add;
                 }
+                else
+                    Ok = false;
             }
-            EnableParent(true);
+
+            if (Ok)
+            {
+                eModoParent = Modo.Add;
+                oParent = new classParent();
+                IdCountryParent = 0;
+                IdProvinceParent = 0;
+                IdCityParent = 0;
+
+                foreach (Control ctrl in tlpParent.Controls)
+                {
+                    if (ctrl is TextBox)
+                    {
+                        TextBox t = ctrl as TextBox;
+                        t.Text = string.Empty;
+                    }
+                }
+                EnableParent(true);
+            }
         }
 
         // OK - 17/10/08
@@ -262,7 +234,7 @@ namespace myExplorer.Formularios
             eModoParent = oParent != null ? Modo.Update : Modo.Add;
             oParent = oParent != null ? oParent : new classParent();
 
-            EscribirEnFrmParent();
+            LoadfrmParent();
             EnableParent(true);
         }
 
@@ -270,29 +242,80 @@ namespace myExplorer.Formularios
 
         #region Metodos Patient
 
-        // OK 17/09/30
-        private void initTypeDocument()
+        /// <summary>
+        /// ABM En base de datos Paciente.
+        /// OK - 17/10/10
+        /// </summary>
+        /// <returns>True:Exito False:Error</returns>
+        private bool SavePatient()
+        {
+            int IdQuery = 0;
+            if (ValidateFieldsPatient())
+            {
+                LoadObjectPatient();
+
+                switch (eModo)
+                {
+                    case Modo.Add:
+                        IdQuery = (int)oQuery.AbmPatient(oPatient, classQuery.eAbm.Insert);
+                        if (0 != IdQuery)
+                        {
+                            oPatient.IdPatient = IdQuery;
+                            MessageBox.Show(oTxt.AddPatient);
+                        }
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryAdd);
+                        break;
+                    case Modo.Update:
+                        IdQuery = (int)oQuery.AbmPatient(oPatient, classQuery.eAbm.Update);
+                        if (0 != IdQuery)
+                            MessageBox.Show(oTxt.UpdatePatient);
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryUpdate);
+                        break;
+                    default:
+                        MessageBox.Show(oTxt.AccionIndefinida);
+                        break;
+                }
+                if(IdQuery == 0)
+                    MessageBox.Show(oQuery.Menssage);
+            }
+
+            return (IdQuery != 0);
+        }
+
+        /// <summary>
+        /// Inicializa componente Typo docuemento.
+        /// OK - 17/09/30
+        /// </summary>
+        private void initTypeDocumentPatient()
+        {
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocumentPatient,
+            (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
+            oQuery.Table);
+        }
+
+        /// <summary>
+        /// Inicializa compoente Obre Social.
+        /// OK - 17/09/30
+        /// </summary>
+        private void initSocialWork()
         {
             libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSocialWork,
             (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb),
             oQuery.Table);
         }
 
-        // OK 17/09/30
-        private void initSocialWork()
-        {
-            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocument,
-            (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
-            oQuery.Table);
-        }
-
-        // OK 17/09/30
-        private void CargarObjetoPatient()
+        /// <summary>
+        /// Cargo objeto Pariente.
+        /// OK - 17/09/30
+        /// </summary>
+        private void LoadObjectPatient()
         {
             oPatient.Name = txtName.Text.ToUpper();
             oPatient.LastName = txtLastName.Text.ToUpper();
             oPatient.Birthdate = dtpBirthdate.Value;
-            oPatient.IdTypeDocument = Convert.ToInt32(cmbTypeDocument.SelectedValue);
+            oPatient.IdTypeDocument = Convert.ToInt32(cmbTypeDocumentPatient.SelectedValue);
             oPatient.NumberDocument = Convert.ToInt32(txtNumberDocument.Text);
             oPatient.Sex = rbtMale.Checked;
             oPatient.IdLocationCountry = IdCountry;
@@ -310,14 +333,14 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Carga los elementos de formulario desde objeto.
-        /// OK 17/09/30
+        /// OK - 17/09/30
         /// </summary>
-        private void EscribirEnFrmPatient()
+        private void LoadFrmPatient()
         {
             txtName.Text = oPatient.Name.ToUpper();
             txtLastName.Text = oPatient.LastName.ToUpper();
             dtpBirthdate.Value = oPatient.Birthdate;
-            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeDocument, oPatient.IdTypeDocument);
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeDocumentPatient, oPatient.IdTypeDocument);
             txtNumberDocument.Text = Convert.ToString(oPatient.NumberDocument);
             rbtMale.Checked = oPatient.Sex;
             rbtFemale.Checked = !oPatient.Sex;
@@ -346,10 +369,10 @@ namespace myExplorer.Formularios
         /// <summary>
         /// Valida los campos del Formulario.
         /// False -> Vacio - True -> Ok
-        /// OK 17/09/30
+        /// OK - 17/09/30
         /// </summary>
         /// <returns></returns>
-        private bool ValidarCamposPatient()
+        private bool ValidateFieldsPatient()
         {
             bool V = false;
 
@@ -368,7 +391,7 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
             else if (txtReasonExit.Text.Length >= 50)
                 MessageBox.Show("El Motivo de Alta Debe tener como minimo 8 caracteres.");
-            else if (cmbTypeDocument.SelectedIndex == -1)
+            else if (cmbTypeDocumentPatient.SelectedIndex == -1)
                 MessageBox.Show("Tipo Docuemento Invalido.");
             else if (cmbSocialWork.SelectedIndex == -1)
                 MessageBox.Show("Obra Social Invalida.");
@@ -378,12 +401,11 @@ namespace myExplorer.Formularios
             return V;
         }
 
-        
         /// <summary>
         /// Habilita TabFicha
-        /// OK 18/04/12
+        /// OK - 18/04/12
         /// </summary>
-        /// <param name="X"></param>
+        /// <param name="X">True: Habilitado - False:Inhabilitado</param>
         private void EnablePatient(bool X)
         {
             foreach (Control C in this.tlpPanlData.Controls)
@@ -398,10 +420,83 @@ namespace myExplorer.Formularios
         #region Metodos Parent
 
         /// <summary>
-        /// Habilita TabFicha
-        /// OK 18/04/12
+        /// ABM En base de datos Pariente.
+        /// OK - 17/10/10
         /// </summary>
-        /// <param name="X"></param>
+        /// <returns>True:Exito False:Error</returns>
+        private bool SaveParent()
+        {
+            int IdQuery = 0;
+            if (ValidateFieldsParent())
+            {
+                LoadObjectParent();
+
+                switch (eModoParent)
+                {
+                    case Modo.Add:
+                        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Insert);
+                        if (0 != IdQuery)
+                        {
+                            classPatientParent oPp = new classPatientParent(0, oPatient.IdPatient, IdQuery, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
+                            if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Insert))
+                            {
+                                MessageBox.Show(oTxt.AddParent);
+                                initParentList();
+                            }
+                        }
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryAdd);
+                        break;
+                    case Modo.Update:
+                        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Update);
+                        if (0 != IdQuery)
+                        {
+                            classPatientParent oPp = null;
+                            foreach (classPatientParent iPp in lPatienParent)
+                            {
+                                if ((iPp.IdParent == oParent.IdParent) & (iPp.IdPatient == oPatient.IdPatient))
+                                    oPp = new classPatientParent(iPp.IdPatientParent, oPatient.IdPatient, IdQuery, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
+                            }
+
+                            if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Update))
+                            {
+                                MessageBox.Show(oTxt.UpdateParent);
+                                initParentList();
+                            }
+                        }
+                        else
+                            MessageBox.Show(oTxt.ErrorQueryUpdate);
+                        break;
+                    case Modo.Delete:
+
+                        break;
+                    default:
+                        MessageBox.Show(oTxt.AccionIndefinida);
+                        break;
+                }
+
+                if (IdQuery == 0)
+                    MessageBox.Show(oQuery.Menssage);
+            }
+            return (IdQuery != 0);
+        }
+
+        /// <summary>
+        /// Inicializa componente Typo docuemento.
+        /// OK - 17/09/30
+        /// </summary>
+        private void initTypeDocumentParent()
+        {
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocumentParent,
+            (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
+            oQuery.Table);
+        }
+
+        /// <summary>
+        /// Habilita TabFicha
+        /// OK - 18/04/12
+        /// </summary>
+        /// <param name="X">True: Habilitado - False: Inhabilitado</param>
         private void EnableParent(bool X)
         {
             foreach (Control C in this.tlpParent.Controls)
@@ -413,25 +508,31 @@ namespace myExplorer.Formularios
             dgvLista.Enabled = true;
         }
 
-        // OK - 17/10/08
+        /// <summary>
+        /// Inicializa componente ListaParientes
+        /// OK - 17/10/08
+        /// </summary>
         private void initParentList()
         {
-            classPatientParent oPp = new classPatientParent();
-            oPp.IdPatient = oPatient.IdPatient;
-
-            lPatienParent = oQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<classPatientParent>;
-
-            DataTable dT = new DataTable("AbmPatientParent");
-            dT.Columns.Add("Id", typeof(Int32));
-            dT.Columns.Add("Parentesco", typeof(string));
-            dT.Columns.Add("Nombre", typeof(string));
-            foreach (classPatientParent iPp in lPatienParent)
+            if (eModo != Modo.Add)
             {
-                classParent oP = oQuery.AbmParent(new classParent(iPp.IdParent), classQuery.eAbm.Select) as classParent;
-                classRelationship oR = oQuery.AbmRelationship(new classRelationship(iPp.IdRelationship), classQuery.eAbm.Select) as classRelationship;
-                dT.Rows.Add(new object[] { oP.IdParent, oR.Description, oP.LastName + ", " + oP.Name });
+                classPatientParent oPp = new classPatientParent();
+                oPp.IdPatient = oPatient.IdPatient;
+
+                lPatienParent = oQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<classPatientParent>;
+
+                DataTable dT = new DataTable("AbmPatientParent");
+                dT.Columns.Add("Id", typeof(Int32));
+                dT.Columns.Add("Parentesco", typeof(string));
+                dT.Columns.Add("Nombre", typeof(string));
+                foreach (classPatientParent iPp in lPatienParent)
+                {
+                    classParent oP = oQuery.AbmParent(new classParent(iPp.IdParent), classQuery.eAbm.Select) as classParent;
+                    classRelationship oR = oQuery.AbmRelationship(new classRelationship(iPp.IdRelationship), classQuery.eAbm.Select) as classRelationship;
+                    dT.Rows.Add(new object[] { oP.IdParent, oR.Description, oP.LastName + ", " + oP.Name });
+                }
+                GenerarGrilla(dT);
             }
-            GenerarGrilla(dT);
         }
 
         /// <summary>
@@ -451,18 +552,21 @@ namespace myExplorer.Formularios
             dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvLista.ReadOnly = true;
             dgvLista.ScrollBars = ScrollBars.Both;
-            //dgvLista.ContextMenuStrip = cmsMenuEmergente;
+            dgvLista.ContextMenuStrip = cmsMenuEmergente;
             dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLista.MultiSelect = false;
             dgvLista.DataSource = Source;
-#if RELEASE
+#if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
-            dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
+            //dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif
             return dgvLista.Rows.Count;
         }
 
-        // OK 17/09/30
+        /// <summary>
+        /// Inicializa compoente Relacion Pariente.
+        /// OK 17/09/30
+        /// </summary>
         private void initParentRelationship()
         {
             libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbParentRelationship,
@@ -470,12 +574,16 @@ namespace myExplorer.Formularios
             oQuery.Table);
         }
 
-        // OK 17/09/30
-        private void CargarObjetoParent()
+        /// <summary>
+        /// CArga Objeto desde Formulario.
+        /// OK 17/09/30
+        /// </summary>
+        private void LoadObjectParent()
         {
             oParent.Name = txtParentName.Text.ToUpper();
             oParent.LastName = txtParentLastName.Text.ToUpper();
             oParent.NumberDocument = Convert.ToInt32(txtParentNumberDocument.Text);
+            oParent.IdTypeDocument = Convert.ToInt32(cmbTypeDocumentParent.SelectedValue);
             oParent.Address = txtParentAddress.Text.ToUpper();
             oParent.IdLocationCountry = IdCountryParent;
             oParent.IdLocationCity = IdCityParent;
@@ -489,11 +597,12 @@ namespace myExplorer.Formularios
         /// Carga los elementos de formulario desde objeto.
         /// OK 17/09/30
         /// </summary>
-        private void EscribirEnFrmParent()
+        private void LoadfrmParent()
         {
             txtParentName.Text = oParent.Name.ToUpper();
             txtParentLastName.Text = oParent.LastName.ToUpper();
             txtParentNumberDocument.Text = Convert.ToString(oParent.NumberDocument);
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeDocumentParent, oParent.IdTypeDocument);
             txtParentAddress.Text = oParent.Address.ToUpper();
             IdCountryParent = oParent.IdLocationCountry;
             IdProvinceParent = oParent.IdLocationProvince;
@@ -519,7 +628,7 @@ namespace myExplorer.Formularios
         /// OK 17/09/30
         /// </summary>
         /// <returns></returns>
-        private bool ValidarCamposParent()
+        private bool ValidateFieldsParent()
         {
             bool V = false;
 
@@ -541,6 +650,8 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El E-mail supera los 50 caracteres");
             else if (cmbParentRelationship.SelectedIndex== -1)
                 MessageBox.Show("Parentesco Invalida.");
+            else if (cmbTypeDocumentParent.SelectedIndex == -1)
+                MessageBox.Show("Tipo documento Invalido.");
 
             else
                 V = true;

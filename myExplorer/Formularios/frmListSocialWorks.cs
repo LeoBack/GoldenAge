@@ -44,7 +44,6 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null && oUtil != null)
             {
-                ConfiguracionInicial();
                 Text = oTxt.TitleSocialWorks;
                 SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
@@ -193,18 +192,6 @@ namespace myExplorer.Formularios
         #region Metodos
 
         /// <summary>
-        /// Configura el formulario.
-        /// OK - 24/09/17
-        /// </summary>
-        public void ConfiguracionInicial()
-        {
-            Size sBtn = new Size(75, 42);
-            //btnBuscar.Size = sBtn;
-            //btnSeleccionar.Size = sBtn;
-            //btnCancelar.Size = sBtn;
-        }
-
-        /// <summary>
         /// Aplica Filtros de busqueda
         /// OK - 24/09/17
         /// </summary>
@@ -268,7 +255,7 @@ namespace myExplorer.Formularios
             dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLista.MultiSelect = false;
             dgvLista.DataSource = Source;
-#if RELEASE
+#if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
             dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif

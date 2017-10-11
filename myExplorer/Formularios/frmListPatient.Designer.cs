@@ -54,6 +54,7 @@
             this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tlpPanel.SuspendLayout();
             this.tsMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
@@ -65,7 +66,7 @@
             this.tlpPanel.ColumnCount = 3;
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.55109F));
             this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.89783F));
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
+            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.tlpPanel.Controls.Add(this.tsMenu, 0, 0);
             this.tlpPanel.Controls.Add(this.dgvLista, 0, 1);
             this.tlpPanel.Controls.Add(this.btnClosed, 2, 2);
@@ -86,6 +87,7 @@
             this.tlpPanel.SetColumnSpan(this.tsMenu, 3);
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbAdd,
             this.tslblLastName,
             this.tstxtLastName,
             this.tslblName,
@@ -214,7 +216,7 @@
             // btnClosed
             // 
             this.btnClosed.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClosed.Location = new System.Drawing.Point(1224, 535);
+            this.btnClosed.Location = new System.Drawing.Point(1223, 535);
             this.btnClosed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClosed.Name = "btnClosed";
             this.btnClosed.Size = new System.Drawing.Size(112, 65);
@@ -281,6 +283,15 @@
             this.tsmiAdd.Text = "Agregar";
             this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
+            // tsbAdd
+            // 
+            this.tsbAdd.Image = global::myExplorer.Properties.Resources.Plus;
+            this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAdd.Name = "tsbAdd";
+            this.tsbAdd.Size = new System.Drawing.Size(112, 36);
+            this.tsbAdd.Text = "Agregar";
+            this.tsbAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
+            // 
             // frmListPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -328,5 +339,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiAdd;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmiDiagnostic;
+        private System.Windows.Forms.ToolStripButton tsbAdd;
     }
 }
