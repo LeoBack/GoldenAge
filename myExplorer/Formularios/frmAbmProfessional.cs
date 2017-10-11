@@ -418,7 +418,9 @@ namespace myExplorer.Formularios
                 MessageBox.Show("La Contraseña esta vacia y//o debe tener como minimo 8 caracteres.");
             else if ((txtProfessionalRegistration.Text.Length < 6) || (txtProfessionalRegistration.Text == ""))
                 MessageBox.Show("El Numero de Registro esta vacio o no supera los 6 caracteres.");
-            else if (txtPhone.Text.Length >= 20)
+            else if (oClassValidas.ComprobarFormatoTelefono(txtPhone.Text)==false)
+                MessageBox.Show("Formato");
+            else if(txtPhone.Text.Length >= 20)
                 MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
             else if (txtUser.Text.Length >= 20 || txtUser.Text == "")
                 MessageBox.Show("El Nombre de Usuario esta vacio o supera los 20 caracteres");
@@ -463,10 +465,10 @@ namespace myExplorer.Formularios
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
-            {
-                e.Handled = true;
-            }
+        //    if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+        //    {
+        //        e.Handled = true;
+        //    }
         }
         #endregion
 

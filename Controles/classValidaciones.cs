@@ -101,6 +101,14 @@ namespace Controles
             return false;
         }
 
+        // <summary>
+        /// Valida si es direccion de mail valida.
+        /// Formato: correo@dominio.com
+        /// Agregar en el evento escritura.
+        /// OK 10/10/17
+        /// </summary>
+        /// <param name="C"></param>
+        /// <returns></returns>
         public bool ComprobarFormatoEmail(string sEmailAComprobar)
         {
             String sFormato;
@@ -156,7 +164,34 @@ namespace Controles
             return false;
         }
 
-
+        /// Valida si es direccion de mail valida.
+        /// Formato: correo@dominio.com
+        /// Agregar en el evento escritura.
+        /// OK 10/10/17
+        /// </summary>
+        /// <param name="C"></param>
+        /// <returns></returns>
+        public bool ComprobarFormatoTelefono(string sPhoneAComprobar)
+        {
+            String sFormato;
+            //sFormato = @"^[+-]?\d+(\.\d+)?$";
+            sFormato = @"^ [0-9, +, (),,] {1,} (, [0-9] +) {0,} $"; 
+            if (Regex.IsMatch(sPhoneAComprobar, sFormato))
+            {
+                if (Regex.Replace(sPhoneAComprobar, sFormato, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
     }
