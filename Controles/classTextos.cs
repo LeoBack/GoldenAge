@@ -60,6 +60,7 @@ namespace Controles
         public string AddParent = "Pariente agregado con exito.";
         public string UpdateParent = "Pariente actualizado con exito.";
         public string PacienteSeleccionado = "Paciente Seleccionado : ";
+        public string DeleteParent = "Pariente eliminado";
 
         // SocialWork
         public string AddSocialWork = "Obra Social agregada con exito.";
