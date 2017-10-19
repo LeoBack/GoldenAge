@@ -107,33 +107,23 @@ namespace myExplorer.Formularios
             SaveParent();
         }
 
+        // OK - 17/10/12
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            //classProfessional oP = new classProfessional();
-            MessageBox.Show("Eliminar\n"+oParent.ToString());
-            //if (dgvLista.Rows.Count != 0)
-            //{
-            //    oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-            //    oP = (classProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
-            //    oP.Visible = false;
+            if(oParent != null)
+            {
+                classPatientParent oPp = new classPatientParent(
+                    Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value));
 
-            //    if (oP != null)
-            //    {
-            //        if (0 != (int)oQuery.AbmProfessional(oP, classQuery.eAbm.Update))
-            //            MessageBox.Show(oTxt.UpdateProfessional);
-            //        else
-            //            MessageBox.Show(oTxt.ErrorQueryUpdate);
-            //        //frmAbmProfessional frmA = new frmAbmProfessional();
-            //        //frmA.oQuery = oQuery;
-            //        //frmA.oUtil = oUtil;
-            //        //frmA.oProfessional = oP;
-            //        //frmA.eModo = frmAbmProfessional.Modo.Delete;
-            //        //frmA.ShowDialog();
-            //    }
-            //    else
-            //        MessageBox.Show(oTxt.ErrorQueryList);
-
-            //}
+                if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Delete))
+                {
+                    MessageBox.Show(oTxt.DeleteParent);
+                    CleanParent();
+                    initParentList();
+                }
+                else
+                    MessageBox.Show(oTxt.ErrorQueryDelete);
+            }
         }
 
         private void btnSearchParent_Click(object sender, EventArgs e)
@@ -206,18 +196,7 @@ namespace myExplorer.Formularios
             {
                 eModoParent = Modo.Add;
                 oParent = new classParent();
-                IdCountryParent = 0;
-                IdProvinceParent = 0;
-                IdCityParent = 0;
-
-                foreach (Control ctrl in tlpParent.Controls)
-                {
-                    if (ctrl is TextBox)
-                    {
-                        TextBox t = ctrl as TextBox;
-                        t.Text = string.Empty;
-                    }
-                }
+                CleanParent();
                 EnableParent(true);
             }
         }
@@ -228,7 +207,7 @@ namespace myExplorer.Formularios
             SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
 
             oParent = oQuery.AbmParent(new classParent(
-                Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)),
+                Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value)),
                 classQuery.eAbm.Select) as classParent;
 
             eModoParent = oParent != null ? Modo.Update : Modo.Add;
@@ -420,6 +399,26 @@ namespace myExplorer.Formularios
         #region Metodos Parent
 
         /// <summary>
+        /// Limpia los componentes del pariente
+        /// OK - 17/10/12
+        /// </summary>
+        private void CleanParent()
+        {
+            IdCountryParent = 0;
+            IdProvinceParent = 0;
+            IdCityParent = 0;
+
+            foreach (Control ctrl in tlpParent.Controls)
+            {
+                if (ctrl is TextBox)
+                {
+                    TextBox t = ctrl as TextBox;
+                    t.Text = string.Empty;
+                }
+            }
+        }
+
+        /// <summary>
         /// ABM En base de datos Pariente.
         /// OK - 17/10/10
         /// </summary>
@@ -522,14 +521,15 @@ namespace myExplorer.Formularios
                 lPatienParent = oQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<classPatientParent>;
 
                 DataTable dT = new DataTable("AbmPatientParent");
-                dT.Columns.Add("Id", typeof(Int32));
+                dT.Columns.Add("IdPatientParent", typeof(Int32));
+                dT.Columns.Add("IdParent", typeof(Int32));
                 dT.Columns.Add("Parentesco", typeof(string));
                 dT.Columns.Add("Nombre", typeof(string));
                 foreach (classPatientParent iPp in lPatienParent)
                 {
                     classParent oP = oQuery.AbmParent(new classParent(iPp.IdParent), classQuery.eAbm.Select) as classParent;
                     classRelationship oR = oQuery.AbmRelationship(new classRelationship(iPp.IdRelationship), classQuery.eAbm.Select) as classRelationship;
-                    dT.Rows.Add(new object[] { oP.IdParent, oR.Description, oP.LastName + ", " + oP.Name });
+                    dT.Rows.Add(new object[] { iPp.IdPatientParent, oP.IdParent, oR.Description, oP.LastName + ", " + oP.Name });
                 }
                 GenerarGrilla(dT);
             }
@@ -558,6 +558,7 @@ namespace myExplorer.Formularios
             dgvLista.DataSource = Source;
 #if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[1].Visible = false;
             //dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif
             return dgvLista.Rows.Count;

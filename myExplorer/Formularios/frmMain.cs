@@ -40,6 +40,7 @@ namespace myExplorer.Formularios
             InitializeComponent();
             Text = oTxt.TituloVentana;
             WindowState = FormWindowState.Maximized;
+            IsMdiContainer = true;
         }
 
         // OK - 17/09/14
@@ -128,9 +129,10 @@ namespace myExplorer.Formularios
             if (User == eUser.Valido)
             {
                 frmListPatient frmBuscar = new frmListPatient();
+                frmBuscar.MaximizeBox = true;
                 frmBuscar.oQuery = oQuery;
                 frmBuscar.oUtil = oUtil;
-                frmBuscar.ShowDialog();
+                frmBuscar.Show();
             }
         }
 
@@ -143,7 +145,7 @@ namespace myExplorer.Formularios
                 frmListSocialWorks frmSocialWork = new frmListSocialWorks();
                 frmSocialWork.oQuery = oQuery;
                 frmSocialWork.oUtil = oUtil;
-                frmSocialWork.ShowDialog();
+                frmSocialWork.Show();
             }
         }
 
@@ -156,7 +158,7 @@ namespace myExplorer.Formularios
                 frmListProfessional frmProfessional = new frmListProfessional();
                 frmProfessional.oQuery = oQuery;
                 frmProfessional.oUtil = oUtil;
-                frmProfessional.ShowDialog();
+                frmProfessional.Show();
             }
         }
 

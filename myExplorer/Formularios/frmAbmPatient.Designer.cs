@@ -76,30 +76,30 @@
             this.tlpParent = new System.Windows.Forms.TableLayoutPanel();
             this.btnLocalitationParent = new System.Windows.Forms.Button();
             this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.txtParentAddress = new System.Windows.Forms.TextBox();
             this.lblParentAddress = new System.Windows.Forms.Label();
             this.lblParentLocation = new System.Windows.Forms.Label();
-            this.txtLocationParent = new System.Windows.Forms.TextBox();
             this.txtParentNumberDocument = new System.Windows.Forms.TextBox();
             this.lblParentNumberDocument = new System.Windows.Forms.Label();
             this.lblParentLastName = new System.Windows.Forms.Label();
             this.lblParentName = new System.Windows.Forms.Label();
-            this.txtParentLastName = new System.Windows.Forms.TextBox();
-            this.txtParentName = new System.Windows.Forms.TextBox();
             this.lblParentRelationship = new System.Windows.Forms.Label();
-            this.cmbParentRelationship = new System.Windows.Forms.ComboBox();
             this.lblParentPhone = new System.Windows.Forms.Label();
-            this.txtParentPhone = new System.Windows.Forms.TextBox();
             this.lblParentAlternativePhone = new System.Windows.Forms.Label();
-            this.txtParentAlternativePhone = new System.Windows.Forms.TextBox();
             this.lblParentEmail = new System.Windows.Forms.Label();
-            this.txtParentEmail = new System.Windows.Forms.TextBox();
             this.btnAcceptParent = new System.Windows.Forms.Button();
             this.btnNewParent = new System.Windows.Forms.Button();
             this.btnSearchParent = new System.Windows.Forms.Button();
+            this.txtParentEmail = new System.Windows.Forms.TextBox();
+            this.txtParentAlternativePhone = new System.Windows.Forms.TextBox();
+            this.txtParentPhone = new System.Windows.Forms.TextBox();
+            this.txtParentAddress = new System.Windows.Forms.TextBox();
+            this.txtLocationParent = new System.Windows.Forms.TextBox();
+            this.txtParentLastName = new System.Windows.Forms.TextBox();
+            this.txtParentName = new System.Windows.Forms.TextBox();
+            this.cmbParentRelationship = new System.Windows.Forms.ComboBox();
+            this.cmbTypeDocumentParent = new System.Windows.Forms.ComboBox();
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmbTypeDocumentParent = new System.Windows.Forms.ComboBox();
             this.tlpPanelPrincipal.SuspendLayout();
             this.tabCarpeta.SuspendLayout();
             this.tabData.SuspendLayout();
@@ -480,7 +480,7 @@
             this.tlpSocialWork.ColumnCount = 3;
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.24852F));
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.75148F));
-            this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
+            this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tlpSocialWork.Controls.Add(this.lblSocialWork, 0, 0);
             this.tlpSocialWork.Controls.Add(this.cmbSocialWork, 1, 0);
             this.tlpSocialWork.Controls.Add(this.lblAffiliateNumber, 0, 1);
@@ -502,7 +502,7 @@
             this.lblSocialWork.Location = new System.Drawing.Point(4, 0);
             this.lblSocialWork.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSocialWork.Name = "lblSocialWork";
-            this.lblSocialWork.Size = new System.Drawing.Size(137, 63);
+            this.lblSocialWork.Size = new System.Drawing.Size(136, 63);
             this.lblSocialWork.TabIndex = 21;
             this.lblSocialWork.Text = "Obra Social";
             this.lblSocialWork.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -512,7 +512,7 @@
             this.cmbSocialWork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSocialWork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSocialWork.FormattingEnabled = true;
-            this.cmbSocialWork.Location = new System.Drawing.Point(149, 17);
+            this.cmbSocialWork.Location = new System.Drawing.Point(148, 17);
             this.cmbSocialWork.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbSocialWork.Name = "cmbSocialWork";
             this.cmbSocialWork.Size = new System.Drawing.Size(296, 28);
@@ -525,7 +525,7 @@
             this.lblAffiliateNumber.Location = new System.Drawing.Point(4, 63);
             this.lblAffiliateNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAffiliateNumber.Name = "lblAffiliateNumber";
-            this.lblAffiliateNumber.Size = new System.Drawing.Size(137, 64);
+            this.lblAffiliateNumber.Size = new System.Drawing.Size(136, 64);
             this.lblAffiliateNumber.TabIndex = 12;
             this.lblAffiliateNumber.Text = "N° Afiliado";
             this.lblAffiliateNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -533,7 +533,7 @@
             // txtAffiliateNumber
             // 
             this.txtAffiliateNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAffiliateNumber.Location = new System.Drawing.Point(149, 82);
+            this.txtAffiliateNumber.Location = new System.Drawing.Point(148, 82);
             this.txtAffiliateNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAffiliateNumber.Name = "txtAffiliateNumber";
             this.txtAffiliateNumber.Size = new System.Drawing.Size(296, 26);
@@ -557,7 +557,7 @@
             this.tlpStatus.ColumnCount = 3;
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.47581F));
             this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.52419F));
-            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tlpStatus.Controls.Add(this.lblReasonExit, 0, 2);
             this.tlpStatus.Controls.Add(this.txtReasonExit, 1, 2);
             this.tlpStatus.Controls.Add(this.lblDateAdmission, 0, 0);
@@ -580,7 +580,7 @@
             this.lblReasonExit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblReasonExit.Location = new System.Drawing.Point(3, 84);
             this.lblReasonExit.Name = "lblReasonExit";
-            this.lblReasonExit.Size = new System.Drawing.Size(152, 43);
+            this.lblReasonExit.Size = new System.Drawing.Size(151, 43);
             this.lblReasonExit.TabIndex = 44;
             this.lblReasonExit.Text = "Motivo del Egreso";
             this.lblReasonExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -588,7 +588,7 @@
             // txtReasonExit
             // 
             this.txtReasonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReasonExit.Location = new System.Drawing.Point(161, 92);
+            this.txtReasonExit.Location = new System.Drawing.Point(160, 92);
             this.txtReasonExit.Name = "txtReasonExit";
             this.txtReasonExit.Size = new System.Drawing.Size(294, 26);
             this.txtReasonExit.TabIndex = 47;
@@ -599,7 +599,7 @@
             this.lblDateAdmission.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDateAdmission.Location = new System.Drawing.Point(3, 0);
             this.lblDateAdmission.Name = "lblDateAdmission";
-            this.lblDateAdmission.Size = new System.Drawing.Size(152, 42);
+            this.lblDateAdmission.Size = new System.Drawing.Size(151, 42);
             this.lblDateAdmission.TabIndex = 42;
             this.lblDateAdmission.Text = "Fecha Ingreso";
             this.lblDateAdmission.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -607,7 +607,7 @@
             // dtpDateAdmission
             // 
             this.dtpDateAdmission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpDateAdmission.Location = new System.Drawing.Point(161, 8);
+            this.dtpDateAdmission.Location = new System.Drawing.Point(160, 8);
             this.dtpDateAdmission.Name = "dtpDateAdmission";
             this.dtpDateAdmission.Size = new System.Drawing.Size(294, 26);
             this.dtpDateAdmission.TabIndex = 45;
@@ -618,7 +618,7 @@
             this.lblEgressDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblEgressDate.Location = new System.Drawing.Point(3, 42);
             this.lblEgressDate.Name = "lblEgressDate";
-            this.lblEgressDate.Size = new System.Drawing.Size(152, 42);
+            this.lblEgressDate.Size = new System.Drawing.Size(151, 42);
             this.lblEgressDate.TabIndex = 43;
             this.lblEgressDate.Text = "Fecha Egreso";
             this.lblEgressDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -626,7 +626,7 @@
             // dtpEgressDate
             // 
             this.dtpEgressDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpEgressDate.Location = new System.Drawing.Point(161, 50);
+            this.dtpEgressDate.Location = new System.Drawing.Point(160, 50);
             this.dtpEgressDate.Name = "dtpEgressDate";
             this.dtpEgressDate.Size = new System.Drawing.Size(294, 26);
             this.dtpEgressDate.TabIndex = 46;
@@ -661,7 +661,7 @@
             this.tlpParent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tlpParent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tlpParent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
-            this.tlpParent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tlpParent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
             this.tlpParent.Controls.Add(this.btnLocalitationParent, 4, 5);
             this.tlpParent.Controls.Add(this.dgvLista, 0, 1);
             this.tlpParent.Controls.Add(this.lblParentAddress, 1, 6);
@@ -707,7 +707,7 @@
             // btnLocalitationParent
             // 
             this.btnLocalitationParent.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnLocalitationParent.Location = new System.Drawing.Point(860, 214);
+            this.btnLocalitationParent.Location = new System.Drawing.Point(859, 214);
             this.btnLocalitationParent.Name = "btnLocalitationParent";
             this.btnLocalitationParent.Size = new System.Drawing.Size(81, 33);
             this.btnLocalitationParent.TabIndex = 20;
@@ -726,15 +726,6 @@
             this.dgvLista.Size = new System.Drawing.Size(423, 432);
             this.dgvLista.TabIndex = 0;
             this.dgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
-            // 
-            // txtParentAddress
-            // 
-            this.txtParentAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpParent.SetColumnSpan(this.txtParentAddress, 3);
-            this.txtParentAddress.Location = new System.Drawing.Point(556, 264);
-            this.txtParentAddress.Name = "txtParentAddress";
-            this.txtParentAddress.Size = new System.Drawing.Size(385, 26);
-            this.txtParentAddress.TabIndex = 13;
             // 
             // lblParentAddress
             // 
@@ -758,21 +749,12 @@
             this.lblParentLocation.Text = "Localidad";
             this.lblParentLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtLocationParent
-            // 
-            this.txtLocationParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpParent.SetColumnSpan(this.txtLocationParent, 2);
-            this.txtLocationParent.Location = new System.Drawing.Point(556, 218);
-            this.txtLocationParent.Name = "txtLocationParent";
-            this.txtLocationParent.Size = new System.Drawing.Size(298, 26);
-            this.txtLocationParent.TabIndex = 19;
-            // 
             // txtParentNumberDocument
             // 
             this.txtParentNumberDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtParentNumberDocument.Location = new System.Drawing.Point(676, 172);
             this.txtParentNumberDocument.Name = "txtParentNumberDocument";
-            this.txtParentNumberDocument.Size = new System.Drawing.Size(178, 26);
+            this.txtParentNumberDocument.Size = new System.Drawing.Size(177, 26);
             this.txtParentNumberDocument.TabIndex = 12;
             this.txtParentNumberDocument.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
@@ -809,26 +791,6 @@
             this.lblParentName.Text = "Nombre";
             this.lblParentName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtParentLastName
-            // 
-            this.txtParentLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpParent.SetColumnSpan(this.txtParentLastName, 3);
-            this.txtParentLastName.Location = new System.Drawing.Point(556, 126);
-            this.txtParentLastName.Name = "txtParentLastName";
-            this.txtParentLastName.Size = new System.Drawing.Size(385, 26);
-            this.txtParentLastName.TabIndex = 11;
-            this.txtParentLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
-            // 
-            // txtParentName
-            // 
-            this.txtParentName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpParent.SetColumnSpan(this.txtParentName, 3);
-            this.txtParentName.Location = new System.Drawing.Point(556, 80);
-            this.txtParentName.Name = "txtParentName";
-            this.txtParentName.Size = new System.Drawing.Size(385, 26);
-            this.txtParentName.TabIndex = 10;
-            this.txtParentName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
-            // 
             // lblParentRelationship
             // 
             this.lblParentRelationship.AutoSize = true;
@@ -839,17 +801,6 @@
             this.lblParentRelationship.TabIndex = 9;
             this.lblParentRelationship.Text = "Parentesco";
             this.lblParentRelationship.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cmbParentRelationship
-            // 
-            this.cmbParentRelationship.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpParent.SetColumnSpan(this.cmbParentRelationship, 3);
-            this.cmbParentRelationship.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbParentRelationship.FormattingEnabled = true;
-            this.cmbParentRelationship.Location = new System.Drawing.Point(556, 33);
-            this.cmbParentRelationship.Name = "cmbParentRelationship";
-            this.cmbParentRelationship.Size = new System.Drawing.Size(385, 28);
-            this.cmbParentRelationship.TabIndex = 17;
             // 
             // lblParentPhone
             // 
@@ -862,16 +813,6 @@
             this.lblParentPhone.Text = "Telefono";
             this.lblParentPhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtParentPhone
-            // 
-            this.txtParentPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpParent.SetColumnSpan(this.txtParentPhone, 3);
-            this.txtParentPhone.Location = new System.Drawing.Point(556, 310);
-            this.txtParentPhone.Name = "txtParentPhone";
-            this.txtParentPhone.Size = new System.Drawing.Size(385, 26);
-            this.txtParentPhone.TabIndex = 16;
-            this.txtParentPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
-            // 
             // lblParentAlternativePhone
             // 
             this.lblParentAlternativePhone.AutoSize = true;
@@ -883,16 +824,6 @@
             this.lblParentAlternativePhone.Text = "Telefono Alt";
             this.lblParentAlternativePhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtParentAlternativePhone
-            // 
-            this.txtParentAlternativePhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpParent.SetColumnSpan(this.txtParentAlternativePhone, 3);
-            this.txtParentAlternativePhone.Location = new System.Drawing.Point(556, 356);
-            this.txtParentAlternativePhone.Name = "txtParentAlternativePhone";
-            this.txtParentAlternativePhone.Size = new System.Drawing.Size(385, 26);
-            this.txtParentAlternativePhone.TabIndex = 15;
-            this.txtParentAlternativePhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
-            // 
             // lblParentEmail
             // 
             this.lblParentEmail.AutoSize = true;
@@ -903,15 +834,6 @@
             this.lblParentEmail.TabIndex = 8;
             this.lblParentEmail.Text = "Correo";
             this.lblParentEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtParentEmail
-            // 
-            this.txtParentEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpParent.SetColumnSpan(this.txtParentEmail, 3);
-            this.txtParentEmail.Location = new System.Drawing.Point(556, 402);
-            this.txtParentEmail.Name = "txtParentEmail";
-            this.txtParentEmail.Size = new System.Drawing.Size(385, 26);
-            this.txtParentEmail.TabIndex = 14;
             // 
             // btnAcceptParent
             // 
@@ -938,13 +860,101 @@
             // btnSearchParent
             // 
             this.btnSearchParent.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnSearchParent.Location = new System.Drawing.Point(860, 168);
+            this.btnSearchParent.Location = new System.Drawing.Point(859, 168);
             this.btnSearchParent.Name = "btnSearchParent";
             this.btnSearchParent.Size = new System.Drawing.Size(81, 33);
             this.btnSearchParent.TabIndex = 22;
             this.btnSearchParent.Text = "Buscar";
             this.btnSearchParent.UseVisualStyleBackColor = true;
             this.btnSearchParent.Click += new System.EventHandler(this.btnSearchParent_Click);
+            // 
+            // txtParentEmail
+            // 
+            this.txtParentEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpParent.SetColumnSpan(this.txtParentEmail, 3);
+            this.txtParentEmail.Location = new System.Drawing.Point(556, 402);
+            this.txtParentEmail.Name = "txtParentEmail";
+            this.txtParentEmail.Size = new System.Drawing.Size(384, 26);
+            this.txtParentEmail.TabIndex = 14;
+            // 
+            // txtParentAlternativePhone
+            // 
+            this.txtParentAlternativePhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpParent.SetColumnSpan(this.txtParentAlternativePhone, 3);
+            this.txtParentAlternativePhone.Location = new System.Drawing.Point(556, 356);
+            this.txtParentAlternativePhone.Name = "txtParentAlternativePhone";
+            this.txtParentAlternativePhone.Size = new System.Drawing.Size(384, 26);
+            this.txtParentAlternativePhone.TabIndex = 15;
+            this.txtParentAlternativePhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
+            // 
+            // txtParentPhone
+            // 
+            this.txtParentPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpParent.SetColumnSpan(this.txtParentPhone, 3);
+            this.txtParentPhone.Location = new System.Drawing.Point(556, 310);
+            this.txtParentPhone.Name = "txtParentPhone";
+            this.txtParentPhone.Size = new System.Drawing.Size(384, 26);
+            this.txtParentPhone.TabIndex = 16;
+            this.txtParentPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
+            // 
+            // txtParentAddress
+            // 
+            this.txtParentAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpParent.SetColumnSpan(this.txtParentAddress, 3);
+            this.txtParentAddress.Location = new System.Drawing.Point(556, 264);
+            this.txtParentAddress.Name = "txtParentAddress";
+            this.txtParentAddress.Size = new System.Drawing.Size(384, 26);
+            this.txtParentAddress.TabIndex = 13;
+            // 
+            // txtLocationParent
+            // 
+            this.txtLocationParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpParent.SetColumnSpan(this.txtLocationParent, 2);
+            this.txtLocationParent.Location = new System.Drawing.Point(556, 218);
+            this.txtLocationParent.Name = "txtLocationParent";
+            this.txtLocationParent.Size = new System.Drawing.Size(297, 26);
+            this.txtLocationParent.TabIndex = 19;
+            // 
+            // txtParentLastName
+            // 
+            this.txtParentLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpParent.SetColumnSpan(this.txtParentLastName, 3);
+            this.txtParentLastName.Location = new System.Drawing.Point(556, 126);
+            this.txtParentLastName.Name = "txtParentLastName";
+            this.txtParentLastName.Size = new System.Drawing.Size(384, 26);
+            this.txtParentLastName.TabIndex = 11;
+            this.txtParentLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
+            // 
+            // txtParentName
+            // 
+            this.txtParentName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpParent.SetColumnSpan(this.txtParentName, 3);
+            this.txtParentName.Location = new System.Drawing.Point(556, 80);
+            this.txtParentName.Name = "txtParentName";
+            this.txtParentName.Size = new System.Drawing.Size(384, 26);
+            this.txtParentName.TabIndex = 10;
+            this.txtParentName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
+            // 
+            // cmbParentRelationship
+            // 
+            this.cmbParentRelationship.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpParent.SetColumnSpan(this.cmbParentRelationship, 3);
+            this.cmbParentRelationship.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbParentRelationship.FormattingEnabled = true;
+            this.cmbParentRelationship.Location = new System.Drawing.Point(556, 33);
+            this.cmbParentRelationship.Name = "cmbParentRelationship";
+            this.cmbParentRelationship.Size = new System.Drawing.Size(384, 28);
+            this.cmbParentRelationship.TabIndex = 17;
+            // 
+            // cmbTypeDocumentParent
+            // 
+            this.cmbTypeDocumentParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbTypeDocumentParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTypeDocumentParent.FormattingEnabled = true;
+            this.cmbTypeDocumentParent.Location = new System.Drawing.Point(556, 171);
+            this.cmbTypeDocumentParent.Name = "cmbTypeDocumentParent";
+            this.cmbTypeDocumentParent.Size = new System.Drawing.Size(114, 28);
+            this.cmbTypeDocumentParent.TabIndex = 23;
             // 
             // cmsMenuEmergente
             // 
@@ -962,16 +972,6 @@
             this.tsmiDelete.Text = "Eliminar";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
-            // cmbTypeDocumentParent
-            // 
-            this.cmbTypeDocumentParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbTypeDocumentParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTypeDocumentParent.FormattingEnabled = true;
-            this.cmbTypeDocumentParent.Location = new System.Drawing.Point(556, 171);
-            this.cmbTypeDocumentParent.Name = "cmbTypeDocumentParent";
-            this.cmbTypeDocumentParent.Size = new System.Drawing.Size(114, 28);
-            this.cmbTypeDocumentParent.TabIndex = 23;
-            // 
             // frmAbmPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -981,9 +981,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(133, 105);
+            this.MinimumSize = new System.Drawing.Size(1124, 625);
             this.Name = "frmAbmPatient";
             this.Text = "Abuelo (ABM)";
             this.Load += new System.EventHandler(this.frmAbmPatient_Load);
