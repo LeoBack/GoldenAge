@@ -6,7 +6,7 @@ using System.Data;
 using System.IO;
 using Entidades;
 using Entidades.Clases;
-using Entidades.Grillas;
+using Entidades.ParametersReaders;
 using System.Data.SqlClient;
 using libData.SqlServer;
 
@@ -348,32 +348,13 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
+        // OK - 17/10/21
         public object AbmPatient(classPatient oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmPatient;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@IdPatient", oP.IdPatient));
-            lParam.Add(new SqlParameter("@Name", oP.Name));
-            lParam.Add(new SqlParameter("@LastName", oP.LastName));
-            lParam.Add(new SqlParameter("@Birthdate", oP.Birthdate));
-            lParam.Add(new SqlParameter("@IdTypeDocument", oP.IdTypeDocument));
-            lParam.Add(new SqlParameter("@NumberDocument", oP.NumberDocument));
-            lParam.Add(new SqlParameter("@Sex", oP.Sex));
-            lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
-            lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
-            lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
-            lParam.Add(new SqlParameter("@Address", oP.Address));
-            lParam.Add(new SqlParameter("@Phone", oP.Phone));
-            lParam.Add(new SqlParameter("@IdSocialWork", oP.IdSocialWork));
-            lParam.Add(new SqlParameter("@AffiliateNumber", oP.AffiliateNumber));
-            lParam.Add(new SqlParameter("@DateAdmission", oP.DateAdmission));
-            lParam.Add(new SqlParameter("@EgressDate", oP.EgressDate));
-            lParam.Add(new SqlParameter("@ReasonExit", oP.ReasonExit));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prPatient pr = new prPatient();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -386,26 +367,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classPatient oPatient = new classPatient(
-                                Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                Convert.ToString(oSql.Reader["Name"]),
-                                Convert.ToString(oSql.Reader["LastName"]),
-                                oSql.Reader["Birthdate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["Birthdate"].ToString()) : DateTime.MinValue,
-                                Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                Convert.ToBoolean(oSql.Reader["Sex"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                Convert.ToString(oSql.Reader["Address"]),
-                                Convert.ToString(oSql.Reader["Phone"]),
-                                Convert.ToInt32(oSql.Reader["IdSocialWork"]),
-                                Convert.ToInt32(oSql.Reader["AffiliateNumber"]),
-                                oSql.Reader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["DateAdmission"].ToString()) : DateTime.MinValue,
-                                oSql.Reader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["EgressDate"].ToString()) : DateTime.MinValue,
-                                Convert.ToString(oSql.Reader["ReasonExit"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lPatient.Add(oPatient);
+                                lPatient.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -438,25 +400,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                oPatien = new classPatient(
-                                Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                Convert.ToString(oSql.Reader["Name"]),
-                                Convert.ToString(oSql.Reader["LastName"]),
-                                oSql.Reader["Birthdate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["Birthdate"].ToString()) : DateTime.MinValue,
-                                Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                Convert.ToBoolean(oSql.Reader["Sex"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                Convert.ToString(oSql.Reader["Address"]),
-                                Convert.ToString(oSql.Reader["Phone"]),
-                                Convert.ToInt32(oSql.Reader["IdSocialWork"]),
-                                Convert.ToInt32(oSql.Reader["AffiliateNumber"]),
-                                oSql.Reader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["DateAdmission"].ToString()) : DateTime.MinValue,
-                                oSql.Reader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oSql.Reader["EgressDate"].ToString()) : DateTime.MinValue,
-                                Convert.ToString(oSql.Reader["ReasonExit"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oPatien = pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
@@ -720,17 +664,17 @@ namespace Datos.Query
                     Result = UltimoId;
                     break;
                 case eAbm.LoadCmb:
-                    //Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                    //if (oSql.Table.Rows.Count != 0)
-                    //    Table = oSql.Table;
-                    //else
-                    //    Table = null;
-                    DataTable dT = new DataTable(SPname);
-                    dT.Columns.Add("Id", typeof(Int32));
-                    dT.Columns.Add("Value", typeof(string));
-                    dT.Rows.Add(new object[] { 1, "Usuario" });
-                    dT.Rows.Add(new object[] { 2, "Administrador" });
-                    Table = dT;
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    //DataTable dT = new DataTable(SPname);
+                    //dT.Columns.Add("Id", typeof(Int32));
+                    //dT.Columns.Add("Value", typeof(string));
+                    //dT.Rows.Add(new object[] { 1, "Usuario" });
+                    //dT.Rows.Add(new object[] { 2, "Administrador" });
+                    //Table = dT;
                     Result = true;
                     break;
                 default:
@@ -739,28 +683,13 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
+        // OK - 17/10/21
         public object AbmProfessional(classProfessional oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmProfessional;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@IdProfessional", oP.IdProfessional));
-            lParam.Add(new SqlParameter("@Name", oP.Name));
-            lParam.Add(new SqlParameter("@LastName", oP.LastName));
-            lParam.Add(new SqlParameter("@ProfessionalRegistration", oP.ProfessionalRegistration));
-            lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
-            lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
-            lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
-            lParam.Add(new SqlParameter("@Address", oP.Address));
-            lParam.Add(new SqlParameter("@Phone", oP.Phone));
-            lParam.Add(new SqlParameter("@Mail", oP.Mail));
-            lParam.Add(new SqlParameter("@User", oP.User));
-            lParam.Add(new SqlParameter("@Password", oP.Password));
-            lParam.Add(new SqlParameter("@Admin", oP.Admin));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prProfessional pr = new prProfessional();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -773,22 +702,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classProfessional oProfessional = new classProfessional(
-                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                Convert.ToString(oSql.Reader["Name"]),
-                                Convert.ToString(oSql.Reader["LastName"]),
-                                Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                Convert.ToString(oSql.Reader["Address"]),
-                                Convert.ToString(oSql.Reader["Phone"]),
-                                Convert.ToString(oSql.Reader["Mail"]),
-                                Convert.ToString(oSql.Reader["User"]),
-                                Convert.ToString(oSql.Reader["Password"]),
-                                Convert.ToInt32(oSql.Reader["Admin"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lProfessional.Add(oProfessional);
+                                lProfessional.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -815,27 +729,13 @@ namespace Datos.Query
                     break;
                 case eAbm.Select:
                     classProfessional oProfessiona = null;
-                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))                  
                     {
                         if (oSql.Reader.Read())
                         {
                             try
                             {
-                                oProfessiona = new classProfessional(
-                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                Convert.ToString(oSql.Reader["Name"]),
-                                Convert.ToString(oSql.Reader["LastName"]),
-                                Convert.ToInt32(oSql.Reader["ProfessionalRegistration"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                Convert.ToString(oSql.Reader["Address"]),
-                                Convert.ToString(oSql.Reader["Phone"]),
-                                Convert.ToString(oSql.Reader["Mail"]),
-                                Convert.ToString(oSql.Reader["User"]),
-                                Convert.ToString(oSql.Reader["Password"]),
-                                Convert.ToInt32(oSql.Reader["Admin"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oProfessiona = pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
@@ -1108,25 +1008,13 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
+        // OK - 17/10/21
         public object AbmSocialWork(classSocialWork oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmSocialWork;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@IdSocialWork", oP.IdSocialWork));
-            lParam.Add(new SqlParameter("@Name", oP.Name));
-            lParam.Add(new SqlParameter("@Description", oP.Description));
-            lParam.Add(new SqlParameter("@IdIvaType", oP.IdIvaType));
-            lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
-            lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
-            lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
-            lParam.Add(new SqlParameter("@Address", oP.Address));
-            lParam.Add(new SqlParameter("@Phone", oP.Phone));
-            lParam.Add(new SqlParameter("@Contact", oP.Contact));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prSocialWorks pr = new prSocialWorks();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -1139,19 +1027,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classSocialWork oSocialWork = new classSocialWork(
-                                Convert.ToInt32(oSql.Reader["IdSocialWork"]),
-                                Convert.ToString(oSql.Reader["Name"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToInt32(oSql.Reader["IdIvaType"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                Convert.ToString(oSql.Reader["Address"]),
-                                Convert.ToString(oSql.Reader["Phone"]),
-                                Convert.ToString(oSql.Reader["Contact"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lSocialWork.Add(oSocialWork);
+                                lSocialWork.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -1177,40 +1053,29 @@ namespace Datos.Query
                     Result = lSocialWork;
                     break;
                 case eAbm.Select:
-                    classSocialWork oSocialWor = null;
+                    classSocialWork oSocialWork = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
                         {
                             try
                             {
-                                oSocialWor = new classSocialWork(
-                                Convert.ToInt32(oSql.Reader["IdSocialWork"]),
-                                Convert.ToString(oSql.Reader["Name"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToInt32(oSql.Reader["IdIvaType"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                Convert.ToString(oSql.Reader["Address"]),
-                                Convert.ToString(oSql.Reader["Phone"]),
-                                Convert.ToString(oSql.Reader["Contact"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oSocialWork = pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
                                 Menssage = ex.ToString();
-                                oSocialWor = null;
+                                oSocialWork = null;
                             }
                             catch (InvalidCastException ex)
                             {
                                 Menssage = ex.ToString();
-                                oSocialWor = null;
+                                oSocialWork = null;
                             }
                             catch (OverflowException ex)
                             {
                                 Menssage = ex.ToString();
-                                oSocialWor = null;
+                                oSocialWork = null;
                             }
                         }
                     }
@@ -1218,7 +1083,7 @@ namespace Datos.Query
                         Menssage = oSql.Mensage;
 
                     oSql.Close();
-                    Result = oSocialWor;
+                    Result = oSocialWork;
                     break;
                 case eAbm.Insert:
                 case eAbm.Update:

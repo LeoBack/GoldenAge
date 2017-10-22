@@ -49,7 +49,7 @@ namespace myExplorer.Formularios
                 initCmbSpecialty(oUtil.oProfessional.IdProfessional);
                 txtProfessional.Text = oUtil.oProfessional.LastName + ", " + oUtil.oProfessional.Name;
                 txtPatient.Text = oPatient.LastName + "," + oPatient.Name;
-                
+
                 if (LoadViewDiagnostic())
                 {
                     eModo = Modo.Add;
@@ -127,12 +127,15 @@ namespace myExplorer.Formularios
             oDiagnostic = oQuery.AbmDiagnostic(new classDiagnostic(
                 Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)), 
                 classQuery.eAbm.Select) as classDiagnostic;
-
-            eModo = oDiagnostic != null ? Modo.Update : Modo.Add;
-            oDiagnostic = oDiagnostic != null ? oDiagnostic : new classDiagnostic();
-
             EscribirEnFrm();
-            EnableText(oDiagnostic.IdProfessional == oUtil.oProfessional.IdProfessional);
+
+            if (oUtil.oProfessional.IdPermission == 1)
+            {
+                eModo = oDiagnostic != null ? Modo.Update : Modo.Add;
+                oDiagnostic = oDiagnostic != null ? oDiagnostic : new classDiagnostic();
+                //EnableText(oDiagnostic.IdProfessional == oUtil.oProfessional.IdProfessional);
+                EnableText(true);
+            }
         }
 
         #endregion
@@ -181,7 +184,6 @@ namespace myExplorer.Formularios
             oDiagnostic.Detail = rtxtDiagnostic.Text;
             oDiagnostic.IdSpeciality = Convert.ToInt32(cmbSpecialty.SelectedValue);
             oDiagnostic.Visible = true;
-            
         }
 
         /// <summary>
@@ -197,21 +199,29 @@ namespace myExplorer.Formularios
         // OK - 17/10/07
         private void initCmbSpecialty(int IdProfessional)
         {
-            classProfessionalSpeciality oPs = new classProfessionalSpeciality();
-            oPs.IdProfessional = IdProfessional;
-
-            List<classProfessionalSpeciality> lPs = null;
-            lPs = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<classProfessionalSpeciality>;
-
-            DataTable dT = new DataTable("AbmDiagnostic");
-            dT.Columns.Add("Id", typeof(Int32));
-            dT.Columns.Add("Value", typeof(string));
-            foreach (classProfessionalSpeciality iPs in lPs)
+            if (oUtil.oProfessional.IdPermission == 1)
             {
-                classSpecialty oS = oQuery.AbmSpeciality(new classSpecialty(iPs.IdSpeciality), classQuery.eAbm.Select) as classSpecialty;
-                dT.Rows.Add(new object[] { oS.IdSpecialty, oS.Description });
+                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSpecialty,
+                    (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), oQuery.Table); 
             }
-            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSpecialty, dT.Rows.Count != 0, dT);
+            else
+            {
+                classProfessionalSpeciality oPs = new classProfessionalSpeciality();
+                oPs.IdProfessional = IdProfessional;
+
+                List<classProfessionalSpeciality> lPs = null;
+                lPs = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<classProfessionalSpeciality>;
+
+                DataTable dT = new DataTable("AbmDiagnostic");
+                dT.Columns.Add("Id", typeof(Int32));
+                dT.Columns.Add("Value", typeof(string));
+                foreach (classProfessionalSpeciality iPs in lPs)
+                {
+                    classSpecialty oS = oQuery.AbmSpeciality(new classSpecialty(iPs.IdSpeciality), classQuery.eAbm.Select) as classSpecialty;
+                    dT.Rows.Add(new object[] { oS.IdSpecialty, oS.Description });
+                }
+                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSpecialty, dT.Rows.Count != 0, dT);
+            }
         }
 
         /// <summary>
@@ -235,7 +245,7 @@ namespace myExplorer.Formularios
             dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLista.MultiSelect = false;
             dgvLista.DataSource = Source;
-#if RELEASE
+#if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
             dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif

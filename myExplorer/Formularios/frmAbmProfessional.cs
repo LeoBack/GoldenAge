@@ -359,7 +359,7 @@ namespace myExplorer.Formularios
             oProfessional.Phone = txtPhone.Text;
             oProfessional.Mail = txtMail.Text.ToUpper();
             oProfessional.User = txtUser.Text;
-            oProfessional.Admin = Convert.ToInt32(cmbTypeAccess.SelectedValue);
+            oProfessional.IdPermission = Convert.ToInt32(cmbTypeAccess.SelectedValue);
             oProfessional.Password = txtPassword.Text;
             oProfessional.Visible = Enable;
         }
@@ -377,7 +377,7 @@ namespace myExplorer.Formularios
             txtPhone.Text = oProfessional.Phone;
             txtMail.Text = oProfessional.Mail.ToUpper();
             txtUser.Text = oProfessional.User;
-            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeAccess, oProfessional.Admin);
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeAccess, oProfessional.IdPermission);
             txtPassword.Text = oProfessional.Password;
             IdCountry = oProfessional.IdLocationCountry;
             IdProvince = oProfessional.IdLocationProvince;
@@ -411,15 +411,14 @@ namespace myExplorer.Formularios
             {
                 MessageBox.Show("Formato de Direccion de Correo invalido");
             }
-                
             else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
             else if ((txtPassword.Text.Length < 8) || (txtPassword.Text.Length >= 20) || (txtPassword.Text == ""))
                 MessageBox.Show("La Contraseña esta vacia y//o debe tener como minimo 8 caracteres.");
             else if ((txtProfessionalRegistration.Text.Length < 6) || (txtProfessionalRegistration.Text == ""))
                 MessageBox.Show("El Numero de Registro esta vacio o no supera los 6 caracteres.");
-            else if (oClassValidas.ComprobarFormatoTelefono(txtPhone.Text)==false)
-                MessageBox.Show("Formato");
+            //else if (oClassValidas.ComprobarFormatoTelefono(txtPhone.Text)==false)
+            //    MessageBox.Show("Formato");
             else if(txtPhone.Text.Length >= 20)
                 MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
             else if (txtUser.Text.Length >= 20 || txtUser.Text == "")

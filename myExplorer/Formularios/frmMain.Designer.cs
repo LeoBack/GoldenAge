@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.mspBarraTareas = new System.Windows.Forms.MenuStrip();
+            this.msToolBar = new System.Windows.Forms.MenuStrip();
             this.tsmiArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSalir = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,46 +52,42 @@
             this.tsmiAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDataBase = new System.Windows.Forms.ToolStripMenuItem();
             this.tsPrincipal = new System.Windows.Forms.ToolStrip();
+            this.tsddbPaciente = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsgAgregarOB = new System.Windows.Forms.ToolStripButton();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
             this.tsslPath = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tscContenedor = new System.Windows.Forms.ToolStripContainer();
-            this.pcbBackgraund = new System.Windows.Forms.PictureBox();
-            this.tsUsuario = new System.Windows.Forms.ToolStrip();
-            this.tsbUsuario = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsEstadisticas = new System.Windows.Forms.ToolStripButton();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
-            this.tsddbPaciente = new System.Windows.Forms.ToolStripButton();
-            this.mspBarraTareas.SuspendLayout();
+            this.tsmiWindows = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripPanel1 = new System.Windows.Forms.ToolStripPanel();
+            this.tsbEstadisticas = new System.Windows.Forms.ToolStripButton();
+            this.tsmiUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.msToolBar.SuspendLayout();
             this.tsPrincipal.SuspendLayout();
             this.ssEstado.SuspendLayout();
-            this.tscContenedor.ContentPanel.SuspendLayout();
-            this.tscContenedor.TopToolStripPanel.SuspendLayout();
-            this.tscContenedor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbBackgraund)).BeginInit();
-            this.tsUsuario.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.toolStripPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // mspBarraTareas
+            // msToolBar
             // 
-            this.mspBarraTareas.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.mspBarraTareas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msToolBar.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.msToolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiArchivo,
             this.tsmiMenu,
-            this.tsmiAyuda});
-            this.mspBarraTareas.Location = new System.Drawing.Point(0, 0);
-            this.mspBarraTareas.Name = "mspBarraTareas";
-            this.mspBarraTareas.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.mspBarraTareas.Size = new System.Drawing.Size(1790, 35);
-            this.mspBarraTareas.TabIndex = 1;
-            this.mspBarraTareas.Text = "msMenu";
+            this.tsmiAyuda,
+            this.tsmiWindows,
+            this.tsmiUsuario});
+            this.msToolBar.Location = new System.Drawing.Point(0, 0);
+            this.msToolBar.MdiWindowListItem = this.tsmiWindows;
+            this.msToolBar.Name = "msToolBar";
+            this.msToolBar.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.msToolBar.Size = new System.Drawing.Size(1228, 35);
+            this.msToolBar.TabIndex = 1;
+            this.msToolBar.Text = "msMenu";
             // 
             // tsmiArchivo
             // 
@@ -105,13 +101,13 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(126, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
             // 
             // tsmiSalir
             // 
             this.tsmiSalir.Image = global::myExplorer.Properties.Resources.Error;
             this.tsmiSalir.Name = "tsmiSalir";
-            this.tsmiSalir.Size = new System.Drawing.Size(129, 30);
+            this.tsmiSalir.Size = new System.Drawing.Size(210, 30);
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
@@ -262,31 +258,41 @@
             // 
             // tsPrincipal
             // 
-            this.tsPrincipal.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsPrincipal.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.tsPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPrincipal.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsddbPaciente,
             this.toolStripSeparator3,
-            this.tsgAgregarOB});
-            this.tsPrincipal.Location = new System.Drawing.Point(238, 37);
+            this.tsgAgregarOB,
+            this.tsbEstadisticas});
+            this.tsPrincipal.Location = new System.Drawing.Point(3, 0);
             this.tsPrincipal.Name = "tsPrincipal";
             this.tsPrincipal.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.tsPrincipal.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsPrincipal.Size = new System.Drawing.Size(342, 39);
+            this.tsPrincipal.Size = new System.Drawing.Size(410, 32);
             this.tsPrincipal.TabIndex = 2;
             this.tsPrincipal.Text = "tsMenu";
+            // 
+            // tsddbPaciente
+            // 
+            this.tsddbPaciente.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsddbPaciente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddbPaciente.Name = "tsddbPaciente";
+            this.tsddbPaciente.Size = new System.Drawing.Size(105, 29);
+            this.tsddbPaciente.Text = "Abuelos";
+            this.tsddbPaciente.Click += new System.EventHandler(this.tsmiGrandfather_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
             // 
             // tsgAgregarOB
             // 
             this.tsgAgregarOB.Image = global::myExplorer.Properties.Resources.ammo4;
             this.tsgAgregarOB.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsgAgregarOB.Name = "tsgAgregarOB";
-            this.tsgAgregarOB.Size = new System.Drawing.Size(164, 36);
+            this.tsgAgregarOB.Size = new System.Drawing.Size(156, 29);
             this.tsgAgregarOB.Text = "Obras Sociales";
             this.tsgAgregarOB.Click += new System.EventHandler(this.tsmiSocialWork_Click);
             // 
@@ -295,10 +301,10 @@
             this.ssEstado.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.ssEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslPath});
-            this.ssEstado.Location = new System.Drawing.Point(0, 824);
+            this.ssEstado.Location = new System.Drawing.Point(0, 528);
             this.ssEstado.Name = "ssEstado";
             this.ssEstado.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.ssEstado.Size = new System.Drawing.Size(1790, 30);
+            this.ssEstado.Size = new System.Drawing.Size(1228, 30);
             this.ssEstado.TabIndex = 5;
             this.ssEstado.Text = "statusStrip1";
             // 
@@ -307,79 +313,6 @@
             this.tsslPath.Name = "tsslPath";
             this.tsslPath.Size = new System.Drawing.Size(47, 25);
             this.tsslPath.Text = "CNX";
-            // 
-            // tscContenedor
-            // 
-            // 
-            // tscContenedor.ContentPanel
-            // 
-            this.tscContenedor.ContentPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.tscContenedor.ContentPanel.Controls.Add(this.pcbBackgraund);
-            this.tscContenedor.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tscContenedor.ContentPanel.Size = new System.Drawing.Size(1790, 750);
-            this.tscContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tscContenedor.Location = new System.Drawing.Point(0, 35);
-            this.tscContenedor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tscContenedor.Name = "tscContenedor";
-            this.tscContenedor.Size = new System.Drawing.Size(1790, 789);
-            this.tscContenedor.TabIndex = 6;
-            this.tscContenedor.Text = "tscContenedor";
-            // 
-            // tscContenedor.TopToolStripPanel
-            // 
-            this.tscContenedor.TopToolStripPanel.Controls.Add(this.tsUsuario);
-            // 
-            // pcbBackgraund
-            // 
-            this.pcbBackgraund.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pcbBackgraund.Location = new System.Drawing.Point(0, 0);
-            this.pcbBackgraund.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pcbBackgraund.Name = "pcbBackgraund";
-            this.pcbBackgraund.Size = new System.Drawing.Size(1790, 750);
-            this.pcbBackgraund.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pcbBackgraund.TabIndex = 0;
-            this.pcbBackgraund.TabStop = false;
-            // 
-            // tsUsuario
-            // 
-            this.tsUsuario.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsUsuario.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.tsUsuario.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbUsuario});
-            this.tsUsuario.Location = new System.Drawing.Point(3, 0);
-            this.tsUsuario.Name = "tsUsuario";
-            this.tsUsuario.Size = new System.Drawing.Size(163, 39);
-            this.tsUsuario.TabIndex = 3;
-            // 
-            // tsbUsuario
-            // 
-            this.tsbUsuario.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
-            this.tsbUsuario.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbUsuario.Name = "tsbUsuario";
-            this.tsbUsuario.Size = new System.Drawing.Size(151, 36);
-            this.tsbUsuario.Text = "Iniciar Sesion";
-            this.tsbUsuario.Click += new System.EventHandler(this.tsmiLoginProfessional_Click);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsEstadisticas});
-            this.toolStrip1.Location = new System.Drawing.Point(606, 37);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(151, 39);
-            this.toolStrip1.TabIndex = 4;
-            // 
-            // tsEstadisticas
-            // 
-            this.tsEstadisticas.Image = global::myExplorer.Properties.Resources.GraficoDeBarras;
-            this.tsEstadisticas.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsEstadisticas.Name = "tsEstadisticas";
-            this.tsEstadisticas.Size = new System.Drawing.Size(138, 36);
-            this.tsEstadisticas.Text = "Estadisticas";
-            this.tsEstadisticas.Click += new System.EventHandler(this.tsmiStatics_Click);
             // 
             // BottomToolStripPanel
             // 
@@ -417,49 +350,64 @@
             // 
             this.ContentPanel.Size = new System.Drawing.Size(150, 150);
             // 
-            // tsddbPaciente
+            // tsmiWindows
             // 
-            this.tsddbPaciente.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
-            this.tsddbPaciente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsddbPaciente.Name = "tsddbPaciente";
-            this.tsddbPaciente.Size = new System.Drawing.Size(113, 36);
-            this.tsddbPaciente.Text = "Abuelos";
-            this.tsddbPaciente.Click += new System.EventHandler(this.tsmiGrandfather_Click);
+            this.tsmiWindows.Name = "tsmiWindows";
+            this.tsmiWindows.Size = new System.Drawing.Size(87, 29);
+            this.tsmiWindows.Text = "Ventana";
+            // 
+            // toolStripPanel1
+            // 
+            this.toolStripPanel1.Controls.Add(this.tsPrincipal);
+            this.toolStripPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.toolStripPanel1.Location = new System.Drawing.Point(0, 35);
+            this.toolStripPanel1.Name = "toolStripPanel1";
+            this.toolStripPanel1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.toolStripPanel1.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.toolStripPanel1.Size = new System.Drawing.Size(1228, 32);
+            // 
+            // tsbEstadisticas
+            // 
+            this.tsbEstadisticas.Image = global::myExplorer.Properties.Resources.GraficoDeBarras;
+            this.tsbEstadisticas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEstadisticas.Name = "tsbEstadisticas";
+            this.tsbEstadisticas.Size = new System.Drawing.Size(130, 29);
+            this.tsbEstadisticas.Text = "Estadisticas";
+            this.tsbEstadisticas.Click += new System.EventHandler(this.tsmiStatics_Click);
+            // 
+            // tsmiUsuario
+            // 
+            this.tsmiUsuario.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
+            this.tsmiUsuario.Name = "tsmiUsuario";
+            this.tsmiUsuario.Size = new System.Drawing.Size(151, 29);
+            this.tsmiUsuario.Text = "Iniciar Sesion";
+            this.tsmiUsuario.Click += new System.EventHandler(this.tsmiLoginProfessional_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1790, 854);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.tsPrincipal);
-            this.Controls.Add(this.tscContenedor);
+            this.ClientSize = new System.Drawing.Size(1228, 558);
+            this.Controls.Add(this.toolStripPanel1);
             this.Controls.Add(this.ssEstado);
-            this.Controls.Add(this.mspBarraTareas);
+            this.Controls.Add(this.msToolBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.mspBarraTareas;
+            this.MainMenuStrip = this.msToolBar;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMain";
             this.Text = "MyExplorer";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.mspBarraTareas.ResumeLayout(false);
-            this.mspBarraTareas.PerformLayout();
+            this.msToolBar.ResumeLayout(false);
+            this.msToolBar.PerformLayout();
             this.tsPrincipal.ResumeLayout(false);
             this.tsPrincipal.PerformLayout();
             this.ssEstado.ResumeLayout(false);
             this.ssEstado.PerformLayout();
-            this.tscContenedor.ContentPanel.ResumeLayout(false);
-            this.tscContenedor.TopToolStripPanel.ResumeLayout(false);
-            this.tscContenedor.TopToolStripPanel.PerformLayout();
-            this.tscContenedor.ResumeLayout(false);
-            this.tscContenedor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbBackgraund)).EndInit();
-            this.tsUsuario.ResumeLayout(false);
-            this.tsUsuario.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.toolStripPanel1.ResumeLayout(false);
+            this.toolStripPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,7 +415,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip mspBarraTareas;
+        private System.Windows.Forms.MenuStrip msToolBar;
         private System.Windows.Forms.ToolStrip tsPrincipal;
         private System.Windows.Forms.ToolStripMenuItem tsmiArchivo;
         private System.Windows.Forms.ToolStripMenuItem tsmiMenu;
@@ -483,22 +431,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.StatusStrip ssEstado;
         private System.Windows.Forms.ToolStripStatusLabel tsslPath;
-        private System.Windows.Forms.ToolStripContainer tscContenedor;
-        private System.Windows.Forms.ToolStripPanel BottomToolStripPanel;
-        private System.Windows.Forms.ToolStripPanel RightToolStripPanel;
-        private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;
-        private System.Windows.Forms.ToolStripContentPanel ContentPanel;
-        private System.Windows.Forms.ToolStrip tsUsuario;
-        private System.Windows.Forms.ToolStripButton tsbUsuario;
-        private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem tsmiUser;
         private System.Windows.Forms.ToolStripMenuItem tsmiNowUser;
         private System.Windows.Forms.ToolStripMenuItem tsmiSesion;
-        private System.Windows.Forms.PictureBox pcbBackgraund;
         private System.Windows.Forms.ToolStripMenuItem tsmiStatics;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsEstadisticas;
         private System.Windows.Forms.ToolStripMenuItem tsmiDataBase;
         private System.Windows.Forms.ToolStripMenuItem tsmiProfessional;
         private System.Windows.Forms.ToolStripMenuItem tsmiLocation;
@@ -506,6 +443,15 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiAbmProvince;
         private System.Windows.Forms.ToolStripMenuItem tsmiAbmCity;
         private System.Windows.Forms.ToolStripButton tsddbPaciente;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWindows;
+        private System.Windows.Forms.ToolStripPanel BottomToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel RightToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;
+        private System.Windows.Forms.ToolStripContentPanel ContentPanel;
+        private System.Windows.Forms.ToolStripPanel toolStripPanel1;
+        private System.Windows.Forms.ToolStripButton tsbEstadisticas;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUsuario;
     }
 }
 

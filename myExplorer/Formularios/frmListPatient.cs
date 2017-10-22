@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using Datos.Query;
 using Entidades;
 using Entidades.Clases;
-using Entidades.Grillas;
 using Reportes;
 using Controles;
 
@@ -227,12 +226,6 @@ namespace myExplorer.Formularios
             //}
             //else
             MessageBox.Show(oTxt.ErrorQueryList);
-        }
-
-        // OK 17/09/30
-        private void btnClosed_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         // OK 17/09/30

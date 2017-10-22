@@ -175,12 +175,6 @@ namespace myExplorer.Formularios
         }
 
         // OK 17/09/30
-        private void btnClosed_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        // OK 17/09/30
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;

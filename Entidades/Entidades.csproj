@@ -45,13 +45,15 @@
     <Compile Include="Clases\classPermission.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
     <Compile Include="Clases\classProfessional.cs" />
-    <Compile Include="Grillas\grvGrandfather.cs" />
     <Compile Include="Clases\classPatient.cs" />
     <Compile Include="Clases\classRelationship.cs" />
     <Compile Include="Clases\classSpecialty.cs" />
     <Compile Include="Clases\classProfessionalSpeciality.cs" />
     <Compile Include="classUtiles.cs" />
     <Compile Include="Clases\classParent.cs" />
+    <Compile Include="ParametersReaders\prPatient.cs" />
+    <Compile Include="ParametersReaders\prProfessional.cs" />
+    <Compile Include="ParametersReaders\prSocialWorks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

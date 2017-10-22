@@ -129,7 +129,7 @@ namespace myExplorer.Formularios
             if (User == eUser.Valido)
             {
                 frmListPatient frmBuscar = new frmListPatient();
-                frmBuscar.MaximizeBox = true;
+                frmBuscar.MdiParent = this;
                 frmBuscar.oQuery = oQuery;
                 frmBuscar.oUtil = oUtil;
                 frmBuscar.Show();
@@ -143,6 +143,7 @@ namespace myExplorer.Formularios
             if (User == eUser.Valido)
             {
                 frmListSocialWorks frmSocialWork = new frmListSocialWorks();
+                frmSocialWork.MdiParent = this;
                 frmSocialWork.oQuery = oQuery;
                 frmSocialWork.oUtil = oUtil;
                 frmSocialWork.Show();
@@ -156,6 +157,7 @@ namespace myExplorer.Formularios
             if (User == eUser.Valido)
             {
                 frmListProfessional frmProfessional = new frmListProfessional();
+                frmProfessional.MdiParent = this;
                 frmProfessional.oQuery = oQuery;
                 frmProfessional.oUtil = oUtil;
                 frmProfessional.Show();
@@ -193,7 +195,7 @@ namespace myExplorer.Formularios
             if (User == eUser.Valido)
             {
                 User = eUser.Invalido;
-                tsbUsuario.Text = oTxt.IniciarSesion;
+                tsmiUsuario.Text = oTxt.IniciarSesion;
                 Text = oTxt.TituloVentana + oTxt.TitleLogin;
                 // Cerrar odas los frm
                 EnableUser(false);
@@ -212,7 +214,7 @@ namespace myExplorer.Formularios
                         if (Id != 0)
                         {
                             User = eUser.Valido;
-                            tsbUsuario.Text = oTxt.Logout;
+                            tsmiUsuario.Text = oTxt.Logout;
                             Text = oTxt.TituloVentana + oTxt.SeparadorTitle + fLogin.oProfessional.User.ToString();
                             // Abre todas los frm
                             EnableUser(true);
@@ -225,7 +227,7 @@ namespace myExplorer.Formularios
                         else
                         {
                             User = eUser.Invalido;
-                            tsbUsuario.Text = oTxt.IniciarSesion;
+                            tsmiUsuario.Text = oTxt.IniciarSesion;
                             Text = oTxt.TituloVentana + oTxt.TitleLogin;
                             oUtil.oProfessional = null; ;
                             MessageBox.Show(oTxt.LoginInvalido);
@@ -235,7 +237,7 @@ namespace myExplorer.Formularios
                         H = false;
                 }
             }
-            tsmiSesion.Text = tsbUsuario.Text;
+            tsmiSesion.Text = tsmiUsuario.Text;
         }
 
         //-----------------------------------------------------------------
@@ -256,8 +258,8 @@ namespace myExplorer.Formularios
         private void EnableUser(bool X)
         {
             tsPrincipal.Enabled = X;
-            tsEstadisticas.Enabled = X;
-            tsUsuario.Enabled = true;
+            tsbEstadisticas.Enabled = X;
+            tsmiUsuario.Enabled = true;
 
             tsmiGrandfather.Enabled = X;
             tsmiSocialWorks.Enabled = X;
