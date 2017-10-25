@@ -1685,12 +1685,36 @@ namespace Datos.Query
         /// </summary>
         /// <param name="oP"></param>
         /// <returns></returns>
-        public int ValidarPassword(classProfessional oP)
+        public int OpenSession(classProfessional oP)
         {
             string SPname = sp.Login;
             int A = 0;
 
             List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Status", 1));
+            lParam.Add(new SqlParameter("@User", oP.User));
+            lParam.Add(new SqlParameter("@Password", oP.Password));
+
+            if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+            {
+                if (oSql.Reader.Read())
+                {
+                    A = Convert.ToInt32(oSql.Reader[0]);
+                    oSql.Reader.Close();
+                }
+            }
+            oSql.Close();
+            return A;
+        }
+
+
+        public int CloseSession(classProfessional oP)
+        {
+            string SPname = sp.Login;
+            int A = 0;
+
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Status", 0));
             lParam.Add(new SqlParameter("@User", oP.User));
             lParam.Add(new SqlParameter("@Password", oP.Password));
 

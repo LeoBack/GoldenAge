@@ -170,12 +170,17 @@
     <Compile Include="Formularios\frmListPatient.Designer.cs">
       <DependentUpon>frmListPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Interfaz.cs" />
     <Compile Include="Formularios\frmDialogoImprecion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmDialogoImprecion.Designer.cs">
       <DependentUpon>frmDialogoImprecion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmMessaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmMessaje.Designer.cs">
+      <DependentUpon>frmMessaje.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,22 +220,25 @@
     <EmbeddedResource Include="Formularios\frmDialogoImprecion.resx">
       <DependentUpon>frmDialogoImprecion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmMessaje.resx">
+      <DependentUpon>frmMessaje.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="App.config" />
     <None Include="MyExplorer_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -265,6 +273,8 @@
     <None Include="Resources\Printer.png" />
     <None Include="Resources\EditFile.png" />
     <None Include="Resources\GraficoDeBarras.png" />
+    <None Include="Resources\Email.png" />
+    <None Include="Resources\EditEmail.png" />
     <Content Include="Resources\hombre-negro-de-un-usuario-icono-7176-48.png" />
     <None Include="Resources\Para_Personas_mini.png" />
     <Content Include="Resources\Search.ico" />

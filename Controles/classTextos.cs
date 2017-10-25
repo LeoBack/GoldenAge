@@ -66,15 +66,15 @@ namespace Controles
         public string AddSocialWork = "Obra Social agregada con exito.";
         public string UpdateSocialWork = "Obra Social actualizada con exito.";
 
-        //Mensajes
-        public string MsgTituloCerrarAplicacion = "Atencion";
-        public string MsgCerrarAplicacion = "¿Deseas cerrar la Aplicación?";
-        public string MsgTituloDiagnostico = "Atencion";
-        public string MsgEliminarDiagnostico = "La accion eliminara el diagnostico\n¿Desea Continuar?";
+        // Mensajes
+        public string MsgTitleCloseApk = "Atencion";
+        public string MsgCloseApk = "¿Deseas cerrar la Aplicación?";
+        public string MsgTitleDiagnostic = "Atencion";
+        public string MsgDeleteDiagnostic = "La accion eliminara el diagnostico\n¿Desea Continuar?";
         public string MsgTituloHistoriClinica = "Armando planilla";
         public string MsgHistoriaClinica = "SI - La planilla mostrara los registros visualizados.\nNO - La planilla mostrara los registros que cumplan la condicion.";
 
-        //Conexciones
+        // Conexciones
         public string ConexionExitosa = "Conexion establecida";
         public string ConexionNuevaExitosa = "Nueva coneccion establecida";
         public string ConexionErronea = "Error al conectar";

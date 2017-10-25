@@ -58,9 +58,14 @@ namespace myExplorer.Formularios
         // OK - 17/09/14
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show(oTxt.MsgCerrarAplicacion, oTxt.MsgTituloCerrarAplicacion, 
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                e.Cancel = true;
+            if (MdiChildren.Length != 0)
+            {
+                if (MessageBox.Show(oTxt.MsgCloseApk, oTxt.MsgTitleCloseApk,
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                    e.Cancel = true;
+            }
+            // Cerrar Sesion.
+            // Cerra Aplicacion.
         }
 
         #endregion
@@ -69,8 +74,9 @@ namespace myExplorer.Formularios
         //-----------------------------------------------------------------
         // OK - 17/10/07
         #region msMenu
-        //-----------------------------------------------------------------
         
+        #region File
+ 
         // Cierra Formulario
         // OK - 17/09/14
         private void tsmiSalir_Click(object sender, EventArgs e)
@@ -78,49 +84,9 @@ namespace myExplorer.Formularios
             Close();
         }
 
-        // Cuadro de AcercaDe
-        // OK - 17/09/14
-        private void tsmiAcercaDe_Click(object sender, EventArgs e)
-        {
-            frmAcercaDe frmAcercaDe = new frmAcercaDe();
-            frmAcercaDe.ShowDialog();
-        }
-
-        // Configuracion Base de Dtos
-        // OK - 17/09/14
-        private void tsmiDataBase_Click(object sender, EventArgs e)
-        {
-            frmConect fc = new frmConect(ConfigurationManager.ConnectionStrings[0].ConnectionString);
-            if (fc.ShowDialog() == DialogResult.OK)
-                oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
-        }
-
-        // ABM Pais
-        // OK - 17/10/07
-        private void tsmiAbmCountry_Click(object sender, EventArgs e)
-        {
-            frmLocation floc = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Country);
-            floc.ShowDialog();
-        }
-
-        // ABM Provincia
-        // OK - 17/10/07
-        private void tsmiAbmProvince_Click(object sender, EventArgs e)
-        {
-            frmLocation floc = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Province);
-            floc.ShowDialog();
-        }
-
-        // ABM Ciudad
-        // OK - 17/10/07
-        private void tsmiAbmCity_Click(object sender, EventArgs e)
-        {
-            frmLocation floc = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.City);
-            floc.ShowDialog();
-        }
-
         #endregion
-        //-----------------------------------------------------------------
+
+        #region Menu
 
         // Formulario de Busqueda
         // OK - 17/09/14
@@ -138,20 +104,6 @@ namespace myExplorer.Formularios
 
         // Formulario de Busqueda
         // OK - 24/09/14
-        private void tsmiSocialWork_Click(object sender, EventArgs e)
-        {
-            if (User == eUser.Valido)
-            {
-                frmListSocialWorks frmSocialWork = new frmListSocialWorks();
-                frmSocialWork.MdiParent = this;
-                frmSocialWork.oQuery = oQuery;
-                frmSocialWork.oUtil = oUtil;
-                frmSocialWork.Show();
-            }
-        }
-
-        // Formulario de Busqueda
-        // OK - 24/09/14
         private void tsmiProfessional_Click(object sender, EventArgs e)
         {
             if (User == eUser.Valido)
@@ -164,7 +116,21 @@ namespace myExplorer.Formularios
             }
         }
 
-        //OK - 18/06/12
+        // Formulario de Busqueda
+        // OK - 24/09/14
+        private void tsmiSocialWork_Click(object sender, EventArgs e)
+        {
+            if (User == eUser.Valido)
+            {
+                frmListSocialWorks frmSocialWork = new frmListSocialWorks();
+                frmSocialWork.MdiParent = this;
+                frmSocialWork.oQuery = oQuery;
+                frmSocialWork.oUtil = oUtil;
+                frmSocialWork.Show();
+            }
+        }
+
+        // OK - 18/06/12
         private void tsmiStatics_Click(object sender, EventArgs e)
         {
             if (this.User == eUser.Valido)
@@ -175,6 +141,22 @@ namespace myExplorer.Formularios
                 fE.ShowDialog();
             }
         }
+
+        // Formulario Mensajes
+        // OK - 17/10/24
+        private void tsbMyMessages_Click(object sender, EventArgs e)
+        {
+            if (User == eUser.Valido)
+            {
+                frmMessaje frmMsj = new frmMessaje();
+                frmMsj.MdiParent = this;
+                frmMsj.oQuery = oQuery;
+                frmMsj.oUtil = oUtil;
+                frmMsj.Show();
+            }
+        }
+
+        //-----------------------------------------------------------------
 
         // OK - 24/09/14
         private void tsmiNowUser_Click(object sender, EventArgs e)
@@ -210,7 +192,7 @@ namespace myExplorer.Formularios
                 {
                     if (fLogin.ShowDialog() == DialogResult.Yes)
                     {
-                        int Id = oQuery.ValidarPassword(fLogin.oProfessional);
+                        int Id = oQuery.OpenSession(fLogin.oProfessional);
                         if (Id != 0)
                         {
                             User = eUser.Valido;
@@ -242,8 +224,88 @@ namespace myExplorer.Formularios
 
         //-----------------------------------------------------------------
 
-        #region Metodos
+        // ABM Pais
+        // OK - 17/10/07
+        private void tsmiAbmCountry_Click(object sender, EventArgs e)
+        {
+            frmLocation floc = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Country);
+            floc.ShowDialog();
+        }
+
+        // ABM Provincia
+        // OK - 17/10/07
+        private void tsmiAbmProvince_Click(object sender, EventArgs e)
+        {
+            frmLocation floc = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Province);
+            floc.ShowDialog();
+        }
+
+        // ABM Ciudad
+        // OK - 17/10/07
+        private void tsmiAbmCity_Click(object sender, EventArgs e)
+        {
+            frmLocation floc = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.City);
+            floc.ShowDialog();
+        }
+
         //-----------------------------------------------------------------
+
+        #endregion
+
+        #region Help
+
+        // Cuadro de AcercaDe
+        // OK - 17/09/14
+        private void tsmiAcercaDe_Click(object sender, EventArgs e)
+        {
+            frmAcercaDe frmAcercaDe = new frmAcercaDe();
+            frmAcercaDe.ShowDialog();
+        }
+
+        // Configuracion Base de Dtos
+        // OK - 17/09/14
+        private void tsmiDataBase_Click(object sender, EventArgs e)
+        {
+            frmConect fc = new frmConect(ConfigurationManager.ConnectionStrings[0].ConnectionString);
+            if (fc.ShowDialog() == DialogResult.OK)
+                oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
+        }
+
+        #endregion
+
+        #region Windows
+
+        // Maximiza todas las ventanas hijas
+        // OK - 17/10/24
+        private void tsmiMaximizeWindows_Click(object sender, EventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+                frm.WindowState = FormWindowState.Maximized;
+        }
+
+        // Minimize todas las ventanas hijas
+        // OK - 17/10/24
+        private void tsmiMinimizeWindows_Click(object sender, EventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+                frm.WindowState = FormWindowState.Minimized;
+        }
+
+        // Cierra todas las ventanas hijas
+        // OK - 17/10/24
+        private void tsmiCloseWindows_Click(object sender, EventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+                frm.Close();
+        }
+
+        #endregion
+
+        #endregion
+
+        //-----------------------------------------------------------------
+
+        #region Metodos
 
         private void frmAlInicio(object sender, EventArgs e)
         {
@@ -258,9 +320,7 @@ namespace myExplorer.Formularios
         private void EnableUser(bool X)
         {
             tsPrincipal.Enabled = X;
-            tsbEstadisticas.Enabled = X;
             tsmiUsuario.Enabled = true;
-
             tsmiGrandfather.Enabled = X;
             tsmiSocialWorks.Enabled = X;
             tsmiNowUser.Enabled = X;
@@ -318,7 +378,6 @@ namespace myExplorer.Formularios
         }
 
         #endregion
-
 
     }
 }
