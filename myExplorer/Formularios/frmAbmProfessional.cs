@@ -464,10 +464,11 @@ namespace myExplorer.Formularios
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-        //    if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
-        //    {
-        //        e.Handled = true;
-        //    }
+            classValidaciones oClassValidas = new classValidaciones();
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back) && oClassValidas.isPhone(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
         #endregion
 
