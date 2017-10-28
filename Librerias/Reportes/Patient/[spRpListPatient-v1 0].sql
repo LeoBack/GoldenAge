@@ -53,8 +53,14 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
+<<<<<<< HEAD
 		[P].[IdSocialWork] = @IdSocialWork AND
 		[P].[Visible] = @Visible
+=======
+		[P].[IdSocialWork] = @IdSocialWork 		And
+		[P].[Visible] = @Visible
+		
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		Order by [P].[Name]
 	END
 	if(@Name='' and @LastName='' and @AffiliateNumber!=0 and @IdSocialWork=0)    --0010 
@@ -68,7 +74,11 @@ BEGIN
 		WHERE 
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
+<<<<<<< HEAD
 		[P].[AffiliateNumber] = @AffiliateNumber AND
+=======
+		[P].[AffiliateNumber] = @AffiliateNumber And
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		--[P].[IdSocialWork] = @IdSocialWork AND
 		[P].[Visible] = @Visible
 		--And
@@ -86,8 +96,14 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
 		[P].[AffiliateNumber] = @AffiliateNumber AND 
+<<<<<<< HEAD
 		[P].[IdSocialWork] = @IdSocialWork AND
 		[P].[Visible] = @Visible
+=======
+		[P].[IdSocialWork] = @IdSocialWork And
+		[P].[Visible] = @Visible
+		--And
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		 Order by [P].[Name]
 	END
 	if(@Name='' and @LastName!='' and @AffiliateNumber=0 and @IdSocialWork=0)	 --0100 
@@ -100,10 +116,18 @@ BEGIN
 								 inner join	[dbo].[SocialWork] So on  [P].[IdSocialWork]=[So].[IdSocialWork]
 		WHERE 
 		--[P].[Name] like +'%'+@Name+'%' AND 
+<<<<<<< HEAD
 		[P].[LastName] like +'%'+@LastName+'%' AND
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
 		--[P].[IdSocialWork] = @IdSocialWork AND
 		[P].[Visible] = @Visible
+=======
+		[P].[LastName] like +'%'+@LastName+'%' And
+		--[P].[AffiliateNumber] = @AffiliateNumber AND 
+		--[P].[IdSocialWork] = @IdSocialWork AND
+		[P].[Visible] = @Visible
+		--And
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		 
 		Order by [P].[Name]
 	END
@@ -116,12 +140,20 @@ BEGIN
 		FROM [dbo].[Patient] [P] inner join [dbo].[TypeDocument] Ty on  [P].[IdTypeDocument]=[Ty].[IdTypeDocument]
 								 inner join	[dbo].[SocialWork] So on  [P].[IdSocialWork]=[So].[IdSocialWork]
 		WHERE 
+<<<<<<< HEAD
 		[P].[Name] like +'%'+@Name+'%' AND
+=======
+		[P].[Name] like +'%'+@Name+'%' And
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
 		--[P].[IdSocialWork] = @IdSocialWork AND
 		[P].[Visible] = @Visible
+<<<<<<< HEAD
 
+=======
+		--And
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		 Order by [P].[Name]
 	END
 
@@ -137,8 +169,14 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND
 		[P].[LastName] like +'%'+@LastName+'%' AND 
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
+<<<<<<< HEAD
 		[P].[IdSocialWork] = @IdSocialWork AND
 		[P].[Visible] = @Visible
+=======
+		[P].[IdSocialWork] = @IdSocialWork And
+		[P].[Visible] = @Visible
+		--And
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		 
 		Order by [P].[Name]
 	END
@@ -153,9 +191,16 @@ BEGIN
 		WHERE 
 		--[P].[Name] like +'%'+@Name+'%' AND
 		[P].[LastName] like +'%'+@LastName+'%' AND 
+<<<<<<< HEAD
 		[P].[AffiliateNumber] = @AffiliateNumber AND
 		--[P].[IdSocialWork] = @IdSocialWork AND
 		[P].[Visible] = @Visible
+=======
+		[P].[AffiliateNumber] = @AffiliateNumber And
+		--[P].[IdSocialWork] = @IdSocialWork AND
+		[P].[Visible] = @Visible
+		--And
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		 
 		Order by [P].[Name]
 	END
@@ -171,9 +216,15 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		[P].[LastName] like +'%'+@LastName+'%' AND 
 		[P].[AffiliateNumber] = @AffiliateNumber AND 
+<<<<<<< HEAD
 		[P].[IdSocialWork] = @IdSocialWork AND
 		[P].[Visible] = @Visible
 
+=======
+		[P].[IdSocialWork] = @IdSocialWork And
+		[P].[Visible] = @Visible
+		--And
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		Order by [P].[Name]
 	END
 	if(@Name!='' and @LastName!='' and @AffiliateNumber!=0 and @IdSocialWork!=0)  --0111
@@ -188,8 +239,14 @@ BEGIN
 		[P].[Name] like +'%'+@Name+'%' AND 
 		[P].[LastName] like +'%'+@LastName+'%' AND 
 		[P].[AffiliateNumber] = @AffiliateNumber AND 
+<<<<<<< HEAD
 		[P].[IdSocialWork] = @IdSocialWork AND
 		[P].[Visible] = @Visible
+=======
+		[P].[IdSocialWork] = @IdSocialWork And
+		[P].[Visible] = @Visible
+		--And
+>>>>>>> 29c6433ddcc87a9e8cd56431740c4855aee3ce2e
 		 
 		Order by [P].[Name]
 	END
