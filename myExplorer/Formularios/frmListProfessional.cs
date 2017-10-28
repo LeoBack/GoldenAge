@@ -15,7 +15,7 @@ namespace myExplorer.Formularios
 {
     public partial class frmListProfessional : Form
     {
-        // OK 17/09/30
+        // OK - 30/09/17
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
@@ -29,17 +29,17 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 30/09/17
         #region Formulario
 
-        // OK 17/09/30
+        // OK - 30/09/17
         public frmListProfessional()
         {
             InitializeComponent();
             oTxt = new classTextos();
         }
 
-        // OK 17/09/30
+        // OK - 30/09/17
         private void frmListProfessional_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
@@ -58,10 +58,10 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 24/09/17
+        // OK - 17/09/24
         #region Menu Contextual Botones
 
-        // OK - 24/09/17
+        // OK - 17/09/24
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
             classProfessional oP = new classProfessional();
@@ -91,7 +91,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 24/09/17
+        // OK - 17/09/24
         private void tsmiUpdate_Click(object sender, EventArgs e)
         {
             classProfessional oP = new classProfessional();
@@ -115,7 +115,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 24/09/17
+        // OK - 17/09/24
         private void tsmiAdd_Click(object sender, EventArgs e)
         {
             frmAbmProfessional frmA = new frmAbmProfessional();
@@ -160,16 +160,41 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 24/09/17
+        // OK - 17/10/28
         #region Botones
 
-        // OK - 24/09/17
-        private void btnCerrar_Click(object sender, EventArgs e)
+        // OK - 17/10/28
+        private void tsbPrintList_Click(object sender, EventArgs e)
         {
-            Close();
+            //tstxtNombre.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta)
+            classProfessional oP = new classProfessional();
+            oP.LastName = tstxtLastName.Text;
+            oP.Name = tstxtName.Text;
+
+            if (oQuery.rpListProfessional(oP.Name, oP.LastName))
+            {
+                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
+                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
+                //fReport.Show();
+            }
+            else
+                MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK - 24/09/17
+        // OK - 17/10/28
+        private void tsmiPrintSelect_Click(object sender, EventArgs e)
+        {
+            if (oQuery.RpOnlyProfessional(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
+            {
+                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
+                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
+                //fReport.Show();
+            }
+            else
+                MessageBox.Show(oTxt.ErrorQueryList);
+        }
+
+        // OK - 17/09/24
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
@@ -177,18 +202,18 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 24/09/17
+        // OK - 17/09/24
         #region Metodos
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// OK - 24/09/17
+        /// OK - 17/09/24
         /// </summary>
         public void Filtrar()
         {
             SelectRow = 0;
 
-            if (oQuery.FiltroProfesionalesLimite(tstxtNombre.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta))
+            if (oQuery.FiltroProfesionalesLimite(tstxtName.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta))
             { 
                 //decimal Cont = oQuery.CountProfesionales(oValidarSql.ValidaString(tstxtNombre.TextBox.Text), Hiden);
                 //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
@@ -206,7 +231,7 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Colorea la Fila de Color
-        /// OK - 24/09/17
+        /// OK - 17/09/24
         /// </summary>
         /// <param name="Color"></param>
         public void PintarBloqueados(Color Color)

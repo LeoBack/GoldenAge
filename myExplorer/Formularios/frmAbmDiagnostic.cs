@@ -72,6 +72,16 @@ namespace myExplorer.Formularios
         #region Botones
 
         // OK - 17/10/07
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            /*
+             * rpClinicHistory
+             * Consulta Diagnosticos y Mesnajes del paciente actual.
+             */
+
+        }
+
+        // OK - 17/10/07
         private void btnNew_Click(object sender, EventArgs e)
         {
             eModo = Modo.Add;
@@ -247,11 +257,12 @@ namespace myExplorer.Formularios
             dgvLista.DataSource = Source;
 #if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
-            dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
+            //dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif
             return dgvLista.Rows.Count;
         }
 
         #endregion
+
     }
 }

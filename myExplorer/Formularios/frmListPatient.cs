@@ -17,7 +17,7 @@ namespace myExplorer.Formularios
 {
     public partial class frmListPatient : Form
     {
-        // OK 17/09/30
+        // OK - 17/09/30
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
@@ -31,17 +31,17 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/09/30
         #region Formulario
 
-        // OK 17/09/30
+        // OK - 17/09/30
         public frmListPatient()
         {
             InitializeComponent();
             oTxt = new classTextos();
         }
 
-        // OK 17/09/30
+        // OK - 17/09/30
         private void frmListPatient_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
@@ -51,10 +51,10 @@ namespace myExplorer.Formularios
                 Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
 
-                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(tscmbSocialWork.ComboBox,
+                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadComboSearch(tscmbSocialWork.ComboBox,
                     (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
                     oQuery.Table);
-                tsbImprimir.Enabled = false;
+                tsbPrintList.Enabled = false;
             }
             else
                 Close();
@@ -62,54 +62,10 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
-        private void tsmiSelect_Click(object sender, EventArgs e)
-        {
-            classPatient oGf = null;
-
-            if (dgvLista.Rows.Count != 0)
-            {
-                oGf = new classPatient();
-                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-                oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
-
-                frmAbmPatient frmPatient = new frmAbmPatient();
-                frmPatient.eModo = frmAbmPatient.Modo.Select;
-                frmPatient.oQuery = oQuery;
-                frmPatient.oPatient = oGf;
-                frmPatient.oUtil = oUtil;
-                frmPatient.ShowDialog();
-            }
-        }
-
-        // OK 17/10/05
-        private void tsmiDiagnostic_Click(object sender, EventArgs e)
-        {
-            classPatient oGf = null;
-
-            if (dgvLista.Rows.Count != 0)
-            {
-                oGf = new classPatient();
-                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-                oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
-
-                if (oGf != null)
-                {
-                    frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic();
-                    fDiagnostic.oQuery = oQuery;
-                    fDiagnostic.oUtil = oUtil;
-                    fDiagnostic.oPatient = oGf;
-                    fDiagnostic.ShowDialog();
-                }
-                else
-                    MessageBox.Show(oTxt.ErrorQueryList);
-            }
-        }
-
-        // OK 17/09/30
+        // OK - 17/09/30
         #region Menu Contextual Botones
 
-        // OK 17/09/30
+        // OK - 17/09/30
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
             classPatient oGf = null;
@@ -140,7 +96,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 24/09/17
+        // OK - 17/09/24
         private void tsmiUpdate_Click(object sender, EventArgs e)
         {
             classPatient oGf = new classPatient();
@@ -164,7 +120,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 24/09/17
+        // OK - 17/09/24
         private void tsmiAdd_Click(object sender, EventArgs e)
         {
             frmAbmPatient frmA = new frmAbmPatient();
@@ -208,27 +164,99 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/09/30
         #region Botones
 
-        // OK 17/09/30
-        private void tsbImprimir_Click(object sender, EventArgs e)
+        // OK - 17/09/30
+        private void tsmiSelect_Click(object sender, EventArgs e)
+        {
+            classPatient oGf = null;
+
+            if (dgvLista.Rows.Count != 0)
+            {
+                oGf = new classPatient();
+                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
+
+                frmAbmPatient frmPatient = new frmAbmPatient();
+                frmPatient.eModo = frmAbmPatient.Modo.Select;
+                frmPatient.oQuery = oQuery;
+                frmPatient.oPatient = oGf;
+                frmPatient.oUtil = oUtil;
+                frmPatient.ShowDialog();
+            }
+        }
+
+        // OK - 17/10/05
+        private void tsmiDiagnostic_Click(object sender, EventArgs e)
+        {
+            classPatient oGf = null;
+
+            if (dgvLista.Rows.Count != 0)
+            {
+                oGf = new classPatient();
+                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
+
+                if (oGf != null)
+                {
+                    frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic();
+                    fDiagnostic.oQuery = oQuery;
+                    fDiagnostic.oUtil = oUtil;
+                    fDiagnostic.oPatient = oGf;
+                    fDiagnostic.ShowDialog();
+                }
+                else
+                    MessageBox.Show(oTxt.ErrorQueryList);
+            }
+        }
+
+        // OK - 17/10/28
+        private void tsbPrintList_Click(object sender, EventArgs e)
         {
             classPatient oP = new classPatient();
             oP.LastName = tstxtLastName.Text;
+            oP.Name = tstxtName.Text;
             oP.AffiliateNumber = Convert.ToInt32(tstxtAffiliateNumber.Text);
             oP.IdSocialWork = Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue);
 
-            //if (oQuery.rListaGrandfatherLimite("dtPersona", oP, Desde, Hasta))
-            //{
-            //    frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
-            //    fReport.Show();
-            //}
-            //else
-            MessageBox.Show(oTxt.ErrorQueryList);
+            if (oQuery.rpListPatient(oP.Name, oP.LastName, oP.AffiliateNumber, oP.IdSocialWork))
+            {
+                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
+                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
+                //fReport.Show();
+            }
+            else
+                MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK 17/09/30
+        // OK - 17/10/28
+        private void tsmiPrintSelect_Click(object sender, EventArgs e)
+        {
+            if (oQuery.RpOnlyPatient(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
+            {
+                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
+                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
+                //fReport.Show();
+            }
+            else
+                MessageBox.Show(oTxt.ErrorQueryList);
+        }
+
+        // OK - 17/10/28
+        private void tsmiPrintParent_Click(object sender, EventArgs e)
+        {
+            if (oQuery.RpPatientParent(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
+            {
+                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
+                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
+                //fReport.Show();
+            }
+            else
+                MessageBox.Show(oTxt.ErrorQueryList);
+        }
+
+        // OK - 17/09/30
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
@@ -236,12 +264,12 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/09/30
         #region Metodos
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// OK - 24/09/17
+        /// OK - 17/09/24
         /// </summary>
         public void Filtrar()
         {
@@ -263,19 +291,19 @@ namespace myExplorer.Formularios
                 dgvLista.Columns.Clear();
                 GenerarGrilla(oQuery.Table);
                 PintarBloqueados(Color.Gray);
-                tsbImprimir.Enabled = false;
+                tsbPrintList.Enabled = false;
                 //tsmiVerFicha.Enabled = false;
             }
             else
             {
                 //tsmiVerFicha.Enabled = true;
-                tsbImprimir.Enabled = true;
+                tsbPrintList.Enabled = true;
             }
         }
 
         /// <summary>
         /// Colorea la Fila de Color
-        /// OK - 24/09/17
+        /// OK - 17/09/24
         /// </summary>
         /// <param name="Color"></param>
         public void PintarBloqueados(Color Color)
@@ -294,7 +322,7 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// OK 17/10/03
+        /// OK - 17/10/03
         /// </summary>
         /// <param name="Source"></param>
         public int GenerarGrilla(object Source)
