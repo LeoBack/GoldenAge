@@ -374,6 +374,8 @@ namespace myExplorer.Formularios
                 MessageBox.Show("Tipo Docuemento Invalido.");
             else if (cmbSocialWork.SelectedIndex == -1)
                 MessageBox.Show("Obra Social Invalida.");
+            else if ((txtNumberDocument.Text.Length > 9) || (txtNumberDocument.Text == ""))
+                MessageBox.Show("El Numero de Documento esta vacio o no supera los 9 caracteres.");
             else
                 V = true;
 
@@ -632,7 +634,7 @@ namespace myExplorer.Formularios
         private bool ValidateFieldsParent()
         {
             bool V = false;
-
+            classValidaciones oClassValidas = new classValidaciones();
             if (txtParentName.Text.Length >= 50 || (txtParentName.Text == ""))
                 MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
             else if (txtParentLastName.Text.Length >= 50 || (txtParentLastName.Text == ""))
@@ -647,8 +649,12 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Numero de Telefono supera los 15 caracteres");
             else if (txtParentAlternativePhone.Text.Length >= 15)
                 MessageBox.Show("El Numero de Telefono Alternativo supera los 15 caracteres");
-            else if (txtParentEmail.Text.Length >= 50)
-                MessageBox.Show("El E-mail supera los 50 caracteres");
+            //else if (txtParentEmail.Text.Length >= 50)
+            //    MessageBox.Show("El E-mail supera los 50 caracteres");
+            else if (oClassValidas.ComprobarFormatoEmail(txtParentEmail.Text) == false)
+            {
+                MessageBox.Show("Formato de Direccion de Correo invalido");
+            }
             else if (cmbParentRelationship.SelectedIndex== -1)
                 MessageBox.Show("Parentesco Invalida.");
             else if (cmbTypeDocumentParent.SelectedIndex == -1)
@@ -666,7 +672,8 @@ namespace myExplorer.Formularios
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            classValidaciones oClassValidas = new classValidaciones();
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back) && oClassValidas.isPhone(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -715,5 +722,29 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
+        private void txtNumberDocument_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ValidarCorreos(object sender, KeyPressEventArgs e)
+        {
+            String lEmailCorrecto = "";
+            classValidaciones oClassValidas = new classValidaciones();
+            if (oClassValidas.ComprobarFormatoEmail(txtParentEmail.Text) == false)
+            {
+                lEmailCorrecto = "Dirección no valida";
+                //lEmailCorrecto.ForeColor = Color.Red;
+            }
+            else
+            {
+                lEmailCorrecto = "Dirección valida";
+                //lEmailCorrecto.ForeColor = Color.Green;
+            }
+        }
     }
 }
