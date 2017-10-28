@@ -1552,6 +1552,192 @@ namespace Datos.Query
 
         #endregion
 
+        // OK - 17/10/28
+        #region Consulta Reportes
+
+        /// <summary>
+        /// OK - 17/10/28
+        /// Historia Clinica del paciente seleccionado.
+        /// </summary>
+        /// <param name="IdPaciente"></param>
+        /// <returns>DataTable</returns>
+        public bool RpClinicHistory(int IdPatient)
+        {
+            string SPname = sp.RpClinicHistory;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@idPatient", IdPatient));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// OK - 17/10/28
+        /// Todos los datos del paciente seleccionado.
+        /// </summary>
+        /// <param name="IdPaciente"></param>
+        /// <returns>DataTable</returns>
+        public bool RpOnlyPatient(int IdPatient)
+        {
+            string SPname = sp.RpOnlyPatient;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@idPatient", IdPatient));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// OK - 17/10/28
+        /// Parientes del paciente seleccionado.
+        /// </summary>
+        /// <param name="IdPaciente"></param>
+        /// <returns>DataTable</returns>
+        public bool RpPatientParent(int IdPatient)
+        {
+            string SPname = sp.RpPatientParent;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@idPatient", IdPatient));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// OK - 17/10/28
+        /// Todos los paciente segun filtro.
+        /// </summary>
+        /// <param name="Nombre"></param>
+        /// <param name="Apellido"></param>
+        /// <param name="N Afiliado"></param>
+        /// <param name="IdObraSocial"></param>
+        /// <returns>DataTable</returns>
+        public bool rpListPatient(string Name, string LastName, int AffiliateNumber, int IdSocialWork)
+        {
+            string SPname = sp.RpListPatient;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@LastName", LastName));
+            lParam.Add(new SqlParameter("@AffiliateNumber", AffiliateNumber));
+            lParam.Add(new SqlParameter("@IdSocialWork", IdSocialWork));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// OK - 17/10/28
+        /// Todos los datos del Profesional seleccionado.
+        /// </summary>
+        /// <param name="IdProfessional"></param>
+        /// <returns>DataTable</returns>
+        public bool RpOnlyProfessional(int IdProfessional)
+        {
+            string SPname = sp.RpOnlyProfessional;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@idProfessional", IdProfessional));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// OK - 17/10/28
+        /// Todos los Profesional segun filtro.
+        /// </summary>
+        /// <param name="Nombre"></param>
+        /// <param name="Apellido"></param>
+        /// <returns>DataTable</returns>
+        public bool rpListProfessional(string Name, string LastName)
+        {
+            string SPname = sp.RpListProfessional;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@LastName", LastName));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
+        #endregion
 
         #region Contadores
 
@@ -1900,560 +2086,7 @@ namespace Datos.Query
 
         #endregion
 
-        // OK 21/06/12
-        #region Consulta Reportes
 
-        ///// <summary>
-        ///// Trae todos los turnos del personas seleccionado.
-        ///// OK 21/06/12 
-        ///// </summary>
-        ///// <param name="oT"></param>
-        ///// <returns></returns>
-        //public bool rTurnos(string nameDataTable, classTurnos oT)
-        //{
-        //    #region Tabla
-
-        //    DataTable TablaAuxiliar = new DataTable(nameDataTable);
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Edad", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Expediente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Paciente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Medico", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Dia", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Hora", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Estado", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("ObraSocial", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Tipo", typeof(string)));
-
-        //    #endregion
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT P.FechaNacimiento [Edad], P.nAfiliado[Expediente],"
-        //        + " (P.Apellido||', '||P.Nombre)[Paciente], I.Nombre[Tipo],"
-        //        + " U.Nombre[Medico], T.Fecha[Turno], E.Nombre[Estado], O.Nombre[ObraSocial]"
-        //        + " FROM Turno AS T INNER JOIN Persona AS P "
-        //        + " ON T.IdPersona = P.IdPersona "
-        //        + " INNER JOIN Usuario AS U"
-        //        + " ON T.IdUsuario = U.IdUsuario"
-        //        + " INNER JOIN EstadoTurno AS E"
-        //        + " ON T.IdEstadoTurno = E.IdEstadoTurno"
-        //        + " INNER JOIN ObraSocial AS O"
-        //        + " ON P.IdObraSocial = O.IdObraSocial"
-        //        + " INNER JOIN TipoPersona AS I"
-        //        + " ON P.IdTipoPersona = I.IdTipoPersona"
-        //        + " WHERE T.IdPersona = " + oT.IdPersona
-        //        + " AND U.IdUsuario = " + oT.IdUsuario + " ORDER BY T.Fecha;";
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "rTurnos"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            classPersona oP = new classPersona();
-        //            DataRow Row = TablaAuxiliar.NewRow();
-
-        //            Row[0] = oP.Edad(Convert.ToDateTime(Sql.Reader["Edad"]));
-        //            Row[1] = Sql.Reader["Expediente"].ToString();
-        //            Row[2] = Sql.Reader["Paciente"].ToString();
-        //            Row[3] = Sql.Reader["Medico"].ToString();
-        //            Row[4] = String.Format("{0:m}", Convert.ToDateTime(Sql.Reader["Turno"]));
-        //            Row[5] = String.Format("{0:T}", Convert.ToDateTime(Sql.Reader["Turno"]));
-        //            Row[6] = Sql.Reader["Estado"].ToString();
-        //            Row[7] = Sql.Reader["ObraSocial"].ToString();
-        //            Row[8] = Sql.Reader["Tipo"].ToString();
-
-        //            TablaAuxiliar.Rows.Add(Row);
-        //        }
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-
-        //        Table = TablaAuxiliar;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Close();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Trae todos los turnos del personas seleccionado.
-        ///// OK 21/06/12 
-        ///// </summary>
-        ///// <param name="oT"></param>
-        ///// <returns></returns>
-        //public bool rTurnosLimite(string nameDataTable, classTurnos oT, int Desde, int Hasta)
-        //{
-        //    #region Tabla
-
-        //    DataTable TablaAuxiliar = new DataTable(nameDataTable);
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Edad", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Expediente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Paciente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Medico", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Dia", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Hora", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Estado", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("ObraSocial", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Tipo", typeof(string)));
-
-        //    #endregion
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT P.FechaNacimiento [Edad], P.nAfiliado[Expediente],"
-        //        + " (P.Apellido||', '||P.Nombre)[Paciente], I.Nombre[Tipo],"
-        //        + " U.Nombre[Medico], T.Fecha[Turno], E.Nombre[Estado], O.Nombre[ObraSocial]"
-        //        + " FROM Turno AS T INNER JOIN Persona AS P "
-        //        + " ON T.IdPersona = P.IdPersona "
-        //        + " INNER JOIN Usuario AS U"
-        //        + " ON T.IdUsuario = U.IdUsuario"
-        //        + " INNER JOIN EstadoTurno AS E"
-        //        + " ON T.IdEstadoTurno = E.IdEstadoTurno"
-        //        + " INNER JOIN ObraSocial AS O"
-        //        + " ON P.IdObraSocial = O.IdObraSocial"
-        //        + " INNER JOIN TipoPersona AS I"
-        //        + " ON P.IdTipoPersona = I.IdTipoPersona"
-        //        + " WHERE T.IdPersona = " + oT.IdPersona
-        //        + " AND U.IdUsuario = " + oT.IdUsuario + " ORDER BY T.Fecha" 
-        //        + " LIMIT " + Desde + ", " + Hasta +" ;";
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "rTurnosLimite"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            classPersona oP = new classPersona();
-        //            DataRow Row = TablaAuxiliar.NewRow();
-
-        //            Row[0] = oP.Edad(Convert.ToDateTime(Sql.Reader["Edad"]));
-        //            Row[1] = Sql.Reader["Expediente"].ToString();
-        //            Row[2] = Sql.Reader["Paciente"].ToString();
-        //            Row[3] = Sql.Reader["Medico"].ToString();
-        //            Row[4] = String.Format("{0:m}", Convert.ToDateTime(Sql.Reader["Turno"]));
-        //            Row[5] = String.Format("{0:T}", Convert.ToDateTime(Sql.Reader["Turno"]));
-        //            Row[6] = Sql.Reader["Estado"].ToString();
-        //            Row[7] = Sql.Reader["ObraSocial"].ToString();
-        //            Row[8] = Sql.Reader["Tipo"].ToString();
-
-        //            TablaAuxiliar.Rows.Add(Row);
-        //        }
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-
-        //        Table = TablaAuxiliar;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Close();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Trae todos los turnos del personas seleccionado.
-        ///// OK 21/06/12
-        ///// </summary>
-        ///// <param name="oT"></param>
-        ///// <returns></returns>
-        //public bool rTurnosDelDia(string nameDataTable, DateTime Desde, DateTime Hasta, int IdUsuario)
-        //{
-        //    #region Tabla
-
-        //    DataTable TablaAuxiliar = new DataTable(nameDataTable);
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Edad", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Expediente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Paciente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Medico", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Dia", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Hora", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Estado", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("ObraSocial", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Tipo", typeof(string)));
-
-        //    #endregion
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT P.FechaNacimiento [Edad], P.nAfiliado[Expediente]," 
-        //        + " (P.Apellido||', '||P.Nombre)[Paciente], I.Nombre[Tipo],"
-        //        + " U.Nombre[Medico], T.Fecha[Turno], E.Nombre[Estado], O.Nombre[ObraSocial]"
-        //        + " FROM Turno AS T INNER JOIN Persona AS P "
-        //        + " ON T.IdPersona = P.IdPersona "
-        //        + " INNER JOIN Usuario AS U"
-        //        + " ON T.IdUsuario = U.IdUsuario"
-        //        + " INNER JOIN EstadoTurno AS E"
-        //        + " ON T.IdEstadoTurno = E.IdEstadoTurno"
-        //        + " INNER JOIN ObraSocial AS O"
-        //        + " ON P.IdObraSocial = O.IdObraSocial"
-        //        + " INNER JOIN TipoPersona AS I"
-        //        + " ON P.IdTipoPersona = I.IdTipoPersona"
-        //        + " WHERE T.Fecha BETWEEN '" + String.Format("{0:yyyy'-'MM'-'dd}", Desde)
-        //        + "' AND '" + String.Format("{0:yyyy'-'MM'-'dd}", Hasta) + "' AND U.IdUsuario = " + IdUsuario + " ;";
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "rTurnosDelDia"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            classPersona oP = new classPersona();
-        //            DataRow Row = TablaAuxiliar.NewRow();
-
-        //            Row[0] = oP.Edad(Convert.ToDateTime(Sql.Reader["Edad"]));
-        //            Row[1] = Sql.Reader["Expediente"].ToString();
-        //            Row[2] = Sql.Reader["Paciente"].ToString();
-        //            Row[3] = Sql.Reader["Medico"].ToString();
-        //            Row[4] = String.Format("{0:m}", Convert.ToDateTime(Sql.Reader["Turno"]));
-        //            Row[5] = String.Format("{0:T}", Convert.ToDateTime(Sql.Reader["Turno"]));
-        //            Row[6] = Sql.Reader["Estado"].ToString();
-        //            Row[7] = Sql.Reader["ObraSocial"].ToString();
-        //            Row[8] = Sql.Reader["Tipo"].ToString();
-
-        //            TablaAuxiliar.Rows.Add(Row);
-        //        }
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-
-        //        Table = TablaAuxiliar;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Close();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Trae todos los turnos del personas seleccionado.
-        ///// OK 21/06/12
-        ///// </summary>
-        ///// <param name="oT"></param>
-        ///// <returns></returns>
-        //public bool rTurnosDelDiaLimite(string nameDataTable, DateTime FechaDesde, DateTime FechaHasta, int IdUsuario, int Desde, int Hasta)
-        //{
-        //    #region Tabla
-
-        //    DataTable TablaAuxiliar = new DataTable(nameDataTable);
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Edad", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Expediente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Paciente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Medico", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Dia", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Hora", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Estado", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("ObraSocial", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Tipo", typeof(string)));
-
-        //    #endregion
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT P.FechaNacimiento [Edad], P.nAfiliado[Expediente],"
-        //        + " (P.Apellido||', '||P.Nombre)[Paciente], I.Nombre[Tipo],"
-        //        + " U.Nombre[Medico], T.Fecha[Turno], E.Nombre[Estado], O.Nombre[ObraSocial]"
-        //        + " FROM Turno AS T INNER JOIN Persona AS P "
-        //        + " ON T.IdPersona = P.IdPersona "
-        //        + " INNER JOIN Usuario AS U"
-        //        + " ON T.IdUsuario = U.IdUsuario"
-        //        + " INNER JOIN EstadoTurno AS E"
-        //        + " ON T.IdEstadoTurno = E.IdEstadoTurno"
-        //        + " INNER JOIN ObraSocial AS O"
-        //        + " ON P.IdObraSocial = O.IdObraSocial"
-        //        + " INNER JOIN TipoPersona AS I"
-        //        + " ON P.IdTipoPersona = I.IdTipoPersona"
-        //        + " WHERE T.Fecha BETWEEN '" + String.Format("{0:yyyy'-'MM'-'dd}", FechaDesde)
-        //        + "' AND '" + String.Format("{0:yyyy'-'MM'-'dd}", FechaHasta) + "' AND U.IdUsuario = " + IdUsuario
-        //        + " LIMIT " + Desde + ", " + Hasta +" ;";
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "rTurnosDelDiaLimite"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            classPersona oP = new classPersona();
-        //            DataRow Row = TablaAuxiliar.NewRow();
-
-        //            Row[0] = oP.Edad(Convert.ToDateTime(Sql.Reader["Edad"]));
-        //            Row[1] = Sql.Reader["Expediente"].ToString();
-        //            Row[2] = Sql.Reader["Paciente"].ToString();
-        //            Row[3] = Sql.Reader["Medico"].ToString();
-        //            Row[4] = String.Format("{0:m}", Convert.ToDateTime(Sql.Reader["Turno"]));
-        //            Row[5] = String.Format("{0:T}", Convert.ToDateTime(Sql.Reader["Turno"]));
-        //            Row[6] = Sql.Reader["Estado"].ToString();
-        //            Row[7] = Sql.Reader["ObraSocial"].ToString();
-        //            Row[8] = Sql.Reader["Tipo"].ToString();
-
-        //            TablaAuxiliar.Rows.Add(Row);
-        //        }
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-
-        //        Table = TablaAuxiliar;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Close();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Carga un objeto adapter de tipo HistoriaClinica
-        ///// OK 21/06/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool rHistoriaClinica(string nameDataTable, int IdPersona)
-        //{
-        //    #region Tabla
-
-        //    DataTable TablaAuxiliar = new DataTable(nameDataTable);
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Paciente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Edad", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Sexo", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Telefono", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("ObraSocial", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Diagnostico", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Fecha", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Domicilio", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Tipo", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Medico", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("nAfiliado", typeof(string)));
-
-        //    #endregion
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT (P.Apellido||', '||P.Nombre) [Paciente], P.FechaNacimiento[Edad], P.Sexo," +
-        //        "P.Telefono, O.Nombre[ObraSocial], D.Diagnostico, D.Fecha, U.Nombre[Medico]," +
-        //        "(C.Nombre||', '||B.Nombre)[Domicilio], T.Nombre[Tipo], P.nAfiliado " +
-        //        "FROM Persona AS P INNER JOIN ObraSocial AS O " +
-        //        "ON O.IdObraSocial = P.IdObraSocial " +
-        //        "INNER JOIN Diagnostico AS D " +
-        //        "ON P.IdPersona = D.IdPersona " +
-        //        "INNER JOIN Ciudad AS C " +
-        //        "ON P.IdCiudad = C.IdCiudad " +
-        //        "INNER JOIN Barrio AS B " +
-        //        "ON P.IdBarrio = B.iIdBarrio " +
-        //        "INNER JOIN TipoPersona AS T " +
-        //        "ON T.IdTipoPersona = P.IdTipoPersona " +
-        //        "INNER JOIN Usuario AS U " +
-        //        "ON U.IdUsuario =  P.IdUsuario " +
-        //        "WHERE P.Visible = 1 AND   D.Visible = 1 " +
-        //        "AND   P.IdPersona = '" + IdPersona.ToString() + "';";
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "rHistoriaClinica"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            classPersona oP = new classPersona();
-        //            DataRow Row = TablaAuxiliar.NewRow();
-
-        //            Row[0] = Sql.Reader["Paciente"].ToString();
-        //            Row[1] = oP.Edad(Convert.ToDateTime(Sql.Reader["Edad"]));
-        //            Row[2] = oP.toSexo(Convert.ToInt32(Sql.Reader["Sexo"]));
-        //            Row[3] = Sql.Reader["Telefono"].ToString();
-        //            Row[4] = Sql.Reader["ObraSocial"].ToString();
-        //            Row[5] = Sql.Reader["Diagnostico"].ToString();
-        //            Row[6] = String.Format("{0:d}", Convert.ToDateTime(Sql.Reader["Fecha"]));
-        //            Row[7] = Sql.Reader["Domicilio"].ToString();
-        //            Row[8] = Sql.Reader["Tipo"].ToString();
-        //            Row[9] = Sql.Reader["Medico"].ToString();
-        //            Row[10] = Sql.Reader["nAfiliado"].ToString();
-
-        //            TablaAuxiliar.Rows.Add(Row);
-        //        }
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-
-        //        Table = TablaAuxiliar;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Close();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Carga un objeto adapter con lista de pacientes
-        ///// OK 21/06/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool rListaPacientes(string nameDataTable, classPersona oP)
-        //{
-        //    #region Tabla
-
-        //    DataTable TablaAuxiliar = new DataTable(nameDataTable);
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Edad", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("nPaciente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Telefono", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("TipoPaciente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Expediente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("ObraSocial", typeof(string)));
-
-        //    #endregion
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT P.FechaNacimiento [Edad], (P.Apellido||', '||P.Nombre) [nPaciente]," +
-        //            " T.Nombre[TipoPaciente],P.nAfiliado[Expediente], S.Nombre[ObraSocial], P.Telefono" +
-        //            " FROM Persona AS P INNER JOIN ObraSocial AS S" +
-        //            " ON P.IdObraSocial = S.IdObraSocial" +
-        //            " INNER JOIN TipoPersona AS T" +
-        //            " ON P.IdTipoPersona = T.IdTipoPersona";
-
-        //    if (oP.nAfiliado != "" && oP.Apellido != "")
-        //    {   // OK 12/06/12
-        //        Consulta = Consulta +
-        //            " WHERE P.Apellido LIKE '" + oP.Apellido +
-        //            "%' AND P.nAfiliado LIKE '" + oP.nAfiliado + "%' ";
-        //    }
-        //    else if (oP.Apellido != "")
-        //    {   // OK 12/06/12
-        //        Consulta = Consulta +
-        //            " WHERE P.Apellido LIKE '" + oP.Apellido + "%' ";
-        //    }
-        //    else if (oP.nAfiliado != "")
-        //    {   // OK 12/06/12
-        //        Consulta = Consulta +
-        //            " WHERE P.nAfiliado LIKE '" + oP.nAfiliado + "%' ";
-        //    }
-        //    else { }
-
-
-        //    if (oP.ObraSocial != 1)
-        //    {   // OK 12/06/12
-        //        Consulta = Consulta +
-        //            " AND P.IdObraSocial = " + oP.ObraSocial.ToString();
-        //    }
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "rListaPacientes"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            DataRow Row = TablaAuxiliar.NewRow();
-
-        //            Row[0] = oP.Edad(Convert.ToDateTime(Sql.Reader["Edad"]));
-        //            Row[1] = Sql.Reader["nPaciente"].ToString();
-        //            Row[2] = Sql.Reader["Telefono"].ToString();
-        //            Row[3] = Sql.Reader["TipoPaciente"].ToString();
-        //            Row[4] = Sql.Reader["Expediente"].ToString();
-        //            Row[5] = Sql.Reader["ObraSocial"].ToString();
-
-        //            TablaAuxiliar.Rows.Add(Row);
-        //        }
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-
-        //        Table = TablaAuxiliar;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Close();
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Carga un objeto adapter con lista de pacientes
-        ///// OK 21/06/12
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool rListaPacientesLimite(string nameDataTable, classPersona oP, int Desde, int Hasta)
-        //{
-        //    #region Tabla
-
-        //    DataTable TablaAuxiliar = new DataTable(nameDataTable);
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Edad", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("nPaciente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Telefono", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("TipoPaciente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("Expediente", typeof(string)));
-        //    TablaAuxiliar.Columns.Add(new DataColumn("ObraSocial", typeof(string)));
-
-        //    #endregion
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT P.FechaNacimiento [Edad], (P.Apellido||', '||P.Nombre) [nPaciente]," +
-        //            " T.Nombre[TipoPaciente],P.nAfiliado[Expediente], S.Nombre[ObraSocial], P.Telefono" +
-        //            " FROM Persona AS P INNER JOIN ObraSocial AS S" +
-        //            " ON P.IdObraSocial = S.IdObraSocial" +
-        //            " INNER JOIN TipoPersona AS T" +
-        //            " ON P.IdTipoPersona = T.IdTipoPersona";
-
-        //    if (oP.nAfiliado != "" && oP.Apellido != "")
-        //    {   // OK 12/06/12
-        //        Consulta = Consulta +
-        //            " WHERE P.Apellido LIKE '" + oP.Apellido +
-        //            "%' AND P.nAfiliado LIKE '" + oP.nAfiliado + "%' ";
-        //    }
-        //    else if (oP.Apellido != "")
-        //    {   // OK 12/06/12
-        //        Consulta = Consulta +
-        //            " WHERE P.Apellido LIKE '" + oP.Apellido + "%' ";
-        //    }
-        //    else if (oP.nAfiliado != "")
-        //    {   // OK 12/06/12
-        //        Consulta = Consulta +
-        //            " WHERE P.nAfiliado LIKE '" + oP.nAfiliado + "%' ";
-        //    }
-        //    else { }
-
-
-        //    if (oP.ObraSocial != 1)
-        //    {   // OK 12/06/12
-        //        Consulta = Consulta +
-        //            " AND P.IdObraSocial = " + oP.ObraSocial.ToString();
-        //    }
-
-        //    Consulta += " LIMIT " + Desde + ", " + Hasta +" ;";
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "rListaPacientes"))
-        //    {
-        //        while (Sql.Reader.Read())
-        //        {
-        //            DataRow Row = TablaAuxiliar.NewRow();
-
-        //            Row[0] = oP.Edad(Convert.ToDateTime(Sql.Reader["Edad"]));
-        //            Row[1] = Sql.Reader["nPaciente"].ToString();
-        //            Row[2] = Sql.Reader["Telefono"].ToString();
-        //            Row[3] = Sql.Reader["TipoPaciente"].ToString();
-        //            Row[4] = Sql.Reader["Expediente"].ToString();
-        //            Row[5] = Sql.Reader["ObraSocial"].ToString();
-
-        //            TablaAuxiliar.Rows.Add(Row);
-        //        }
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-
-        //        Table = TablaAuxiliar;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        Sql.Close();
-        //        return false;
-        //    }
-        //}
-
-        #endregion
     }
 }
 
