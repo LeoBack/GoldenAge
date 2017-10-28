@@ -1443,12 +1443,12 @@ namespace Datos.Query
 
         #endregion
 
-        // OK - 24/09/17
+        // OK - 17/09/24
         # region Filtros
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 24/09/17
+        /// OK - 17/09/24
         /// </summary>
         /// <param name="Nombre"></param>
         /// <param name="Bloqueado"></param>
@@ -1483,7 +1483,7 @@ namespace Datos.Query
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 24/09/17
+        /// OK - 17/09/24
         /// </summary>
         /// <param name="Nombre"></param>
         /// <param name="Desde"></param>
@@ -1516,7 +1516,7 @@ namespace Datos.Query
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 24/09/17
+        /// OK - 17/09/24
         /// </summary>
         /// <param name="oPersona"></param>
         /// <param name="Desde"></param>
@@ -1553,7 +1553,7 @@ namespace Datos.Query
         #endregion
 
         // OK - 17/10/28
-        #region Consulta Reportes
+        #region Reportes
 
         /// <summary>
         /// OK - 17/10/28
@@ -1739,131 +1739,8 @@ namespace Datos.Query
 
         #endregion
 
-        #region Contadores
-
-        public decimal CountProfesionales(string p1, bool p2)
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal CountSocialWork(string p)
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal CountGrandfather(classPatient oPersona)
-        {
-            throw new NotImplementedException();
-        }
-
-        ///// <summary>
-        ///// OK 24/06/12
-        ///// Cuenta Obras Sociales.
-        ///// </summary>
-        ///// <returns></returns>
-        //public int CountPersona(classPersona oP)
-        //{
-        //    int C = 0;
-        //    #region Consulta
-
-        //    string Consulta = "SELECT COUNT(IdPersona)[C] FROM persona WHERE Visible = 1";
-
-        //    if (oP.nAfiliado != "" && oP.Apellido != "")
-        //    {
-        //        Consulta += " AND Apellido LIKE '" + oP.Apellido 
-        //            + "%' AND nAfiliado LIKE '" + oP.nAfiliado + "%' ";
-        //    }
-        //    else if (oP.Apellido != "")
-        //    {   // OK 21/03/12
-        //        Consulta += " AND Apellido LIKE '" + oP.Apellido + "%' ";
-        //    }
-        //    else if (oP.nAfiliado != "")
-        //    {   // OK 21/03/12
-        //        Consulta += " AND nAfiliado LIKE '" + oP.nAfiliado + "%'";  
-        //    }
-        //    else
-        //    {   // OK 21/03/12
-        //        //Consulta += " AND IdObraSocial = " + oP.ObraSocial ;
-        //    }
-
-        //    if (oP.ObraSocial != 1)
-        //    {
-        //        Consulta += " AND IdObraSocial = " + oP.ObraSocial + " ORDER BY Apellido;";
-        //    }
-        //    else
-        //    {
-        //        Consulta += " ORDER BY Apellido;";
-        //    }
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "CountPersona"))
-        //    {
-        //        Sql.Reader.Read();
-        //        C = Convert.ToInt32(Sql.Reader["C"]);
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-        //    }
-        //    return C;
-        //}
-
-        ///// <summary>
-        ///// OK 24/06/12
-        ///// Cuenta Obras Sociales.
-        ///// </summary>
-        ///// <returns></returns>
-        //public int CountObraSocial(string Nombre)
-        //{
-        //    int C = 0;
-        //    string Consulta = "SELECT COUNT(IdObraSocial)-1[C] FROM ObraSocial WHERE Visible = 1";
-
-        //    if (Nombre != "")
-        //        Consulta += " AND Nombre LIKE '" + Nombre + "%';";
-        //    else
-        //        Consulta += " ;";
-
-        //    if (Sql.SelectReader(Consulta, null, "CountObraSocial"))
-        //    {
-        //        Sql.Reader.Read();
-        //        C = Convert.ToInt32(Sql.Reader["C"]);
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-        //    }
-        //    return C;
-        //}
-
-        ///// <summary>
-        ///// OK 24/06/12
-        ///// Cuenta Obras Sociales.
-        ///// </summary>
-        ///// <returns></returns>
-        //public int CountUsuarios(string Nombre, bool Bloqueado)
-        //{
-        //    int C = 0;
-
-        //    #region Consulta
-
-        //    string Consulta = "SELECT COUNT(IdUsuario)[C] FROM Usuario ";
-
-        //    if (Nombre != "") // OK 21/03/12
-        //        Consulta = Consulta + "WHERE Bloqueado = " + Convert.ToInt32(Bloqueado) + " AND Nombre LIKE '" + Nombre + "%' ;";
-        //    else// OK 21/03/12  
-        //        Consulta = Consulta + " WHERE Bloqueado = " + Convert.ToInt32(Bloqueado) + " ;";
-
-        //    #endregion
-
-        //    if (Sql.SelectReader(Consulta, null, "CountUsuarios"))
-        //    {
-        //        Sql.Reader.Read();
-        //        C = Convert.ToInt32(Sql.Reader["C"]);
-        //        Sql.Reader.Close();
-        //        Sql.Close();
-        //    }
-        //    return C;
-        //}
-
-        #endregion
-
-        #region Consultas Especiales
+        // VER - 17/10/28
+        #region Especiales
 
         /// <summary>
         /// Consulta por Usuaui y contraseña y devuelve el id.
@@ -1893,7 +1770,7 @@ namespace Datos.Query
             return A;
         }
 
-
+        // OK - 17/10/28
         public int CloseSession(classProfessional oP)
         {
             string SPname = sp.Login;
@@ -1918,8 +1795,7 @@ namespace Datos.Query
 
         #endregion
 
-
-        // OK 21/06/12
+        // VER - 21/06/12
         #region Estadisticas
 
         ///// <summary>
@@ -2085,8 +1961,6 @@ namespace Datos.Query
         //}
 
         #endregion
-
-
     }
 }
 

@@ -10,6 +10,7 @@ using Controles;
 using Entidades;
 using Entidades.Clases;
 using Datos.Query;
+using Reportes;
 
 namespace myExplorer.Formularios
 {
@@ -74,11 +75,13 @@ namespace myExplorer.Formularios
         // OK - 17/10/07
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            /*
-             * rpClinicHistory
-             * Consulta Diagnosticos y Mesnajes del paciente actual.
-             */
-
+            if (oQuery.RpClinicHistory(oPatient.IdPatient))
+            {
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpClinicHistory, oQuery.Table);
+                fReport.Show();
+            }
+            else
+                MessageBox.Show(oTxt.ErrorQueryList);
         }
 
         // OK - 17/10/07

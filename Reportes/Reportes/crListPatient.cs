@@ -16,14 +16,14 @@ namespace Reportes.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class crListaPacientes : ReportClass {
+    public class crListPatient : ReportClass {
         
-        public crListaPacientes() {
+        public crListPatient() {
         }
         
         public override string ResourceName {
             get {
-                return "crListaPacientes.rpt";
+                return "crListPatient.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Reportes.Reportes {
         
         public override string FullResourceName {
             get {
-                return "Reportes.Reportes.crListaPacientes.rpt";
+                return "Reportes.Reportes.crListPatient.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Reportes.Reportes {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedcrListaPacientes : Component, ICachedReport {
+    public class CachedcrListPatient : Component, ICachedReport {
         
-        public CachedcrListaPacientes() {
+        public CachedcrListPatient() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Reportes.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            crListaPacientes rpt = new crListaPacientes();
+            crListPatient rpt = new crListPatient();
             rpt.Site = this.Site;
             return rpt;
         }

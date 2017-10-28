@@ -53,28 +53,40 @@
       <DependentUpon>frmVisor.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reportes\crObraSocialPacientes.cs">
-      <DependentUpon>crObraSocialPacientes.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Reportes\crHistoriaClinica.cs">
+    <Compile Include="Reportes\crClinicHistory.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>crHistoriaClinica.rpt</DependentUpon>
+      <DependentUpon>crClinicHistory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\crListaPacientes.cs">
+    <Compile Include="Reportes\crListPatient.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>crListaPacientes.rpt</DependentUpon>
+      <DependentUpon>crListPatient.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\crListaTurnos.cs">
+    <Compile Include="Reportes\crListProfessional.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>crListaTurnos.rpt</DependentUpon>
+      <DependentUpon>crListProfessional.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crOnlyPatient.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crOnlyPatient.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crOnlyProfessional.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crOnlyProfessional.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crPatientParent.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPatientParent.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\dtsDatos.cs">
@@ -91,21 +103,29 @@
     <EmbeddedResource Include="frmVisor.resx">
       <DependentUpon>frmVisor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\crObraSocialPacientes.rpt">
+    <EmbeddedResource Include="Reportes\crClinicHistory.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crObraSocialPacientes.cs</LastGenOutput>
+      <LastGenOutput>crClinicHistory.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\crHistoriaClinica.rpt">
+    <EmbeddedResource Include="Reportes\crListPatient.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crHistoriaClinica.cs</LastGenOutput>
+      <LastGenOutput>crListPatient.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\crListaPacientes.rpt">
+    <EmbeddedResource Include="Reportes\crListProfessional.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crListaPacientes.cs</LastGenOutput>
+      <LastGenOutput>crListProfessional.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\crListaTurnos.rpt">
+    <EmbeddedResource Include="Reportes\crOnlyPatient.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crListaTurnos.cs</LastGenOutput>
+      <LastGenOutput>crOnlyPatient.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crOnlyProfessional.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crOnlyProfessional.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crPatientParent.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPatientParent.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,7 @@ using Datos.Query;
 using Entidades.Clases;
 using Entidades;
 using Controles;
+using Reportes;
 
 namespace myExplorer.Formularios
 {
@@ -166,16 +167,14 @@ namespace myExplorer.Formularios
         // OK - 17/10/28
         private void tsbPrintList_Click(object sender, EventArgs e)
         {
-            //tstxtNombre.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta)
             classProfessional oP = new classProfessional();
             oP.LastName = tstxtLastName.Text;
             oP.Name = tstxtName.Text;
 
             if (oQuery.rpListProfessional(oP.Name, oP.LastName))
             {
-                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
-                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
-                //fReport.Show();
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpListProfessional, oQuery.Table);
+                fReport.Show();
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
@@ -186,9 +185,8 @@ namespace myExplorer.Formularios
         {
             if (oQuery.RpOnlyProfessional(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
             {
-                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
-                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
-                //fReport.Show();
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpOnlyProfessional, oQuery.Table);
+                fReport.Show();
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
@@ -222,8 +220,10 @@ namespace myExplorer.Formularios
                 //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
 
                 dgvLista.Columns.Clear();
-                GenerarGrilla(oQuery.Table);
-                PintarBloqueados(Color.Gray);
+                if (GenerarGrilla(oQuery.Table) != 0)
+                {
+                    PintarBloqueados(Color.Gray);
+                }
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);

@@ -217,14 +217,13 @@ namespace myExplorer.Formularios
             classPatient oP = new classPatient();
             oP.LastName = tstxtLastName.Text;
             oP.Name = tstxtName.Text;
-            oP.AffiliateNumber = Convert.ToInt32(tstxtAffiliateNumber.Text);
+            oP.AffiliateNumber = tstxtAffiliateNumber.Text == "" ? 0 : Convert.ToInt32(tstxtAffiliateNumber.Text);
             oP.IdSocialWork = Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue);
 
             if (oQuery.rpListPatient(oP.Name, oP.LastName, oP.AffiliateNumber, oP.IdSocialWork))
             {
-                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
-                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
-                //fReport.Show();
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpListPatient, oQuery.Table);
+                fReport.Show();
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
@@ -235,9 +234,8 @@ namespace myExplorer.Formularios
         {
             if (oQuery.RpOnlyPatient(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
             {
-                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
-                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
-                //fReport.Show();
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpOnlyPatient, oQuery.Table);
+                fReport.Show();
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
@@ -248,9 +246,8 @@ namespace myExplorer.Formularios
         {
             if (oQuery.RpPatientParent(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
             {
-                MessageBox.Show(oQuery.Table.Rows.Count.ToString());
-                //frmVisor fReport = new frmVisor(frmVisor.Reporte.ListaPacientes, oQuery.Table);
-                //fReport.Show();
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpPatientParent, oQuery.Table);
+                fReport.Show();
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
@@ -289,16 +286,16 @@ namespace myExplorer.Formularios
                 //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
 
                 dgvLista.Columns.Clear();
-                GenerarGrilla(oQuery.Table);
-                PintarBloqueados(Color.Gray);
-                tsbPrintList.Enabled = false;
-                //tsmiVerFicha.Enabled = false;
+                if (GenerarGrilla(oQuery.Table) != 0)
+                {
+                    PintarBloqueados(Color.Gray);
+                    tsbPrintList.Enabled = true;
+                }
+                else
+                    tsbPrintList.Enabled = false;
             }
             else
-            {
-                //tsmiVerFicha.Enabled = true;
-                tsbPrintList.Enabled = true;
-            }
+                MessageBox.Show(oTxt.ErrorQueryList);
         }
 
         /// <summary>

@@ -13,8 +13,8 @@ namespace Reportes
 
         #region Atributos y Propiedades
 
-        public enum Reporte { ListaTurnos = 0, ListaPacientes = 1, HistoriaClinica = 2, PacienteXObraSocial = 4 }
-        private DataTable Tabla { set; get; }
+        public enum Reporte { RpClinicHistory = 0, RpOnlyPatient = 1, RpPatientParent = 2, RpListPatient = 3, RpListProfessional = 4, RpOnlyProfessional = 5 }
+        private DataTable oTable { set; get; }
         private Reporte eReporte { set; get; }
 
         #endregion
@@ -25,39 +25,55 @@ namespace Reportes
         {
             InitializeComponent();
             this.eReporte = eReport;
-            this.Tabla = oTabla;
+            this.oTable = oTabla;
         }
 
         private void frmVisor_Load(object sender, EventArgs e)
         {
-            if (this.Tabla.Rows.Count != 0)
+            if (this.oTable.Rows.Count != 0)
             {
-                if (eReporte == Reporte.ListaTurnos)
+                switch(eReporte)
                 {
-                    Reportes.crListaTurnos Doc = new Reportes.crListaTurnos();
-                    Doc.SetDataSource(this.Tabla);
-                    crVisor.ReportSource = Doc;
+                    case Reporte.RpClinicHistory:
+                        MessageBox.Show("RpClinicHistory - Nº rows: " + oTable.Rows.Count.ToString());
+                        Reportes.crClinicHistory DocA = new Reportes.crClinicHistory();
+                        //DocA.SetDataSource(oTable);
+                        crVisor.ReportSource = DocA;
+                        break;
+                    case  Reporte.RpOnlyPatient:
+                        MessageBox.Show("RpOnlyPatient - Nº rows: " + oTable.Rows.Count.ToString());
+                        Reportes.crOnlyPatient DocB = new Reportes.crOnlyPatient();
+                        //DocB.SetDataSource(oTable);
+                        crVisor.ReportSource = DocB;
+                        break;
+                    case  Reporte.RpPatientParent:
+                        MessageBox.Show("RpPatientParent - Nº rows: " + oTable.Rows.Count.ToString());
+                        Reportes.crPatientParent DocC = new Reportes.crPatientParent();
+                        //DocC.SetDataSource(oTable);
+                        crVisor.ReportSource = DocC;
+                        break;
+                    case  Reporte.RpListPatient:
+                        MessageBox.Show("RpListPatient- Nº rows: " + oTable.Rows.Count.ToString());
+                        Reportes.crListPatient DocD = new Reportes.crListPatient();
+                        //DocD.SetDataSource(oTable);
+                        crVisor.ReportSource = DocD;
+                        break;
+                    case  Reporte.RpOnlyProfessional:
+                        MessageBox.Show("RpOnlyProfessional - Nº rows: " + oTable.Rows.Count.ToString());
+                        Reportes.crOnlyProfessional DocE = new Reportes.crOnlyProfessional();
+                        //DocE.SetDataSource(oTable);
+                        crVisor.ReportSource = DocE;
+                        break;                    
+                    case  Reporte.RpListProfessional:
+                        MessageBox.Show("RpListProfessional - Nº rows: " + oTable.Rows.Count.ToString());
+                        Reportes.crListProfessional DocF = new Reportes.crListProfessional();
+                        //DocF.SetDataSource(oTable);
+                        crVisor.ReportSource = DocF;
+                        break;
+                    default:
+                        MessageBox.Show("Reporte no Existe");
+                        break;
                 }
-                else if (eReporte == Reporte.ListaPacientes)
-                {
-                    Reportes.crListaPacientes Doc = new Reportes.crListaPacientes();
-                    Doc.SetDataSource(this.Tabla);
-                    crVisor.ReportSource = Doc;
-                }
-                else if (eReporte == Reporte.HistoriaClinica)
-                {
-                    Reportes.crHistoriaClinica Doc = new Reportes.crHistoriaClinica();
-                    Doc.SetDataSource(this.Tabla);
-                    crVisor.ReportSource = Doc;
-                }
-                else if (eReporte == Reporte.PacienteXObraSocial)
-                {
-                    Reportes.crObraSocialPacientes Doc = new Reportes.crObraSocialPacientes();
-                    Doc.SetDataSource(this.Tabla);
-                    crVisor.ReportSource = Doc;
-                }
-                else
-                { }
             }
             else
             {

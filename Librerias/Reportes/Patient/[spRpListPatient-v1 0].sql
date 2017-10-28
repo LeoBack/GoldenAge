@@ -10,7 +10,7 @@ GO
 -- Create date: <2017/10/28 18:15>
 -- Description:	<ReportListPatient>
 -- =============================================
-Create PROCEDURE [dbo].[spRpListPatient-v1.0] 
+ALTER PROCEDURE [dbo].[spRpListPatient-v1.0] 
 	-- Add the parameters for the stored procedure here
 	@Name varchar(50) = null,
 	@LastName varchar(50) = null,
@@ -53,9 +53,8 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork 		
-		--[P].[Visible] = @Visible
-		--And
+		[P].[IdSocialWork] = @IdSocialWork AND
+		[P].[Visible] = @Visible
 		Order by [P].[Name]
 	END
 	if(@Name='' and @LastName='' and @AffiliateNumber!=0 and @IdSocialWork=0)    --0010 
@@ -69,9 +68,9 @@ BEGIN
 		WHERE 
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
-		[P].[AffiliateNumber] = @AffiliateNumber 
+		[P].[AffiliateNumber] = @AffiliateNumber AND
 		--[P].[IdSocialWork] = @IdSocialWork AND
-		--[P].[Visible] = @Visible
+		[P].[Visible] = @Visible
 		--And
 		Order by [P].[Name]
 	END
@@ -87,9 +86,8 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
 		[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork 
-		--[P].[Visible] = @Visible
-		--And
+		[P].[IdSocialWork] = @IdSocialWork AND
+		[P].[Visible] = @Visible
 		 Order by [P].[Name]
 	END
 	if(@Name='' and @LastName!='' and @AffiliateNumber=0 and @IdSocialWork=0)	 --0100 
@@ -102,11 +100,10 @@ BEGIN
 								 inner join	[dbo].[SocialWork] So on  [P].[IdSocialWork]=[So].[IdSocialWork]
 		WHERE 
 		--[P].[Name] like +'%'+@Name+'%' AND 
-		[P].[LastName] like +'%'+@LastName+'%' 
+		[P].[LastName] like +'%'+@LastName+'%' AND
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
 		--[P].[IdSocialWork] = @IdSocialWork AND
-		--[P].[Visible] = @Visible
-		--And
+		[P].[Visible] = @Visible
 		 
 		Order by [P].[Name]
 	END
@@ -119,12 +116,12 @@ BEGIN
 		FROM [dbo].[Patient] [P] inner join [dbo].[TypeDocument] Ty on  [P].[IdTypeDocument]=[Ty].[IdTypeDocument]
 								 inner join	[dbo].[SocialWork] So on  [P].[IdSocialWork]=[So].[IdSocialWork]
 		WHERE 
-		[P].[Name] like +'%'+@Name+'%' 
+		[P].[Name] like +'%'+@Name+'%' AND
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
 		--[P].[IdSocialWork] = @IdSocialWork AND
-		--[P].[Visible] = @Visible
-		--And
+		[P].[Visible] = @Visible
+
 		 Order by [P].[Name]
 	END
 
@@ -140,9 +137,8 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND
 		[P].[LastName] like +'%'+@LastName+'%' AND 
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork 
-		--[P].[Visible] = @Visible
-		--And
+		[P].[IdSocialWork] = @IdSocialWork AND
+		[P].[Visible] = @Visible
 		 
 		Order by [P].[Name]
 	END
@@ -157,10 +153,9 @@ BEGIN
 		WHERE 
 		--[P].[Name] like +'%'+@Name+'%' AND
 		[P].[LastName] like +'%'+@LastName+'%' AND 
-		[P].[AffiliateNumber] = @AffiliateNumber 
+		[P].[AffiliateNumber] = @AffiliateNumber AND
 		--[P].[IdSocialWork] = @IdSocialWork AND
-		--[P].[Visible] = @Visible
-		--And
+		[P].[Visible] = @Visible
 		 
 		Order by [P].[Name]
 	END
@@ -176,9 +171,9 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		[P].[LastName] like +'%'+@LastName+'%' AND 
 		[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork
-		--[P].[Visible] = @Visible
-		--And
+		[P].[IdSocialWork] = @IdSocialWork AND
+		[P].[Visible] = @Visible
+
 		Order by [P].[Name]
 	END
 	if(@Name!='' and @LastName!='' and @AffiliateNumber!=0 and @IdSocialWork!=0)  --0111
@@ -193,9 +188,8 @@ BEGIN
 		[P].[Name] like +'%'+@Name+'%' AND 
 		[P].[LastName] like +'%'+@LastName+'%' AND 
 		[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork
-		--[P].[Visible] = @Visible
-		--And
+		[P].[IdSocialWork] = @IdSocialWork AND
+		[P].[Visible] = @Visible
 		 
 		Order by [P].[Name]
 	END
