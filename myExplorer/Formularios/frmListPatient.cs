@@ -51,7 +51,7 @@ namespace myExplorer.Formularios
                 Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
 
-                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(tscmbSocialWork.ComboBox,
+                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadComboSearch(tscmbSocialWork.ComboBox,
                     (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
                     oQuery.Table);
                 tsbImprimir.Enabled = false;
