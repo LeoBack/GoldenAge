@@ -53,9 +53,9 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork 		
-		--[P].[Visible] = @Visible
-		--And
+		[P].[IdSocialWork] = @IdSocialWork 		And
+		[P].[Visible] = @Visible
+		
 		Order by [P].[Name]
 	END
 	if(@Name='' and @LastName='' and @AffiliateNumber!=0 and @IdSocialWork=0)    --0010 
@@ -69,9 +69,9 @@ BEGIN
 		WHERE 
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
-		[P].[AffiliateNumber] = @AffiliateNumber 
+		[P].[AffiliateNumber] = @AffiliateNumber And
 		--[P].[IdSocialWork] = @IdSocialWork AND
-		--[P].[Visible] = @Visible
+		[P].[Visible] = @Visible
 		--And
 		Order by [P].[Name]
 	END
@@ -87,8 +87,8 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
 		[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork 
-		--[P].[Visible] = @Visible
+		[P].[IdSocialWork] = @IdSocialWork And
+		[P].[Visible] = @Visible
 		--And
 		 Order by [P].[Name]
 	END
@@ -102,10 +102,10 @@ BEGIN
 								 inner join	[dbo].[SocialWork] So on  [P].[IdSocialWork]=[So].[IdSocialWork]
 		WHERE 
 		--[P].[Name] like +'%'+@Name+'%' AND 
-		[P].[LastName] like +'%'+@LastName+'%' 
+		[P].[LastName] like +'%'+@LastName+'%' And
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
 		--[P].[IdSocialWork] = @IdSocialWork AND
-		--[P].[Visible] = @Visible
+		[P].[Visible] = @Visible
 		--And
 		 
 		Order by [P].[Name]
@@ -119,11 +119,11 @@ BEGIN
 		FROM [dbo].[Patient] [P] inner join [dbo].[TypeDocument] Ty on  [P].[IdTypeDocument]=[Ty].[IdTypeDocument]
 								 inner join	[dbo].[SocialWork] So on  [P].[IdSocialWork]=[So].[IdSocialWork]
 		WHERE 
-		[P].[Name] like +'%'+@Name+'%' 
+		[P].[Name] like +'%'+@Name+'%' And
 		--[P].[LastName] like +'%'+@LastName+'%' AND 
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
 		--[P].[IdSocialWork] = @IdSocialWork AND
-		--[P].[Visible] = @Visible
+		[P].[Visible] = @Visible
 		--And
 		 Order by [P].[Name]
 	END
@@ -140,8 +140,8 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND
 		[P].[LastName] like +'%'+@LastName+'%' AND 
 		--[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork 
-		--[P].[Visible] = @Visible
+		[P].[IdSocialWork] = @IdSocialWork And
+		[P].[Visible] = @Visible
 		--And
 		 
 		Order by [P].[Name]
@@ -157,9 +157,9 @@ BEGIN
 		WHERE 
 		--[P].[Name] like +'%'+@Name+'%' AND
 		[P].[LastName] like +'%'+@LastName+'%' AND 
-		[P].[AffiliateNumber] = @AffiliateNumber 
+		[P].[AffiliateNumber] = @AffiliateNumber And
 		--[P].[IdSocialWork] = @IdSocialWork AND
-		--[P].[Visible] = @Visible
+		[P].[Visible] = @Visible
 		--And
 		 
 		Order by [P].[Name]
@@ -176,8 +176,8 @@ BEGIN
 		--[P].[Name] like +'%'+@Name+'%' AND 
 		[P].[LastName] like +'%'+@LastName+'%' AND 
 		[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork
-		--[P].[Visible] = @Visible
+		[P].[IdSocialWork] = @IdSocialWork And
+		[P].[Visible] = @Visible
 		--And
 		Order by [P].[Name]
 	END
@@ -193,8 +193,8 @@ BEGIN
 		[P].[Name] like +'%'+@Name+'%' AND 
 		[P].[LastName] like +'%'+@LastName+'%' AND 
 		[P].[AffiliateNumber] = @AffiliateNumber AND 
-		[P].[IdSocialWork] = @IdSocialWork
-		--[P].[Visible] = @Visible
+		[P].[IdSocialWork] = @IdSocialWork And
+		[P].[Visible] = @Visible
 		--And
 		 
 		Order by [P].[Name]
