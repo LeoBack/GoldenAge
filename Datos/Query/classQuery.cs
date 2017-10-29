@@ -1737,6 +1737,35 @@ namespace Datos.Query
             }
         }
 
+        /// <summary>
+        /// OK - 17/10/28
+        /// Todos los datos del Profesional seleccionado.
+        /// </summary>
+        /// <param name="IdProfessional"></param>
+        /// <returns>DataTable</returns>
+        public bool RpOnlyProfessionalSpeciality(int IdProfessional)
+        {
+            string SPname = sp.RpOnlyProfessionalSpeciality;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@idProfessional", IdProfessional));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable();
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
         #endregion
 
         // OK - 17/10/28
