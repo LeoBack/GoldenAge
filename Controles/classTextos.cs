@@ -41,8 +41,8 @@ namespace Controles
         public string CaillasVacias = "Se encontraron casillas vacias";
         public string None = "No Aplica";
         public string LoginInvalido = "El nombre de usuario o contraseña no es valido.";
-        public string Logout = "Cerrar Sesion";
-        public string IniciarSesion = "Iniciar Sesion";
+        public string CloseSession = "Cerrar Sesion";
+        public string OpenSesion = "Iniciar Sesion";
 
         // Diagnostic
         public string AddDiagnostic = "Diagnostico grabado.";

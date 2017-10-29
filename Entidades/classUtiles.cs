@@ -8,6 +8,7 @@ namespace Entidades
 {
     public class classUtiles
     {
+        private int IdSession;
         public classProfessional oProfessional { set; get; }
         public int CantRegistrosGrilla { set; get; }
 
@@ -21,6 +22,16 @@ namespace Entidades
         {
             this.oProfessional = vProfessional;
             this.CantRegistrosGrilla = CantRegistrosGrilla;
+        }
+
+        public void SetSesion(int Id)
+        {
+            IdSession = Id;
+        }
+
+        public int GetSesion()
+        {
+            return IdSession;
         }
     }
 }

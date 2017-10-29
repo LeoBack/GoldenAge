@@ -17,7 +17,9 @@ namespace myExplorer.Formularios
         // OK 08/06/12
         #region Atributos y Propiedades
 
-        public classProfessional oProfessional { set; get; }
+        public string User { set; get; }
+        public string Password { set; get; }
+
         private classTextos oTxt = new classTextos();
 
         #endregion
@@ -41,9 +43,8 @@ namespace myExplorer.Formularios
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtNombre.Text != "" || txtPasw.Text != "")
-                oProfessional = new classProfessional();
-                oProfessional.User = txtNombre.Text;
-                oProfessional.Password = txtPasw.Text;
+                User = txtNombre.Text;
+                Password = txtPasw.Text;
         }
 
         #endregion

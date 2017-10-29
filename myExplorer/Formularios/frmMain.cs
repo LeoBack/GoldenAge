@@ -51,7 +51,7 @@ namespace myExplorer.Formularios
             oUtil = new classUtiles();
             // Inicia Secion.
             EnableUser(false);
-            tsmiLoginProfessional_Click(sender, e);
+            OpenSession();
         }
 
         // Cierra Formulario
@@ -64,8 +64,7 @@ namespace myExplorer.Formularios
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     e.Cancel = true;
             }
-            // Cerrar Sesion.
-            // Cerra Aplicacion.
+            CerraSession();
         }
 
         #endregion
@@ -175,50 +174,9 @@ namespace myExplorer.Formularios
         private void tsmiLoginProfessional_Click(object sender, EventArgs e)
         {
             if (User == eUser.Valido)
-            {
-                User = eUser.Invalido;
-                tsmiUsuario.Text = oTxt.IniciarSesion;
-                Text = oTxt.TituloVentana + oTxt.TitleLogin;
-                // Cerrar odas los frm
-                EnableUser(false);
-                oUtil.oProfessional = null;
-            }
+                CerraSession();
             else
-            {
-                bool H = true;
-                frmLogin fLogin = new frmLogin();
-
-                while (H)
-                {
-                    if (fLogin.ShowDialog() == DialogResult.Yes)
-                    {
-                        int Id = oQuery.OpenSession(fLogin.oProfessional);
-                        if (Id != 0)
-                        {
-                            User = eUser.Valido;
-                            tsmiUsuario.Text = oTxt.Logout;
-                            Text = oTxt.TituloVentana + oTxt.SeparadorTitle + fLogin.oProfessional.User.ToString();
-                            // Abre todas los frm
-                            EnableUser(true);
-                            oUtil.oProfessional = (Entidades.Clases.classProfessional)oQuery.AbmProfessional(
-                                new Entidades.Clases.classProfessional(Id), classQuery.eAbm.Select);
-                            // Ventana por defecto al inicio
-                            frmAlInicio(sender, e);
-                            H = false;
-                        }
-                        else
-                        {
-                            User = eUser.Invalido;
-                            tsmiUsuario.Text = oTxt.IniciarSesion;
-                            Text = oTxt.TituloVentana + oTxt.TitleLogin;
-                            oUtil.oProfessional = null; ;
-                            MessageBox.Show(oTxt.LoginInvalido);
-                        }
-                    }
-                    else
-                        H = false;
-                }
-            }
+                OpenSession();
             tsmiSesion.Text = tsmiUsuario.Text;
         }
 
@@ -305,12 +263,61 @@ namespace myExplorer.Formularios
 
         //-----------------------------------------------------------------
 
-        #region Metodos
-
-        private void frmAlInicio(object sender, EventArgs e)
+        private void CerraSession()
         {
-            //if (User == eUser.Valido)
+            if (oQuery.CloseSession(oUtil.GetSesion()) != 0)
+            {
+                User = eUser.Invalido;
+                EnableUser(false);
+                foreach (Form frm in this.MdiChildren)
+                    frm.Close();
+                tsmiUsuario.Text = oTxt.OpenSesion;
+                Text = oTxt.TituloVentana + oTxt.TitleLogin;
+                oUtil.oProfessional = null;
+            }
         }
+
+        private void OpenSession()
+        {
+            bool H = true;
+            frmLogin fLogin = new frmLogin();
+
+            while (H)
+            {
+                if (fLogin.ShowDialog() == DialogResult.Yes)
+                {
+                    oUtil.SetSesion(oQuery.OpenSession(fLogin.User, fLogin.Password));
+                    if (oUtil.GetSesion() != 0)
+                    {
+                        Entidades.Clases.classProfessional oP = new Entidades.Clases.classProfessional();
+                        oP.IdProfessional = oQuery.SessionProfessional(oUtil.GetSesion());
+                        
+                        oUtil.oProfessional = (Entidades.Clases.classProfessional)oQuery.AbmProfessional(
+                            oP, classQuery.eAbm.Select);
+                        
+                        User = eUser.Valido;
+                        tsmiUsuario.Text = oTxt.CloseSession;
+                        Text = oTxt.TituloVentana + oTxt.SeparadorTitle + oUtil.oProfessional.User.ToString();
+                        // Abre todas los frm
+                        EnableUser(true);
+                        H = false;
+                    }
+                    else
+                    {
+                        User = eUser.Invalido;
+                        tsmiUsuario.Text = oTxt.OpenSesion;
+                        Text = oTxt.TituloVentana + oTxt.TitleLogin;
+                        oUtil.oProfessional = null; ;
+                        MessageBox.Show(oTxt.LoginInvalido);
+                    }
+                }
+                else
+                    H = false;
+            }
+        }
+
+
+        #region Metodos
 
         /// <summary>
         /// Habilita los controles cuando el ususario es valido.
