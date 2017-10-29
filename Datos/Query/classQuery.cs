@@ -1739,58 +1739,64 @@ namespace Datos.Query
 
         #endregion
 
-        // VER - 17/10/28
+        // OK - 17/10/28
         #region Especiales
 
-        /// <summary>
-        /// Consulta por Usuaui y contraseña y devuelve el id.
-        /// OK - 17/09/16
-        /// </summary>
-        /// <param name="oP"></param>
-        /// <returns></returns>
-        public int OpenSession(classProfessional oP)
+        // OK - 17/10/28
+        public int OpenSession(string User, string Password)
         {
-            string SPname = sp.Login;
-            int A = 0;
+            string SPname = sp.Session;
 
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Status", 1));
-            lParam.Add(new SqlParameter("@User", oP.User));
-            lParam.Add(new SqlParameter("@Password", oP.Password));
+            lParam.Add(new SqlParameter("@User", User));
+            lParam.Add(new SqlParameter("@Password", Password));
+            lParam.Add(new SqlParameter("@IdSession", 0));
 
-            if (oSql.SelectRaeder(SPname, lParam.ToArray()))
-            {
-                if (oSql.Reader.Read())
-                {
-                    A = Convert.ToInt32(oSql.Reader[0]);
-                    oSql.Reader.Close();
-                }
-            }
-            oSql.Close();
-            return A;
+            int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+            if (UltimoId == 0)
+                Menssage = oSql.Mensage;
+
+            return UltimoId;
         }
 
         // OK - 17/10/28
-        public int CloseSession(classProfessional oP)
+        public int CloseSession(int IdSession)
         {
-            string SPname = sp.Login;
-            int A = 0;
+            string SPname = sp.Session;
 
             List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Status", 0));
-            lParam.Add(new SqlParameter("@User", oP.User));
-            lParam.Add(new SqlParameter("@Password", oP.Password));
+            lParam.Add(new SqlParameter("@Status", 3));
+            lParam.Add(new SqlParameter("@User", string.Empty));
+            lParam.Add(new SqlParameter("@Password", string.Empty));
+            lParam.Add(new SqlParameter("@IdSession", IdSession));
 
-            if (oSql.SelectRaeder(SPname, lParam.ToArray()))
-            {
-                if (oSql.Reader.Read())
-                {
-                    A = Convert.ToInt32(oSql.Reader[0]);
-                    oSql.Reader.Close();
-                }
-            }
-            oSql.Close();
-            return A;
+            int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+            if (UltimoId == 0)
+                Menssage = oSql.Mensage;
+
+            return UltimoId;
+        }
+
+        // OK - 17/10/28
+        public int SessionProfessional(int IdSession)
+        {
+            string SPname = sp.Session;
+
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Status", 2));
+            lParam.Add(new SqlParameter("@User", string.Empty));
+            lParam.Add(new SqlParameter("@Password", string.Empty));
+            lParam.Add(new SqlParameter("@IdSession", IdSession));
+
+            int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+            if (UltimoId == 0)
+                Menssage = oSql.Mensage;
+
+            return UltimoId;
         }
 
         #endregion

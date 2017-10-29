@@ -24,6 +24,7 @@ namespace Datos.Query
 
         // Especiales
         public string Login = "[spLoguin-v1.0]";
+        public string Session = "[spSession-v1.0]";
 
         // Filtros
         public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
