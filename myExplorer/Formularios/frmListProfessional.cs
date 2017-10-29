@@ -49,6 +49,7 @@ namespace myExplorer.Formularios
                 SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
+                tsbPrintList.Enabled = false;
             }
             else
             {
@@ -223,7 +224,10 @@ namespace myExplorer.Formularios
                 if (GenerarGrilla(oQuery.Table) != 0)
                 {
                     PintarBloqueados(Color.Gray);
+                    tsbPrintList.Enabled = true;
                 }
+                else
+                    tsbPrintList.Enabled = false;
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);

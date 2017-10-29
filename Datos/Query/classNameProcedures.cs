@@ -38,6 +38,7 @@ namespace Datos.Query
         public string RpListPatient = "[spRpListPatient-v1.0]";
         public string RpListProfessional = "[spRpListProfessional-v1.0]";
         public string RpOnlyProfessional = "[spRpOnlyProfessional-v1.0]";
+        public string RpOnlyProfessionalSpeciality = "[spRpOnlyProfessionalSpeciality-v1.0]";
 
     }
 }
