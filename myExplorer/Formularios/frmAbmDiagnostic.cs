@@ -48,8 +48,10 @@ namespace myExplorer.Formularios
                 Text = oTxt.TitleDiagnostic;
                 SelectRow = 0;
                 initCmbSpecialty(oUtil.oProfessional.IdProfessional);
+                initDestinationSpeciality();
                 txtProfessional.Text = oUtil.oProfessional.LastName + ", " + oUtil.oProfessional.Name;
                 txtPatient.Text = oPatient.LastName + "," + oPatient.Name;
+                EnableDestination(false);
 
                 if (LoadViewDiagnostic())
                 {
@@ -66,11 +68,34 @@ namespace myExplorer.Formularios
             }
         }
 
-
         #endregion
 
         // OK - 17/10/07
         #region Botones
+
+        // OK - 17/10/31
+        private void cmbDestinationSpeciality_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            initDestinationProfessional(Convert.ToInt32(cmbDestinationSpeciality.SelectedValue));
+        }
+
+        // OK - 17/10/31
+        private void chkNotify_CheckedChanged(object sender, EventArgs e)
+        {
+            EnableDestination(chkNotify.Checked);
+        }
+
+        // OK - 17/10/31
+        private void btnPrintDiagnostic_Click(object sender, EventArgs e)
+        {
+            if (oQuery.RpClinicHistory(oPatient.IdPatient))
+            {
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpClinicHistory, oQuery.Table);
+                fReport.Show();
+            }
+            else
+                MessageBox.Show(oTxt.ErrorQueryList);
+        }
 
         // OK - 17/10/07
         private void btnPrint_Click(object sender, EventArgs e)
@@ -156,6 +181,26 @@ namespace myExplorer.Formularios
         // OK - 17/10/07
         #region Metodos
 
+        // OK - 17/10/31
+        private void initDestinationProfessional(int IdSpeciality)
+        {
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbDestinationProfessional,
+                (bool)oQuery.ProfessionalSpeciality(IdSpeciality), oQuery.Table);
+        }
+
+        // OK - 17/10/31
+        private void initDestinationSpeciality()
+        {
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadComboSearch(cmbDestinationSpeciality,
+                (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), oQuery.Table);
+        }
+
+        // OK - 17/10/31
+        private void EnableDestination(bool X)
+        {
+            cmbDestinationProfessional.Enabled = cmbDestinationSpeciality.Enabled = X;
+        }
+
         // OK - 17/10/07
         private void EnableText(bool X)
         {
@@ -196,6 +241,8 @@ namespace myExplorer.Formularios
             oDiagnostic.IdProfessional = oUtil.oProfessional.IdProfessional;
             oDiagnostic.Detail = rtxtDiagnostic.Text;
             oDiagnostic.IdSpeciality = Convert.ToInt32(cmbSpecialty.SelectedValue);
+            oDiagnostic.IdDestinationProfessional = Convert.ToInt32(cmbDestinationProfessional.SelectedValue);
+            oDiagnostic.IdDestinationSpeciality = Convert.ToInt32(cmbDestinationSpeciality.SelectedValue);
             oDiagnostic.Visible = true;
         }
 
@@ -207,6 +254,8 @@ namespace myExplorer.Formularios
         {
             rtxtDiagnostic.Text = oDiagnostic.Detail;
             libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbSpecialty, oDiagnostic.IdSpeciality);
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbDestinationProfessional, oDiagnostic.IdDestinationProfessional);
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbDestinationSpeciality, oDiagnostic.IdDestinationSpeciality);
         }
 
         // OK - 17/10/07
@@ -266,6 +315,5 @@ namespace myExplorer.Formularios
         }
 
         #endregion
-
     }
 }

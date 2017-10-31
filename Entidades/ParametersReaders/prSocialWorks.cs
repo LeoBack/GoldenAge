@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 //
 using Entidades.Clases;
+
 namespace Entidades.ParametersReaders
 {
     public class prSocialWorks

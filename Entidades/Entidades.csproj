@@ -51,6 +51,7 @@
     <Compile Include="Clases\classProfessionalSpeciality.cs" />
     <Compile Include="classUtiles.cs" />
     <Compile Include="Clases\classParent.cs" />
+    <Compile Include="ParametersReaders\prDiagnostic.cs" />
     <Compile Include="ParametersReaders\prPatient.cs" />
     <Compile Include="ParametersReaders\prProfessional.cs" />
     <Compile Include="ParametersReaders\prSocialWorks.cs" />

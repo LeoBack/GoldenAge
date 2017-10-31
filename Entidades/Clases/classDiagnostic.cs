@@ -14,6 +14,8 @@ namespace Entidades.Clases
         public int IdProfessional { set; get; }
         public string Detail { set; get; }
         public DateTime Date { set; get; }
+        public int IdDestinationSpeciality { set; get; }
+        public int IdDestinationProfessional { set; get; }
         public bool Visible { set; get; }
         #endregion
 
@@ -27,6 +29,8 @@ namespace Entidades.Clases
             this.IdProfessional = 0;
             this.Detail = string.Empty;
             this.Date = DateTime.Now.Date;
+            this.IdDestinationSpeciality = 0;
+            this.IdDestinationProfessional = 0;
             this.Visible = true;
         }
 
@@ -38,11 +42,14 @@ namespace Entidades.Clases
             this.IdProfessional = 0;
             this.Detail = string.Empty;
             this.Date = DateTime.Now.Date;
+            this.IdDestinationSpeciality = 0;
+            this.IdDestinationProfessional = 0;
             this.Visible = true;
         }
 
         public classDiagnostic(int vIdDiagnostic, int vIdSpeciality, int vIdPatient, int vProfessional,
-            string vDetail, DateTime vDate, bool vVisible)
+            string vDetail, DateTime vDate, int vIdDestinationSpeciality,  int vIdDestinationProfessional, 
+            bool vVisible)
         {
             this.IdDiagnostic = vIdDiagnostic;
             this.IdSpeciality = vIdSpeciality;
@@ -50,12 +57,15 @@ namespace Entidades.Clases
             this.IdProfessional = vProfessional;
             this.Detail = vDetail;
             this.Date = vDate;
+            this.IdDestinationSpeciality = vIdDestinationSpeciality;
+            this.IdDestinationProfessional = vIdDestinationProfessional;
             this.Visible = vVisible;
         }
 
         #endregion
 
         #region Methods
+
         public override string ToString()
         {
             return "Id: " + IdDiagnostic.ToString()+
@@ -63,9 +73,10 @@ namespace Entidades.Clases
             "\nPaciente: " + IdPatient.ToString() +
             "\nProfessional: " + IdProfessional.ToString() +
             "\nDetalle: " + Detail +
-            "\nFecha: " + Date.ToString()+
+            "\nFecha: " + Date.ToString() +
+            "\nIdDestinationProfessional: " + IdDestinationProfessional.ToString() +
+            "\nIdDestinationProfessional : " + IdDestinationProfessional.ToString() +
             "\nVisible: " + Visible.ToString();
-        
         }
 
         #endregion
