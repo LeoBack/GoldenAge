@@ -84,24 +84,16 @@ namespace Datos.Query
         // CONSULTAS PARA CADA FUNCION
         //----------------------------------------------------------
 
-        // OK - 17/10/03
+        // OK - 17/10/31
         #region ABM
 
-        // OK - 17/10/03
+        // OK - 17/10/31
         public object AbmDiagnostic(classDiagnostic oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmDiagnostic;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@IdDiagnostic", oP.IdDiagnostic));
-            lParam.Add(new SqlParameter("@IdSpeciality", oP.IdSpeciality));
-            lParam.Add(new SqlParameter("@IdPatient", oP.IdPatient));
-            lParam.Add(new SqlParameter("@IdProfessional", oP.IdProfessional));
-            lParam.Add(new SqlParameter("@Detail", oP.Detail));
-            lParam.Add(new SqlParameter("@Date", oP.Date));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prDiagnostic pr = new prDiagnostic();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -114,15 +106,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classDiagnostic oDiagnostic = new classDiagnostic(
-                                Convert.ToInt32(oSql.Reader["IdDiagnostic"]),
-                                Convert.ToInt32(oSql.Reader["IdSpeciality"]),
-                                Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                Convert.ToString(oSql.Reader["Detail"]),
-                                Convert.ToDateTime(oSql.Reader["Date"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lDiagnostic.Add(oDiagnostic);
+                                lDiagnostic.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -154,14 +138,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                oDiagnosti = new classDiagnostic(
-                                Convert.ToInt32(oSql.Reader["IdDiagnostic"]),
-                                Convert.ToInt32(oSql.Reader["IdSpeciality"]),
-                                Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                Convert.ToString(oSql.Reader["Detail"]),
-                                Convert.ToDateTime(oSql.Reader["Date"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oDiagnosti = pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
@@ -1768,8 +1745,25 @@ namespace Datos.Query
 
         #endregion
 
-        // OK - 17/10/28
+        // OK - 17/10/31
         #region Especiales
+
+        // OK - 17/10/31
+        public bool ProfessionalSpeciality(int IdSpeciality)
+        {
+            string SPname = sp.SpecialityProfessional;
+
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@IdSpeciality", IdSpeciality));
+
+            bool Result = oSql.ExecCombo(SPname, lParam.ToArray());
+            if (oSql.Table.Rows.Count != 0)
+                Table = oSql.Table;
+            else
+                Table = null;
+
+            return Result;
+        }
 
         // OK - 17/10/28
         public int OpenSession(string User, string Password)

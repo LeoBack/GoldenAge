@@ -25,6 +25,7 @@ namespace Datos.Query
         // Especiales
         public string Login = "[spLoguin-v1.0]";
         public string Session = "[spSession-v1.0]";
+        public string SpecialityProfessional = "[spSpecialityProfessional-v1.0]";
 
         // Filtros
         public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
@@ -39,6 +40,5 @@ namespace Datos.Query
         public string RpListProfessional = "[spRpListProfessional-v1.0]";
         public string RpOnlyProfessional = "[spRpOnlyProfessional-v1.0]";
         public string RpOnlyProfessionalSpeciality = "[spRpOnlyProfessionalSpeciality-v1.0]";
-
     }
 }

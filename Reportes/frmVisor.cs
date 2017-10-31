@@ -13,7 +13,17 @@ namespace Reportes
 
         #region Atributos y Propiedades
 
-        public enum Reporte { RpClinicHistory = 0, RpOnlyPatient = 1, RpPatientParent = 2, RpListPatient = 3, RpListProfessional = 4, RpOnlyProfessional = 5 }
+        public enum Reporte 
+        { 
+            RpDiagnostic = 0, 
+            RpClinicHistory = 1, 
+            RpOnlyPatient = 2, 
+            RpPatientParent = 3, 
+            RpListPatient = 4, 
+            RpListProfessional = 5, 
+            RpOnlyProfessional = 6 
+        }
+
         private DataTable oTable { set; get; }
         private Reporte eReporte { set; get; }
 
@@ -34,6 +44,12 @@ namespace Reportes
             {
                 switch(eReporte)
                 {
+                    case Reporte.RpDiagnostic:
+                        MessageBox.Show("RpDiagnostic - Nº rows: " + oTable.Rows.Count.ToString());
+                        Reportes.crClinicHistory DocQ = new Reportes.crClinicHistory();
+                        //DocA.SetDataSource(oTable);
+                        crVisor.ReportSource = DocQ;
+                        break;
                     case Reporte.RpClinicHistory:
                         MessageBox.Show("RpClinicHistory - Nº rows: " + oTable.Rows.Count.ToString());
                         Reportes.crClinicHistory DocA = new Reportes.crClinicHistory();

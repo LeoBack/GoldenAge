@@ -37,8 +37,14 @@
             this.lblSpecialty = new System.Windows.Forms.Label();
             this.cmbSpecialty = new System.Windows.Forms.ComboBox();
             this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.btnSaveDiagnostic = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
+            this.pnl = new System.Windows.Forms.Panel();
+            this.tlp = new System.Windows.Forms.TableLayoutPanel();
+            this.chkNotify = new System.Windows.Forms.CheckBox();
+            this.cmbDestinationSpeciality = new System.Windows.Forms.ComboBox();
+            this.cmbDestinationProfessional = new System.Windows.Forms.ComboBox();
+            this.btnSaveDiagnostic = new System.Windows.Forms.Button();
+            this.btnPrintDiagnostic = new System.Windows.Forms.Button();
             this.grpDatePatient = new System.Windows.Forms.GroupBox();
             this.tlpPatient = new System.Windows.Forms.TableLayoutPanel();
             this.lblPatient = new System.Windows.Forms.Label();
@@ -50,6 +56,8 @@
             this.grpDiagnostic.SuspendLayout();
             this.tlpDiagnostic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            this.pnl.SuspendLayout();
+            this.tlp.SuspendLayout();
             this.grpDatePatient.SuspendLayout();
             this.tlpPatient.SuspendLayout();
             this.SuspendLayout();
@@ -101,23 +109,26 @@
             // 
             this.tlpDiagnostic.ColumnCount = 4;
             this.tlpDiagnostic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
-            this.tlpDiagnostic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 290F));
+            this.tlpDiagnostic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 216F));
             this.tlpDiagnostic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpDiagnostic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
             this.tlpDiagnostic.Controls.Add(this.rtxtDiagnostic, 0, 2);
             this.tlpDiagnostic.Controls.Add(this.lblSpecialty, 0, 1);
             this.tlpDiagnostic.Controls.Add(this.cmbSpecialty, 1, 1);
             this.tlpDiagnostic.Controls.Add(this.dgvLista, 0, 0);
-            this.tlpDiagnostic.Controls.Add(this.btnSaveDiagnostic, 3, 3);
             this.tlpDiagnostic.Controls.Add(this.btnNew, 3, 2);
+            this.tlpDiagnostic.Controls.Add(this.pnl, 2, 1);
+            this.tlpDiagnostic.Controls.Add(this.btnSaveDiagnostic, 3, 3);
+            this.tlpDiagnostic.Controls.Add(this.btnPrintDiagnostic, 3, 4);
             this.tlpDiagnostic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpDiagnostic.Location = new System.Drawing.Point(3, 22);
             this.tlpDiagnostic.Name = "tlpDiagnostic";
-            this.tlpDiagnostic.RowCount = 4;
-            this.tlpDiagnostic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tlpDiagnostic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tlpDiagnostic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpDiagnostic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tlpDiagnostic.RowCount = 5;
+            this.tlpDiagnostic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpDiagnostic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tlpDiagnostic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tlpDiagnostic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tlpDiagnostic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpDiagnostic.Size = new System.Drawing.Size(1144, 475);
             this.tlpDiagnostic.TabIndex = 7;
             // 
@@ -125,11 +136,11 @@
             // 
             this.tlpDiagnostic.SetColumnSpan(this.rtxtDiagnostic, 3);
             this.rtxtDiagnostic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtDiagnostic.Location = new System.Drawing.Point(4, 321);
+            this.rtxtDiagnostic.Location = new System.Drawing.Point(4, 300);
             this.rtxtDiagnostic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rtxtDiagnostic.Name = "rtxtDiagnostic";
-            this.tlpDiagnostic.SetRowSpan(this.rtxtDiagnostic, 2);
-            this.rtxtDiagnostic.Size = new System.Drawing.Size(1013, 149);
+            this.tlpDiagnostic.SetRowSpan(this.rtxtDiagnostic, 3);
+            this.rtxtDiagnostic.Size = new System.Drawing.Size(1013, 170);
             this.rtxtDiagnostic.TabIndex = 5;
             this.rtxtDiagnostic.Text = "";
             // 
@@ -137,7 +148,7 @@
             // 
             this.lblSpecialty.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblSpecialty.AutoSize = true;
-            this.lblSpecialty.Location = new System.Drawing.Point(14, 287);
+            this.lblSpecialty.Location = new System.Drawing.Point(14, 258);
             this.lblSpecialty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpecialty.Name = "lblSpecialty";
             this.lblSpecialty.Size = new System.Drawing.Size(158, 20);
@@ -149,10 +160,10 @@
             this.cmbSpecialty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSpecialty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSpecialty.FormattingEnabled = true;
-            this.cmbSpecialty.Location = new System.Drawing.Point(180, 283);
+            this.cmbSpecialty.Location = new System.Drawing.Point(180, 254);
             this.cmbSpecialty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbSpecialty.Name = "cmbSpecialty";
-            this.cmbSpecialty.Size = new System.Drawing.Size(282, 28);
+            this.cmbSpecialty.Size = new System.Drawing.Size(208, 28);
             this.cmbSpecialty.TabIndex = 1;
             // 
             // dgvLista
@@ -163,31 +174,105 @@
             this.dgvLista.Location = new System.Drawing.Point(3, 3);
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.RowTemplate.Height = 28;
-            this.dgvLista.Size = new System.Drawing.Size(1138, 272);
+            this.dgvLista.Size = new System.Drawing.Size(1138, 236);
             this.dgvLista.TabIndex = 7;
             this.dgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
             // 
+            // btnNew
+            // 
+            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnNew.Location = new System.Drawing.Point(1024, 302);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(110, 50);
+            this.btnNew.TabIndex = 8;
+            this.btnNew.Text = "Nuevo";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // pnl
+            // 
+            this.pnl.BackColor = System.Drawing.SystemColors.Info;
+            this.pnl.Controls.Add(this.tlp);
+            this.pnl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl.Location = new System.Drawing.Point(395, 245);
+            this.pnl.Name = "pnl";
+            this.pnl.Size = new System.Drawing.Size(623, 47);
+            this.pnl.TabIndex = 10;
+            // 
+            // tlp
+            // 
+            this.tlp.ColumnCount = 3;
+            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlp.Controls.Add(this.chkNotify, 0, 0);
+            this.tlp.Controls.Add(this.cmbDestinationSpeciality, 1, 0);
+            this.tlp.Controls.Add(this.cmbDestinationProfessional, 2, 0);
+            this.tlp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlp.Location = new System.Drawing.Point(0, 0);
+            this.tlp.Name = "tlp";
+            this.tlp.RowCount = 1;
+            this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tlp.Size = new System.Drawing.Size(623, 47);
+            this.tlp.TabIndex = 0;
+            // 
+            // chkNotify
+            // 
+            this.chkNotify.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.chkNotify.AutoSize = true;
+            this.chkNotify.Location = new System.Drawing.Point(121, 11);
+            this.chkNotify.Name = "chkNotify";
+            this.chkNotify.Size = new System.Drawing.Size(110, 24);
+            this.chkNotify.TabIndex = 0;
+            this.chkNotify.Text = "Notificar a:";
+            this.chkNotify.UseVisualStyleBackColor = true;
+            this.chkNotify.CheckedChanged += new System.EventHandler(this.chkNotify_CheckedChanged);
+            // 
+            // cmbDestinationSpeciality
+            // 
+            this.cmbDestinationSpeciality.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDestinationSpeciality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDestinationSpeciality.FormattingEnabled = true;
+            this.cmbDestinationSpeciality.Location = new System.Drawing.Point(237, 9);
+            this.cmbDestinationSpeciality.Name = "cmbDestinationSpeciality";
+            this.cmbDestinationSpeciality.Size = new System.Drawing.Size(188, 28);
+            this.cmbDestinationSpeciality.TabIndex = 1;
+            this.cmbDestinationSpeciality.SelectedIndexChanged += new System.EventHandler(this.cmbDestinationSpeciality_SelectedIndexChanged);
+            // 
+            // cmbDestinationProfessional
+            // 
+            this.cmbDestinationProfessional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbDestinationProfessional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDestinationProfessional.FormattingEnabled = true;
+            this.cmbDestinationProfessional.Location = new System.Drawing.Point(431, 9);
+            this.cmbDestinationProfessional.Name = "cmbDestinationProfessional";
+            this.cmbDestinationProfessional.Size = new System.Drawing.Size(189, 28);
+            this.cmbDestinationProfessional.TabIndex = 2;
+            // 
             // btnSaveDiagnostic
             // 
-            this.btnSaveDiagnostic.Location = new System.Drawing.Point(1025, 390);
+            this.btnSaveDiagnostic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSaveDiagnostic.Location = new System.Drawing.Point(1025, 360);
             this.btnSaveDiagnostic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSaveDiagnostic.Name = "btnSaveDiagnostic";
-            this.btnSaveDiagnostic.Size = new System.Drawing.Size(112, 60);
+            this.btnSaveDiagnostic.Size = new System.Drawing.Size(110, 50);
             this.btnSaveDiagnostic.TabIndex = 4;
             this.btnSaveDiagnostic.Text = "Guardar";
             this.btnSaveDiagnostic.UseVisualStyleBackColor = true;
             this.btnSaveDiagnostic.Click += new System.EventHandler(this.btnSaveDiagnostic_Click);
             // 
-            // btnNew
+            // btnPrintDiagnostic
             // 
-            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnNew.Location = new System.Drawing.Point(1024, 322);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(112, 60);
-            this.btnNew.TabIndex = 8;
-            this.btnNew.Text = "Nuevo";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            this.btnPrintDiagnostic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPrintDiagnostic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPrintDiagnostic.Location = new System.Drawing.Point(1024, 422);
+            this.btnPrintDiagnostic.Name = "btnPrintDiagnostic";
+            this.btnPrintDiagnostic.Size = new System.Drawing.Size(110, 50);
+            this.btnPrintDiagnostic.TabIndex = 9;
+            this.btnPrintDiagnostic.Text = "Imprimir";
+            this.btnPrintDiagnostic.UseVisualStyleBackColor = true;
+            this.btnPrintDiagnostic.Click += new System.EventHandler(this.btnPrintDiagnostic_Click);
             // 
             // grpDatePatient
             // 
@@ -208,7 +293,7 @@
             this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
             this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 181F));
+            this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tlpPatient.Controls.Add(this.lblPatient, 0, 0);
             this.tlpPatient.Controls.Add(this.txtPatient, 1, 0);
             this.tlpPatient.Controls.Add(this.lblProfessionalName, 2, 0);
@@ -264,14 +349,13 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnPrint.BackgroundImage = global::myExplorer.Properties.Resources.Printer;
+            this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Location = new System.Drawing.Point(1079, 9);
+            this.btnPrint.Location = new System.Drawing.Point(977, 9);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(62, 38);
+            this.btnPrint.Size = new System.Drawing.Size(151, 38);
             this.btnPrint.TabIndex = 5;
+            this.btnPrint.Text = "Imprimir H. C.";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
@@ -291,6 +375,9 @@
             this.tlpDiagnostic.ResumeLayout(false);
             this.tlpDiagnostic.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            this.pnl.ResumeLayout(false);
+            this.tlp.ResumeLayout(false);
+            this.tlp.PerformLayout();
             this.grpDatePatient.ResumeLayout(false);
             this.tlpPatient.ResumeLayout(false);
             this.tlpPatient.PerformLayout();
@@ -317,5 +404,11 @@
         private System.Windows.Forms.TextBox txtProfessional;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnPrintDiagnostic;
+        private System.Windows.Forms.Panel pnl;
+        private System.Windows.Forms.TableLayoutPanel tlp;
+        private System.Windows.Forms.CheckBox chkNotify;
+        private System.Windows.Forms.ComboBox cmbDestinationSpeciality;
+        private System.Windows.Forms.ComboBox cmbDestinationProfessional;
     }
 }
