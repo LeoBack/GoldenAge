@@ -17,6 +17,7 @@ create TABLE [dbo].[Diagnostic](
 	[Detail] [text] NOT NULL,
 	[IdDestinationSpeciality][int] NOT NULL,
 	[IdDestinationProfessional][int] NOT NULL,
+	[DestinationRead][int] NOT NULL,
 	[Visible] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
