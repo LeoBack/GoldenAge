@@ -23,6 +23,7 @@ namespace Entidades.ParametersReaders
             lParam.Add(new SqlParameter("@Date", oP.Date));
             lParam.Add(new SqlParameter("@IdDestinationSpeciality", oP.IdDestinationSpeciality));
             lParam.Add(new SqlParameter("@IdDestinationProfessional", oP.IdDestinationProfessional));
+            lParam.Add(new SqlParameter("@DestinationRead", oP.DestinationRead));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
             return lParam;
         }
@@ -39,6 +40,7 @@ namespace Entidades.ParametersReaders
             Convert.ToDateTime(oReader["Date"]),
             Convert.ToInt32(oReader["IdDestinationSpeciality"]),
             Convert.ToInt32(oReader["IdDestinationProfessional"]),
+            Convert.ToBoolean(oReader["DestinationRead"]),
             Convert.ToBoolean(oReader["Visible"]));
             return oDiagnostic;
         }
