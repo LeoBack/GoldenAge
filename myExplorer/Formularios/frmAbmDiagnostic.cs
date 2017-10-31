@@ -178,7 +178,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/10/07
+        // OK - 17/10/31
         #region Metodos
 
         // OK - 17/10/31
@@ -243,19 +243,23 @@ namespace myExplorer.Formularios
             oDiagnostic.IdSpeciality = Convert.ToInt32(cmbSpecialty.SelectedValue);
             oDiagnostic.IdDestinationProfessional = Convert.ToInt32(cmbDestinationProfessional.SelectedValue);
             oDiagnostic.IdDestinationSpeciality = Convert.ToInt32(cmbDestinationSpeciality.SelectedValue);
+            oDiagnostic.DestinationRead = chkNotify.Checked;
             oDiagnostic.Visible = true;
         }
 
         /// <summary>
         /// Carga los elementos de formulario desde objeto.
-        /// OK - 17/10/07
+        /// OK - 17/10/31
         /// </summary>
         private void EscribirEnFrm()
         {
             rtxtDiagnostic.Text = oDiagnostic.Detail;
+            cmbDestinationSpeciality.SelectedIndexChanged -= cmbDestinationSpeciality_SelectedIndexChanged;
             libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbSpecialty, oDiagnostic.IdSpeciality);
             libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbDestinationProfessional, oDiagnostic.IdDestinationProfessional);
             libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbDestinationSpeciality, oDiagnostic.IdDestinationSpeciality);
+            cmbDestinationSpeciality.SelectedIndexChanged += cmbDestinationSpeciality_SelectedIndexChanged;
+            chkNotify.Checked = oDiagnostic.DestinationRead;
         }
 
         // OK - 17/10/07

@@ -16,6 +16,7 @@ namespace Entidades.Clases
         public DateTime Date { set; get; }
         public int IdDestinationSpeciality { set; get; }
         public int IdDestinationProfessional { set; get; }
+        public bool DestinationRead { set; get; }
         public bool Visible { set; get; }
         #endregion
 
@@ -31,6 +32,7 @@ namespace Entidades.Clases
             this.Date = DateTime.Now.Date;
             this.IdDestinationSpeciality = 0;
             this.IdDestinationProfessional = 0;
+            this.DestinationRead = false;
             this.Visible = true;
         }
 
@@ -44,12 +46,13 @@ namespace Entidades.Clases
             this.Date = DateTime.Now.Date;
             this.IdDestinationSpeciality = 0;
             this.IdDestinationProfessional = 0;
+            this.DestinationRead = false;
             this.Visible = true;
         }
 
         public classDiagnostic(int vIdDiagnostic, int vIdSpeciality, int vIdPatient, int vProfessional,
             string vDetail, DateTime vDate, int vIdDestinationSpeciality,  int vIdDestinationProfessional, 
-            bool vVisible)
+            bool vDestinationRead, bool vVisible)
         {
             this.IdDiagnostic = vIdDiagnostic;
             this.IdSpeciality = vIdSpeciality;
@@ -59,6 +62,7 @@ namespace Entidades.Clases
             this.Date = vDate;
             this.IdDestinationSpeciality = vIdDestinationSpeciality;
             this.IdDestinationProfessional = vIdDestinationProfessional;
+            this.DestinationRead = vDestinationRead;
             this.Visible = vVisible;
         }
 
@@ -75,7 +79,8 @@ namespace Entidades.Clases
             "\nDetalle: " + Detail +
             "\nFecha: " + Date.ToString() +
             "\nIdDestinationProfessional: " + IdDestinationProfessional.ToString() +
-            "\nIdDestinationProfessional : " + IdDestinationProfessional.ToString() +
+            "\nIdDestinationProfessional: " + IdDestinationProfessional.ToString() +
+            "\nDestinationRead: " + DestinationRead.ToString() +
             "\nVisible: " + Visible.ToString();
         }
 
