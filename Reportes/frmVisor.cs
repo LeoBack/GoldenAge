@@ -42,49 +42,50 @@ namespace Reportes
         {
             if (this.oTable.Rows.Count != 0)
             {
+                object DocReport;
                 switch(eReporte)
                 {
                     case Reporte.RpDiagnostic:
                         MessageBox.Show("RpDiagnostic - Nº rows: " + oTable.Rows.Count.ToString());
-                        Reportes.crClinicHistory DocQ = new Reportes.crClinicHistory();
-                        //DocA.SetDataSource(oTable);
-                        crVisor.ReportSource = DocQ;
+                        DocReport = new Reportes.crClinicHistory();
+                        //DocReport.SetDataSource(oTable);
+                        crVisor.ReportSource = DocReport;
                         break;
                     case Reporte.RpClinicHistory:
                         MessageBox.Show("RpClinicHistory - Nº rows: " + oTable.Rows.Count.ToString());
-                        Reportes.crClinicHistory DocA = new Reportes.crClinicHistory();
-                        //DocA.SetDataSource(oTable);
-                        crVisor.ReportSource = DocA;
+                        DocReport = new Reportes.crClinicHistory();
+                        //DocReport.SetDataSource(oTable);
+                        crVisor.ReportSource = DocReport;
                         break;
                     case  Reporte.RpOnlyPatient:
                         MessageBox.Show("RpOnlyPatient - Nº rows: " + oTable.Rows.Count.ToString());
-                        Reportes.crOnlyPatient DocB = new Reportes.crOnlyPatient();
-                        //DocB.SetDataSource(oTable);
-                        crVisor.ReportSource = DocB;
+                        DocReport = new Reportes.crOnlyPatient();
+                        //DocReport.SetDataSource(oTable);
+                        crVisor.ReportSource = DocReport;
                         break;
                     case  Reporte.RpPatientParent:
                         MessageBox.Show("RpPatientParent - Nº rows: " + oTable.Rows.Count.ToString());
-                        Reportes.crPatientParent DocC = new Reportes.crPatientParent();
-                        //DocC.SetDataSource(oTable);
-                        crVisor.ReportSource = DocC;
+                        DocReport = new Reportes.crPatientParent();
+                        //DocReport.SetDataSource(oTable);
+                        crVisor.ReportSource = DocReport;
                         break;
                     case  Reporte.RpListPatient:
                         MessageBox.Show("RpListPatient- Nº rows: " + oTable.Rows.Count.ToString());
-                        Reportes.crListPatient DocD = new Reportes.crListPatient();
-                        //DocD.SetDataSource(oTable);
-                        crVisor.ReportSource = DocD;
+                        DocReport = new Reportes.crListPatient();
+                        //DocReport.SetDataSource(oTable);
+                        crVisor.ReportSource = DocReport;
                         break;
                     case  Reporte.RpOnlyProfessional:
                         MessageBox.Show("RpOnlyProfessional - Nº rows: " + oTable.Rows.Count.ToString());
-                        Reportes.crOnlyProfessional DocE = new Reportes.crOnlyProfessional();
-                        //DocE.SetDataSource(oTable);
-                        crVisor.ReportSource = DocE;
+                        DocReport = new Reportes.crOnlyProfessional();
+                        //DocReport.SetDataSource(oTable);
+                        crVisor.ReportSource = DocReport;
                         break;                    
                     case  Reporte.RpListProfessional:
                         MessageBox.Show("RpListProfessional - Nº rows: " + oTable.Rows.Count.ToString());
-                        Reportes.crListProfessional DocF = new Reportes.crListProfessional();
-                        //DocF.SetDataSource(oTable);
-                        crVisor.ReportSource = DocF;
+                        DocReport = new Reportes.crListProfessional();
+                        //DocReport.SetDataSource(oTable);
+                        crVisor.ReportSource = DocReport;
                         break;
                     default:
                         MessageBox.Show("Reporte no Existe");
