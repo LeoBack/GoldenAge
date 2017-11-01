@@ -202,9 +202,9 @@
             // tlp
             // 
             this.tlp.ColumnCount = 3;
-            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
+            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
             this.tlp.Controls.Add(this.chkNotify, 0, 0);
             this.tlp.Controls.Add(this.cmbDestinationSpeciality, 1, 0);
             this.tlp.Controls.Add(this.cmbDestinationProfessional, 2, 0);
@@ -213,7 +213,6 @@
             this.tlp.Name = "tlp";
             this.tlp.RowCount = 1;
             this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tlp.Size = new System.Drawing.Size(623, 47);
             this.tlp.TabIndex = 0;
             // 
@@ -221,7 +220,7 @@
             // 
             this.chkNotify.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.chkNotify.AutoSize = true;
-            this.chkNotify.Location = new System.Drawing.Point(121, 11);
+            this.chkNotify.Location = new System.Drawing.Point(130, 11);
             this.chkNotify.Name = "chkNotify";
             this.chkNotify.Size = new System.Drawing.Size(110, 24);
             this.chkNotify.TabIndex = 0;
@@ -234,9 +233,9 @@
             this.cmbDestinationSpeciality.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbDestinationSpeciality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDestinationSpeciality.FormattingEnabled = true;
-            this.cmbDestinationSpeciality.Location = new System.Drawing.Point(237, 9);
+            this.cmbDestinationSpeciality.Location = new System.Drawing.Point(246, 9);
             this.cmbDestinationSpeciality.Name = "cmbDestinationSpeciality";
-            this.cmbDestinationSpeciality.Size = new System.Drawing.Size(188, 28);
+            this.cmbDestinationSpeciality.Size = new System.Drawing.Size(184, 28);
             this.cmbDestinationSpeciality.TabIndex = 1;
             this.cmbDestinationSpeciality.SelectedIndexChanged += new System.EventHandler(this.cmbDestinationSpeciality_SelectedIndexChanged);
             // 
@@ -245,9 +244,9 @@
             this.cmbDestinationProfessional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbDestinationProfessional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDestinationProfessional.FormattingEnabled = true;
-            this.cmbDestinationProfessional.Location = new System.Drawing.Point(431, 9);
+            this.cmbDestinationProfessional.Location = new System.Drawing.Point(436, 9);
             this.cmbDestinationProfessional.Name = "cmbDestinationProfessional";
-            this.cmbDestinationProfessional.Size = new System.Drawing.Size(189, 28);
+            this.cmbDestinationProfessional.Size = new System.Drawing.Size(184, 28);
             this.cmbDestinationProfessional.TabIndex = 2;
             // 
             // btnSaveDiagnostic
