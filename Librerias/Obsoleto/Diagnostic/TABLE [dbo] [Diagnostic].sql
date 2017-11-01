@@ -30,4 +30,7 @@ GO
 ALTER TABLE [dbo].[Diagnostic] ADD  DEFAULT ((1)) FOR [Visible]
 GO
 
+ALTER TABLE [dbo].[Diagnostic] ADD  DEFAULT ((0)) FOR [DestinationRead]
+GO
+
 

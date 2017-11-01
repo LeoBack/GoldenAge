@@ -70,7 +70,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/10/07
+        // OK - 17/10/31
         #region Botones
 
         // OK - 17/10/31
