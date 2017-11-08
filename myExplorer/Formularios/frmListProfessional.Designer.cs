@@ -210,10 +210,11 @@
             this.tsmiDelete,
             this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(268, 130);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(268, 163);
             // 
             // tsmiPrintSelect
             // 
+            this.tsmiPrintSelect.Enabled = false;
             this.tsmiPrintSelect.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsmiPrintSelect.Name = "tsmiPrintSelect";
             this.tsmiPrintSelect.Size = new System.Drawing.Size(267, 30);
@@ -255,6 +256,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1274, 435);
             this.Controls.Add(this.tlpPanel);
+            this.Enabled = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmListProfessional";

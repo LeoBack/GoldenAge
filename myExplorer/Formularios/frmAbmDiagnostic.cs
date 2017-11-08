@@ -88,9 +88,22 @@ namespace myExplorer.Formularios
         // OK - 17/10/31
         private void btnPrintDiagnostic_Click(object sender, EventArgs e)
         {
-            if (oQuery.RpClinicHistory(oPatient.IdPatient))
+            bool isOk = true;
+            DataTable[] Tables = new DataTable[2];
+
+            if (oQuery.RpOnlyPatient(oPatient.IdPatient))
+                Tables[0] = oQuery.Table;
+            else
+                isOk = false;
+
+            if (oQuery.RpDiagnostic(oDiagnostic.IdDiagnostic))
+                Tables[1] = oQuery.Table;
+            else
+                isOk = false;
+
+            if (isOk)
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpClinicHistory, oQuery.Table);
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
                 fReport.Show();
             }
             else
@@ -100,9 +113,22 @@ namespace myExplorer.Formularios
         // OK - 17/10/07
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            bool isOk = true;
+            DataTable[] Tables = new DataTable[2];
+
+            if (oQuery.RpOnlyPatient(oPatient.IdPatient))
+                Tables[0] = oQuery.Table;
+            else
+                isOk = false;
+
             if (oQuery.RpClinicHistory(oPatient.IdPatient))
+                Tables[1] = oQuery.Table;
+            else
+                isOk = false;
+
+            if (isOk)
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpClinicHistory, oQuery.Table);
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpClinicHistory, Tables);
                 fReport.Show();
             }
             else

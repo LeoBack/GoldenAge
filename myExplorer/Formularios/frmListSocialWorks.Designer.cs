@@ -35,24 +35,24 @@
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslName = new System.Windows.Forms.ToolStripLabel();
             this.tstxtNombre = new System.Windows.Forms.ToolStripTextBox();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
+            this.tsFooter = new System.Windows.Forms.ToolStrip();
+            this.tsbAnterior = new System.Windows.Forms.ToolStripLabel();
+            this.tslPagina = new System.Windows.Forms.ToolStripLabel();
+            this.tsbSiguiente = new System.Windows.Forms.ToolStripButton();
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.tslName = new System.Windows.Forms.ToolStripLabel();
-            this.tsFooter = new System.Windows.Forms.ToolStrip();
-            this.tsbAnterior = new System.Windows.Forms.ToolStripLabel();
-            this.tsbSiguiente = new System.Windows.Forms.ToolStripButton();
-            this.tslPagina = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tlpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.tsMenu.SuspendLayout();
-            this.cmsMenuEmergente.SuspendLayout();
             this.tsFooter.SuspendLayout();
+            this.cmsMenuEmergente.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpPanel
@@ -98,7 +98,7 @@
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.tsMenu.Size = new System.Drawing.Size(1274, 39);
+            this.tsMenu.Size = new System.Drawing.Size(1274, 32);
             this.tsMenu.TabIndex = 7;
             this.tsMenu.Text = "Menu";
             // 
@@ -108,19 +108,25 @@
             this.tsbAdd.Image = global::myExplorer.Properties.Resources.Plus;
             this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAdd.Name = "tsbAdd";
-            this.tsbAdd.Size = new System.Drawing.Size(36, 36);
+            this.tsbAdd.Size = new System.Drawing.Size(28, 29);
             this.tsbAdd.Text = "Agregar";
             this.tsbAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            // 
+            // tslName
+            // 
+            this.tslName.Name = "tslName";
+            this.tslName.Size = new System.Drawing.Size(78, 29);
+            this.tslName.Text = "Nombre";
             // 
             // tstxtNombre
             // 
             this.tstxtNombre.Name = "tstxtNombre";
-            this.tstxtNombre.Size = new System.Drawing.Size(148, 39);
+            this.tstxtNombre.Size = new System.Drawing.Size(148, 32);
             this.tstxtNombre.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tsbSearch
@@ -128,19 +134,64 @@
             this.tsbSearch.Image = global::myExplorer.Properties.Resources.Search;
             this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSearch.Name = "tsbSearch";
-            this.tsbSearch.Size = new System.Drawing.Size(99, 36);
+            this.tsbSearch.Size = new System.Drawing.Size(91, 29);
             this.tsbSearch.Text = "Buscar";
             this.tsbSearch.Click += new System.EventHandler(this.tsbBuscar_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
             // 
             // tsbPrint
             // 
             this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrint.Enabled = false;
             this.tsbPrint.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrint.Name = "tsbPrint";
-            this.tsbPrint.Size = new System.Drawing.Size(36, 36);
+            this.tsbPrint.Size = new System.Drawing.Size(28, 29);
             this.tsbPrint.Text = "Imprimir";
             this.tsbPrint.Click += new System.EventHandler(this.tsbImprimir_Click);
+            // 
+            // tsFooter
+            // 
+            this.tsFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tsFooter.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.tsFooter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbAnterior,
+            this.tslPagina,
+            this.tsbSiguiente});
+            this.tsFooter.Location = new System.Drawing.Point(0, 404);
+            this.tsFooter.Name = "tsFooter";
+            this.tsFooter.Size = new System.Drawing.Size(1274, 31);
+            this.tsFooter.TabIndex = 8;
+            this.tsFooter.Text = "toolStrip1";
+            // 
+            // tsbAnterior
+            // 
+            this.tsbAnterior.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAnterior.Image = global::myExplorer.Properties.Resources.ArrowLeft;
+            this.tsbAnterior.Name = "tsbAnterior";
+            this.tsbAnterior.Size = new System.Drawing.Size(24, 28);
+            this.tsbAnterior.Text = "toolStripLabel1";
+            this.tsbAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // tslPagina
+            // 
+            this.tslPagina.Name = "tslPagina";
+            this.tslPagina.Size = new System.Drawing.Size(82, 28);
+            this.tslPagina.Text = "tslPagina";
+            // 
+            // tsbSiguiente
+            // 
+            this.tsbSiguiente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSiguiente.Image = global::myExplorer.Properties.Resources.ArrowRight;
+            this.tsbSiguiente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSiguiente.Name = "tsbSiguiente";
+            this.tsbSiguiente.Size = new System.Drawing.Size(28, 28);
+            this.tsbSiguiente.Text = "toolStripButton1";
+            this.tsbSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // cmsMenuEmergente
             // 
@@ -176,56 +227,6 @@
             this.tsmiAdd.Text = "Agregar";
             this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
-            // tslName
-            // 
-            this.tslName.Name = "tslName";
-            this.tslName.Size = new System.Drawing.Size(78, 36);
-            this.tslName.Text = "Nombre";
-            // 
-            // tsFooter
-            // 
-            this.tsFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tsFooter.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.tsFooter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbAnterior,
-            this.tslPagina,
-            this.tsbSiguiente});
-            this.tsFooter.Location = new System.Drawing.Point(0, 404);
-            this.tsFooter.Name = "tsFooter";
-            this.tsFooter.Size = new System.Drawing.Size(1274, 31);
-            this.tsFooter.TabIndex = 8;
-            this.tsFooter.Text = "toolStrip1";
-            // 
-            // tsbAnterior
-            // 
-            this.tsbAnterior.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAnterior.Image = global::myExplorer.Properties.Resources.ArrowLeft;
-            this.tsbAnterior.Name = "tsbAnterior";
-            this.tsbAnterior.Size = new System.Drawing.Size(24, 28);
-            this.tsbAnterior.Text = "toolStripLabel1";
-            this.tsbAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
-            // 
-            // tsbSiguiente
-            // 
-            this.tsbSiguiente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSiguiente.Image = global::myExplorer.Properties.Resources.ArrowRight;
-            this.tsbSiguiente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSiguiente.Name = "tsbSiguiente";
-            this.tsbSiguiente.Size = new System.Drawing.Size(28, 28);
-            this.tsbSiguiente.Text = "toolStripButton1";
-            this.tsbSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
-            // 
-            // tslPagina
-            // 
-            this.tslPagina.Name = "tslPagina";
-            this.tslPagina.Size = new System.Drawing.Size(82, 28);
-            this.tslPagina.Text = "tslPagina";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
-            // 
             // frmListSocialWorks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -242,9 +243,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.tsMenu.ResumeLayout(false);
             this.tsMenu.PerformLayout();
-            this.cmsMenuEmergente.ResumeLayout(false);
             this.tsFooter.ResumeLayout(false);
             this.tsFooter.PerformLayout();
+            this.cmsMenuEmergente.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

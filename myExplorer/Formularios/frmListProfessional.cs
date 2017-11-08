@@ -168,13 +168,16 @@ namespace myExplorer.Formularios
         // OK - 17/10/28
         private void tsbPrintList_Click(object sender, EventArgs e)
         {
+            DataTable[] Tables = new DataTable[1];
+
             classProfessional oP = new classProfessional();
             oP.LastName = tstxtLastName.Text;
             oP.Name = tstxtName.Text;
 
             if (oQuery.rpListProfessional(oP.Name, oP.LastName))
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpListProfessional, oQuery.Table);
+                Tables[0] = oQuery.Table;
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
                 fReport.Show();
             }
             else
@@ -184,9 +187,12 @@ namespace myExplorer.Formularios
         // OK - 17/10/28
         private void tsmiPrintSelect_Click(object sender, EventArgs e)
         {
+            DataTable[] Tables = new DataTable[1];
+
             if (oQuery.RpOnlyProfessional(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpOnlyProfessional, oQuery.Table);
+                Tables[0] = oQuery.Table;
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
                 fReport.Show();
             }
             else

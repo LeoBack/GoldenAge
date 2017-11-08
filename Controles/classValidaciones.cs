@@ -83,53 +83,7 @@ namespace Controles
             return false;
         }
 
-        /// <summary>
-        /// Valida si es direccion de mail valida.
-        /// Caracteres Permitidos: @ .
-        /// Agregar en el evento escritura.
-        /// OK 01/11/11
-        /// </summary>
-        /// <param name="C"></param>
-        /// <returns></returns>
-        public bool eMail(char email)
-        {
-            String allowedLetter = email.ToString();
-            if ((!allowedLetter.Contains("@")) && (!allowedLetter.Contains(".")))
-            {
-                return true;
-            }
-            return false;
-        }
 
-        // <summary>
-        /// Valida si es direccion de mail valida.
-        /// Formato: correo@dominio.com
-        /// Agregar en el evento escritura.
-        /// OK 10/10/17
-        /// </summary>
-        /// <param name="C"></param>
-        /// <returns></returns>
-        public bool ComprobarFormatoEmail(string sEmailAComprobar)
-        {
-            String sFormato;
-            sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(sEmailAComprobar, sFormato))
-            {
-                if (Regex.Replace(sEmailAComprobar, sFormato, String.Empty).Length == 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-        
         /// <summary>
         /// Valida si es Retroseso.
         /// Agregar en el evento escritura.
@@ -194,5 +148,54 @@ namespace Controles
         }
 
 
+        #region Email
+
+        /// <summary>
+        /// Valida direccion de mail por caracteres.
+        /// Caracteres Permitidos: @ .
+        /// Agregar en el evento escritura por caracter.
+        /// OK - 11/11/01
+        /// </summary>
+        /// <param name="cEmail">Char Email</param>
+        /// <returns>True:False</returns>
+        public bool eMail(char cEmail)
+        {
+            String allowedLetter = cEmail.ToString();
+            if ((!allowedLetter.Contains("@")) && (!allowedLetter.Contains(".")))
+                return true;
+            return false;
+        }
+
+        // <summary>
+        /// Valida direccion de mail.
+        /// Formato: correo@dominio.com
+        /// Agregar en el evento escritura.
+        /// OK - 17/10/10
+        /// </summary>
+        /// <param name="VerifyMail">Mail a Verificar</param>
+        /// <returns>True:False/returns>
+        public bool VerifyEmailAddressFormat(string VerifyMail)
+        {
+            String sFormat;
+            sFormat = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(VerifyMail, sFormat))
+                return Regex.Replace(VerifyMail, sFormat, String.Empty).Length == 0 ? true : false;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Valida direccion de mail y muestra un mesaje.
+        /// OK - 17/11/06
+        /// </summary>
+        /// <param name="Crt">Control a validar</param>
+        /// <param name="MsgNoValido">Mensaje a mostrar en caso de no valido</param>
+        public void EmailLostFocus(TextBox Crt, string MsgNoValido)
+        {
+            if (VerifyEmailAddressFormat(Crt.Text) == false)
+                MessageBox.Show(MsgNoValido);
+        }
+
+        #endregion
     }
 }

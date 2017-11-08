@@ -90,8 +90,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\libFeaturesComponents.dll</HintPath>
     </Reference>
-    <Reference Include="libLocalitation, Version=2.8.6485.36341, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="libLocalitation">
       <HintPath>..\Librerias\libLocalitation.dll</HintPath>
     </Reference>
     <Reference Include="System" />

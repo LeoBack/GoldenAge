@@ -1534,6 +1534,35 @@ namespace Datos.Query
 
         /// <summary>
         /// OK - 17/10/28
+        /// diagnostico del paciente seleccionado.
+        /// </summary>
+        /// <param name="IdDiagnostic"></param>
+        /// <returns>DataTable</returns>
+        public bool RpDiagnostic(int IdDiagnostic)
+        {
+            string SPname = sp.RpClinicHistory;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@idDiagnostic", IdDiagnostic));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                DataSet set = new DataSet();
+                Table = new DataTable("RpDiagnostic");
+                set.Reset();
+                oSql.Adapter.Fill(set);
+                Table = set.Tables[0];
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// OK - 17/10/28
         /// Historia Clinica del paciente seleccionado.
         /// </summary>
         /// <param name="IdPaciente"></param>
@@ -1547,7 +1576,7 @@ namespace Datos.Query
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
-                Table = new DataTable();
+                Table = new DataTable("RpClinicHistory");
                 set.Reset();
                 oSql.Adapter.Fill(set);
                 Table = set.Tables[0];
@@ -1576,7 +1605,7 @@ namespace Datos.Query
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
-                Table = new DataTable();
+                Table = new DataTable("OnlyPatient");
                 set.Reset();
                 oSql.Adapter.Fill(set);
                 Table = set.Tables[0];
@@ -1605,7 +1634,7 @@ namespace Datos.Query
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
-                Table = new DataTable();
+                Table = new DataTable("RpPatientParent");
                 set.Reset();
                 oSql.Adapter.Fill(set);
                 Table = set.Tables[0];
@@ -1640,7 +1669,7 @@ namespace Datos.Query
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
-                Table = new DataTable();
+                Table = new DataTable("rpListPatient");
                 set.Reset();
                 oSql.Adapter.Fill(set);
                 Table = set.Tables[0];
@@ -1669,7 +1698,7 @@ namespace Datos.Query
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
-                Table = new DataTable();
+                Table = new DataTable("RpOnlyProfessional");
                 set.Reset();
                 oSql.Adapter.Fill(set);
                 Table = set.Tables[0];
@@ -1700,7 +1729,7 @@ namespace Datos.Query
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
-                Table = new DataTable();
+                Table = new DataTable("rpListProfessional");
                 set.Reset();
                 oSql.Adapter.Fill(set);
                 Table = set.Tables[0];
@@ -1729,7 +1758,7 @@ namespace Datos.Query
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 DataSet set = new DataSet();
-                Table = new DataTable();
+                Table = new DataTable("RpOnlyProfessionalSpeciality");
                 set.Reset();
                 oSql.Adapter.Fill(set);
                 Table = set.Tables[0];

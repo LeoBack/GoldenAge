@@ -54,12 +54,12 @@
             this.tsmiSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDiagnostic = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPrintSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPrintParent = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpPanel.SuspendLayout();
             this.tsFooter.SuspendLayout();
             this.tsMenu.SuspendLayout();
@@ -224,6 +224,7 @@
             // tsbPrintList
             // 
             this.tsbPrintList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrintList.Enabled = false;
             this.tsbPrintList.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsbPrintList.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrintList.Name = "tsbPrintList";
@@ -256,7 +257,7 @@
             this.tsmiDelete,
             this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(302, 226);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(302, 259);
             // 
             // tsmiSelect
             // 
@@ -278,6 +279,29 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(298, 6);
+            // 
+            // tsmiPrintSelect
+            // 
+            this.tsmiPrintSelect.Enabled = false;
+            this.tsmiPrintSelect.Image = global::myExplorer.Properties.Resources.Printer;
+            this.tsmiPrintSelect.Name = "tsmiPrintSelect";
+            this.tsmiPrintSelect.Size = new System.Drawing.Size(301, 30);
+            this.tsmiPrintSelect.Text = "Imprimir seleccionado";
+            this.tsmiPrintSelect.Click += new System.EventHandler(this.tsmiPrintSelect_Click);
+            // 
+            // tsmiPrintParent
+            // 
+            this.tsmiPrintParent.Enabled = false;
+            this.tsmiPrintParent.Image = global::myExplorer.Properties.Resources.Printer;
+            this.tsmiPrintParent.Name = "tsmiPrintParent";
+            this.tsmiPrintParent.Size = new System.Drawing.Size(301, 30);
+            this.tsmiPrintParent.Text = "Imprimir personas a cargo";
+            this.tsmiPrintParent.Click += new System.EventHandler(this.tsmiPrintParent_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(298, 6);
             // 
             // tsmiUpdate
             // 
@@ -302,27 +326,6 @@
             this.tsmiAdd.Size = new System.Drawing.Size(301, 30);
             this.tsmiAdd.Text = "Agregar";
             this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
-            // 
-            // tsmiPrintSelect
-            // 
-            this.tsmiPrintSelect.Image = global::myExplorer.Properties.Resources.Printer;
-            this.tsmiPrintSelect.Name = "tsmiPrintSelect";
-            this.tsmiPrintSelect.Size = new System.Drawing.Size(301, 30);
-            this.tsmiPrintSelect.Text = "Imprimir seleccionado";
-            this.tsmiPrintSelect.Click += new System.EventHandler(this.tsmiPrintSelect_Click);
-            // 
-            // tsmiPrintParent
-            // 
-            this.tsmiPrintParent.Image = global::myExplorer.Properties.Resources.Printer;
-            this.tsmiPrintParent.Name = "tsmiPrintParent";
-            this.tsmiPrintParent.Size = new System.Drawing.Size(301, 30);
-            this.tsmiPrintParent.Text = "Imprimir personas a cargo";
-            this.tsmiPrintParent.Click += new System.EventHandler(this.tsmiPrintParent_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(298, 6);
             // 
             // frmListPatient
             // 
