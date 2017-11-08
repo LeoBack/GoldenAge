@@ -193,6 +193,7 @@
             // tsbPrintList
             // 
             this.tsbPrintList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrintList.Enabled = false;
             this.tsbPrintList.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsbPrintList.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrintList.Name = "tsbPrintList";
@@ -210,7 +211,7 @@
             this.tsmiDelete,
             this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(268, 163);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(268, 130);
             // 
             // tsmiPrintSelect
             // 
@@ -256,7 +257,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1274, 435);
             this.Controls.Add(this.tlpPanel);
-            this.Enabled = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmListProfessional";
