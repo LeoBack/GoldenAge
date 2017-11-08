@@ -1499,7 +1499,7 @@ namespace Datos.Query
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public bool FiltroPatientLimite(string Name, string LastName, int AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
+        public bool FiltroPatientLimite(string Name, string LastName, long AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
         {
             string SPname = sp.FiltroPatientLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
@@ -1657,7 +1657,7 @@ namespace Datos.Query
         /// <param name="N Afiliado"></param>
         /// <param name="IdObraSocial"></param>
         /// <returns>DataTable</returns>
-        public bool rpListPatient(string Name, string LastName, int AffiliateNumber, int IdSocialWork)
+        public bool rpListPatient(string Name, string LastName, long AffiliateNumber, int IdSocialWork)
         {
             string SPname = sp.RpListPatient;
             List<SqlParameter> lParam = new List<SqlParameter>();

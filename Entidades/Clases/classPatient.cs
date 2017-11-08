@@ -21,7 +21,7 @@ namespace Entidades.Clases
         public string Address { set; get; }
         public string Phone { set; get; }
         public int IdSocialWork { set; get; }
-        public int AffiliateNumber { set; get; }
+        public long AffiliateNumber { set; get; }
         public DateTime DateAdmission { set; get; }
         public DateTime EgressDate { set; get; }
         public string ReasonExit { set; get; }
@@ -77,7 +77,7 @@ namespace Entidades.Clases
         public classPatient(int vIdPatient, string vName, string vLastName, DateTime vBirthdate,
             int vIdTypeDocument, int vNumberDocument, bool vSex, int IdLocationCountry, 
             int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, 
-            int vAffiliateNumber, DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, 
+            long vAffiliateNumber, DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, 
             bool vVisible)
         {
             this.IdPatient = vIdPatient;

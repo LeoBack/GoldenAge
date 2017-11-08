@@ -303,7 +303,7 @@ namespace myExplorer.Formularios
             oPatient.Address = txtAddress.Text.ToUpper();
             oPatient.Phone = txtPhone.Text;
             oPatient.IdSocialWork = Convert.ToInt32(cmbSocialWork.SelectedValue);
-            oPatient.AffiliateNumber = Convert.ToInt32(txtAffiliateNumber.Text);
+            oPatient.AffiliateNumber = Convert.ToInt64(txtAffiliateNumber.Text);
             oPatient.DateAdmission = dtpDateAdmission.Value;
             oPatient.EgressDate = dtpEgressDate.Value;
             oPatient.ReasonExit = txtReasonExit.Text.ToUpper();
@@ -361,8 +361,8 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
             else if (txtPhone.Text.Length >= 20)
                 MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
-            else if ((txtAffiliateNumber.Text.Length < 8) || (txtAffiliateNumber.Text == ""))
-                MessageBox.Show("El Numero de Afiliado esta vacio o no supera los 7 caracteres.");
+            else if ((txtAffiliateNumber.Text.Length <2) || (txtAffiliateNumber.Text.Length >= 19) || (txtAffiliateNumber.Text == ""))
+                MessageBox.Show("El Numero de Afiliado esta vacio o supera 19 caracteres.");
            // else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
             else if (txtAddress.Text.Length >= 50)
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
