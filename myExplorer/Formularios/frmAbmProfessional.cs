@@ -407,7 +407,7 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
             else if (txtLastName.Text.Length >= 50 || (txtLastName.Text == ""))
                 MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
-            else if (oClassValidas.ComprobarFormatoEmail(txtMail.Text) == false)
+            else if (oClassValidas.VerifyEmailAddressFormat(txtMail.Text) == false)
             {
                 MessageBox.Show("Formato de Direccion de Correo invalido");
             }
@@ -415,8 +415,8 @@ namespace myExplorer.Formularios
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
             else if ((txtPassword.Text.Length < 2) || (txtPassword.Text.Length >= 19) || (txtPassword.Text == ""))
                 MessageBox.Show("La Contraseña esta vacia y//o debe tener como minimo 2 caracteres.");
-            else if ((txtProfessionalRegistration.Text.Length < 2) || (txtProfessionalRegistration.Text.Length >= 20) || (txtProfessionalRegistration.Text == ""))
-                MessageBox.Show("El Numero de Registro esta vacio o Entre 2 y 20 caracteres.");
+            else if ((txtProfessionalRegistration.Text.Length < 2) || (txtProfessionalRegistration.Text.Length >= 9) || (txtProfessionalRegistration.Text == ""))
+                MessageBox.Show("El Numero de Registro esta vacio o Entre 2 y 9 caracteres.");
             //else if (oClassValidas.ComprobarFormatoTelefono(txtPhone.Text)==false)
             //    MessageBox.Show("Formato");
             else if(txtPhone.Text.Length >= 20)
@@ -436,62 +436,33 @@ namespace myExplorer.Formularios
         #endregion
 
         #region Validaciones
+
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsLetter(e.KeyChar))
-            {
                 e.Handled = false;
-            }
             else if (Char.IsControl(e.KeyChar))
-            {
                 e.Handled = false;
-            }
             else if (Char.IsSeparator(e.KeyChar))
-            {
                 e.Handled = false;
-            }
             else
-            {
                 e.Handled = true;
-            }
-        }
-        
-        private void txtNameE_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             classValidaciones oClassValidas = new classValidaciones();
             if (!Char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back) && oClassValidas.isPhone(e.KeyChar))
-            {
                 e.Handled = true;
-            }
         }
-        #endregion
-
-        private void ValidarCorreos(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
+        
         private void ValidarCorreoLeave(object sender, EventArgs e)
         {
-
-            String lEmailCorrecto = "";
             classValidaciones oClassValidas = new classValidaciones();
-            if (oClassValidas.ComprobarFormatoEmail(txtMail.Text)==false)
-            {
-                lEmailCorrecto = "Dirección no valida";
-                //lEmailCorrecto.ForeColor = Color.Red;
-            }
-            else
-            {
-                lEmailCorrecto= "Dirección valida";
-                //lEmailCorrecto.ForeColor = Color.Green;
-            }
+            oClassValidas.EmailLostFocus(txtMail, "La direccion de correo es invalida.");
         }
+
+        #endregion
+
     }
 }

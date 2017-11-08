@@ -265,6 +265,7 @@
             // 
             this.btnPrintDiagnostic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnPrintDiagnostic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPrintDiagnostic.Enabled = false;
             this.btnPrintDiagnostic.Location = new System.Drawing.Point(1024, 422);
             this.btnPrintDiagnostic.Name = "btnPrintDiagnostic";
             this.btnPrintDiagnostic.Size = new System.Drawing.Size(110, 50);
@@ -350,6 +351,7 @@
             // 
             this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPrint.Enabled = false;
             this.btnPrint.Location = new System.Drawing.Point(977, 9);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(151, 38);

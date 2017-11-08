@@ -60,6 +60,12 @@
       <DependentUpon>crClinicHistory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\crDiagnostic.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crDiagnostic.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\crListPatient.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -107,6 +113,10 @@
     <EmbeddedResource Include="Reportes\crClinicHistory.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crClinicHistory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crDiagnostic.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crDiagnostic.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\crListPatient.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

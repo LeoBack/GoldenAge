@@ -214,6 +214,8 @@ namespace myExplorer.Formularios
         // OK - 17/10/28
         private void tsbPrintList_Click(object sender, EventArgs e)
         {
+            DataTable[] Tables = new DataTable[1];
+
             classPatient oP = new classPatient();
             oP.LastName = tstxtLastName.Text;
             oP.Name = tstxtName.Text;
@@ -222,7 +224,8 @@ namespace myExplorer.Formularios
 
             if (oQuery.rpListPatient(oP.Name, oP.LastName, oP.AffiliateNumber, oP.IdSocialWork))
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpListPatient, oQuery.Table);
+                Tables[0] = oQuery.Table;
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
                 fReport.Show();
             }
             else
@@ -232,9 +235,12 @@ namespace myExplorer.Formularios
         // OK - 17/10/28
         private void tsmiPrintSelect_Click(object sender, EventArgs e)
         {
+            DataTable[] Tables = new DataTable[1];
+
             if (oQuery.RpOnlyPatient(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpOnlyPatient, oQuery.Table);
+                Tables[0] = oQuery.Table;
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpOnlyPatient, Tables);
                 fReport.Show();
             }
             else
@@ -244,9 +250,12 @@ namespace myExplorer.Formularios
         // OK - 17/10/28
         private void tsmiPrintParent_Click(object sender, EventArgs e)
         {
+            DataTable[] Tables = new DataTable[1];
+
             if (oQuery.RpPatientParent(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpPatientParent, oQuery.Table);
+                Tables[0] = oQuery.Table;
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
                 fReport.Show();
             }
             else
