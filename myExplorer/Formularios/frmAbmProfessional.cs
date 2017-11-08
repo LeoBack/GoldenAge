@@ -413,10 +413,10 @@ namespace myExplorer.Formularios
             }
             else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
-            else if ((txtPassword.Text.Length < 8) || (txtPassword.Text.Length >= 20) || (txtPassword.Text == ""))
-                MessageBox.Show("La Contraseña esta vacia y//o debe tener como minimo 8 caracteres.");
-            else if ((txtProfessionalRegistration.Text.Length < 6) || (txtProfessionalRegistration.Text == ""))
-                MessageBox.Show("El Numero de Registro esta vacio o no supera los 6 caracteres.");
+            else if ((txtPassword.Text.Length < 2) || (txtPassword.Text.Length >= 19) || (txtPassword.Text == ""))
+                MessageBox.Show("La Contraseña esta vacia y//o debe tener como minimo 2 caracteres.");
+            else if ((txtProfessionalRegistration.Text.Length < 2) || (txtProfessionalRegistration.Text.Length >= 20) || (txtProfessionalRegistration.Text == ""))
+                MessageBox.Show("El Numero de Registro esta vacio o Entre 2 y 20 caracteres.");
             //else if (oClassValidas.ComprobarFormatoTelefono(txtPhone.Text)==false)
             //    MessageBox.Show("Formato");
             else if(txtPhone.Text.Length >= 20)

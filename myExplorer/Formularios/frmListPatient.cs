@@ -217,7 +217,7 @@ namespace myExplorer.Formularios
             classPatient oP = new classPatient();
             oP.LastName = tstxtLastName.Text;
             oP.Name = tstxtName.Text;
-            oP.AffiliateNumber = tstxtAffiliateNumber.Text == "" ? 0 : Convert.ToInt32(tstxtAffiliateNumber.Text);
+            oP.AffiliateNumber = tstxtAffiliateNumber.Text == "" ? 0 : Convert.ToInt64(tstxtAffiliateNumber.Text);
             oP.IdSocialWork = Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue);
 
             if (oQuery.rpListPatient(oP.Name, oP.LastName, oP.AffiliateNumber, oP.IdSocialWork))
@@ -272,7 +272,7 @@ namespace myExplorer.Formularios
         {
             SelectRow = 0;
 
-            int affNumber = tstxtAffiliateNumber.TextBox.Text != "" ? Convert.ToInt32(tstxtAffiliateNumber.TextBox.Text) : 0; 
+            long affNumber = tstxtAffiliateNumber.TextBox.Text != "" ? Convert.ToInt64(tstxtAffiliateNumber.TextBox.Text) : 0; 
 
             if (oQuery.FiltroPatientLimite(
                 tstxtName.TextBox.Text,  tstxtLastName.TextBox.Text, affNumber,
