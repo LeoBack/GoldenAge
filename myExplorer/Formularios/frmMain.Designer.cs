@@ -34,17 +34,35 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiGrandfather = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProfessional = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSocialWorks = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiStatics = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiMessaje = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNowUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiLocation = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbmCountry = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbmProvince = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbmCity = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDataBase = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMaximizeWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMinimizeWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCloseWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.tsPrincipal = new System.Windows.Forms.ToolStrip();
+            this.tsddbPaciente = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsgAgregarOB = new System.Windows.Forms.ToolStripButton();
+            this.tsbMyMessages = new System.Windows.Forms.ToolStripButton();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
             this.tsslPath = new System.Windows.Forms.ToolStripStatusLabel();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -53,24 +71,8 @@
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.toolStripPanel1 = new System.Windows.Forms.ToolStripPanel();
-            this.tsddbPaciente = new System.Windows.Forms.ToolStripButton();
-            this.tsgAgregarOB = new System.Windows.Forms.ToolStripButton();
-            this.tsmiGrandfather = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiProfessional = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSocialWorks = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiStatics = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMessaje = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNowUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSesion = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLocation = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAbmCountry = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAbmProvince = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAbmCity = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDataBase = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiUsuario = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbMyMessages = new System.Windows.Forms.ToolStripButton();
+            this.tsbProfession = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.msToolBar.SuspendLayout();
             this.tsPrincipal.SuspendLayout();
             this.ssEstado.SuspendLayout();
@@ -132,20 +134,118 @@
             this.tsmiMenu.Size = new System.Drawing.Size(69, 29);
             this.tsmiMenu.Text = "Menu";
             // 
+            // tsmiGrandfather
+            // 
+            this.tsmiGrandfather.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsmiGrandfather.Name = "tsmiGrandfather";
+            this.tsmiGrandfather.Size = new System.Drawing.Size(212, 30);
+            this.tsmiGrandfather.Text = "Abuelos";
+            this.tsmiGrandfather.Click += new System.EventHandler(this.tsmiGrandfather_Click);
+            // 
+            // tsmiProfessional
+            // 
+            this.tsmiProfessional.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsmiProfessional.Name = "tsmiProfessional";
+            this.tsmiProfessional.Size = new System.Drawing.Size(212, 30);
+            this.tsmiProfessional.Text = "Profesionales";
+            this.tsmiProfessional.Click += new System.EventHandler(this.tsmiProfessional_Click);
+            // 
+            // tsmiSocialWorks
+            // 
+            this.tsmiSocialWorks.Image = global::myExplorer.Properties.Resources.ammo4;
+            this.tsmiSocialWorks.Name = "tsmiSocialWorks";
+            this.tsmiSocialWorks.Size = new System.Drawing.Size(212, 30);
+            this.tsmiSocialWorks.Text = "Obras Sociales";
+            this.tsmiSocialWorks.Click += new System.EventHandler(this.tsmiSocialWork_Click);
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(209, 6);
+            // 
+            // tsmiStatics
+            // 
+            this.tsmiStatics.Image = global::myExplorer.Properties.Resources.GraficoDeBarras;
+            this.tsmiStatics.Name = "tsmiStatics";
+            this.tsmiStatics.Size = new System.Drawing.Size(212, 30);
+            this.tsmiStatics.Text = "Estadisticas";
+            this.tsmiStatics.Click += new System.EventHandler(this.tsmiStatics_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(209, 6);
             // 
+            // tsmiMessaje
+            // 
+            this.tsmiMessaje.Image = global::myExplorer.Properties.Resources.Email;
+            this.tsmiMessaje.Name = "tsmiMessaje";
+            this.tsmiMessaje.Size = new System.Drawing.Size(212, 30);
+            this.tsmiMessaje.Text = "Mensajes";
+            this.tsmiMessaje.Click += new System.EventHandler(this.tsbMyMessages_Click);
+            // 
+            // tsmiUser
+            // 
+            this.tsmiUser.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNowUser,
+            this.tsmiSesion});
+            this.tsmiUser.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
+            this.tsmiUser.Name = "tsmiUser";
+            this.tsmiUser.Size = new System.Drawing.Size(212, 30);
+            this.tsmiUser.Text = "Usuario";
+            // 
+            // tsmiNowUser
+            // 
+            this.tsmiNowUser.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsmiNowUser.Name = "tsmiNowUser";
+            this.tsmiNowUser.Size = new System.Drawing.Size(210, 30);
+            this.tsmiNowUser.Text = "Usuario Actual";
+            this.tsmiNowUser.Click += new System.EventHandler(this.tsmiNowUser_Click);
+            // 
+            // tsmiSesion
+            // 
+            this.tsmiSesion.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
+            this.tsmiSesion.Name = "tsmiSesion";
+            this.tsmiSesion.Size = new System.Drawing.Size(210, 30);
+            this.tsmiSesion.Text = "Sesion";
+            this.tsmiSesion.Click += new System.EventHandler(this.tsmiLoginProfessional_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(209, 6);
+            // 
+            // tsmiLocation
+            // 
+            this.tsmiLocation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAbmCountry,
+            this.tsmiAbmProvince,
+            this.tsmiAbmCity});
+            this.tsmiLocation.Image = global::myExplorer.Properties.Resources.Database3;
+            this.tsmiLocation.Name = "tsmiLocation";
+            this.tsmiLocation.Size = new System.Drawing.Size(212, 30);
+            this.tsmiLocation.Text = "Localidades";
+            // 
+            // tsmiAbmCountry
+            // 
+            this.tsmiAbmCountry.Name = "tsmiAbmCountry";
+            this.tsmiAbmCountry.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAbmCountry.Text = "ABM Pais";
+            this.tsmiAbmCountry.Click += new System.EventHandler(this.tsmiAbmCountry_Click);
+            // 
+            // tsmiAbmProvince
+            // 
+            this.tsmiAbmProvince.Name = "tsmiAbmProvince";
+            this.tsmiAbmProvince.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAbmProvince.Text = "ABM Provincia";
+            this.tsmiAbmProvince.Click += new System.EventHandler(this.tsmiAbmProvince_Click);
+            // 
+            // tsmiAbmCity
+            // 
+            this.tsmiAbmCity.Name = "tsmiAbmCity";
+            this.tsmiAbmCity.Size = new System.Drawing.Size(210, 30);
+            this.tsmiAbmCity.Text = "ABM Ciudad";
+            this.tsmiAbmCity.Click += new System.EventHandler(this.tsmiAbmCity_Click);
             // 
             // tsmiHelp
             // 
@@ -155,6 +255,22 @@
             this.tsmiHelp.Name = "tsmiHelp";
             this.tsmiHelp.Size = new System.Drawing.Size(75, 29);
             this.tsmiHelp.Text = "Ayuda";
+            // 
+            // tsmiAcercaDe
+            // 
+            this.tsmiAcercaDe.Image = global::myExplorer.Properties.Resources.Info;
+            this.tsmiAcercaDe.Name = "tsmiAcercaDe";
+            this.tsmiAcercaDe.Size = new System.Drawing.Size(209, 30);
+            this.tsmiAcercaDe.Text = "Acerca de ";
+            this.tsmiAcercaDe.Click += new System.EventHandler(this.tsmiAcercaDe_Click);
+            // 
+            // tsmiDataBase
+            // 
+            this.tsmiDataBase.Image = global::myExplorer.Properties.Resources.Database3;
+            this.tsmiDataBase.Name = "tsmiDataBase";
+            this.tsmiDataBase.Size = new System.Drawing.Size(209, 30);
+            this.tsmiDataBase.Text = "Base de Datos";
+            this.tsmiDataBase.Click += new System.EventHandler(this.tsmiDataBase_Click);
             // 
             // tsmiWindows
             // 
@@ -194,6 +310,14 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
             // 
+            // tsmiUsuario
+            // 
+            this.tsmiUsuario.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
+            this.tsmiUsuario.Name = "tsmiUsuario";
+            this.tsmiUsuario.Size = new System.Drawing.Size(151, 29);
+            this.tsmiUsuario.Text = "Iniciar Sesion";
+            this.tsmiUsuario.Click += new System.EventHandler(this.tsmiLoginProfessional_Click);
+            // 
             // tsPrincipal
             // 
             this.tsPrincipal.Dock = System.Windows.Forms.DockStyle.None;
@@ -201,20 +325,49 @@
             this.tsPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsddbPaciente,
             this.toolStripSeparator3,
+            this.tsbProfession,
             this.tsgAgregarOB,
+            this.toolStripSeparator6,
             this.tsbMyMessages});
             this.tsPrincipal.Location = new System.Drawing.Point(3, 0);
             this.tsPrincipal.Name = "tsPrincipal";
             this.tsPrincipal.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.tsPrincipal.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsPrincipal.Size = new System.Drawing.Size(497, 32);
+            this.tsPrincipal.Size = new System.Drawing.Size(602, 32);
             this.tsPrincipal.TabIndex = 2;
             this.tsPrincipal.Text = "tsMenu";
+            // 
+            // tsddbPaciente
+            // 
+            this.tsddbPaciente.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsddbPaciente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddbPaciente.Name = "tsddbPaciente";
+            this.tsddbPaciente.Size = new System.Drawing.Size(105, 29);
+            this.tsddbPaciente.Text = "Abuelos";
+            this.tsddbPaciente.Click += new System.EventHandler(this.tsmiGrandfather_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
+            // 
+            // tsgAgregarOB
+            // 
+            this.tsgAgregarOB.Image = global::myExplorer.Properties.Resources.ammo4;
+            this.tsgAgregarOB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsgAgregarOB.Name = "tsgAgregarOB";
+            this.tsgAgregarOB.Size = new System.Drawing.Size(156, 29);
+            this.tsgAgregarOB.Text = "Obras Sociales";
+            this.tsgAgregarOB.Click += new System.EventHandler(this.tsmiSocialWork_Click);
+            // 
+            // tsbMyMessages
+            // 
+            this.tsbMyMessages.Image = global::myExplorer.Properties.Resources.Email;
+            this.tsbMyMessages.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbMyMessages.Name = "tsbMyMessages";
+            this.tsbMyMessages.Size = new System.Drawing.Size(171, 29);
+            this.tsbMyMessages.Text = "(0) Mis Mensajes";
+            this.tsbMyMessages.Click += new System.EventHandler(this.tsbMyMessages_Click);
             // 
             // ssEstado
             // 
@@ -280,154 +433,19 @@
             this.toolStripPanel1.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.toolStripPanel1.Size = new System.Drawing.Size(1086, 32);
             // 
-            // tsddbPaciente
+            // tsbProfession
             // 
-            this.tsddbPaciente.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
-            this.tsddbPaciente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsddbPaciente.Name = "tsddbPaciente";
-            this.tsddbPaciente.Size = new System.Drawing.Size(105, 29);
-            this.tsddbPaciente.Text = "Abuelos";
-            this.tsddbPaciente.Click += new System.EventHandler(this.tsmiGrandfather_Click);
+            this.tsbProfession.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsbProfession.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProfession.Name = "tsbProfession";
+            this.tsbProfession.Size = new System.Drawing.Size(145, 29);
+            this.tsbProfession.Text = "Profesionales";
+            this.tsbProfession.Click += new System.EventHandler(this.tsmiProfessional_Click);
             // 
-            // tsgAgregarOB
+            // toolStripSeparator6
             // 
-            this.tsgAgregarOB.Image = global::myExplorer.Properties.Resources.ammo4;
-            this.tsgAgregarOB.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsgAgregarOB.Name = "tsgAgregarOB";
-            this.tsgAgregarOB.Size = new System.Drawing.Size(156, 29);
-            this.tsgAgregarOB.Text = "Obras Sociales";
-            this.tsgAgregarOB.Click += new System.EventHandler(this.tsmiSocialWork_Click);
-            // 
-            // tsmiGrandfather
-            // 
-            this.tsmiGrandfather.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
-            this.tsmiGrandfather.Name = "tsmiGrandfather";
-            this.tsmiGrandfather.Size = new System.Drawing.Size(212, 30);
-            this.tsmiGrandfather.Text = "Abuelos";
-            this.tsmiGrandfather.Click += new System.EventHandler(this.tsmiGrandfather_Click);
-            // 
-            // tsmiProfessional
-            // 
-            this.tsmiProfessional.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
-            this.tsmiProfessional.Name = "tsmiProfessional";
-            this.tsmiProfessional.Size = new System.Drawing.Size(212, 30);
-            this.tsmiProfessional.Text = "Profesionales";
-            this.tsmiProfessional.Click += new System.EventHandler(this.tsmiProfessional_Click);
-            // 
-            // tsmiSocialWorks
-            // 
-            this.tsmiSocialWorks.Image = global::myExplorer.Properties.Resources.ammo4;
-            this.tsmiSocialWorks.Name = "tsmiSocialWorks";
-            this.tsmiSocialWorks.Size = new System.Drawing.Size(212, 30);
-            this.tsmiSocialWorks.Text = "Obras Sociales";
-            this.tsmiSocialWorks.Click += new System.EventHandler(this.tsmiSocialWork_Click);
-            // 
-            // tsmiStatics
-            // 
-            this.tsmiStatics.Image = global::myExplorer.Properties.Resources.GraficoDeBarras;
-            this.tsmiStatics.Name = "tsmiStatics";
-            this.tsmiStatics.Size = new System.Drawing.Size(212, 30);
-            this.tsmiStatics.Text = "Estadisticas";
-            this.tsmiStatics.Click += new System.EventHandler(this.tsmiStatics_Click);
-            // 
-            // tsmiMessaje
-            // 
-            this.tsmiMessaje.Image = global::myExplorer.Properties.Resources.Email;
-            this.tsmiMessaje.Name = "tsmiMessaje";
-            this.tsmiMessaje.Size = new System.Drawing.Size(212, 30);
-            this.tsmiMessaje.Text = "Mensajes";
-            this.tsmiMessaje.Click += new System.EventHandler(this.tsbMyMessages_Click);
-            // 
-            // tsmiUser
-            // 
-            this.tsmiUser.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiNowUser,
-            this.tsmiSesion});
-            this.tsmiUser.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
-            this.tsmiUser.Name = "tsmiUser";
-            this.tsmiUser.Size = new System.Drawing.Size(212, 30);
-            this.tsmiUser.Text = "Usuario";
-            // 
-            // tsmiNowUser
-            // 
-            this.tsmiNowUser.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
-            this.tsmiNowUser.Name = "tsmiNowUser";
-            this.tsmiNowUser.Size = new System.Drawing.Size(210, 30);
-            this.tsmiNowUser.Text = "Usuario Actual";
-            this.tsmiNowUser.Click += new System.EventHandler(this.tsmiNowUser_Click);
-            // 
-            // tsmiSesion
-            // 
-            this.tsmiSesion.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
-            this.tsmiSesion.Name = "tsmiSesion";
-            this.tsmiSesion.Size = new System.Drawing.Size(210, 30);
-            this.tsmiSesion.Text = "Sesion";
-            this.tsmiSesion.Click += new System.EventHandler(this.tsmiLoginProfessional_Click);
-            // 
-            // tsmiLocation
-            // 
-            this.tsmiLocation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAbmCountry,
-            this.tsmiAbmProvince,
-            this.tsmiAbmCity});
-            this.tsmiLocation.Image = global::myExplorer.Properties.Resources.Database3;
-            this.tsmiLocation.Name = "tsmiLocation";
-            this.tsmiLocation.Size = new System.Drawing.Size(212, 30);
-            this.tsmiLocation.Text = "Localidades";
-            // 
-            // tsmiAbmCountry
-            // 
-            this.tsmiAbmCountry.Name = "tsmiAbmCountry";
-            this.tsmiAbmCountry.Size = new System.Drawing.Size(210, 30);
-            this.tsmiAbmCountry.Text = "ABM Pais";
-            this.tsmiAbmCountry.Click += new System.EventHandler(this.tsmiAbmCountry_Click);
-            // 
-            // tsmiAbmProvince
-            // 
-            this.tsmiAbmProvince.Name = "tsmiAbmProvince";
-            this.tsmiAbmProvince.Size = new System.Drawing.Size(210, 30);
-            this.tsmiAbmProvince.Text = "ABM Provincia";
-            this.tsmiAbmProvince.Click += new System.EventHandler(this.tsmiAbmProvince_Click);
-            // 
-            // tsmiAbmCity
-            // 
-            this.tsmiAbmCity.Name = "tsmiAbmCity";
-            this.tsmiAbmCity.Size = new System.Drawing.Size(210, 30);
-            this.tsmiAbmCity.Text = "ABM Ciudad";
-            this.tsmiAbmCity.Click += new System.EventHandler(this.tsmiAbmCity_Click);
-            // 
-            // tsmiAcercaDe
-            // 
-            this.tsmiAcercaDe.Image = global::myExplorer.Properties.Resources.Info;
-            this.tsmiAcercaDe.Name = "tsmiAcercaDe";
-            this.tsmiAcercaDe.Size = new System.Drawing.Size(209, 30);
-            this.tsmiAcercaDe.Text = "Acerca de ";
-            this.tsmiAcercaDe.Click += new System.EventHandler(this.tsmiAcercaDe_Click);
-            // 
-            // tsmiDataBase
-            // 
-            this.tsmiDataBase.Image = global::myExplorer.Properties.Resources.Database3;
-            this.tsmiDataBase.Name = "tsmiDataBase";
-            this.tsmiDataBase.Size = new System.Drawing.Size(209, 30);
-            this.tsmiDataBase.Text = "Base de Datos";
-            this.tsmiDataBase.Click += new System.EventHandler(this.tsmiDataBase_Click);
-            // 
-            // tsmiUsuario
-            // 
-            this.tsmiUsuario.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
-            this.tsmiUsuario.Name = "tsmiUsuario";
-            this.tsmiUsuario.Size = new System.Drawing.Size(151, 29);
-            this.tsmiUsuario.Text = "Iniciar Sesion";
-            this.tsmiUsuario.Click += new System.EventHandler(this.tsmiLoginProfessional_Click);
-            // 
-            // tsbMyMessages
-            // 
-            this.tsbMyMessages.Image = global::myExplorer.Properties.Resources.Email;
-            this.tsbMyMessages.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbMyMessages.Name = "tsbMyMessages";
-            this.tsbMyMessages.Size = new System.Drawing.Size(171, 29);
-            this.tsbMyMessages.Text = "(0) Mis Mensajes";
-            this.tsbMyMessages.Click += new System.EventHandler(this.tsbMyMessages_Click);
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 32);
             // 
             // frmMain
             // 
@@ -503,6 +521,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiCloseWindows;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton tsbMyMessages;
+        private System.Windows.Forms.ToolStripButton tsbProfession;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     }
 }
 

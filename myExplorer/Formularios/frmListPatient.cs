@@ -164,7 +164,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/09/30
+        // OK - 17/11/09
         #region Botones
 
         // OK - 17/09/30
@@ -211,7 +211,7 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 17/10/28
+        // OK - 17/11/09
         private void tsbPrintList_Click(object sender, EventArgs e)
         {
             DataTable[] Tables = new DataTable[1];
@@ -225,19 +225,20 @@ namespace myExplorer.Formularios
             if (oQuery.rpListPatient(oP.Name, oP.LastName, oP.AffiliateNumber, oP.IdSocialWork))
             {
                 Tables[0] = oQuery.Table;
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpListPatient, Tables);
                 fReport.Show();
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK - 17/10/28
+        // OK - 17/11/09
         private void tsmiPrintSelect_Click(object sender, EventArgs e)
         {
             DataTable[] Tables = new DataTable[1];
+            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
 
-            if (oQuery.RpOnlyPatient(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
+            if (oQuery.RpOnlyPatient(Id))
             {
                 Tables[0] = oQuery.Table;
                 frmVisor fReport = new frmVisor(frmVisor.Reporte.RpOnlyPatient, Tables);
@@ -247,15 +248,26 @@ namespace myExplorer.Formularios
                 MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK - 17/10/28
+        // OK - 17/11/09
         private void tsmiPrintParent_Click(object sender, EventArgs e)
         {
-            DataTable[] Tables = new DataTable[1];
+            bool isOk = true;
+            DataTable[] Tables = new DataTable[2];
+            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
 
-            if (oQuery.RpPatientParent(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
-            {
+            if (oQuery.RpOnlyPatient(Id))
                 Tables[0] = oQuery.Table;
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
+            else
+                isOk = false;
+
+            if (oQuery.RpPatientParent(Id))
+                Tables[1] = oQuery.Table;
+            else
+                isOk = false;
+
+            if (isOk)
+            {
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpPatientParent, Tables);
                 fReport.Show();
             }
             else
@@ -283,7 +295,7 @@ namespace myExplorer.Formularios
 
             long affNumber = tstxtAffiliateNumber.TextBox.Text != "" ? Convert.ToInt64(tstxtAffiliateNumber.TextBox.Text) : 0; 
 
-            if (oQuery.FiltroPatientLimite(
+            if (oQuery.FilterLimitPatient(
                 tstxtName.TextBox.Text,  tstxtLastName.TextBox.Text, affNumber,
                 Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue),
                 Desde, Hasta))

@@ -12,7 +12,6 @@ namespace Reportes
 {
     public partial class frmVisor : Form
     {
-
         #region Atributos y Propiedades
 
         public enum Reporte 
@@ -28,6 +27,8 @@ namespace Reportes
 
         private DataTable[] aTable { set; get; }
         private Reporte eReporte { set; get; }
+        
+        private string PathReport = "";
 
         #endregion
 
@@ -36,63 +37,60 @@ namespace Reportes
         public frmVisor(Reporte eReport, DataTable[] ArrayTable)
         {
             InitializeComponent();
-            this.eReporte = eReport;
-            this.aTable = ArrayTable;
+            eReporte = eReport;
+            aTable = ArrayTable;
         }
 
         private void frmVisor_Load(object sender, EventArgs e)
         {
             if (this.aTable.Length != 0)
             {
+                DataSet dS = new DataSet();
+                foreach (DataTable dT in aTable)
+                    dS.Tables.Add(dT);
+                //
                 switch(eReporte)
                 {
                     case Reporte.RpDiagnostic:
-                        //MessageBox.Show("RpDiagnostic - Nº rows: " + oTable.Rows.Count.ToString());
                         crDiagnostic Diagnostic = new crDiagnostic();
-                        foreach(DataTable dT in aTable)
-                            Diagnostic.SetDataSource(dT);
+                        Diagnostic.Load(PathReport);
+                        Diagnostic.SetDataSource(dS);
                         crVisor.ReportSource = Diagnostic;
                         break;
                     case Reporte.RpClinicHistory:
-                        //MessageBox.Show("RpClinicHistory - Nº rows: " + oTable.Rows.Count.ToString());
                         crClinicHistory ClinicHistory = new crClinicHistory();
-                        foreach (DataTable dT in aTable)
-                            ClinicHistory.SetDataSource(dT);
+                        ClinicHistory.Load(PathReport);
+                        ClinicHistory .SetDataSource(dS);
                         crVisor.ReportSource = ClinicHistory;
                         break;
                     case  Reporte.RpOnlyPatient:
-                        //MessageBox.Show("RpOnlyPatient - Nº rows: " + oTable.Rows.Count.ToString());
                         crOnlyPatient OnlyPatient = new crOnlyPatient();
-                        foreach (DataTable dT in aTable)
-                            OnlyPatient.SetDataSource(dT);
+                        OnlyPatient.Load(PathReport);
+                        OnlyPatient.SetDataSource(dS);
                         crVisor.ReportSource = OnlyPatient;
                         break;
                     case  Reporte.RpPatientParent:
-                        //MessageBox.Show("RpPatientParent - Nº rows: " + oTable.Rows.Count.ToString());
                         crPatientParent PatientParent = new crPatientParent();
-                        foreach (DataTable dT in aTable)
-                            PatientParent.SetDataSource(dT);
+                        PatientParent.Load(PathReport);
+                        PatientParent.SetDataSource(dS);
                         crVisor.ReportSource = PatientParent;
                         break;
                     case  Reporte.RpListPatient:
-                        //MessageBox.Show("RpListPatient- Nº rows: " + oTable.Rows.Count.ToString());
                         crListPatient ListPatient = new crListPatient();
-                        foreach (DataTable dT in aTable)
-                            ListPatient.SetDataSource(dT);
+                        ListPatient.Load(PathReport);
+                        ListPatient.SetDataSource(dS);
                         crVisor.ReportSource = ListPatient;
                         break;
                     case  Reporte.RpOnlyProfessional:
-                        //MessageBox.Show("RpOnlyProfessional - Nº rows: " + oTable.Rows.Count.ToString());
                         crOnlyProfessional OnlyProfessional = new crOnlyProfessional();
-                        foreach (DataTable dT in aTable)
-                            OnlyProfessional.SetDataSource(dT);
+                        OnlyProfessional.Load(PathReport);
+                        OnlyProfessional.SetDataSource(dS);
                         crVisor.ReportSource = OnlyProfessional;
                         break;                    
                     case  Reporte.RpListProfessional:
-                        //MessageBox.Show("RpListProfessional - Nº rows: " + oTable.Rows.Count.ToString());
                         crListProfessional ListProfessional = new crListProfessional();
-                        foreach (DataTable dT in aTable)
-                            ListProfessional.SetDataSource(dT);
+                        ListProfessional.Load(PathReport);
+                        ListProfessional.SetDataSource(dS);
                         crVisor.ReportSource = ListProfessional;
                         break;
                     default:

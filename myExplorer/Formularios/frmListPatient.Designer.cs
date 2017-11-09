@@ -224,7 +224,6 @@
             // tsbPrintList
             // 
             this.tsbPrintList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrintList.Enabled = false;
             this.tsbPrintList.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsbPrintList.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrintList.Name = "tsbPrintList";
@@ -282,7 +281,6 @@
             // 
             // tsmiPrintSelect
             // 
-            this.tsmiPrintSelect.Enabled = false;
             this.tsmiPrintSelect.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsmiPrintSelect.Name = "tsmiPrintSelect";
             this.tsmiPrintSelect.Size = new System.Drawing.Size(301, 30);
@@ -291,7 +289,6 @@
             // 
             // tsmiPrintParent
             // 
-            this.tsmiPrintParent.Enabled = false;
             this.tsmiPrintParent.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsmiPrintParent.Name = "tsmiPrintParent";
             this.tsmiPrintParent.Size = new System.Drawing.Size(301, 30);

@@ -160,7 +160,7 @@ namespace myExplorer.Formularios
         #region Botones
 
         // OK - 24/09/17
-        private void tsbImprimir_Click(object sender, EventArgs e)
+        private void tsbPrint_Click(object sender, EventArgs e)
         {
             if (dgvLista.Rows.Count != 0)
             {
@@ -193,7 +193,7 @@ namespace myExplorer.Formularios
         {
             SelectRow = 0;
 
-            if (oQuery.FiltroSocialWorkLimite(tstxtNombre.TextBox.Text, Desde, Hasta))
+            if (oQuery.FilterLimitSocialWork(tstxtNombre.TextBox.Text, Desde, Hasta))
             {
                 //decimal Cont = oQuery.CountSocialWork(tstxtNombre.TextBox.Text);
                 //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));

@@ -193,7 +193,6 @@
             // tsbPrintList
             // 
             this.tsbPrintList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrintList.Enabled = false;
             this.tsbPrintList.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsbPrintList.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrintList.Name = "tsbPrintList";
@@ -211,11 +210,10 @@
             this.tsmiDelete,
             this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(268, 130);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(268, 163);
             // 
             // tsmiPrintSelect
             // 
-            this.tsmiPrintSelect.Enabled = false;
             this.tsmiPrintSelect.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsmiPrintSelect.Name = "tsmiPrintSelect";
             this.tsmiPrintSelect.Size = new System.Drawing.Size(267, 30);
