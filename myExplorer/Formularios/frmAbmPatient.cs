@@ -303,7 +303,7 @@ namespace myExplorer.Formularios
             oPatient.Address = txtAddress.Text.ToUpper();
             oPatient.Phone = txtPhone.Text;
             oPatient.IdSocialWork = Convert.ToInt32(cmbSocialWork.SelectedValue);
-            oPatient.AffiliateNumber = Convert.ToInt64(txtAffiliateNumber.Text);
+            oPatient.AffiliateNumber = txtAffiliateNumber.Text.ToUpper();
             oPatient.DateAdmission = dtpDateAdmission.Value;
             oPatient.EgressDate = dtpEgressDate.Value;
             oPatient.ReasonExit = txtReasonExit.Text.ToUpper();

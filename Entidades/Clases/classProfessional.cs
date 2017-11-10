@@ -11,7 +11,7 @@ namespace Entidades.Clases
         public int IdProfessional { set; get; }
         public string Name { set; get; }
         public string LastName { set; get; }
-        public int ProfessionalRegistration { set; get; }
+        public string ProfessionalRegistration { set; get; }
         public int IdLocationCountry { set; get; }
         public int IdLocationProvince { set; get; }
         public int IdLocationCity { set; get; }
@@ -32,7 +32,7 @@ namespace Entidades.Clases
             this.IdProfessional = 0;
             this.Name = string.Empty;
             this.LastName = string.Empty;
-            this.ProfessionalRegistration = 0;
+            this.ProfessionalRegistration = string.Empty;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -50,7 +50,7 @@ namespace Entidades.Clases
             this.IdProfessional = vIdProfessional;
             this.Name = string.Empty;
             this.LastName = string.Empty;
-            this.ProfessionalRegistration = 0;
+            this.ProfessionalRegistration = string.Empty;
             this.IdLocationCountry = 0;
             this.IdLocationProvince = 0;
             this.IdLocationCity = 0;
@@ -63,7 +63,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classProfessional(int vIdProfessional, string vName, string vLastName, int vProfessionalRegistration, 
+        public classProfessional(int vIdProfessional, string vName, string vLastName, string vProfessionalRegistration, 
             int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone,
             string vMail, string vUser, string vPassword, int vIdPermission, bool vVisible)
         {

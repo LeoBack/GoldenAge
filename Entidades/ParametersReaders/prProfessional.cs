@@ -39,7 +39,7 @@ namespace Entidades.ParametersReaders
                 Convert.ToInt32(oReader["IdProfessional"]),
                 Convert.ToString(oReader["Name"]),
                 Convert.ToString(oReader["LastName"]),
-                Convert.ToInt32(oReader["ProfessionalRegistration"]),
+                Convert.ToString(oReader["ProfessionalRegistration"]),
                 Convert.ToInt32(oReader["IdLocationCountry"]),
                 Convert.ToInt32(oReader["IdLocationProvince"]),
                 Convert.ToInt32(oReader["IdLocationCity"]),
