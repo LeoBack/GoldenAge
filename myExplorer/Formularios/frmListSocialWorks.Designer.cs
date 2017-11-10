@@ -146,13 +146,12 @@
             // tsbPrint
             // 
             this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrint.Enabled = false;
             this.tsbPrint.Image = global::myExplorer.Properties.Resources.Printer;
             this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrint.Name = "tsbPrint";
             this.tsbPrint.Size = new System.Drawing.Size(28, 29);
             this.tsbPrint.Text = "Imprimir";
-            this.tsbPrint.Click += new System.EventHandler(this.tsbImprimir_Click);
+            this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
             // tsFooter
             // 

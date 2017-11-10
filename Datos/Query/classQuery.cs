@@ -1420,19 +1420,19 @@ namespace Datos.Query
 
         #endregion
 
-        // OK - 17/09/24
+        // OK - 17/11/09
         # region Filtros
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 17/09/24
+        /// OK - 17/11/09
         /// </summary>
         /// <param name="Nombre"></param>
         /// <param name="Bloqueado"></param>
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public bool FiltroProfesionalesLimite(string Name, string LastName, int Desde, int Hasta)
+        public bool FilterLimitProfession(string Name, string LastName, int Desde, int Hasta)
         {
             string SPname = sp.FiltroProfesionalesLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
@@ -1443,11 +1443,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
                 Table = new DataTable();
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1460,13 +1457,13 @@ namespace Datos.Query
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 17/09/24
+        /// OK - 17/11/09
         /// </summary>
         /// <param name="Nombre"></param>
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-        public bool FiltroSocialWorkLimite(string Name, int Desde, int Hasta)
+        public bool FilterLimitSocialWork(string Name, int Desde, int Hasta)
         {
             string SPname = sp.FiltroSocialWorkLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
@@ -1476,11 +1473,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
                 Table = new DataTable();
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1493,13 +1487,17 @@ namespace Datos.Query
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 17/09/24
+        /// OK - 17/11/09
         /// </summary>
         /// <param name="oPersona"></param>
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
+<<<<<<< HEAD
         public bool FiltroPatientLimite(string Name, string LastName, string AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
+=======
+        public bool FilterLimitPatient(string Name, string LastName, long AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
+>>>>>>> 1b93b50e8a5166e932950b173ff0333df4860a41
         {
             string SPname = sp.FiltroPatientLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
@@ -1512,11 +1510,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
                 Table = new DataTable();
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1529,11 +1524,11 @@ namespace Datos.Query
 
         #endregion
 
-        // OK - 17/10/28
+        // OK - 17/11/09
         #region Reportes
 
         /// <summary>
-        /// OK - 17/10/28
+        /// OK - 17/11/09
         /// diagnostico del paciente seleccionado.
         /// </summary>
         /// <param name="IdDiagnostic"></param>
@@ -1546,11 +1541,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
-                Table = new DataTable("RpDiagnostic");
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                Table = new DataTable("Diagnostic");
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1562,7 +1554,7 @@ namespace Datos.Query
         }
 
         /// <summary>
-        /// OK - 17/10/28
+        /// OK - 17/11/09
         /// Historia Clinica del paciente seleccionado.
         /// </summary>
         /// <param name="IdPaciente"></param>
@@ -1575,11 +1567,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
-                Table = new DataTable("RpClinicHistory");
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                Table = new DataTable("ClinicHistory");
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1591,7 +1580,7 @@ namespace Datos.Query
         }
 
         /// <summary>
-        /// OK - 17/10/28
+        /// OK - 17/11/09
         /// Todos los datos del paciente seleccionado.
         /// </summary>
         /// <param name="IdPaciente"></param>
@@ -1604,11 +1593,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
                 Table = new DataTable("OnlyPatient");
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1620,7 +1606,7 @@ namespace Datos.Query
         }
 
         /// <summary>
-        /// OK - 17/10/28
+        /// OK - 17/11/09
         /// Parientes del paciente seleccionado.
         /// </summary>
         /// <param name="IdPaciente"></param>
@@ -1633,11 +1619,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
-                Table = new DataTable("RpPatientParent");
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                Table = new DataTable("PatientParent");
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1649,7 +1632,7 @@ namespace Datos.Query
         }
 
         /// <summary>
-        /// OK - 17/10/28
+        /// OK - 17/11/09
         /// Todos los paciente segun filtro.
         /// </summary>
         /// <param name="Nombre"></param>
@@ -1668,11 +1651,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
-                Table = new DataTable("rpListPatient");
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                Table = new DataTable("ListPatient");
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1684,7 +1664,7 @@ namespace Datos.Query
         }
 
         /// <summary>
-        /// OK - 17/10/28
+        /// OK - 17/11/09
         /// Todos los datos del Profesional seleccionado.
         /// </summary>
         /// <param name="IdProfessional"></param>
@@ -1697,11 +1677,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
-                Table = new DataTable("RpOnlyProfessional");
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                Table = new DataTable("OnlyProfessional");
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1713,7 +1690,7 @@ namespace Datos.Query
         }
 
         /// <summary>
-        /// OK - 17/10/28
+        /// OK - 17/11/09
         /// Todos los Profesional segun filtro.
         /// </summary>
         /// <param name="Nombre"></param>
@@ -1728,11 +1705,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
-                Table = new DataTable("rpListProfessional");
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                Table = new DataTable("ListProfessional");
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }
@@ -1744,12 +1718,12 @@ namespace Datos.Query
         }
 
         /// <summary>
-        /// OK - 17/10/28
+        /// OK - 17/11/09
         /// Todos los datos del Profesional seleccionado.
         /// </summary>
         /// <param name="IdProfessional"></param>
         /// <returns>DataTable</returns>
-        public bool RpOnlyProfessionalSpeciality(int IdProfessional)
+        public bool RpProfessionalSpeciality(int IdProfessional)
         {
             string SPname = sp.RpOnlyProfessionalSpeciality;
             List<SqlParameter> lParam = new List<SqlParameter>();
@@ -1757,11 +1731,8 @@ namespace Datos.Query
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                DataSet set = new DataSet();
-                Table = new DataTable("RpOnlyProfessionalSpeciality");
-                set.Reset();
-                oSql.Adapter.Fill(set);
-                Table = set.Tables[0];
+                Table = new DataTable("ProfessionalSpeciality");
+                oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;
             }

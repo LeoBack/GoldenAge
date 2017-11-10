@@ -162,10 +162,10 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/10/28
+        // OK - 17/11/09
         #region Botones
 
-        // OK - 17/10/28
+        // OK - 17/11/09
         private void tsbPrintList_Click(object sender, EventArgs e)
         {
             DataTable[] Tables = new DataTable[1];
@@ -177,22 +177,33 @@ namespace myExplorer.Formularios
             if (oQuery.rpListProfessional(oP.Name, oP.LastName))
             {
                 Tables[0] = oQuery.Table;
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpListProfessional, Tables);
                 fReport.Show();
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK - 17/10/28
+        // OK - 17/11/09
         private void tsmiPrintSelect_Click(object sender, EventArgs e)
         {
-            DataTable[] Tables = new DataTable[1];
+            bool isOk = true;
+            DataTable[] Tables = new DataTable[2];
+            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
 
-            if (oQuery.RpOnlyProfessional(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)))
-            {
+            if (oQuery.RpProfessionalSpeciality(Id))
                 Tables[0] = oQuery.Table;
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
+            else
+                isOk = false;
+
+            if (oQuery.RpOnlyProfessional(Id))
+                Tables[1] = oQuery.Table;
+            else
+                isOk = false;
+
+            if (isOk)
+            {
+                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpOnlyProfessional, Tables);
                 fReport.Show();
             }
             else
@@ -218,7 +229,7 @@ namespace myExplorer.Formularios
         {
             SelectRow = 0;
 
-            if (oQuery.FiltroProfesionalesLimite(tstxtName.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta))
+            if (oQuery.FilterLimitProfession(tstxtName.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta))
             { 
                 //decimal Cont = oQuery.CountProfesionales(oValidarSql.ValidaString(tstxtNombre.TextBox.Text), Hiden);
                 //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
