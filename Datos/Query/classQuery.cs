@@ -1493,11 +1493,7 @@ namespace Datos.Query
         /// <param name="Desde"></param>
         /// <param name="Hasta"></param>
         /// <returns></returns>
-<<<<<<< HEAD
-        public bool FiltroPatientLimite(string Name, string LastName, string AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
-=======
-        public bool FilterLimitPatient(string Name, string LastName, long AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
->>>>>>> 1b93b50e8a5166e932950b173ff0333df4860a41
+        public bool FilterLimitPatient(string Name, string LastName, string AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
         {
             string SPname = sp.FiltroPatientLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
