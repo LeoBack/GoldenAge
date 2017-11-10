@@ -349,7 +349,7 @@ namespace myExplorer.Formularios
         /// </summary>
         private void CargarObjeto()
         {
-            oProfessional.ProfessionalRegistration = Convert.ToInt32(txtProfessionalRegistration.Text);
+            oProfessional.ProfessionalRegistration = txtProfessionalRegistration.Text.ToUpper();
             oProfessional.Name = txtName.Text.ToUpper();
             oProfessional.LastName = txtLastName.Text.ToUpper();
             oProfessional.IdLocationCountry = IdCountry;

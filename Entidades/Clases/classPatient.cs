@@ -21,7 +21,7 @@ namespace Entidades.Clases
         public string Address { set; get; }
         public string Phone { set; get; }
         public int IdSocialWork { set; get; }
-        public long AffiliateNumber { set; get; }
+        public string AffiliateNumber { set; get; }
         public DateTime DateAdmission { set; get; }
         public DateTime EgressDate { set; get; }
         public string ReasonExit { set; get; }
@@ -45,7 +45,7 @@ namespace Entidades.Clases
             this.Address = string.Empty;
             this.Phone = string.Empty;
             this.IdSocialWork = 0;
-            this.AffiliateNumber = 0;
+            this.AffiliateNumber = string.Empty;
             this.DateAdmission=DateTime.Now;
             this.EgressDate = DateTime.Now.AddDays(90);
             this.ReasonExit = string.Empty;
@@ -67,7 +67,7 @@ namespace Entidades.Clases
             this.Address = string.Empty;
             this.Phone = string.Empty;
             this.IdSocialWork = 0;
-            this.AffiliateNumber = 0;
+            this.AffiliateNumber = string.Empty;
             this.DateAdmission = DateTime.Now;
             this.EgressDate = DateTime.Now.AddDays(90);
             this.ReasonExit = string.Empty;
@@ -77,7 +77,7 @@ namespace Entidades.Clases
         public classPatient(int vIdPatient, string vName, string vLastName, DateTime vBirthdate,
             int vIdTypeDocument, int vNumberDocument, bool vSex, int IdLocationCountry, 
             int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, 
-            long vAffiliateNumber, DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, 
+            string vAffiliateNumber, DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, 
             bool vVisible)
         {
             this.IdPatient = vIdPatient;

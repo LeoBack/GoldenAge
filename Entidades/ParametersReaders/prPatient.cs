@@ -53,7 +53,7 @@ namespace Entidades.ParametersReaders
             Convert.ToString(oReader["Address"]),
             Convert.ToString(oReader["Phone"]),
             Convert.ToInt32(oReader["IdSocialWork"]),
-            Convert.ToInt64(oReader["AffiliateNumber"]),
+            Convert.ToString(oReader["AffiliateNumber"]),
             oReader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oReader["DateAdmission"].ToString()) : DateTime.MinValue,
             oReader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oReader["EgressDate"].ToString()) : DateTime.MinValue,
             Convert.ToString(oReader["ReasonExit"]),
