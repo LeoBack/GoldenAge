@@ -12,6 +12,7 @@ using Controles;
 using libData.SqlServer;
 using System.Configuration;
 using libLocalitation.Forms;
+using System.Diagnostics;
 
 namespace myExplorer.Formularios
 {
@@ -228,6 +229,13 @@ namespace myExplorer.Formularios
             frmConect fc = new frmConect(ConfigurationManager.ConnectionStrings[0].ConnectionString);
             if (fc.ShowDialog() == DialogResult.OK)
                 oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
+        }
+
+        // Abre directorio donde se alojan los reportes
+        // OK - 17/11/09
+        private void tsmiPathReport_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", oUtil.GetPathReport());
         }
 
         #endregion

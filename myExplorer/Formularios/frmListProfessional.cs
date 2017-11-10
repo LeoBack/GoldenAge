@@ -168,16 +168,15 @@ namespace myExplorer.Formularios
         // OK - 17/11/09
         private void tsbPrintList_Click(object sender, EventArgs e)
         {
-            DataTable[] Tables = new DataTable[1];
-
+            DataSet dS = new DataSet();
             classProfessional oP = new classProfessional();
             oP.LastName = tstxtLastName.Text;
             oP.Name = tstxtName.Text;
 
             if (oQuery.rpListProfessional(oP.Name, oP.LastName))
             {
-                Tables[0] = oQuery.Table;
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpListProfessional, Tables);
+                dS.Tables.Add(oQuery.Table);
+                frmVisor fReport = new frmVisor(oUtil.GetPathReport(), frmVisor.Reporte.RpListProfessional, dS);
                 fReport.Show();
             }
             else
@@ -188,22 +187,22 @@ namespace myExplorer.Formularios
         private void tsmiPrintSelect_Click(object sender, EventArgs e)
         {
             bool isOk = true;
-            DataTable[] Tables = new DataTable[2];
+            DataSet dS = new DataSet();
             int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
 
             if (oQuery.RpProfessionalSpeciality(Id))
-                Tables[0] = oQuery.Table;
+                dS.Tables.Add(oQuery.Table);
             else
                 isOk = false;
 
             if (oQuery.RpOnlyProfessional(Id))
-                Tables[1] = oQuery.Table;
+                dS.Tables.Add(oQuery.Table);
             else
                 isOk = false;
 
             if (isOk)
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpOnlyProfessional, Tables);
+                frmVisor fReport = new frmVisor(oUtil.GetPathReport(), frmVisor.Reporte.RpOnlyProfessional, dS);
                 fReport.Show();
             }
             else

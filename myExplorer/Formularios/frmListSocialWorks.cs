@@ -162,16 +162,16 @@ namespace myExplorer.Formularios
         // OK - 24/09/17
         private void tsbPrint_Click(object sender, EventArgs e)
         {
-            if (dgvLista.Rows.Count != 0)
-            {
-                frmDialogoImprecion fIm = new frmDialogoImprecion();
-                fIm.oQuery = oQuery;
-                fIm.oUtil = oUtil;
-                fIm.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+            //if (dgvLista.Rows.Count != 0)
+            //{
+            //    frmDialogoImprecion fIm = new frmDialogoImprecion();
+            //    fIm.oQuery = oQuery;
+            //    fIm.oUtil = oUtil;
+            //    fIm.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
 
-                if (fIm.IdSocialWork != 0)
-                    fIm.ShowDialog();
-            }
+            //    if (fIm.IdSocialWork != 0)
+            //        fIm.ShowDialog();
+            //}
         }
 
         // OK 17/09/30

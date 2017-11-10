@@ -30,7 +30,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/10/07
+        // OK - 17/11/09
         #region Formulario
 
         // OK - 17/10/05
@@ -40,7 +40,7 @@ namespace myExplorer.Formularios
             oTxt = new classTextos();
         }
 
-        // OK - 17/10/07
+        // OK - 17/11/09
         private void frmAbmDiagnostic_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
@@ -70,7 +70,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/10/31
+        // OK - 17/11/09
         #region Botones
 
         // OK - 17/10/31
@@ -85,50 +85,72 @@ namespace myExplorer.Formularios
             EnableDestination(chkNotify.Checked);
         }
 
-        // OK - 17/10/31
+        // OK - 17/11/09
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            switch((Modo)btnDelete.Tag)
+            {
+                case Modo.Delete:
+                    oDiagnostic.Visible = false;
+                    break;
+                case Modo.Update:
+                    oDiagnostic.Visible = true;
+                    break;
+            }
+            
+            if (0 != (int)oQuery.AbmDiagnostic(oDiagnostic, classQuery.eAbm.Update))
+                MessageBox.Show(oTxt.UpdateDiagnostic);
+            else
+                MessageBox.Show(oTxt.ErrorQueryAdd);
+
+            LoadViewDiagnostic();
+            EnableText(false);
+        }
+
+        // OK - 17/11/09
         private void btnPrintDiagnostic_Click(object sender, EventArgs e)
         {
             bool isOk = true;
-            DataTable[] Tables = new DataTable[2];
+            DataSet dS = new DataSet();
 
             if (oQuery.RpOnlyPatient(oPatient.IdPatient))
-                Tables[0] = oQuery.Table;
+                dS.Tables.Add(oQuery.Table);
             else
                 isOk = false;
 
             if (oQuery.RpDiagnostic(oDiagnostic.IdDiagnostic))
-                Tables[1] = oQuery.Table;
+                dS.Tables.Add(oQuery.Table);
             else
                 isOk = false;
 
             if (isOk)
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpDiagnostic, Tables);
+                frmVisor fReport = new frmVisor(oUtil.GetPathReport(), frmVisor.Reporte.RpDiagnostic, dS);
                 fReport.Show();
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK - 17/10/07
+        // OK - 17/11/09
         private void btnPrint_Click(object sender, EventArgs e)
         {
             bool isOk = true;
-            DataTable[] Tables = new DataTable[2];
+            DataSet dS = new DataSet();
 
             if (oQuery.RpOnlyPatient(oPatient.IdPatient))
-                Tables[0] = oQuery.Table;
+                dS.Tables.Add(oQuery.Table);
             else
                 isOk = false;
 
             if (oQuery.RpClinicHistory(oPatient.IdPatient))
-                Tables[1] = oQuery.Table;
+                dS.Tables.Add(oQuery.Table);
             else
                 isOk = false;
 
             if (isOk)
             {
-                frmVisor fReport = new frmVisor(frmVisor.Reporte.RpClinicHistory, Tables);
+                frmVisor fReport = new frmVisor(oUtil.GetPathReport(), frmVisor.Reporte.RpClinicHistory, dS);
                 fReport.Show();
             }
             else
@@ -154,7 +176,6 @@ namespace myExplorer.Formularios
                 switch(eModo)
                 {
                     case Modo.Add:
-
                         IdQuery = (int)oQuery.AbmDiagnostic(oDiagnostic, classQuery.eAbm.Insert);
                         if (0 != IdQuery)
                             MessageBox.Show(oTxt.AddDiagnostic);
@@ -183,7 +204,7 @@ namespace myExplorer.Formularios
             Close();
         }
 
-        // OK - 17/10/07
+        // OK - 17/11/09
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
@@ -193,19 +214,39 @@ namespace myExplorer.Formularios
                 classQuery.eAbm.Select) as classDiagnostic;
             EscribirEnFrm();
 
-            if (oUtil.oProfessional.IdPermission == 1)
+            bool isAdmin = oUtil.oProfessional.IdPermission == 1 ? true : false;
+            bool isThis = oUtil.oProfessional.IdProfessional == oDiagnostic.IdProfessional ? true : false;
+
+            EnableText(isAdmin);
+            ShowBtnDelete(isAdmin | isThis);
+
+            if (isAdmin)
             {
                 eModo = oDiagnostic != null ? Modo.Update : Modo.Add;
                 oDiagnostic = oDiagnostic != null ? oDiagnostic : new classDiagnostic();
-                //EnableText(oDiagnostic.IdProfessional == oUtil.oProfessional.IdProfessional);
-                EnableText(true);
             }
         }
 
         #endregion
 
-        // OK - 17/10/31
+        // OK - 17/11/09
         #region Metodos
+
+        // OK - 17/11/09
+        private void ShowBtnDelete(bool X)
+        {
+            btnDelete.Enabled = X;
+            if (oDiagnostic.Visible)
+            {
+                btnDelete.Tag = Modo.Delete;
+                btnDelete.Text = "Eliminar";
+            }
+            else
+            {
+                btnDelete.Tag = Modo.Update;
+                btnDelete.Text = "Restaurar";
+            }
+        }
 
         // OK - 17/10/31
         private void initDestinationProfessional(int IdSpeciality)
@@ -227,7 +268,7 @@ namespace myExplorer.Formularios
             cmbDestinationProfessional.Enabled = cmbDestinationSpeciality.Enabled = X;
         }
 
-        // OK - 17/10/07
+        // OK - 17/11/09
         private void EnableText(bool X)
         {
             rtxtDiagnostic.Enabled = X;
@@ -235,7 +276,7 @@ namespace myExplorer.Formularios
             btnSaveDiagnostic.Enabled = X;
         }
 
-        // OK - 17/10/07
+        // OK - 17/11/09
         private bool LoadViewDiagnostic()
         {
             classDiagnostic oD = new classDiagnostic();
@@ -247,15 +288,25 @@ namespace myExplorer.Formularios
             dT.Columns.Add("Profesional", typeof(string));
             dT.Columns.Add("Speciliadad", typeof(string));
             dT.Columns.Add("Diagnostico", typeof(string));
+            dT.Columns.Add("Visible", typeof(string));
             foreach (classDiagnostic iD in lDiagnostic)
             {
                 classProfessional oP = oQuery.AbmProfessional(new classProfessional(iD.IdProfessional), classQuery.eAbm.Select) as classProfessional;
                 oP = oP == null ? new classProfessional() : oP;
                 classSpecialty oS = oQuery.AbmSpeciality(new classSpecialty(iD.IdSpeciality), classQuery.eAbm.Select) as classSpecialty;
                 oS = oS == null ? new classSpecialty() : oS;
-                dT.Rows.Add(new object[] { iD.IdDiagnostic, iD.Date, oP.LastName + ", " + oP.Name, oS.Description, iD.Detail });
+
+                bool isShowRow = iD.Visible;
+                if (!isShowRow)
+                {
+                    isShowRow = oUtil.oProfessional.IdProfessional == iD.IdProfessional ? true : isShowRow;
+                    isShowRow = oUtil.oProfessional.IdPermission == 1 ? true : isShowRow;
+                }
+                if (isShowRow)
+                    dT.Rows.Add(new object[] { iD.IdDiagnostic, iD.Date, oP.LastName + ", " + oP.Name, oS.Description, iD.Detail, iD.Visible });
             }
             GenerarGrilla(dT);
+            PintarBloqueados(Color.Gray);
             return lDiagnostic != null;
         }
 
@@ -317,8 +368,27 @@ namespace myExplorer.Formularios
         }
 
         /// <summary>
+        /// Colorea la Fila de Color
+        /// OK - 17/09/24
+        /// </summary>
+        /// <param name="Color"></param>
+        public void PintarBloqueados(Color Color)
+        {
+            bool Block = false;
+            int nCell = dgvLista.ColumnCount;
+
+            for (int Fila = 0; Fila < dgvLista.Rows.Count; Fila++)
+            {
+                Block = Convert.ToBoolean(dgvLista.Rows[Fila].Cells[nCell - 1].Value);
+                if (Block == false)
+                    for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
+                        dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
+            }
+        }
+
+        /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// OK - 17/10/03
+        /// OK - 17/11/09
         /// </summary>
         /// <param name="Source"></param>
         public int GenerarGrilla(object Source)
@@ -339,7 +409,7 @@ namespace myExplorer.Formularios
             dgvLista.DataSource = Source;
 #if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
-            //dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
+            dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif
             return dgvLista.Rows.Count;
         }

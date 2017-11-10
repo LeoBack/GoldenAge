@@ -52,6 +52,7 @@
             this.lblProfessionalName = new System.Windows.Forms.Label();
             this.txtProfessional = new System.Windows.Forms.TextBox();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.tlpPanel.SuspendLayout();
             this.grpDiagnostic.SuspendLayout();
             this.tlpDiagnostic.SuspendLayout();
@@ -120,6 +121,7 @@
             this.tlpDiagnostic.Controls.Add(this.pnl, 2, 1);
             this.tlpDiagnostic.Controls.Add(this.btnSaveDiagnostic, 3, 3);
             this.tlpDiagnostic.Controls.Add(this.btnPrintDiagnostic, 3, 4);
+            this.tlpDiagnostic.Controls.Add(this.btnDelete, 3, 1);
             this.tlpDiagnostic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpDiagnostic.Location = new System.Drawing.Point(3, 22);
             this.tlpDiagnostic.Name = "tlpDiagnostic";
@@ -358,6 +360,17 @@
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.Location = new System.Drawing.Point(1024, 245);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(110, 47);
+            this.btnDelete.TabIndex = 11;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmAbmDiagnostic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -409,5 +422,6 @@
         private System.Windows.Forms.CheckBox chkNotify;
         private System.Windows.Forms.ComboBox cmbDestinationSpeciality;
         private System.Windows.Forms.ComboBox cmbDestinationProfessional;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

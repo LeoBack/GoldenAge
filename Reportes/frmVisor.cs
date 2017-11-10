@@ -25,30 +25,26 @@ namespace Reportes
             RpOnlyProfessional = 6 
         }
 
-        private DataTable[] aTable { set; get; }
-        private Reporte eReporte { set; get; }
-        
-        private string PathReport = "";
+        private DataSet dS;
+        private Reporte eReporte;
+        private string PathReport; 
 
         #endregion
 
         #region Formulario
 
-        public frmVisor(Reporte eReport, DataTable[] ArrayTable)
+        public frmVisor(string pathReport, Reporte eReport, DataSet dtsTables)
         {
             InitializeComponent();
+            PathReport = pathReport;
             eReporte = eReport;
-            aTable = ArrayTable;
+            dS = dtsTables;
         }
 
         private void frmVisor_Load(object sender, EventArgs e)
         {
-            if (this.aTable.Length != 0)
+            if (dS.Tables.Count != 0)
             {
-                DataSet dS = new DataSet();
-                foreach (DataTable dT in aTable)
-                    dS.Tables.Add(dT);
-                //
                 switch(eReporte)
                 {
                     case Reporte.RpDiagnostic:
