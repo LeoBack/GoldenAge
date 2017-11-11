@@ -43,7 +43,7 @@
             this.tlpPanel.Location = new System.Drawing.Point(0, 0);
             this.tlpPanel.Name = "tlpPanel";
             this.tlpPanel.RowCount = 3;
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.09375F));
             this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.90625F));
             this.tlpPanel.Size = new System.Drawing.Size(1009, 489);
@@ -53,10 +53,10 @@
             // 
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(3, 23);
+            this.dgvLista.Location = new System.Drawing.Point(3, 113);
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.RowTemplate.Height = 28;
-            this.dgvLista.Size = new System.Drawing.Size(1003, 303);
+            this.dgvLista.Size = new System.Drawing.Size(1003, 244);
             this.dgvLista.TabIndex = 0;
             // 
             // frmMessaje
