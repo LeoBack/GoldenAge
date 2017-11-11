@@ -1533,7 +1533,8 @@ namespace Datos.Query
         {
             string SPname = sp.RpClinicHistory;
             List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@idDiagnostic", IdDiagnostic));
+            lParam.Add(new SqlParameter("@Id", IdDiagnostic));
+            lParam.Add(new SqlParameter("@Only", 1));
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
@@ -1559,11 +1560,12 @@ namespace Datos.Query
         {
             string SPname = sp.RpClinicHistory;
             List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@idPatient", IdPatient));
+            lParam.Add(new SqlParameter("@Id", IdPatient));
+            lParam.Add(new SqlParameter("@Only", 2));
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
-                Table = new DataTable("ClinicHistory");
+                Table = new DataTable("Diagnostic");
                 oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;

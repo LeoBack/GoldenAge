@@ -133,7 +133,7 @@ namespace myExplorer.Formularios
         }
 
         // OK - 17/11/09
-        private void btnPrint_Click(object sender, EventArgs e)
+        private void btnPrintHistory_Click(object sender, EventArgs e)
         {
             bool isOk = true;
             DataSet dS = new DataSet();

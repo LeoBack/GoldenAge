@@ -358,7 +358,7 @@
             this.btnPrint.TabIndex = 5;
             this.btnPrint.Text = "Imprimir H. C.";
             this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnPrint.Click += new System.EventHandler(this.btnPrintHistory_Click);
             // 
             // btnDelete
             // 
