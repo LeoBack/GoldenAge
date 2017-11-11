@@ -175,20 +175,20 @@ namespace myExplorer.Formularios
 
             if ((txtName.Text.Length >= 50) || (txtName.Text == ""))
                 MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres.");
-            else if ((txtDescription.Text.Length >= 50) || (txtDescription.Text == ""))
-                MessageBox.Show("La Descripcion esta vacio o supera los 50 caracteres.");
+            //else if ((txtDescription.Text.Length >= 50) || (txtDescription.Text == ""))
+            //    MessageBox.Show("La Descripcion esta vacio o supera los 50 caracteres.");
             else if ((txtAddress.Text.Length >= 50) || (txtAddress.Text == ""))
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres.");
             else if (txtPhone.Text.Length >= 20)
                 MessageBox.Show("El Numero de Telefono supera los 20 caracteres.");
-            else if ((txtContact.Text.Length > 50))
-                MessageBox.Show("La Contacto debe supera los 50 caracteres.");
+            //else if ((txtContact.Text.Length > 50))
+             //   MessageBox.Show("La Contacto debe supera los 50 caracteres.");
             else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
                 MessageBox.Show("La Localidad no esta seleccionada.");
-            else if ((IdIvaType == 0))
-                MessageBox.Show("El Tipo de IVA No esta Seleccionado.");
-            else if (cmbIvaType.SelectedIndex == -1)
-                MessageBox.Show("Tipo de IVA Invalida.");
+            //else if ((IdIvaType == 0))
+             //   MessageBox.Show("El Tipo de IVA No esta Seleccionado.");
+            //else if (cmbIvaType.SelectedIndex == -1)
+             //   MessageBox.Show("Tipo de IVA Invalida.");
             else
                 V = true;
 
