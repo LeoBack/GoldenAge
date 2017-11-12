@@ -212,7 +212,7 @@ namespace myExplorer.Formularios
         // OK - 17/09/24
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
+            SelectRow = dgvLista.Rows.Count >= 0 ? e.RowIndex : 0;
         }
 
         #endregion

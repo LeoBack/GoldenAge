@@ -37,7 +37,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tssAdd = new System.Windows.Forms.ToolStripSeparator();
             this.tslblLastName = new System.Windows.Forms.ToolStripLabel();
             this.tstxtLastName = new System.Windows.Forms.ToolStripTextBox();
             this.tslblName = new System.Windows.Forms.ToolStripLabel();
@@ -47,16 +47,16 @@
             this.tslblSocialWork = new System.Windows.Forms.ToolStripLabel();
             this.tscmbSocialWork = new System.Windows.Forms.ToolStripComboBox();
             this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tssPrint = new System.Windows.Forms.ToolStripSeparator();
             this.tsbPrintList = new System.Windows.Forms.ToolStripButton();
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDiagnostic = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tssMenuPrint = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiPrintSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPrintParent = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tssMenuAbm = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,7 +127,7 @@
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAdd,
-            this.toolStripSeparator2,
+            this.tssAdd,
             this.tslblLastName,
             this.tstxtLastName,
             this.tslblName,
@@ -137,7 +137,7 @@
             this.tslblSocialWork,
             this.tscmbSocialWork,
             this.tsbBuscar,
-            this.toolStripSeparator3,
+            this.tssPrint,
             this.tsbPrintList});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
@@ -156,10 +156,10 @@
             this.tsbAdd.Text = "Agregar";
             this.tsbAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
-            // toolStripSeparator2
+            // tssAdd
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 33);
+            this.tssAdd.Name = "tssAdd";
+            this.tssAdd.Size = new System.Drawing.Size(6, 33);
             // 
             // tslblLastName
             // 
@@ -216,10 +216,10 @@
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // toolStripSeparator3
+            // tssPrint
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 33);
+            this.tssPrint.Name = "tssPrint";
+            this.tssPrint.Size = new System.Drawing.Size(6, 33);
             // 
             // tsbPrintList
             // 
@@ -248,10 +248,10 @@
             this.cmsMenuEmergente.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiSelect,
             this.tsmiDiagnostic,
-            this.toolStripSeparator1,
+            this.tssMenuPrint,
             this.tsmiPrintSelect,
             this.tsmiPrintParent,
-            this.toolStripSeparator4,
+            this.tssMenuAbm,
             this.tsmiUpdate,
             this.tsmiDelete,
             this.tsmiAdd});
@@ -274,10 +274,10 @@
             this.tsmiDiagnostic.Text = "Diagnosticos";
             this.tsmiDiagnostic.Click += new System.EventHandler(this.tsmiDiagnostic_Click);
             // 
-            // toolStripSeparator1
+            // tssMenuPrint
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(298, 6);
+            this.tssMenuPrint.Name = "tssMenuPrint";
+            this.tssMenuPrint.Size = new System.Drawing.Size(298, 6);
             // 
             // tsmiPrintSelect
             // 
@@ -295,10 +295,10 @@
             this.tsmiPrintParent.Text = "Imprimir personas a cargo";
             this.tsmiPrintParent.Click += new System.EventHandler(this.tsmiPrintParent_Click);
             // 
-            // toolStripSeparator4
+            // tssMenuAbm
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(298, 6);
+            this.tssMenuAbm.Name = "tssMenuAbm";
+            this.tssMenuAbm.Size = new System.Drawing.Size(298, 6);
             // 
             // tsmiUpdate
             // 
@@ -367,17 +367,17 @@
         private System.Windows.Forms.ToolStripTextBox tstxtName;
         private System.Windows.Forms.ToolStripMenuItem tsmiDelete;
         private System.Windows.Forms.ToolStripMenuItem tsmiAdd;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator tssMenuPrint;
         private System.Windows.Forms.ToolStripMenuItem tsmiDiagnostic;
         private System.Windows.Forms.ToolStripButton tsbAdd;
         private System.Windows.Forms.ToolStrip tsFooter;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripLabel tslPagina;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator tssAdd;
+        private System.Windows.Forms.ToolStripSeparator tssPrint;
         private System.Windows.Forms.ToolStripMenuItem tsmiPrintSelect;
         private System.Windows.Forms.ToolStripMenuItem tsmiPrintParent;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator tssMenuAbm;
     }
 }

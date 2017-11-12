@@ -47,6 +47,7 @@ namespace myExplorer.Formularios
         // OK - 17/09/14
         private void frmMain_Load(object sender, EventArgs e)
         {
+            tsPrincipal.Visible = false;
             oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
             tsslPath.Text = oQuery.ServerVersion();
             oUtil = new classUtiles();
@@ -277,6 +278,7 @@ namespace myExplorer.Formularios
             if (oQuery.CloseSession(oUtil.GetSesion()) != 0)
             {
                 User = eUser.Invalido;
+                tsPrincipal.Visible = false;
                 EnableUser(false);
                 foreach (Form frm in this.MdiChildren)
                     frm.Close();
@@ -308,6 +310,8 @@ namespace myExplorer.Formularios
                         tsmiUsuario.Text = oTxt.CloseSession;
                         Text = oTxt.TituloVentana + oTxt.SeparadorTitle + oUtil.oProfessional.User.ToString();
                         // Abre todas los frm
+                        Permission();
+                        tsPrincipal.Visible = true;
                         EnableUser(true);
                         H = false;
                     }
@@ -325,6 +329,28 @@ namespace myExplorer.Formularios
             }
         }
 
+        /// <summary>
+        /// Habilita funciones de administrador.
+        /// OK - 17/11/11
+        /// </summary>
+        private void Permission()
+        {
+            bool isAdmin = (oUtil.oProfessional.IdPermission == 1);
+            tsmiLocation.Visible = isAdmin;
+            tssLocation.Visible = isAdmin;
+            tsmiAbmCountry.Visible = isAdmin;
+            tsmiAbmProvince.Visible = isAdmin;
+            tsmiAbmCity.Visible = isAdmin;
+            tssStatics.Visible = isAdmin;
+            tsmiStatics.Visible = isAdmin;
+            tsmiSocialWorks.Visible = isAdmin;
+            tsmiProfessional.Visible = isAdmin;
+            tsmiPathReport.Visible = isAdmin;
+            tssProfession.Visible = isAdmin;
+            tssProfession.Visible = isAdmin;
+            tsbProfession.Visible = isAdmin;
+            tsbSocialWorks.Visible = isAdmin;
+        }
 
         #region Metodos
 

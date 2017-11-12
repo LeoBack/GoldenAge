@@ -62,6 +62,7 @@ namespace myExplorer.Formularios
                 initTypeDocumentParent();
                 initParentRelationship();
                 initParentList();
+                Permission();
 
                 switch (eModo)
                 {
@@ -97,7 +98,12 @@ namespace myExplorer.Formularios
         // OK - 17/10/10
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (SavePatient())
+            if (oUtil.oProfessional.IdPermission == 1)
+            {
+                if (SavePatient())
+                    Close();
+            }
+            else
                 Close();
         }
 
@@ -204,17 +210,22 @@ namespace myExplorer.Formularios
         // OK - 17/10/08
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
+            SelectRow = dgvLista.Rows.Count >= 0 ? e.RowIndex : 0;
 
-            oParent = oQuery.AbmParent(new classParent(
-                Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value)),
-                classQuery.eAbm.Select) as classParent;
+            if (SelectRow >= 1)
+            {
+                oParent = oQuery.AbmParent(new classParent(
+                    Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value)),
+                    classQuery.eAbm.Select) as classParent;
 
-            eModoParent = oParent != null ? Modo.Update : Modo.Add;
-            oParent = oParent != null ? oParent : new classParent();
+                eModoParent = oParent != null ? Modo.Update : Modo.Add;
+                oParent = oParent != null ? oParent : new classParent();
 
-            LoadfrmParent();
-            EnableParent(true);
+                LoadfrmParent();
+
+                if (eModo != Modo.Select)
+                    EnableParent(true);
+            }
         }
 
         #endregion
@@ -505,7 +516,6 @@ namespace myExplorer.Formularios
                 if (!(C is Label))
                     C.Enabled = X;
             }
-            btnNewParent.Enabled = true;
             dgvLista.Enabled = true;
         }
 
@@ -652,14 +662,11 @@ namespace myExplorer.Formularios
             //else if (txtParentEmail.Text.Length >= 50)
             //    MessageBox.Show("El E-mail supera los 50 caracteres");
             else if (oClassValidas.VerifyEmailAddressFormat(txtParentEmail.Text) == false)
-            {
                 MessageBox.Show("Formato de Direccion de Correo invalido");
-            }
             else if (cmbParentRelationship.SelectedIndex== -1)
                 MessageBox.Show("Parentesco Invalida.");
             else if (cmbTypeDocumentParent.SelectedIndex == -1)
                 MessageBox.Show("Tipo documento Invalido.");
-
             else
                 V = true;
 
@@ -669,6 +676,21 @@ namespace myExplorer.Formularios
         #endregion
 
         #region Validaciones
+
+        /// <summary>
+        /// OK - 17/11/11
+        /// </summary>
+        private void Permission()
+        {
+            bool isAdmin = (oUtil.oProfessional.IdPermission == 1);
+            tsmiDelete.Visible = isAdmin;
+            btnBlocked.Visible = isAdmin;
+            btnNewParent.Visible = isAdmin;
+            btnAcceptParent.Visible = isAdmin;
+            btnSearchParent.Visible = isAdmin;
+            btnLocalitation.Visible = isAdmin;
+            btnLocalitationParent.Visible = isAdmin;
+        }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {

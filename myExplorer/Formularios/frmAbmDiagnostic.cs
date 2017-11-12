@@ -207,23 +207,26 @@ namespace myExplorer.Formularios
         // OK - 17/11/09
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
+            SelectRow = dgvLista.Rows.Count >= 0 ? e.RowIndex : 0;
 
-            oDiagnostic = oQuery.AbmDiagnostic(new classDiagnostic(
-                Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)), 
-                classQuery.eAbm.Select) as classDiagnostic;
-            EscribirEnFrm();
-
-            bool isAdmin = oUtil.oProfessional.IdPermission == 1 ? true : false;
-            bool isThis = oUtil.oProfessional.IdProfessional == oDiagnostic.IdProfessional ? true : false;
-
-            EnableText(isAdmin);
-            ShowBtnDelete(isAdmin | isThis);
-
-            if (isAdmin)
+            if (SelectRow >= 1)
             {
-                eModo = oDiagnostic != null ? Modo.Update : Modo.Add;
-                oDiagnostic = oDiagnostic != null ? oDiagnostic : new classDiagnostic();
+                oDiagnostic = oQuery.AbmDiagnostic(new classDiagnostic(
+                    Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)),
+                    classQuery.eAbm.Select) as classDiagnostic;
+                EscribirEnFrm();
+
+                bool isAdmin = oUtil.oProfessional.IdPermission == 1 ? true : false;
+                bool isThis = oUtil.oProfessional.IdProfessional == oDiagnostic.IdProfessional ? true : false;
+
+                EnableText(isAdmin);
+                ShowBtnDelete(isAdmin | isThis);
+
+                if (isAdmin)
+                {
+                    eModo = oDiagnostic != null ? Modo.Update : Modo.Add;
+                    oDiagnostic = oDiagnostic != null ? oDiagnostic : new classDiagnostic();
+                }
             }
         }
 

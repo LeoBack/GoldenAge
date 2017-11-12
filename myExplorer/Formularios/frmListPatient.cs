@@ -46,6 +46,7 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null && oUtil != null)
             {
+                Permission();
                 Text = oTxt.TitleListPatient;
                 SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
@@ -54,7 +55,6 @@ namespace myExplorer.Formularios
                 libFeaturesComponents.fComboBox.classControlComboBoxes.LoadComboSearch(tscmbSocialWork.ComboBox,
                     (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
                     oQuery.Table);
-                tsbPrintList.Enabled = false;
             }
             else
                 Close();
@@ -83,12 +83,6 @@ namespace myExplorer.Formularios
                         MessageBox.Show(oTxt.UpdateParent);
                     else
                         MessageBox.Show(oTxt.ErrorQueryUpdate);
-                    //frmAbmPatient frmA = new frmAbmPatient();
-                    //frmA.oQuery = oQuery;
-                    //frmA.oUtil = oUtil;
-                    //frmA.oPatient = oGf;
-                    //frmA.eModo = frmAbmPatient.Modo.Delete;
-                    //frmA.ShowDialog();
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);
@@ -276,13 +270,30 @@ namespace myExplorer.Formularios
         // OK - 17/09/30
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
+            SelectRow = dgvLista.Rows.Count >= 0 ? e.RowIndex : 0;
         }
 
         #endregion
 
-        // OK - 17/09/30
+        // OK - 17/11/11
         #region Metodos
+         
+        // OK - 17/11/11
+        private void Permission()
+        {
+            bool isAdmin = (oUtil.oProfessional.IdPermission == 1);
+            tsmiAdd.Visible = isAdmin;
+            tsmiDelete.Visible = isAdmin;
+            tsmiUpdate.Visible = isAdmin;
+            tssMenuAbm.Visible = isAdmin;
+            tsmiPrintSelect.Visible = isAdmin;
+            tsmiPrintParent.Visible = isAdmin;
+            tssMenuPrint.Visible = isAdmin;
+            tsbPrintList.Visible = isAdmin;
+            tssPrint.Visible = isAdmin;
+            tsbAdd.Visible = isAdmin;
+            tssAdd.Visible = isAdmin;
+        }
 
         /// <summary>
         /// Aplica Filtros de busqueda
