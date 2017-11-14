@@ -636,20 +636,22 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
             else if (txtParentLastName.Text.Length >= 50 || (txtParentLastName.Text == ""))
                 MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
-            else if ((txtParentNumberDocument.Text.Length > 9) || (txtParentNumberDocument.Text == ""))
+            //else if ((txtParentNumberDocument.Text.Length > 9) || (txtParentNumberDocument.Text == ""))
+            else if ((txtParentNumberDocument.Text.Length > 9))
                 MessageBox.Show("El Numero de Documento esta vacio o no supera los 9 caracteres.");
-            else if (txtParentAddress.Text.Length >= 50 || (txtParentAddress.Text == ""))
-                MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
+            //else if (txtParentAddress.Text.Length >= 50 || (txtParentAddress.Text == ""))
+            else if (txtParentAddress.Text.Length >= 50)
+                MessageBox.Show("La Direccion supera los 50 caracteres");
             else if ((IdCountryParent == 0) || (IdProvinceParent == 0) || (IdCityParent == 0))
                 MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
             else if (txtParentPhone.Text.Length >= 15)
-                MessageBox.Show("El Numero de Telefono supera los 15 caracteres");
-            else if (txtParentAlternativePhone.Text.Length >= 15)
+                MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
+            else if (txtParentAlternativePhone.Text.Length >= 20)
                 MessageBox.Show("El Numero de Telefono Alternativo supera los 15 caracteres");
             //else if (txtParentEmail.Text.Length >= 50)
             //    MessageBox.Show("El E-mail supera los 50 caracteres");
             else if (oClassValidas.VerifyEmailAddressFormat(txtParentEmail.Text) == false)
-                MessageBox.Show("Formato de Direccion de Correo invalido");
+                MessageBox.Show("Formato de Correo es: mi@correo.com.ar");
             else if (cmbParentRelationship.SelectedIndex== -1)
                 MessageBox.Show("Parentesco Invalida.");
             else if (cmbTypeDocumentParent.SelectedIndex == -1)
