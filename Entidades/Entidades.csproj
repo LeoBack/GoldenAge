@@ -52,6 +52,9 @@
     <Compile Include="classUtiles.cs" />
     <Compile Include="Clases\classParent.cs" />
     <Compile Include="ParametersReaders\prDiagnostic.cs" />
+    <Compile Include="ParametersReaders\prPermission.cs" />
+    <Compile Include="ParametersReaders\prParent.cs" />
+    <Compile Include="ParametersReaders\prPatientParent.cs" />
     <Compile Include="ParametersReaders\prPatient.cs" />
     <Compile Include="ParametersReaders\prProfessional.cs" />
     <Compile Include="ParametersReaders\prSocialWorks.cs" />

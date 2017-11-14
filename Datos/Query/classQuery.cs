@@ -185,27 +185,13 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
+        // OK - 17/11/14
         public object AbmParent(classParent oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmParent;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@IdParent", oP.IdParent));
-            lParam.Add(new SqlParameter("@Name", oP.Name));
-            lParam.Add(new SqlParameter("@LastName", oP.LastName));
-            lParam.Add(new SqlParameter("@IdTypeDocument", oP.IdTypeDocument));
-            lParam.Add(new SqlParameter("@NumberDocument", oP.NumberDocument));
-            lParam.Add(new SqlParameter("@Phone", oP.Phone));
-            lParam.Add(new SqlParameter("@AlternativePhone", oP.AlternativePhone));
-            lParam.Add(new SqlParameter("@Email", oP.Email));
-            lParam.Add(new SqlParameter("@IdLocationCountry", oP.IdLocationCountry));
-            lParam.Add(new SqlParameter("@IdLocationProvince", oP.IdLocationProvince));
-            lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
-            lParam.Add(new SqlParameter("@Address", oP.Address));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prParent pr = new prParent();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -218,21 +204,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classParent oParent = new classParent(
-                                Convert.ToInt32(oSql.Reader["IdParent"]),
-                                Convert.ToString(oSql.Reader["Name"]),
-                                Convert.ToString(oSql.Reader["LastName"]),
-                                Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                Convert.ToString(oSql.Reader["Phone"]),
-                                Convert.ToString(oSql.Reader["AlternativePhone"]),
-                                Convert.ToString(oSql.Reader["Email"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                Convert.ToString(oSql.Reader["Address"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lParent.Add(oParent);
+                                lParent.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -265,20 +237,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                oParen = new classParent(
-                                Convert.ToInt32(oSql.Reader["IdParent"]),
-                                Convert.ToString(oSql.Reader["Name"]),
-                                Convert.ToString(oSql.Reader["LastName"]),
-                                Convert.ToInt32(oSql.Reader["IdTypeDocument"]),
-                                Convert.ToInt32(oSql.Reader["NumberDocument"]),
-                                Convert.ToString(oSql.Reader["Phone"]),
-                                Convert.ToString(oSql.Reader["AlternativePhone"]),
-                                Convert.ToString(oSql.Reader["Email"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCountry"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationProvince"]),
-                                Convert.ToInt32(oSql.Reader["IdLocationCity"]),
-                                Convert.ToString(oSql.Reader["Address"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oParen = pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
@@ -325,7 +284,7 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/21
+        // OK - 17/11/14
         public object AbmPatient(classPatient oP, eAbm Abm)
         {
             object Result = null;
@@ -425,19 +384,13 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
+        // OK - 17/11/14
         public object AbmPatientParent(classPatientParent oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmPatientParent;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@idPatientParent", oP.IdPatientParent));
-            lParam.Add(new SqlParameter("@IdPatient", oP.IdPatient));
-            lParam.Add(new SqlParameter("@IdParent", oP.IdParent));
-            lParam.Add(new SqlParameter("@IdRelationship", oP.IdRelationship));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prPatientParent pr = new prPatientParent();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -450,13 +403,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classPatientParent oPatientParent = new classPatientParent(
-                                Convert.ToInt32(oSql.Reader["idPatientParent"]),
-                                Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                Convert.ToInt32(oSql.Reader["IdParent"]),
-                                Convert.ToInt32(oSql.Reader["IdRelationship"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lPatientParent.Add(oPatientParent);
+                                lPatientParent.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -489,12 +436,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                oPatientParen = new classPatientParent(
-                                Convert.ToInt32(oSql.Reader["idPatientParent"]),
-                                Convert.ToInt32(oSql.Reader["IdPatient"]),
-                                Convert.ToInt32(oSql.Reader["IdParent"]),
-                                Convert.ToInt32(oSql.Reader["IdRelationship"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oPatientParen =  pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
@@ -542,17 +484,13 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
+        // OK - 17/11/14
         public object AbmPermission(classPermission oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmPermission;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@idPermission", oP.IdPermission));
-            lParam.Add(new SqlParameter("@Description", oP.Description));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prPermission pr = new prPermission();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -565,11 +503,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classPermission oPermission = new classPermission(
-                                Convert.ToInt32(oSql.Reader["idPermission"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lPermission.Add(oPermission);
+                                lPermission.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -602,10 +536,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                oPermissio = new classPermission(
-                                Convert.ToInt32(oSql.Reader["idPermission"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oPermissio = pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
@@ -646,12 +577,6 @@ namespace Datos.Query
                         Table = oSql.Table;
                     else
                         Table = null;
-                    //DataTable dT = new DataTable(SPname);
-                    //dT.Columns.Add("Id", typeof(Int32));
-                    //dT.Columns.Add("Value", typeof(string));
-                    //dT.Rows.Add(new object[] { 1, "Usuario" });
-                    //dT.Rows.Add(new object[] { 2, "Administrador" });
-                    //Table = dT;
                     Result = true;
                     break;
                 default:

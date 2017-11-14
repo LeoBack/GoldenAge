@@ -52,7 +52,7 @@ namespace myExplorer.Formularios
             tsslPath.Text = oQuery.ServerVersion();
             oUtil = new classUtiles();
             // Inicia Secion.
-            tsbMyMessages.Visible = false;
+            //tsbMyMessages.Visible = false;
             EnableUser(false);
             OpenSession();
         }

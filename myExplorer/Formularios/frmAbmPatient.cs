@@ -17,7 +17,7 @@ namespace myExplorer.Formularios
 {
     public partial class frmAbmPatient : Form
     {
-        // OK 17/09/30
+        // OK - 17/09/30
         #region Atributos y Propiedades
 
         public classPatient oPatient { set; get; }
@@ -40,7 +40,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/11/14
         #region Formulario
 
         // OK 17/09/30
@@ -50,41 +50,25 @@ namespace myExplorer.Formularios
             oTxt = new classTextos();
         }
 
-        // OK 17/09/30
+        // OK 17/11/14
         private void frmAbmPatient_Load(object sender, EventArgs e)
         {
             if (oQuery != null)
             {
                 Text = oTxt.TitleFichaPatient;
-
                 initSocialWork();
                 initTypeDocumentPatient();
                 initTypeDocumentParent();
                 initParentRelationship();
                 initParentList();
                 Permission();
+                EnablePatient(eModo != Modo.Select);
+                EnableParent(eModo != Modo.Select);
 
-                switch (eModo)
-                {
-                    case Modo.Select:
-                        EnablePatient(false);
-                        EnableParent(false);
-                        LoadFrmPatient();
-                        break;
-                    case Modo.Update:
-                        EnablePatient(true);
-                        EnableParent(false);
-                        LoadFrmPatient();
-                        break;
-                    case Modo.Add:
-                        oPatient = new classPatient();
-                        EnablePatient(true);
-                        EnableParent(false);
-                        break;
-                    default:
-                        MessageBox.Show(oTxt.ErrorObjetIndefinido);
-                        break;
-                }
+                if(eModo == Modo.Add)
+                    oPatient = new classPatient();
+                else
+                    LoadFrmPatient();
             }
             else
                 Close();
@@ -230,6 +214,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        // OK - 17/11/14
         #region Metodos Patient
 
         /// <summary>
@@ -409,6 +394,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        // OK - 17/11/14
         #region Metodos Parent
 
         /// <summary>
@@ -516,6 +502,7 @@ namespace myExplorer.Formularios
                 if (!(C is Label))
                     C.Enabled = X;
             }
+            tsmiDelete.Enabled = X;
             dgvLista.Enabled = true;
         }
 
@@ -675,6 +662,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        // OK - 17/11/14
         #region Validaciones
 
         /// <summary>
@@ -690,6 +678,7 @@ namespace myExplorer.Formularios
             btnSearchParent.Visible = isAdmin;
             btnLocalitation.Visible = isAdmin;
             btnLocalitationParent.Visible = isAdmin;
+            cmsMenuEmergente.Visible = isAdmin;
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
