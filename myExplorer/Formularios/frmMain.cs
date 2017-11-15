@@ -340,8 +340,8 @@ namespace myExplorer.Formularios
                 DataRow dR = dT.Rows[0];
                 tsbMyMessages.Text = dR["cMessage"] == null ? "(0) Mensages" : "(" + dR["cMessage"].ToString() + ") Mensages";
                 tsbPatient.Text = dR["cPatient"] == null ? "(0) Abuelos" : "(" + dR["cPatient"].ToString() + ") Abuelos";
-                tsbProfession.Text = dR["cProfessional"] == null ? "(0) Profecionales" : "(" + dR["cPatient"].ToString() + ") Profecionales";
-                tsbSocialWorks.Text = dR["cSocialWorks"] == null ? "(0) Obras Sociales" : "(" + dR["cPatient"].ToString() + ") Obras Sociales";
+                tsbProfession.Text = dR["cProfessional"] == null ? "(0) Profecionales" : "(" + dR["cProfessional"].ToString() + ") Profecionales";
+                tsbSocialWorks.Text = dR["cSocialWorks"] == null ? "(0) Obras Sociales" : "(" + dR["cSocialWorks"].ToString() + ") Obras Sociales";
 
             }
             else
