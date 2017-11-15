@@ -84,7 +84,7 @@ namespace Datos.Query
         // CONSULTAS PARA CADA FUNCION
         //----------------------------------------------------------
 
-        // OK - 17/10/31
+        // OK - 17/11/14
         #region ABM
 
         // OK - 17/10/31
@@ -1345,7 +1345,7 @@ namespace Datos.Query
 
         #endregion
 
-        // OK - 17/11/09
+        // OK - 17/11/14
         # region Filtros
 
         /// <summary>
@@ -1428,6 +1428,38 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@IdSocialWork", IdSocialWork));
             lParam.Add(new SqlParameter("@Desde", Desde));
             lParam.Add(new SqlParameter("@Hasta", Hasta));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                Table = new DataTable();
+                oSql.Adapter.Fill(Table);
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Filtra por coincidencia.
+        /// OK - 17/11/14
+        /// </summary>
+        /// <param name="Read"></param>
+        /// <param name="IdProfessional"></param>
+        /// <param name="IdSpeciality"></param>
+        /// <param name="Visible"></param>
+        /// <returns></returns>
+        public bool FilterLimitMessage(int Read, int IdProfessional, int IdSpeciality, int Visible)
+        {
+            string SPname = sp.FiltroMessageLimite;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@DestinationRead", Read));
+            lParam.Add(new SqlParameter("@IdProfessional", IdProfessional));
+            lParam.Add(new SqlParameter("@IdSpeciality", IdSpeciality));
+            lParam.Add(new SqlParameter("@Visible", Visible));
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
@@ -1668,8 +1700,30 @@ namespace Datos.Query
 
         #endregion
 
-        // OK - 17/10/31
+        // OK - 17/11/14
         #region Especiales
+
+        // OK - 17/11/14
+        public bool Contadores (int IdProfessional)
+        {
+            string SPname = sp.Contadores;
+
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@IdProfessional", IdProfessional));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                Table = new DataTable("Contadores");
+                oSql.Adapter.Fill(Table);
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
 
         // OK - 17/10/31
         public bool ProfessionalSpeciality(int IdSpeciality)

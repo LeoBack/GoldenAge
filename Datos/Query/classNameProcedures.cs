@@ -26,11 +26,14 @@ namespace Datos.Query
         public string Login = "[spLoguin-v1.0]";
         public string Session = "[spSession-v1.0]";
         public string SpecialityProfessional = "[spSpecialityProfessional-v1.0]";
+        public string Contadores = "[spContadores-v1.0]"; 
 
         // Filtros
         public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
         public string FiltroProfesionalesLimite = "[spListProfessional-v1.0]";
         public string FiltroPatientLimite = "[spListPatient-v1.0]";
+        public string FiltroDiagnosticLimite = "[spListDiagnostic-v1.0]";
+        public string FiltroMessageLimite = "[spListMessage-v1.0]";
 
         // Reportes
         public string RpClinicHistory = "[spRpClinicHistory-v1.0]";
