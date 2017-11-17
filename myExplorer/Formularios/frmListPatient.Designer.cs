@@ -105,7 +105,8 @@
             this.toolStripLabel1.Image = global::myExplorer.Properties.Resources.ArrowLeft;
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(24, 28);
-            this.toolStripLabel1.Text = "toolStripLabel1";
+            this.toolStripLabel1.Text = "tsbPreview";
+            this.toolStripLabel1.Click += new System.EventHandler(this.tsbPreview_Click);
             // 
             // tslPagina
             // 
@@ -120,7 +121,8 @@
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(28, 28);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Text = "tsbNext";
+            this.toolStripButton1.Click += new System.EventHandler(this.tsbNext_Click);
             // 
             // tsMenu
             // 
@@ -214,7 +216,7 @@
             this.tsbBuscar.Name = "tsbBuscar";
             this.tsbBuscar.Size = new System.Drawing.Size(28, 30);
             this.tsbBuscar.Text = "Buscar";
-            this.tsbBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.tsbBuscar.Click += new System.EventHandler(this.tsbSearch_Click);
             // 
             // tssPrint
             // 
@@ -256,7 +258,7 @@
             this.tsmiDelete,
             this.tsmiAdd});
             this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(302, 259);
+            this.cmsMenuEmergente.Size = new System.Drawing.Size(302, 226);
             // 
             // tsmiSelect
             // 

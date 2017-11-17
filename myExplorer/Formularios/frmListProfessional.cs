@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
+//
 using Datos.Query;
 using Entidades.Clases;
 using Entidades;
@@ -129,17 +129,11 @@ namespace myExplorer.Formularios
 
         #endregion
 
-
+        // REVISADO - 17/09/09
         #region Paginador
 
         // REVISADO - 17/09/09
-        private void tsbBuscar_Click(object sender, EventArgs e)
-        {
-           Filtrar();
-        }
-
-        // REVISADO - 17/09/09
-        private void btnSiguiente_Click(object sender, EventArgs e)
+        private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
             {
@@ -150,7 +144,7 @@ namespace myExplorer.Formularios
         }
 
         // REVISADO - 17/09/09
-        private void btnAnterior_Click(object sender, EventArgs e)
+        private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
             {
@@ -160,9 +154,15 @@ namespace myExplorer.Formularios
             }
         }
 
+        // REVISADO - 17/09/09
+        private void tsbSearch_Click(object sender, EventArgs e)
+        {
+            Filtrar();
+        }
+
         #endregion
 
-        // OK - 17/11/09
+        // OK - 17/11/16
         #region Botones
 
         // OK - 17/11/09
@@ -209,11 +209,14 @@ namespace myExplorer.Formularios
                 MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK - 17/09/24
+        // OK - 17/11/16
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLista.Rows.Count >= 0)
-                SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow; 
+            if (dgvLista.RowCount >= 0)
+            {
+                SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow;
+                SelectRow = dgvLista.RowCount == 1 ? 0 : SelectRow;
+            }
         }
 
         #endregion

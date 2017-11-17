@@ -18,6 +18,7 @@ namespace Controles
         public string TitleListPatient = "Lista de Pacientes";
         public string TitleListProfessional = "Planilla de Profesionales.";
         public string TitleDiagnostic = "Diagnosticos";
+        public string TitleMessages = "Mis Mensajes ";
 
         //
         public string Nombre = "Nombre";
@@ -30,6 +31,7 @@ namespace Controles
         public string AccionIndefinida = "Accion no definida";
 
         // Errores
+        public string ErrorQuerySelect = "Error al obtener registros.";
         public string ErrorQueryList = "Error al obtener registros.";
         public string ErrorQueryUpdate = "Error al actualizar registros.";
         public string ErrorQueryDelete = "Error al eliminar registros.";

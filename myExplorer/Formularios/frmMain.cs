@@ -338,17 +338,16 @@ namespace myExplorer.Formularios
             {
                 DataTable dT = oQuery.Table;
                 DataRow dR = dT.Rows[0];
-                tsbMyMessages.Text = dR["cMessage"] == null ? "(0) Mensages" : "(" + dR["cMessage"].ToString() + ") Mensages";
-                tsbPatient.Text = dR["cPatient"] == null ? "(0) Abuelos" : "(" + dR["cPatient"].ToString() + ") Abuelos";
-                tsbProfession.Text = dR["cProfessional"] == null ? "(0) Profecionales" : "(" + dR["cPatient"].ToString() + ") Profecionales";
-                tsbSocialWorks.Text = dR["cSocialWorks"] == null ? "(0) Obras Sociales" : "(" + dR["cPatient"].ToString() + ") Obras Sociales";
-
+                tsbMyMessages.Text = (dR["cMessage"] == null ? "(0" : "(" + dR["cMessage"].ToString()) + ") Mensages";
+                tsbPatient.Text = (dR["cPatient"] == null ? "(0" : "(" + dR["cPatient"].ToString()) + ") Abuelos";
+                tsbProfession.Text = (dR["cProfessional"] == null ? "(0" : "(" + dR["cProfessional"].ToString()) + ") Profesionales";
+                tsbSocialWorks.Text = (dR["cSocialWorks"] == null ? "(0" : "(" + dR["cSocialWorks"].ToString()) + ") Obras Sociales";
             }
             else
             {
                 tsbMyMessages.Text = "Mensages";
                 tsbPatient.Text = "Abuelos";
-                tsbProfession.Text = "Profecionales";
+                tsbProfession.Text = "Profesionales";
                 tsbSocialWorks.Text = "Obras Sociales";
             }
         }

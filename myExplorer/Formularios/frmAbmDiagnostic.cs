@@ -16,31 +16,39 @@ namespace myExplorer.Formularios
 {
     public partial class frmAbmDiagnostic : Form
     {
-        // OK - 17/10/05
+        // OK - 17/11/16
         #region Atributos y Propiedades
 
-        public classPatient oPatient { set; get; }
         public enum Modo { Add, Select, Update, Delete }
         public Modo eModo { set; get; }
+        public enum SelectedId { Patient=0, Diagnostic=1 };
+        private SelectedId eSelectedId;
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         private classTextos oTxt;
+        private classPatient oPatient;
         private classDiagnostic oDiagnostic;
         private int SelectRow;
 
         #endregion
 
-        // OK - 17/11/09
+        // OK - 17/11/16
         #region Formulario
 
-        // OK - 17/10/05
-        public frmAbmDiagnostic()
+        // OK - 17/11/16
+        public frmAbmDiagnostic(int Id, SelectedId vSelectedId )
         {
             InitializeComponent();
             oTxt = new classTextos();
+            eSelectedId = vSelectedId;
+            
+            if (eSelectedId == SelectedId.Diagnostic)
+                oDiagnostic = new classDiagnostic(Id);
+            else
+                oPatient = new classPatient(Id);
         }
 
-        // OK - 17/11/09
+        // OK - 17/11/16
         private void frmAbmDiagnostic_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
@@ -49,17 +57,28 @@ namespace myExplorer.Formularios
                 SelectRow = 0;
                 initCmbSpecialty(oUtil.oProfessional.IdProfessional);
                 initDestinationSpeciality();
-                txtProfessional.Text = oUtil.oProfessional.LastName + ", " + oUtil.oProfessional.Name;
-                txtPatient.Text = oPatient.LastName + "," + oPatient.Name;
                 EnableDestination(false);
 
-                if (LoadViewDiagnostic())
+                eModo = eSelectedId == SelectedId.Patient ? Modo.Add : Modo.Select;
+                oDiagnostic = eSelectedId == SelectedId.Patient ? new classDiagnostic() : oQuery.AbmDiagnostic(oDiagnostic, classQuery.eAbm.Select) as classDiagnostic;
+                if (oDiagnostic != null)
                 {
-                    eModo = Modo.Add;
-                    oDiagnostic = new classDiagnostic();
-                    rtxtDiagnostic.Text = string.Empty;
-                    EnableText(false);
+                    oPatient = eSelectedId == SelectedId.Patient ? oQuery.AbmPatient(oPatient, classQuery.eAbm.Select) as classPatient : oQuery.AbmPatient(new classPatient(oDiagnostic.IdPatient), classQuery.eAbm.Select) as classPatient;
+                    if (oPatient != null)
+                    {
+                        if (!LoadViewDiagnostic())
+                            MessageBox.Show("Ups.. Este paciente no tiene registros.");
+
+                        txtProfessional.Text = oUtil.oProfessional.LastName + ", " + oUtil.oProfessional.Name;
+                        txtPatient.Text = oPatient.LastName + "," + oPatient.Name;
+                        EscribirEnFrm();
+                        EnableText(false);
+                    }
+                    else
+                        MessageBox.Show(oTxt.ErrorQuerySelect);
                 }
+                else
+                    MessageBox.Show(oTxt.ErrorQuerySelect);
             }
             else
             {
@@ -70,7 +89,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/11/09
+        // OK - 17/11/16
         #region Botones
 
         // OK - 17/10/31
@@ -204,13 +223,14 @@ namespace myExplorer.Formularios
             Close();
         }
 
-        // OK - 17/11/09
+        // OK - 17/11/16
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectRow = dgvLista.Rows.Count >= 0 ? e.RowIndex : 0;
-
-            if (SelectRow >= 1)
+            if (dgvLista.RowCount >= 0)
             {
+                SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow;
+                SelectRow = dgvLista.RowCount == 1 ? 0 : SelectRow;
+
                 oDiagnostic = oQuery.AbmDiagnostic(new classDiagnostic(
                     Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)),
                     classQuery.eAbm.Select) as classDiagnostic;
@@ -289,7 +309,7 @@ namespace myExplorer.Formularios
             dT.Columns.Add("Id", typeof(Int32));
             dT.Columns.Add("Fecha", typeof(DateTime));
             dT.Columns.Add("Profesional", typeof(string));
-            dT.Columns.Add("Speciliadad", typeof(string));
+            dT.Columns.Add("Specialidad", typeof(string));
             dT.Columns.Add("Diagnostico", typeof(string));
             dT.Columns.Add("Visible", typeof(string));
             foreach (classDiagnostic iD in lDiagnostic)

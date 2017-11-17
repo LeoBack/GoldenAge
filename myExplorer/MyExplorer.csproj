@@ -257,6 +257,7 @@
     <None Include="Resources\Info.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Synchonize1.png" />
     <None Include="Resources\Synchonize.png" />
     <None Include="Resources\box1.png" />
     <None Include="Resources\ammo4.png" />
@@ -274,6 +275,7 @@
     <None Include="Resources\GraficoDeBarras.png" />
     <None Include="Resources\Email.png" />
     <None Include="Resources\EditEmail.png" />
+    <None Include="Resources\Email1.png" />
     <Content Include="Resources\hombre-negro-de-un-usuario-icono-7176-48.png" />
     <None Include="Resources\Para_Personas_mini.png" />
     <Content Include="Resources\Search.ico" />
