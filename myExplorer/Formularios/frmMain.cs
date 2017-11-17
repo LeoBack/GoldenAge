@@ -338,18 +338,10 @@ namespace myExplorer.Formularios
             {
                 DataTable dT = oQuery.Table;
                 DataRow dR = dT.Rows[0];
-<<<<<<< HEAD
                 tsbMyMessages.Text = (dR["cMessage"] == null ? "(0" : "(" + dR["cMessage"].ToString()) + ") Mensages";
                 tsbPatient.Text = (dR["cPatient"] == null ? "(0" : "(" + dR["cPatient"].ToString()) + ") Abuelos";
                 tsbProfession.Text = (dR["cProfessional"] == null ? "(0" : "(" + dR["cProfessional"].ToString()) + ") Profesionales";
                 tsbSocialWorks.Text = (dR["cSocialWorks"] == null ? "(0" : "(" + dR["cSocialWorks"].ToString()) + ") Obras Sociales";
-=======
-                tsbMyMessages.Text = dR["cMessage"] == null ? "(0) Mensages" : "(" + dR["cMessage"].ToString() + ") Mensages";
-                tsbPatient.Text = dR["cPatient"] == null ? "(0) Abuelos" : "(" + dR["cPatient"].ToString() + ") Abuelos";
-                tsbProfession.Text = dR["cProfessional"] == null ? "(0) Profecionales" : "(" + dR["cProfessional"].ToString() + ") Profecionales";
-                tsbSocialWorks.Text = dR["cSocialWorks"] == null ? "(0) Obras Sociales" : "(" + dR["cSocialWorks"].ToString() + ") Obras Sociales";
-
->>>>>>> 25f0a883568c62eb08f6afa5ac79860d48531f2a
             }
             else
             {
