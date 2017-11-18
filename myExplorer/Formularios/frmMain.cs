@@ -132,18 +132,6 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 18/06/12
-        private void tsmiStatics_Click(object sender, EventArgs e)
-        {
-            if (this.User == eUser.Valido)
-            {
-                frmEstadistica fE = new frmEstadistica();
-                fE.oQuery = oQuery;
-                fE.oUtil = oUtil;
-                fE.ShowDialog();
-            }
-        }
-
         // Formulario Mensajes
         // OK - 17/10/24
         private void tsbMyMessages_Click(object sender, EventArgs e)
@@ -365,7 +353,6 @@ namespace myExplorer.Formularios
             tsmiAbmProvince.Visible = isAdmin;
             tsmiAbmCity.Visible = isAdmin;
             tssStatics.Visible = isAdmin;
-            tsmiStatics.Visible = isAdmin;
             tsmiSocialWorks.Visible = isAdmin;
             tsmiProfessional.Visible = isAdmin;
             tsmiPathReport.Visible = isAdmin;
@@ -389,7 +376,6 @@ namespace myExplorer.Formularios
             tsmiGrandfather.Enabled = X;
             tsmiSocialWorks.Enabled = X;
             tsmiNowUser.Enabled = X;
-            tsmiStatics.Enabled = X;
         }
 
         /// <summary>

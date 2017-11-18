@@ -166,15 +166,19 @@ namespace myExplorer.Formularios
         {
             if (dgvLista.RowCount != 0)
             {
-                classDiagnostic oD = new classDiagnostic();
-                oD.IdDiagnostic = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-                oD.Visible = false;
-                if (0 != (int)oQuery.AbmDiagnostic(oD, classQuery.eAbm.Update))
-                    MessageBox.Show(oTxt.UpdateDiagnostic);
+                classDiagnostic oD = new classDiagnostic(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value));
+                oD = oQuery.AbmDiagnostic(oD, classQuery.eAbm.Select) as classDiagnostic;
+                if (oD != null)
+                {
+                    oD.DestinationRead = false;
+                    if (0 != (int)oQuery.AbmDiagnostic(oD, classQuery.eAbm.Update))
+                        MessageBox.Show(oTxt.UpdateDiagnostic);
+                    else
+                        MessageBox.Show(oTxt.ErrorQueryUpdate);
+                    Filtrar();
+                }
                 else
-                    MessageBox.Show(oTxt.ErrorQueryUpdate);
-
-                Filtrar();
+                    MessageBox.Show(oTxt.ErrorQuerySelect);
             }
         }
 

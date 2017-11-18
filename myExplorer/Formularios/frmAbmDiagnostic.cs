@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
+//
 using Controles;
 using Entidades;
 using Entidades.Clases;
@@ -66,9 +66,14 @@ namespace myExplorer.Formularios
                     oPatient = eSelectedId == SelectedId.Patient ? oQuery.AbmPatient(oPatient, classQuery.eAbm.Select) as classPatient : oQuery.AbmPatient(new classPatient(oDiagnostic.IdPatient), classQuery.eAbm.Select) as classPatient;
                     if (oPatient != null)
                     {
-                        if (!LoadViewDiagnostic())
+                        if (LoadViewDiagnostic())
+                        {
+                            if (eSelectedId == SelectedId.Diagnostic)
+                                PintarSelccionado(oDiagnostic.IdDiagnostic, Color.Orange);
+                        }
+                        else
                             MessageBox.Show("Ups.. Este paciente no tiene registros.");
-
+                        
                         txtProfessional.Text = oUtil.oProfessional.LastName + ", " + oUtil.oProfessional.Name;
                         txtPatient.Text = oPatient.LastName + "," + oPatient.Name;
                         EscribirEnFrm();
@@ -252,23 +257,25 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/11/09
+        // OK - 17/11/18
         #region Metodos
 
-        // OK - 17/11/09
+        private void PintarSelccionado(int IdDiagnostic, Color Color)
+        {
+            for (int Fila = 0; Fila < dgvLista.RowCount; Fila++)
+            {
+                if (IdDiagnostic == Convert.ToInt32(dgvLista.Rows[Fila].Cells[0].Value))
+                    for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
+                        dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
+            }
+        }
+
+        // OK - 17/11/18
         private void ShowBtnDelete(bool X)
         {
             btnDelete.Enabled = X;
-            if (oDiagnostic.Visible)
-            {
-                btnDelete.Tag = Modo.Delete;
-                btnDelete.Text = "Eliminar";
-            }
-            else
-            {
-                btnDelete.Tag = Modo.Update;
-                btnDelete.Text = "Restaurar";
-            }
+            btnDelete.Tag = oDiagnostic.Visible == true ? Modo.Delete : Modo.Update;
+            btnDelete.Text = oDiagnostic.Visible == true? "Eliminar" : "Restaurar";
         }
 
         // OK - 17/10/31
