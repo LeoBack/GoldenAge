@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-// De la solucion
+//
 using Datos.Query;
 using Entidades;
 using Entidades.Clases;
@@ -75,12 +75,6 @@ namespace myExplorer.Formularios
                         MessageBox.Show(oTxt.UpdateSocialWork);
                     else
                         MessageBox.Show(oTxt.ErrorQueryUpdate);
-                    //frmAbmSocialWork frmA = new frmAbmSocialWork();
-                    //frmA.oQuery = oQuery;
-                    //frmA.oUtil = oUtil;
-                    //frmA.oSocialWork = oSw;
-                    //frmA.eModo = frmAbmSocialWork.Modo.Delete;
-                    //frmA.ShowDialog();
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);
@@ -124,10 +118,11 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        // REVISADO - 17/09/09
         #region Paginador
 
         // REVISADO - 17/09/09
-        private void btnSiguiente_Click(object sender, EventArgs e)
+        private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
             {
@@ -138,7 +133,7 @@ namespace myExplorer.Formularios
         }
 
         // REVISADO - 17/09/09
-        private void btnAnterior_Click(object sender, EventArgs e)
+        private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
             {
@@ -149,14 +144,14 @@ namespace myExplorer.Formularios
         }
 
         // REVISADO - 17/09/09
-        private void tsbBuscar_Click(object sender, EventArgs e)
+        private void tsbSearch_Click(object sender, EventArgs e)
         {
             Filtrar();
         }
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/11/16
         #region Botones
 
         // OK - 24/09/17
@@ -174,11 +169,14 @@ namespace myExplorer.Formularios
             //}
         }
 
-        // OK 17/09/30
+        // OK - 17/11/16
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLista.Rows.Count >= 0)
+            if (dgvLista.RowCount >= 0)
+            {
                 SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow; 
+                SelectRow = dgvLista.RowCount == 1 ? 0 : SelectRow;
+            }
         }
 
         #endregion

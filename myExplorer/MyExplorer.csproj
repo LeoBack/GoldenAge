@@ -103,12 +103,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\frmEstadistica.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmEstadistica.Designer.cs">
-      <DependentUpon>frmEstadistica.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\frmListProfessional.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,9 +177,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\frmEstadistica.resx">
-      <DependentUpon>frmEstadistica.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmListProfessional.resx">
       <DependentUpon>frmListProfessional.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +248,7 @@
     <None Include="Resources\Info.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Synchonize1.png" />
     <None Include="Resources\Synchonize.png" />
     <None Include="Resources\box1.png" />
     <None Include="Resources\ammo4.png" />
@@ -274,6 +266,7 @@
     <None Include="Resources\GraficoDeBarras.png" />
     <None Include="Resources\Email.png" />
     <None Include="Resources\EditEmail.png" />
+    <None Include="Resources\Email1.png" />
     <Content Include="Resources\hombre-negro-de-un-usuario-icono-7176-48.png" />
     <None Include="Resources\Para_Personas_mini.png" />
     <Content Include="Resources\Search.ico" />
@@ -326,10 +319,6 @@
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{BBA50072-D84F-449D-8366-AF8EDCC4C422}</Project>
       <Name>Entidades</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Estadisticas\Estadisticas.csproj">
-      <Project>{6C19BFAC-1EFC-47F4-A183-FB38DB0E2ACD}</Project>
-      <Name>Estadisticas</Name>
     </ProjectReference>
     <ProjectReference Include="..\Reportes\Reportes.csproj">
       <Project>{768A2294-7784-46EC-BDB5-EA040B1080D6}</Project>

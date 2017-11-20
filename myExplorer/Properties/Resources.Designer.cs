@@ -173,6 +173,16 @@ namespace myExplorer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Email1 {
+            get {
+                object obj = ResourceManager.GetObject("Email1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Error {
             get {
                 object obj = ResourceManager.GetObject("Error", resourceCulture);
@@ -266,6 +276,16 @@ namespace myExplorer.Properties {
         internal static System.Drawing.Bitmap Synchonize {
             get {
                 object obj = ResourceManager.GetObject("Synchonize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Synchonize1 {
+            get {
+                object obj = ResourceManager.GetObject("Synchonize1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

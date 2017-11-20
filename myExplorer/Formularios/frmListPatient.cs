@@ -12,7 +12,6 @@ using Entidades.Clases;
 using Reportes;
 using Controles;
 
-
 namespace myExplorer.Formularios
 {
     public partial class frmListPatient : Form
@@ -126,10 +125,11 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        // REVISADO - 17/09/09
         #region Paginador
 
         // REVISADO - 17/09/09
-        private void btnSiguiente_Click(object sender, EventArgs e)
+        private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
             {
@@ -140,7 +140,7 @@ namespace myExplorer.Formularios
         }
 
         // REVISADO - 17/09/09
-        private void btnAnterior_Click(object sender, EventArgs e)
+        private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
             {
@@ -151,14 +151,14 @@ namespace myExplorer.Formularios
         }
 
         // REVISADO - 17/09/09
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void tsbSearch_Click(object sender, EventArgs e)
         {
             Filtrar();
         }
 
         #endregion
 
-        // OK - 17/11/09
+        // OK - 17/11/16
         #region Botones
 
         // OK - 17/09/30
@@ -181,27 +181,16 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 17/10/05
+        // OK - 17/11/16
         private void tsmiDiagnostic_Click(object sender, EventArgs e)
         {
-            classPatient oGf = null;
-
             if (dgvLista.Rows.Count != 0)
             {
-                oGf = new classPatient();
-                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-                oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
-
-                if (oGf != null)
-                {
-                    frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic();
-                    fDiagnostic.oQuery = oQuery;
-                    fDiagnostic.oUtil = oUtil;
-                    fDiagnostic.oPatient = oGf;
-                    fDiagnostic.ShowDialog();
-                }
-                else
-                    MessageBox.Show(oTxt.ErrorQueryList);
+                int IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic(IdPatient, frmAbmDiagnostic.SelectedId.Patient);
+                fDiagnostic.oQuery = oQuery;
+                fDiagnostic.oUtil = oUtil;
+                fDiagnostic.ShowDialog();
             }
         }
 
@@ -267,11 +256,14 @@ namespace myExplorer.Formularios
                 MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK - 17/09/30
+        // OK - 17/11/16
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLista.Rows.Count >= 0)
-                SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow; 
+            if (dgvLista.RowCount >= 0)
+            {
+                SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow;
+                SelectRow = dgvLista.RowCount == 1 ? 0 : SelectRow;
+            }
         }
 
         #endregion

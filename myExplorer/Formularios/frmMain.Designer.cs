@@ -38,8 +38,6 @@
             this.tsmiProfessional = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSocialWorks = new System.Windows.Forms.ToolStripMenuItem();
             this.tssStatics = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiStatics = new System.Windows.Forms.ToolStripMenuItem();
-            this.tssMessage = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiMessaje = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNowUser = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,8 +123,6 @@
             this.tsmiProfessional,
             this.tsmiSocialWorks,
             this.tssStatics,
-            this.tsmiStatics,
-            this.tssMessage,
             this.tsmiMessaje,
             this.tsmiUser,
             this.tssLocation,
@@ -164,22 +160,9 @@
             this.tssStatics.Name = "tssStatics";
             this.tssStatics.Size = new System.Drawing.Size(209, 6);
             // 
-            // tsmiStatics
-            // 
-            this.tsmiStatics.Image = global::myExplorer.Properties.Resources.GraficoDeBarras;
-            this.tsmiStatics.Name = "tsmiStatics";
-            this.tsmiStatics.Size = new System.Drawing.Size(212, 30);
-            this.tsmiStatics.Text = "Estadisticas";
-            this.tsmiStatics.Click += new System.EventHandler(this.tsmiStatics_Click);
-            // 
-            // tssMessage
-            // 
-            this.tssMessage.Name = "tssMessage";
-            this.tssMessage.Size = new System.Drawing.Size(209, 6);
-            // 
             // tsmiMessaje
             // 
-            this.tsmiMessaje.Image = global::myExplorer.Properties.Resources.Email;
+            this.tsmiMessaje.Image = global::myExplorer.Properties.Resources.Email1;
             this.tsmiMessaje.Name = "tsmiMessaje";
             this.tsmiMessaje.Size = new System.Drawing.Size(212, 30);
             this.tsmiMessaje.Text = "Mensajes";
@@ -342,7 +325,7 @@
             this.tsPrincipal.Name = "tsPrincipal";
             this.tsPrincipal.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.tsPrincipal.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsPrincipal.Size = new System.Drawing.Size(648, 32);
+            this.tsPrincipal.Size = new System.Drawing.Size(602, 32);
             this.tsPrincipal.TabIndex = 2;
             this.tsPrincipal.Text = "tsMenu";
             // 
@@ -385,7 +368,7 @@
             // 
             // tsbMyMessages
             // 
-            this.tsbMyMessages.Image = global::myExplorer.Properties.Resources.Email;
+            this.tsbMyMessages.Image = global::myExplorer.Properties.Resources.Email1;
             this.tsbMyMessages.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbMyMessages.Name = "tsbMyMessages";
             this.tsbMyMessages.Size = new System.Drawing.Size(171, 29);
@@ -504,11 +487,9 @@
         private System.Windows.Forms.ToolStripSeparator tssStatics;
         private System.Windows.Forms.StatusStrip ssEstado;
         private System.Windows.Forms.ToolStripStatusLabel tsslPath;
-        private System.Windows.Forms.ToolStripSeparator tssMessage;
         private System.Windows.Forms.ToolStripMenuItem tsmiUser;
         private System.Windows.Forms.ToolStripMenuItem tsmiNowUser;
         private System.Windows.Forms.ToolStripMenuItem tsmiSesion;
-        private System.Windows.Forms.ToolStripMenuItem tsmiStatics;
         private System.Windows.Forms.ToolStripMenuItem tsmiDataBase;
         private System.Windows.Forms.ToolStripMenuItem tsmiProfessional;
         private System.Windows.Forms.ToolStripMenuItem tsmiLocation;

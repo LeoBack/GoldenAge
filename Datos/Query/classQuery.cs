@@ -1704,7 +1704,7 @@ namespace Datos.Query
         #region Especiales
 
         // OK - 17/11/14
-        public bool Contadores (int IdProfessional)
+        public bool Contadores(int IdProfessional)
         {
             string SPname = sp.Contadores;
 

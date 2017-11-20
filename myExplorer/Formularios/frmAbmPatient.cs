@@ -76,7 +76,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/10/10
+        // OK - 17/11/16
         #region Botones
 
         // OK - 17/10/10
@@ -191,13 +191,14 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 17/10/08
+        // OK - 17/11/16
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectRow = dgvLista.Rows.Count >= 0 ? e.RowIndex : 0;
-
-            if (SelectRow >= 1)
+            if (dgvLista.RowCount >= 0)
             {
+                SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow;
+                SelectRow = dgvLista.RowCount == 1 ? 0 : SelectRow;
+
                 oParent = oQuery.AbmParent(new classParent(
                     Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value)),
                     classQuery.eAbm.Select) as classParent;

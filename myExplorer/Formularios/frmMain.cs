@@ -132,18 +132,6 @@ namespace myExplorer.Formularios
             }
         }
 
-        // OK - 18/06/12
-        private void tsmiStatics_Click(object sender, EventArgs e)
-        {
-            if (this.User == eUser.Valido)
-            {
-                frmEstadistica fE = new frmEstadistica();
-                fE.oQuery = oQuery;
-                fE.oUtil = oUtil;
-                fE.ShowDialog();
-            }
-        }
-
         // Formulario Mensajes
         // OK - 17/10/24
         private void tsbMyMessages_Click(object sender, EventArgs e)
@@ -338,17 +326,16 @@ namespace myExplorer.Formularios
             {
                 DataTable dT = oQuery.Table;
                 DataRow dR = dT.Rows[0];
-                tsbMyMessages.Text = dR["cMessage"] == null ? "(0) Mensages" : "(" + dR["cMessage"].ToString() + ") Mensages";
-                tsbPatient.Text = dR["cPatient"] == null ? "(0) Abuelos" : "(" + dR["cPatient"].ToString() + ") Abuelos";
-                tsbProfession.Text = dR["cProfessional"] == null ? "(0) Profecionales" : "(" + dR["cProfessional"].ToString() + ") Profecionales";
-                tsbSocialWorks.Text = dR["cSocialWorks"] == null ? "(0) Obras Sociales" : "(" + dR["cSocialWorks"].ToString() + ") Obras Sociales";
-
+                tsbMyMessages.Text = (dR["cMessage"] == null ? "(0" : "(" + dR["cMessage"].ToString()) + ") Mensages";
+                tsbPatient.Text = (dR["cPatient"] == null ? "(0" : "(" + dR["cPatient"].ToString()) + ") Abuelos";
+                tsbProfession.Text = (dR["cProfessional"] == null ? "(0" : "(" + dR["cProfessional"].ToString()) + ") Profesionales";
+                tsbSocialWorks.Text = (dR["cSocialWorks"] == null ? "(0" : "(" + dR["cSocialWorks"].ToString()) + ") Obras Sociales";
             }
             else
             {
                 tsbMyMessages.Text = "Mensages";
                 tsbPatient.Text = "Abuelos";
-                tsbProfession.Text = "Profecionales";
+                tsbProfession.Text = "Profesionales";
                 tsbSocialWorks.Text = "Obras Sociales";
             }
         }
@@ -366,7 +353,6 @@ namespace myExplorer.Formularios
             tsmiAbmProvince.Visible = isAdmin;
             tsmiAbmCity.Visible = isAdmin;
             tssStatics.Visible = isAdmin;
-            tsmiStatics.Visible = isAdmin;
             tsmiSocialWorks.Visible = isAdmin;
             tsmiProfessional.Visible = isAdmin;
             tsmiPathReport.Visible = isAdmin;
@@ -390,7 +376,6 @@ namespace myExplorer.Formularios
             tsmiGrandfather.Enabled = X;
             tsmiSocialWorks.Enabled = X;
             tsmiNowUser.Enabled = X;
-            tsmiStatics.Enabled = X;
         }
 
         /// <summary>

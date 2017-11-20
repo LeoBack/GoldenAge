@@ -16,7 +16,7 @@ namespace myExplorer.Formularios
 {
     public partial class frmMessaje : Form
     {
-        // OK 17/09/30
+        // OK - 17/11/16
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
@@ -30,25 +30,25 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/11/16
         #region Formulario
 
-        // OK 17/09/30
+        // OK - 17/11/16
         public frmMessaje()
         {
             InitializeComponent();
             oTxt = new classTextos();
         }
 
-        // OK 17/09/30
+        // OK - 17/11/16
         private void frmMessaje_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
             {
-                Text = oTxt.TitleSocialWorks;
+                Text = oTxt.TitleMessages;
                 SelectRow = 0;
                 Hasta = oUtil.CantRegistrosGrilla;
-                //tslPagina.Text = "Página: 0 de 0";
+                tslPagina.Text = "Página: 0 de 0";
             }
             else
                 Close();
@@ -125,10 +125,11 @@ namespace myExplorer.Formularios
 
         #endregion
 
+        // REVISADO - 17/09/09
         #region Paginador
 
         // REVISADO - 17/09/09
-        private void btnSiguiente_Click(object sender, EventArgs e)
+        private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
             {
@@ -139,7 +140,7 @@ namespace myExplorer.Formularios
         }
 
         // REVISADO - 17/09/09
-        private void btnAnterior_Click(object sender, EventArgs e)
+        private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
             {
@@ -150,51 +151,74 @@ namespace myExplorer.Formularios
         }
 
         // REVISADO - 17/09/09
-        private void tsbBuscar_Click(object sender, EventArgs e)
+        private void tsbSearch_Click(object sender, EventArgs e)
         {
             Filtrar();
         }
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/11/16
         #region Botones
 
-        // OK - 24/09/17
-        private void tsbImprimir_Click(object sender, EventArgs e)
+        // OK - 17/11/16
+        private void tsbRead_Click(object sender, EventArgs e)
         {
-            if (dgvLista.Rows.Count != 0)
+            if (dgvLista.RowCount != 0)
             {
-                frmDialogoImprecion fIm = new frmDialogoImprecion();
-                fIm.oQuery = oQuery;
-                fIm.oUtil = oUtil;
-                fIm.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-
-                if (fIm.IdSocialWork != 0)
-                    fIm.ShowDialog();
+                classDiagnostic oD = new classDiagnostic(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value));
+                oD = oQuery.AbmDiagnostic(oD, classQuery.eAbm.Select) as classDiagnostic;
+                if (oD != null)
+                {
+                    oD.DestinationRead = false;
+                    if (0 != (int)oQuery.AbmDiagnostic(oD, classQuery.eAbm.Update))
+                        MessageBox.Show(oTxt.UpdateDiagnostic);
+                    else
+                        MessageBox.Show(oTxt.ErrorQueryUpdate);
+                    Filtrar();
+                }
+                else
+                    MessageBox.Show(oTxt.ErrorQuerySelect);
             }
         }
 
-        // OK 17/09/30
+        // OK - 17/11/16
+        private void tsbOpen_Click(object sender, EventArgs e)
+        {
+            if (dgvLista.RowCount != 0)
+            {
+                int IdDiagnostic = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic(IdDiagnostic, frmAbmDiagnostic.SelectedId.Diagnostic);
+                fDiagnostic.oQuery = oQuery;
+                fDiagnostic.oUtil = oUtil;
+                fDiagnostic.ShowDialog();
+            }
+        }
+
+        // OK - 17/11/16
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectRow = dgvLista.Rows.Count != 0 ? e.RowIndex : 0;
+            if (dgvLista.RowCount >= 0)
+            {
+                SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow;
+                SelectRow = dgvLista.RowCount == 1 ? 0 : SelectRow;
+            }
         }
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/11/16
         #region Metodos
 
         /// <summary>
         /// Aplica Filtros de busqueda
         /// OK - 24/09/17
         /// </summary>
-        public void Filtrar()
+        private void Filtrar()
         {
             SelectRow = 0;
-
-            if (true)//(oQuery.FiltroSocialWorkLimite(tstxtNombre.TextBox.Text, Desde, Hasta))
+            
+            if (oQuery.FilterLimitMessage(1, oUtil.oProfessional.IdProfessional, 0, 1))
             {
                 //decimal Cont = oQuery.CountSocialWork(tstxtNombre.TextBox.Text);
                 //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
@@ -215,7 +239,7 @@ namespace myExplorer.Formularios
         /// OK - 24/09/17
         /// </summary>
         /// <param name="Color"></param>
-        public void PintarBloqueados(Color Color)
+        private void PintarBloqueados(Color Color)
         {
             bool Block = false;
             int nCell = dgvLista.ColumnCount;
@@ -234,7 +258,7 @@ namespace myExplorer.Formularios
         /// OK 17/10/03
         /// </summary>
         /// <param name="Source"></param>
-        public int GenerarGrilla(object Source)
+        private int GenerarGrilla(object Source)
         {
             //
             //Configuracion del DataListView
