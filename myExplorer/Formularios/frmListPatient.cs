@@ -16,15 +16,13 @@ namespace myExplorer.Formularios
 {
     public partial class frmListPatient : Form
     {
-        // OK - 17/09/30
+        // OK - 17/11/20
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         private classTextos oTxt;
         private int SelectRow;
-        private int Desde = 0;
-        private int Hasta = 0;
         private int cantPag = 0;
         private int Pag = 1;
 
@@ -48,7 +46,6 @@ namespace myExplorer.Formularios
                 Permission();
                 Text = oTxt.TitleListPatient;
                 SelectRow = 0;
-                Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
 
                 libFeaturesComponents.fComboBox.classControlComboBoxes.LoadComboSearch(tscmbSocialWork.ComboBox,
@@ -125,35 +122,27 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         #region Paginador
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
-            {
-                Pag++;
-                Desde = Desde + oUtil.CantRegistrosGrilla;
-                Filtrar();
-            }
+                Filtrar(Pag++);
         }
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
-            {
-                Pag--;
-                Desde = Desde - oUtil.CantRegistrosGrilla;
-                Filtrar();
-            }
+                Filtrar(Pag--);
         }
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbSearch_Click(object sender, EventArgs e)
         {
-            Filtrar();
+            Filtrar(Pag = 1);
         }
 
         #endregion
@@ -268,7 +257,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/11/11
+        // OK - 17/11/20
         #region Metodos
          
         // OK - 17/11/11
@@ -290,24 +279,23 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// OK - 17/09/24
+        /// OK - 17/11/20
         /// </summary>
-        public void Filtrar()
+        public void Filtrar(int vPag)
         {
-            SelectRow = 0;
-
-            String affNumber = tstxtAffiliateNumber.TextBox.Text != "" ? tstxtAffiliateNumber.TextBox.Text:""; 
+            String affNumber = tstxtAffiliateNumber.TextBox.Text != "" ? tstxtAffiliateNumber.TextBox.Text : "";
 
             if (oQuery.FilterLimitPatient(
-                tstxtName.TextBox.Text,  tstxtLastName.TextBox.Text, affNumber,
-                Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue),
-                Desde, Hasta))
+                    tstxtName.TextBox.Text, tstxtLastName.TextBox.Text, affNumber,
+                    Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue),
+                vPag, oUtil.CantRegistrosGrilla))
             {
-                //decimal Cont = oQuery.CountGrandfather(oGrandfather);
-                //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
-                //cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
-
-                //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
+                decimal Cont = oQuery.FilterLimitCountPatient(
+                    tstxtName.TextBox.Text,  tstxtLastName.TextBox.Text, affNumber,
+                    Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue));
+                decimal Div = Math.Ceiling(Cont / oUtil.CantRegistrosGrilla);
+                cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+                tslPagina.Text = "Página: " + Pag.ToString() + " de " + cantPag.ToString();
 
                 dgvLista.Columns.Clear();
                 if (GenerarGrilla(oQuery.Table) != 0)
@@ -320,6 +308,8 @@ namespace myExplorer.Formularios
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
+
+
         }
 
         /// <summary>

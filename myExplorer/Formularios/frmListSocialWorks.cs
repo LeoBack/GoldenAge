@@ -15,21 +15,19 @@ namespace myExplorer.Formularios
 {
     public partial class frmListSocialWorks : Form
     {
-        // OK 17/09/30
+        // OK - 17/11/20
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         private classTextos oTxt;
         private int SelectRow;
-        private int Desde = 0;
-        private int Hasta = 0;
         private int cantPag = 0;
         private int Pag = 1;
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/09/30
         #region Formulario
 
         // OK 17/09/30
@@ -46,7 +44,6 @@ namespace myExplorer.Formularios
             {
                 Text = oTxt.TitleSocialWorks;
                 SelectRow = 0;
-                Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
             }
             else
@@ -55,7 +52,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/09/30
         #region Menu Contextual Botones
 
         // OK 17/09/30
@@ -118,35 +115,27 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         #region Paginador
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
-            {
-                Pag++;
-                Desde = Desde + oUtil.CantRegistrosGrilla;
-                Filtrar();
-            }
+                Filtrar(Pag++);
         }
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
-            {
-                Pag--;
-                Desde = Desde - oUtil.CantRegistrosGrilla;
-                Filtrar();
-            }
+                Filtrar(Pag--);
         }
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbSearch_Click(object sender, EventArgs e)
         {
-            Filtrar();
+            Filtrar(Pag = 1);
         }
 
         #endregion
@@ -181,24 +170,21 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK 17/09/30
+        // OK - 17/09/30
         #region Metodos
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// OK - 24/09/17
+        /// OK - 24/11/20
         /// </summary>
-        public void Filtrar()
+        public void Filtrar(int vPag)
         {
-            SelectRow = 0;
-
-            if (oQuery.FilterLimitSocialWork(tstxtNombre.TextBox.Text, Desde, Hasta))
+            if (oQuery.FilterLimitSocialWork(tstxtNombre.TextBox.Text, vPag, oUtil.CantRegistrosGrilla))            
             {
-                //decimal Cont = oQuery.CountSocialWork(tstxtNombre.TextBox.Text);
-                //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
-                //cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
-
-                //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
+                decimal Cont = oQuery.FilterLimitCountSocialWork(tstxtNombre.TextBox.Text);
+                decimal Div = Math.Ceiling(Cont / oUtil.CantRegistrosGrilla);
+                cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+                tslPagina.Text = "Página: " + Pag.ToString() + " de " + cantPag.ToString();
 
                 dgvLista.Columns.Clear();
                 GenerarGrilla(oQuery.Table);
@@ -256,5 +242,23 @@ namespace myExplorer.Formularios
         }
 
         #endregion
+
+        int sC = 100;
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            classSocialWork  oWork = new classSocialWork();
+            oWork.IdLocationCountry = 1;
+            oWork.IdLocationProvince = 1;
+            oWork.IdLocationCity = 1;
+            oWork.IdIvaType = 1;
+
+            for (int C = sC; C < sC + 10; C++)
+            {
+                oWork.IdSocialWork = C + 100;
+                oWork.Name = "Insert" + C.ToString();
+                oQuery.AbmSocialWork(oWork, classQuery.eAbm.Insert);
+            }
+            sC = 10;
+        }
     }
 }
