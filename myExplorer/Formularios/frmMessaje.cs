@@ -129,14 +129,14 @@ namespace myExplorer.Formularios
         private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
-                Filtrar(Pag++);
+                Filtrar(++Pag);
         }
 
         // OK - 17/11/20
         private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
-                Filtrar(Pag--);
+                Filtrar(--Pag);
         }
 
         // OK - 17/11/20
@@ -155,7 +155,7 @@ namespace myExplorer.Formularios
         {
             if (dgvLista.RowCount != 0)
             {
-                classDiagnostic oD = new classDiagnostic(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value));
+                classDiagnostic oD = new classDiagnostic(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value));
                 oD = oQuery.AbmDiagnostic(oD, classQuery.eAbm.Select) as classDiagnostic;
                 if (oD != null)
                 {
@@ -176,7 +176,7 @@ namespace myExplorer.Formularios
         {
             if (dgvLista.RowCount != 0)
             {
-                int IdDiagnostic = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                int IdDiagnostic = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic(IdDiagnostic, frmAbmDiagnostic.SelectedId.Diagnostic);
                 fDiagnostic.oQuery = oQuery;
                 fDiagnostic.oUtil = oUtil;
@@ -262,6 +262,7 @@ namespace myExplorer.Formularios
             dgvLista.DataSource = Source;
 #if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[1].Visible = false;
             dgvLista.Columns[dgvLista.ColumnCount - 1].Visible = false;
 #endif
             return dgvLista.Rows.Count;

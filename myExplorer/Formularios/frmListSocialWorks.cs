@@ -62,7 +62,7 @@ namespace myExplorer.Formularios
 
             if (dgvLista.Rows.Count != 0)
             {
-                oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 oSw = (classSocialWork)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Select);
                 oSw.Visible = false;
 
@@ -86,7 +86,7 @@ namespace myExplorer.Formularios
 
             if (dgvLista.Rows.Count != 0)
             {
-                oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 oSw = (classSocialWork)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Select);
 
                 if (oSw != null)
@@ -122,14 +122,14 @@ namespace myExplorer.Formularios
         private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
-                Filtrar(Pag++);
+                Filtrar(++Pag);
         }
 
         // OK - 17/11/20
         private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
-                Filtrar(Pag--);
+                Filtrar(--Pag);
         }
 
         // OK - 17/11/20
@@ -151,7 +151,7 @@ namespace myExplorer.Formularios
             //    frmDialogoImprecion fIm = new frmDialogoImprecion();
             //    fIm.oQuery = oQuery;
             //    fIm.oUtil = oUtil;
-            //    fIm.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+            //    fIm.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
 
             //    if (fIm.IdSocialWork != 0)
             //        fIm.ShowDialog();
@@ -236,6 +236,7 @@ namespace myExplorer.Formularios
             dgvLista.DataSource = Source;
 #if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[1].Visible = false;
             dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif
             return dgvLista.Rows.Count;

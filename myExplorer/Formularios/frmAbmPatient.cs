@@ -37,6 +37,8 @@ namespace myExplorer.Formularios
         private int IdCountryParent;
         private int IdProvinceParent;
         private int IdCityParent;
+        private List<classParent> lParent = null;
+        private int Next = 0;
 
         #endregion
 
@@ -64,6 +66,7 @@ namespace myExplorer.Formularios
                 Permission();
                 EnablePatient(eModo != Modo.Select);
                 EnableParent(eModo != Modo.Select);
+                lblSearchParent.Text = string.Empty;
 
                 if(eModo == Modo.Add)
                     oPatient = new classPatient();
@@ -116,26 +119,44 @@ namespace myExplorer.Formularios
             }
         }
 
+        // OK - 17/11/21
         private void btnSearchParent_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Busca por Tipo y Nº de Documento.");
+            if (Next == 0)
+            {
+                if (txtParentNumberDocument.Text != string.Empty)
+                {
+                    classParent oP = new classParent();
+                    oP.IdTypeDocument = Convert.ToInt32(cmbTypeDocumentParent.SelectedValue);
+                    oP.NumberDocument = Convert.ToInt32(txtParentNumberDocument.Text);
+                    lParent = oQuery.AbmParent(oP, classQuery.eAbm.SelectAll) as List<classParent>;
+                }
+            }
+
+            if (lParent != null && lParent.Count != 0)
+            {
+                if (Next < lParent.Count)
+                {
+                    oParent = lParent[Next++];
+                    lblSearchParent.Text = Next.ToString() + "/" + lParent.Count.ToString() + " Encontrados";
+                    LoadfrmParent();
+                    Next = Next == lParent.Count ? 0 : Next;
+                    //eModoParent = Modo.Update;
+                }
+            }
+            else
+            {
+                CleanParent();
+            }
         }
 
-        // OK - 17/09/30
+        // OK - 17/11/21
         private void btnBlocked_Click(object sender, EventArgs e)
         {
             if (oPatient != null)
             {
-                if (btnBlocked.Text == oTxt.Bloquear)
-                {
-                    Enable = false;
-                    btnBlocked.Text = oTxt.Desbloquear;
-                }
-                else
-                {
-                    Enable = true;
-                    btnBlocked.Text = oTxt.Bloquear;
-                }
+                Enable = btnBlocked.Text == oTxt.Bloquear ? false : true;
+                btnBlocked.Text = btnBlocked.Text == oTxt.Bloquear ? oTxt.Desbloquear : oTxt.Bloquear;
             }
         }
 
@@ -205,11 +226,8 @@ namespace myExplorer.Formularios
 
                 eModoParent = oParent != null ? Modo.Update : Modo.Add;
                 oParent = oParent != null ? oParent : new classParent();
-
+                EnableParent(eModo != Modo.Select);
                 LoadfrmParent();
-
-                if (eModo != Modo.Select)
-                    EnableParent(true);
             }
         }
 
@@ -400,13 +418,15 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Limpia los componentes del pariente
-        /// OK - 17/10/12
+        /// OK - 17/11/21
         /// </summary>
         private void CleanParent()
         {
             IdCountryParent = 0;
             IdProvinceParent = 0;
             IdCityParent = 0;
+            lblSearchParent.Text = string.Empty;
+            lParent = null;
 
             foreach (Control ctrl in tlpParent.Controls)
             {

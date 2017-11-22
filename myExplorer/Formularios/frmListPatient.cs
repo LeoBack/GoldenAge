@@ -69,7 +69,7 @@ namespace myExplorer.Formularios
             if (dgvLista.Rows.Count != 0)
             {
                 oGf = new classPatient();
-                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
                 oGf.Visible = false;
 
@@ -93,7 +93,7 @@ namespace myExplorer.Formularios
 
             if (dgvLista.Rows.Count != 0)
             {
-                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
 
                 if (oGf != null)
@@ -129,14 +129,14 @@ namespace myExplorer.Formularios
         private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
-                Filtrar(Pag++);
+                Filtrar(++Pag);
         }
 
         // OK - 17/11/20
         private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
-                Filtrar(Pag--);
+                Filtrar(--Pag);
         }
 
         // OK - 17/11/20
@@ -155,10 +155,10 @@ namespace myExplorer.Formularios
         {
             classPatient oGf = null;
 
-            if (dgvLista.Rows.Count != 0)
+            if (dgvLista.RowCount != 0)
             {
                 oGf = new classPatient();
-                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
 
                 frmAbmPatient frmPatient = new frmAbmPatient();
@@ -175,7 +175,7 @@ namespace myExplorer.Formularios
         {
             if (dgvLista.Rows.Count != 0)
             {
-                int IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                int IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic(IdPatient, frmAbmDiagnostic.SelectedId.Patient);
                 fDiagnostic.oQuery = oQuery;
                 fDiagnostic.oUtil = oUtil;
@@ -207,7 +207,7 @@ namespace myExplorer.Formularios
         private void tsmiPrintSelect_Click(object sender, EventArgs e)
         {
             DataSet dS = new DataSet();
-            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
 
             if (oQuery.RpOnlyPatient(Id))
             {
@@ -224,7 +224,7 @@ namespace myExplorer.Formularios
         {
             bool isOk = true;
             DataSet dS = new DataSet();
-            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
 
             if (oQuery.RpOnlyPatient(Id))
                 dS.Tables.Add(oQuery.Table);
@@ -308,8 +308,6 @@ namespace myExplorer.Formularios
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
-
-
         }
 
         /// <summary>
@@ -354,6 +352,7 @@ namespace myExplorer.Formularios
             dgvLista.DataSource = Source;
 #if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[1].Visible = false;
             dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif
             return dgvLista.Rows.Count;
