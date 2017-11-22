@@ -67,7 +67,7 @@ namespace myExplorer.Formularios
 
             if (dgvLista.Rows.Count != 0)
             {
-                oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 oP = (classProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
                 oP.Visible = false;
 
@@ -77,12 +77,6 @@ namespace myExplorer.Formularios
                         MessageBox.Show(oTxt.UpdateProfessional);
                     else
                         MessageBox.Show(oTxt.ErrorQueryUpdate);
-                    //frmAbmProfessional frmA = new frmAbmProfessional();
-                    //frmA.oQuery = oQuery;
-                    //frmA.oUtil = oUtil;
-                    //frmA.oProfessional = oP;
-                    //frmA.eModo = frmAbmProfessional.Modo.Delete;
-                    //frmA.ShowDialog();
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQueryList);
@@ -97,7 +91,7 @@ namespace myExplorer.Formularios
 
             if (dgvLista.Rows.Count != 0)
             {
-                oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+                oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 oP = (classProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
 
                 if (oP != null)
@@ -133,14 +127,14 @@ namespace myExplorer.Formularios
         private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
-                Filtrar(Pag++);
+                Filtrar(++Pag);
         }
 
         // OK - 17/11/20
         private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
-                Filtrar(Pag--);
+                Filtrar(--Pag);
         }
 
         // OK - 17/11/20
@@ -177,7 +171,7 @@ namespace myExplorer.Formularios
         {
             bool isOk = true;
             DataSet dS = new DataSet();
-            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
+            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
 
             if (oQuery.RpProfessionalSpeciality(Id))
                 dS.Tables.Add(oQuery.Table);
@@ -276,6 +270,7 @@ namespace myExplorer.Formularios
             dgvLista.DataSource = Source;
 #if (!DEBUG)
             dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[1].Visible = false;            
             dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif
             return dgvLista.Rows.Count;
