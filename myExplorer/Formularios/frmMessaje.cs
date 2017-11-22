@@ -16,15 +16,13 @@ namespace myExplorer.Formularios
 {
     public partial class frmMessaje : Form
     {
-        // OK - 17/11/16
+        // OK - 17/11/20
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         private classTextos oTxt;
         private int SelectRow;
-        private int Desde = 0;
-        private int Hasta = 0;
         private int cantPag = 0;
         private int Pag = 1;
 
@@ -47,7 +45,6 @@ namespace myExplorer.Formularios
             {
                 Text = oTxt.TitleMessages;
                 SelectRow = 0;
-                Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
             }
             else
@@ -125,35 +122,27 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         #region Paginador
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
-            {
-                Pag++;
-                Desde = Desde + oUtil.CantRegistrosGrilla;
-                Filtrar();
-            }
+                Filtrar(Pag++);
         }
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
-            {
-                Pag--;
-                Desde = Desde - oUtil.CantRegistrosGrilla;
-                Filtrar();
-            }
+                Filtrar(Pag--);
         }
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbSearch_Click(object sender, EventArgs e)
         {
-            Filtrar();
+            Filtrar(Pag = 1);
         }
 
         #endregion
@@ -175,7 +164,7 @@ namespace myExplorer.Formularios
                         MessageBox.Show(oTxt.UpdateDiagnostic);
                     else
                         MessageBox.Show(oTxt.ErrorQueryUpdate);
-                    Filtrar();
+                    Filtrar(Pag);
                 }
                 else
                     MessageBox.Show(oTxt.ErrorQuerySelect);
@@ -207,24 +196,21 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/11/16
+        // OK - 17/11/20
         #region Metodos
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// OK - 24/09/17
+        /// OK - 17/11/20
         /// </summary>
-        private void Filtrar()
+        public void Filtrar(int vPag)
         {
-            SelectRow = 0;
-            
-            if (oQuery.FilterLimitMessage(1, oUtil.oProfessional.IdProfessional, 0, 1))
+            if (oQuery.FilterLimitMessage(1, oUtil.oProfessional.IdProfessional, 0, 1, vPag, oUtil.CantRegistrosGrilla))
             {
-                //decimal Cont = oQuery.CountSocialWork(tstxtNombre.TextBox.Text);
-                //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
-                //cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
-
-                //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
+                decimal Cont = oQuery.FilterLimitCountMessage(1, oUtil.oProfessional.IdProfessional, 0, 1);
+                decimal Div = Math.Ceiling(Cont / oUtil.CantRegistrosGrilla);
+                cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+                tslPagina.Text = "Página: " + Pag.ToString() + " de " + cantPag.ToString();
 
                 dgvLista.Columns.Clear();
                 GenerarGrilla(oQuery.Table);

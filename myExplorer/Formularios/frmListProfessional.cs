@@ -16,15 +16,13 @@ namespace myExplorer.Formularios
 {
     public partial class frmListProfessional : Form
     {
-        // OK - 30/09/17
+        // OK - 30/11/20
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
         public classUtiles oUtil { set; get; }
         private classTextos oTxt;
         private int SelectRow;
-        private int Desde = 0;
-        private int Hasta = 0;
         private int cantPag = 0;
         private int Pag = 1;
 
@@ -47,7 +45,6 @@ namespace myExplorer.Formularios
             {
                 Text = oTxt.TitleListProfessional;
                 SelectRow = 0;
-                Hasta = oUtil.CantRegistrosGrilla;
                 tslPagina.Text = "Página: 0 de 0";
                 tsbPrintList.Enabled = false;
             }
@@ -129,35 +126,27 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         #region Paginador
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbNext_Click(object sender, EventArgs e)
         {
             if (Pag < cantPag)
-            {
-                Pag++;
-                Desde = Desde + oUtil.CantRegistrosGrilla;
-                Filtrar();
-            }
+                Filtrar(Pag++);
         }
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbPreview_Click(object sender, EventArgs e)
         {
             if (Pag > 1)
-            {
-                Pag--;
-                Desde = Desde - oUtil.CantRegistrosGrilla;
-                Filtrar();
-            }
+                Filtrar(Pag--);
         }
 
-        // REVISADO - 17/09/09
+        // OK - 17/11/20
         private void tsbSearch_Click(object sender, EventArgs e)
         {
-            Filtrar();
+            Filtrar(Pag = 1);
         }
 
         #endregion
@@ -221,33 +210,25 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/09/24
+        // OK - 17/11/20
         #region Metodos
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// OK - 17/09/24
+        /// OK - 17/11/20
         /// </summary>
-        public void Filtrar()
+        public void Filtrar(int vPag)
         {
-            SelectRow = 0;
-
-            if (oQuery.FilterLimitProfession(tstxtName.TextBox.Text, tstxtLastName.TextBox.Text, Desde, Hasta))
-            { 
-                //decimal Cont = oQuery.CountProfesionales(oValidarSql.ValidaString(tstxtNombre.TextBox.Text), Hiden);
-                //decimal Div = Math.Ceiling((Cont / oUtil.CantRegistrosGrilla));
-                //cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
-
-                //tslPagina.Text = "Página: " + Convert.ToString(Pag) + " de " + Convert.ToString(cantPag);
+            if (oQuery.FilterLimitProfession(tstxtName.TextBox.Text, tstxtLastName.TextBox.Text, vPag, oUtil.CantRegistrosGrilla))            
+            {
+                decimal Cont = oQuery.FilterLimitCountProfession(tstxtName.TextBox.Text, tstxtLastName.TextBox.Text);
+                decimal Div = Math.Ceiling(Cont / oUtil.CantRegistrosGrilla);
+                cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
+                tslPagina.Text = "Página: " + Pag.ToString() + " de " + cantPag.ToString();
 
                 dgvLista.Columns.Clear();
-                if (GenerarGrilla(oQuery.Table) != 0)
-                {
-                    PintarBloqueados(Color.Gray);
-                    tsbPrintList.Enabled = true;
-                }
-                else
-                    tsbPrintList.Enabled = false;
+                GenerarGrilla(oQuery.Table);
+                PintarBloqueados(Color.Gray);
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);

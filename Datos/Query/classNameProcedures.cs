@@ -29,11 +29,16 @@ namespace Datos.Query
         public string Contadores = "[spContadores-v1.0]"; 
 
         // Filtros
-        public string FiltroSocialWorkLimite = "[spListSocialWorks-v1.0]";
-        public string FiltroProfesionalesLimite = "[spListProfessional-v1.0]";
-        public string FiltroPatientLimite = "[spListPatient-v1.0]";
-        public string FiltroDiagnosticLimite = "[spListDiagnostic-v1.0]";
-        public string FiltroMessageLimite = "[spListMessage-v1.0]";
+        public string FilterSocialWorkLimite = "[spFilterLimitSocialWorks-v1.0]";
+        public string CountSocialWorkLimite = "[spFilterLimitCountSocialWork-1.0]";
+        public string FiltroProfesionalesLimite = "[spFilterLimitProfessional-v1.0]";
+        public string CountProfesionalesLimite = "[spFilterLimitCountProfesionales-v1.0]";
+        public string FiltroPatientLimite = "[spFilterLimitPatient-v1.0]";
+        public string CountPatientLimite = "[spFilterLimitCountPatient-1.0]";
+        public string FiltroDiagnosticLimite = "[spFilterLimitDiagnostic-v1.0]";
+        public string CountDiagnosticLimite = "[spFilterLimitCountDiagnostic-1.0]";
+        public string FiltroMessageLimite = "[spFilterLimitMessage-v1.0]";
+        public string CountMessageLimite = "[spFilterLimitCountMessage-1.0]";
 
         // Reportes
         public string RpClinicHistory = "[spRpClinicHistory-v1.0]";

@@ -1345,26 +1345,26 @@ namespace Datos.Query
 
         #endregion
 
-        // OK - 17/11/14
+        // OK - 17/11/20
         # region Filtros
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 17/11/09
+        /// OK - 17/11/20
         /// </summary>
         /// <param name="Nombre"></param>
         /// <param name="Bloqueado"></param>
-        /// <param name="Desde"></param>
-        /// <param name="Hasta"></param>
+        /// <param name="Pag">Id Actual</param>
+        /// <param name="RowsShow">Cantidad de filas a mostrar</param>
         /// <returns></returns>
-        public bool FilterLimitProfession(string Name, string LastName, int Desde, int Hasta)
+        public bool FilterLimitProfession(string Name, string LastName, int Pag, int RowsShow)
         {
             string SPname = sp.FiltroProfesionalesLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Name", Name));
             lParam.Add(new SqlParameter("@LastName", LastName));
-            lParam.Add(new SqlParameter("@Desde", Desde));
-            lParam.Add(new SqlParameter("@Hasta", Hasta));
+            lParam.Add(new SqlParameter("@Pag", Pag));
+            lParam.Add(new SqlParameter("@RowsShow", RowsShow));
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
@@ -1382,19 +1382,19 @@ namespace Datos.Query
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 17/11/09
+        /// OK - 17/11/20
         /// </summary>
-        /// <param name="Nombre"></param>
-        /// <param name="Desde"></param>
-        /// <param name="Hasta"></param>
+        /// <param name="Nombre">Propiedades del filtro</param>
+        /// <param name="Pag">Id Actual</param>
+        /// <param name="RowsShow">Cantidad de filas a mostrar</param>
         /// <returns></returns>
-        public bool FilterLimitSocialWork(string Name, int Desde, int Hasta)
+        public bool FilterLimitSocialWork(string Name, int Pag, int RowsShow)
         {
-            string SPname = sp.FiltroSocialWorkLimite;
+            string SPname = sp.FilterSocialWorkLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Name", Name));
-            lParam.Add(new SqlParameter("@Desde", Desde));
-            lParam.Add(new SqlParameter("@Hasta", Hasta));
+            lParam.Add(new SqlParameter("@Pag", Pag));
+            lParam.Add(new SqlParameter("@RowsShow", RowsShow));
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
@@ -1412,13 +1412,13 @@ namespace Datos.Query
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 17/11/09
+        /// OK - 17/11/20
         /// </summary>
         /// <param name="oPersona"></param>
-        /// <param name="Desde"></param>
-        /// <param name="Hasta"></param>
+        /// <param name="Pag">Id Actual</param>
+        /// <param name="RowsShow">Cantidad de filas a mostrar</param>
         /// <returns></returns>
-        public bool FilterLimitPatient(string Name, string LastName, string AffiliateNumber, int IdSocialWork, int Desde, int Hasta)
+        public bool FilterLimitPatient(string Name, string LastName, string AffiliateNumber, int IdSocialWork, int Pag, int RowsShow)
         {
             string SPname = sp.FiltroPatientLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
@@ -1426,8 +1426,8 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@LastName", LastName));
             lParam.Add(new SqlParameter("@AffiliateNumber", AffiliateNumber));
             lParam.Add(new SqlParameter("@IdSocialWork", IdSocialWork));
-            lParam.Add(new SqlParameter("@Desde", Desde));
-            lParam.Add(new SqlParameter("@Hasta", Hasta));
+            lParam.Add(new SqlParameter("@Pag", Pag));
+            lParam.Add(new SqlParameter("@RowsShow", RowsShow));
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
@@ -1445,14 +1445,16 @@ namespace Datos.Query
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 17/11/14
+        /// OK - 17/11/20
         /// </summary>
         /// <param name="Read"></param>
         /// <param name="IdProfessional"></param>
         /// <param name="IdSpeciality"></param>
         /// <param name="Visible"></param>
+        /// <param name="Pag">Id Actual</param>
+        /// <param name="RowsShow">Cantidad de filas a mostrar</param>
         /// <returns></returns>
-        public bool FilterLimitMessage(int Read, int IdProfessional, int IdSpeciality, int Visible)
+        public bool FilterLimitMessage(int Read, int IdProfessional, int IdSpeciality, int Visible, int Pag, int RowsShow)
         {
             string SPname = sp.FiltroMessageLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
@@ -1460,6 +1462,8 @@ namespace Datos.Query
             lParam.Add(new SqlParameter("@IdProfessional", IdProfessional));
             lParam.Add(new SqlParameter("@IdSpeciality", IdSpeciality));
             lParam.Add(new SqlParameter("@Visible", Visible));
+            lParam.Add(new SqlParameter("@Pag", Pag));
+            lParam.Add(new SqlParameter("@RowsShow", RowsShow));
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
@@ -1473,6 +1477,105 @@ namespace Datos.Query
                 oSql.Close();
                 return false;
             }
+        }
+
+        #endregion
+
+        // OK - 17/11/20
+        #region Contadores Filtros
+
+        /// <summary>
+        /// Filtra por coincidencia.
+        /// OK - 17/11/20
+        /// </summary>
+        /// <param name="Name">Propiedades del filtro</param>
+        /// <param name="LastName">Propiedades del filtro</param>
+        /// <returns></returns>
+        public int FilterLimitCountProfession(string Name, string LastName)
+        {
+            string SPname = sp.CountProfesionalesLimite;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@LastName", LastName));
+
+            int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+            if (UltimoId == 0)
+                Menssage = oSql.Mensage;
+
+            return UltimoId;
+        }
+
+        /// <summary>
+        /// Filtra por coincidencia.
+        /// OK - 17/11/20
+        /// </summary>
+        /// <param name="Name">Propiedades del filtro</param>
+        /// <returns></returns>
+        public int FilterLimitCountSocialWork(string Name)
+        {
+            string SPname = sp.CountSocialWorkLimite;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Name", Name));
+
+            int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+            if (UltimoId == 0)
+                Menssage = oSql.Mensage;
+
+            return UltimoId;
+        }
+
+        /// <summary>
+        /// Filtra por coincidencia.
+        /// OK - 17/11/20
+        /// </summary>
+        /// <param name="Name">Propiedades del filtro</param>
+        /// <param name="LastName"></param>
+        /// <param name="AffiliateNumber">Propiedades del filtro</param>
+        /// <param name="IdSocialWork">Propiedades del filtro</param>
+        /// <returns></returns>
+        public int FilterLimitCountPatient(string Name, string LastName, string AffiliateNumber, int IdSocialWork)
+        {
+            string SPname = sp.CountPatientLimite;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Name", Name));
+            lParam.Add(new SqlParameter("@LastName", LastName));
+            lParam.Add(new SqlParameter("@AffiliateNumber", AffiliateNumber));
+            lParam.Add(new SqlParameter("@IdSocialWork", IdSocialWork));
+
+            int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+            if (UltimoId == 0)
+                Menssage = oSql.Mensage;
+
+            return UltimoId;
+        }
+
+        /// <summary>
+        /// Filtra por coincidencia.
+        /// OK - 17/11/20
+        /// </summary>
+        /// <param name="Read"></param>
+        /// <param name="IdProfessional">Propiedades del filtro</param>
+        /// <param name="IdSpeciality">Propiedades del filtro</param>
+        /// <param name="Visible">Propiedades del filtro</param>
+        /// <returns></returns>
+        public int FilterLimitCountMessage(int Read, int IdProfessional, int IdSpeciality, int Visible)
+        {
+            string SPname = sp.CountMessageLimite;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@DestinationRead", Read));
+            lParam.Add(new SqlParameter("@IdProfessional", IdProfessional));
+            lParam.Add(new SqlParameter("@IdSpeciality", IdSpeciality));
+            lParam.Add(new SqlParameter("@Visible", Visible));
+
+            int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+            if (UltimoId == 0)
+                Menssage = oSql.Mensage;
+
+            return UltimoId;
         }
 
         #endregion
