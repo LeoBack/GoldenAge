@@ -1,4 +1,4 @@
-﻿namespace myExplorer.Formularios
+﻿namespace GoldenAge.Formularios
 {
     partial class frmListSocialWorks
     {
@@ -48,7 +48,6 @@
             this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tlpPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.tsMenu.SuspendLayout();
@@ -95,8 +94,7 @@
             this.tstxtNombre,
             this.tsbSearch,
             this.toolStripSeparator2,
-            this.tsbPrint,
-            this.toolStripButton1});
+            this.tsbPrint});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
@@ -107,7 +105,7 @@
             // tsbAdd
             // 
             this.tsbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAdd.Image = global::myExplorer.Properties.Resources.Plus;
+            this.tsbAdd.Image = global::GoldenAge.Properties.Resources.Plus;
             this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAdd.Name = "tsbAdd";
             this.tsbAdd.Size = new System.Drawing.Size(28, 29);
@@ -133,7 +131,7 @@
             // 
             // tsbSearch
             // 
-            this.tsbSearch.Image = global::myExplorer.Properties.Resources.Search;
+            this.tsbSearch.Image = global::GoldenAge.Properties.Resources.Search;
             this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSearch.Name = "tsbSearch";
             this.tsbSearch.Size = new System.Drawing.Size(91, 29);
@@ -148,7 +146,7 @@
             // tsbPrint
             // 
             this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrint.Image = global::myExplorer.Properties.Resources.Printer;
+            this.tsbPrint.Image = global::GoldenAge.Properties.Resources.Printer;
             this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrint.Name = "tsbPrint";
             this.tsbPrint.Size = new System.Drawing.Size(28, 29);
@@ -172,7 +170,7 @@
             // tsbPreview
             // 
             this.tsbPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPreview.Image = global::myExplorer.Properties.Resources.ArrowLeft;
+            this.tsbPreview.Image = global::GoldenAge.Properties.Resources.ArrowLeft;
             this.tsbPreview.Name = "tsbPreview";
             this.tsbPreview.Size = new System.Drawing.Size(24, 28);
             this.tsbPreview.Text = "toolStripLabel1";
@@ -187,7 +185,7 @@
             // tsbNext
             // 
             this.tsbNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNext.Image = global::myExplorer.Properties.Resources.ArrowRight;
+            this.tsbNext.Image = global::GoldenAge.Properties.Resources.ArrowRight;
             this.tsbNext.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNext.Name = "tsbNext";
             this.tsbNext.Size = new System.Drawing.Size(28, 28);
@@ -206,7 +204,7 @@
             // 
             // tsmiUpdate
             // 
-            this.tsmiUpdate.Image = global::myExplorer.Properties.Resources.EditFile;
+            this.tsmiUpdate.Image = global::GoldenAge.Properties.Resources.EditFile;
             this.tsmiUpdate.Name = "tsmiUpdate";
             this.tsmiUpdate.Size = new System.Drawing.Size(167, 30);
             this.tsmiUpdate.Text = "Modificar";
@@ -214,7 +212,7 @@
             // 
             // tsmiDelete
             // 
-            this.tsmiDelete.Image = global::myExplorer.Properties.Resources.Error;
+            this.tsmiDelete.Image = global::GoldenAge.Properties.Resources.Error;
             this.tsmiDelete.Name = "tsmiDelete";
             this.tsmiDelete.Size = new System.Drawing.Size(167, 30);
             this.tsmiDelete.Text = "Eliminar";
@@ -222,20 +220,11 @@
             // 
             // tsmiAdd
             // 
-            this.tsmiAdd.Image = global::myExplorer.Properties.Resources.Plus;
+            this.tsmiAdd.Image = global::GoldenAge.Properties.Resources.Plus;
             this.tsmiAdd.Name = "tsmiAdd";
             this.tsmiAdd.Size = new System.Drawing.Size(167, 30);
             this.tsmiAdd.Text = "Agregar";
             this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(127, 29);
-            this.toolStripButton1.Text = "Insert10BD";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // frmListSocialWorks
             // 
@@ -280,6 +269,5 @@
         private System.Windows.Forms.ToolStripButton tsbNext;
         private System.Windows.Forms.ToolStripLabel tslPagina;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

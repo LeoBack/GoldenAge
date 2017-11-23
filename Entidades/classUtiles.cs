@@ -15,7 +15,7 @@ namespace Entidades
 
 
         private string PathOrigin = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
-        private string NameApk = "MyExplorer";
+        private string NameApk = "GoldenAge";
         private string NameReport = "DocumentReport";
 
         public classUtiles()

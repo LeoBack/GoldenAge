@@ -1,4 +1,4 @@
-﻿namespace myExplorer.Formularios
+﻿namespace GoldenAge.Formularios
 {
     partial class frmMain
     {
@@ -133,7 +133,7 @@
             // 
             // tsmiGrandfather
             // 
-            this.tsmiGrandfather.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsmiGrandfather.Image = global::GoldenAge.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
             this.tsmiGrandfather.Name = "tsmiGrandfather";
             this.tsmiGrandfather.Size = new System.Drawing.Size(212, 30);
             this.tsmiGrandfather.Text = "Abuelos";
@@ -141,7 +141,7 @@
             // 
             // tsmiProfessional
             // 
-            this.tsmiProfessional.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsmiProfessional.Image = global::GoldenAge.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
             this.tsmiProfessional.Name = "tsmiProfessional";
             this.tsmiProfessional.Size = new System.Drawing.Size(212, 30);
             this.tsmiProfessional.Text = "Profesionales";
@@ -149,7 +149,7 @@
             // 
             // tsmiSocialWorks
             // 
-            this.tsmiSocialWorks.Image = global::myExplorer.Properties.Resources.ammo4;
+            this.tsmiSocialWorks.Image = global::GoldenAge.Properties.Resources.ammo4;
             this.tsmiSocialWorks.Name = "tsmiSocialWorks";
             this.tsmiSocialWorks.Size = new System.Drawing.Size(212, 30);
             this.tsmiSocialWorks.Text = "Obras Sociales";
@@ -162,7 +162,7 @@
             // 
             // tsmiMessaje
             // 
-            this.tsmiMessaje.Image = global::myExplorer.Properties.Resources.Email1;
+            this.tsmiMessaje.Image = global::GoldenAge.Properties.Resources.Email1;
             this.tsmiMessaje.Name = "tsmiMessaje";
             this.tsmiMessaje.Size = new System.Drawing.Size(212, 30);
             this.tsmiMessaje.Text = "Mensajes";
@@ -173,14 +173,14 @@
             this.tsmiUser.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiNowUser,
             this.tsmiSesion});
-            this.tsmiUser.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
+            this.tsmiUser.Image = global::GoldenAge.Properties.Resources.Para_Personas_mini;
             this.tsmiUser.Name = "tsmiUser";
             this.tsmiUser.Size = new System.Drawing.Size(212, 30);
             this.tsmiUser.Text = "Usuario";
             // 
             // tsmiNowUser
             // 
-            this.tsmiNowUser.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsmiNowUser.Image = global::GoldenAge.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
             this.tsmiNowUser.Name = "tsmiNowUser";
             this.tsmiNowUser.Size = new System.Drawing.Size(210, 30);
             this.tsmiNowUser.Text = "Usuario Actual";
@@ -188,7 +188,7 @@
             // 
             // tsmiSesion
             // 
-            this.tsmiSesion.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
+            this.tsmiSesion.Image = global::GoldenAge.Properties.Resources.Para_Personas_mini;
             this.tsmiSesion.Name = "tsmiSesion";
             this.tsmiSesion.Size = new System.Drawing.Size(210, 30);
             this.tsmiSesion.Text = "Sesion";
@@ -205,7 +205,7 @@
             this.tsmiAbmCountry,
             this.tsmiAbmProvince,
             this.tsmiAbmCity});
-            this.tsmiLocation.Image = global::myExplorer.Properties.Resources.Database3;
+            this.tsmiLocation.Image = global::GoldenAge.Properties.Resources.Database3;
             this.tsmiLocation.Name = "tsmiLocation";
             this.tsmiLocation.Size = new System.Drawing.Size(212, 30);
             this.tsmiLocation.Text = "Localidades";
@@ -243,7 +243,7 @@
             // 
             // tsmiAcercaDe
             // 
-            this.tsmiAcercaDe.Image = global::myExplorer.Properties.Resources.Info;
+            this.tsmiAcercaDe.Image = global::GoldenAge.Properties.Resources.Info;
             this.tsmiAcercaDe.Name = "tsmiAcercaDe";
             this.tsmiAcercaDe.Size = new System.Drawing.Size(312, 30);
             this.tsmiAcercaDe.Text = "Acerca de ";
@@ -251,7 +251,7 @@
             // 
             // tsmiDataBase
             // 
-            this.tsmiDataBase.Image = global::myExplorer.Properties.Resources.Database3;
+            this.tsmiDataBase.Image = global::GoldenAge.Properties.Resources.Database3;
             this.tsmiDataBase.Name = "tsmiDataBase";
             this.tsmiDataBase.Size = new System.Drawing.Size(312, 30);
             this.tsmiDataBase.Text = "Base de Datos";
@@ -304,7 +304,7 @@
             // 
             // tsmiUsuario
             // 
-            this.tsmiUsuario.Image = global::myExplorer.Properties.Resources.Para_Personas_mini;
+            this.tsmiUsuario.Image = global::GoldenAge.Properties.Resources.Para_Personas_mini;
             this.tsmiUsuario.Name = "tsmiUsuario";
             this.tsmiUsuario.Size = new System.Drawing.Size(151, 29);
             this.tsmiUsuario.Text = "Iniciar Sesion";
@@ -331,7 +331,7 @@
             // 
             // tsbPatient
             // 
-            this.tsbPatient.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsbPatient.Image = global::GoldenAge.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
             this.tsbPatient.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPatient.Name = "tsbPatient";
             this.tsbPatient.Size = new System.Drawing.Size(105, 29);
@@ -345,7 +345,7 @@
             // 
             // tsbProfession
             // 
-            this.tsbProfession.Image = global::myExplorer.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
+            this.tsbProfession.Image = global::GoldenAge.Properties.Resources.hombre_negro_de_un_usuario_icono_7176_48;
             this.tsbProfession.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbProfession.Name = "tsbProfession";
             this.tsbProfession.Size = new System.Drawing.Size(145, 29);
@@ -354,7 +354,7 @@
             // 
             // tsbSocialWorks
             // 
-            this.tsbSocialWorks.Image = global::myExplorer.Properties.Resources.ammo4;
+            this.tsbSocialWorks.Image = global::GoldenAge.Properties.Resources.ammo4;
             this.tsbSocialWorks.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSocialWorks.Name = "tsbSocialWorks";
             this.tsbSocialWorks.Size = new System.Drawing.Size(156, 29);
@@ -368,7 +368,7 @@
             // 
             // tsbMyMessages
             // 
-            this.tsbMyMessages.Image = global::myExplorer.Properties.Resources.Email1;
+            this.tsbMyMessages.Image = global::GoldenAge.Properties.Resources.Email1;
             this.tsbMyMessages.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbMyMessages.Name = "tsbMyMessages";
             this.tsbMyMessages.Size = new System.Drawing.Size(171, 29);
@@ -452,7 +452,7 @@
             this.MainMenuStrip = this.msToolBar;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMain";
-            this.Text = "MyExplorer";
+            this.Text = "GoldenAge";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);

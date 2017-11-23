@@ -14,7 +14,7 @@ using System.Configuration;
 using libLocalitation.Forms;
 using System.Diagnostics;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmMain : Form
     {

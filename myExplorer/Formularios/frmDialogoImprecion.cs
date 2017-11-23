@@ -12,7 +12,7 @@ using Entidades.Clases;
 using Reportes;
 using Controles;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmDialogoImprecion : Form
     {

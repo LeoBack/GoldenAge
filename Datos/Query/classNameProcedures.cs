@@ -34,11 +34,11 @@ namespace Datos.Query
         public string FiltroProfesionalesLimite = "[spFilterLimitProfessional-v1.0]";
         public string CountProfesionalesLimite = "[spFilterLimitCountProfesionales-v1.0]";
         public string FiltroPatientLimite = "[spFilterLimitPatient-v1.0]";
-        public string CountPatientLimite = "[spFilterLimitCountPatient-1.0]";
+        public string CountPatientLimite = "[spFilterLimitCountPatient-v1.0]";
         public string FiltroDiagnosticLimite = "[spFilterLimitDiagnostic-v1.0]";
-        public string CountDiagnosticLimite = "[spFilterLimitCountDiagnostic-1.0]";
+        public string CountDiagnosticLimite = "[spFilterLimitCountDiagnostic-v1.0]";
         public string FiltroMessageLimite = "[spFilterLimitMessage-v1.0]";
-        public string CountMessageLimite = "[spFilterLimitCountMessage-1.0]";
+        public string CountMessageLimite = "[spFilterLimitCountMessage-v1.0]";
 
         // Reportes
         public string RpClinicHistory = "[spRpClinicHistory-v1.0]";

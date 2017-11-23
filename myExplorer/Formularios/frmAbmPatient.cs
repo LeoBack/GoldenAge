@@ -13,7 +13,7 @@ using Reportes;
 using Controles;
 using libLocalitation.Forms;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmAbmPatient : Form
     {
@@ -86,10 +86,8 @@ namespace myExplorer.Formularios
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (oUtil.oProfessional.IdPermission == 1)
-            {
                 if (SavePatient())
                     Close();
-            }
             else
                 Close();
         }
@@ -141,13 +139,11 @@ namespace myExplorer.Formularios
                     lblSearchParent.Text = Next.ToString() + "/" + lParent.Count.ToString() + " Encontrados";
                     LoadfrmParent();
                     Next = Next == lParent.Count ? 0 : Next;
-                    //eModoParent = Modo.Update;
+                    eModoParent = Modo.Update;
                 }
             }
             else
-            {
                 CleanParent();
-            }
         }
 
         // OK - 17/11/21
@@ -267,6 +263,9 @@ namespace myExplorer.Formularios
                         else
                             MessageBox.Show(oTxt.ErrorQueryUpdate);
                         break;
+                    case Modo.Select:
+                        IdQuery = 1;
+                        break;
                     default:
                         MessageBox.Show(oTxt.AccionIndefinida);
                         break;
@@ -378,7 +377,6 @@ namespace myExplorer.Formularios
                 MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
             else if ((txtAffiliateNumber.Text.Length <2) || (txtAffiliateNumber.Text.Length >= 19) || (txtAffiliateNumber.Text == ""))
                 MessageBox.Show("El Numero de Afiliado esta vacio o supera 19 caracteres.");
-           // else if (txtAddress.Text.Length >= 50 || (txtAddress.Text == ""))
             else if (txtAddress.Text.Length >= 50)
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
             else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
@@ -413,7 +411,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/11/14
+        // OK - 17/11/23
         #region Metodos Parent
 
         /// <summary>
@@ -440,7 +438,7 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// ABM En base de datos Pariente.
-        /// OK - 17/10/10
+        /// OK - 17/11/23
         /// </summary>
         /// <returns>True:Exito False:Error</returns>
         private bool SaveParent()
@@ -471,15 +469,26 @@ namespace myExplorer.Formularios
                         if (0 != IdQuery)
                         {
                             classPatientParent oPp = null;
+                            classQuery.eAbm Accion = classQuery.eAbm.Update;
+
                             foreach (classPatientParent iPp in lPatienParent)
                             {
                                 if ((iPp.IdParent == oParent.IdParent) & (iPp.IdPatient == oPatient.IdPatient))
                                     oPp = new classPatientParent(iPp.IdPatientParent, oPatient.IdPatient, IdQuery, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
                             }
 
-                            if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Update))
+                            if (oPp == null)
                             {
-                                MessageBox.Show(oTxt.UpdateParent);
+                                oPp = new classPatientParent();
+                                oPp.IdPatient = oPatient.IdPatient;
+                                oPp.IdParent = IdQuery;
+                                oPp.IdRelationship = Convert.ToInt32(cmbParentRelationship.SelectedValue);
+                                Accion = classQuery.eAbm.Insert;
+                            }
+
+                            if (0 != (int)oQuery.AbmPatientParent(oPp, Accion))
+                            {
+                                MessageBox.Show(oPp != null ? oTxt.UpdateParent : oTxt.AddParent);
                                 initParentList();
                             }
                         }
@@ -487,7 +496,6 @@ namespace myExplorer.Formularios
                             MessageBox.Show(oTxt.ErrorQueryUpdate);
                         break;
                     case Modo.Delete:
-
                         break;
                     default:
                         MessageBox.Show(oTxt.AccionIndefinida);
@@ -731,8 +739,8 @@ namespace myExplorer.Formularios
 
         private void ValidarCorreos(object sender, KeyPressEventArgs e)
         {
-            classValidaciones oClassValidas = new classValidaciones();
-            oClassValidas.EmailLostFocus(txtParentEmail, "La direccion de correo es invalida.");
+            //classValidaciones oClassValidas = new classValidaciones();
+            //oClassValidas.EmailLostFocus(txtParentEmail, "La direccion de correo es invalida.");
         }
 
         #endregion

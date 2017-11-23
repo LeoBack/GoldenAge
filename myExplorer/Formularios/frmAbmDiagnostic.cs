@@ -12,7 +12,7 @@ using Entidades.Clases;
 using Datos.Query;
 using Reportes;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmAbmDiagnostic : Form
     {

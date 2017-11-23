@@ -1,4 +1,4 @@
-﻿namespace myExplorer.Formularios
+﻿namespace GoldenAge.Formularios
 {
     partial class frmListProfessional
     {
@@ -93,7 +93,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripLabel1.Image = global::myExplorer.Properties.Resources.ArrowLeft;
+            this.toolStripLabel1.Image = global::GoldenAge.Properties.Resources.ArrowLeft;
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(24, 28);
             this.toolStripLabel1.Text = "tsbPreview";
@@ -108,7 +108,7 @@
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::myExplorer.Properties.Resources.ArrowRight;
+            this.toolStripButton1.Image = global::GoldenAge.Properties.Resources.ArrowRight;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(28, 28);
@@ -148,7 +148,7 @@
             // tsbAdd
             // 
             this.tsbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAdd.Image = global::myExplorer.Properties.Resources.Plus;
+            this.tsbAdd.Image = global::GoldenAge.Properties.Resources.Plus;
             this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAdd.Name = "tsbAdd";
             this.tsbAdd.Size = new System.Drawing.Size(28, 29);
@@ -185,7 +185,7 @@
             // 
             // tsbBuscar
             // 
-            this.tsbBuscar.Image = global::myExplorer.Properties.Resources.Search;
+            this.tsbBuscar.Image = global::GoldenAge.Properties.Resources.Search;
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
             this.tsbBuscar.Size = new System.Drawing.Size(91, 29);
@@ -195,7 +195,7 @@
             // tsbPrintList
             // 
             this.tsbPrintList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrintList.Image = global::myExplorer.Properties.Resources.Printer;
+            this.tsbPrintList.Image = global::GoldenAge.Properties.Resources.Printer;
             this.tsbPrintList.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrintList.Name = "tsbPrintList";
             this.tsbPrintList.Size = new System.Drawing.Size(28, 29);
@@ -216,7 +216,7 @@
             // 
             // tsmiPrintSelect
             // 
-            this.tsmiPrintSelect.Image = global::myExplorer.Properties.Resources.Printer;
+            this.tsmiPrintSelect.Image = global::GoldenAge.Properties.Resources.Printer;
             this.tsmiPrintSelect.Name = "tsmiPrintSelect";
             this.tsmiPrintSelect.Size = new System.Drawing.Size(267, 30);
             this.tsmiPrintSelect.Text = "Imprimir seleccionado";
@@ -229,7 +229,7 @@
             // 
             // tsmiUpdate
             // 
-            this.tsmiUpdate.Image = global::myExplorer.Properties.Resources.EditFile;
+            this.tsmiUpdate.Image = global::GoldenAge.Properties.Resources.EditFile;
             this.tsmiUpdate.Name = "tsmiUpdate";
             this.tsmiUpdate.Size = new System.Drawing.Size(267, 30);
             this.tsmiUpdate.Text = "Modificar";
@@ -237,7 +237,7 @@
             // 
             // tsmiDelete
             // 
-            this.tsmiDelete.Image = global::myExplorer.Properties.Resources.Error;
+            this.tsmiDelete.Image = global::GoldenAge.Properties.Resources.Error;
             this.tsmiDelete.Name = "tsmiDelete";
             this.tsmiDelete.Size = new System.Drawing.Size(267, 30);
             this.tsmiDelete.Text = "Eliminar";
@@ -245,7 +245,7 @@
             // 
             // tsmiAdd
             // 
-            this.tsmiAdd.Image = global::myExplorer.Properties.Resources.Plus;
+            this.tsmiAdd.Image = global::GoldenAge.Properties.Resources.Plus;
             this.tsmiAdd.Name = "tsmiAdd";
             this.tsmiAdd.Size = new System.Drawing.Size(267, 30);
             this.tsmiAdd.Text = "Agregar";

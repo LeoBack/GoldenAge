@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     partial class frmAcercaDe : Form
     {
@@ -105,17 +105,18 @@ namespace myExplorer.Formularios
             this.textBoxDescription.Text = 
                 this.textBoxDescription.Text +
                 "\r\n" +
-                "\r\nCompilacion: 07 de Abril de 2012" +
+                "\r\nCompilacion: 24 de Noviembre de 2017" +
                 "\r\n" +
-                "\r\nVercion Final." +
+                "\r\nVersion 1.0" +
                 "\r\n" +
                 "\r\nDesarrolladores:" + 
                 "\r\nBack Leonardo <leb.3.0.g@gmail.com>" +
-                "\r\n104218@tecnicatura.frc.utn.edu.ar " +
+                "\r\nCarreras Marcos <marcosandrescarreras@gmail.com>" +
                 "\r\n" +
-                "\r\nSoftware de Terceros:" +
-                "\r\nSQLite" +
-                "\r\nCrystal Report ";
+                "\r\nSoftware" +
+                "\r\nC# (Programa cliente)" +
+                "\r\nCrystal Report (Programa cliente)" +
+                "\r\nSQL Server (Base de datos)";
         }
     }
 }
