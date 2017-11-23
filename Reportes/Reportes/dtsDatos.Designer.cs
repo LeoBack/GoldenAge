@@ -742,7 +742,7 @@ namespace Reportes.Reportes {
             
             private global::System.Data.DataColumn _columnN__Afiliado;
             
-            private global::System.Data.DataColumn columnOgra_Social;
+            private global::System.Data.DataColumn columnObra_Social;
             
             private global::System.Data.DataColumn columnIngreso;
             
@@ -809,9 +809,9 @@ namespace Reportes.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Ogra_SocialColumn {
+            public global::System.Data.DataColumn Obra_SocialColumn {
                 get {
-                    return this.columnOgra_Social;
+                    return this.columnObra_Social;
                 }
             }
             
@@ -876,13 +876,13 @@ namespace Reportes.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ListPatientRow AddListPatientRow(string Nombre, string Documento, string _N__Afiliado, string Ogra_Social, string Ingreso, string Egreso, string Motivo_egreso) {
+            public ListPatientRow AddListPatientRow(string Nombre, string Documento, string _N__Afiliado, string Obra_Social, string Ingreso, string Egreso, string Motivo_egreso) {
                 ListPatientRow rowListPatientRow = ((ListPatientRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Nombre,
                         Documento,
                         _N__Afiliado,
-                        Ogra_Social,
+                        Obra_Social,
                         Ingreso,
                         Egreso,
                         Motivo_egreso};
@@ -911,7 +911,7 @@ namespace Reportes.Reportes {
                 this.columnNombre = base.Columns["Nombre"];
                 this.columnDocumento = base.Columns["Documento"];
                 this._columnN__Afiliado = base.Columns["N. Afiliado"];
-                this.columnOgra_Social = base.Columns["Ogra Social"];
+                this.columnObra_Social = base.Columns["Obra Social"];
                 this.columnIngreso = base.Columns["Ingreso"];
                 this.columnEgreso = base.Columns["Egreso"];
                 this.columnMotivo_egreso = base.Columns["Motivo egreso"];
@@ -928,8 +928,8 @@ namespace Reportes.Reportes {
                 this._columnN__Afiliado.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnN__Afiliado");
                 this._columnN__Afiliado.ExtendedProperties.Add("Generator_UserColumnName", "N. Afiliado");
                 base.Columns.Add(this._columnN__Afiliado);
-                this.columnOgra_Social = new global::System.Data.DataColumn("Ogra Social", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOgra_Social);
+                this.columnObra_Social = new global::System.Data.DataColumn("Obra Social", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnObra_Social);
                 this.columnIngreso = new global::System.Data.DataColumn("Ingreso", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIngreso);
                 this.columnEgreso = new global::System.Data.DataColumn("Egreso", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2887,17 +2887,17 @@ namespace Reportes.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Ogra_Social {
+            public string Obra_Social {
                 get {
                     try {
-                        return ((string)(this[this.tableListPatient.Ogra_SocialColumn]));
+                        return ((string)(this[this.tableListPatient.Obra_SocialColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ogra Social\' de la tabla \'ListPatient\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Obra Social\' de la tabla \'ListPatient\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListPatient.Ogra_SocialColumn] = value;
+                    this[this.tableListPatient.Obra_SocialColumn] = value;
                 }
             }
             
@@ -2987,14 +2987,14 @@ namespace Reportes.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOgra_SocialNull() {
-                return this.IsNull(this.tableListPatient.Ogra_SocialColumn);
+            public bool IsObra_SocialNull() {
+                return this.IsNull(this.tableListPatient.Obra_SocialColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOgra_SocialNull() {
-                this[this.tableListPatient.Ogra_SocialColumn] = global::System.Convert.DBNull;
+            public void SetObra_SocialNull() {
+                this[this.tableListPatient.Obra_SocialColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
