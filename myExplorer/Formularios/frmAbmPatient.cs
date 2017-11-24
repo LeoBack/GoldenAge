@@ -65,7 +65,8 @@ namespace GoldenAge.Formularios
                 initParentList();
                 Permission();
                 EnablePatient(eModo != Modo.Select);
-                EnableParent(eModo != Modo.Select);
+                EnableParent(false);
+                btnNewParent.Enabled = eModo != Modo.Select;
                 lblSearchParent.Text = string.Empty;
 
                 if(eModo == Modo.Add)
@@ -565,10 +566,10 @@ namespace GoldenAge.Formularios
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// OK - 17/10/03
+        /// OK - 17/11/23
         /// </summary>
         /// <param name="Source"></param>
-        public int GenerarGrilla(object Source)
+        public void GenerarGrilla(object Source)
         {
             //
             //Configuracion del DataListView
@@ -589,7 +590,6 @@ namespace GoldenAge.Formularios
             dgvLista.Columns[1].Visible = false;
             //dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
 #endif
-            return dgvLista.Rows.Count;
         }
 
         /// <summary>
