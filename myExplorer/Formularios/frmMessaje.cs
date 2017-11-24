@@ -12,7 +12,7 @@ using Entidades;
 using Entidades.Clases;
 using Controles;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmMessaje : Form
     {
@@ -196,7 +196,7 @@ namespace myExplorer.Formularios
 
         #endregion
 
-        // OK - 17/11/20
+        // OK - 17/11/23
         #region Metodos
 
         /// <summary>
@@ -241,10 +241,10 @@ namespace myExplorer.Formularios
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// OK 17/10/03
+        /// OK 17/11/23
         /// </summary>
         /// <param name="Source"></param>
-        private int GenerarGrilla(object Source)
+        private void GenerarGrilla(object Source)
         {
             //
             //Configuracion del DataListView
@@ -265,7 +265,6 @@ namespace myExplorer.Formularios
             dgvLista.Columns[1].Visible = false;
             dgvLista.Columns[dgvLista.ColumnCount - 1].Visible = false;
 #endif
-            return dgvLista.Rows.Count;
         }
 
         #endregion

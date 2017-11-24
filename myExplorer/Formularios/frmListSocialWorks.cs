@@ -11,7 +11,7 @@ using Entidades;
 using Entidades.Clases;
 using Controles;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmListSocialWorks : Form
     {
@@ -42,6 +42,7 @@ namespace myExplorer.Formularios
         {
             if (oQuery != null && oUtil != null)
             {
+                tsbPrint.Visible = false;
                 Text = oTxt.TitleSocialWorks;
                 SelectRow = 0;
                 tslPagina.Text = "Página: 0 de 0";
@@ -243,23 +244,5 @@ namespace myExplorer.Formularios
         }
 
         #endregion
-
-        int sC = 100;
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            classSocialWork  oWork = new classSocialWork();
-            oWork.IdLocationCountry = 1;
-            oWork.IdLocationProvince = 1;
-            oWork.IdLocationCity = 1;
-            oWork.IdIvaType = 1;
-
-            for (int C = sC; C < sC + 10; C++)
-            {
-                oWork.IdSocialWork = C + 100;
-                oWork.Name = "Insert" + C.ToString();
-                oQuery.AbmSocialWork(oWork, classQuery.eAbm.Insert);
-            }
-            sC = 10;
-        }
     }
 }

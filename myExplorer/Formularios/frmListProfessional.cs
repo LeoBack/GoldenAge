@@ -12,7 +12,7 @@ using Entidades;
 using Controles;
 using Reportes;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmListProfessional : Form
     {

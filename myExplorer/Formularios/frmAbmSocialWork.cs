@@ -13,7 +13,7 @@ using Datos.Query;
 using libLocalitation.Forms;
 using System.Text.RegularExpressions;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmAbmSocialWork : Form
     {

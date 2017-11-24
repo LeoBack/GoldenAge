@@ -12,7 +12,7 @@ using Entidades.Clases;
 using Controles;
 using libLocalitation.Forms;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmAbmProfessional : Form
     {

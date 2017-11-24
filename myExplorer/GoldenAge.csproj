@@ -8,8 +8,8 @@
     <ProjectGuid>{EAE42FB2-3942-4B8C-B097-E8B8AC1BA32A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>myExplorer</RootNamespace>
-    <AssemblyName>MyExplorer</AssemblyName>
+    <RootNamespace>GoldenAge</RootNamespace>
+    <AssemblyName>asmGoldenAge</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -58,11 +58,10 @@
     <CodeAnalysisRuleSet>BasicCorrectnessRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\DocumentsFolder.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>myExplorer.Program</StartupObject>
+    <StartupObject>GoldenAge.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>

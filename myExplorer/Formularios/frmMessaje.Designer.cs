@@ -1,4 +1,4 @@
-﻿namespace myExplorer.Formularios
+﻿namespace GoldenAge.Formularios
 {
     partial class frmMessaje
     {
@@ -80,7 +80,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripLabel1.Image = global::myExplorer.Properties.Resources.ArrowLeft;
+            this.toolStripLabel1.Image = global::GoldenAge.Properties.Resources.ArrowLeft;
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(24, 28);
             this.toolStripLabel1.Text = "tsbPreview";
@@ -95,7 +95,7 @@
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::myExplorer.Properties.Resources.ArrowRight;
+            this.toolStripButton1.Image = global::GoldenAge.Properties.Resources.ArrowRight;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(28, 28);
@@ -130,7 +130,7 @@
             // 
             // tsbSearch
             // 
-            this.tsbSearch.Image = global::myExplorer.Properties.Resources.Synchonize1;
+            this.tsbSearch.Image = global::GoldenAge.Properties.Resources.Synchonize1;
             this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSearch.Name = "tsbSearch";
             this.tsbSearch.Size = new System.Drawing.Size(108, 29);
@@ -139,7 +139,7 @@
             // 
             // tsbRead
             // 
-            this.tsbRead.Image = global::myExplorer.Properties.Resources.Email;
+            this.tsbRead.Image = global::GoldenAge.Properties.Resources.Email;
             this.tsbRead.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRead.Name = "tsbRead";
             this.tsbRead.Size = new System.Drawing.Size(193, 29);
@@ -148,7 +148,7 @@
             // 
             // tsbOpen
             // 
-            this.tsbOpen.Image = global::myExplorer.Properties.Resources.Clipboard;
+            this.tsbOpen.Image = global::GoldenAge.Properties.Resources.Clipboard;
             this.tsbOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOpen.Name = "tsbOpen";
             this.tsbOpen.Size = new System.Drawing.Size(79, 29);

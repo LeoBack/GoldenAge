@@ -10,7 +10,7 @@ using Controles;
 using Entidades.Clases;
 using Datos;
 
-namespace myExplorer.Formularios
+namespace GoldenAge.Formularios
 {
     public partial class frmLogin : Form
     {

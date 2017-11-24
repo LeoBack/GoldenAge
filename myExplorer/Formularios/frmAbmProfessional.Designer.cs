@@ -1,4 +1,4 @@
-﻿namespace myExplorer.Formularios
+﻿namespace GoldenAge.Formularios
 {
     partial class frmAbmProfessional
     {
