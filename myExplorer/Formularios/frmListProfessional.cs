@@ -222,7 +222,14 @@ namespace myExplorer.Formularios
 
                 dgvLista.Columns.Clear();
                 GenerarGrilla(oQuery.Table);
-                PintarBloqueados(Color.Gray);
+                if (dgvLista.RowCount != 0)
+                {
+                    tsbPrintList.Enabled = true;
+                    PintarBloqueados(Color.Gray);
+                }
+                else
+                    tsbPrintList.Enabled = false;
+
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
