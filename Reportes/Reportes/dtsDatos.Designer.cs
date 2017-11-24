@@ -2465,9 +2465,9 @@ namespace Reportes.Reportes {
             
             private global::System.Data.DataColumn columnFecha;
             
-            private global::System.Data.DataColumn columnDestinationSpeciality;
+            private global::System.Data.DataColumn columnIdDestinationSpeciality;
             
-            private global::System.Data.DataColumn columnDestinationProfessional;
+            private global::System.Data.DataColumn columnProfesional_Destino;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2544,17 +2544,17 @@ namespace Reportes.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DestinationSpecialityColumn {
+            public global::System.Data.DataColumn IdDestinationSpecialityColumn {
                 get {
-                    return this.columnDestinationSpeciality;
+                    return this.columnIdDestinationSpeciality;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DestinationProfessionalColumn {
+            public global::System.Data.DataColumn Profesional_DestinoColumn {
                 get {
-                    return this.columnDestinationProfessional;
+                    return this.columnProfesional_Destino;
                 }
             }
             
@@ -2595,7 +2595,7 @@ namespace Reportes.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DiagnosticRow AddDiagnosticRow(string IdDiagnostic, string Especialidad, string Profesional, string Detalle, string Fecha, string DestinationSpeciality, string DestinationProfessional) {
+            public DiagnosticRow AddDiagnosticRow(string IdDiagnostic, string Especialidad, string Profesional, string Detalle, string Fecha, string IdDestinationSpeciality, string Profesional_Destino) {
                 DiagnosticRow rowDiagnosticRow = ((DiagnosticRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdDiagnostic,
@@ -2603,8 +2603,8 @@ namespace Reportes.Reportes {
                         Profesional,
                         Detalle,
                         Fecha,
-                        DestinationSpeciality,
-                        DestinationProfessional};
+                        IdDestinationSpeciality,
+                        Profesional_Destino};
                 rowDiagnosticRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDiagnosticRow);
                 return rowDiagnosticRow;
@@ -2632,8 +2632,8 @@ namespace Reportes.Reportes {
                 this.columnProfesional = base.Columns["Profesional"];
                 this.columnDetalle = base.Columns["Detalle"];
                 this.columnFecha = base.Columns["Fecha"];
-                this.columnDestinationSpeciality = base.Columns["DestinationSpeciality"];
-                this.columnDestinationProfessional = base.Columns["DestinationProfessional"];
+                this.columnIdDestinationSpeciality = base.Columns["IdDestinationSpeciality"];
+                this.columnProfesional_Destino = base.Columns["Profesional Destino"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2649,10 +2649,10 @@ namespace Reportes.Reportes {
                 base.Columns.Add(this.columnDetalle);
                 this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha);
-                this.columnDestinationSpeciality = new global::System.Data.DataColumn("DestinationSpeciality", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDestinationSpeciality);
-                this.columnDestinationProfessional = new global::System.Data.DataColumn("DestinationProfessional", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDestinationProfessional);
+                this.columnIdDestinationSpeciality = new global::System.Data.DataColumn("IdDestinationSpeciality", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdDestinationSpeciality);
+                this.columnProfesional_Destino = new global::System.Data.DataColumn("Profesional Destino", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProfesional_Destino);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4087,35 +4087,34 @@ namespace Reportes.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DestinationSpeciality {
+            public string IdDestinationSpeciality {
                 get {
                     try {
-                        return ((string)(this[this.tableDiagnostic.DestinationSpecialityColumn]));
+                        return ((string)(this[this.tableDiagnostic.IdDestinationSpecialityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DestinationSpeciality\' de la tabla \'Diagnostic\' es DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdDestinationSpeciality\' de la tabla \'Diagnostic\' es DBNu" +
+                                "ll.", e);
                     }
                 }
                 set {
-                    this[this.tableDiagnostic.DestinationSpecialityColumn] = value;
+                    this[this.tableDiagnostic.IdDestinationSpecialityColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DestinationProfessional {
+            public string Profesional_Destino {
                 get {
                     try {
-                        return ((string)(this[this.tableDiagnostic.DestinationProfessionalColumn]));
+                        return ((string)(this[this.tableDiagnostic.Profesional_DestinoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DestinationProfessional\' de la tabla \'Diagnostic\' es DBNu" +
-                                "ll.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Profesional Destino\' de la tabla \'Diagnostic\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDiagnostic.DestinationProfessionalColumn] = value;
+                    this[this.tableDiagnostic.Profesional_DestinoColumn] = value;
                 }
             }
             
@@ -4181,26 +4180,26 @@ namespace Reportes.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDestinationSpecialityNull() {
-                return this.IsNull(this.tableDiagnostic.DestinationSpecialityColumn);
+            public bool IsIdDestinationSpecialityNull() {
+                return this.IsNull(this.tableDiagnostic.IdDestinationSpecialityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDestinationSpecialityNull() {
-                this[this.tableDiagnostic.DestinationSpecialityColumn] = global::System.Convert.DBNull;
+            public void SetIdDestinationSpecialityNull() {
+                this[this.tableDiagnostic.IdDestinationSpecialityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDestinationProfessionalNull() {
-                return this.IsNull(this.tableDiagnostic.DestinationProfessionalColumn);
+            public bool IsProfesional_DestinoNull() {
+                return this.IsNull(this.tableDiagnostic.Profesional_DestinoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDestinationProfessionalNull() {
-                this[this.tableDiagnostic.DestinationProfessionalColumn] = global::System.Convert.DBNull;
+            public void SetProfesional_DestinoNull() {
+                this[this.tableDiagnostic.Profesional_DestinoColumn] = global::System.Convert.DBNull;
             }
         }
         
