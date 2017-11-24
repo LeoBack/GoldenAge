@@ -2,5 +2,8 @@
     
     
     public partial class dtsDatos {
+        partial class DiagnosticDataTable
+        {
+        }
     }
 }
