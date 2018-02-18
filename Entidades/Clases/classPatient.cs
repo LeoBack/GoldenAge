@@ -8,6 +8,7 @@ namespace Entidades.Clases
     public class classPatient
     {
         #region Atributos y Metodos
+
         public int IdPatient { set; get; }
         public string Name { set; get; }
         public string LastName { set; get; }
@@ -20,12 +21,11 @@ namespace Entidades.Clases
         public int IdLocationCity { set; get; }
         public string Address { set; get; }
         public string Phone { set; get; }
-        public int IdSocialWork { set; get; }
-        public string AffiliateNumber { set; get; }
         public DateTime DateAdmission { set; get; }
         public DateTime EgressDate { set; get; }
         public string ReasonExit { set; get; }
         public bool Visible { set; get; }
+
         #endregion
 
         #region Constructores
@@ -44,8 +44,6 @@ namespace Entidades.Clases
             this.IdLocationCity = 0;
             this.Address = string.Empty;
             this.Phone = string.Empty;
-            this.IdSocialWork = 0;
-            this.AffiliateNumber = string.Empty;
             this.DateAdmission=DateTime.Now;
             this.EgressDate = DateTime.Now.AddDays(90);
             this.ReasonExit = string.Empty;
@@ -66,8 +64,6 @@ namespace Entidades.Clases
             this.IdLocationCity = 0;
             this.Address = string.Empty;
             this.Phone = string.Empty;
-            this.IdSocialWork = 0;
-            this.AffiliateNumber = string.Empty;
             this.DateAdmission = DateTime.Now;
             this.EgressDate = DateTime.Now.AddDays(90);
             this.ReasonExit = string.Empty;
@@ -76,9 +72,8 @@ namespace Entidades.Clases
 
         public classPatient(int vIdPatient, string vName, string vLastName, DateTime vBirthdate,
             int vIdTypeDocument, int vNumberDocument, bool vSex, int IdLocationCountry, 
-            int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, int vIdSocialWork, 
-            string vAffiliateNumber, DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, 
-            bool vVisible)
+            int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, 
+            DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, bool vVisible)
         {
             this.IdPatient = vIdPatient;
             this.Name = vName;
@@ -92,8 +87,6 @@ namespace Entidades.Clases
             this.IdLocationCity = IdLocationCity;
             this.Address = vAddress;
             this.Phone = vPhone;
-            this.IdSocialWork = vIdSocialWork;
-            this.AffiliateNumber = vAffiliateNumber;
             this.DateAdmission = vDateAdmission;
             this.EgressDate = vEgressDate;
             this.ReasonExit = vReasonExit;
@@ -103,6 +96,7 @@ namespace Entidades.Clases
         #endregion
 
         #region Methods
+
         public override string ToString()
         {
             return
@@ -116,8 +110,6 @@ namespace Entidades.Clases
                 "\nCiudad: " + this.IdLocationCity +
                 "\nDomicilio: " + this.Address +
                 "\nTelefono: " + this.Phone.ToString() +
-                "\nObra Social: " + this.IdSocialWork.ToString() +
-                "\nNumero de Afiliado: " + this.AffiliateNumber.ToString() +
                 "\nFecha de Ingreso: " +this.DateAdmission.ToShortDateString() +
                 "\nFecha de Egreso: " +this.EgressDate.ToShortDateString() +
                 "\nMotivo de Egreso: " +this.ReasonExit +

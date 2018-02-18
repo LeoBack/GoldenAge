@@ -28,7 +28,7 @@ namespace GoldenAge.Formularios
 
         #endregion
 
-        // OK - 17/11/23
+        // OK - 18/02/08
         #region Formulario
 
         // OK - 17/09/30
@@ -38,7 +38,7 @@ namespace GoldenAge.Formularios
             oTxt = new classTextos();
         }
 
-        // OK - 17/11/23
+        // OK - 18/02/08
         private void frmListPatient_Load(object sender, EventArgs e)
         {
             if (oQuery != null && oUtil != null)
@@ -48,10 +48,6 @@ namespace GoldenAge.Formularios
                 SelectRow = 0;
                 tslPagina.Text = "Página: 0 de 0";
                 tsbPrintList.Enabled = false;
-
-                libFeaturesComponents.fComboBox.classControlComboBoxes.LoadComboSearch(tscmbSocialWork.ComboBox,
-                    (bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb), 
-                    oQuery.Table);
             }
             else
                 Close();
@@ -139,7 +135,7 @@ namespace GoldenAge.Formularios
 
         #endregion
 
-        // OK - 17/11/16
+        // OK - 18/02/08
         #region Botones
 
         // OK - 17/09/30
@@ -173,17 +169,16 @@ namespace GoldenAge.Formularios
             }
         }
 
-        // OK - 17/11/09
+        // OK - 18/02/08
         private void tsbPrintList_Click(object sender, EventArgs e)
         {
             DataSet dS = new DataSet();
             classPatient oP = new classPatient();
             oP.LastName = tstxtLastName.Text;
             oP.Name = tstxtName.Text;
-            oP.AffiliateNumber = tstxtAffiliateNumber.Text == "" ? tstxtAffiliateNumber.Text:"";
-            oP.IdSocialWork = Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue);
+            oP.NumberDocument = tstxtDocument.Text == string.Empty ? 0 : Convert.ToInt32(tstxtDocument.Text);
 
-            if (oQuery.rpListPatient(oP.Name, oP.LastName, oP.AffiliateNumber, oP.IdSocialWork))
+            if (oQuery.rpListPatient(oP.Name, oP.LastName, oP.NumberDocument))
             {
                 dS.Tables.Add(oQuery.Table);
                 frmVisor fReport = new frmVisor(oUtil.GetPathReport(), frmVisor.Reporte.RpListPatient, dS);
@@ -193,15 +188,25 @@ namespace GoldenAge.Formularios
                 MessageBox.Show(oTxt.ErrorQueryList);
         }
 
-        // OK - 17/11/09
+        // OK - 18/02/08
         private void tsmiPrintSelect_Click(object sender, EventArgs e)
         {
+            bool isOk = true;
             DataSet dS = new DataSet();
             int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
 
-            if (oQuery.RpOnlyPatient(Id))
-            {
+            if (oQuery.RpSocialWork(Id))
                 dS.Tables.Add(oQuery.Table);
+            else
+                isOk = false;
+
+            if (oQuery.RpOnlyPatient(Id))
+                dS.Tables.Add(oQuery.Table);
+            else
+                isOk = false;
+
+            if (isOk)
+            {
                 frmVisor fReport = new frmVisor(oUtil.GetPathReport(), frmVisor.Reporte.RpOnlyPatient, dS);
                 fReport.Show();
             }
@@ -247,9 +252,9 @@ namespace GoldenAge.Formularios
 
         #endregion
 
-        // OK - 17/11/23
+        // OK - 18/02/08
         #region Metodos
-         
+
         // OK - 17/11/11
         private void Permission()
         {
@@ -269,20 +274,18 @@ namespace GoldenAge.Formularios
 
         /// <summary>
         /// Aplica Filtros de busqueda
-        /// OK - 17/11/23
+        /// OK - 18/02/08
         /// </summary>
         public void Filtrar(int vPag)
         {
-            String affNumber = tstxtAffiliateNumber.TextBox.Text != "" ? tstxtAffiliateNumber.TextBox.Text : "";
+            int affNumber = tstxtDocument.Text == string.Empty ? 0 : Convert.ToInt32(tstxtDocument.Text);
 
             if (oQuery.FilterLimitPatient(
                     tstxtName.TextBox.Text, tstxtLastName.TextBox.Text, affNumber,
-                    Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue),
                 vPag, oUtil.CantRegistrosGrilla))
             {
                 decimal Cont = oQuery.FilterLimitCountPatient(
-                    tstxtName.TextBox.Text,  tstxtLastName.TextBox.Text, affNumber,
-                    Convert.ToInt32(tscmbSocialWork.ComboBox.SelectedValue));
+                    tstxtName.TextBox.Text,  tstxtLastName.TextBox.Text, affNumber);
                 decimal Div = Math.Ceiling(Cont / oUtil.CantRegistrosGrilla);
                 cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
                 tslPagina.Text = "Página: " + Pag.ToString() + " de " + cantPag.ToString();

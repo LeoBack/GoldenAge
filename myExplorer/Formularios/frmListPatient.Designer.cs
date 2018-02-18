@@ -42,10 +42,6 @@
             this.tstxtLastName = new System.Windows.Forms.ToolStripTextBox();
             this.tslblName = new System.Windows.Forms.ToolStripLabel();
             this.tstxtName = new System.Windows.Forms.ToolStripTextBox();
-            this.tslblAffiliateNumber = new System.Windows.Forms.ToolStripLabel();
-            this.tstxtAffiliateNumber = new System.Windows.Forms.ToolStripTextBox();
-            this.tslblSocialWork = new System.Windows.Forms.ToolStripLabel();
-            this.tscmbSocialWork = new System.Windows.Forms.ToolStripComboBox();
             this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tssPrint = new System.Windows.Forms.ToolStripSeparator();
             this.tsbPrintList = new System.Windows.Forms.ToolStripButton();
@@ -60,6 +56,8 @@
             this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslDocument = new System.Windows.Forms.ToolStripLabel();
+            this.tstxtDocument = new System.Windows.Forms.ToolStripTextBox();
             this.tlpPanel.SuspendLayout();
             this.tsFooter.SuspendLayout();
             this.tsMenu.SuspendLayout();
@@ -134,17 +132,15 @@
             this.tstxtLastName,
             this.tslblName,
             this.tstxtName,
-            this.tslblAffiliateNumber,
-            this.tstxtAffiliateNumber,
-            this.tslblSocialWork,
-            this.tscmbSocialWork,
+            this.tslDocument,
+            this.tstxtDocument,
             this.tsbBuscar,
             this.tssPrint,
             this.tsbPrintList});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.tsMenu.Size = new System.Drawing.Size(1274, 33);
+            this.tsMenu.Size = new System.Drawing.Size(1274, 31);
             this.tsMenu.TabIndex = 0;
             this.tsMenu.Text = "Menu";
             // 
@@ -154,59 +150,36 @@
             this.tsbAdd.Image = global::GoldenAge.Properties.Resources.Plus;
             this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAdd.Name = "tsbAdd";
-            this.tsbAdd.Size = new System.Drawing.Size(28, 30);
+            this.tsbAdd.Size = new System.Drawing.Size(28, 28);
             this.tsbAdd.Text = "Agregar";
             this.tsbAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
             // tssAdd
             // 
             this.tssAdd.Name = "tssAdd";
-            this.tssAdd.Size = new System.Drawing.Size(6, 33);
+            this.tssAdd.Size = new System.Drawing.Size(6, 31);
             // 
             // tslblLastName
             // 
             this.tslblLastName.Name = "tslblLastName";
-            this.tslblLastName.Size = new System.Drawing.Size(78, 30);
+            this.tslblLastName.Size = new System.Drawing.Size(78, 28);
             this.tslblLastName.Text = "Apellido";
             // 
             // tstxtLastName
             // 
             this.tstxtLastName.Name = "tstxtLastName";
-            this.tstxtLastName.Size = new System.Drawing.Size(148, 33);
+            this.tstxtLastName.Size = new System.Drawing.Size(148, 31);
             // 
             // tslblName
             // 
             this.tslblName.Name = "tslblName";
-            this.tslblName.Size = new System.Drawing.Size(78, 30);
+            this.tslblName.Size = new System.Drawing.Size(78, 28);
             this.tslblName.Text = "Nombre";
             // 
             // tstxtName
             // 
             this.tstxtName.Name = "tstxtName";
-            this.tstxtName.Size = new System.Drawing.Size(100, 33);
-            // 
-            // tslblAffiliateNumber
-            // 
-            this.tslblAffiliateNumber.Name = "tslblAffiliateNumber";
-            this.tslblAffiliateNumber.Size = new System.Drawing.Size(98, 30);
-            this.tslblAffiliateNumber.Text = "N° Afiliado";
-            // 
-            // tstxtAffiliateNumber
-            // 
-            this.tstxtAffiliateNumber.Name = "tstxtAffiliateNumber";
-            this.tstxtAffiliateNumber.Size = new System.Drawing.Size(148, 33);
-            // 
-            // tslblSocialWork
-            // 
-            this.tslblSocialWork.Name = "tslblSocialWork";
-            this.tslblSocialWork.Size = new System.Drawing.Size(103, 30);
-            this.tslblSocialWork.Text = "Obra Social";
-            // 
-            // tscmbSocialWork
-            // 
-            this.tscmbSocialWork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tscmbSocialWork.Name = "tscmbSocialWork";
-            this.tscmbSocialWork.Size = new System.Drawing.Size(180, 33);
+            this.tstxtName.Size = new System.Drawing.Size(100, 31);
             // 
             // tsbBuscar
             // 
@@ -214,14 +187,14 @@
             this.tsbBuscar.Image = global::GoldenAge.Properties.Resources.Search;
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(28, 30);
+            this.tsbBuscar.Size = new System.Drawing.Size(28, 28);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.Click += new System.EventHandler(this.tsbSearch_Click);
             // 
             // tssPrint
             // 
             this.tssPrint.Name = "tssPrint";
-            this.tssPrint.Size = new System.Drawing.Size(6, 33);
+            this.tssPrint.Size = new System.Drawing.Size(6, 31);
             // 
             // tsbPrintList
             // 
@@ -229,7 +202,7 @@
             this.tsbPrintList.Image = global::GoldenAge.Properties.Resources.Printer;
             this.tsbPrintList.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrintList.Name = "tsbPrintList";
-            this.tsbPrintList.Size = new System.Drawing.Size(28, 30);
+            this.tsbPrintList.Size = new System.Drawing.Size(28, 28);
             this.tsbPrintList.Text = "Imprimir";
             this.tsbPrintList.Click += new System.EventHandler(this.tsbPrintList_Click);
             // 
@@ -326,6 +299,17 @@
             this.tsmiAdd.Text = "Agregar";
             this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
+            // tslDocument
+            // 
+            this.tslDocument.Name = "tslDocument";
+            this.tslDocument.Size = new System.Drawing.Size(132, 28);
+            this.tslDocument.Text = "Nº Documento";
+            // 
+            // tstxtDocument
+            // 
+            this.tstxtDocument.Name = "tstxtDocument";
+            this.tstxtDocument.Size = new System.Drawing.Size(100, 31);
+            // 
             // frmListPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -355,10 +339,6 @@
         private System.Windows.Forms.ToolStrip tsMenu;
         private System.Windows.Forms.ToolStripLabel tslblLastName;
         private System.Windows.Forms.ToolStripTextBox tstxtLastName;
-        private System.Windows.Forms.ToolStripLabel tslblAffiliateNumber;
-        private System.Windows.Forms.ToolStripComboBox tscmbSocialWork;
-        private System.Windows.Forms.ToolStripLabel tslblSocialWork;
-        private System.Windows.Forms.ToolStripTextBox tstxtAffiliateNumber;
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.ContextMenuStrip cmsMenuEmergente;
         private System.Windows.Forms.ToolStripMenuItem tsmiSelect;
@@ -381,5 +361,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiPrintSelect;
         private System.Windows.Forms.ToolStripMenuItem tsmiPrintParent;
         private System.Windows.Forms.ToolStripSeparator tssMenuAbm;
+        private System.Windows.Forms.ToolStripLabel tslDocument;
+        private System.Windows.Forms.ToolStripTextBox tstxtDocument;
     }
 }

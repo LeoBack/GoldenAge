@@ -84,7 +84,7 @@ namespace Datos.Query
         // CONSULTAS PARA CADA FUNCION
         //----------------------------------------------------------
 
-        // OK - 17/11/14
+        // OK - 18/02/07
         #region ABM
 
         // OK - 17/10/31
@@ -161,6 +161,106 @@ namespace Datos.Query
                         Menssage = oSql.Mensage;
                     oSql.Close();
                     Result = oDiagnosti;
+                    break;
+                case eAbm.Insert:
+                case eAbm.Update:
+                case eAbm.Delete:
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
+
+                    Result = UltimoId;
+                    break;
+                case eAbm.LoadCmb:
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
+                default:
+                    break;
+            }
+            return Result;
+        }
+
+        // OK - 18/02/07
+        public object AbmIvaType(classIvaType oP, eAbm Abm)
+        {
+            object Result = null;
+            string SPname = sp.AbmIvaType;
+            prIvaType pr = new prIvaType();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
+
+            switch (Abm)
+            {
+                case eAbm.SelectAll:
+                    List<classIvaType> lIvaType = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                    {
+                        lIvaType = new List<classIvaType>();
+                        while (oSql.Reader.Read())
+                        {
+                            try
+                            {
+                                lIvaType.Add(pr.ReadReader(oSql.Reader));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lIvaType = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lIvaType = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lIvaType = null;
+                            }
+                        }
+                    }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lIvaType;
+                    break;
+                case eAbm.Select:
+                    classIvaType oIvaTyp = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                    {
+                        if (oSql.Reader.Read())
+                        {
+                            try
+                            {
+                                oIvaTyp = pr.ReadReader(oSql.Reader);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oIvaTyp = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oIvaTyp = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oIvaTyp = null;
+                            }
+                        }
+                    }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oIvaTyp;
                     break;
                 case eAbm.Insert:
                 case eAbm.Update:
@@ -484,6 +584,106 @@ namespace Datos.Query
             return Result;
         }
 
+        // OK - 18/02/07
+        public object AbmPatientSocialWork(classPatientSocialWork oP, eAbm Abm)
+        {
+            object Result = null;
+            string SPname = sp.AbmPatientSocialWork;
+            prPatientSocialWork pr = new prPatientSocialWork();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
+
+            switch (Abm)
+            {
+                case eAbm.SelectAll:
+                    List<classPatientSocialWork> lPatientSocialWork = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                    {
+                        lPatientSocialWork = new List<classPatientSocialWork>();
+                        while (oSql.Reader.Read())
+                        {
+                            try
+                            {
+                                lPatientSocialWork.Add(pr.ReadReader(oSql.Reader));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatientSocialWork = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatientSocialWork = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatientSocialWork = null;
+                            }
+                        }
+                    }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lPatientSocialWork;
+                    break;
+                case eAbm.Select:
+                    classPatientSocialWork oPatientSocialWork = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                    {
+                        if (oSql.Reader.Read())
+                        {
+                            try
+                            {
+                                oPatientSocialWork = pr.ReadReader(oSql.Reader);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatientSocialWork = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatientSocialWork = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatientSocialWork = null;
+                            }
+                        }
+                    }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oPatientSocialWork;
+                    break;
+                case eAbm.Insert:
+                case eAbm.Update:
+                case eAbm.Delete:
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
+
+                    Result = UltimoId;
+                    break;
+                case eAbm.LoadCmb:
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
+                default:
+                    break;
+            }
+            return Result;
+        }
+
         // OK - 17/11/14
         public object AbmPermission(classPermission oP, eAbm Abm)
         {
@@ -631,7 +831,7 @@ namespace Datos.Query
                     break;
                 case eAbm.Select:
                     classProfessional oProfessiona = null;
-                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))                  
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
                         {
@@ -685,18 +885,13 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
+        // OK - 18/02/07
         public object AbmProfessionalSpeciality(classProfessionalSpeciality oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmProfessionalSpeciality;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@idProfessionalSpeciality", oP.IdProfessionalSpeciality));
-            lParam.Add(new SqlParameter("@IdProfessional", oP.IdProfessional));
-            lParam.Add(new SqlParameter("@IdSpeciality", oP.IdSpeciality));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prProfessionalSpeciality pr = new prProfessionalSpeciality();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -709,12 +904,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classProfessionalSpeciality oProfessionalSpeciality = new classProfessionalSpeciality(
-                                Convert.ToInt32(oSql.Reader["idProfessionalSpeciality"]),
-                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                Convert.ToInt32(oSql.Reader["IdSpeciality"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lProfessionalSpeciality.Add(oProfessionalSpeciality);
+                                lProfessionalSpeciality.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -747,11 +937,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                oProfessionalSpecialit = new classProfessionalSpeciality(
-                                Convert.ToInt32(oSql.Reader["idProfessionalSpeciality"]),
-                                Convert.ToInt32(oSql.Reader["IdProfessional"]),
-                                Convert.ToInt32(oSql.Reader["IdSpeciality"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oProfessionalSpecialit = pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
@@ -798,18 +984,14 @@ namespace Datos.Query
             }
             return Result;
         }
-
-        // OK - 17/10/03
+        
+        // OK - 18/02/07
         public object AbmRelationship(classRelationship oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmRelationship;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@idRelationship", oP.IdRelationship));
-            lParam.Add(new SqlParameter("@Description", oP.Description));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prRelationship pr = new prRelationship();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -822,11 +1004,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classRelationship oRelationship = new classRelationship(
-                                Convert.ToInt32(oSql.Reader["idRelationship"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lRelationship.Add(oRelationship);
+                                lRelationship.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -859,10 +1037,8 @@ namespace Datos.Query
                         {
                             try
                             {
-                                oRelationshi = new classRelationship(
-                                Convert.ToInt32(oSql.Reader["idRelationship"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oRelationshi = pr.ReadReader(oSql.Reader);
+
                             }
                             catch (FormatException ex)
                             {
@@ -1010,17 +1186,13 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
+        // OK - 18/02/07
         public object AbmSpeciality(classSpecialty oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmSpeciality;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@idSpecialty", oP.IdSpecialty));
-            lParam.Add(new SqlParameter("@Description", oP.Description));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prSpecialty pr = new prSpecialty();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -1033,11 +1205,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classSpecialty oSpecialty = new classSpecialty(
-                                Convert.ToInt32(oSql.Reader["idSpecialty"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lSpecialty.Add(oSpecialty);
+                                lSpecialty.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -1070,10 +1238,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                oSpecialt = new classSpecialty(
-                                Convert.ToInt32(oSql.Reader["idSpecialty"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oSpecialt = pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
@@ -1121,17 +1286,13 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
+        // OK - 18/02/07
         public object AbmTypeDocument(classTypeDocument oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmTypeDocument;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@idTypeDocument", oP.IdTypeDocument));
-            lParam.Add(new SqlParameter("@Description", oP.Description));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
+            prTypeDocument pr = new prTypeDocument();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
@@ -1144,11 +1305,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                classTypeDocument oTypeDocument = new classTypeDocument(
-                                Convert.ToInt32(oSql.Reader["idTypeDocument"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lTypeDocument.Add(oTypeDocument);
+                                lTypeDocument.Add(pr.ReadReader(oSql.Reader));
                             }
                             catch (FormatException ex)
                             {
@@ -1181,10 +1338,7 @@ namespace Datos.Query
                         {
                             try
                             {
-                                oTypeDocumen = new classTypeDocument(
-                                Convert.ToInt32(oSql.Reader["idTypeDocument"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
+                                oTypeDocumen = pr.ReadReader(oSql.Reader);
                             }
                             catch (FormatException ex)
                             {
@@ -1232,120 +1386,9 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/10/03
-        public object AbmIvaType(classIvaType oP, eAbm Abm)
-        {
-            object Result = null;
-            string SPname = sp.AbmIvaType;
-
-            List<SqlParameter> lParam = new List<SqlParameter>();
-            lParam.Add(new SqlParameter("@Abm", (int)Abm));
-            lParam.Add(new SqlParameter("@IdIvaType", oP.IdIvaType));
-            lParam.Add(new SqlParameter("@Description", oP.Description));
-            lParam.Add(new SqlParameter("@Visible", oP.Visible));
-
-            switch (Abm)
-            {
-                case eAbm.SelectAll:
-                    List<classIvaType> lIvaType = null;
-                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
-                    {
-                        lIvaType = new List<classIvaType>();
-                        while (oSql.Reader.Read())
-                        {
-                            try
-                            {
-                                classIvaType oIvaType = new classIvaType(
-                                Convert.ToInt32(oSql.Reader["IdIvaType"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                                lIvaType.Add(oIvaType);
-                            }
-                            catch (FormatException ex)
-                            {
-                                Menssage = ex.ToString();
-                                lIvaType = null;
-                            }
-                            catch (InvalidCastException ex)
-                            {
-                                Menssage = ex.ToString();
-                                lIvaType = null;
-                            }
-                            catch (OverflowException ex)
-                            {
-                                Menssage = ex.ToString();
-                                lIvaType = null;
-                            }
-                        }
-                    }
-                    else
-                        Menssage = oSql.Mensage;
-
-                    oSql.Close();
-                    Result = lIvaType;
-                    break;
-                case eAbm.Select:
-                    classIvaType oIvaTyp = null;
-                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
-                    {
-                        if (oSql.Reader.Read())
-                        {
-                            try
-                            {
-                                oIvaTyp = new classIvaType(
-                                Convert.ToInt32(oSql.Reader["IdIvaType"]),
-                                Convert.ToString(oSql.Reader["Description"]),
-                                Convert.ToBoolean(oSql.Reader["Visible"]));
-                            }
-                            catch (FormatException ex)
-                            {
-                                Menssage = ex.ToString();
-                                oIvaTyp = null;
-                            }
-                            catch (InvalidCastException ex)
-                            {
-                                Menssage = ex.ToString();
-                                oIvaTyp = null;
-                            }
-                            catch (OverflowException ex)
-                            {
-                                Menssage = ex.ToString();
-                                oIvaTyp = null;
-                            }
-                        }
-                    }
-                    else
-                        Menssage = oSql.Mensage;
-
-                    oSql.Close();
-                    Result = oIvaTyp;
-                    break;
-                case eAbm.Insert:
-                case eAbm.Update:
-                case eAbm.Delete:
-                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
-
-                    if (UltimoId == 0)
-                        Menssage = oSql.Mensage;
-
-                    Result = UltimoId;
-                    break;
-                case eAbm.LoadCmb:
-                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
-                    if (oSql.Table.Rows.Count != 0)
-                        Table = oSql.Table;
-                    else
-                        Table = null;
-                    break;
-                default:
-                    break;
-            }
-            return Result;
-        }
-
         #endregion
 
-        // OK - 17/11/20
+        // OK - 18/02/08
         # region Filtros
 
         /// <summary>
@@ -1412,20 +1455,19 @@ namespace Datos.Query
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 17/11/20
+        /// OK - 18/02/08
         /// </summary>
         /// <param name="oPersona"></param>
         /// <param name="Pag">Id Actual</param>
         /// <param name="RowsShow">Cantidad de filas a mostrar</param>
         /// <returns></returns>
-        public bool FilterLimitPatient(string Name, string LastName, string AffiliateNumber, int IdSocialWork, int Pag, int RowsShow)
+        public bool FilterLimitPatient(string Name, string LastName, int NumberDocument, int Pag, int RowsShow)
         {
             string SPname = sp.FiltroPatientLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Name", Name));
             lParam.Add(new SqlParameter("@LastName", LastName));
-            lParam.Add(new SqlParameter("@AffiliateNumber", AffiliateNumber));
-            lParam.Add(new SqlParameter("@IdSocialWork", IdSocialWork));
+            lParam.Add(new SqlParameter("@NumberDocument", NumberDocument));
             lParam.Add(new SqlParameter("@Pag", Pag));
             lParam.Add(new SqlParameter("@RowsShow", RowsShow));
 
@@ -1481,7 +1523,7 @@ namespace Datos.Query
 
         #endregion
 
-        // OK - 17/11/20
+        // OK - 18/02/08
         #region Contadores Filtros
 
         /// <summary>
@@ -1528,21 +1570,20 @@ namespace Datos.Query
 
         /// <summary>
         /// Filtra por coincidencia.
-        /// OK - 17/11/20
+        /// OK - 18/02/08
         /// </summary>
         /// <param name="Name">Propiedades del filtro</param>
         /// <param name="LastName"></param>
         /// <param name="AffiliateNumber">Propiedades del filtro</param>
         /// <param name="IdSocialWork">Propiedades del filtro</param>
         /// <returns></returns>
-        public int FilterLimitCountPatient(string Name, string LastName, string AffiliateNumber, int IdSocialWork)
+        public int FilterLimitCountPatient(string Name, string LastName, int NumberDocument)
         {
             string SPname = sp.CountPatientLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Name", Name));
             lParam.Add(new SqlParameter("@LastName", LastName));
-            lParam.Add(new SqlParameter("@AffiliateNumber", AffiliateNumber));
-            lParam.Add(new SqlParameter("@IdSocialWork", IdSocialWork));
+            lParam.Add(new SqlParameter("@NumberDocument", NumberDocument));
 
             int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
 
@@ -1580,7 +1621,7 @@ namespace Datos.Query
 
         #endregion
 
-        // OK - 17/11/09
+        // OK - 18/02/08
         #region Reportes
 
         /// <summary>
@@ -1690,7 +1731,7 @@ namespace Datos.Query
         }
 
         /// <summary>
-        /// OK - 17/11/09
+        /// OK - 18/02/08
         /// Todos los paciente segun filtro.
         /// </summary>
         /// <param name="Nombre"></param>
@@ -1698,14 +1739,13 @@ namespace Datos.Query
         /// <param name="N Afiliado"></param>
         /// <param name="IdObraSocial"></param>
         /// <returns>DataTable</returns>
-        public bool rpListPatient(string Name, string LastName, string AffiliateNumber, int IdSocialWork)
+        public bool rpListPatient(string Name, string LastName, int NumberDocument)
         {
             string SPname = sp.RpListPatient;
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Name", Name));
             lParam.Add(new SqlParameter("@LastName", LastName));
-            lParam.Add(new SqlParameter("@AffiliateNumber", AffiliateNumber));
-            lParam.Add(new SqlParameter("@IdSocialWork", IdSocialWork));
+            lParam.Add(new SqlParameter("@NumberDocument", NumberDocument));
 
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
@@ -1790,6 +1830,32 @@ namespace Datos.Query
             if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
             {
                 Table = new DataTable("ProfessionalSpeciality");
+                oSql.Adapter.Fill(Table);
+                oSql.Close();
+                return true;
+            }
+            else
+            {
+                oSql.Close();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// OK - 18/02/08
+        /// Obras Sociales del paciente seleccionado.
+        /// </summary>
+        /// <param name="IdPaciente"></param>
+        /// <returns>DataTable</returns>
+        public bool RpSocialWork(int IdPatient)
+        {
+            string SPname = sp.RpSocialWork;
+            List<SqlParameter> lParam = new List<SqlParameter>();
+            lParam.Add(new SqlParameter("@Id", IdPatient));
+
+            if (oSql.SelectAdapterDB(SPname, lParam.ToArray()))
+            {
+                Table = new DataTable("SocialWork");
                 oSql.Adapter.Fill(Table);
                 oSql.Close();
                 return true;

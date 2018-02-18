@@ -27,8 +27,6 @@ namespace Entidades.ParametersReaders
             lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
             lParam.Add(new SqlParameter("@Address", oP.Address));
             lParam.Add(new SqlParameter("@Phone", oP.Phone));
-            lParam.Add(new SqlParameter("@IdSocialWork", oP.IdSocialWork));
-            lParam.Add(new SqlParameter("@AffiliateNumber", oP.AffiliateNumber));
             lParam.Add(new SqlParameter("@DateAdmission", oP.DateAdmission));
             lParam.Add(new SqlParameter("@EgressDate", oP.EgressDate));
             lParam.Add(new SqlParameter("@ReasonExit", oP.ReasonExit));
@@ -52,8 +50,6 @@ namespace Entidades.ParametersReaders
             Convert.ToInt32(oReader["IdLocationCity"]),
             Convert.ToString(oReader["Address"]),
             Convert.ToString(oReader["Phone"]),
-            Convert.ToInt32(oReader["IdSocialWork"]),
-            Convert.ToString(oReader["AffiliateNumber"]),
             oReader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oReader["DateAdmission"].ToString()) : DateTime.MinValue,
             oReader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oReader["EgressDate"].ToString()) : DateTime.MinValue,
             Convert.ToString(oReader["ReasonExit"]),

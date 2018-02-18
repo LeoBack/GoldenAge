@@ -74,7 +74,8 @@ namespace Entidades.Clases
         #endregion
 
         #region Metodos
-        public string toString()
+
+        public override string ToString()
         {
             return
             "Id: " + this.IdSocialWork.ToString() +

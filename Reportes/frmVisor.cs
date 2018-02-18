@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 //
 using Reportes.Reportes;
+using System.IO;
 
 namespace Reportes
 {
@@ -22,7 +23,7 @@ namespace Reportes
             RpPatientParent = 3, 
             RpListPatient = 4, 
             RpListProfessional = 5, 
-            RpOnlyProfessional = 6 
+            RpOnlyProfessional = 6
         }
 
         private DataSet dS;
@@ -43,61 +44,59 @@ namespace Reportes
 
         private void frmVisor_Load(object sender, EventArgs e)
         {
-            if (dS.Tables.Count != 0)
-            {
-                switch(eReporte)
-                {
-                    case Reporte.RpDiagnostic:
-                        crDiagnostic Diagnostic = new crDiagnostic();
-                        Diagnostic.Load(PathReport);
-                        Diagnostic.SetDataSource(dS);
-                        crVisor.ReportSource = Diagnostic;
-                        break;
-                    case Reporte.RpClinicHistory:
-                        crClinicHistory ClinicHistory = new crClinicHistory();
-                        ClinicHistory.Load(PathReport);
-                        ClinicHistory .SetDataSource(dS);
-                        crVisor.ReportSource = ClinicHistory;
-                        break;
-                    case  Reporte.RpOnlyPatient:
-                        crOnlyPatient OnlyPatient = new crOnlyPatient();
-                        OnlyPatient.Load(PathReport);
-                        OnlyPatient.SetDataSource(dS);
-                        crVisor.ReportSource = OnlyPatient;
-                        break;
-                    case  Reporte.RpPatientParent:
-                        crPatientParent PatientParent = new crPatientParent();
-                        PatientParent.Load(PathReport);
-                        PatientParent.SetDataSource(dS);
-                        crVisor.ReportSource = PatientParent;
-                        break;
-                    case  Reporte.RpListPatient:
-                        crListPatient ListPatient = new crListPatient();
-                        ListPatient.Load(PathReport);
-                        ListPatient.SetDataSource(dS);
-                        crVisor.ReportSource = ListPatient;
-                        break;
-                    case  Reporte.RpOnlyProfessional:
-                        crOnlyProfessional OnlyProfessional = new crOnlyProfessional();
-                        OnlyProfessional.Load(PathReport);
-                        OnlyProfessional.SetDataSource(dS);
-                        crVisor.ReportSource = OnlyProfessional;
-                        break;                    
-                    case  Reporte.RpListProfessional:
-                        crListProfessional ListProfessional = new crListProfessional();
-                        ListProfessional.Load(PathReport);
-                        ListProfessional.SetDataSource(dS);
-                        crVisor.ReportSource = ListProfessional;
-                        break;
-                    default:
-                        MessageBox.Show("Reporte no Existe");
-                        break;
-                }
-            }
-            else
+            if (dS == null || dS.Tables.Count == 0)
             {
                 MessageBox.Show("No se encontraron registros", "Atencion");
                 this.Close();
+            }
+
+            switch (eReporte)
+            {
+                case Reporte.RpDiagnostic:
+                    crDiagnostic Diagnostic = new crDiagnostic();
+                    Diagnostic.Load(Path.Combine(PathReport, "crDiagnostic.rpt"));
+                    Diagnostic.SetDataSource(dS);
+                    crVisor.ReportSource = Diagnostic;
+                    break;
+                case Reporte.RpClinicHistory:
+                    crClinicHistory ClinicHistory = new crClinicHistory();
+                    ClinicHistory.Load(Path.Combine(PathReport, "crClinicHistory.rpt"));
+                    ClinicHistory.SetDataSource(dS);
+                    crVisor.ReportSource = ClinicHistory;
+                    break;
+                case Reporte.RpOnlyPatient:
+                    crOnlyPatient OnlyPatient = new crOnlyPatient();
+                    OnlyPatient.Load(Path.Combine(PathReport, "crOnlyPatient.rpt"));
+                    OnlyPatient.SetDataSource(dS);
+                    crVisor.ReportSource = OnlyPatient;
+                    break;
+                case Reporte.RpPatientParent:
+                    crPatientParent PatientParent = new crPatientParent();
+                    PatientParent.Load(Path.Combine(PathReport, "crPatientParent.rpt"));
+                    PatientParent.SetDataSource(dS);
+                    crVisor.ReportSource = PatientParent;
+                    break;
+                case Reporte.RpListPatient:
+                    crListPatient ListPatient = new crListPatient();
+                    ListPatient.Load(Path.Combine(PathReport, "crListPatient.rpt"));
+                    ListPatient.SetDataSource(dS);
+                    crVisor.ReportSource = ListPatient;
+                    break;
+                case Reporte.RpOnlyProfessional:
+                    crOnlyProfessional OnlyProfessional = new crOnlyProfessional();
+                    OnlyProfessional.Load(Path.Combine(PathReport, "crOnlyProfessional.rpt"));
+                    OnlyProfessional.SetDataSource(dS);
+                    crVisor.ReportSource = OnlyProfessional;
+                    break;
+                case Reporte.RpListProfessional:
+                    crListProfessional ListProfessional = new crListProfessional();
+                    ListProfessional.Load(Path.Combine(PathReport, "crListProfessional.rpt"));
+                    ListProfessional.SetDataSource(dS);
+                    crVisor.ReportSource = ListProfessional;
+                    break;
+                default:
+                    MessageBox.Show("Reporte no Existe");
+                    break;
             }
         }
 

@@ -41,6 +41,7 @@
     <Compile Include="Clases\classDiagnostic.cs" />
     <Compile Include="Clases\classIvaType.cs" />
     <Compile Include="Clases\classPatientParent.cs" />
+    <Compile Include="Clases\classPatientSocialWork.cs" />
     <Compile Include="Clases\classSocialWork.cs" />
     <Compile Include="Clases\classPermission.cs" />
     <Compile Include="Clases\classTypeDocument.cs" />
@@ -52,11 +53,17 @@
     <Compile Include="classUtiles.cs" />
     <Compile Include="Clases\classParent.cs" />
     <Compile Include="ParametersReaders\prDiagnostic.cs" />
+    <Compile Include="ParametersReaders\prTypeDocument.cs" />
+    <Compile Include="ParametersReaders\prProfessionalSpeciality.cs" />
+    <Compile Include="ParametersReaders\prRelationship.cs" />
+    <Compile Include="ParametersReaders\prSpecialty.cs" />
     <Compile Include="ParametersReaders\prPermission.cs" />
     <Compile Include="ParametersReaders\prParent.cs" />
     <Compile Include="ParametersReaders\prPatientParent.cs" />
     <Compile Include="ParametersReaders\prPatient.cs" />
     <Compile Include="ParametersReaders\prProfessional.cs" />
+    <Compile Include="ParametersReaders\prPatientSocialWork.cs" />
+    <Compile Include="ParametersReaders\prIvaType.cs" />
     <Compile Include="ParametersReaders\prSocialWorks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
