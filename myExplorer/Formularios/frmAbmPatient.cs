@@ -344,8 +344,8 @@ namespace GoldenAge.Formularios
 
             if (eModo == Modo.Add)
             {
-                if (MessageBox.Show("Es necesario guardar el paciente actual antes de continuar con la carga de parientes.\n¿Guardar paciente actual?"
-                    , "Atencion", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (MessageBox.Show("Es necesario guardar el paciente actual antes de continuar.\n¿Guardar paciente actual?"
+                    , "Atencion", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     Ok = Save();
                     eModo = (Ok == true) ? Modo.Update : Modo.Add;
@@ -696,6 +696,20 @@ namespace GoldenAge.Formularios
             IdPatientSocialWorkSelected = -1;
             txtAffiliateNumber.Text = string.Empty;
             cmbSocialWork.SelectedIndex = -1;
+
+            bool Ok = false;
+
+            if (eModo == Modo.Add)
+            {
+                if (MessageBox.Show("Es necesario guardar el paciente actual antes de continuar.\n¿Guardar paciente actual?"
+                    , "Atencion", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Ok = Save();
+                    eModo = (Ok == true) ? Modo.Update : Modo.Add;
+                }
+            }
+
+            btnSocialWorkApply.Enabled = Ok;
         }
 
         // OK - 18/03/02
@@ -864,6 +878,8 @@ namespace GoldenAge.Formularios
                 dtViewPatientSocialWork.Rows.Add(new object[] { iPw.IdPatientSocialWork, iPw.AffiliateNumber, iPw.IdSocialWork });
                 dtTempPatientSocialWork.Rows.Add(new object[] { 2, iPw.IdPatientSocialWork, iPw.AffiliateNumber, iPw.IdSocialWork });
             }
+
+            btnSocialWorkApply.Enabled = (dtViewPatientSocialWork.Rows.Count != 0);
             GenerarGrillaPatientSocialWork();
         }
 
