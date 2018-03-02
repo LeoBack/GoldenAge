@@ -8,10 +8,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("GoldenAge")]
 [assembly: AssemblyDescription("Gestions de Pacientes, Diagnosticos y Historias Clinicas")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MACLAB")]
+[assembly: AssemblyCompany("MACLAB Software dedicados")]
 [assembly: AssemblyProduct("GoldenAge")]
-[assembly: AssemblyCopyright("Copyright 2017©")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Back Leonardo, Carreras Marcos - 2018©")]
+[assembly: AssemblyTrademark("MACLAB")]
 [assembly: AssemblyCulture("")]
 
 // Si establece ComVisible como false, los tipos de este ensamblado no estarán visibles 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Puede especificar todos los valores o establecer como predeterminados los números de versión de compilación y de revisión 
 // mediante el asterisco ('*'), como se muestra a continuación:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.*")]
-[assembly: AssemblyFileVersion("1.0.0.*")]
+[assembly: AssemblyVersion("2.0.0.*")]
+[assembly: AssemblyFileVersion("2.0.0.0")]

@@ -40,9 +40,10 @@ namespace GoldenAge.Formularios
         private int IdCityParent;
         private List<classParent> lParent = null;
         private int Next = 0;
-        private DataTable dtPatientSocialWork;
-        private DataTable dtSocialWorks;
-        private int IdPatientSocialWork;
+        private DataTable dtViewPatientSocialWork;
+        private DataTable dtTempPatientSocialWork;
+        private DataTable dtQuerySocialWorks;
+        private int IdPatientSocialWorkSelected;
         private int IdAddSocialWorks = 0;
 
         #endregion
@@ -684,60 +685,124 @@ namespace GoldenAge.Formularios
 
         #endregion
 
-        // OK - 18/02/08
+        // OK - 18/03/02
         #region Metodos SocialWork
+        
+        // -1 Insert | 0 Delete | +1 Update
 
-        // OK - 18/02/07
+        // OK - 18/03/02
         private void BtnSocialWorkAdd_Click(object sender, EventArgs e)
         {
-            IdPatientSocialWork = 0;
+            IdPatientSocialWorkSelected = -1;
             txtAffiliateNumber.Text = string.Empty;
             cmbSocialWork.SelectedIndex = -1;
         }
 
-        // OK - 18/02/07
+        // OK - 18/03/02
         private void TsmiSocialWorkDelete_Click(object sender, EventArgs e)
         {
-            // Lo borra de la DataTable
-            DataRow rDelete = dtPatientSocialWork.NewRow();
-            foreach (DataRow dtR in dtPatientSocialWork.Rows)
+            // Lo borra de la Tabla Vista
+            DataRow rDelete = dtViewPatientSocialWork.NewRow();
+            foreach (DataRow dRv in dtViewPatientSocialWork.Rows)
             {
-                if (Convert.ToInt32(dtR[0]) == IdPatientSocialWork)
-                    rDelete = dtR;
+                if (Convert.ToInt32(dRv[0]) == IdPatientSocialWorkSelected)
+                    rDelete = dRv;
             }
-            dtPatientSocialWork.Rows.Remove(rDelete);
+            dtViewPatientSocialWork.Rows.Remove(rDelete);
 
-            if (IdPatientSocialWork > 0)
+            // Actualiza la Tabla Temporal con la fila al Id 0 para eliminar
+            foreach (DataRow dRt in dtTempPatientSocialWork.Rows)
             {
-                if (0 == (int)oQuery.AbmPatientSocialWork(new classPatientSocialWork(IdPatientSocialWork), classQuery.eAbm.Delete))
-                    MessageBox.Show("Error elete SocialWork");
-                else
-                    MessageBox.Show("Delete SocialWork");
+                if(Convert.ToInt32(dRt[1]) == IdPatientSocialWorkSelected)
+                    dRt[0] = 0;
             }
 
             GenerarGrillaPatientSocialWork();
         }
 
-        // OK - 18/02/07
+        // OK - 18/03/02
+        // btnApply -> Confirma todo los cambios
+        // -1 Insert | 0 Delete | +1 Update
         private void BtnSocialWorkApply_Click(object sender, EventArgs e)
         {
             if (ValidateFieldsSocialWorks())
             {
-                if (IdPatientSocialWork == 0)
-                    dtPatientSocialWork.Rows.Add(new object[] { --IdAddSocialWorks,
-                        txtAffiliateNumber.Text, Convert.ToInt32(cmbSocialWork.SelectedValue) });
+                // Agrega
+                if (IdPatientSocialWorkSelected == -1)
+                {
+                    dtViewPatientSocialWork.Rows.Add(new object[] { IdPatientSocialWorkSelected, txtAffiliateNumber.Text, Convert.ToInt32(cmbSocialWork.SelectedValue) });
+                    dtTempPatientSocialWork.Rows.Add(new object[] { -1, IdPatientSocialWorkSelected, txtAffiliateNumber.Text, Convert.ToInt32(cmbSocialWork.SelectedValue) });
+                }
+                // Elimina
+                else if (IdPatientSocialWorkSelected == 0)
+                {
+                    // Ver evento SaveSocialWork. 
+                }
+                // Actualiza
                 else
                 {
-                    foreach (DataRow dtR in dtPatientSocialWork.Rows)
+                    foreach (DataRow dtR in dtViewPatientSocialWork.Rows)
                     {
-                        if (Convert.ToInt32(dtR[0]) == IdPatientSocialWork)
+                        if (Convert.ToInt32(dtR[0]) == IdPatientSocialWorkSelected)
                         {
                             dtR[1] = txtAffiliateNumber.Text;
                             dtR[2] = Convert.ToInt32(cmbSocialWork.SelectedValue);
                         }
                     }
+                    foreach (DataRow dtR in dtTempPatientSocialWork.Rows)
+                    {
+                        if (Convert.ToInt32(dtR[1]) == IdPatientSocialWorkSelected)
+                        {
+                            dtR[0] = 1;
+                            dtR[2] = txtAffiliateNumber.Text;
+                            dtR[3] = Convert.ToInt32(cmbSocialWork.SelectedValue);
+                        }
+                    }
                 }
                 GenerarGrillaPatientSocialWork();
+            }
+        }
+
+        /// <summary>
+        /// ABM SocialWork.
+        /// OK - 18/02/08
+        /// -1 Insert | 0 Delete | +1 Update
+        /// </summary>
+        /// <returns>True:Exito False:Error</returns>
+        private void SaveSocialWork(int IdPatient)
+        {
+            string Error;
+            foreach (DataRow dR in dtTempPatientSocialWork.Rows)
+            {
+                Error = null;
+                classPatientSocialWork oSw = new classPatientSocialWork();
+                oSw.IdPatientSocialWork = Convert.ToInt32(dR[1]);
+                oSw.IdPatient = IdPatient;
+                oSw.AffiliateNumber = Convert.ToString(dR[2]);
+                oSw.IdSocialWork = Convert.ToInt32(dR[3]);
+
+                if (Convert.ToInt32(dR[0]) == -1)
+                {
+                    if (0 == (int)oQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Insert))
+                        Error = oTxt.ErrorQueryAdd;
+                }
+                else if (Convert.ToInt32(dR[0]) == 0)
+                {
+                    if (0 == (int)oQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Delete))
+                        Error = oTxt.ErrorQueryDelete;
+                }
+                else if (Convert.ToInt32(dR[0]) == 1)
+                {
+                    if (0 == (int)oQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Update))
+                        Error = oTxt.ErrorQueryUpdate;
+                }
+                else
+                {
+                    // Nada. Lo deja como esta.
+                }
+
+                if(Error != null)
+                    MessageBox.Show("No se pudo realizar la accion.\nN Afiliado " + oSw.AffiliateNumber , Error);
             }
         }
 
@@ -750,57 +815,38 @@ namespace GoldenAge.Formularios
                 Select = e.RowIndex >= 0 ? e.RowIndex : Select;
                 Select = dgvParentList.RowCount == 1 ? 0 : Select;
 
-                IdPatientSocialWork = Convert.ToInt32(dgvSocialWorksList.Rows[Select].Cells[0].Value);
+                IdPatientSocialWorkSelected = Convert.ToInt32(dgvSocialWorksList.Rows[Select].Cells[0].Value);
                 txtAffiliateNumber.Text = Convert.ToString(dgvSocialWorksList.Rows[Select].Cells[1].Value);
                 classControlComboBoxes.IndexCombos(cmbSocialWork, Convert.ToInt32(dgvSocialWorksList.Rows[Select].Cells[2].Value));
             }
         }
 
         /// <summary>
-        /// ABM SocialWork.
-        /// OK - 18/02/08
-        /// </summary>
-        /// <returns>True:Exito False:Error</returns>
-        private bool SaveSocialWork(int IdPatient)
-        {
-            bool Error = false;
-            foreach (DataRow dtR in dtPatientSocialWork.Rows)
-            {
-                if (Convert.ToInt32(dtR[0]) < 0)
-                {
-                    classPatientSocialWork oSw = new classPatientSocialWork();
-                    oSw.IdPatient = IdPatient;
-                    oSw.AffiliateNumber = Convert.ToString(dtR[1]);
-                    oSw.IdSocialWork = Convert.ToInt32(dtR[2]);
-                    if (0 == (int)oQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Insert))
-                        Error = true;
-                }
-            }
-            if (Error)
-                MessageBox.Show(oTxt.ErrorQueryAdd);
-            return Error;
-        }
-
-        /// <summary>
         /// Inicializa campos de Obra Social.
-        /// OK - 18/02/07
+        /// OK - 18/03/02
         /// </summary>
         private void InitSocialWork()
         {
-            dtPatientSocialWork = new DataTable("PatientSocialWork");
-            dtPatientSocialWork.Columns.Add(new DataColumn("IdPatientSocialWork", typeof(Int32)));
-            dtPatientSocialWork.Columns.Add(new DataColumn("AffiliateNumber", typeof(string)));
-            dtPatientSocialWork.Columns.Add(new DataColumn("IdSocialWork", typeof(Int32)));
+            dtViewPatientSocialWork = new DataTable("ViewPatientSocialWork");
+            dtViewPatientSocialWork.Columns.Add(new DataColumn("IdPatientSocialWork", typeof(Int32)));
+            dtViewPatientSocialWork.Columns.Add(new DataColumn("AffiliateNumber", typeof(string)));
+            dtViewPatientSocialWork.Columns.Add(new DataColumn("IdSocialWork", typeof(Int32)));
 
-            dtSocialWorks = new DataTable();
+            dtTempPatientSocialWork = new DataTable("TempPatientSocialWork");
+            dtTempPatientSocialWork.Columns.Add(new DataColumn("Abm", typeof(Int32)));
+            dtTempPatientSocialWork.Columns.Add(new DataColumn("IdPatientSocialWork", typeof(Int32)));
+            dtTempPatientSocialWork.Columns.Add(new DataColumn("AffiliateNumber", typeof(string)));
+            dtTempPatientSocialWork.Columns.Add(new DataColumn("IdSocialWork", typeof(Int32)));
+
+            dtQuerySocialWorks = new DataTable();
             if ((bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb))
-                dtSocialWorks = oQuery.Table;
-            classControlComboBoxes.LoadCombo(cmbSocialWork, dtSocialWorks != null, dtSocialWorks);
+                dtQuerySocialWorks = oQuery.Table;
+            classControlComboBoxes.LoadCombo(cmbSocialWork, dtQuerySocialWorks != null, dtQuerySocialWorks);
         }
 
         /// <summary>
         /// Inicializa componente Obre Social.
-        /// OK - 18/02/07
+        /// OK - 18/03/02
         /// </summary>
         private void LoadPatientSocialWork()
         {
@@ -814,8 +860,10 @@ namespace GoldenAge.Formularios
 
             // Recorro todos los Patient-SocialWork para cargar la Tabla
             foreach (classPatientSocialWork iPw in lPw)
-                dtPatientSocialWork.Rows.Add(new object[] { iPw.IdPatientSocialWork, iPw.AffiliateNumber, iPw.IdSocialWork });
-
+            {
+                dtViewPatientSocialWork.Rows.Add(new object[] { iPw.IdPatientSocialWork, iPw.AffiliateNumber, iPw.IdSocialWork });
+                dtTempPatientSocialWork.Rows.Add(new object[] { 2, iPw.IdPatientSocialWork, iPw.AffiliateNumber, iPw.IdSocialWork });
+            }
             GenerarGrillaPatientSocialWork();
         }
 
@@ -830,12 +878,12 @@ namespace GoldenAge.Formularios
             // Cargo la Grilla
             DataGridViewTextBoxColumn colId = new DataGridViewTextBoxColumn();
             colId.Name = "IdDataTable";
-            colId.DataPropertyName = dtPatientSocialWork.Columns[0].ColumnName;
+            colId.DataPropertyName = dtViewPatientSocialWork.Columns[0].ColumnName;
             dgvSocialWorksList.Columns.Add(colId);
             //
             DataGridViewTextBoxColumn colNumber = new DataGridViewTextBoxColumn();
             colNumber.Name = "Numero";
-            colNumber.DataPropertyName = dtPatientSocialWork.Columns[1].ColumnName;
+            colNumber.DataPropertyName = dtViewPatientSocialWork.Columns[1].ColumnName;
             dgvSocialWorksList.Columns.Add(colNumber);
             //
             DataGridViewComboBoxColumn colSocialWork = new DataGridViewComboBoxColumn();
@@ -843,8 +891,8 @@ namespace GoldenAge.Formularios
             colSocialWork.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
             colSocialWork.ValueMember = "Id";
             colSocialWork.DisplayMember = "Value";
-            colSocialWork.DataSource = dtSocialWorks;
-            colSocialWork.DataPropertyName = dtPatientSocialWork.Columns[2].ColumnName;
+            colSocialWork.DataSource = dtQuerySocialWorks;
+            colSocialWork.DataPropertyName = dtViewPatientSocialWork.Columns[2].ColumnName;
             dgvSocialWorksList.Columns.Add(colSocialWork);
             //
             //Configuracion del DataListView
@@ -859,7 +907,7 @@ namespace GoldenAge.Formularios
             dgvSocialWorksList.ContextMenuStrip = cmsSocialWork;
             dgvSocialWorksList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvSocialWorksList.MultiSelect = false;
-            dgvSocialWorksList.DataSource = dtPatientSocialWork;
+            dgvSocialWorksList.DataSource = dtViewPatientSocialWork;
 #if (!DEBUG)
             dgvSocialWorksList.Columns[0].Visible = false;
             //dgvSocialWorksList.Columns[1].Visible = false;
