@@ -233,6 +233,16 @@ namespace GoldenAge.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Padlock2 {
+            get {
+                object obj = ResourceManager.GetObject("Padlock2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Para_Personas_mini {
             get {
                 object obj = ResourceManager.GetObject("Para_Personas_mini", resourceCulture);

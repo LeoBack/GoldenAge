@@ -27,9 +27,9 @@ namespace GoldenAge.Formularios
         public enum Modo { Add, Select, Update, Delete }
         public Modo eModo { set; get; }
         public Modo eModoParent { set; get; }
-        public classQuery oQuery { set; get; }
-        public classUtiles oUtil { set; get; }
-        private classTextos oTxt;
+        public classQuery ObjetQuery { set; get; }
+        public classUtiles ObjetUtil { set; get; }
+        private classTextos ObjetTxt;
         private bool Enable = true;
         private int SelectRow;
         private int IdCountry;
@@ -44,7 +44,6 @@ namespace GoldenAge.Formularios
         private DataTable dtTempPatientSocialWork;
         private DataTable dtQuerySocialWorks;
         private int IdPatientSocialWorkSelected;
-        private int IdAddSocialWorks = 0;
 
         #endregion
 
@@ -55,26 +54,30 @@ namespace GoldenAge.Formularios
         public frmAbmPatient()
         {
             InitializeComponent();
-            oTxt = new classTextos();
+            ObjetTxt = new classTextos();
         }
 
         // OK - 18/02/07
         private void frmAbmPatient_Load(object sender, EventArgs e)
         {
-            if (oQuery != null)
+            if (ObjetQuery != null)
             {
-                Text = oTxt.TitleFichaPatient;
+                Text = ObjetTxt.TitleFichaPatient;
+                Permission();
+                // Patient
                 initTypeDocumentPatient();
+                EnablePatient(eModo != Modo.Select);
+                // Parent
                 InitTypeDocumentParent();
                 InitParentRelationship();
                 InitParentList();
-                InitSocialWork();
-                Permission();
-                EnablePatient(eModo != Modo.Select);
-                EnableSocialWork(eModo != Modo.Select);
                 EnableParent(false);
-                btnParentNew.Enabled = eModo != Modo.Select;
+                btnParentNew.Enabled = (eModo != Modo.Select);
                 lblSearchParent.Text = string.Empty;
+                // SocialWork
+                InitSocialWork();
+                EnableSocialWork(false);
+                btnSocialWorkNew.Enabled = (eModo != Modo.Select);
 
                 if (eModo == Modo.Add)
                     oPatient = new classPatient();
@@ -91,9 +94,9 @@ namespace GoldenAge.Formularios
         // OK - 17/10/10
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (oUtil.oProfessional.IdPermission == 1)
+            if (ObjetUtil.oProfessional.IdPermission == 1)
             {
-                Save();
+                SavePatient();
                 Close();
             }
         }
@@ -103,9 +106,9 @@ namespace GoldenAge.Formularios
         /// OK - 18/02/07
         /// </summary>
         /// <returns>True:Exito False:Error</returns>
-        private bool Save()
+        private bool SavePatient()
         {
-            int IdQuery = 0;
+            int IdQueryStatus = 0;
             if (ValidateFieldsPatient())
             {
                 LoadObjectPatient();
@@ -113,40 +116,62 @@ namespace GoldenAge.Formularios
                 switch (eModo)
                 {
                     case Modo.Add:
-                        IdQuery = (int)oQuery.AbmPatient(oPatient, classQuery.eAbm.Insert);
-                        if (0 != IdQuery)
+                        IdQueryStatus = (int)ObjetQuery.AbmPatient(oPatient, classQuery.eAbm.Insert);
+                        if (0 != IdQueryStatus)
                         {
-                            oPatient.IdPatient = IdQuery;
-                            SaveSocialWork(IdQuery);
-                            MessageBox.Show(oTxt.AddPatient);
+                            oPatient.IdPatient = IdQueryStatus;
+                            SaveSocialWork(IdQueryStatus);
+                            MessageBox.Show(ObjetTxt.AddPatient);
                         }
                         else
-                            MessageBox.Show(oTxt.ErrorQueryAdd);
+                            MessageBox.Show(ObjetTxt.ErrorQueryAdd);
                         break;
 
                     case Modo.Update:
-                        IdQuery = (int)oQuery.AbmPatient(oPatient, classQuery.eAbm.Update);
-                        if (0 != IdQuery)
+                        IdQueryStatus = (int)ObjetQuery.AbmPatient(oPatient, classQuery.eAbm.Update);
+                        if (0 != IdQueryStatus)
                         {
-                            SaveSocialWork(IdQuery);
-                            MessageBox.Show(oTxt.UpdatePatient);
+                            SaveSocialWork(IdQueryStatus);
+                            MessageBox.Show(ObjetTxt.UpdatePatient);
                         }
                         else
-                            MessageBox.Show(oTxt.ErrorQueryUpdate);
+                            MessageBox.Show(ObjetTxt.ErrorQueryUpdate);
                         break;
 
                     case Modo.Select:
-                        IdQuery = 1;
+                        IdQueryStatus = 1;
                         break;
                     default:
-                        MessageBox.Show(oTxt.AccionIndefinida);
+                        MessageBox.Show(ObjetTxt.AccionIndefinida);
                         break;
                 }
-                if (IdQuery == 0)
-                    MessageBox.Show(oQuery.Menssage);
+                if (IdQueryStatus == 0)
+                    MessageBox.Show(ObjetQuery.Menssage);
             }
 
-            return (IdQuery != 0);
+            return (IdQueryStatus != 0);
+        }
+
+        /// <summary>
+        /// Mensaje previo para agregar pariete o obrasocial cuando el paciente es nuevo.
+        /// OK - 18/03/06
+        /// </summary>
+        /// <returns>True: Ok | False: Error</returns>
+        private bool PreviousMessageToSave()
+        {
+            bool Ok = true;
+            if (eModo == Modo.Add)
+            {
+                if (MessageBox.Show("Es necesario guardar el paciente actual antes de continuar.\n¿Guardar paciente actual?"
+                , "Atencion", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Ok = SavePatient();
+                    eModo = (Ok == true) ? Modo.Update : Modo.Add;
+                }
+                else
+                    Ok = false;
+            }
+            return Ok;
         }
 
         #endregion
@@ -159,15 +184,15 @@ namespace GoldenAge.Formularios
         {
             if (oPatient != null)
             {
-                Enable = btnPatientBlocked.Text == oTxt.Bloquear ? false : true;
-                btnPatientBlocked.Text = btnPatientBlocked.Text == oTxt.Bloquear ? oTxt.Desbloquear : oTxt.Bloquear;
+                Enable = btnPatientBlocked.Text == ObjetTxt.Bloquear ? false : true;
+                btnPatientBlocked.Text = btnPatientBlocked.Text == ObjetTxt.Bloquear ? ObjetTxt.Desbloquear : ObjetTxt.Bloquear;
             }
         }
 
         // OK - 17/09/30
         private void btnPatientLocalitation_Click(object sender, EventArgs e)
         {
-            frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
+            frmLocation fLocalitation = new frmLocation(ObjetQuery.ConexionString, frmLocation.eLocation.Select);
             if (DialogResult.OK == fLocalitation.ShowDialog())
             {
                 txtLocationPatient.Text = fLocalitation.toStringLocation();
@@ -184,8 +209,8 @@ namespace GoldenAge.Formularios
         private void initTypeDocumentPatient()
         {
             libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocumentPatient,
-            (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
-            oQuery.Table);
+            (bool)ObjetQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
+            ObjetQuery.Table);
         }
 
         /// <summary>
@@ -236,12 +261,12 @@ namespace GoldenAge.Formularios
             txtYearOld.Text = Convert.ToString(oPatient.YearsOld());
 
             txtLocationPatient.Text = frmLocation.toStringLocation(
-                oQuery.ConexionString, IdCountry, IdProvince, IdCity);
+                ObjetQuery.ConexionString, IdCountry, IdProvince, IdCity);
 
             if (Enable)
-                btnPatientBlocked.Text = oTxt.Bloquear;
+                btnPatientBlocked.Text = ObjetTxt.Bloquear;
             else
-                btnPatientBlocked.Text = oTxt.Desbloquear;
+                btnPatientBlocked.Text = ObjetTxt.Desbloquear;
         }
 
         /// <summary>
@@ -298,7 +323,7 @@ namespace GoldenAge.Formularios
         // OK - 17/09/30
         private void BtnParentLocalitation_Click(object sender, EventArgs e)
         {
-            frmLocation fLocalitation = new frmLocation(oQuery.ConexionString, frmLocation.eLocation.Select);
+            frmLocation fLocalitation = new frmLocation(ObjetQuery.ConexionString, frmLocation.eLocation.Select);
             if (DialogResult.OK == fLocalitation.ShowDialog())
             {
                 txtLocationParent.Text = fLocalitation.toStringLocation();
@@ -318,7 +343,7 @@ namespace GoldenAge.Formularios
                     classParent oP = new classParent();
                     oP.IdTypeDocument = Convert.ToInt32(cmbTypeDocumentParent.SelectedValue);
                     oP.NumberDocument = Convert.ToInt32(txtParentNumberDocument.Text);
-                    lParent = oQuery.AbmParent(oP, classQuery.eAbm.SelectAll) as List<classParent>;
+                    lParent = ObjetQuery.AbmParent(oP, classQuery.eAbm.SelectAll) as List<classParent>;
                 }
             }
 
@@ -340,21 +365,7 @@ namespace GoldenAge.Formularios
         // OK - 17/10/08
         private void BtnParentNew_Click(object sender, EventArgs e)
         {
-            bool Ok = true;
-
-            if (eModo == Modo.Add)
-            {
-                if (MessageBox.Show("Es necesario guardar el paciente actual antes de continuar.\n¿Guardar paciente actual?"
-                    , "Atencion", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    Ok = Save();
-                    eModo = (Ok == true) ? Modo.Update : Modo.Add;
-                }
-                else
-                    Ok = false;
-            }
-
-            if (Ok)
+            if (PreviousMessageToSave())
             {
                 eModoParent = Modo.Add;
                 oParent = new classParent();
@@ -377,14 +388,14 @@ namespace GoldenAge.Formularios
                 classPatientParent oPp = new classPatientParent(
                     Convert.ToInt32(dgvParentList.Rows[SelectRow].Cells[0].Value));
 
-                if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Delete))
+                if (0 != (int)ObjetQuery.AbmPatientParent(oPp, classQuery.eAbm.Delete))
                 {
-                    MessageBox.Show(oTxt.DeleteParent);
+                    MessageBox.Show(ObjetTxt.DeleteParent);
                     CleanParent();
                     InitParentList();
                 }
                 else
-                    MessageBox.Show(oTxt.ErrorQueryDelete);
+                    MessageBox.Show(ObjetTxt.ErrorQueryDelete);
             }
         }
 
@@ -396,7 +407,7 @@ namespace GoldenAge.Formularios
                 SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow;
                 SelectRow = dgvParentList.RowCount == 1 ? 0 : SelectRow;
 
-                oParent = oQuery.AbmParent(new classParent(
+                oParent = ObjetQuery.AbmParent(new classParent(
                     Convert.ToInt32(dgvParentList.Rows[SelectRow].Cells[1].Value)),
                     classQuery.eAbm.Select) as classParent;
 
@@ -436,7 +447,7 @@ namespace GoldenAge.Formularios
         /// <returns>True:Exito False:Error</returns>
         private bool SaveParent()
         {
-            int IdQuery = 0;
+            int IdQueryStatus = 0;
             if (ValidateFieldsParent())
             {
                 LoadObjectParent();
@@ -444,22 +455,22 @@ namespace GoldenAge.Formularios
                 switch (eModoParent)
                 {
                     case Modo.Add:
-                        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Insert);
-                        if (0 != IdQuery)
+                        IdQueryStatus = (int)ObjetQuery.AbmParent(oParent, classQuery.eAbm.Insert);
+                        if (0 != IdQueryStatus)
                         {
-                            classPatientParent oPp = new classPatientParent(0, oPatient.IdPatient, IdQuery, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
-                            if (0 != (int)oQuery.AbmPatientParent(oPp, classQuery.eAbm.Insert))
+                            classPatientParent oPp = new classPatientParent(0, oPatient.IdPatient, IdQueryStatus, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
+                            if (0 != (int)ObjetQuery.AbmPatientParent(oPp, classQuery.eAbm.Insert))
                             {
-                                MessageBox.Show(oTxt.AddParent);
+                                MessageBox.Show(ObjetTxt.AddParent);
                                 InitParentList();
                             }
                         }
                         else
-                            MessageBox.Show(oTxt.ErrorQueryAdd);
+                            MessageBox.Show(ObjetTxt.ErrorQueryAdd);
                         break;
                     case Modo.Update:
-                        IdQuery = (int)oQuery.AbmParent(oParent, classQuery.eAbm.Update);
-                        if (0 != IdQuery)
+                        IdQueryStatus = (int)ObjetQuery.AbmParent(oParent, classQuery.eAbm.Update);
+                        if (0 != IdQueryStatus)
                         {
                             classPatientParent oPp = null;
                             classQuery.eAbm Accion = classQuery.eAbm.Update;
@@ -467,38 +478,38 @@ namespace GoldenAge.Formularios
                             foreach (classPatientParent iPp in lPatienParent)
                             {
                                 if ((iPp.IdParent == oParent.IdParent) & (iPp.IdPatient == oPatient.IdPatient))
-                                    oPp = new classPatientParent(iPp.IdPatientParent, oPatient.IdPatient, IdQuery, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
+                                    oPp = new classPatientParent(iPp.IdPatientParent, oPatient.IdPatient, IdQueryStatus, Convert.ToInt32(cmbParentRelationship.SelectedValue), true);
                             }
 
                             if (oPp == null)
                             {
                                 oPp = new classPatientParent();
                                 oPp.IdPatient = oPatient.IdPatient;
-                                oPp.IdParent = IdQuery;
+                                oPp.IdParent = IdQueryStatus;
                                 oPp.IdRelationship = Convert.ToInt32(cmbParentRelationship.SelectedValue);
                                 Accion = classQuery.eAbm.Insert;
                             }
 
-                            if (0 != (int)oQuery.AbmPatientParent(oPp, Accion))
+                            if (0 != (int)ObjetQuery.AbmPatientParent(oPp, Accion))
                             {
-                                MessageBox.Show(oPp != null ? oTxt.UpdateParent : oTxt.AddParent);
+                                MessageBox.Show(oPp != null ? ObjetTxt.UpdateParent : ObjetTxt.AddParent);
                                 InitParentList();
                             }
                         }
                         else
-                            MessageBox.Show(oTxt.ErrorQueryUpdate);
+                            MessageBox.Show(ObjetTxt.ErrorQueryUpdate);
                         break;
                     case Modo.Delete:
                         break;
                     default:
-                        MessageBox.Show(oTxt.AccionIndefinida);
+                        MessageBox.Show(ObjetTxt.AccionIndefinida);
                         break;
                 }
 
-                if (IdQuery == 0)
-                    MessageBox.Show(oQuery.Menssage);
+                if (IdQueryStatus == 0)
+                    MessageBox.Show(ObjetQuery.Menssage);
             }
-            return (IdQuery != 0);
+            return (IdQueryStatus != 0);
         }
 
         /// <summary>
@@ -508,8 +519,8 @@ namespace GoldenAge.Formularios
         private void InitTypeDocumentParent()
         {
             libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocumentParent,
-            (bool)oQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
-            oQuery.Table);
+            (bool)ObjetQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
+            ObjetQuery.Table);
         }
 
         /// <summary>
@@ -539,7 +550,7 @@ namespace GoldenAge.Formularios
                 classPatientParent oPp = new classPatientParent();
                 oPp.IdPatient = oPatient.IdPatient;
 
-                lPatienParent = oQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<classPatientParent>;
+                lPatienParent = ObjetQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<classPatientParent>;
 
                 DataTable dT = new DataTable("AbmPatientParent");
                 dT.Columns.Add("IdPatientParent", typeof(Int32));
@@ -548,8 +559,8 @@ namespace GoldenAge.Formularios
                 dT.Columns.Add("Nombre", typeof(string));
                 foreach (classPatientParent iPp in lPatienParent)
                 {
-                    classParent oP = oQuery.AbmParent(new classParent(iPp.IdParent), classQuery.eAbm.Select) as classParent;
-                    classRelationship oR = oQuery.AbmRelationship(new classRelationship(iPp.IdRelationship), classQuery.eAbm.Select) as classRelationship;
+                    classParent oP = ObjetQuery.AbmParent(new classParent(iPp.IdParent), classQuery.eAbm.Select) as classParent;
+                    classRelationship oR = ObjetQuery.AbmRelationship(new classRelationship(iPp.IdRelationship), classQuery.eAbm.Select) as classRelationship;
                     dT.Rows.Add(new object[] { iPp.IdPatientParent, oP.IdParent, oR.Description, oP.LastName + ", " + oP.Name });
                 }
                 GenerarGrillaParent(dT);
@@ -591,8 +602,8 @@ namespace GoldenAge.Formularios
         private void InitParentRelationship()
         {
             libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbParentRelationship,
-            (bool)oQuery.AbmRelationship(new classRelationship(), classQuery.eAbm.LoadCmb),
-            oQuery.Table);
+            (bool)ObjetQuery.AbmRelationship(new classRelationship(), classQuery.eAbm.LoadCmb),
+            ObjetQuery.Table);
         }
 
         /// <summary>
@@ -633,7 +644,7 @@ namespace GoldenAge.Formularios
             txtParentEmail.Text = oParent.Email.ToUpper();
 
             txtLocationParent.Text = frmLocation.toStringLocation(
-                oQuery.ConexionString, IdCountryParent, IdProvinceParent, IdCityParent);
+                ObjetQuery.ConexionString, IdCountryParent, IdProvinceParent, IdCityParent);
 
             foreach (classPatientParent iPp in lPatienParent)
             {
@@ -687,29 +698,15 @@ namespace GoldenAge.Formularios
 
         // OK - 18/03/02
         #region Metodos SocialWork
-        
-        // -1 Insert | 0 Delete | +1 Update
 
         // OK - 18/03/02
         private void BtnSocialWorkAdd_Click(object sender, EventArgs e)
         {
-            IdPatientSocialWorkSelected = -1;
-            txtAffiliateNumber.Text = string.Empty;
-            cmbSocialWork.SelectedIndex = -1;
-
-            bool Ok = false;
-
-            if (eModo == Modo.Add)
+            if (PreviousMessageToSave())
             {
-                if (MessageBox.Show("Es necesario guardar el paciente actual antes de continuar.\n¿Guardar paciente actual?"
-                    , "Atencion", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    Ok = Save();
-                    eModo = (Ok == true) ? Modo.Update : Modo.Add;
-                }
+                CleanSocialWork();
+                EnableSocialWork(true);
             }
-
-            btnSocialWorkApply.Enabled = Ok;
         }
 
         // OK - 18/03/02
@@ -778,11 +775,11 @@ namespace GoldenAge.Formularios
         }
 
         /// <summary>
-        /// ABM SocialWork.
+        /// Actualiza en BD -> SocialWork.
         /// OK - 18/02/08
         /// -1 Insert | 0 Delete | +1 Update
         /// </summary>
-        /// <returns>True:Exito False:Error</returns>
+        /// <returns>True: Exito | False: Error</returns>
         private void SaveSocialWork(int IdPatient)
         {
             string Error;
@@ -797,18 +794,18 @@ namespace GoldenAge.Formularios
 
                 if (Convert.ToInt32(dR[0]) == -1)
                 {
-                    if (0 == (int)oQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Insert))
-                        Error = oTxt.ErrorQueryAdd;
+                    if (0 == (int)ObjetQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Insert))
+                        Error = ObjetTxt.ErrorQueryAdd;
                 }
                 else if (Convert.ToInt32(dR[0]) == 0)
                 {
-                    if (0 == (int)oQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Delete))
-                        Error = oTxt.ErrorQueryDelete;
+                    if (0 == (int)ObjetQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Delete))
+                        Error = ObjetTxt.ErrorQueryDelete;
                 }
                 else if (Convert.ToInt32(dR[0]) == 1)
                 {
-                    if (0 == (int)oQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Update))
-                        Error = oTxt.ErrorQueryUpdate;
+                    if (0 == (int)ObjetQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Update))
+                        Error = ObjetTxt.ErrorQueryUpdate;
                 }
                 else
                 {
@@ -836,6 +833,17 @@ namespace GoldenAge.Formularios
         }
 
         /// <summary>
+        /// Limpia formulario.
+        /// OK - 18/03/06
+        /// </summary>
+        private void CleanSocialWork()
+        {
+            IdPatientSocialWorkSelected = -1;
+            txtAffiliateNumber.Text = string.Empty;
+            cmbSocialWork.SelectedIndex = -1;
+        }
+
+        /// <summary>
         /// Inicializa campos de Obra Social.
         /// OK - 18/03/02
         /// </summary>
@@ -853,8 +861,8 @@ namespace GoldenAge.Formularios
             dtTempPatientSocialWork.Columns.Add(new DataColumn("IdSocialWork", typeof(Int32)));
 
             dtQuerySocialWorks = new DataTable();
-            if ((bool)oQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb))
-                dtQuerySocialWorks = oQuery.Table;
+            if ((bool)ObjetQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb))
+                dtQuerySocialWorks = ObjetQuery.Table;
             classControlComboBoxes.LoadCombo(cmbSocialWork, dtQuerySocialWorks != null, dtQuerySocialWorks);
         }
 
@@ -870,7 +878,7 @@ namespace GoldenAge.Formularios
 
             // Trar todo los Patient-SocialWork relacionados al Patient
             List<classPatientSocialWork> lPw =
-                oQuery.AbmPatientSocialWork(oPw, classQuery.eAbm.SelectAll) as List<classPatientSocialWork>;
+                ObjetQuery.AbmPatientSocialWork(oPw, classQuery.eAbm.SelectAll) as List<classPatientSocialWork>;
 
             // Recorro todos los Patient-SocialWork para cargar la Tabla
             foreach (classPatientSocialWork iPw in lPw)
@@ -879,7 +887,6 @@ namespace GoldenAge.Formularios
                 dtTempPatientSocialWork.Rows.Add(new object[] { 2, iPw.IdPatientSocialWork, iPw.AffiliateNumber, iPw.IdSocialWork });
             }
 
-            btnSocialWorkApply.Enabled = (dtViewPatientSocialWork.Rows.Count != 0);
             GenerarGrillaPatientSocialWork();
         }
 
@@ -963,6 +970,8 @@ namespace GoldenAge.Formularios
                 if (!(C is Label))
                     C.Enabled = X;
             }
+            tsmiSocialWorkDelete.Enabled = X;
+            dgvSocialWorksList.Enabled = true;
         }
 
         #endregion
@@ -975,7 +984,7 @@ namespace GoldenAge.Formularios
         /// </summary>
         private void Permission()
         {
-            bool isAdmin = (oUtil.oProfessional.IdPermission == 1);
+            bool isAdmin = (ObjetUtil.oProfessional.IdPermission == 1);
             tsmiParentDelete.Visible = isAdmin;
             btnPatientBlocked.Visible = isAdmin;
             btnParentNew.Visible = isAdmin;
@@ -984,6 +993,8 @@ namespace GoldenAge.Formularios
             btnPatientLocalitation.Visible = isAdmin;
             btnParentLocalitation.Visible = isAdmin;
             cmsParent.Visible = isAdmin;
+            btnSocialWorkNew.Visible = isAdmin;
+            btnSocialWorkApply.Visible = isAdmin;
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)

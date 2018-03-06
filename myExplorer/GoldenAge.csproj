@@ -271,6 +271,7 @@
     <None Include="Resources\Email1.png" />
     <Content Include="Resources\hombre-negro-de-un-usuario-icono-7176-48.png" />
     <None Include="Resources\Para_Personas_mini.png" />
+    <None Include="Resources\Padlock2.png" />
     <Content Include="Resources\Search.ico" />
     <None Include="Resources\UploadDatabase.png" />
   </ItemGroup>

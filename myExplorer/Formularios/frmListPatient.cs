@@ -25,6 +25,8 @@ namespace GoldenAge.Formularios
         private int SelectRow;
         private int cantPag = 0;
         private int Pag = 1;
+        //
+        private bool PatientLocked = false;
 
         #endregion
 
@@ -87,8 +89,8 @@ namespace GoldenAge.Formularios
                 if (oGf != null)
                 {
                     frmAbmPatient frmA = new frmAbmPatient();
-                    frmA.oQuery = oQuery;
-                    frmA.oUtil = oUtil;
+                    frmA.ObjetQuery = oQuery;
+                    frmA.ObjetUtil = oUtil;
                     frmA.oPatient = oGf;
                     frmA.eModo = frmAbmPatient.Modo.Update;
                     frmA.ShowDialog();
@@ -102,8 +104,8 @@ namespace GoldenAge.Formularios
         private void tsmiAdd_Click(object sender, EventArgs e)
         {
             frmAbmPatient frmA = new frmAbmPatient();
-            frmA.oQuery = oQuery;
-            frmA.oUtil = oUtil;
+            frmA.ObjetQuery = oQuery;
+            frmA.ObjetUtil = oUtil;
             frmA.eModo = frmAbmPatient.Modo.Add;
             frmA.ShowDialog();
         }
@@ -149,9 +151,9 @@ namespace GoldenAge.Formularios
 
                 frmAbmPatient frmPatient = new frmAbmPatient();
                 frmPatient.eModo = frmAbmPatient.Modo.Select;
-                frmPatient.oQuery = oQuery;
+                frmPatient.ObjetQuery = oQuery;
                 frmPatient.oPatient = oGf;
-                frmPatient.oUtil = oUtil;
+                frmPatient.ObjetUtil = oUtil;
                 frmPatient.ShowDialog();
             }
         }
@@ -353,5 +355,21 @@ namespace GoldenAge.Formularios
         }
 
         #endregion
+
+        private void tsbPatientLoked_Click(object sender, EventArgs e)
+        {
+            PatientLocked = !PatientLocked;
+
+            if (PatientLocked)
+            {
+                tsbPatientLoked.Text = "Ver Activos";
+                tsbPatientLoked.BackColor = SystemColors.ControlDark;
+            }
+            else
+            {
+                tsbPatientLoked.Text = "Ver Bloqueados";
+                tsbPatientLoked.BackColor = SystemColors.Control;
+            }
+        }
     }
 }
