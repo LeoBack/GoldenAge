@@ -78,6 +78,8 @@ namespace GoldenAge.Formularios
                 InitSocialWork();
                 EnableSocialWork(false);
                 btnSocialWorkNew.Enabled = (eModo != Modo.Select);
+                // State
+                EnableState(eModo != Modo.Select);
 
                 if (eModo == Modo.Add)
                     oPatient = new classPatient();
@@ -230,10 +232,12 @@ namespace GoldenAge.Formularios
             oPatient.IdLocationCity = IdCity;
             oPatient.Address = txtAddress.Text.ToUpper();
             oPatient.Phone = txtPhone.Text;
-            oPatient.DateAdmission = dtpDateAdmission.Value;
-            oPatient.EgressDate = dtpEgressDate.Value;
-            oPatient.ReasonExit = txtReasonExit.Text.ToUpper();
             oPatient.Visible = Enable;
+
+
+            oPatient.DateAdmission = dtpDate.Value;
+            oPatient.EgressDate = DateTime.Now;
+            oPatient.ReasonExit = txtReason.Text.ToUpper();
         }
 
         /// <summary>
@@ -254,9 +258,6 @@ namespace GoldenAge.Formularios
             IdCity = oPatient.IdLocationCity;
             txtAddress.Text = oPatient.Address.ToUpper();
             txtPhone.Text = oPatient.Phone;
-            dtpDateAdmission.Value = oPatient.DateAdmission;
-            dtpEgressDate.Value = oPatient.EgressDate;
-            txtReasonExit.Text = oPatient.ReasonExit.ToUpper();
             Enable = oPatient.Visible;
             txtYearOld.Text = Convert.ToString(oPatient.YearsOld());
 
@@ -267,6 +268,10 @@ namespace GoldenAge.Formularios
                 btnPatientBlocked.Text = ObjetTxt.Bloquear;
             else
                 btnPatientBlocked.Text = ObjetTxt.Desbloquear;
+
+            dtpDate.Value = oPatient.DateAdmission;
+            //dtpEgressDate.Value = oPatient.EgressDate;
+            txtReason.Text = oPatient.ReasonExit.ToUpper();
         }
 
         /// <summary>
@@ -289,7 +294,7 @@ namespace GoldenAge.Formularios
                 MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
             else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
                 MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
-            else if (txtReasonExit.Text.Length >= 50)
+            else if (txtReason.Text.Length >= 50)
                 MessageBox.Show("El Motivo de Alta Debe tener como minimo 8 caracteres.");
             else if (cmbTypeDocumentPatient.SelectedIndex == -1)
                 MessageBox.Show("Tipo Docuemento Invalido.");
@@ -308,7 +313,7 @@ namespace GoldenAge.Formularios
         /// <param name="X">True: Habilitado - False:Inhabilitado</param>
         private void EnablePatient(bool X)
         {
-            foreach (Control C in this.tlpPanlData.Controls)
+            foreach (Control C in this.tlpDataPersonal.Controls)
             {
                 if (!(C is Label))
                     C.Enabled = X;
@@ -974,6 +979,25 @@ namespace GoldenAge.Formularios
             }
             tsmiSocialWorkDelete.Enabled = X;
             dgvSocialWorksList.Enabled = true;
+        }
+
+        #endregion
+
+        // EN CONSTRUCCION
+        #region State
+
+        /// <summary>
+        /// Habilita TabFicha
+        /// OK - 18/03/07
+        /// </summary>
+        /// <param name="X">True: Habilitado - False:Inhabilitado</param>
+        private void EnableState(bool X)
+        {
+            foreach (Control C in this.tlpStatus.Controls)
+            {
+                if (!(C is Label))
+                    C.Enabled = X;
+            }
         }
 
         #endregion
