@@ -887,6 +887,8 @@ namespace GoldenAge.Formularios
                 dtTempPatientSocialWork.Rows.Add(new object[] { 2, iPw.IdPatientSocialWork, iPw.AffiliateNumber, iPw.IdSocialWork });
             }
 
+            tsmiSocialWorkDelete.Enabled = dtViewPatientSocialWork.Rows.Count != 0;
+
             GenerarGrillaPatientSocialWork();
         }
 

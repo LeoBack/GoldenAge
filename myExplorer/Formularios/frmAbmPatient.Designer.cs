@@ -159,6 +159,7 @@
             this.tabCarpeta.Controls.Add(this.tabData);
             this.tabCarpeta.Controls.Add(this.tbpResponsables);
             this.tabCarpeta.Controls.Add(this.tbpSocialWorks);
+            this.tabCarpeta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabCarpeta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCarpeta.Location = new System.Drawing.Point(4, 5);
             this.tabCarpeta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -925,20 +926,21 @@
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
-            this.tlpSocialWork.Controls.Add(this.dgvSocialWorksList, 0, 0);
-            this.tlpSocialWork.Controls.Add(this.cmbSocialWork, 2, 1);
-            this.tlpSocialWork.Controls.Add(this.txtAffiliateNumber, 2, 2);
-            this.tlpSocialWork.Controls.Add(this.lblSocialWork, 1, 1);
-            this.tlpSocialWork.Controls.Add(this.lblAffiliateNumber, 1, 2);
-            this.tlpSocialWork.Controls.Add(this.btnSocialWorkApply, 3, 4);
-            this.tlpSocialWork.Controls.Add(this.btnSocialWorkNew, 3, 3);
+            this.tlpSocialWork.Controls.Add(this.dgvSocialWorksList, 0, 1);
+            this.tlpSocialWork.Controls.Add(this.cmbSocialWork, 2, 2);
+            this.tlpSocialWork.Controls.Add(this.txtAffiliateNumber, 2, 3);
+            this.tlpSocialWork.Controls.Add(this.lblSocialWork, 1, 2);
+            this.tlpSocialWork.Controls.Add(this.lblAffiliateNumber, 1, 3);
+            this.tlpSocialWork.Controls.Add(this.btnSocialWorkApply, 3, 5);
+            this.tlpSocialWork.Controls.Add(this.btnSocialWorkNew, 3, 4);
             this.tlpSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpSocialWork.Location = new System.Drawing.Point(3, 3);
             this.tlpSocialWork.Name = "tlpSocialWork";
-            this.tlpSocialWork.RowCount = 5;
+            this.tlpSocialWork.RowCount = 6;
+            this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tlpSocialWork.Size = new System.Drawing.Size(1086, 479);
@@ -950,11 +952,11 @@
             this.dgvSocialWorksList.AllowUserToDeleteRows = false;
             this.dgvSocialWorksList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSocialWorksList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSocialWorksList.Location = new System.Drawing.Point(3, 3);
+            this.dgvSocialWorksList.Location = new System.Drawing.Point(3, 32);
             this.dgvSocialWorksList.Name = "dgvSocialWorksList";
             this.tlpSocialWork.SetRowSpan(this.dgvSocialWorksList, 5);
             this.dgvSocialWorksList.RowTemplate.Height = 28;
-            this.dgvSocialWorksList.Size = new System.Drawing.Size(510, 473);
+            this.dgvSocialWorksList.Size = new System.Drawing.Size(510, 444);
             this.dgvSocialWorksList.TabIndex = 22;
             this.dgvSocialWorksList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSocialWorksList_CellClick);
             // 
@@ -963,7 +965,7 @@
             this.cmbSocialWork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSocialWork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSocialWork.FormattingEnabled = true;
-            this.cmbSocialWork.Location = new System.Drawing.Point(633, 177);
+            this.cmbSocialWork.Location = new System.Drawing.Point(633, 187);
             this.cmbSocialWork.Name = "cmbSocialWork";
             this.cmbSocialWork.Size = new System.Drawing.Size(338, 28);
             this.cmbSocialWork.TabIndex = 24;
@@ -971,7 +973,7 @@
             // txtAffiliateNumber
             // 
             this.txtAffiliateNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAffiliateNumber.Location = new System.Drawing.Point(633, 220);
+            this.txtAffiliateNumber.Location = new System.Drawing.Point(633, 240);
             this.txtAffiliateNumber.Name = "txtAffiliateNumber";
             this.txtAffiliateNumber.Size = new System.Drawing.Size(338, 26);
             this.txtAffiliateNumber.TabIndex = 23;
@@ -980,9 +982,9 @@
             // 
             this.lblSocialWork.AutoSize = true;
             this.lblSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSocialWork.Location = new System.Drawing.Point(519, 170);
+            this.lblSocialWork.Location = new System.Drawing.Point(519, 175);
             this.lblSocialWork.Name = "lblSocialWork";
-            this.lblSocialWork.Size = new System.Drawing.Size(108, 42);
+            this.lblSocialWork.Size = new System.Drawing.Size(108, 52);
             this.lblSocialWork.TabIndex = 54;
             this.lblSocialWork.Text = "Obra Social";
             this.lblSocialWork.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -991,9 +993,9 @@
             // 
             this.lblAffiliateNumber.AutoSize = true;
             this.lblAffiliateNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAffiliateNumber.Location = new System.Drawing.Point(519, 212);
+            this.lblAffiliateNumber.Location = new System.Drawing.Point(519, 227);
             this.lblAffiliateNumber.Name = "lblAffiliateNumber";
-            this.lblAffiliateNumber.Size = new System.Drawing.Size(108, 43);
+            this.lblAffiliateNumber.Size = new System.Drawing.Size(108, 52);
             this.lblAffiliateNumber.TabIndex = 54;
             this.lblAffiliateNumber.Text = "Numero de Afiliado";
             this.lblAffiliateNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1056,6 +1058,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(1108, 586);
             this.Controls.Add(this.tlpPanelPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

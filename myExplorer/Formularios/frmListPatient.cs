@@ -43,6 +43,12 @@ namespace GoldenAge.Formularios
         // OK - 18/02/08
         private void frmListPatient_Load(object sender, EventArgs e)
         {
+#if (!DEBUG)
+            tsbPatientLoked.Visible = false;
+#else
+            tsbPatientLoked.Visible = true;
+#endif
+
             if (oQuery != null && oUtil != null)
             {
                 Permission();
@@ -110,7 +116,7 @@ namespace GoldenAge.Formularios
             frmA.ShowDialog();
         }
 
-        #endregion
+#endregion
 
         // OK - 17/11/20
         #region Paginador
@@ -135,7 +141,7 @@ namespace GoldenAge.Formularios
             Filtrar(Pag = 1);
         }
 
-        #endregion
+#endregion
 
         // OK - 18/02/08
         #region Botones
@@ -252,7 +258,7 @@ namespace GoldenAge.Formularios
             }
         }
 
-        #endregion
+#endregion
 
         // OK - 18/02/08
         #region Metodos
@@ -354,7 +360,7 @@ namespace GoldenAge.Formularios
 #endif
         }
 
-        #endregion
+#endregion
 
         private void tsbPatientLoked_Click(object sender, EventArgs e)
         {
