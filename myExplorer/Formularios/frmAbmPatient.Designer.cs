@@ -774,7 +774,7 @@
             this.btnParentAccept.TabIndex = 1;
             this.btnParentAccept.Text = "Aplicar";
             this.btnParentAccept.UseVisualStyleBackColor = true;
-            this.btnParentAccept.Click += new System.EventHandler(this.BtnParentAccept_Click);
+            this.btnParentAccept.Click += new System.EventHandler(this.BtnParentApply_Click);
             // 
             // btnParentNew
             // 
@@ -888,7 +888,7 @@
             this.btnSocialWorkNew.TabIndex = 55;
             this.btnSocialWorkNew.Text = "Nuevo";
             this.btnSocialWorkNew.UseVisualStyleBackColor = true;
-            this.btnSocialWorkNew.Click += new System.EventHandler(this.BtnSocialWorkAdd_Click);
+            this.btnSocialWorkNew.Click += new System.EventHandler(this.BtnSocialWorkNew_Click);
             // 
             // btnSocialWorkApply
             // 
