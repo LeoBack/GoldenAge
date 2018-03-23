@@ -14,7 +14,7 @@ using Controles;
 
 namespace GoldenAge.Formularios
 {
-    public partial class frmListPatient : Form
+    public partial class FrmListPatient : Form
     {
         // OK - 17/11/20
         #region Atributos y Propiedades
@@ -34,7 +34,7 @@ namespace GoldenAge.Formularios
         #region Formulario
 
         // OK - 17/09/30
-        public frmListPatient()
+        public FrmListPatient()
         {
             InitializeComponent();
             oTxt = new classTextos();
@@ -94,11 +94,7 @@ namespace GoldenAge.Formularios
 
                 if (oGf != null)
                 {
-                    frmAbmPatient frmA = new frmAbmPatient();
-                    frmA.ObjetQuery = oQuery;
-                    frmA.ObjetUtil = oUtil;
-                    frmA.oPatient = oGf;
-                    frmA.eModo = frmAbmPatient.Modo.Update;
+                    FrmAbmPatient frmA = new FrmAbmPatient(oGf, FrmAbmPatient.Modo.Update, oQuery, oUtil);
                     frmA.ShowDialog();
                 }
                 else
@@ -109,14 +105,11 @@ namespace GoldenAge.Formularios
         // OK - 17/09/24
         private void tsmiAdd_Click(object sender, EventArgs e)
         {
-            frmAbmPatient frmA = new frmAbmPatient();
-            frmA.ObjetQuery = oQuery;
-            frmA.ObjetUtil = oUtil;
-            frmA.eModo = frmAbmPatient.Modo.Add;
+            FrmAbmPatient frmA = new FrmAbmPatient(null, FrmAbmPatient.Modo.Add, oQuery, oUtil);
             frmA.ShowDialog();
         }
 
-#endregion
+        #endregion
 
         // OK - 17/11/20
         #region Paginador
@@ -155,11 +148,7 @@ namespace GoldenAge.Formularios
                 oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
                 oGf = (classPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
 
-                frmAbmPatient frmPatient = new frmAbmPatient();
-                frmPatient.eModo = frmAbmPatient.Modo.Select;
-                frmPatient.ObjetQuery = oQuery;
-                frmPatient.oPatient = oGf;
-                frmPatient.ObjetUtil = oUtil;
+                FrmAbmPatient frmPatient = new FrmAbmPatient(oGf, FrmAbmPatient.Modo.Select, oQuery, oUtil);
                 frmPatient.ShowDialog();
             }
         }
@@ -258,7 +247,7 @@ namespace GoldenAge.Formularios
             }
         }
 
-#endregion
+        #endregion
 
         // OK - 18/02/08
         #region Metodos

@@ -159,11 +159,11 @@
     <Compile Include="Formularios\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmListPatient.cs">
+    <Compile Include="Formularios\FrmListPatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmListPatient.Designer.cs">
-      <DependentUpon>frmListPatient.cs</DependentUpon>
+    <Compile Include="Formularios\FrmListPatient.Designer.cs">
+      <DependentUpon>FrmListPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmDialogoImprecion.cs">
       <SubType>Form</SubType>
@@ -206,8 +206,8 @@
     <EmbeddedResource Include="Formularios\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmListPatient.resx">
-      <DependentUpon>frmListPatient.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\FrmListPatient.resx">
+      <DependentUpon>FrmListPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmDialogoImprecion.resx">
       <DependentUpon>frmDialogoImprecion.cs</DependentUpon>

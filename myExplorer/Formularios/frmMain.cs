@@ -96,7 +96,7 @@ namespace GoldenAge.Formularios
         {
             if (User == eUser.Valido)
             {
-                frmListPatient frmBuscar = new frmListPatient();
+                FrmListPatient frmBuscar = new FrmListPatient();
                 frmBuscar.MdiParent = this;
                 frmBuscar.oQuery = oQuery;
                 frmBuscar.oUtil = oUtil;

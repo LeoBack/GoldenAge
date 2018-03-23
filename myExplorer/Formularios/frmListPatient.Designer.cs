@@ -1,6 +1,6 @@
 ﻿namespace GoldenAge.Formularios
 {
-    partial class frmListPatient
+    partial class FrmListPatient
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListPatient));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListPatient));
             this.tlpPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tsFooter = new System.Windows.Forms.ToolStrip();
             this.tslPagina = new System.Windows.Forms.ToolStripLabel();
