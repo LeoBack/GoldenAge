@@ -79,7 +79,7 @@
             this.txtParentLastName = new System.Windows.Forms.TextBox();
             this.txtParentName = new System.Windows.Forms.TextBox();
             this.cmbParentRelationship = new System.Windows.Forms.ComboBox();
-            this.cmbTypeDocumentParent = new System.Windows.Forms.ComboBox();
+            this.CmbTypeDocumentParent = new System.Windows.Forms.ComboBox();
             this.lblSearchParent = new System.Windows.Forms.Label();
             this.btnParentAccept = new System.Windows.Forms.Button();
             this.btnParentNew = new System.Windows.Forms.Button();
@@ -104,11 +104,11 @@
             this.btnStateApply = new System.Windows.Forms.Button();
             this.txtReason = new System.Windows.Forms.TextBox();
             this.btnStateNew = new System.Windows.Forms.Button();
+            this.BtnClosed = new System.Windows.Forms.Button();
             this.CmsParent = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TsmiParentDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.CmsSocialWork = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TsmiSocialWorkDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.BtnClosed = new System.Windows.Forms.Button();
             this.TlpPanelPrincipal.SuspendLayout();
             this.TabCarpeta.SuspendLayout();
             this.TbpPatient.SuspendLayout();
@@ -503,7 +503,7 @@
             this.TlpParent.Controls.Add(this.txtParentLastName, 2, 3);
             this.TlpParent.Controls.Add(this.txtParentName, 2, 2);
             this.TlpParent.Controls.Add(this.cmbParentRelationship, 2, 1);
-            this.TlpParent.Controls.Add(this.cmbTypeDocumentParent, 2, 4);
+            this.TlpParent.Controls.Add(this.CmbTypeDocumentParent, 2, 4);
             this.TlpParent.Controls.Add(this.lblSearchParent, 5, 4);
             this.TlpParent.Controls.Add(this.btnParentAccept, 5, 10);
             this.TlpParent.Controls.Add(this.btnParentNew, 5, 9);
@@ -749,13 +749,13 @@
             // 
             // cmbTypeDocumentParent
             // 
-            this.cmbTypeDocumentParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbTypeDocumentParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTypeDocumentParent.FormattingEnabled = true;
-            this.cmbTypeDocumentParent.Location = new System.Drawing.Point(547, 134);
-            this.cmbTypeDocumentParent.Name = "cmbTypeDocumentParent";
-            this.cmbTypeDocumentParent.Size = new System.Drawing.Size(114, 28);
-            this.cmbTypeDocumentParent.TabIndex = 23;
+            this.CmbTypeDocumentParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmbTypeDocumentParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbTypeDocumentParent.FormattingEnabled = true;
+            this.CmbTypeDocumentParent.Location = new System.Drawing.Point(547, 134);
+            this.CmbTypeDocumentParent.Name = "cmbTypeDocumentParent";
+            this.CmbTypeDocumentParent.Size = new System.Drawing.Size(114, 28);
+            this.CmbTypeDocumentParent.TabIndex = 23;
             // 
             // lblSearchParent
             // 
@@ -923,7 +923,7 @@
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.TlpStatus.Controls.Add(this.dataGridView1, 0, 0);
             this.TlpStatus.Controls.Add(this.lblStatus, 0, 1);
             this.TlpStatus.Controls.Add(this.lblReasonExit, 0, 2);
@@ -979,7 +979,7 @@
             this.lblReasonExit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblReasonExit.Location = new System.Drawing.Point(3, 242);
             this.lblReasonExit.Name = "lblReasonExit";
-            this.lblReasonExit.Size = new System.Drawing.Size(953, 33);
+            this.lblReasonExit.Size = new System.Drawing.Size(951, 33);
             this.lblReasonExit.TabIndex = 44;
             this.lblReasonExit.Text = "Motivo";
             this.lblReasonExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1001,7 +1001,7 @@
             this.dtpDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpDate.Location = new System.Drawing.Point(515, 203);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(441, 26);
+            this.dtpDate.Size = new System.Drawing.Size(439, 26);
             this.dtpDate.TabIndex = 45;
             // 
             // lblDate
@@ -1045,7 +1045,7 @@
             this.txtReason.Multiline = true;
             this.txtReason.Name = "txtReason";
             this.TlpStatus.SetRowSpan(this.txtReason, 2);
-            this.txtReason.Size = new System.Drawing.Size(953, 172);
+            this.txtReason.Size = new System.Drawing.Size(951, 172);
             this.txtReason.TabIndex = 47;
             // 
             // btnStateNew
@@ -1057,6 +1057,18 @@
             this.btnStateNew.TabIndex = 52;
             this.btnStateNew.Text = "Nuevo";
             this.btnStateNew.UseVisualStyleBackColor = true;
+            // 
+            // BtnClosed
+            // 
+            this.BtnClosed.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.BtnClosed.Location = new System.Drawing.Point(984, 511);
+            this.BtnClosed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnClosed.Name = "BtnClosed";
+            this.BtnClosed.Size = new System.Drawing.Size(112, 40);
+            this.BtnClosed.TabIndex = 13;
+            this.BtnClosed.Text = "Cerrar";
+            this.BtnClosed.UseVisualStyleBackColor = true;
+            this.BtnClosed.Click += new System.EventHandler(this.BtnClosed_Click);
             // 
             // CmsParent
             // 
@@ -1090,18 +1102,6 @@
             this.TsmiSocialWorkDelete.Text = "Eliminar";
             this.TsmiSocialWorkDelete.Click += new System.EventHandler(this.TsmiSocialWorkDelete_Click);
             // 
-            // BtnClosed
-            // 
-            this.BtnClosed.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.BtnClosed.Location = new System.Drawing.Point(984, 511);
-            this.BtnClosed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnClosed.Name = "BtnClosed";
-            this.BtnClosed.Size = new System.Drawing.Size(112, 40);
-            this.BtnClosed.TabIndex = 13;
-            this.BtnClosed.Text = "Cerrar";
-            this.BtnClosed.UseVisualStyleBackColor = true;
-            this.BtnClosed.Click += new System.EventHandler(this.BtnClosed_Click);
-            // 
             // FrmAbmPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1117,6 +1117,7 @@
             this.MinimumSize = new System.Drawing.Size(1122, 616);
             this.Name = "FrmAbmPatient";
             this.Text = "Abuelo (ABM)";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAbmPatient_FormClosing);
             this.Load += new System.EventHandler(this.FrmAbmPatient_Load);
             this.TlpPanelPrincipal.ResumeLayout(false);
             this.TabCarpeta.ResumeLayout(false);
@@ -1175,7 +1176,7 @@
         private System.Windows.Forms.Button btnParentNew;
         private System.Windows.Forms.ToolStripMenuItem TsmiParentDelete;
         private System.Windows.Forms.Button btnParentSearch;
-        private System.Windows.Forms.ComboBox cmbTypeDocumentParent;
+        private System.Windows.Forms.ComboBox CmbTypeDocumentParent;
         private System.Windows.Forms.Label lblSearchParent;
         private System.Windows.Forms.DataGridView dgvSocialWorksList;
         private System.Windows.Forms.TableLayoutPanel TlpSocialWork;

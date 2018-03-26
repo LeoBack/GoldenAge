@@ -21,11 +21,12 @@ namespace GoldenAge.Formularios
         // VER - 18/03/23
         #region Atributos y Propiedades
 
+        public enum Modo { Select = 0, Add = 1, Update = 2, Delete = 3 }
+
         private classQuery ObjectQuery;
         private classUtiles ObjectUtil;
         private classTextos ObjetTxt;
-
-        public enum Modo { Select = 0, Add = 1, Update = 2, Delete = 3 }
+        // Patient
         private classPatient ObjectPatient;
         private Modo ModoParent;
         private int IdCountry;
@@ -33,34 +34,37 @@ namespace GoldenAge.Formularios
         private int IdCity;
         private bool Enable = true;
 
-        // OLD =================================================================
-        private enum Abm { Select = 0, Insert = 1, Update = 2, Delete = 3 }
-        public Modo eModoParent { set; get; }
-        private int SelectRow;
-        //
+        // Parent
+        private classParent ObjetParent;
+        private Modo eModoParent;
         private int IdCountryParent;
         private int IdProvinceParent;
         private int IdCityParent;
-        private int Next = 0;
-        private int CountIdPatientParent = -1;
-        private DataTable dtQueryRelationships;
-        private List<classParent> ListParent;
-        private List<classParent> ListParentSearch;
-        classParent ObjetParent = null;
-        private DataTable dtView;
+        private int SelectRowParent;                // Pariente Seleccionado desde DataGridview.
+        private List<classParent> ListParentSearch; // Lista de pariente resultante de la busqueda.
+        private int NextIdexSearchParent = 0;       // Pariente Seleccionada si el resultado de la busque da mas de 1 coincidente.
+        private List<classParent> ListParent;       // Lista de parientes que se tiene que agregar.
+        private DataTable DtTempView;                   // Tabla temporal de parientes.
         private int IdPatientParentSelected;
-        //
+        private int CountIdPatientParent = -1;
+        private DataTable DtQueryRelationships;
+
+        // SocialWorks
         private DataTable dtViewPatientSocialWork;
         private DataTable dtTempPatientSocialWork;
         private DataTable dtQuerySocialWorks;
         private int IdPatientSocialWorkSelected;
+
+        // State
+
+        // OLD =================================================================
+        private enum Abm { Select = 0, Insert = 1, Update = 2, Delete = 3 }
 
         #endregion
 
         #region Static Variables
 
         private static string DtView = "View";
-
         private static string ColAbm = "AbmPR";
         private static string ColAbmParent = "AbmP";
         private static string ColIdParent = "IdParent";
@@ -127,33 +131,15 @@ namespace GoldenAge.Formularios
         private void TabCarpeta_Selected(object sender, TabControlEventArgs e)
         {
             if (e.TabPage == TbpPatient)
-            {
                 LoadPatient();
-            }
-
-            if (e.TabPage == TbpParent)
-            {
-                if (CheckToSavePatient())
-                    LoadParent();
-                else
-                    EnableParent(false);
-            }
-
-            if (e.TabPage == TbpSocialWorks)
-            {
-                if (CheckToSavePatient())
-                    LoadSocialWork();
-                else
-                    EnableSocialWork(false);
-            }
-
-            if (e.TabPage == tbpStatus)
-            {
-                if (CheckToSavePatient())
-                    LoadState();
-                else
-                    EnableState(false);
-            }
+            else if (e.TabPage == TbpParent && CheckToSavePatient())
+                LoadParent();
+            else if (e.TabPage == TbpSocialWorks && CheckToSavePatient())
+                LoadSocialWork();
+            else if (e.TabPage == tbpStatus && CheckToSavePatient())
+                LoadState();
+            else
+                TabCarpeta.SelectedTab = TbpPatient;
         }
 
         /// <summary>
@@ -195,6 +181,16 @@ namespace GoldenAge.Formularios
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnClosed_Click(object sender, EventArgs e) => Close();
+
+        /// <summary>
+        /// Dsiparado cuando se cierra el formulario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmAbmPatient_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Cerrando");
+        }
 
         #endregion
 
@@ -238,7 +234,7 @@ namespace GoldenAge.Formularios
         #endregion
 
         //== # 03 =====================================================================
-        // VER - 18/03/23
+        // VER - 18/03/23 - Ver metodo Save
 
         #region Metodos Patient
 
@@ -486,30 +482,31 @@ namespace GoldenAge.Formularios
         /// </summary>
         private void InitParent()
         {
+            ObjetParent = null;
             ListParent = null;
 
-            dtView = new DataTable(DtView);
-            dtView.Columns.Add(new DataColumn(ColAbm, typeof(Int32)));
-            dtView.Columns.Add(new DataColumn(ColAbmParent, typeof(Int32)));
-            dtView.Columns.Add(new DataColumn(ColIdParent, typeof(Int32)));
-            dtView.Columns.Add(new DataColumn(ColIdPatientParent, typeof(Int32)));
-            dtView.Columns.Add(new DataColumn(ColIdRelationship, typeof(Int32)));
-            dtView.Columns.Add(new DataColumn(ColName, typeof(string)));
-            dtView.Columns.Add(new DataColumn(ColLastName, typeof(string)));
+            DtTempView = new DataTable(DtView);
+            DtTempView.Columns.Add(new DataColumn(ColAbm, typeof(Int32)));
+            DtTempView.Columns.Add(new DataColumn(ColAbmParent, typeof(Int32)));
+            DtTempView.Columns.Add(new DataColumn(ColIdParent, typeof(Int32)));
+            DtTempView.Columns.Add(new DataColumn(ColIdPatientParent, typeof(Int32)));
+            DtTempView.Columns.Add(new DataColumn(ColIdRelationship, typeof(Int32)));
+            DtTempView.Columns.Add(new DataColumn(ColName, typeof(string)));
+            DtTempView.Columns.Add(new DataColumn(ColLastName, typeof(string)));
 
-            dtQueryRelationships = new DataTable();
+            DtQueryRelationships = new DataTable();
             if ((bool)ObjectQuery.AbmRelationship(new classRelationship(), classQuery.eAbm.LoadCmb))
-                dtQueryRelationships = ObjectQuery.Table;
-            classControlComboBoxes.LoadCombo(cmbParentRelationship, dtQueryRelationships != null, dtQueryRelationships);
+                DtQueryRelationships = ObjectQuery.Table;
+            classControlComboBoxes.LoadCombo(cmbParentRelationship, DtQueryRelationships != null, DtQueryRelationships);
 
-            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocumentParent,
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(CmbTypeDocumentParent,
             (bool)ObjectQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
             ObjectQuery.Table);
         }
 
         /// <summary>
         /// Mostrar en formulario los datos del pariente.
-        /// VER - 18/03/23
+        /// SELECT: OK - 18/03/23
         /// </summary>
         private void LoadParent()
         {
@@ -518,15 +515,15 @@ namespace GoldenAge.Formularios
             btnParentAccept.Visible = ModoParent != Modo.Select;
             lblSearchParent.Text = string.Empty;
 
-            if (dtView.Rows.Count == 0)
+            if (DtTempView.Rows.Count == 0)
             {
-                classPatientParent oP = new classPatientParent();
-                oP.IdPatient = ObjectPatient.IdPatient;
-                List<classPatientParent> ListPp = ObjectQuery.AbmPatientParent(oP, classQuery.eAbm.SelectAll) as List<classPatientParent>;
+                classPatientParent oPp = new classPatientParent();
+                oPp.IdPatient = ObjectPatient.IdPatient;
+                List<classPatientParent> ListPp = ObjectQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<classPatientParent>;
                 foreach (classPatientParent Or in ListPp)
                 {
                     classParent Op = ObjectQuery.AbmParent(new classParent(Or.IdParent), classQuery.eAbm.Select) as classParent;
-                    DataRow dR = dtView.NewRow();
+                    DataRow dR = DtTempView.NewRow();
                     dR[ColAbm] = Abm.Select;
                     dR[ColAbmParent] = Abm.Select;
                     dR[ColIdParent] = Or.IdParent;
@@ -534,26 +531,32 @@ namespace GoldenAge.Formularios
                     dR[ColIdRelationship] = Or.IdRelationship;
                     dR[ColName] = Op.Name;
                     dR[ColLastName] = Op.LastName;
-                    dtView.Rows.Add(dR);
+                    DtTempView.Rows.Add(dR);
                 }
-                GenerarGrillaParent();
-                EnableParent(ModoParent != Modo.Select);
             }
+            GenerarGrillaParent();
+            EnableParent(ModoParent != Modo.Select);
         }
 
-        // OK - 18/03/22
+        /// <summary>
+        /// Evento boton nuevo pariente.
+        /// OK - 18/03/25
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnParentNew_Click(object sender, EventArgs e)
         {
             CleanParent();
             EnableParent(true);
-            IdPatientParentSelected = CountIdPatientParent;
             ObjetParent = null;
+            eModoParent = Modo.Add;
+            IdPatientParentSelected = CountIdPatientParent;
         }
 
         // OK - 18/03/22
         private void TsmiParentDelete_Click(object sender, EventArgs e)
         {
-            foreach (DataRow DrView in dtView.Rows)
+            foreach (DataRow DrView in DtTempView.Rows)
             {
                 if (Convert.ToInt32(DrView[3]) == IdPatientParentSelected)
                     DrView[0] = Abm.Delete;
@@ -569,18 +572,17 @@ namespace GoldenAge.Formularios
             if (ObjetParent == null)
                 ObjetParent = new classParent(CountIdPatientParent);
 
-            // Nuevo
-            if (IdPatientParentSelected < 0)
+            if (eModoParent == Modo.Add)
             {
                 bool Delete = false;
-                foreach (DataRow DrView in dtView.Rows)
+                foreach (DataRow DrView in DtTempView.Rows)
                 {
                     if ((int)DrView[3] == IdPatientParentSelected & (Abm)DrView[0] == Abm.Delete)
                     {
-                        dtView.Rows.Remove(DrView);
+                        DtTempView.Rows.Remove(DrView);
                         Delete = true;
                         break;
-                    } 
+                    }
                 }
 
                 if (!Delete)
@@ -590,7 +592,7 @@ namespace GoldenAge.Formularios
                         LoadObjectParent();
                         ListParent.Add(ObjetParent);
 
-                            dtView.Rows.Add(new object[] {
+                        DtTempView.Rows.Add(new object[] {
                         Abm.Insert,
                         Abm.Insert,
                         ObjetParent.IdParent,
@@ -598,16 +600,20 @@ namespace GoldenAge.Formularios
                         Convert.ToInt32(cmbParentRelationship.SelectedValue),
                         ObjetParent.Name,
                         ObjetParent.LastName });
-                            CountIdPatientParent--;
+                        CountIdPatientParent--;
                     }
                 }
+            }
+            else if (eModoParent == Modo.Delete)
+            {
+
             }
             else // Actualiza
             {
                 if (ValidateFieldsParent())
                 {
                     LoadObjectParent();
-                    foreach (DataRow dtR in dtView.Rows)
+                    foreach (DataRow dtR in DtTempView.Rows)
                     {
                         foreach (classParent Parent in ListParent)
                         {
@@ -649,12 +655,12 @@ namespace GoldenAge.Formularios
         // OK - 18/03/22
         private void BtnParentSearch_Click(object sender, EventArgs e)
         {
-            if (Next == 0)
+            if (NextIdexSearchParent == 0)
             {
                 if (txtParentNumberDocument.Text != string.Empty)
                 {
                     classParent oP = new classParent();
-                    oP.IdTypeDocument = Convert.ToInt32(cmbTypeDocumentParent.SelectedValue);
+                    oP.IdTypeDocument = Convert.ToInt32(CmbTypeDocumentParent.SelectedValue);
                     oP.NumberDocument = Convert.ToInt32(txtParentNumberDocument.Text);
                     ListParentSearch = ObjectQuery.AbmParent(oP, classQuery.eAbm.SelectAll) as List<classParent>;
                 }
@@ -662,12 +668,12 @@ namespace GoldenAge.Formularios
 
             if (ListParentSearch != null && ListParentSearch.Count != 0)
             {
-                if (Next < ListParentSearch.Count)
+                if (NextIdexSearchParent < ListParentSearch.Count)
                 {
-                    ObjetParent = ListParentSearch[Next++];
-                    lblSearchParent.Text = Next.ToString() + "/" + ListParentSearch.Count.ToString() + " Encontrados";
+                    ObjetParent = ListParentSearch[NextIdexSearchParent++];
+                    lblSearchParent.Text = NextIdexSearchParent.ToString() + "/" + ListParentSearch.Count.ToString() + " Encontrados";
                     LoadFrmParent();
-                    Next = Next == ListParentSearch.Count ? 0 : Next;
+                    NextIdexSearchParent = NextIdexSearchParent == ListParentSearch.Count ? 0 : NextIdexSearchParent;
                     eModoParent = Modo.Update;
                 }
             }
@@ -680,12 +686,12 @@ namespace GoldenAge.Formularios
         {
             if (dgvParentList.RowCount >= 0)
             {
-                SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow;
-                SelectRow = dgvParentList.RowCount == 1 ? 0 : SelectRow;
+                SelectRowParent = e.RowIndex >= 0 ? e.RowIndex : SelectRowParent;
+                SelectRowParent = dgvParentList.RowCount == 1 ? 0 : SelectRowParent;
 
-                IdPatientParentSelected = Convert.ToInt32(dgvParentList.Rows[SelectRow].Cells[3].Value);
+                IdPatientParentSelected = Convert.ToInt32(dgvParentList.Rows[SelectRowParent].Cells[3].Value);
 
-                foreach (DataRow DrView in dtView.Rows)
+                foreach (DataRow DrView in DtTempView.Rows)
                 {
                     if (Convert.ToInt32(DrView[3]) == IdPatientParentSelected)
                     {
@@ -724,22 +730,22 @@ namespace GoldenAge.Formularios
             //
             DataGridViewTextBoxColumn colAbm = new DataGridViewTextBoxColumn();
             colAbm.Name = "Abm";
-            colAbm.DataPropertyName = dtView.Columns[0].ColumnName;
+            colAbm.DataPropertyName = DtTempView.Columns[0].ColumnName;
             dgvParentList.Columns.Add(colAbm);
             //
             DataGridViewTextBoxColumn colAbmIdParent = new DataGridViewTextBoxColumn();
             colAbmIdParent.Name = "AbmParent";
-            colAbmIdParent.DataPropertyName = dtView.Columns[1].ColumnName;
+            colAbmIdParent.DataPropertyName = DtTempView.Columns[1].ColumnName;
             dgvParentList.Columns.Add(colAbmIdParent);
             //
             DataGridViewTextBoxColumn colIdParent = new DataGridViewTextBoxColumn();
             colIdParent.Name = "IdParent";
-            colIdParent.DataPropertyName = dtView.Columns[2].ColumnName;
+            colIdParent.DataPropertyName = DtTempView.Columns[2].ColumnName;
             dgvParentList.Columns.Add(colIdParent);
             //
             DataGridViewTextBoxColumn colIdPatientParent = new DataGridViewTextBoxColumn();
             colIdPatientParent.Name = "IdParentPatient";
-            colIdPatientParent.DataPropertyName = dtView.Columns[3].ColumnName;
+            colIdPatientParent.DataPropertyName = DtTempView.Columns[3].ColumnName;
             dgvParentList.Columns.Add(colIdPatientParent);
             //
             DataGridViewComboBoxColumn colRelationship = new DataGridViewComboBoxColumn();
@@ -747,18 +753,18 @@ namespace GoldenAge.Formularios
             colRelationship.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
             colRelationship.ValueMember = "Id";
             colRelationship.DisplayMember = "Value";
-            colRelationship.DataSource = dtQueryRelationships;
-            colRelationship.DataPropertyName = dtView.Columns[4].ColumnName;
+            colRelationship.DataSource = DtQueryRelationships;
+            colRelationship.DataPropertyName = DtTempView.Columns[4].ColumnName;
             dgvParentList.Columns.Add(colRelationship);
             //
             DataGridViewTextBoxColumn colName = new DataGridViewTextBoxColumn();
             colName.Name = "Nombre";
-            colName.DataPropertyName = dtView.Columns[5].ColumnName;
+            colName.DataPropertyName = DtTempView.Columns[5].ColumnName;
             dgvParentList.Columns.Add(colName);
             //
             DataGridViewTextBoxColumn colLastName = new DataGridViewTextBoxColumn();
             colLastName.Name = "Apellido";
-            colLastName.DataPropertyName = dtView.Columns[6].ColumnName;
+            colLastName.DataPropertyName = DtTempView.Columns[6].ColumnName;
             dgvParentList.Columns.Add(colLastName);
             //
             //Configuracion del DataListView
@@ -773,7 +779,7 @@ namespace GoldenAge.Formularios
             dgvParentList.ContextMenuStrip = CmsParent;
             dgvParentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvParentList.MultiSelect = false;
-            dgvParentList.DataSource = dtView;
+            dgvParentList.DataSource = DtTempView;
 #if (!DEBUG)
             dgvParentList.Columns[0].Visible = false;
             dgvParentList.Columns[1].Visible = false;
@@ -818,7 +824,7 @@ namespace GoldenAge.Formularios
             StringBuilder Error = new StringBuilder();
             int IdParet = 0;
 
-            foreach (DataRow DrView in dtView.Rows)
+            foreach (DataRow DrView in DtTempView.Rows)
             {
                 // Tabla Parent
                 switch ((Abm)DrView[ColAbmParent])
@@ -920,7 +926,7 @@ namespace GoldenAge.Formularios
             ObjetParent.Name = txtParentName.Text.ToUpper();
             ObjetParent.LastName = txtParentLastName.Text.ToUpper();
             ObjetParent.NumberDocument = Convert.ToInt32(txtParentNumberDocument.Text);
-            ObjetParent.IdTypeDocument = Convert.ToInt32(cmbTypeDocumentParent.SelectedValue);
+            ObjetParent.IdTypeDocument = Convert.ToInt32(CmbTypeDocumentParent.SelectedValue);
             ObjetParent.Address = txtParentAddress.Text.ToUpper();
             ObjetParent.IdLocationCountry = IdCountryParent;
             ObjetParent.IdLocationCity = IdCityParent;
@@ -939,7 +945,7 @@ namespace GoldenAge.Formularios
             txtParentName.Text = ObjetParent.Name.ToUpper();
             txtParentLastName.Text = ObjetParent.LastName.ToUpper();
             txtParentNumberDocument.Text = Convert.ToString(ObjetParent.NumberDocument);
-            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeDocumentParent, ObjetParent.IdTypeDocument);
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(CmbTypeDocumentParent, ObjetParent.IdTypeDocument);
             txtParentAddress.Text = ObjetParent.Address.ToUpper();
             IdCountryParent = ObjetParent.IdLocationCountry;
             IdProvinceParent = ObjetParent.IdLocationProvince;
@@ -991,7 +997,7 @@ namespace GoldenAge.Formularios
                 MessageBox.Show("Formato de Correo es: mi@correo.com.ar");
             else if (cmbParentRelationship.SelectedIndex== -1)
                 MessageBox.Show("Parentesco Invalida.");
-            else if (cmbTypeDocumentParent.SelectedIndex == -1)
+            else if (CmbTypeDocumentParent.SelectedIndex == -1)
                 MessageBox.Show("Tipo documento Invalido.");
             else
                 V = true;
@@ -1438,5 +1444,6 @@ namespace GoldenAge.Formularios
         }
 
         #endregion
+
     }
 }
