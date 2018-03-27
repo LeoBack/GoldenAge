@@ -81,7 +81,6 @@
             this.cmbParentRelationship = new System.Windows.Forms.ComboBox();
             this.CmbTypeDocumentParent = new System.Windows.Forms.ComboBox();
             this.lblSearchParent = new System.Windows.Forms.Label();
-            this.btnParentAccept = new System.Windows.Forms.Button();
             this.btnParentNew = new System.Windows.Forms.Button();
             this.TbpSocialWorks = new System.Windows.Forms.TabPage();
             this.TlpSocialWork = new System.Windows.Forms.TableLayoutPanel();
@@ -91,7 +90,6 @@
             this.lblSocialWork = new System.Windows.Forms.Label();
             this.lblAffiliateNumber = new System.Windows.Forms.Label();
             this.btnSocialWorkNew = new System.Windows.Forms.Button();
-            this.btnSocialWorkApply = new System.Windows.Forms.Button();
             this.tbpStatus = new System.Windows.Forms.TabPage();
             this.TlpStatus = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -101,7 +99,6 @@
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.lblDate = new System.Windows.Forms.Label();
             this.rbtInit = new System.Windows.Forms.RadioButton();
-            this.btnStateApply = new System.Windows.Forms.Button();
             this.txtReason = new System.Windows.Forms.TextBox();
             this.btnStateNew = new System.Windows.Forms.Button();
             this.BtnClosed = new System.Windows.Forms.Button();
@@ -505,8 +502,7 @@
             this.TlpParent.Controls.Add(this.cmbParentRelationship, 2, 1);
             this.TlpParent.Controls.Add(this.CmbTypeDocumentParent, 2, 4);
             this.TlpParent.Controls.Add(this.lblSearchParent, 5, 4);
-            this.TlpParent.Controls.Add(this.btnParentAccept, 5, 10);
-            this.TlpParent.Controls.Add(this.btnParentNew, 5, 9);
+            this.TlpParent.Controls.Add(this.btnParentNew, 5, 10);
             this.TlpParent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TlpParent.Location = new System.Drawing.Point(3, 3);
             this.TlpParent.Name = "TlpParent";
@@ -747,13 +743,13 @@
             this.cmbParentRelationship.Size = new System.Drawing.Size(381, 28);
             this.cmbParentRelationship.TabIndex = 17;
             // 
-            // cmbTypeDocumentParent
+            // CmbTypeDocumentParent
             // 
             this.CmbTypeDocumentParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbTypeDocumentParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbTypeDocumentParent.FormattingEnabled = true;
             this.CmbTypeDocumentParent.Location = new System.Drawing.Point(547, 134);
-            this.CmbTypeDocumentParent.Name = "cmbTypeDocumentParent";
+            this.CmbTypeDocumentParent.Name = "CmbTypeDocumentParent";
             this.CmbTypeDocumentParent.Size = new System.Drawing.Size(114, 28);
             this.CmbTypeDocumentParent.TabIndex = 23;
             // 
@@ -768,21 +764,10 @@
             this.lblSearchParent.Text = "0/0 Encontrados";
             this.lblSearchParent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnParentAccept
-            // 
-            this.btnParentAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnParentAccept.Location = new System.Drawing.Point(977, 410);
-            this.btnParentAccept.Name = "btnParentAccept";
-            this.btnParentAccept.Size = new System.Drawing.Size(98, 40);
-            this.btnParentAccept.TabIndex = 1;
-            this.btnParentAccept.Text = "Aplicar";
-            this.btnParentAccept.UseVisualStyleBackColor = true;
-            this.btnParentAccept.Click += new System.EventHandler(this.BtnParentApply_Click);
-            // 
             // btnParentNew
             // 
-            this.btnParentNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnParentNew.Location = new System.Drawing.Point(977, 358);
+            this.btnParentNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnParentNew.Location = new System.Drawing.Point(977, 410);
             this.btnParentNew.Name = "btnParentNew";
             this.btnParentNew.Size = new System.Drawing.Size(98, 40);
             this.btnParentNew.TabIndex = 21;
@@ -813,8 +798,7 @@
             this.TlpSocialWork.Controls.Add(this.txtAffiliateNumber, 2, 3);
             this.TlpSocialWork.Controls.Add(this.lblSocialWork, 1, 2);
             this.TlpSocialWork.Controls.Add(this.lblAffiliateNumber, 1, 3);
-            this.TlpSocialWork.Controls.Add(this.btnSocialWorkNew, 3, 4);
-            this.TlpSocialWork.Controls.Add(this.btnSocialWorkApply, 3, 5);
+            this.TlpSocialWork.Controls.Add(this.btnSocialWorkNew, 3, 5);
             this.TlpSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TlpSocialWork.Location = new System.Drawing.Point(3, 3);
             this.TlpSocialWork.Name = "TlpSocialWork";
@@ -885,24 +869,13 @@
             // btnSocialWorkNew
             // 
             this.btnSocialWorkNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSocialWorkNew.Location = new System.Drawing.Point(977, 358);
+            this.btnSocialWorkNew.Location = new System.Drawing.Point(977, 410);
             this.btnSocialWorkNew.Name = "btnSocialWorkNew";
             this.btnSocialWorkNew.Size = new System.Drawing.Size(98, 40);
             this.btnSocialWorkNew.TabIndex = 55;
             this.btnSocialWorkNew.Text = "Nuevo";
             this.btnSocialWorkNew.UseVisualStyleBackColor = true;
             this.btnSocialWorkNew.Click += new System.EventHandler(this.BtnSocialWorkNew_Click);
-            // 
-            // btnSocialWorkApply
-            // 
-            this.btnSocialWorkApply.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSocialWorkApply.Location = new System.Drawing.Point(977, 407);
-            this.btnSocialWorkApply.Name = "btnSocialWorkApply";
-            this.btnSocialWorkApply.Size = new System.Drawing.Size(98, 40);
-            this.btnSocialWorkApply.TabIndex = 25;
-            this.btnSocialWorkApply.Text = "Aplicar";
-            this.btnSocialWorkApply.UseVisualStyleBackColor = true;
-            this.btnSocialWorkApply.Click += new System.EventHandler(this.BtnSocialWorkApply_Click);
             // 
             // tbpStatus
             // 
@@ -923,7 +896,7 @@
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
+            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.TlpStatus.Controls.Add(this.dataGridView1, 0, 0);
             this.TlpStatus.Controls.Add(this.lblStatus, 0, 1);
             this.TlpStatus.Controls.Add(this.lblReasonExit, 0, 2);
@@ -931,9 +904,8 @@
             this.TlpStatus.Controls.Add(this.dtpDate, 4, 1);
             this.TlpStatus.Controls.Add(this.lblDate, 3, 1);
             this.TlpStatus.Controls.Add(this.rbtInit, 2, 1);
-            this.TlpStatus.Controls.Add(this.btnStateApply, 5, 4);
             this.TlpStatus.Controls.Add(this.txtReason, 0, 3);
-            this.TlpStatus.Controls.Add(this.btnStateNew, 5, 3);
+            this.TlpStatus.Controls.Add(this.btnStateNew, 5, 4);
             this.TlpStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TlpStatus.Location = new System.Drawing.Point(3, 3);
             this.TlpStatus.Name = "TlpStatus";
@@ -979,7 +951,7 @@
             this.lblReasonExit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblReasonExit.Location = new System.Drawing.Point(3, 242);
             this.lblReasonExit.Name = "lblReasonExit";
-            this.lblReasonExit.Size = new System.Drawing.Size(951, 33);
+            this.lblReasonExit.Size = new System.Drawing.Size(950, 33);
             this.lblReasonExit.TabIndex = 44;
             this.lblReasonExit.Text = "Motivo";
             this.lblReasonExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1001,7 +973,7 @@
             this.dtpDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpDate.Location = new System.Drawing.Point(515, 203);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(439, 26);
+            this.dtpDate.Size = new System.Drawing.Size(438, 26);
             this.dtpDate.TabIndex = 45;
             // 
             // lblDate
@@ -1027,16 +999,6 @@
             this.rbtInit.Text = "Ingresa";
             this.rbtInit.UseVisualStyleBackColor = true;
             // 
-            // btnStateApply
-            // 
-            this.btnStateApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStateApply.Location = new System.Drawing.Point(977, 410);
-            this.btnStateApply.Name = "btnStateApply";
-            this.btnStateApply.Size = new System.Drawing.Size(98, 40);
-            this.btnStateApply.TabIndex = 51;
-            this.btnStateApply.Text = "Aplicar";
-            this.btnStateApply.UseVisualStyleBackColor = true;
-            // 
             // txtReason
             // 
             this.TlpStatus.SetColumnSpan(this.txtReason, 5);
@@ -1045,13 +1007,13 @@
             this.txtReason.Multiline = true;
             this.txtReason.Name = "txtReason";
             this.TlpStatus.SetRowSpan(this.txtReason, 2);
-            this.txtReason.Size = new System.Drawing.Size(951, 172);
+            this.txtReason.Size = new System.Drawing.Size(950, 172);
             this.txtReason.TabIndex = 47;
             // 
             // btnStateNew
             // 
             this.btnStateNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStateNew.Location = new System.Drawing.Point(977, 359);
+            this.btnStateNew.Location = new System.Drawing.Point(977, 410);
             this.btnStateNew.Name = "btnStateNew";
             this.btnStateNew.Size = new System.Drawing.Size(98, 40);
             this.btnStateNew.TabIndex = 52;
@@ -1167,7 +1129,6 @@
         private System.Windows.Forms.TextBox txtParentAlternativePhone;
         private System.Windows.Forms.TextBox txtParentPhone;
         private System.Windows.Forms.ComboBox cmbParentRelationship;
-        private System.Windows.Forms.Button btnParentAccept;
         private System.Windows.Forms.Label lblParentLocation;
         private System.Windows.Forms.TextBox txtParentAddress;
         private System.Windows.Forms.TextBox txtLocationParent;
@@ -1180,7 +1141,6 @@
         private System.Windows.Forms.Label lblSearchParent;
         private System.Windows.Forms.DataGridView dgvSocialWorksList;
         private System.Windows.Forms.TableLayoutPanel TlpSocialWork;
-        private System.Windows.Forms.Button btnSocialWorkApply;
         private System.Windows.Forms.ComboBox cmbSocialWork;
         private System.Windows.Forms.TextBox txtAffiliateNumber;
         private System.Windows.Forms.Label lblSocialWork;
@@ -1220,7 +1180,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.RadioButton rbtExit;
         private System.Windows.Forms.RadioButton rbtInit;
-        private System.Windows.Forms.Button btnStateApply;
         private System.Windows.Forms.Button btnStateNew;
         private System.Windows.Forms.Button BtnClosed;
     }
