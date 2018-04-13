@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classPatient
+    public class ClassPatient
     {
         #region Atributos y Metodos
 
@@ -30,7 +30,7 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classPatient()
+        public ClassPatient()
         {
             this.IdPatient = 0;
             this.Name = string.Empty;
@@ -50,7 +50,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classPatient(int vIdPatient)
+        public ClassPatient(int vIdPatient)
         {
             this.IdPatient = vIdPatient;
             this.Name = string.Empty;
@@ -70,7 +70,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classPatient(int vIdPatient, string vName, string vLastName, DateTime vBirthdate,
+        public ClassPatient(int vIdPatient, string vName, string vLastName, DateTime vBirthdate,
             int vIdTypeDocument, int vNumberDocument, bool vSex, int IdLocationCountry, 
             int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, 
             DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, bool vVisible)

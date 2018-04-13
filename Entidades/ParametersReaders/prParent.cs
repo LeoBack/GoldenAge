@@ -8,10 +8,10 @@ using Entidades.Clases;
 
 namespace Entidades.ParametersReaders
 {
-    public class prParent
+    public class PrParent
     {
         // OK - 17/11/14
-        public List<SqlParameter> CreateParameter(classParent oP, int Abm)
+        public List<SqlParameter> CreateParameter(ClassParent oP, int Abm)
         {
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
@@ -32,9 +32,9 @@ namespace Entidades.ParametersReaders
         }
 
         // OK - 17/11/14
-        public classParent ReadReader(SqlDataReader oReader)
+        public ClassParent ReadReader(SqlDataReader oReader)
         {
-            classParent oP = new classParent(
+            ClassParent oP = new ClassParent(
             Convert.ToInt32(oReader["IdParent"]),
             Convert.ToString(oReader["Name"]),
             Convert.ToString(oReader["LastName"]),

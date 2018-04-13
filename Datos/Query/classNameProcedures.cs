@@ -22,7 +22,7 @@ namespace Datos.Query
         public string AbmIvaType = "[spAbmIvaType-v1.0]";
         public string AbmTypeParent = "[spAbmTypeParent-v1.0]";
         public string AbmPatientSocialWork = "[spAbmPatientSocialWork-v1.0]";
-
+        public string AbmPatientState = "[spAbmPatientState-v1.0]";
 
         // Especiales
         public string Login = "[spLoguin-v1.0]";

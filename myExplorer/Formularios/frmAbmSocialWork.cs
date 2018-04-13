@@ -20,11 +20,11 @@ namespace GoldenAge.Formularios
         // OK 17/09/27
         #region Atributos y Propiedades
 
-        public classSocialWork oSocialWork { set; get; }
+        public ClassSocialWork oSocialWork { set; get; }
         public enum Modo { Add, Select, Update, Delete }
         public Modo eModo { set; get; }
         public classQuery oQuery { set; get; }
-        public classUtiles oUtil { set; get; }
+        public ClassUtiles oUtil { set; get; }
         private classTextos oTxt;
         private bool Enable = true;
         private int IdCountry = 0;
@@ -61,7 +61,7 @@ namespace GoldenAge.Formularios
                         EscribirEnFrm();
                         break;
                     case Modo.Add:
-                        oSocialWork = new classSocialWork();
+                        oSocialWork = new ClassSocialWork();
                         EnableFrm(true);
                         btnBlocked.Visible = false;
                         LimpiarFrm();
@@ -158,7 +158,7 @@ namespace GoldenAge.Formularios
         private void initIvaType()
         {
             libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbIvaType,
-                (bool)oQuery.AbmIvaType(new classIvaType(), classQuery.eAbm.LoadCmb),
+                (bool)oQuery.AbmIvaType(new ClassIvaType(), classQuery.eAbm.LoadCmb),
                 oQuery.Table);
             IdIvaType = Convert.ToInt32(cmbIvaType.SelectedValue); ;
         }

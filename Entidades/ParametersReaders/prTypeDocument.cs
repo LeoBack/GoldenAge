@@ -8,10 +8,10 @@ using Entidades.Clases;
 
 namespace Entidades.ParametersReaders
 {
-    public class prTypeDocument
+    public class PrTypeDocument
     {
         // OK - 18/02/07
-        public List<SqlParameter> CreateParameter(classTypeDocument oP, int Abm)
+        public List<SqlParameter> CreateParameter(ClassTypeDocument oP, int Abm)
         {
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
@@ -22,9 +22,9 @@ namespace Entidades.ParametersReaders
         }
 
         // OK - 18/02/07
-        public classTypeDocument ReadReader(SqlDataReader oReader)
+        public ClassTypeDocument ReadReader(SqlDataReader oReader)
         {
-            classTypeDocument oTypeDocument = new classTypeDocument(
+            ClassTypeDocument oTypeDocument = new ClassTypeDocument(
             Convert.ToInt32(oReader["idTypeDocument"]),
             Convert.ToString(oReader["Description"]),
             Convert.ToBoolean(oReader["Visible"]));

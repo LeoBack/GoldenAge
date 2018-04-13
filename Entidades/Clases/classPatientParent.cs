@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classPatientParent
+    public class ClassPatientParent
     {
         #region Atributos y Metodos
         public int IdPatientParent { set; get; }
@@ -18,7 +18,7 @@ namespace Entidades.Clases
 
         #region Constructores
         
-        public classPatientParent()
+        public ClassPatientParent()
         {
             this.IdPatientParent = 0;
             this.IdPatient = 0;
@@ -27,7 +27,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classPatientParent(int vIdPatientParent)
+        public ClassPatientParent(int vIdPatientParent)
         {
             this.IdPatientParent = vIdPatientParent;
             this.IdPatient = 0;
@@ -36,7 +36,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classPatientParent(int vIdPatientParent, int vIdPatient, int vIdParent, int vIdRelationship, bool vVisible)
+        public ClassPatientParent(int vIdPatientParent, int vIdPatient, int vIdParent, int vIdRelationship, bool vVisible)
         {
             this.IdPatientParent = vIdPatientParent;
             this.IdPatient = vIdPatient;

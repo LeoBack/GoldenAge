@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classRelationship
+    public class ClassRelationship
     {
         #region Atributos y Metodos
 
@@ -17,21 +17,21 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classRelationship()
+        public ClassRelationship()
         {
             this.IdRelationship = 0;
             this.Description = string.Empty;
             this.Visible = true;
         }
 
-        public classRelationship(int vIdRelationship)
+        public ClassRelationship(int vIdRelationship)
         {
             this.IdRelationship = vIdRelationship;
             this.Description = string.Empty;
             this.Visible = true;
         }
 
-        public classRelationship(int vIdRelationship, string vDescription, bool vVisible)
+        public ClassRelationship(int vIdRelationship, string vDescription, bool vVisible)
         {
             this.IdRelationship = vIdRelationship;
             this.Description = vDescription;

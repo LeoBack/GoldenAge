@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classPermission
+    public class ClassPermission
     {
         #region Atributos y Metodos
 
@@ -17,21 +17,21 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classPermission()
+        public ClassPermission()
         {
             IdPermission = 0;
             Description = string.Empty;
             Visible = true;
         }
 
-        public classPermission(int vIdPermission)
+        public ClassPermission(int vIdPermission)
         {
             IdPermission = vIdPermission;
             Description = string.Empty;
             Visible = true;
         }
 
-        public classPermission(int vIdPermission, string vDescription, bool vVisible)
+        public ClassPermission(int vIdPermission, string vDescription, bool vVisible)
         {
             IdPermission = vIdPermission;
             Description = vDescription;

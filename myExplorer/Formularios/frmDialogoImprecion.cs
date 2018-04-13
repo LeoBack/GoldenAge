@@ -19,11 +19,9 @@ namespace GoldenAge.Formularios
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
-        public classUtiles oUtil { set; get; }
+        public ClassUtiles oUtil { set; get; }
         public int IdSocialWork { set; get; }
         private classTextos oTxt = new classTextos();
-
-        private frmVisor fE;
 
         #endregion
 
@@ -44,6 +42,7 @@ namespace GoldenAge.Formularios
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            //private frmVisor fE;
             //bool error = true;
 
             //if (rbtPacientesAtendidosXOS.Checked)

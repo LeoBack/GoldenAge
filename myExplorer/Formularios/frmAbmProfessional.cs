@@ -19,11 +19,11 @@ namespace GoldenAge.Formularios
         // OK 17/09/27
         #region Atributos y Propiedades
 
-        public classProfessional oProfessional { set; get; }
+        public ClassProfessional oProfessional { set; get; }
         public enum Modo { Add, Select, Update, Delete }
         public Modo eModo { set; get; }
         public classQuery oQuery { set; get; }
-        public classUtiles oUtil { set; get; }
+        public ClassUtiles oUtil { set; get; }
         private classTextos oTxt;
         private bool Enable = true;
         private int IdCountry = 0;
@@ -56,7 +56,7 @@ namespace GoldenAge.Formularios
                 switch (eModo)
                 {
                     case Modo.Select:
-                        oProfessional = oQuery.AbmProfessional(new classProfessional(oUtil.oProfessional.IdProfessional), classQuery.eAbm.Select) as classProfessional;
+                        oProfessional = oQuery.AbmProfessional(new ClassProfessional(oUtil.oProfessional.IdProfessional), classQuery.eAbm.Select) as ClassProfessional;
                         EnableFrm(false);
                         btnBlocked.Enabled = true;
                         EscribirEnFrm();
@@ -69,7 +69,7 @@ namespace GoldenAge.Formularios
                         setCheckedSpeciality();
                         break;
                     case Modo.Add:
-                        oProfessional = new classProfessional();
+                        oProfessional = new ClassProfessional();
                         EnableFrm(true);
                         btnBlocked.Visible = false;
                         EscribirEnFrm();
@@ -169,15 +169,15 @@ namespace GoldenAge.Formularios
 
             if (txtDescription.Text != string.Empty)
             {
-                classSpecialty oS;
+                ClassSpecialty oS;
                 switch ((Modo)clbSpeciality.Tag)
                 {
                     case Modo.Add:
-                        oS = new classSpecialty(0, txtDescription.Text, true);
+                        oS = new ClassSpecialty(0, txtDescription.Text, true);
                         Error = ((int)oQuery.AbmSpeciality(oS, classQuery.eAbm.Insert) == 0);
                         break;
                     case Modo.Update:
-                        oS = new classSpecialty(Convert.ToInt32(clbSpeciality.SelectedValue), txtDescription.Text, true);
+                        oS = new ClassSpecialty(Convert.ToInt32(clbSpeciality.SelectedValue), txtDescription.Text, true);
                         Error = ((int)oQuery.AbmSpeciality(oS, classQuery.eAbm.Update) == 0);
                         break;
                 }
@@ -217,25 +217,25 @@ namespace GoldenAge.Formularios
         /// </summary>
         private void SaveCheckedSpeciality(int IdProfessional)
         {
-            classProfessionalSpeciality oPs = new classProfessionalSpeciality();
+            ClassProfessionalSpeciality oPs = new ClassProfessionalSpeciality();
             oPs.IdProfessional = IdProfessional;
-            List<classProfessionalSpeciality> lConsulta = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<classProfessionalSpeciality>;
-            List<classProfessionalSpeciality> lDelete = new List<classProfessionalSpeciality>();
-            List<classProfessionalSpeciality> lAdd = new List<classProfessionalSpeciality>();
+            List<ClassProfessionalSpeciality> lConsulta = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<ClassProfessionalSpeciality>;
+            List<ClassProfessionalSpeciality> lDelete = new List<ClassProfessionalSpeciality>();
+            List<ClassProfessionalSpeciality> lAdd = new List<ClassProfessionalSpeciality>();
             lDelete.AddRange(lConsulta);
 
             foreach (DataRowView dRa in clbSpeciality.CheckedItems)
             {
-                lAdd.Add(new classProfessionalSpeciality(
+                lAdd.Add(new ClassProfessionalSpeciality(
                     1, IdProfessional, Convert.ToInt32(dRa[0]), true));
             }
 
             for (int iA = 0; iA < lDelete.Count; iA++)
             {
-                classProfessionalSpeciality oA = lDelete[iA];
+                ClassProfessionalSpeciality oA = lDelete[iA];
                 for (int iB = 0; iB < lAdd.Count; iB++)
                 {
-                    classProfessionalSpeciality oB = lAdd[iB];
+                    ClassProfessionalSpeciality oB = lAdd[iB];
                     if (oA.IdSpeciality == oB.IdSpeciality)
                     {
                         lDelete.Remove(oA);
@@ -247,13 +247,13 @@ namespace GoldenAge.Formularios
 
             }
 
-            foreach (classProfessionalSpeciality oI in lDelete)
+            foreach (ClassProfessionalSpeciality oI in lDelete)
             {
                 if (0 == (int)oQuery.AbmProfessionalSpeciality(oI, classQuery.eAbm.Delete))
                     MessageBox.Show(oQuery.Menssage);
             }
 
-            foreach (classProfessionalSpeciality oI in lAdd)
+            foreach (ClassProfessionalSpeciality oI in lAdd)
             {
                 if (0 == (int)oQuery.AbmProfessionalSpeciality(oI, classQuery.eAbm.Insert))
                     MessageBox.Show(oQuery.Menssage);
@@ -272,11 +272,11 @@ namespace GoldenAge.Formularios
         /// </summary>
         private void setCheckedSpeciality()
         {
-            classProfessionalSpeciality oPs = new classProfessionalSpeciality();
+            ClassProfessionalSpeciality oPs = new ClassProfessionalSpeciality();
             oPs.IdProfessional = oProfessional.IdProfessional;
-            List<classProfessionalSpeciality> lPs = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<classProfessionalSpeciality>;
+            List<ClassProfessionalSpeciality> lPs = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<ClassProfessionalSpeciality>;
 
-            foreach (classProfessionalSpeciality iPs in lPs)
+            foreach (ClassProfessionalSpeciality iPs in lPs)
             {
                 for (int index = 0; index < clbSpeciality.Items.Count; index++)
                 {
@@ -295,7 +295,7 @@ namespace GoldenAge.Formularios
         {
             clbSpeciality.SelectedIndexChanged -= clbSpeciality_SelectedIndexChanged;
             clbSpeciality.DataSource = null;
-            if ((bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb))
+            if ((bool)oQuery.AbmSpeciality(new ClassSpecialty(), classQuery.eAbm.LoadCmb))
             {
                 DataTable dT = oQuery.Table;
                 dT.Rows.Add(new object[] { 0, "Nuevo" });
@@ -313,7 +313,7 @@ namespace GoldenAge.Formularios
         private void initAccess()
         {
             libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeAccess,
-                (bool)oQuery.AbmPermission(new classPermission(), classQuery.eAbm.LoadCmb),
+                (bool)oQuery.AbmPermission(new ClassPermission(), classQuery.eAbm.LoadCmb),
                 oQuery.Table);
         }
 

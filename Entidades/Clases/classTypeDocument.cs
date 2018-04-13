@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classTypeDocument
+    public class ClassTypeDocument
     {
         #region Atributos y Metodos
 
@@ -17,21 +17,21 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classTypeDocument()
+        public ClassTypeDocument()
         {
             this.IdTypeDocument = 0;
             this.Description = "";
             this.Visible = true;
         }
 
-        public classTypeDocument(int vIdTypeDocument)
+        public ClassTypeDocument(int vIdTypeDocument)
         {
             this.IdTypeDocument = vIdTypeDocument;
             this.Description = "";
             this.Visible = true;
         }
 
-        public classTypeDocument(int vIdTypeDocument, string vDescription, bool vVisible)
+        public ClassTypeDocument(int vIdTypeDocument, string vDescription, bool vVisible)
         {
             this.IdTypeDocument = vIdTypeDocument;
             this.Description = vDescription;

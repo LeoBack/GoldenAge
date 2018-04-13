@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classProfessional
+    public class ClassProfessional
     {
         #region Atributos y Metodos
         public int IdProfessional { set; get; }
@@ -27,7 +27,7 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classProfessional()
+        public ClassProfessional()
         {
             this.IdProfessional = 0;
             this.Name = string.Empty;
@@ -45,7 +45,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classProfessional(int vIdProfessional)
+        public ClassProfessional(int vIdProfessional)
         {
             this.IdProfessional = vIdProfessional;
             this.Name = string.Empty;
@@ -63,7 +63,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classProfessional(int vIdProfessional, string vName, string vLastName, string vProfessionalRegistration, 
+        public ClassProfessional(int vIdProfessional, string vName, string vLastName, string vProfessionalRegistration, 
             int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone,
             string vMail, string vUser, string vPassword, int vIdPermission, bool vVisible)
         {

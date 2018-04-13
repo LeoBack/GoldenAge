@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classParent
+    public class ClassParent
     {
         #region Atributos y Metodos
         public int IdParent { set; get; }
@@ -25,7 +25,7 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classParent()
+        public ClassParent()
         {
             this.IdParent = 0;
             this.Name = string.Empty;
@@ -42,7 +42,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classParent(int vIdParent)
+        public ClassParent(int vIdParent)
         {
             this.IdParent = vIdParent;
             this.Name = string.Empty;
@@ -59,7 +59,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classParent(int vIdParent, string vName, string vLastName, int vIdTypeDocument, int vNumberDocument,
+        public ClassParent(int vIdParent, string vName, string vLastName, int vIdTypeDocument, int vNumberDocument,
             string vPhone, string vAlternativePhone, string vEmail, int IdLocationCountry, int IdLocationProvince, 
             int IdLocationCity, string vAddress, bool vVisible)
         {

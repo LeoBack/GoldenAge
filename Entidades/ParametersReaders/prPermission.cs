@@ -8,10 +8,10 @@ using Entidades.Clases;
 
 namespace Entidades.ParametersReaders
 {
-    public class prPermission
+    public class PrPermission
     {
         // OK - 17/11/14
-        public List<SqlParameter> CreateParameter(classPermission oP, int Abm)
+        public List<SqlParameter> CreateParameter(ClassPermission oP, int Abm)
         {
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
@@ -22,9 +22,9 @@ namespace Entidades.ParametersReaders
         }
 
         // OK - 17/11/14
-        public classPermission ReadReader(SqlDataReader oReader)
+        public ClassPermission ReadReader(SqlDataReader oReader)
         {
-            classPermission oP = new classPermission(
+            ClassPermission oP = new ClassPermission(
             Convert.ToInt32(oReader["idPermission"]),
             Convert.ToString(oReader["Description"]),
             Convert.ToBoolean(oReader["Visible"]));

@@ -20,7 +20,7 @@ namespace GoldenAge.Formularios
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
-        public classUtiles oUtil { set; get; }
+        public ClassUtiles oUtil { set; get; }
         private classTextos oTxt;
         private int SelectRow;
         private int cantPag = 0;
@@ -63,12 +63,12 @@ namespace GoldenAge.Formularios
         // OK - 17/09/24
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            classProfessional oP = new classProfessional();
+            ClassProfessional oP = new ClassProfessional();
 
             if (dgvLista.Rows.Count != 0)
             {
                 oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
-                oP = (classProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
+                oP = (ClassProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
                 oP.Visible = false;
 
                 if (oP != null)
@@ -87,12 +87,12 @@ namespace GoldenAge.Formularios
         // OK - 17/09/24
         private void tsmiUpdate_Click(object sender, EventArgs e)
         {
-            classProfessional oP = new classProfessional();
+            ClassProfessional oP = new ClassProfessional();
 
             if (dgvLista.Rows.Count != 0)
             {
                 oP.IdProfessional = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
-                oP = (classProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
+                oP = (ClassProfessional)oQuery.AbmProfessional(oP, classQuery.eAbm.Select);
 
                 if (oP != null)
                 {
@@ -152,7 +152,7 @@ namespace GoldenAge.Formularios
         private void tsbPrintList_Click(object sender, EventArgs e)
         {
             DataSet dS = new DataSet();
-            classProfessional oP = new classProfessional();
+            ClassProfessional oP = new ClassProfessional();
             oP.LastName = tstxtLastName.Text;
             oP.Name = tstxtName.Text;
 

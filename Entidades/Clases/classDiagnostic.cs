@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classDiagnostic
+    public class ClassDiagnostic
     {
         #region Atributos y Metodos
         public int IdDiagnostic { set; get; }
@@ -22,7 +22,7 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classDiagnostic()
+        public ClassDiagnostic()
         {
             this.IdDiagnostic = 0;
             this.IdSpeciality = 0;
@@ -36,7 +36,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classDiagnostic(int vIdDiagnostic)
+        public ClassDiagnostic(int vIdDiagnostic)
         {
             this.IdDiagnostic = vIdDiagnostic;
             this.IdSpeciality = 0;
@@ -50,7 +50,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classDiagnostic(int vIdDiagnostic, int vIdSpeciality, int vIdPatient, int vProfessional,
+        public ClassDiagnostic(int vIdDiagnostic, int vIdSpeciality, int vIdPatient, int vProfessional,
             string vDetail, DateTime vDate, int vIdDestinationSpeciality,  int vIdDestinationProfessional, 
             bool vDestinationRead, bool vVisible)
         {

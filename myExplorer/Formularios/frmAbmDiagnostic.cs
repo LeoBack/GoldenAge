@@ -24,10 +24,10 @@ namespace GoldenAge.Formularios
         public enum SelectedId { Patient=0, Diagnostic=1 };
         private SelectedId eSelectedId;
         public classQuery oQuery { set; get; }
-        public classUtiles oUtil { set; get; }
+        public ClassUtiles oUtil { set; get; }
         private classTextos oTxt;
-        private classPatient oPatient;
-        private classDiagnostic oDiagnostic;
+        private ClassPatient oPatient;
+        private ClassDiagnostic oDiagnostic;
         private int SelectRow;
 
         #endregion
@@ -43,9 +43,9 @@ namespace GoldenAge.Formularios
             eSelectedId = vSelectedId;
             
             if (eSelectedId == SelectedId.Diagnostic)
-                oDiagnostic = new classDiagnostic(Id);
+                oDiagnostic = new ClassDiagnostic(Id);
             else
-                oPatient = new classPatient(Id);
+                oPatient = new ClassPatient(Id);
         }
 
         // OK - 17/11/16
@@ -60,10 +60,10 @@ namespace GoldenAge.Formularios
                 EnableDestination(false);
 
                 eModo = eSelectedId == SelectedId.Patient ? Modo.Add : Modo.Select;
-                oDiagnostic = eSelectedId == SelectedId.Patient ? new classDiagnostic() : oQuery.AbmDiagnostic(oDiagnostic, classQuery.eAbm.Select) as classDiagnostic;
+                oDiagnostic = eSelectedId == SelectedId.Patient ? new ClassDiagnostic() : oQuery.AbmDiagnostic(oDiagnostic, classQuery.eAbm.Select) as ClassDiagnostic;
                 if (oDiagnostic != null)
                 {
-                    oPatient = eSelectedId == SelectedId.Patient ? oQuery.AbmPatient(oPatient, classQuery.eAbm.Select) as classPatient : oQuery.AbmPatient(new classPatient(oDiagnostic.IdPatient), classQuery.eAbm.Select) as classPatient;
+                    oPatient = eSelectedId == SelectedId.Patient ? oQuery.AbmPatient(oPatient, classQuery.eAbm.Select) as ClassPatient : oQuery.AbmPatient(new ClassPatient(oDiagnostic.IdPatient), classQuery.eAbm.Select) as ClassPatient;
                     if (oPatient != null)
                     {
                         if (LoadViewDiagnostic())
@@ -236,9 +236,9 @@ namespace GoldenAge.Formularios
                 SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow;
                 SelectRow = dgvLista.RowCount == 1 ? 0 : SelectRow;
 
-                oDiagnostic = oQuery.AbmDiagnostic(new classDiagnostic(
+                oDiagnostic = oQuery.AbmDiagnostic(new ClassDiagnostic(
                     Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value)),
-                    classQuery.eAbm.Select) as classDiagnostic;
+                    classQuery.eAbm.Select) as ClassDiagnostic;
                 EscribirEnFrm();
 
                 bool isAdmin = oUtil.oProfessional.IdPermission == 1 ? true : false;
@@ -250,7 +250,7 @@ namespace GoldenAge.Formularios
                 if (isAdmin)
                 {
                     eModo = oDiagnostic != null ? Modo.Update : Modo.Add;
-                    oDiagnostic = oDiagnostic != null ? oDiagnostic : new classDiagnostic();
+                    oDiagnostic = oDiagnostic != null ? oDiagnostic : new ClassDiagnostic();
                 }
             }
         }
@@ -289,7 +289,7 @@ namespace GoldenAge.Formularios
         private void initDestinationSpeciality()
         {
             libFeaturesComponents.fComboBox.classControlComboBoxes.LoadComboSearch(cmbDestinationSpeciality,
-                (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), oQuery.Table);
+                (bool)oQuery.AbmSpeciality(new ClassSpecialty(), classQuery.eAbm.LoadCmb), oQuery.Table);
         }
 
         // OK - 17/10/31
@@ -309,9 +309,9 @@ namespace GoldenAge.Formularios
         // OK - 17/11/09
         private bool LoadViewDiagnostic()
         {
-            classDiagnostic oD = new classDiagnostic();
+            ClassDiagnostic oD = new ClassDiagnostic();
             oD.IdPatient = oPatient.IdPatient;
-            List<classDiagnostic> lDiagnostic = oQuery.AbmDiagnostic(oD, classQuery.eAbm.SelectAll) as List<classDiagnostic>;
+            List<ClassDiagnostic> lDiagnostic = oQuery.AbmDiagnostic(oD, classQuery.eAbm.SelectAll) as List<ClassDiagnostic>;
             DataTable dT = new DataTable("AbmDiagnostic");
             dT.Columns.Add("Id", typeof(Int32));
             dT.Columns.Add("Fecha", typeof(DateTime));
@@ -319,12 +319,12 @@ namespace GoldenAge.Formularios
             dT.Columns.Add("Specialidad", typeof(string));
             dT.Columns.Add("Diagnostico", typeof(string));
             dT.Columns.Add("Visible", typeof(string));
-            foreach (classDiagnostic iD in lDiagnostic)
+            foreach (ClassDiagnostic iD in lDiagnostic)
             {
-                classProfessional oP = oQuery.AbmProfessional(new classProfessional(iD.IdProfessional), classQuery.eAbm.Select) as classProfessional;
-                oP = oP == null ? new classProfessional() : oP;
-                classSpecialty oS = oQuery.AbmSpeciality(new classSpecialty(iD.IdSpeciality), classQuery.eAbm.Select) as classSpecialty;
-                oS = oS == null ? new classSpecialty() : oS;
+                ClassProfessional oP = oQuery.AbmProfessional(new ClassProfessional(iD.IdProfessional), classQuery.eAbm.Select) as ClassProfessional;
+                oP = oP == null ? new ClassProfessional() : oP;
+                ClassSpecialty oS = oQuery.AbmSpeciality(new ClassSpecialty(iD.IdSpeciality), classQuery.eAbm.Select) as ClassSpecialty;
+                oS = oS == null ? new ClassSpecialty() : oS;
 
                 bool isShowRow = iD.Visible;
                 if (!isShowRow)
@@ -375,22 +375,22 @@ namespace GoldenAge.Formularios
             if (oUtil.oProfessional.IdPermission == 1)
             {
                 libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSpecialty,
-                    (bool)oQuery.AbmSpeciality(new classSpecialty(), classQuery.eAbm.LoadCmb), oQuery.Table); 
+                    (bool)oQuery.AbmSpeciality(new ClassSpecialty(), classQuery.eAbm.LoadCmb), oQuery.Table); 
             }
             else
             {
-                classProfessionalSpeciality oPs = new classProfessionalSpeciality();
+                ClassProfessionalSpeciality oPs = new ClassProfessionalSpeciality();
                 oPs.IdProfessional = IdProfessional;
 
-                List<classProfessionalSpeciality> lPs = null;
-                lPs = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<classProfessionalSpeciality>;
+                List<ClassProfessionalSpeciality> lPs = null;
+                lPs = oQuery.AbmProfessionalSpeciality(oPs, classQuery.eAbm.SelectAll) as List<ClassProfessionalSpeciality>;
 
                 DataTable dT = new DataTable("AbmDiagnostic");
                 dT.Columns.Add("Id", typeof(Int32));
                 dT.Columns.Add("Value", typeof(string));
-                foreach (classProfessionalSpeciality iPs in lPs)
+                foreach (ClassProfessionalSpeciality iPs in lPs)
                 {
-                    classSpecialty oS = oQuery.AbmSpeciality(new classSpecialty(iPs.IdSpeciality), classQuery.eAbm.Select) as classSpecialty;
+                    ClassSpecialty oS = oQuery.AbmSpeciality(new ClassSpecialty(iPs.IdSpeciality), classQuery.eAbm.Select) as ClassSpecialty;
                     dT.Rows.Add(new object[] { oS.IdSpecialty, oS.Description });
                 }
                 libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbSpecialty, dT.Rows.Count != 0, dT);

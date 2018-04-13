@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classSocialWork
+    public class ClassSocialWork
     {
         #region Atributos y Metodos
 
@@ -25,7 +25,7 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classSocialWork()
+        public ClassSocialWork()
         {
             this.IdSocialWork = 0;
             this.Name = string.Empty;
@@ -40,7 +40,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classSocialWork(int vIdSocialWork)
+        public ClassSocialWork(int vIdSocialWork)
         {
             this.IdSocialWork = vIdSocialWork;
             this.Name = string.Empty;
@@ -55,7 +55,7 @@ namespace Entidades.Clases
             this.Visible = true;
         }
 
-        public classSocialWork(int vIdSocialWork, string vName, string vDescription, int vIdIvaType,
+        public ClassSocialWork(int vIdSocialWork, string vName, string vDescription, int vIdIvaType,
             int vIdLocationCountry, int vIdLocationProvince, int vIdLocationCity, string vAddress, string vPhone, string vContact, bool vVisible)
         {
             this.IdSocialWork = vIdSocialWork;

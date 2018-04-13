@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classSpecialty
+    public class ClassSpecialty
     {
         #region Atributos y Metodos
 
@@ -17,21 +17,21 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classSpecialty()
+        public ClassSpecialty()
         {
             IdSpecialty = 0;
             Description = string.Empty;
             Visible = true;
         }
 
-        public classSpecialty(int vIdSpecialty)
+        public ClassSpecialty(int vIdSpecialty)
         {
             IdSpecialty = vIdSpecialty;
             Description = string.Empty;
             Visible = true;
         }
 
-        public classSpecialty(int vIdSpecialty, string vDescription, bool vVisible)
+        public ClassSpecialty(int vIdSpecialty, string vDescription, bool vVisible)
         {
             IdSpecialty = vIdSpecialty;
             Description = vDescription;

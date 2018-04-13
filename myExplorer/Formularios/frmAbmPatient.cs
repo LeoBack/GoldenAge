@@ -18,16 +18,17 @@ namespace GoldenAge.Formularios
 {
     public partial class FrmAbmPatient : Form
     {
-        // VER - 18/03/23
+        // OK - 18/04/09
         #region Atributos y Propiedades
 
         public enum Modo { Select = 0, Add = 1, Update = 2, Delete = 3 }
 
         private classQuery ObjectQuery;
-        private classUtiles ObjectUtil;
+        private ClassUtiles ObjectUtil;
         private classTextos ObjetTxt;
+
         // Patient
-        private classPatient ObjectPatient;
+        private ClassPatient ObjectPatient;
         private Modo ModoPatient;
         private int IdCountry;
         private int IdProvince;
@@ -35,28 +36,30 @@ namespace GoldenAge.Formularios
         private bool Enable = true;
 
         // Parent
-        private classParent ObjetParent;
+        private ClassParent ObjetParent;
         private Modo ModoParent;
         private int IdCountryParent;
         private int IdProvinceParent;
         private int IdCityParent;
         private int SelectRowParent;                // Pariente Seleccionado desde DataGridview.
-        private List<classParent> ListParentSearch; // Lista de pariente resultante de la busqueda.
+        private List<ClassParent> ListParentSearch; // Lista de pariente resultante de la busqueda.
         private int NextIdexSearchParent = 0;       // Pariente Seleccionada si el resultado de la busque da mas de 1 coincidente.
-        private List<classParent> ListParent;       // Lista de parientes que se tiene que agregar.
         private DataTable DtTempView;               // Tabla temporal de parientes.
         private int IdPatientParentSelected;
         private DataTable DtQueryRelationships;
 
         // SocialWorks
-        private classPatientSocialWork ObjetPatientSocialWork;
+        private ClassPatientSocialWork ObjetPatientSocialWork;
         private Modo ModoSocialWork;
         private DataTable DtViewPatientSocialWork;  //
-        private DataTable dtTempPatientSocialWork;
         private DataTable DtQuerySocialWorks;
         private int IdPatientSocialWorkSelected;
 
         // State
+        private ClassPatientState ObjetPatientState;
+        private Modo ModoPatientState;
+        private DataTable DtViewPatientState;
+        private int IdPatientStateSelected;
 
         #endregion
 
@@ -73,6 +76,7 @@ namespace GoldenAge.Formularios
 
         //== # 01 =====================================================================
         // OK - 18/03/23
+
         #region Formulario
 
         /// <summary>
@@ -83,7 +87,7 @@ namespace GoldenAge.Formularios
         /// <param name="Abm"></param>
         /// <param name="Oquery"></param>
         /// <param name="Outiles"></param>
-        public FrmAbmPatient(classPatient Opatient, Modo Abm, classQuery Oquery, classUtiles Outiles)
+        public FrmAbmPatient(ClassPatient Opatient, Modo Abm, classQuery Oquery, ClassUtiles Outiles)
         {
             InitializeComponent();
             ObjetTxt = new classTextos();
@@ -110,11 +114,11 @@ namespace GoldenAge.Formularios
             {
                 Text = ObjetTxt.TitleFichaPatient;
                 SetFormPermission();
-                InitTypeDocumentPatient();
-                InitParent();
-                InitSocialWork();
-                InitState();
-                LoadPatient();
+                PatientInit();
+                ParentInit();
+                SocialWorkInit();
+                StateInit();
+                PatientLoad();
             }
         }
 
@@ -127,13 +131,13 @@ namespace GoldenAge.Formularios
         private void TabCarpeta_Selected(object sender, TabControlEventArgs e)
         {
             if (e.TabPage == TbpPatient)
-                LoadPatient();
-            else if (e.TabPage == TbpParent && CheckToSavePatient())
-                LoadParent();
-            else if (e.TabPage == TbpSocialWorks && CheckToSavePatient())
-                LoadSocialWork();
-            else if (e.TabPage == tbpStatus && CheckToSavePatient())
-                LoadState();
+                PatientLoad();
+            else if (e.TabPage == TbpParent && PatientCheckToSave())
+                ParentLoad();
+            else if (e.TabPage == TbpSocialWorks && PatientCheckToSave())
+                SocialWorkLoad();
+            else if (e.TabPage == TbpStatus && PatientCheckToSave())
+                StateLoad();
             else
                 TabCarpeta.SelectedTab = TbpPatient;
         }
@@ -149,24 +153,34 @@ namespace GoldenAge.Formularios
             if (ObjectUtil.oProfessional.IdPermission == 1)
             {
                 if (TabCarpeta.SelectedTab == TbpPatient)
-                {
-                    SavePatient();
-                }
+                    PatientSave();
+                else if (TabCarpeta.SelectedTab == TbpParent)
+                    ParentSave(ObjectPatient.IdPatient);
+                else if (TabCarpeta.SelectedTab == TbpSocialWorks)
+                    SocialWorkSave(ObjectPatient.IdPatient);
+                else if (TabCarpeta.SelectedTab == TbpStatus)
+                    StateSave(ObjectPatient.IdPatient);
+            }
+        }
 
-                if (TabCarpeta.SelectedTab == TbpParent)
-                {
-                    SaveParent(ObjectPatient.IdPatient);
-                }
-
-                if (TabCarpeta.SelectedTab == TbpSocialWorks)
-                {
-                    SaveSocialWork(ObjectPatient.IdPatient);
-                }
-
-                if (TabCarpeta.SelectedTab == tbpStatus)
-                {
-                    SaveState(ObjectPatient.IdPatient);
-                }
+        /// <summary>
+        /// Menu contextual Delete.
+        /// OK - 18/04/13
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TsmiDelete_Click(object sender, EventArgs e)
+        {
+            if (ObjectUtil.oProfessional.IdPermission == 1)
+            {
+                //if (TabCarpeta.SelectedTab == TbpPatient)
+                //    PatientSave();
+                if (TabCarpeta.SelectedTab == TbpParent && DgvParentList.Rows.Count != 0)
+                    ParentDelete();
+                else if (TabCarpeta.SelectedTab == TbpSocialWorks && DgvSocialWorksList.Rows.Count != 0)
+                    SocialWorkDelete();
+                else if (TabCarpeta.SelectedTab == TbpStatus && DgvStateList.Rows.Count != 0)
+                    StateDelete();
             }
         }
 
@@ -202,14 +216,13 @@ namespace GoldenAge.Formularios
         private void SetFormPermission()
         {
             bool isAdmin = (ObjectUtil.oProfessional.IdPermission == 1);
-            TsmiParentDelete.Visible = isAdmin;
-            btnPatientBlocked.Visible = isAdmin;
-            btnParentNew.Visible = isAdmin;
-            btnParentSearch.Visible = isAdmin;
-            btnPatientLocalitation.Visible = isAdmin;
-            btnParentLocalitation.Visible = isAdmin;
-            CmsParent.Visible = isAdmin;
-            btnSocialWorkNew.Visible = isAdmin;
+            BtnPatientBlocked.Visible = isAdmin;
+            BtnParentNew.Visible = isAdmin;
+            BtnParentSearch.Visible = isAdmin;
+            BtnPatientLocalitation.Visible = isAdmin;
+            BtnParentLocalitation.Visible = isAdmin;
+            CmsFrm.Visible = isAdmin;
+            BtnSocialWorkNew.Visible = isAdmin;
         }
 
         /// <summary>
@@ -228,18 +241,20 @@ namespace GoldenAge.Formularios
         #endregion
 
         //== # 03 =====================================================================
-        // VER - 18/03/23 - Ver metodo Save
+        // OK - 18/04/09
 
         #region Metodos Patient
+
+        #region Metodos
 
         /// <summary>
         /// Inicializa componente Typo docuemento.
         /// OK - 18/03/23
         /// </summary>
-        private void InitTypeDocumentPatient()
+        private void PatientInit()
         {
-            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(cmbTypeDocumentPatient,
-            (bool)ObjectQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(CmbPatientTypeDocument,
+            (bool)ObjectQuery.AbmTypeDocument(new ClassTypeDocument(), classQuery.eAbm.LoadCmb),
             ObjectQuery.Table);
         }
 
@@ -247,15 +262,15 @@ namespace GoldenAge.Formularios
         /// Mostrar en formulario los datos del paciente.
         /// OK - 18/03/23
         /// </summary>
-        private void LoadPatient()
+        private void PatientLoad()
         {
-            EnablePatient(ModoPatient != Modo.Select);   // abm = Select > False (form disable) 
+            PatientEnable(ModoPatient != Modo.Select);   // abm = Select > False (form disable) 
             BtnSave.Visible = ModoPatient != Modo.Select;
 
             if (ModoPatient == Modo.Add)
-                ObjectPatient = new classPatient();
+                ObjectPatient = new ClassPatient();
             else
-                LoadFrmPatient();
+                PatientLoadFrm();
         }
 
         /// <summary>
@@ -263,7 +278,7 @@ namespace GoldenAge.Formularios
         /// OK - 18/03/06
         /// </summary>
         /// <returns>True: Ok | False: Error</returns>
-        private bool CheckToSavePatient()
+        private bool PatientCheckToSave()
         {
             bool Ok = true;
 
@@ -272,9 +287,9 @@ namespace GoldenAge.Formularios
                 if (MessageBox.Show("Es necesario guardar el paciente actual antes de continuar.\n¿Guardar paciente actual?"
                 , "Atencion", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Ok = SavePatient();
+                    Ok = PatientSave();
                     ModoPatient = (Ok == true) ? Modo.Select : Modo.Add;
-                    EnableParent(!Ok);
+                    ParentEnable(!Ok);
                 }
                 else
                     Ok = false;
@@ -283,26 +298,108 @@ namespace GoldenAge.Formularios
             return Ok;
         }
 
-        // OK - 17/11/21
-        private void btnPatientBlocked_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Cargo objeto Pariente.
+        /// OK - 17/09/30
+        /// </summary>
+        private void PatientLoadObject()
         {
-            if (ObjectPatient != null)
-            {
-                Enable = btnPatientBlocked.Text == ObjetTxt.Bloquear ? false : true;
-                btnPatientBlocked.Text = btnPatientBlocked.Text == ObjetTxt.Bloquear ? ObjetTxt.Desbloquear : ObjetTxt.Bloquear;
-            }
+            ObjectPatient.Name = TxtPatientName.Text.ToUpper();
+            ObjectPatient.LastName = TxtPatientLastName.Text.ToUpper();
+            ObjectPatient.Birthdate = DtpPatientBirthdate.Value;
+            ObjectPatient.IdTypeDocument = Convert.ToInt32(CmbPatientTypeDocument.SelectedValue);
+            ObjectPatient.NumberDocument = Convert.ToInt32(TxtPatientNumberDocument.Text);
+            ObjectPatient.Sex = RbtPatientMale.Checked;
+            ObjectPatient.IdLocationCountry = IdCountry;
+            ObjectPatient.IdLocationProvince = IdProvince;
+            ObjectPatient.IdLocationCity = IdCity;
+            ObjectPatient.Address = TxtPatientAddress.Text.ToUpper();
+            ObjectPatient.Phone = TxtPatientPhone.Text;
+            ObjectPatient.Visible = Enable;
+
+
+            ObjectPatient.DateAdmission = DtpStateDate.Value;
+            ObjectPatient.EgressDate = DateTime.Now;
+            ObjectPatient.ReasonExit = TxtStateReason.Text.ToUpper();
         }
 
-        // OK - 17/09/30
-        private void btnPatientLocalitation_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Carga los elementos de formulario desde objeto.
+        /// OK - 17/09/30
+        /// </summary>
+        private void PatientLoadFrm()
         {
-            frmLocation fLocalitation = new frmLocation(ObjectQuery.ConexionString, frmLocation.eLocation.Select);
-            if (DialogResult.OK == fLocalitation.ShowDialog())
+            TxtPatientName.Text = ObjectPatient.Name.ToUpper();
+            TxtPatientLastName.Text = ObjectPatient.LastName.ToUpper();
+            DtpPatientBirthdate.Value = ObjectPatient.Birthdate;
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(CmbPatientTypeDocument, ObjectPatient.IdTypeDocument);
+            TxtPatientNumberDocument.Text = Convert.ToString(ObjectPatient.NumberDocument);
+            RbtPatientMale.Checked = ObjectPatient.Sex;
+            RbtPatientFemale.Checked = !ObjectPatient.Sex;
+            IdCountry = ObjectPatient.IdLocationCountry;
+            IdProvince = ObjectPatient.IdLocationProvince;
+            IdCity = ObjectPatient.IdLocationCity;
+            TxtPatientAddress.Text = ObjectPatient.Address.ToUpper();
+            TxtPatientPhone.Text = ObjectPatient.Phone;
+            Enable = ObjectPatient.Visible;
+            TxtPatientYearOld.Text = Convert.ToString(ObjectPatient.YearsOld());
+
+            TxtPatientLocationPatient.Text = frmLocation.toStringLocation(
+                ObjectQuery.ConexionString, IdCountry, IdProvince, IdCity);
+
+            if (Enable)
+                BtnPatientBlocked.Text = ObjetTxt.Bloquear;
+            else
+                BtnPatientBlocked.Text = ObjetTxt.Desbloquear;
+
+            DtpStateDate.Value = ObjectPatient.DateAdmission;
+            //dtpEgressDate.Value = oPatient.EgressDate;
+            TxtStateReason.Text = ObjectPatient.ReasonExit.ToUpper();
+        }
+
+        /// <summary>
+        /// Valida los campos del Formulario.
+        /// False -> Vacio - True -> Ok
+        /// OK - 17/09/30
+        /// </summary>
+        /// <returns></returns>
+        private bool PatientValidateFields()
+        {
+            bool V = false;
+
+            if (TxtPatientName.Text.Length >= 50 || (TxtPatientName.Text == ""))
+                MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
+            else if (TxtPatientLastName.Text.Length >= 50 || (TxtPatientLastName.Text == ""))
+                MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
+            else if (TxtPatientPhone.Text.Length >= 20)
+                MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
+            else if (TxtPatientAddress.Text.Length >= 50)
+                MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
+            else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
+                MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
+            else if (TxtStateReason.Text.Length >= 50)
+                MessageBox.Show("El Motivo de Alta Debe tener como minimo 8 caracteres.");
+            else if (CmbPatientTypeDocument.SelectedIndex == -1)
+                MessageBox.Show("Tipo Docuemento Invalido.");
+            else if ((TxtPatientNumberDocument.Text.Length > 9) || (TxtPatientNumberDocument.Text == ""))
+                MessageBox.Show("El Numero de Documento esta vacio o no supera los 9 caracteres.");
+            else
+                V = true;
+
+            return V;
+        }
+
+        /// <summary>
+        /// Habilita TabFicha
+        /// OK - 18/04/12
+        /// </summary>
+        /// <param name="X">True: Habilitado - False:Inhabilitado</param>
+        private void PatientEnable(bool X)
+        {
+            foreach (Control C in this.TlpPatient.Controls)
             {
-                txtLocationPatient.Text = fLocalitation.toStringLocation();
-                IdCountry = fLocalitation.getIdCountry();
-                IdProvince = fLocalitation.getIdProvince();
-                IdCity = fLocalitation.getIdCity();
+                if (!(C is Label))
+                    C.Enabled = X;
             }
         }
 
@@ -311,12 +408,12 @@ namespace GoldenAge.Formularios
         /// OK - 18/03/07
         /// </summary>
         /// <returns>True:Exito False:Error</returns>
-        private bool SavePatient()
+        private bool PatientSave()
         {
             int IdQueryStatus = 0;
-            if (ValidateFieldsPatient())
+            if (PatientValidateFields())
             {
-                LoadObjectPatient();
+                PatientLoadObject();
 
                 switch (ModoPatient)
                 {
@@ -358,126 +455,57 @@ namespace GoldenAge.Formularios
             return (IdQueryStatus != 0);
         }
 
+
         /// <summary>
-        /// Cargo objeto Pariente.
-        /// OK - 17/09/30
+        /// Elimina de BD.
+        /// OK - 18/04/13
         /// </summary>
-        private void LoadObjectPatient()
+        private void PatientDelete()
         {
-            ObjectPatient.Name = txtName.Text.ToUpper();
-            ObjectPatient.LastName = txtLastName.Text.ToUpper();
-            ObjectPatient.Birthdate = dtpBirthdate.Value;
-            ObjectPatient.IdTypeDocument = Convert.ToInt32(cmbTypeDocumentPatient.SelectedValue);
-            ObjectPatient.NumberDocument = Convert.ToInt32(txtNumberDocument.Text);
-            ObjectPatient.Sex = rbtMale.Checked;
-            ObjectPatient.IdLocationCountry = IdCountry;
-            ObjectPatient.IdLocationProvince = IdProvince;
-            ObjectPatient.IdLocationCity = IdCity;
-            ObjectPatient.Address = txtAddress.Text.ToUpper();
-            ObjectPatient.Phone = txtPhone.Text;
-            ObjectPatient.Visible = Enable;
 
-
-            ObjectPatient.DateAdmission = dtpDate.Value;
-            ObjectPatient.EgressDate = DateTime.Now;
-            ObjectPatient.ReasonExit = txtReason.Text.ToUpper();
         }
 
-        /// <summary>
-        /// Carga los elementos de formulario desde objeto.
-        /// OK - 17/09/30
-        /// </summary>
-        private void LoadFrmPatient()
+        #endregion
+
+        // OK - 17/11/21
+        private void btnPatientBlocked_Click(object sender, EventArgs e)
         {
-            txtName.Text = ObjectPatient.Name.ToUpper();
-            txtLastName.Text = ObjectPatient.LastName.ToUpper();
-            dtpBirthdate.Value = ObjectPatient.Birthdate;
-            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbTypeDocumentPatient, ObjectPatient.IdTypeDocument);
-            txtNumberDocument.Text = Convert.ToString(ObjectPatient.NumberDocument);
-            rbtMale.Checked = ObjectPatient.Sex;
-            rbtFemale.Checked = !ObjectPatient.Sex;
-            IdCountry = ObjectPatient.IdLocationCountry;
-            IdProvince = ObjectPatient.IdLocationProvince;
-            IdCity = ObjectPatient.IdLocationCity;
-            txtAddress.Text = ObjectPatient.Address.ToUpper();
-            txtPhone.Text = ObjectPatient.Phone;
-            Enable = ObjectPatient.Visible;
-            txtYearOld.Text = Convert.ToString(ObjectPatient.YearsOld());
-
-            txtLocationPatient.Text = frmLocation.toStringLocation(
-                ObjectQuery.ConexionString, IdCountry, IdProvince, IdCity);
-
-            if (Enable)
-                btnPatientBlocked.Text = ObjetTxt.Bloquear;
-            else
-                btnPatientBlocked.Text = ObjetTxt.Desbloquear;
-
-            dtpDate.Value = ObjectPatient.DateAdmission;
-            //dtpEgressDate.Value = oPatient.EgressDate;
-            txtReason.Text = ObjectPatient.ReasonExit.ToUpper();
-        }
-
-        /// <summary>
-        /// Valida los campos del Formulario.
-        /// False -> Vacio - True -> Ok
-        /// OK - 17/09/30
-        /// </summary>
-        /// <returns></returns>
-        private bool ValidateFieldsPatient()
-        {
-            bool V = false;
-
-            if (txtName.Text.Length >= 50 || (txtName.Text == ""))
-                MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
-            else if (txtLastName.Text.Length >= 50 || (txtLastName.Text == ""))
-                MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
-            else if (txtPhone.Text.Length >= 20)
-                MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
-            else if (txtAddress.Text.Length >= 50)
-                MessageBox.Show("La Direccion esta vacia o supera los 50 caracteres");
-            else if ((IdCountry == 0) || (IdProvince == 0) || (IdCity == 0))
-                MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
-            else if (txtReason.Text.Length >= 50)
-                MessageBox.Show("El Motivo de Alta Debe tener como minimo 8 caracteres.");
-            else if (cmbTypeDocumentPatient.SelectedIndex == -1)
-                MessageBox.Show("Tipo Docuemento Invalido.");
-            else if ((txtNumberDocument.Text.Length > 9) || (txtNumberDocument.Text == ""))
-                MessageBox.Show("El Numero de Documento esta vacio o no supera los 9 caracteres.");
-            else
-                V = true;
-
-            return V;
-        }
-
-        /// <summary>
-        /// Habilita TabFicha
-        /// OK - 18/04/12
-        /// </summary>
-        /// <param name="X">True: Habilitado - False:Inhabilitado</param>
-        private void EnablePatient(bool X)
-        {
-            foreach (Control C in this.TlpPatient.Controls)
+            if (ObjectPatient != null)
             {
-                if (!(C is Label))
-                    C.Enabled = X;
+                Enable = BtnPatientBlocked.Text == ObjetTxt.Bloquear ? false : true;
+                BtnPatientBlocked.Text = BtnPatientBlocked.Text == ObjetTxt.Bloquear ? ObjetTxt.Desbloquear : ObjetTxt.Bloquear;
+            }
+        }
+
+        // OK - 17/09/30
+        private void btnPatientLocalitation_Click(object sender, EventArgs e)
+        {
+            frmLocation fLocalitation = new frmLocation(ObjectQuery.ConexionString, frmLocation.eLocation.Select);
+            if (DialogResult.OK == fLocalitation.ShowDialog())
+            {
+                TxtPatientLocationPatient.Text = fLocalitation.toStringLocation();
+                IdCountry = fLocalitation.getIdCountry();
+                IdProvince = fLocalitation.getIdProvince();
+                IdCity = fLocalitation.getIdCity();
             }
         }
 
         #endregion
 
         //== # 04 =====================================================================
-        // EN CONSTRUCCION
-        
+        // OK - 18/04/09
+
         #region Metodos Parent
+
+        #region Metodos
 
         /// <summary>
         /// Inicializa componente ListaParientes
         /// OK - 18/03/23
         /// </summary>
-        private void InitParent()
+        private void ParentInit()
         {
             ObjetParent = null;
-            ListParent = null;
 
             DtTempView = new DataTable(DtView);
             DtTempView.Columns.Add(new DataColumn(ColIdParent, typeof(Int32)));
@@ -487,151 +515,60 @@ namespace GoldenAge.Formularios
             DtTempView.Columns.Add(new DataColumn(ColLastName, typeof(string)));
 
             DtQueryRelationships = new DataTable();
-            if ((bool)ObjectQuery.AbmRelationship(new classRelationship(), classQuery.eAbm.LoadCmb))
+            if ((bool)ObjectQuery.AbmRelationship(new ClassRelationship(), classQuery.eAbm.LoadCmb))
                 DtQueryRelationships = ObjectQuery.Table;
-            classControlComboBoxes.LoadCombo(cmbParentRelationship, DtQueryRelationships != null, DtQueryRelationships);
+            classControlComboBoxes.LoadCombo(CmbParentRelationship, DtQueryRelationships != null, DtQueryRelationships);
 
-            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(CmbTypeDocumentParent,
-            (bool)ObjectQuery.AbmTypeDocument(new classTypeDocument(), classQuery.eAbm.LoadCmb),
+            libFeaturesComponents.fComboBox.classControlComboBoxes.LoadCombo(CmbParentTypeDocument,
+            (bool)ObjectQuery.AbmTypeDocument(new ClassTypeDocument(), classQuery.eAbm.LoadCmb),
             ObjectQuery.Table);
         }
 
         /// <summary>
         /// Mostrar en formulario los datos del pariente.
-        /// SELECT: OK - 18/03/26
+        /// OK - 18/04/09
         /// </summary>
-        private void LoadParent()
+        private void ParentLoad()
         {
-            EnableParent(ModoPatient != Modo.Select);
-            btnParentNew.Visible = ModoPatient != Modo.Select;
-            lblSearchParent.Text = string.Empty;
-
-            if (DtTempView.Rows.Count != 0)
-                DtTempView.Clear();
-
-            classPatientParent oPp = new classPatientParent();
-            oPp.IdPatient = ObjectPatient.IdPatient;
-            List<classPatientParent> ListPp = ObjectQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<classPatientParent>;
-            foreach (classPatientParent Or in ListPp)
-            {
-                classParent Op = ObjectQuery.AbmParent(new classParent(Or.IdParent), classQuery.eAbm.Select) as classParent;
-                DtTempView.Rows.Add(new object[] { Or.IdParent, Or.IdPatientParent, Or.IdRelationship, Op.Name, Op.LastName });
-            }       
-            GenerarGrillaParent();
-        }
-
-        /// <summary>
-        /// Evento boton nuevo pariente.
-        /// OK - 18/03/26
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnParentNew_Click(object sender, EventArgs e)
-        {
-            CleanParent();
-            EnableParent(true);
-            ObjetParent = new classParent();
-            ModoParent = Modo.Add;
-        }
-
-        // OK - 18/03/22
-        private void TsmiParentDelete_Click(object sender, EventArgs e)
-        {
-            int IdPatientParent = (int)ObjectQuery.AbmPatientParent(new classPatientParent(IdPatientParentSelected), classQuery.eAbm.Delete);
-            if (0 == IdPatientParent)
-                MessageBox.Show(ObjetTxt.ErrorQueryDelete + " IdPatientParentSelected: " + IdPatientParentSelected);
-            GenerarGrillaParent();
-        }
-
-        // OK - 17/09/30
-        private void BtnParentLocalitation_Click(object sender, EventArgs e)
-        {
-            frmLocation fLocalitation = new frmLocation(ObjectQuery.ConexionString, frmLocation.eLocation.Select);
-            if (DialogResult.OK == fLocalitation.ShowDialog())
-            {
-                txtLocationParent.Text = fLocalitation.toStringLocation();
-                IdCountryParent = fLocalitation.getIdCountry();
-                IdProvinceParent = fLocalitation.getIdProvince();
-                IdCityParent = fLocalitation.getIdCity();
-            }
-        }
-
-        // OK - 18/03/22
-        private void BtnParentSearch_Click(object sender, EventArgs e)
-        {
-            if (NextIdexSearchParent == 0)
-            {
-                if (txtParentNumberDocument.Text != string.Empty)
-                {
-                    classParent oP = new classParent();
-                    oP.IdTypeDocument = Convert.ToInt32(CmbTypeDocumentParent.SelectedValue);
-                    oP.NumberDocument = Convert.ToInt32(txtParentNumberDocument.Text);
-                    ListParentSearch = ObjectQuery.AbmParent(oP, classQuery.eAbm.SelectAll) as List<classParent>;
-                }
-            }
-
-            if (ListParentSearch != null && ListParentSearch.Count != 0)
-            {
-                if (NextIdexSearchParent < ListParentSearch.Count)
-                {
-                    ObjetParent = ListParentSearch[NextIdexSearchParent++];
-                    lblSearchParent.Text = NextIdexSearchParent.ToString() + "/" + ListParentSearch.Count.ToString() + " Encontrados";
-                    LoadFrmParent();
-                    NextIdexSearchParent = NextIdexSearchParent == ListParentSearch.Count ? 0 : NextIdexSearchParent;
-                    ModoParent = Modo.Update;
-                }
-            }
-            else
-                CleanParent();
-        }
-
-        // OK - 18/03/26
-        private void DgvParentList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvParentList.RowCount >= 0)
-            {
-                SelectRowParent = e.RowIndex >= 0 ? e.RowIndex : SelectRowParent;
-                SelectRowParent = dgvParentList.RowCount == 1 ? 0 : SelectRowParent;
-
-                IdPatientParentSelected = Convert.ToInt32(dgvParentList.Rows[SelectRowParent].Cells[1].Value);
-
-                foreach (DataRow DrView in DtTempView.Rows)
-                {
-                    if (Convert.ToInt32(DrView[1]) == IdPatientParentSelected)
-                    {
-                        ObjetParent = ObjectQuery.AbmParent(new classParent(Convert.ToInt32(DrView[0])), classQuery.eAbm.Select) as classParent;
-                        break;
-                    }
-                }
-
-                ModoParent = ListParent != null ? Modo.Update : Modo.Add;
-                ObjetParent = ObjetParent != null ? ObjetParent : new classParent();
-                EnableParent(ModoPatient != Modo.Select);
-                LoadFrmParent();
-            }
+            ParentEnable(ModoPatient != Modo.Select);
+            BtnParentNew.Visible = ModoPatient != Modo.Select;
+            LblParentSearch.Text = string.Empty;
+            ParentGenerarGrilla();
         }
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// OK - 18/03/20
+        /// OK - 18/04/09
         /// </summary>
         /// <param name="Source"></param>
-        public void GenerarGrillaParent()
+        public void ParentGenerarGrilla()
         {
-            if (dgvParentList.ColumnCount != 0)
-                dgvParentList.Columns.Clear();
+            if (DtTempView.Rows.Count != 0)
+                DtTempView.Clear();
+            //
+            ClassPatientParent oPp = new ClassPatientParent();
+            oPp.IdPatient = ObjectPatient.IdPatient;
+            List<ClassPatientParent> ListPp = ObjectQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<ClassPatientParent>;
+            foreach (ClassPatientParent Or in ListPp)
+            {
+                ClassParent Op = ObjectQuery.AbmParent(new ClassParent(Or.IdParent), classQuery.eAbm.Select) as ClassParent;
+                DtTempView.Rows.Add(new object[] { Or.IdParent, Or.IdPatientParent, Or.IdRelationship, Op.Name, Op.LastName });
+            }
+            //
+            if (DgvParentList.ColumnCount != 0)
+                DgvParentList.Columns.Clear();
             //
             // Cargo la Grilla
             //
             DataGridViewTextBoxColumn colIdParent = new DataGridViewTextBoxColumn();
             colIdParent.Name = "IdParent";
             colIdParent.DataPropertyName = DtTempView.Columns[0].ColumnName;
-            dgvParentList.Columns.Add(colIdParent);
+            DgvParentList.Columns.Add(colIdParent);
             //
             DataGridViewTextBoxColumn colIdPatientParent = new DataGridViewTextBoxColumn();
             colIdPatientParent.Name = "IdParentPatient";
             colIdPatientParent.DataPropertyName = DtTempView.Columns[1].ColumnName;
-            dgvParentList.Columns.Add(colIdPatientParent);
+            DgvParentList.Columns.Add(colIdPatientParent);
             //
             DataGridViewComboBoxColumn colRelationship = new DataGridViewComboBoxColumn();
             colRelationship.Name = "Relacion";
@@ -640,31 +577,31 @@ namespace GoldenAge.Formularios
             colRelationship.DisplayMember = "Value";
             colRelationship.DataSource = DtQueryRelationships;
             colRelationship.DataPropertyName = DtTempView.Columns[2].ColumnName;
-            dgvParentList.Columns.Add(colRelationship);
+            DgvParentList.Columns.Add(colRelationship);
             //
             DataGridViewTextBoxColumn colName = new DataGridViewTextBoxColumn();
             colName.Name = "Nombre";
             colName.DataPropertyName = DtTempView.Columns[3].ColumnName;
-            dgvParentList.Columns.Add(colName);
+            DgvParentList.Columns.Add(colName);
             //
             DataGridViewTextBoxColumn colLastName = new DataGridViewTextBoxColumn();
             colLastName.Name = "Apellido";
             colLastName.DataPropertyName = DtTempView.Columns[4].ColumnName;
-            dgvParentList.Columns.Add(colLastName);
+            DgvParentList.Columns.Add(colLastName);
             //
             //Configuracion del DataListView
             //
-            dgvParentList.AutoGenerateColumns = false;
-            dgvParentList.AllowUserToAddRows = false;
-            dgvParentList.RowHeadersVisible = false;
-            dgvParentList.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvParentList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvParentList.ReadOnly = true;
-            dgvParentList.ScrollBars = ScrollBars.Both;
-            dgvParentList.ContextMenuStrip = CmsParent;
-            dgvParentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvParentList.MultiSelect = false;
-            dgvParentList.DataSource = DtTempView;
+            DgvParentList.AutoGenerateColumns = false;
+            DgvParentList.AllowUserToAddRows = false;
+            DgvParentList.RowHeadersVisible = false;
+            DgvParentList.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            DgvParentList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvParentList.ReadOnly = true;
+            DgvParentList.ScrollBars = ScrollBars.Both;
+            DgvParentList.ContextMenuStrip = CmsFrm; //CmsParent;
+            DgvParentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvParentList.MultiSelect = false;
+            DgvParentList.DataSource = DtTempView;
 #if (!DEBUG)
             dgvParentList.Columns[0].Visible = false;
             dgvParentList.Columns[1].Visible = false;
@@ -677,12 +614,12 @@ namespace GoldenAge.Formularios
         /// Limpia los componentes del pariente
         /// OK - 18/03/22
         /// </summary>
-        private void CleanParent()
+        private void ParentClean()
         {
             IdCountryParent = 0;
             IdProvinceParent = 0;
             IdCityParent = 0;
-            lblSearchParent.Text = string.Empty;
+            LblParentSearch.Text = string.Empty;
 
             foreach (Control ctrl in TlpParent.Controls)
             {
@@ -695,119 +632,65 @@ namespace GoldenAge.Formularios
         }
 
         /// <summary>
-        /// ABM En base de datos Pariente.
-        /// TEST - 18/03/18
-        /// </summary>
-        /// <returns>True:Exito False:Error</returns>
-        private void SaveParent(int IdPatient)
-        {
-            switch (ModoParent)
-            {
-                case Modo.Add:
-                    if (ValidateFieldsParent())
-                    {
-                        LoadObjectParent();
-                        ObjetParent.IdParent = (int)ObjectQuery.AbmParent(ObjetParent, classQuery.eAbm.Insert);
-                        if (0 == ObjetParent.IdParent)
-                            MessageBox.Show(ObjetTxt.ErrorQueryAdd + " IdParent: " + ObjetParent.IdParent);
-                        else
-                        {
-                            classPatientParent ObjectPatientParent = new classPatientParent();
-                            ObjectPatientParent.IdRelationship = Convert.ToInt32(cmbParentRelationship.SelectedValue);
-                            ObjectPatientParent.IdPatient = IdPatient;
-                            ObjectPatientParent.IdParent = ObjetParent.IdParent;
-                            int IdPatientParent = (int)ObjectQuery.AbmPatientParent(ObjectPatientParent, classQuery.eAbm.Insert);
-                            if (0 == IdPatientParent)
-                                MessageBox.Show(ObjetTxt.ErrorQueryAdd + " IdPatientParet: " + ObjectPatientParent.IdPatientParent);
-                        }
-                    }
-                    break;
-                case Modo.Update:
-                    if (ValidateFieldsParent())
-                    {
-                        LoadObjectParent();
-                        ObjetParent.IdParent = (int)ObjectQuery.AbmParent(ObjetParent, classQuery.eAbm.Update);
-                        if (0 == ObjetParent.IdParent)
-                            MessageBox.Show(ObjetTxt.ErrorQueryUpdate + " IdParent: " + ObjetParent.IdParent);
-                        else
-                        {
-                            classPatientParent ObjectPatientParent = new classPatientParent();
-                            ObjectPatientParent.IdRelationship = Convert.ToInt32(cmbParentRelationship.SelectedValue);
-                            ObjectPatientParent.IdPatient = IdPatient;
-                            ObjectPatientParent.IdParent = ObjetParent.IdParent;
-                            int IdPatientParent = (int)ObjectQuery.AbmPatientParent(ObjectPatientParent, classQuery.eAbm.Update);
-                            if (0 == IdPatientParent)
-                                MessageBox.Show(ObjetTxt.ErrorQueryUpdate + " IdPatientParet: " + ObjectPatientParent.IdPatientParent);
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            }
-            LoadParent();
-        }
-
-        /// <summary>
         /// Habilita TabFicha
         /// OK - 18/03/22
         /// </summary>
         /// <param name="X">True: Habilitado - False: Inhabilitado</param>
-        private void EnableParent(bool X)
+        private void ParentEnable(bool X)
         {
             foreach (Control C in this.TlpParent.Controls)
             {
                 if (!(C is Label))
                     C.Enabled = X;
             }
-            TsmiParentDelete.Enabled = X;
-            dgvParentList.Enabled = true;
+            DgvParentList.Enabled = true;
         }
 
         /// <summary>
         /// Carga Objeto desde Formulario.
         /// OK 18/03/22
         /// </summary>
-        private void LoadObjectParent()
+        private void ParentLoadObject()
         {
-            ObjetParent.Name = txtParentName.Text.ToUpper();
-            ObjetParent.LastName = txtParentLastName.Text.ToUpper();
-            ObjetParent.NumberDocument = Convert.ToInt32(txtParentNumberDocument.Text);
-            ObjetParent.IdTypeDocument = Convert.ToInt32(CmbTypeDocumentParent.SelectedValue);
-            ObjetParent.Address = txtParentAddress.Text.ToUpper();
+            ObjetParent.Name = TxtParentName.Text.ToUpper();
+            ObjetParent.LastName = TxtParentLastName.Text.ToUpper();
+            ObjetParent.NumberDocument = Convert.ToInt32(TxtParentNumberDocument.Text);
+            ObjetParent.IdTypeDocument = Convert.ToInt32(CmbParentTypeDocument.SelectedValue);
+            ObjetParent.Address = TxtParentAddress.Text.ToUpper();
             ObjetParent.IdLocationCountry = IdCountryParent;
             ObjetParent.IdLocationCity = IdCityParent;
             ObjetParent.IdLocationProvince = IdProvinceParent;
-            ObjetParent.Phone = txtParentPhone.Text;
-            ObjetParent.AlternativePhone = txtParentAlternativePhone.Text;
-            ObjetParent.Email = txtParentEmail.Text.ToUpper();
+            ObjetParent.Phone = TxtParentPhone.Text;
+            ObjetParent.AlternativePhone = TxtParentAlternativePhone.Text;
+            ObjetParent.Email = TxtParentEmail.Text.ToUpper();
         }
 
         /// <summary>
         /// Carga los elementos de formulario desde objeto.
         /// OK 18/03/22
         /// </summary>
-        private void LoadFrmParent()
+        private void ParentLoadFrm()
         {
-            txtParentName.Text = ObjetParent.Name.ToUpper();
-            txtParentLastName.Text = ObjetParent.LastName.ToUpper();
-            txtParentNumberDocument.Text = Convert.ToString(ObjetParent.NumberDocument);
-            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(CmbTypeDocumentParent, ObjetParent.IdTypeDocument);
-            txtParentAddress.Text = ObjetParent.Address.ToUpper();
+            TxtParentName.Text = ObjetParent.Name.ToUpper();
+            TxtParentLastName.Text = ObjetParent.LastName.ToUpper();
+            TxtParentNumberDocument.Text = Convert.ToString(ObjetParent.NumberDocument);
+            libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(CmbParentTypeDocument, ObjetParent.IdTypeDocument);
+            TxtParentAddress.Text = ObjetParent.Address.ToUpper();
             IdCountryParent = ObjetParent.IdLocationCountry;
             IdProvinceParent = ObjetParent.IdLocationProvince;
             IdCityParent = ObjetParent.IdLocationCity;
-            txtParentPhone.Text = ObjetParent.Phone;
-            txtParentAlternativePhone.Text = ObjetParent.AlternativePhone;
-            txtParentEmail.Text = ObjetParent.Email.ToUpper();
+            TxtParentPhone.Text = ObjetParent.Phone;
+            TxtParentAlternativePhone.Text = ObjetParent.AlternativePhone;
+            TxtParentEmail.Text = ObjetParent.Email.ToUpper();
 
-            txtLocationParent.Text = frmLocation.toStringLocation(
+            TxtParentLocation.Text = frmLocation.toStringLocation(
                 ObjectQuery.ConexionString, IdCountryParent, IdProvinceParent, IdCityParent);
 
-            List<classPatientParent> ListPp = ObjectQuery.AbmPatientParent(new classPatientParent(), classQuery.eAbm.SelectAll) as List<classPatientParent>;
-            foreach (classPatientParent iPp in ListPp)
+            List<ClassPatientParent> ListPp = ObjectQuery.AbmPatientParent(new ClassPatientParent(), classQuery.eAbm.SelectAll) as List<ClassPatientParent>;
+            foreach (ClassPatientParent iPp in ListPp)
             {
                 if (iPp.IdParent == ObjetParent.IdParent)
-                    libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(cmbParentRelationship, iPp.IdRelationship);
+                    libFeaturesComponents.fComboBox.classControlComboBoxes.IndexCombos(CmbParentRelationship, iPp.IdRelationship);
             }
         }
 
@@ -817,33 +700,33 @@ namespace GoldenAge.Formularios
         /// OK 17/09/30
         /// </summary>
         /// <returns></returns>
-        private bool ValidateFieldsParent()
+        private bool ParentValidateFields()
         {
             bool V = false;
             classValidaciones oClassValidas = new classValidaciones();
-            if (txtParentName.Text.Length >= 50 || (txtParentName.Text == ""))
+            if (TxtParentName.Text.Length >= 50 || (TxtParentName.Text == ""))
                 MessageBox.Show("El Nombre esta vacio o supera los 50 caracteres");
-            else if (txtParentLastName.Text.Length >= 50 || (txtParentLastName.Text == ""))
+            else if (TxtParentLastName.Text.Length >= 50 || (TxtParentLastName.Text == ""))
                 MessageBox.Show("El Apellido esta vacio o supera los 50 caracteres");
             //else if ((txtParentNumberDocument.Text.Length > 9) || (txtParentNumberDocument.Text == ""))
-            else if ((txtParentNumberDocument.Text.Length > 9))
+            else if ((TxtParentNumberDocument.Text.Length > 9))
                 MessageBox.Show("El Numero de Documento esta vacio o no supera los 9 caracteres.");
             //else if (txtParentAddress.Text.Length >= 50 || (txtParentAddress.Text == ""))
-            else if (txtParentAddress.Text.Length >= 50)
+            else if (TxtParentAddress.Text.Length >= 50)
                 MessageBox.Show("La Direccion supera los 50 caracteres");
             else if ((IdCountryParent == 0) || (IdProvinceParent == 0) || (IdCityParent == 0))
                 MessageBox.Show("El Campo Localidad esta vacío o es Erroneo");
-            else if (txtParentPhone.Text.Length >= 15)
+            else if (TxtParentPhone.Text.Length >= 15)
                 MessageBox.Show("El Numero de Telefono supera los 20 caracteres");
-            else if (txtParentAlternativePhone.Text.Length >= 20)
+            else if (TxtParentAlternativePhone.Text.Length >= 20)
                 MessageBox.Show("El Numero de Telefono Alternativo supera los 15 caracteres");
             //else if (txtParentEmail.Text.Length >= 50)
             //    MessageBox.Show("El E-mail supera los 50 caracteres");
-            else if (oClassValidas.VerifyEmailAddressFormat(txtParentEmail.Text) == false)
+            else if (oClassValidas.VerifyEmailAddressFormat(TxtParentEmail.Text) == false)
                 MessageBox.Show("Formato de Correo es: mi@correo.com.ar");
-            else if (cmbParentRelationship.SelectedIndex== -1)
+            else if (CmbParentRelationship.SelectedIndex== -1)
                 MessageBox.Show("Parentesco Invalida.");
-            else if (CmbTypeDocumentParent.SelectedIndex == -1)
+            else if (CmbParentTypeDocument.SelectedIndex == -1)
                 MessageBox.Show("Tipo documento Invalido.");
             else
                 V = true;
@@ -851,18 +734,173 @@ namespace GoldenAge.Formularios
             return V;
         }
 
+        /// <summary>
+        /// ABM En base de datos Pariente.
+        /// OK - 18/04/09
+        /// </summary>
+        /// <returns>True:Exito False:Error</returns>
+        private void ParentSave(int IdPatient)
+        {
+            if (ParentValidateFields())
+            {
+                ParentLoadObject();
+                switch (ModoParent)
+                {
+                    case Modo.Add:
+                        ObjetParent.IdParent = (int)ObjectQuery.AbmParent(ObjetParent, classQuery.eAbm.Insert);
+                        if (0 == ObjetParent.IdParent)
+                            MessageBox.Show(ObjetTxt.ErrorQueryAdd + " IdParent: " + ObjetParent.IdParent);
+                        else
+                        {
+                            ClassPatientParent ObjectPatientParent = new ClassPatientParent();
+                            ObjectPatientParent.IdRelationship = Convert.ToInt32(CmbParentRelationship.SelectedValue);
+                            ObjectPatientParent.IdPatient = IdPatient;
+                            ObjectPatientParent.IdParent = ObjetParent.IdParent;
+                            int IdPatientParent = (int)ObjectQuery.AbmPatientParent(ObjectPatientParent, classQuery.eAbm.Insert);
+                            if (0 == IdPatientParent)
+                                MessageBox.Show(ObjetTxt.ErrorQueryAdd + " IdPatientParet: " + ObjectPatientParent.IdPatientParent);
+                            else
+                            {
+                                ParentClean();
+                                ObjetParent = new ClassParent();
+                                ModoParent = Modo.Add;
+                            }
+                        }
+                        break;
+                    case Modo.Update:
+                        ObjetParent.IdParent = (int)ObjectQuery.AbmParent(ObjetParent, classQuery.eAbm.Update);
+                        if (0 == ObjetParent.IdParent)
+                            MessageBox.Show(ObjetTxt.ErrorQueryUpdate + " IdParent: " + ObjetParent.IdParent);
+                        else
+                        {
+                            ClassPatientParent ObjectPatientParent = new ClassPatientParent();
+                            ObjectPatientParent.IdPatientParent = Convert.ToInt32(DgvParentList.Rows[SelectRowParent].Cells[1].Value);
+                            ObjectPatientParent.IdRelationship = Convert.ToInt32(CmbParentRelationship.SelectedValue);
+                            ObjectPatientParent.IdPatient = IdPatient;
+                            ObjectPatientParent.IdParent = ObjetParent.IdParent;
+                            int IdPatientParent = (int)ObjectQuery.AbmPatientParent(ObjectPatientParent, classQuery.eAbm.Update);
+                            if (0 == IdPatientParent)
+                                MessageBox.Show(ObjetTxt.ErrorQueryUpdate + " IdPatientParet: " + ObjectPatientParent.IdPatientParent);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                ParentLoad();
+            }
+        }
+
+        /// <summary>
+        /// Elimina de BD.
+        /// OK - 18/04/13
+        /// </summary>
+        private void ParentDelete()
+        {
+            int IdPatientParent = (int)ObjectQuery.AbmPatientParent(new ClassPatientParent(IdPatientParentSelected), classQuery.eAbm.Delete);
+            if (0 == IdPatientParent)
+                MessageBox.Show(ObjetTxt.ErrorQueryDelete + " IdPatientParentSelected: " + IdPatientParentSelected);
+            ParentGenerarGrilla();
+        }
+
+        #endregion
+
+        // OK - 18/03/26
+        private void BtnParentNew_Click(object sender, EventArgs e)
+        {
+            ParentClean();
+            ParentEnable(true);
+            ObjetParent = new ClassParent();
+            ModoParent = Modo.Add;
+        }
+
+        // OK - 18/04/09
+        private void TsmiParentDelete_Click(object sender, EventArgs e)
+        {
+            ParentDelete();
+        }
+
+        // OK - 17/09/30
+        private void BtnParentLocalitation_Click(object sender, EventArgs e)
+        {
+            frmLocation fLocalitation = new frmLocation(ObjectQuery.ConexionString, frmLocation.eLocation.Select);
+            if (DialogResult.OK == fLocalitation.ShowDialog())
+            {
+                TxtParentLocation.Text = fLocalitation.toStringLocation();
+                IdCountryParent = fLocalitation.getIdCountry();
+                IdProvinceParent = fLocalitation.getIdProvince();
+                IdCityParent = fLocalitation.getIdCity();
+            }
+        }
+
+        // OK - 18/03/22
+        private void BtnParentSearch_Click(object sender, EventArgs e)
+        {
+            if (NextIdexSearchParent == 0)
+            {
+                if (TxtParentNumberDocument.Text != string.Empty)
+                {
+                    ClassParent oP = new ClassParent();
+                    oP.IdTypeDocument = Convert.ToInt32(CmbParentTypeDocument.SelectedValue);
+                    oP.NumberDocument = Convert.ToInt32(TxtParentNumberDocument.Text);
+                    ListParentSearch = ObjectQuery.AbmParent(oP, classQuery.eAbm.SelectAll) as List<ClassParent>;
+                }
+            }
+
+            if (ListParentSearch != null && ListParentSearch.Count != 0)
+            {
+                if (NextIdexSearchParent < ListParentSearch.Count)
+                {
+                    ObjetParent = ListParentSearch[NextIdexSearchParent++];
+                    LblParentSearch.Text = NextIdexSearchParent.ToString() + "/" + ListParentSearch.Count.ToString() + " Encontrados";
+                    ParentLoadFrm();
+                    NextIdexSearchParent = NextIdexSearchParent == ListParentSearch.Count ? 0 : NextIdexSearchParent;
+                    ModoParent = Modo.Update;
+                }
+            }
+            else
+                ParentClean();
+        }
+
+        // OK - 18/04/09
+        private void DgvParentList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DgvParentList.RowCount >= 0)
+            {
+                SelectRowParent = e.RowIndex >= 0 ? e.RowIndex : SelectRowParent;
+                SelectRowParent = DgvParentList.RowCount == 1 ? 0 : SelectRowParent;
+
+                IdPatientParentSelected = Convert.ToInt32(DgvParentList.Rows[SelectRowParent].Cells[1].Value);
+
+                foreach (DataRow DrView in DtTempView.Rows)
+                {
+                    if (Convert.ToInt32(DrView[1]) == IdPatientParentSelected)
+                    {
+                        ObjetParent = ObjectQuery.AbmParent(new ClassParent(Convert.ToInt32(DrView[0])), classQuery.eAbm.Select) as ClassParent;
+                        break;
+                    }
+                }
+
+                ModoParent = ObjetParent.IdParent != 0 ? Modo.Update : Modo.Add; //ListParent != null ? Modo.Update : Modo.Add;
+                ObjetParent = ObjetParent != null ? ObjetParent : new ClassParent();
+                ParentEnable(ModoPatient != Modo.Select);
+                ParentLoadFrm();
+            }
+        }
+
         #endregion
 
         //== # 05 =====================================================================
-        // EN CONSTRUCCION
+        // OK - 18/04/09
 
         #region Metodos SocialWork
+
+        #region Metodos
 
         /// <summary>
         /// Inicializa campos de Obra Social.
         /// OK - 18/03/26
         /// </summary>
-        private void InitSocialWork()
+        private void SocialWorkInit()
         {
             ObjetPatientSocialWork = null;
 
@@ -870,101 +908,48 @@ namespace GoldenAge.Formularios
             DtViewPatientSocialWork.Columns.Add(new DataColumn("IdPatientSocialWork", typeof(Int32)));
             DtViewPatientSocialWork.Columns.Add(new DataColumn("IdSocialWork", typeof(Int32)));
             DtViewPatientSocialWork.Columns.Add(new DataColumn("AffiliateNumber", typeof(string)));
-            DtViewPatientSocialWork.Columns.Add(new DataColumn("SocialWork", typeof(string)));
 
             DtQuerySocialWorks = new DataTable();
-            if ((bool)ObjectQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb))
+            if ((bool)ObjectQuery.AbmSocialWork(new ClassSocialWork(), classQuery.eAbm.LoadCmb))
                 DtQuerySocialWorks = ObjectQuery.Table;
-            classControlComboBoxes.LoadCombo(cmbSocialWork, DtQuerySocialWorks != null, DtQuerySocialWorks);
+            classControlComboBoxes.LoadCombo(CmbSocialWorkName, DtQuerySocialWorks != null, DtQuerySocialWorks);
         }
 
         /// <summary>
         /// Mostrar en formulario los datos de la Obra social.
-        /// VER - 18/03/23
+        /// OK - 18/04/09
         /// </summary>
-        private void LoadSocialWork()
+        private void SocialWorkLoad()
         {
-            EnableSocialWork(ModoPatient != Modo.Select);
-            btnSocialWorkNew.Visible = ModoPatient != Modo.Select;
-
-            if (DtViewPatientSocialWork.Rows.Count != 0)
-                DtViewPatientSocialWork.Clear();
-
-            classPatientSocialWork oPp = new classPatientSocialWork();
-            oPp.IdPatient = ObjectPatient.IdPatient;
-            List<classPatientSocialWork> ListPp = ObjectQuery.AbmPatientSocialWork(oPp, classQuery.eAbm.SelectAll) as List<classPatientSocialWork>;
-            foreach (classPatientSocialWork Or in ListPp)
-            {
-                classSocialWork Op = ObjectQuery.AbmSocialWork(new classSocialWork(Or.IdSocialWork), classQuery.eAbm.Select) as classSocialWork;
-                DtViewPatientSocialWork.Rows.Add(new object[] { Or.IdPatientSocialWork, Or.IdSocialWork, Or.AffiliateNumber, Op.Name });
-            }
-            GenerarGrillaParent();
-        }
-
-        // OK - 18/03/26
-        private void BtnSocialWorkNew_Click(object sender, EventArgs e)
-        {
-            CleanSocialWork();
-            EnableSocialWork(true);
-            ObjetPatientSocialWork = new classPatientSocialWork();
-            ModoSocialWork = Modo.Add;
-        }
-
-        // OK - 18/03/02
-        private void TsmiSocialWorkDelete_Click(object sender, EventArgs e)
-        {
-            // Lo borra de la Tabla Vista
-            DataRow rDelete = DtViewPatientSocialWork.NewRow();
-            foreach (DataRow dRv in DtViewPatientSocialWork.Rows)
-            {
-                if (Convert.ToInt32(dRv[0]) == IdPatientSocialWorkSelected)
-                    rDelete = dRv;
-            }
-            DtViewPatientSocialWork.Rows.Remove(rDelete);
-
-            // Actualiza la Tabla Temporal con la fila al Id 0 para eliminar
-            foreach (DataRow dRt in dtTempPatientSocialWork.Rows)
-            {
-                if(Convert.ToInt32(dRt[1]) == IdPatientSocialWorkSelected)
-                    dRt[0] = 0;
-            }
-
-            GenerarGrillaPatientSocialWork();
-        }
-
-        // OK - 18/02/07
-        private void DgvSocialWorksList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int Select = 0;
-            if (dgvSocialWorksList.RowCount >= 0)
-            {
-                Select = e.RowIndex >= 0 ? e.RowIndex : Select;
-                Select = dgvParentList.RowCount == 1 ? 0 : Select;
-
-                IdPatientSocialWorkSelected = Convert.ToInt32(dgvSocialWorksList.Rows[Select].Cells[0].Value);
-                txtAffiliateNumber.Text = Convert.ToString(dgvSocialWorksList.Rows[Select].Cells[1].Value);
-                classControlComboBoxes.IndexCombos(cmbSocialWork, Convert.ToInt32(dgvSocialWorksList.Rows[Select].Cells[2].Value));
-            }
+            SocialWorkEnable(ModoPatient != Modo.Select);
+            BtnSocialWorkNew.Visible = ModoPatient != Modo.Select;
+            SocialWorkGenerarGrilla();
         }
 
         /// <summary>
         /// Carga y muestra la grilla SocialWorks
-        /// OK - 18/02/07
+        /// OK - 18/04/09
         /// </summary>
-        private void GenerarGrillaPatientSocialWork()
+        private void SocialWorkGenerarGrilla()
         {
-            if (dgvSocialWorksList.ColumnCount != 0)
-                dgvSocialWorksList.Columns.Clear();
-            // Cargo la Grilla
-            DataGridViewTextBoxColumn colId = new DataGridViewTextBoxColumn();
-            colId.Name = "IdDataTable";
-            colId.DataPropertyName = DtViewPatientSocialWork.Columns[0].ColumnName;
-            dgvSocialWorksList.Columns.Add(colId);
+            if (DtViewPatientSocialWork.Rows.Count != 0)
+                DtViewPatientSocialWork.Clear();
             //
-            DataGridViewTextBoxColumn colNumber = new DataGridViewTextBoxColumn();
-            colNumber.Name = "Numero";
-            colNumber.DataPropertyName = DtViewPatientSocialWork.Columns[1].ColumnName;
-            dgvSocialWorksList.Columns.Add(colNumber);
+            ClassPatientSocialWork oPp = new ClassPatientSocialWork();
+            oPp.IdPatient = ObjectPatient.IdPatient;
+            List<ClassPatientSocialWork> ListPp = ObjectQuery.AbmPatientSocialWork(oPp, classQuery.eAbm.SelectAll) as List<ClassPatientSocialWork>;
+            foreach (ClassPatientSocialWork Or in ListPp)
+                DtViewPatientSocialWork.Rows.Add(new object[] { Or.IdPatientSocialWork, Or.IdSocialWork, Or.AffiliateNumber });
+            //
+            if (DgvSocialWorksList.ColumnCount != 0)
+                DgvSocialWorksList.Columns.Clear();
+            //
+            // Cargo la Grilla
+            //
+            DataGridViewTextBoxColumn colId = new DataGridViewTextBoxColumn();
+            colId.Name = "IdPatientSocialWork";
+            colId.DataPropertyName = DtViewPatientSocialWork.Columns[0].ColumnName;
+            DgvSocialWorksList.Columns.Add(colId);
             //
             DataGridViewComboBoxColumn colSocialWork = new DataGridViewComboBoxColumn();
             colSocialWork.Name = "Obra Social";
@@ -972,22 +957,27 @@ namespace GoldenAge.Formularios
             colSocialWork.ValueMember = "Id";
             colSocialWork.DisplayMember = "Value";
             colSocialWork.DataSource = DtQuerySocialWorks;
-            colSocialWork.DataPropertyName = DtViewPatientSocialWork.Columns[2].ColumnName;
-            dgvSocialWorksList.Columns.Add(colSocialWork);
+            colSocialWork.DataPropertyName = DtViewPatientSocialWork.Columns[1].ColumnName;
+            DgvSocialWorksList.Columns.Add(colSocialWork);
+            //
+            DataGridViewTextBoxColumn colAffiliateNumber = new DataGridViewTextBoxColumn();
+            colAffiliateNumber.Name = "Numero";
+            colAffiliateNumber.DataPropertyName = DtViewPatientSocialWork.Columns[2].ColumnName;
+            DgvSocialWorksList.Columns.Add(colAffiliateNumber);
             //
             //Configuracion del DataListView
             //
-            dgvSocialWorksList.AutoGenerateColumns = false;
-            dgvSocialWorksList.AllowUserToAddRows = false;
-            dgvSocialWorksList.RowHeadersVisible = false;
-            dgvSocialWorksList.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvSocialWorksList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSocialWorksList.ReadOnly = true;
-            dgvSocialWorksList.ScrollBars = ScrollBars.Both;
-            dgvSocialWorksList.ContextMenuStrip = CmsSocialWork;
-            dgvSocialWorksList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvSocialWorksList.MultiSelect = false;
-            dgvSocialWorksList.DataSource = DtViewPatientSocialWork;
+            DgvSocialWorksList.AutoGenerateColumns = false;
+            DgvSocialWorksList.AllowUserToAddRows = false;
+            DgvSocialWorksList.RowHeadersVisible = false;
+            DgvSocialWorksList.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            DgvSocialWorksList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvSocialWorksList.ReadOnly = true;
+            DgvSocialWorksList.ScrollBars = ScrollBars.Both;
+            DgvSocialWorksList.ContextMenuStrip = CmsFrm; //CmsSocialWork;
+            DgvSocialWorksList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvSocialWorksList.MultiSelect = false;
+            DgvSocialWorksList.DataSource = DtViewPatientSocialWork;
 #if (!DEBUG)
             dgvSocialWorksList.Columns[0].Visible = false;
             //dgvSocialWorksList.Columns[1].Visible = false;
@@ -999,147 +989,62 @@ namespace GoldenAge.Formularios
         /// Limpia formulario.
         /// OK - 18/03/06
         /// </summary>
-        private void CleanSocialWork()
+        private void SocialWorkClean()
         {
             IdPatientSocialWorkSelected = -1;
-            txtAffiliateNumber.Text = string.Empty;
-            cmbSocialWork.SelectedIndex = -1;
-        }
-
-        /// <summary>
-        /// Actualiza en BD -> SocialWork.
-        /// OK - 18/02/08
-        /// -1 Insert | 0 Delete | +1 Update
-        /// </summary>
-        /// <returns>True: Exito | False: Error</returns>
-        private void SaveSocialWork(int IdPatient)
-        {
-            //if (ValidateFieldsSocialWorks())
-            //{
-            //    // Agrega
-            //    if (IdPatientSocialWorkSelected == -1)
-            //    {
-            //        dtViewPatientSocialWork.Rows.Add(new object[] { IdPatientSocialWorkSelected, txtAffiliateNumber.Text, Convert.ToInt32(cmbSocialWork.SelectedValue) });
-            //        dtTempPatientSocialWork.Rows.Add(new object[] { -1, IdPatientSocialWorkSelected, txtAffiliateNumber.Text, Convert.ToInt32(cmbSocialWork.SelectedValue) });
-            //    }
-            //    // Elimina
-            //    else if (IdPatientSocialWorkSelected == 0)
-            //    {
-            //        // Ver evento SaveSocialWork. 
-            //    }
-            //    // Actualiza
-            //    else
-            //    {
-            //        foreach (DataRow dtR in dtViewPatientSocialWork.Rows)
-            //        {
-            //            if (Convert.ToInt32(dtR[0]) == IdPatientSocialWorkSelected)
-            //            {
-            //                dtR[1] = txtAffiliateNumber.Text;
-            //                dtR[2] = Convert.ToInt32(cmbSocialWork.SelectedValue);
-            //            }
-            //        }
-            //        foreach (DataRow dtR in dtTempPatientSocialWork.Rows)
-            //        {
-            //            if (Convert.ToInt32(dtR[1]) == IdPatientSocialWorkSelected)
-            //            {
-            //                dtR[0] = 1;
-            //                dtR[2] = txtAffiliateNumber.Text;
-            //                dtR[3] = Convert.ToInt32(cmbSocialWork.SelectedValue);
-            //            }
-            //        }
-            //    }
-            //    GenerarGrillaPatientSocialWork();
-            //}
-            string Error;
-            foreach (DataRow dR in dtTempPatientSocialWork.Rows)
-            {
-                Error = null;
-                classPatientSocialWork oSw = new classPatientSocialWork();
-                oSw.IdPatientSocialWork = Convert.ToInt32(dR[1]);
-                oSw.IdPatient = IdPatient;
-                oSw.AffiliateNumber = Convert.ToString(dR[2]);
-                oSw.IdSocialWork = Convert.ToInt32(dR[3]);
-
-                if (Convert.ToInt32(dR[0]) == -1)
-                {
-                    if (0 == (int)ObjectQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Insert))
-                        Error = ObjetTxt.ErrorQueryAdd;
-                }
-                else if (Convert.ToInt32(dR[0]) == 0)
-                {
-                    if (0 == (int)ObjectQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Delete))
-                        Error = ObjetTxt.ErrorQueryDelete;
-                }
-                else if (Convert.ToInt32(dR[0]) == 1)
-                {
-                    if (0 == (int)ObjectQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Update))
-                        Error = ObjetTxt.ErrorQueryUpdate;
-                }
-                else
-                {
-                    // Nada. Lo deja como esta.
-                }
-
-                if(Error != null)
-                    MessageBox.Show("No se pudo realizar la accion.\nN Afiliado " + oSw.AffiliateNumber , Error);
-            }
+            TxtSocialWorkAffiliateNumber.Text = string.Empty;
+            CmbSocialWorkName.SelectedIndex = -1;
         }
 
         /// <summary>
         /// Habilita TabSocialWork
-        /// OK - 18/02/17
+        /// OK - 18/04/09
         /// </summary>
         /// <param name="X">True: Habilitado - False:Inhabilitado</param>
-        private void EnableSocialWork(bool X)
+        private void SocialWorkEnable(bool X)
         {
             foreach (Control C in this.TlpSocialWork.Controls)
             {
                 if (!(C is Label))
                     C.Enabled = X;
             }
-            TsmiSocialWorkDelete.Enabled = X;
-            dgvSocialWorksList.Enabled = true;
+            DgvSocialWorksList.Enabled = true;
+        }
+
+        /// <summary>
+        /// Carga Objeto desde Formulario.
+        /// OK 18/04/09
+        /// </summary>
+        private void SocialWorkLoadObject()
+        {
+            ObjetPatientSocialWork.IdSocialWork = Convert.ToInt32(CmbSocialWorkName.SelectedValue);
+            ObjetPatientSocialWork.AffiliateNumber = TxtSocialWorkAffiliateNumber.Text.ToUpper();
+            ObjetPatientSocialWork.IdPatient = ObjectPatient.IdPatient;
         }
 
         /// <summary>
         /// Inicializa componente Obre Social.
-        /// OK - 18/03/02
+        /// OK - 18/04/04
         /// </summary>
-        private void LoadFrmPatientSocialWork()
+        private void SocialWorkLoadFrm()
         {
-            // Inicializa Patient-SocialWork 
-            classPatientSocialWork oPw = new classPatientSocialWork();
-            oPw.IdPatient = ObjectPatient.IdPatient;
-
-            // Trar todo los Patient-SocialWork relacionados al Patient
-            List<classPatientSocialWork> lPw =
-                ObjectQuery.AbmPatientSocialWork(oPw, classQuery.eAbm.SelectAll) as List<classPatientSocialWork>;
-
-            // Recorro todos los Patient-SocialWork para cargar la Tabla
-            foreach (classPatientSocialWork iPw in lPw)
-            {
-                DtViewPatientSocialWork.Rows.Add(new object[] { iPw.IdPatientSocialWork, iPw.AffiliateNumber, iPw.IdSocialWork });
-                dtTempPatientSocialWork.Rows.Add(new object[] { 2, iPw.IdPatientSocialWork, iPw.AffiliateNumber, iPw.IdSocialWork });
-            }
-
-            TsmiSocialWorkDelete.Enabled = DtViewPatientSocialWork.Rows.Count != 0;
-
-            GenerarGrillaPatientSocialWork();
+            TxtSocialWorkAffiliateNumber.Text = ObjetPatientSocialWork.AffiliateNumber;
+            classControlComboBoxes.IndexCombos(CmbSocialWorkName, ObjetPatientSocialWork.IdSocialWork);
         }
 
         /// <summary>
         /// Valida los campos del Formulario.
         /// False -> Vacio - True -> Ok
-        /// OK - 18/02/07
+        /// OK - 18/04/04
         /// </summary>
         /// <returns></returns>
-        private bool ValidateFieldsSocialWorks()
+        private bool SocialWorkValidateFields()
         {
             bool V = false;
 
-            if ((txtAffiliateNumber.Text.Length < 2) || (txtAffiliateNumber.Text.Length >= 19) || (txtAffiliateNumber.Text == ""))
+            if ((TxtSocialWorkAffiliateNumber.Text.Length < 2) || (TxtSocialWorkAffiliateNumber.Text.Length >= 19) || (TxtSocialWorkAffiliateNumber.Text == ""))
                 MessageBox.Show("El Numero de Afiliado esta vacio o supera 19 caracteres.");
-            else if (cmbSocialWork.SelectedIndex == -1)
+            else if (CmbSocialWorkName.SelectedIndex == -1)
                 MessageBox.Show("Obra Social Invalida.");
             else
                 V = true;
@@ -1147,97 +1052,189 @@ namespace GoldenAge.Formularios
             return V;
         }
 
+        /// <summary>
+        /// Actualiza en BD -> SocialWork.
+        /// OK - 18/02/08
+        /// </summary>
+        private void SocialWorkSave(int IdPatient)
+        {
+            if (SocialWorkValidateFields())
+            {
+                SocialWorkLoadObject();
+                switch (ModoSocialWork)
+                {
+                    case Modo.Add:
+                        ObjetPatientSocialWork.IdPatientSocialWork = (int)ObjectQuery.AbmPatientSocialWork(ObjetPatientSocialWork, classQuery.eAbm.Insert);
+                        if (0 == ObjetPatientSocialWork.IdPatientSocialWork)
+                            MessageBox.Show(ObjetTxt.ErrorQueryAdd + " IdPatientSocialWork: " + ObjetPatientSocialWork.IdPatientSocialWork);
+                        else
+                        {
+                            SocialWorkClean();
+                            ObjetPatientSocialWork = new ClassPatientSocialWork();
+                            ModoSocialWork = Modo.Add;
+                        }
+                        break;
+                    case Modo.Update:
+                        ObjetPatientSocialWork.IdPatientSocialWork = (int)ObjectQuery.AbmPatientSocialWork(ObjetPatientSocialWork, classQuery.eAbm.Update);
+                        if (0 == ObjetPatientSocialWork.IdPatientSocialWork)
+                            MessageBox.Show(ObjetTxt.ErrorQueryAdd + " IdPatientSocialWork: " + ObjetPatientSocialWork.IdPatientSocialWork);
+                        break;
+                    default:
+                        break;
+                }
+                SocialWorkLoad();
+            }
+        }
+
+        /// <summary>
+        /// Elimina de BD.
+        /// OK - 18/04/13
+        /// </summary>
+        private void SocialWorkDelete()
+        {
+            int IdPatientSocialWork = (int)ObjectQuery.AbmPatientSocialWork(new ClassPatientSocialWork(IdPatientSocialWorkSelected), classQuery.eAbm.Delete);
+            if (0 == IdPatientSocialWork)
+                MessageBox.Show(ObjetTxt.ErrorQueryDelete + " IdPatientSocialWorkSelected: " + IdPatientSocialWorkSelected);
+            SocialWorkGenerarGrilla();
+        }
+
+        #endregion
+
+        // OK - 18/04/04
+        private void BtnSocialWorkNew_Click(object sender, EventArgs e)
+        {
+            SocialWorkClean();
+            SocialWorkEnable(true);
+            ObjetPatientSocialWork = new ClassPatientSocialWork();
+            ModoSocialWork = Modo.Add;
+        }
+
+        // OK - 18/04/09
+        private void TsmiSocialWorkDelete_Click(object sender, EventArgs e)
+        {
+            SocialWorkDelete();
+        }
+
+        // OK - 18/04/09
+        private void DgvSocialWorksList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int Select = 0;
+            if (DgvSocialWorksList.RowCount >= 0)
+            {
+                Select = e.RowIndex >= 0 ? e.RowIndex : Select;
+                Select = DgvParentList.RowCount == 1 ? 0 : Select;
+
+                IdPatientSocialWorkSelected = Convert.ToInt32(DgvSocialWorksList.Rows[Select].Cells[0].Value);
+                ObjetPatientSocialWork = ObjectQuery.AbmPatientSocialWork(new ClassPatientSocialWork(IdPatientSocialWorkSelected), classQuery.eAbm.Select) as ClassPatientSocialWork;
+
+                ModoSocialWork = ObjetPatientSocialWork.IdPatientSocialWork != 0 ? Modo.Update : Modo.Add;
+                ObjetPatientSocialWork = ObjetPatientSocialWork != null ? ObjetPatientSocialWork : new ClassPatientSocialWork();
+                SocialWorkEnable(ModoSocialWork != Modo.Select);
+                SocialWorkLoadFrm();
+            }
+        }
+
         #endregion
 
         //== # 06 =====================================================================
-        // EN CONSTRUCCION
+        // OK - 18/04/13
 
         #region State
 
+        #region Metodos
+
         /// <summary>
-        /// OK - 18/03/23
+        /// OK - 18/04/13
         /// </summary>
-        private void InitState()
+        private void StateInit()
         {
-            //dtViewPatientSocialWork = new DataTable("ViewPatientSocialWork");
-            //dtViewPatientSocialWork.Columns.Add(new DataColumn("IdPatientSocialWork", typeof(Int32)));
-            //dtViewPatientSocialWork.Columns.Add(new DataColumn("AffiliateNumber", typeof(string)));
-            //dtViewPatientSocialWork.Columns.Add(new DataColumn("IdSocialWork", typeof(Int32)));
-
-            //dtTempPatientSocialWork = new DataTable("TempPatientSocialWork");
-            //dtTempPatientSocialWork.Columns.Add(new DataColumn("Abm", typeof(Int32)));
-            //dtTempPatientSocialWork.Columns.Add(new DataColumn("IdPatientSocialWork", typeof(Int32)));
-            //dtTempPatientSocialWork.Columns.Add(new DataColumn("AffiliateNumber", typeof(string)));
-            //dtTempPatientSocialWork.Columns.Add(new DataColumn("IdSocialWork", typeof(Int32)));
-
-            //dtQuerySocialWorks = new DataTable();
-            //if ((bool)ObjetQuery.AbmSocialWork(new classSocialWork(), classQuery.eAbm.LoadCmb))
-            //    dtQuerySocialWorks = ObjetQuery.Table;
-            //classControlComboBoxes.LoadCombo(cmbSocialWork, dtQuerySocialWorks != null, dtQuerySocialWorks);
+            DtViewPatientState = new DataTable("ViewPatientState");
+            DtViewPatientState.Columns.Add(new DataColumn("IdPatientState", typeof(Int32)));
+            DtViewPatientState.Columns.Add(new DataColumn("Date", typeof(DateTime)));
+            DtViewPatientState.Columns.Add(new DataColumn("Estate", typeof(Int32)));
+            DtViewPatientState.Columns.Add(new DataColumn("Description", typeof(string)));
         }
 
         /// <summary>
         /// Mostrar en formulario los datos del Estado.
-        /// VER - 18/03/23
+        /// OK - 18/04/13
         /// </summary>
-        private void LoadState()
+        private void StateLoad()
         {
-            EnableState(ModoPatient != Modo.Select);
-            btnStateNew.Visible = ModoPatient != Modo.Select;
+            StateEnable(ModoPatient != Modo.Select);
+            BtnStateNew.Visible = ModoPatient != Modo.Select;
+            StateGenerarGrilla();
+        }
+
+        /// <summary>
+        /// Carga y muestra la grilla.
+        /// OK - 18/04/13
+        /// </summary>  
+        private void StateGenerarGrilla()
+        {
+            if (DtViewPatientState.Rows.Count != 0)
+                DtViewPatientState.Clear();
+
+            ClassPatientState oPp = new ClassPatientState();
+            oPp.IdPatient = ObjectPatient.IdPatient;
+            List<ClassPatientState> ListPp = ObjectQuery.AbmPatientState(oPp, classQuery.eAbm.SelectAll) as List<ClassPatientState>;
+            foreach (ClassPatientState Or in ListPp)
+                DtViewPatientSocialWork.Rows.Add(new object[] { Or.IdPatientState, Or.Date, Or.Estate, Or.Description });
+            //
+            if (DgvStateList.ColumnCount != 0)
+                DgvStateList.Columns.Clear();
+            //
+            // Cargo la Grilla
+            //
+            DataGridViewTextBoxColumn colId = new DataGridViewTextBoxColumn();
+            colId.Name = "IdPatientState";
+            colId.DataPropertyName = DtViewPatientSocialWork.Columns[0].ColumnName;
+            DgvStateList.Columns.Add(colId);
+            //
+            DataGridViewTextBoxColumn colDate = new DataGridViewTextBoxColumn();
+            colDate.Name = "Date";
+            colDate.DataPropertyName = DtViewPatientSocialWork.Columns[1].ColumnName;
+            DgvStateList.Columns.Add(colDate);            
+            //
+            DataGridViewTextBoxColumn colEstate = new DataGridViewTextBoxColumn();
+            colEstate.Name = "Estate";
+            colEstate.DataPropertyName = DtViewPatientSocialWork.Columns[2].ColumnName;
+            DgvStateList.Columns.Add(colEstate);
+            //
+            DataGridViewTextBoxColumn colDescription = new DataGridViewTextBoxColumn();
+            colDescription.Name = "Description";
+            colDescription.DataPropertyName = DtViewPatientSocialWork.Columns[3].ColumnName;
+            DgvStateList.Columns.Add(colDescription);
+            //
+            //Configuracion del DataListView
+            //
+            DgvStateList.AutoGenerateColumns = false;
+            DgvStateList.AllowUserToAddRows = false;
+            DgvStateList.RowHeadersVisible = false;
+            DgvStateList.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            DgvStateList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvStateList.ReadOnly = true;
+            DgvStateList.ScrollBars = ScrollBars.Both;
+            DgvStateList.ContextMenuStrip = CmsFrm; //CmsState;
+            DgvStateList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvStateList.MultiSelect = false;
+            DgvStateList.DataSource = DtViewPatientSocialWork;
+#if (!DEBUG)
+            dgvListState.Columns[0].Visible = false;
+            //dgvListState.Columns[1].Visible = false;
+            //dgvListState.Columns[dgvSocialWorks.ColumnCount -1].Visible = false;
+#endif
         }
 
         /// <summary>
         /// Limpia formulario.
-        /// VER - 18/03/07
+        /// OK - 18/04/13
         /// </summary>
-        private void CleanState()
+        private void StateClean()
         {
-            //IdPatientSocialWorkSelected = -1;
-            //txtAffiliateNumber.Text = string.Empty;
-            //cmbSocialWork.SelectedIndex = -1;
-        }
-
-        /// <summary>
-        /// Actualiza en BD.
-        /// VER - 18/03/07
-        /// -1 Insert | 0 Delete | +1 Update
-        /// </summary>
-        /// <returns>True: Exito | False: Error</returns>
-        private void SaveState(int IdPatient)
-        {
-            //string Error;
-            //foreach (DataRow dR in dtTempPatientSocialWork.Rows)
-            //{
-            //    Error = null;
-            //    classPatientSocialWork oSw = new classPatientSocialWork();
-            //    oSw.IdPatientSocialWork = Convert.ToInt32(dR[1]);
-            //    oSw.IdPatient = IdPatient;
-            //    oSw.AffiliateNumber = Convert.ToString(dR[2]);
-            //    oSw.IdSocialWork = Convert.ToInt32(dR[3]);
-
-            //    if (Convert.ToInt32(dR[0]) == -1)
-            //    {
-            //        if (0 == (int)ObjetQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Insert))
-            //            Error = ObjetTxt.ErrorQueryAdd;
-            //    }
-            //    else if (Convert.ToInt32(dR[0]) == 0)
-            //    {
-            //        if (0 == (int)ObjetQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Delete))
-            //            Error = ObjetTxt.ErrorQueryDelete;
-            //    }
-            //    else if (Convert.ToInt32(dR[0]) == 1)
-            //    {
-            //        if (0 == (int)ObjetQuery.AbmPatientSocialWork(oSw, classQuery.eAbm.Update))
-            //            Error = ObjetTxt.ErrorQueryUpdate;
-            //    }
-            //    else
-            //    {
-            //        // Nada. Lo deja como esta.
-            //    }
-
-            //    if (Error != null)
-            //        MessageBox.Show("No se pudo realizar la accion.\nN Afiliado " + oSw.AffiliateNumber, Error);
-            //}
+            IdPatientStateSelected = -1;
+            TxtStateReason.Text = string.Empty;
+            DtpStateDate.Value = DateTime.Now;
         }
 
         /// <summary>
@@ -1245,12 +1242,139 @@ namespace GoldenAge.Formularios
         /// OK - 18/03/07
         /// </summary>
         /// <param name="X">True: Habilitado - False:Inhabilitado</param>
-        private void EnableState(bool X)
+        private void StateEnable(bool X)
         {
             foreach (Control C in this.TlpStatus.Controls)
             {
                 if (!(C is Label))
                     C.Enabled = X;
+            }
+        }
+
+        /// <summary>
+        /// Carga Objeto desde Formulario.
+        /// OK - 18/04/13
+        /// </summary>
+        private void StateLoadObjectPatient()
+        {
+            ObjetPatientState.Estate = RbtStateInit.Checked;
+            ObjetPatientState.Description = TxtStateReason.Text;
+            ObjetPatientState.Date = DtpStateDate.Value;
+            ObjetPatientState.IdPatient = ObjectPatient.IdPatient;
+        }
+
+        /// <summary>
+        /// Inicializa componente.
+        /// OK - 18/04/13
+        /// </summary>
+        private void StateLoadFrmPatient()
+        {
+            RbtStateInit.Checked = ObjetPatientState.Estate;
+            RbtStateExit.Checked =! ObjetPatientState.Estate;
+            TxtStateReason.Text = ObjetPatientState.Description;
+            DtpStateDate.Value = ObjetPatientState.Date;
+        }
+
+        /// <summary>
+        /// Valida los campos del Formulario.
+        /// False -> Vacio - True -> Ok
+        /// OK - 18/04/04
+        /// </summary>
+        /// <returns></returns>
+        private bool StateValidateFields()
+        {
+            bool V = false;
+
+            if ((TxtStateReason.Text.Length < 10) || (TxtStateReason.Text.Length >= 250) || (TxtStateReason.Text == ""))
+                MessageBox.Show("El Numero de Afiliado no supera el minimo de 10 caracteres o supera los 250 caracteres.");
+            else if (DtpStateDate.Value > DateTime.Now)
+                MessageBox.Show("La fecha no puede ser mayor a la del dia en curso.");
+            else
+                V = true;
+
+            return V;
+        }
+
+        /// <summary>
+        /// Actualiza en BD.
+        /// OK - 18/04/13
+        /// </summary>
+        /// <returns>True: Exito | False: Error</returns>
+        private void StateSave(int IdPatient)
+        {
+            if (StateValidateFields())
+            {
+                StateLoadFrmPatient();
+                switch (ModoPatientState)
+                {
+                    case Modo.Add:
+                        ObjetPatientState.IdPatientState = (int)ObjectQuery.AbmPatientState(ObjetPatientState, classQuery.eAbm.Insert);
+                        if (0 == ObjetPatientState.IdPatientState)
+                            MessageBox.Show(ObjetTxt.ErrorQueryAdd + " IdPatientState: " + ObjetPatientState.IdPatientState);
+                        else
+                        {
+                            StateClean();
+                            ObjetPatientState = new ClassPatientState();
+                            ModoPatientState = Modo.Add;
+                        }
+                        break;
+                    case Modo.Update:
+                        ObjetPatientState.IdPatientState = (int)ObjectQuery.AbmPatientState(ObjetPatientState, classQuery.eAbm.Update);
+                        if (0 == ObjetPatientState.IdPatientState)
+                            MessageBox.Show(ObjetTxt.ErrorQueryAdd + " IdPatientState: " + ObjetPatientState.IdPatientState);
+                        break;
+                    default:
+                        break;
+                }
+                StateLoad();
+            }
+        }
+
+        /// <summary>
+        /// Elimina de BD.
+        /// OK - 18/04/13
+        /// </summary>
+        private void StateDelete()
+        {
+            int IdPatientState = (int)ObjectQuery.AbmPatientState(new ClassPatientState(IdPatientStateSelected), classQuery.eAbm.Delete);
+            if (0 == IdPatientState)
+                MessageBox.Show(ObjetTxt.ErrorQueryDelete + " IdPatientStateSelected: " + IdPatientStateSelected);
+            StateGenerarGrilla();
+        }
+
+        #endregion
+
+        // OK - 18/04/13
+        private void BtnStateNew_Click(object sender, EventArgs e)
+        {
+            StateClean();
+            StateEnable(true);
+            ObjetPatientState = new ClassPatientState();
+            ModoPatientState = Modo.Add;
+        }
+
+        // OK - 18/04/13
+        private void TsmiStateDelete_Click(object sender, EventArgs e)
+        {
+            StateDelete();
+        }
+
+        // OK - 18/04/13
+        private void DgvListState_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int Select = 0;
+            if (DgvStateList.RowCount >= 0)
+            {
+                Select = e.RowIndex >= 0 ? e.RowIndex : Select;
+                Select = DgvStateList.RowCount == 1 ? 0 : Select;
+
+                IdPatientStateSelected = Convert.ToInt32(DgvStateList.Rows[Select].Cells[0].Value);
+                ObjetPatientState = ObjectQuery.AbmPatientState(new ClassPatientState(IdPatientStateSelected), classQuery.eAbm.Select) as ClassPatientState;
+
+                ModoPatientState = ObjetPatientState.IdPatientState != 0 ? Modo.Update : Modo.Add;
+                ObjetPatientState = ObjetPatientState != null ? ObjetPatientState : new ClassPatientState();
+                StateEnable(ModoPatientState != Modo.Select);
+                StateLoadFrmPatient();
             }
         }
 
@@ -1293,6 +1417,5 @@ namespace GoldenAge.Formularios
         }
 
         #endregion
-
     }
 }

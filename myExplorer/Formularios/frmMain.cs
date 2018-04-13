@@ -24,7 +24,7 @@ namespace GoldenAge.Formularios
         private enum eUser { Invalido = 0, Valido = 1, Invitado = 2 }
 
         private classQuery oQuery;
-        private classUtiles oUtil;
+        private ClassUtiles oUtil;
         private eUser User = eUser.Invalido;
         private classTextos oTxt = new classTextos();
 
@@ -50,7 +50,7 @@ namespace GoldenAge.Formularios
             tsPrincipal.Visible = false;
             oQuery = new classQuery(ConfigurationManager.ConnectionStrings[0].ConnectionString);
             tsslPath.Text = oQuery.ServerVersion();
-            oUtil = new classUtiles();
+            oUtil = new ClassUtiles();
             // Inicia Secion.
             //tsbMyMessages.Visible = false;
             EnableUser(false);
@@ -288,10 +288,10 @@ namespace GoldenAge.Formularios
                     oUtil.SetSesion(oQuery.OpenSession(fLogin.User, fLogin.Password));
                     if (oUtil.GetSesion() != 0)
                     {
-                        Entidades.Clases.classProfessional oP = new Entidades.Clases.classProfessional();
+                        Entidades.Clases.ClassProfessional oP = new Entidades.Clases.ClassProfessional();
                         oP.IdProfessional = oQuery.SessionProfessional(oUtil.GetSesion());
                         
-                        oUtil.oProfessional = (Entidades.Clases.classProfessional)oQuery.AbmProfessional(
+                        oUtil.oProfessional = (Entidades.Clases.ClassProfessional)oQuery.AbmProfessional(
                             oP, classQuery.eAbm.Select);
                         
                         User = eUser.Valido;

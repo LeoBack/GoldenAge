@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entidades.Clases
 {
-    public class classIvaType
+    public class ClassIvaType
     {
         #region Atributos y Metodos
 
@@ -17,21 +17,21 @@ namespace Entidades.Clases
 
         #region Constructores
 
-        public classIvaType()
+        public ClassIvaType()
         {
             IdIvaType = 0;
             Description = string.Empty;
             Visible = true;
         }
 
-        public classIvaType(int vIdIvaType)
+        public ClassIvaType(int vIdIvaType)
         {
             IdIvaType = vIdIvaType;
             Description = string.Empty;
             Visible = true;
         }
 
-        public classIvaType(int vIdIvaType, string vDescription, bool vVisible)
+        public ClassIvaType(int vIdIvaType, string vDescription, bool vVisible)
         {
             IdIvaType = vIdIvaType;
             Description = vDescription;

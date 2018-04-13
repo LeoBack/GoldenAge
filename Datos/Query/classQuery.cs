@@ -84,24 +84,24 @@ namespace Datos.Query
         // CONSULTAS PARA CADA FUNCION
         //----------------------------------------------------------
 
-        // OK - 18/02/07
+        // OK - 18/04/13
         #region ABM
 
         // OK - 17/10/31
-        public object AbmDiagnostic(classDiagnostic oP, eAbm Abm)
+        public object AbmDiagnostic(ClassDiagnostic oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmDiagnostic;
-            prDiagnostic pr = new prDiagnostic();
+            PrDiagnostic pr = new PrDiagnostic();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classDiagnostic> lDiagnostic = null;
+                    List<ClassDiagnostic> lDiagnostic = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lDiagnostic = new List<classDiagnostic>();
+                        lDiagnostic = new List<ClassDiagnostic>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -131,7 +131,7 @@ namespace Datos.Query
                     Result = lDiagnostic;
                     break;
                 case eAbm.Select:
-                    classDiagnostic oDiagnosti = null;
+                    ClassDiagnostic oDiagnosti = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -186,20 +186,20 @@ namespace Datos.Query
         }
 
         // OK - 18/02/07
-        public object AbmIvaType(classIvaType oP, eAbm Abm)
+        public object AbmIvaType(ClassIvaType oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmIvaType;
-            prIvaType pr = new prIvaType();
+            PrIvaType pr = new PrIvaType();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classIvaType> lIvaType = null;
+                    List<ClassIvaType> lIvaType = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lIvaType = new List<classIvaType>();
+                        lIvaType = new List<ClassIvaType>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -230,7 +230,7 @@ namespace Datos.Query
                     Result = lIvaType;
                     break;
                 case eAbm.Select:
-                    classIvaType oIvaTyp = null;
+                    ClassIvaType oIvaTyp = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -286,20 +286,20 @@ namespace Datos.Query
         }
 
         // OK - 17/11/14
-        public object AbmParent(classParent oP, eAbm Abm)
+        public object AbmParent(ClassParent oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmParent;
-            prParent pr = new prParent();
+            PrParent pr = new PrParent();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classParent> lParent = null;
+                    List<ClassParent> lParent = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lParent = new List<classParent>();
+                        lParent = new List<ClassParent>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -330,7 +330,7 @@ namespace Datos.Query
                     Result = lParent;
                     break;
                 case eAbm.Select:
-                    classParent oParen = null;
+                    ClassParent oParen = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -385,20 +385,20 @@ namespace Datos.Query
         }
 
         // OK - 17/11/14
-        public object AbmPatient(classPatient oP, eAbm Abm)
+        public object AbmPatient(ClassPatient oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmPatient;
-            prPatient pr = new prPatient();
+            PrPatient pr = new PrPatient();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classPatient> lPatient = null;
+                    List<ClassPatient> lPatient = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lPatient = new List<classPatient>();
+                        lPatient = new List<ClassPatient>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -429,7 +429,7 @@ namespace Datos.Query
                     Result = lPatient;
                     break;
                 case eAbm.Select:
-                    classPatient oPatien = null;
+                    ClassPatient oPatien = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -485,20 +485,20 @@ namespace Datos.Query
         }
 
         // OK - 17/11/14
-        public object AbmPatientParent(classPatientParent oP, eAbm Abm)
+        public object AbmPatientParent(ClassPatientParent oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmPatientParent;
-            prPatientParent pr = new prPatientParent();
+            PrPatientParent pr = new PrPatientParent();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classPatientParent> lPatientParent = null;
+                    List<ClassPatientParent> lPatientParent = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lPatientParent = new List<classPatientParent>();
+                        lPatientParent = new List<ClassPatientParent>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -529,7 +529,7 @@ namespace Datos.Query
                     Result = lPatientParent;
                     break;
                 case eAbm.Select:
-                    classPatientParent oPatientParen = null;
+                    ClassPatientParent oPatientParen = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -585,20 +585,20 @@ namespace Datos.Query
         }
 
         // OK - 18/02/07
-        public object AbmPatientSocialWork(classPatientSocialWork oP, eAbm Abm)
+        public object AbmPatientSocialWork(ClassPatientSocialWork oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmPatientSocialWork;
-            prPatientSocialWork pr = new prPatientSocialWork();
+            PrPatientSocialWork pr = new PrPatientSocialWork();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classPatientSocialWork> lPatientSocialWork = null;
+                    List<ClassPatientSocialWork> lPatientSocialWork = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lPatientSocialWork = new List<classPatientSocialWork>();
+                        lPatientSocialWork = new List<ClassPatientSocialWork>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -629,7 +629,7 @@ namespace Datos.Query
                     Result = lPatientSocialWork;
                     break;
                 case eAbm.Select:
-                    classPatientSocialWork oPatientSocialWork = null;
+                    ClassPatientSocialWork oPatientSocialWork = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -684,21 +684,121 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/11/14
-        public object AbmPermission(classPermission oP, eAbm Abm)
-        {
+        // OK - 18/04/13
+        public object AbmPatientState(ClassPatientState oP, eAbm Abm)
+        { 
             object Result = null;
-            string SPname = sp.AbmPermission;
-            prPermission pr = new prPermission();
+            string SPname = sp.AbmPatientState;
+            PrPatientState pr = new PrPatientState();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classPermission> lPermission = null;
+                    List<ClassPatientState> lPatientState = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lPermission = new List<classPermission>();
+                        lPatientState = new List<ClassPatientState>();
+                        while (oSql.Reader.Read())
+                        {
+                            try
+                            {
+                                lPatientState.Add(pr.ReadReader(oSql.Reader));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatientState = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatientState = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                lPatientState = null;
+                            }
+                        }
+                    }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = lPatientState;
+                    break;
+                case eAbm.Select:
+                    ClassPatientState oPatientState = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                    {
+                        if (oSql.Reader.Read())
+                        {
+                            try
+                            {
+                                oPatientState = pr.ReadReader(oSql.Reader);
+                            }
+                            catch (FormatException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatientState = null;
+                            }
+                            catch (InvalidCastException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatientState = null;
+                            }
+                            catch (OverflowException ex)
+                            {
+                                Menssage = ex.ToString();
+                                oPatientState = null;
+                            }
+                        }
+                    }
+                    else
+                        Menssage = oSql.Mensage;
+
+                    oSql.Close();
+                    Result = oPatientState;
+                    break;
+                case eAbm.Insert:
+                case eAbm.Update:
+                case eAbm.Delete:
+                    int UltimoId = oSql.ExecuteEscalar(SPname, lParam.ToArray());
+
+                    if (UltimoId == 0)
+                        Menssage = oSql.Mensage;
+
+                    Result = UltimoId;
+                    break;
+                case eAbm.LoadCmb:
+                    Result = oSql.ExecCombo(SPname, lParam.ToArray());
+                    if (oSql.Table.Rows.Count != 0)
+                        Table = oSql.Table;
+                    else
+                        Table = null;
+                    break;
+                default:
+                    break;
+            }
+            return Result;
+        }
+
+        // OK - 17/11/14
+        public object AbmPermission(ClassPermission oP, eAbm Abm)
+        {
+            object Result = null;
+            string SPname = sp.AbmPermission;
+            PrPermission pr = new PrPermission();
+            List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
+
+            switch (Abm)
+            {
+                case eAbm.SelectAll:
+                    List<ClassPermission> lPermission = null;
+                    if (oSql.SelectRaeder(SPname, lParam.ToArray()))
+                    {
+                        lPermission = new List<ClassPermission>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -729,7 +829,7 @@ namespace Datos.Query
                     Result = lPermission;
                     break;
                 case eAbm.Select:
-                    classPermission oPermissio = null;
+                    ClassPermission oPermissio = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -786,20 +886,20 @@ namespace Datos.Query
         }
 
         // OK - 17/10/21
-        public object AbmProfessional(classProfessional oP, eAbm Abm)
+        public object AbmProfessional(ClassProfessional oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmProfessional;
-            prProfessional pr = new prProfessional();
+            PrProfessional pr = new PrProfessional();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classProfessional> lProfessional = null;
+                    List<ClassProfessional> lProfessional = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lProfessional = new List<classProfessional>();
+                        lProfessional = new List<ClassProfessional>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -830,7 +930,7 @@ namespace Datos.Query
                     Result = lProfessional;
                     break;
                 case eAbm.Select:
-                    classProfessional oProfessiona = null;
+                    ClassProfessional oProfessiona = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -886,20 +986,20 @@ namespace Datos.Query
         }
 
         // OK - 18/02/07
-        public object AbmProfessionalSpeciality(classProfessionalSpeciality oP, eAbm Abm)
+        public object AbmProfessionalSpeciality(ClassProfessionalSpeciality oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmProfessionalSpeciality;
-            prProfessionalSpeciality pr = new prProfessionalSpeciality();
+            PrProfessionalSpeciality pr = new PrProfessionalSpeciality();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classProfessionalSpeciality> lProfessionalSpeciality = null;
+                    List<ClassProfessionalSpeciality> lProfessionalSpeciality = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lProfessionalSpeciality = new List<classProfessionalSpeciality>();
+                        lProfessionalSpeciality = new List<ClassProfessionalSpeciality>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -930,7 +1030,7 @@ namespace Datos.Query
                     Result = lProfessionalSpeciality;
                     break;
                 case eAbm.Select:
-                    classProfessionalSpeciality oProfessionalSpecialit = null;
+                    ClassProfessionalSpeciality oProfessionalSpecialit = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -986,20 +1086,20 @@ namespace Datos.Query
         }
         
         // OK - 18/02/07
-        public object AbmRelationship(classRelationship oP, eAbm Abm)
+        public object AbmRelationship(ClassRelationship oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmRelationship;
-            prRelationship pr = new prRelationship();
+            PrRelationship pr = new PrRelationship();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classRelationship> lRelationship = null;
+                    List<ClassRelationship> lRelationship = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lRelationship = new List<classRelationship>();
+                        lRelationship = new List<ClassRelationship>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -1030,7 +1130,7 @@ namespace Datos.Query
                     Result = lRelationship;
                     break;
                 case eAbm.Select:
-                    classRelationship oRelationshi = null;
+                    ClassRelationship oRelationshi = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -1087,20 +1187,20 @@ namespace Datos.Query
         }
 
         // OK - 17/10/21
-        public object AbmSocialWork(classSocialWork oP, eAbm Abm)
+        public object AbmSocialWork(ClassSocialWork oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmSocialWork;
-            prSocialWorks pr = new prSocialWorks();
+            PrSocialWorks pr = new PrSocialWorks();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classSocialWork> lSocialWork = null;
+                    List<ClassSocialWork> lSocialWork = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lSocialWork = new List<classSocialWork>();
+                        lSocialWork = new List<ClassSocialWork>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -1131,7 +1231,7 @@ namespace Datos.Query
                     Result = lSocialWork;
                     break;
                 case eAbm.Select:
-                    classSocialWork oSocialWork = null;
+                    ClassSocialWork oSocialWork = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -1187,20 +1287,20 @@ namespace Datos.Query
         }
 
         // OK - 18/02/07
-        public object AbmSpeciality(classSpecialty oP, eAbm Abm)
+        public object AbmSpeciality(ClassSpecialty oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmSpeciality;
-            prSpecialty pr = new prSpecialty();
+            PrSpecialty pr = new PrSpecialty();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classSpecialty> lSpecialty = null;
+                    List<ClassSpecialty> lSpecialty = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lSpecialty = new List<classSpecialty>();
+                        lSpecialty = new List<ClassSpecialty>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -1231,7 +1331,7 @@ namespace Datos.Query
                     Result = lSpecialty;
                     break;
                 case eAbm.Select:
-                    classSpecialty oSpecialt = null;
+                    ClassSpecialty oSpecialt = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())
@@ -1287,20 +1387,20 @@ namespace Datos.Query
         }
 
         // OK - 18/02/07
-        public object AbmTypeDocument(classTypeDocument oP, eAbm Abm)
+        public object AbmTypeDocument(ClassTypeDocument oP, eAbm Abm)
         {
             object Result = null;
             string SPname = sp.AbmTypeDocument;
-            prTypeDocument pr = new prTypeDocument();
+            PrTypeDocument pr = new PrTypeDocument();
             List<SqlParameter> lParam = pr.CreateParameter(oP, (int)Abm);
 
             switch (Abm)
             {
                 case eAbm.SelectAll:
-                    List<classTypeDocument> lTypeDocument = null;
+                    List<ClassTypeDocument> lTypeDocument = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
-                        lTypeDocument = new List<classTypeDocument>();
+                        lTypeDocument = new List<ClassTypeDocument>();
                         while (oSql.Reader.Read())
                         {
                             try
@@ -1331,7 +1431,7 @@ namespace Datos.Query
                     Result = lTypeDocument;
                     break;
                 case eAbm.Select:
-                    classTypeDocument oTypeDocumen = null;
+                    ClassTypeDocument oTypeDocumen = null;
                     if (oSql.SelectRaeder(SPname, lParam.ToArray()))
                     {
                         if (oSql.Reader.Read())

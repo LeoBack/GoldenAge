@@ -8,10 +8,10 @@ using Entidades.Clases;
 
 namespace Entidades.ParametersReaders
 {
-    public class prIvaType
+    public class PrIvaType
     {
         // OK - 18/02/07
-        public List<SqlParameter> CreateParameter(classIvaType oP, int Abm)
+        public List<SqlParameter> CreateParameter(ClassIvaType oP, int Abm)
         {
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
@@ -22,9 +22,9 @@ namespace Entidades.ParametersReaders
         }
 
         // OK - 18/02/07
-        public classIvaType ReadReader(SqlDataReader oReader)
+        public ClassIvaType ReadReader(SqlDataReader oReader)
         {
-            classIvaType oIvaType = new classIvaType(
+            ClassIvaType oIvaType = new ClassIvaType(
             Convert.ToInt32(oReader["IdIvaType"]),
             Convert.ToString(oReader["Description"]),
             Convert.ToBoolean(oReader["Visible"]));

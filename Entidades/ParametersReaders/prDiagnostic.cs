@@ -8,10 +8,10 @@ using Entidades.Clases;
 
 namespace Entidades.ParametersReaders
 {
-    public class prDiagnostic
+    public class PrDiagnostic
     {
         // OK - 17/10/31
-        public List<SqlParameter> CreateParameter(classDiagnostic oP, int Abm)
+        public List<SqlParameter> CreateParameter(ClassDiagnostic oP, int Abm)
         {
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
@@ -29,9 +29,9 @@ namespace Entidades.ParametersReaders
         }
 
         // OK - 17/10/31
-        public classDiagnostic ReadReader(SqlDataReader oReader)
+        public ClassDiagnostic ReadReader(SqlDataReader oReader)
         {
-            classDiagnostic oDiagnostic = new classDiagnostic(
+            ClassDiagnostic oDiagnostic = new ClassDiagnostic(
             Convert.ToInt32(oReader["IdDiagnostic"]),
             Convert.ToInt32(oReader["IdSpeciality"]),
             Convert.ToInt32(oReader["IdPatient"]),

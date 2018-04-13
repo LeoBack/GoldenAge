@@ -7,10 +7,10 @@ using Entidades.Clases;
 
 namespace Entidades
 {
-    public class classUtiles
+    public class ClassUtiles
     {
         private int IdSession;
-        public classProfessional oProfessional { set; get; }
+        public ClassProfessional oProfessional { set; get; }
         public int CantRegistrosGrilla { set; get; }
 
 
@@ -18,14 +18,14 @@ namespace Entidades
         private string NameApk = "GoldenAge";
         private string NameReport = "DocumentReport";
 
-        public classUtiles()
+        public ClassUtiles()
         {
             this.oProfessional = null;
             this.CantRegistrosGrilla = 20;
             this.CreateDirectory();
         }
 
-        public classUtiles(classProfessional vProfessional, int CantRegistrosGrilla)
+        public ClassUtiles(ClassProfessional vProfessional, int CantRegistrosGrilla)
         {
             this.oProfessional = vProfessional;
             this.CantRegistrosGrilla = CantRegistrosGrilla;

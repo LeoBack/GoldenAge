@@ -8,10 +8,10 @@ using Entidades.Clases;
 
 namespace Entidades.ParametersReaders
 {
-    public class prProfessionalSpeciality
+    public class PrProfessionalSpeciality
     {
         // OK - 18/02/07
-        public List<SqlParameter> CreateParameter(classProfessionalSpeciality oP, int Abm)
+        public List<SqlParameter> CreateParameter(ClassProfessionalSpeciality oP, int Abm)
         {
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Abm", (int)Abm));
@@ -23,9 +23,9 @@ namespace Entidades.ParametersReaders
         }
 
         // OK - 18/02/07
-        public classProfessionalSpeciality ReadReader(SqlDataReader oReader)
+        public ClassProfessionalSpeciality ReadReader(SqlDataReader oReader)
         {
-            classProfessionalSpeciality oProfessionalSpeciality = new classProfessionalSpeciality(
+            ClassProfessionalSpeciality oProfessionalSpeciality = new ClassProfessionalSpeciality(
             Convert.ToInt32(oReader["idProfessionalSpeciality"]),
             Convert.ToInt32(oReader["IdProfessional"]),
             Convert.ToInt32(oReader["IdSpeciality"]),

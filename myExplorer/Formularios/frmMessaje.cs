@@ -20,7 +20,7 @@ namespace GoldenAge.Formularios
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
-        public classUtiles oUtil { set; get; }
+        public ClassUtiles oUtil { set; get; }
         private classTextos oTxt;
         private int SelectRow;
         private int cantPag = 0;
@@ -59,12 +59,12 @@ namespace GoldenAge.Formularios
         // OK 17/09/30
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            classSocialWork oSw = new classSocialWork();
+            ClassSocialWork oSw = new ClassSocialWork();
 
             if (dgvLista.Rows.Count != 0)
             {
                 oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-                oSw = (classSocialWork)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Select);
+                oSw = (ClassSocialWork)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Select);
                 oSw.Visible = false;
 
                 if (oSw != null)
@@ -89,12 +89,12 @@ namespace GoldenAge.Formularios
         // OK - 24/09/17
         private void tsmiUpdate_Click(object sender, EventArgs e)
         {
-            classSocialWork oSw = new classSocialWork();
+            ClassSocialWork oSw = new ClassSocialWork();
 
             if (dgvLista.Rows.Count != 0)
             {
                 oSw.IdSocialWork = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[0].Value);
-                oSw = (classSocialWork)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Select);
+                oSw = (ClassSocialWork)oQuery.AbmSocialWork(oSw, classQuery.eAbm.Select);
 
                 if (oSw != null)
                 {
@@ -155,8 +155,8 @@ namespace GoldenAge.Formularios
         {
             if (dgvLista.RowCount != 0)
             {
-                classDiagnostic oD = new classDiagnostic(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value));
-                oD = oQuery.AbmDiagnostic(oD, classQuery.eAbm.Select) as classDiagnostic;
+                ClassDiagnostic oD = new ClassDiagnostic(Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value));
+                oD = oQuery.AbmDiagnostic(oD, classQuery.eAbm.Select) as ClassDiagnostic;
                 if (oD != null)
                 {
                     oD.DestinationRead = false;
