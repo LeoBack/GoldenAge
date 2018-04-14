@@ -10,7 +10,7 @@ namespace Entidades.ParametersReaders
 {
     public class PrPatient
     {
-        // OK - 17/11/14
+        // OK - 18/04/14
         public List<SqlParameter> CreateParameter(ClassPatient oP, int Abm)
         {
             List<SqlParameter> lParam = new List<SqlParameter>();
@@ -27,14 +27,11 @@ namespace Entidades.ParametersReaders
             lParam.Add(new SqlParameter("@IdLocationCity", oP.IdLocationCity));
             lParam.Add(new SqlParameter("@Address", oP.Address));
             lParam.Add(new SqlParameter("@Phone", oP.Phone));
-            lParam.Add(new SqlParameter("@DateAdmission", oP.DateAdmission));
-            lParam.Add(new SqlParameter("@EgressDate", oP.EgressDate));
-            lParam.Add(new SqlParameter("@ReasonExit", oP.ReasonExit));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
             return lParam;
         }
 
-        // OK - 17/11/14
+        // OK - 18/04/14
         public ClassPatient ReadReader(SqlDataReader oReader)
         {
             ClassPatient oP = new ClassPatient(
@@ -50,9 +47,6 @@ namespace Entidades.ParametersReaders
             Convert.ToInt32(oReader["IdLocationCity"]),
             Convert.ToString(oReader["Address"]),
             Convert.ToString(oReader["Phone"]),
-            oReader["DateAdmission"].ToString().Length > 0 ? DateTime.Parse(oReader["DateAdmission"].ToString()) : DateTime.MinValue,
-            oReader["EgressDate"].ToString().Length > 0 ? DateTime.Parse(oReader["EgressDate"].ToString()) : DateTime.MinValue,
-            Convert.ToString(oReader["ReasonExit"]),
             Convert.ToBoolean(oReader["Visible"]));
             return oP;
         }

@@ -9,20 +9,21 @@ namespace Datos.Query
     {
         // ABM
         public string AbmDiagnostic = "[spAbmDiagnostic-v1.0]";
+        public string AbmIvaType = "[spAbmIvaType-v1.0]";
         public string AbmParent = "[spAbmParent-v1.0]";
-        public string AbmPatient = "[spAbmPatient-v1.1]";
         public string AbmPatientParent = "[spAbmPatientParent-v1.0]";
+        public string AbmPatientSocialWork = "[spAbmPatientSocialWork-v1.0]";
+        public string AbmPatientState = "[spAbmPatientState-v1.0]";
+        public string AbmPatient = "[spAbmPatient-v1.2]";
         public string AbmPermission = "[spAbmPermission-v1.0]";
-        public string AbmProfessional = "[spAbmProfessional-v1.0]";
         public string AbmProfessionalSpeciality = "[spAbmProfessionalSpeciality-v1.0]";
+        public string AbmProfessional = "[spAbmProfessional-v1.0]";
         public string AbmRelationship = "[spAbmRelationship-v1.0]";
         public string AbmSocialWork = "[spAbmSocialWork-v1.0]";
         public string AbmSpeciality = "[spAbmSpecialty-v1.0]";
         public string AbmTypeDocument = "[spAbmTypeDocument-v1.0]";
-        public string AbmIvaType = "[spAbmIvaType-v1.0]";
         public string AbmTypeParent = "[spAbmTypeParent-v1.0]";
-        public string AbmPatientSocialWork = "[spAbmPatientSocialWork-v1.0]";
-        public string AbmPatientState = "[spAbmPatientState-v1.0]";
+
 
         // Especiales
         public string Login = "[spLoguin-v1.0]";

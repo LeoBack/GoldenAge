@@ -21,9 +21,6 @@ namespace Entidades.Clases
         public int IdLocationCity { set; get; }
         public string Address { set; get; }
         public string Phone { set; get; }
-        public DateTime DateAdmission { set; get; }
-        public DateTime EgressDate { set; get; }
-        public string ReasonExit { set; get; }
         public bool Visible { set; get; }
 
         #endregion
@@ -44,9 +41,6 @@ namespace Entidades.Clases
             this.IdLocationCity = 0;
             this.Address = string.Empty;
             this.Phone = string.Empty;
-            this.DateAdmission=DateTime.Now;
-            this.EgressDate = DateTime.Now.AddDays(90);
-            this.ReasonExit = string.Empty;
             this.Visible = true;
         }
 
@@ -64,16 +58,12 @@ namespace Entidades.Clases
             this.IdLocationCity = 0;
             this.Address = string.Empty;
             this.Phone = string.Empty;
-            this.DateAdmission = DateTime.Now;
-            this.EgressDate = DateTime.Now.AddDays(90);
-            this.ReasonExit = string.Empty;
             this.Visible = true;
         }
 
         public ClassPatient(int vIdPatient, string vName, string vLastName, DateTime vBirthdate,
             int vIdTypeDocument, int vNumberDocument, bool vSex, int IdLocationCountry, 
-            int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, 
-            DateTime vDateAdmission, DateTime vEgressDate, string vReasonExit, bool vVisible)
+            int IdLocationProvince, int IdLocationCity, string vAddress, string vPhone, bool vVisible)
         {
             this.IdPatient = vIdPatient;
             this.Name = vName;
@@ -87,9 +77,6 @@ namespace Entidades.Clases
             this.IdLocationCity = IdLocationCity;
             this.Address = vAddress;
             this.Phone = vPhone;
-            this.DateAdmission = vDateAdmission;
-            this.EgressDate = vEgressDate;
-            this.ReasonExit = vReasonExit;
             this.Visible = vVisible;
         }
         
@@ -110,9 +97,6 @@ namespace Entidades.Clases
                 "\nCiudad: " + this.IdLocationCity +
                 "\nDomicilio: " + this.Address +
                 "\nTelefono: " + this.Phone.ToString() +
-                "\nFecha de Ingreso: " +this.DateAdmission.ToShortDateString() +
-                "\nFecha de Egreso: " +this.EgressDate.ToShortDateString() +
-                "\nMotivo de Egreso: " +this.ReasonExit +
                 "\nVisible: " + this.Visible.ToString();
         }
 

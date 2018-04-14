@@ -99,11 +99,10 @@
             this.LblStateDate = new System.Windows.Forms.Label();
             this.TxtStateReason = new System.Windows.Forms.TextBox();
             this.BtnStateNew = new System.Windows.Forms.Button();
-            this.RbtStateInit = new System.Windows.Forms.RadioButton();
-            this.RbtStateExit = new System.Windows.Forms.RadioButton();
             this.BtnClosed = new System.Windows.Forms.Button();
             this.CmsFrm = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmbState = new System.Windows.Forms.ComboBox();
             this.TlpPanelPrincipal.SuspendLayout();
             this.TabCarpeta.SuspendLayout();
             this.TbpPatient.SuspendLayout();
@@ -887,22 +886,20 @@
             // 
             // TlpStatus
             // 
-            this.TlpStatus.ColumnCount = 6;
+            this.TlpStatus.ColumnCount = 5;
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
-            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
-            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
+            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.TlpStatus.Controls.Add(this.DgvStateList, 0, 0);
             this.TlpStatus.Controls.Add(this.LblStateStatus, 0, 1);
             this.TlpStatus.Controls.Add(this.LblStateReasonExit, 0, 2);
-            this.TlpStatus.Controls.Add(this.DtpStateDate, 4, 1);
-            this.TlpStatus.Controls.Add(this.LblStateDate, 3, 1);
+            this.TlpStatus.Controls.Add(this.DtpStateDate, 3, 1);
+            this.TlpStatus.Controls.Add(this.LblStateDate, 2, 1);
             this.TlpStatus.Controls.Add(this.TxtStateReason, 0, 3);
-            this.TlpStatus.Controls.Add(this.BtnStateNew, 5, 4);
-            this.TlpStatus.Controls.Add(this.RbtStateInit, 1, 1);
-            this.TlpStatus.Controls.Add(this.RbtStateExit, 2, 1);
+            this.TlpStatus.Controls.Add(this.BtnStateNew, 4, 4);
+            this.TlpStatus.Controls.Add(this.CmbState, 1, 1);
             this.TlpStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TlpStatus.Location = new System.Drawing.Point(3, 3);
             this.TlpStatus.Name = "TlpStatus";
@@ -920,7 +917,7 @@
             this.DgvStateList.AllowUserToAddRows = false;
             this.DgvStateList.AllowUserToDeleteRows = false;
             this.DgvStateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TlpStatus.SetColumnSpan(this.DgvStateList, 6);
+            this.TlpStatus.SetColumnSpan(this.DgvStateList, 5);
             this.DgvStateList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvStateList.Location = new System.Drawing.Point(3, 3);
             this.DgvStateList.Name = "DgvStateList";
@@ -945,11 +942,11 @@
             // 
             this.LblStateReasonExit.AutoSize = true;
             this.LblStateReasonExit.BackColor = System.Drawing.Color.Cornsilk;
-            this.TlpStatus.SetColumnSpan(this.LblStateReasonExit, 5);
+            this.TlpStatus.SetColumnSpan(this.LblStateReasonExit, 4);
             this.LblStateReasonExit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblStateReasonExit.Location = new System.Drawing.Point(3, 242);
             this.LblStateReasonExit.Name = "LblStateReasonExit";
-            this.LblStateReasonExit.Size = new System.Drawing.Size(942, 33);
+            this.LblStateReasonExit.Size = new System.Drawing.Size(941, 33);
             this.LblStateReasonExit.TabIndex = 44;
             this.LblStateReasonExit.Text = "Motivo";
             this.LblStateReasonExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -957,31 +954,31 @@
             // DtpStateDate
             // 
             this.DtpStateDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.DtpStateDate.Location = new System.Drawing.Point(562, 203);
+            this.DtpStateDate.Location = new System.Drawing.Point(556, 203);
             this.DtpStateDate.Name = "DtpStateDate";
-            this.DtpStateDate.Size = new System.Drawing.Size(383, 26);
+            this.DtpStateDate.Size = new System.Drawing.Size(388, 26);
             this.DtpStateDate.TabIndex = 45;
             // 
             // LblStateDate
             // 
             this.LblStateDate.AutoSize = true;
             this.LblStateDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblStateDate.Location = new System.Drawing.Point(342, 190);
+            this.LblStateDate.Location = new System.Drawing.Point(411, 190);
             this.LblStateDate.Name = "LblStateDate";
-            this.LblStateDate.Size = new System.Drawing.Size(214, 52);
+            this.LblStateDate.Size = new System.Drawing.Size(139, 52);
             this.LblStateDate.TabIndex = 42;
             this.LblStateDate.Text = "Fecha";
             this.LblStateDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TxtStateReason
             // 
-            this.TlpStatus.SetColumnSpan(this.TxtStateReason, 5);
+            this.TlpStatus.SetColumnSpan(this.TxtStateReason, 4);
             this.TxtStateReason.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TxtStateReason.Location = new System.Drawing.Point(3, 278);
             this.TxtStateReason.Multiline = true;
             this.TxtStateReason.Name = "TxtStateReason";
             this.TlpStatus.SetRowSpan(this.TxtStateReason, 2);
-            this.TxtStateReason.Size = new System.Drawing.Size(942, 172);
+            this.TxtStateReason.Size = new System.Drawing.Size(941, 172);
             this.TxtStateReason.TabIndex = 47;
             // 
             // BtnStateNew
@@ -994,30 +991,6 @@
             this.BtnStateNew.Text = "Nuevo";
             this.BtnStateNew.UseVisualStyleBackColor = true;
             this.BtnStateNew.Click += new System.EventHandler(this.BtnStateNew_Click);
-            // 
-            // RbtStateInit
-            // 
-            this.RbtStateInit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.RbtStateInit.AutoSize = true;
-            this.RbtStateInit.Location = new System.Drawing.Point(148, 204);
-            this.RbtStateInit.Name = "RbtStateInit";
-            this.RbtStateInit.Size = new System.Drawing.Size(88, 24);
-            this.RbtStateInit.TabIndex = 50;
-            this.RbtStateInit.TabStop = true;
-            this.RbtStateInit.Text = "Ingresa";
-            this.RbtStateInit.UseVisualStyleBackColor = true;
-            // 
-            // RbtStateExit
-            // 
-            this.RbtStateExit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.RbtStateExit.AutoSize = true;
-            this.RbtStateExit.Location = new System.Drawing.Point(245, 204);
-            this.RbtStateExit.Name = "RbtStateExit";
-            this.RbtStateExit.Size = new System.Drawing.Size(78, 24);
-            this.RbtStateExit.TabIndex = 49;
-            this.RbtStateExit.TabStop = true;
-            this.RbtStateExit.Text = "Salida";
-            this.RbtStateExit.UseVisualStyleBackColor = true;
             // 
             // BtnClosed
             // 
@@ -1046,6 +1019,16 @@
             this.TsmiDelete.Size = new System.Drawing.Size(154, 30);
             this.TsmiDelete.Text = "Eliminar";
             this.TsmiDelete.Click += new System.EventHandler(this.TsmiDelete_Click);
+            // 
+            // CmbState
+            // 
+            this.CmbState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbState.FormattingEnabled = true;
+            this.CmbState.Location = new System.Drawing.Point(148, 202);
+            this.CmbState.Name = "CmbState";
+            this.CmbState.Size = new System.Drawing.Size(257, 28);
+            this.CmbState.TabIndex = 53;
             // 
             // FrmAbmPatient
             // 
@@ -1156,11 +1139,10 @@
         private System.Windows.Forms.TextBox TxtStateReason;
         private System.Windows.Forms.Label LblStateReasonExit;
         private System.Windows.Forms.DataGridView DgvStateList;
-        private System.Windows.Forms.RadioButton RbtStateExit;
-        private System.Windows.Forms.RadioButton RbtStateInit;
         private System.Windows.Forms.Button BtnStateNew;
         private System.Windows.Forms.Button BtnClosed;
         private System.Windows.Forms.ContextMenuStrip CmsFrm;
         private System.Windows.Forms.ToolStripMenuItem TsmiDelete;
+        private System.Windows.Forms.ComboBox CmbState;
     }
 }

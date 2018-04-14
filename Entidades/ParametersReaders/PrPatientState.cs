@@ -19,7 +19,7 @@ namespace Entidades.ParametersReaders
             lParam.Add(new SqlParameter("@IdPatient", oP.IdPatient));
             lParam.Add(new SqlParameter("@Description", oP.Description));
             lParam.Add(new SqlParameter("@Date", oP.Date));
-            lParam.Add(new SqlParameter("@Estata", oP.Estate));
+            lParam.Add(new SqlParameter("@State", oP.State));
             lParam.Add(new SqlParameter("@Visible", oP.Visible));
             return lParam;
         }
@@ -31,8 +31,8 @@ namespace Entidades.ParametersReaders
             Convert.ToInt32(oReader["IdPatientState"]),
             Convert.ToInt32(oReader["IdPatient"]),
             Convert.ToString(oReader["Description"]),
-            Convert.ToDateTime(oReader["Date"]),
-            Convert.ToBoolean(oReader["Estate"]),
+            oReader["Date"].ToString().Length > 0 ? DateTime.Parse(oReader["Date"].ToString()) : DateTime.Now.AddDays(1),
+            Convert.ToBoolean(oReader["State"]),
             Convert.ToBoolean(oReader["Visible"]));
             return oPatientState;
         }

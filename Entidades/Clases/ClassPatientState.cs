@@ -13,7 +13,7 @@ namespace Entidades.Clases
         public int IdPatient { set; get; }
         public string Description { set; get; }
         public DateTime Date { set; get; }
-        public bool Estate { set; get; }
+        public bool State { set; get; }
         public bool Visible { set; get; }
 
         #endregion
@@ -26,7 +26,7 @@ namespace Entidades.Clases
             IdPatient = 0;
             Description = string.Empty;
             Date = DateTime.Now;
-            Estate= true;
+            State= true;
             Visible = true;
         }
 
@@ -36,17 +36,17 @@ namespace Entidades.Clases
             IdPatient = 0;
             Description = string.Empty;
             Date = DateTime.Now;
-            Estate= true;
+            State= true;
             Visible = true;
         }
 
-        public ClassPatientState(int vIdPatientState,int vIdPatient, string vDescription, DateTime vDate, bool vEstate, bool vVisible)
+        public ClassPatientState(int vIdPatientState,int vIdPatient, string vDescription, DateTime vDate, bool vState, bool vVisible)
         {
             IdPatientState = vIdPatientState;
             IdPatient = vIdPatient;
             Description = vDescription;
             Date = vDate;
-            Estate = vEstate;
+            State = vState;
             Visible = vVisible;
         }
 
@@ -61,7 +61,7 @@ namespace Entidades.Clases
             "IdPatient: " + IdPatient.ToString() +
             "\nDescription: " + Description +
             "\nDate: " + Date.ToString() +
-            "\nEstate: " + Estate.ToString() +
+            "\nState: " + State.ToString() +
             "\nVisible: " + Visible.ToString();
         }
 

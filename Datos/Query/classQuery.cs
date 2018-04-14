@@ -84,7 +84,7 @@ namespace Datos.Query
         // CONSULTAS PARA CADA FUNCION
         //----------------------------------------------------------
 
-        // OK - 18/04/13
+        // OK - 18/04/14
         #region ABM
 
         // OK - 17/10/31
@@ -384,7 +384,7 @@ namespace Datos.Query
             return Result;
         }
 
-        // OK - 17/11/14
+        // OK - 18/04/14
         public object AbmPatient(ClassPatient oP, eAbm Abm)
         {
             object Result = null;

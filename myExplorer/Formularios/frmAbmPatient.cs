@@ -59,6 +59,7 @@ namespace GoldenAge.Formularios
         private ClassPatientState ObjetPatientState;
         private Modo ModoPatientState;
         private DataTable DtViewPatientState;
+        private DataTable DtTempState;
         private int IdPatientStateSelected;
 
         #endregion
@@ -316,11 +317,6 @@ namespace GoldenAge.Formularios
             ObjectPatient.Address = TxtPatientAddress.Text.ToUpper();
             ObjectPatient.Phone = TxtPatientPhone.Text;
             ObjectPatient.Visible = Enable;
-
-
-            ObjectPatient.DateAdmission = DtpStateDate.Value;
-            ObjectPatient.EgressDate = DateTime.Now;
-            ObjectPatient.ReasonExit = TxtStateReason.Text.ToUpper();
         }
 
         /// <summary>
@@ -351,10 +347,6 @@ namespace GoldenAge.Formularios
                 BtnPatientBlocked.Text = ObjetTxt.Bloquear;
             else
                 BtnPatientBlocked.Text = ObjetTxt.Desbloquear;
-
-            DtpStateDate.Value = ObjectPatient.DateAdmission;
-            //dtpEgressDate.Value = oPatient.EgressDate;
-            TxtStateReason.Text = ObjectPatient.ReasonExit.ToUpper();
         }
 
         /// <summary>
@@ -549,11 +541,12 @@ namespace GoldenAge.Formularios
             ClassPatientParent oPp = new ClassPatientParent();
             oPp.IdPatient = ObjectPatient.IdPatient;
             List<ClassPatientParent> ListPp = ObjectQuery.AbmPatientParent(oPp, classQuery.eAbm.SelectAll) as List<ClassPatientParent>;
-            foreach (ClassPatientParent Or in ListPp)
-            {
-                ClassParent Op = ObjectQuery.AbmParent(new ClassParent(Or.IdParent), classQuery.eAbm.Select) as ClassParent;
-                DtTempView.Rows.Add(new object[] { Or.IdParent, Or.IdPatientParent, Or.IdRelationship, Op.Name, Op.LastName });
-            }
+            if (ListPp != null)
+                foreach (ClassPatientParent Or in ListPp)
+                {
+                    ClassParent Op = ObjectQuery.AbmParent(new ClassParent(Or.IdParent), classQuery.eAbm.Select) as ClassParent;
+                    DtTempView.Rows.Add(new object[] { Or.IdParent, Or.IdPatientParent, Or.IdRelationship, Op.Name, Op.LastName });
+                }
             //
             if (DgvParentList.ColumnCount != 0)
                 DgvParentList.Columns.Clear();
@@ -938,8 +931,9 @@ namespace GoldenAge.Formularios
             ClassPatientSocialWork oPp = new ClassPatientSocialWork();
             oPp.IdPatient = ObjectPatient.IdPatient;
             List<ClassPatientSocialWork> ListPp = ObjectQuery.AbmPatientSocialWork(oPp, classQuery.eAbm.SelectAll) as List<ClassPatientSocialWork>;
-            foreach (ClassPatientSocialWork Or in ListPp)
-                DtViewPatientSocialWork.Rows.Add(new object[] { Or.IdPatientSocialWork, Or.IdSocialWork, Or.AffiliateNumber });
+            if (ListPp != null)
+                foreach (ClassPatientSocialWork Or in ListPp)
+                    DtViewPatientSocialWork.Rows.Add(new object[] { Or.IdPatientSocialWork, Or.IdSocialWork, Or.AffiliateNumber });
             //
             if (DgvSocialWorksList.ColumnCount != 0)
                 DgvSocialWorksList.Columns.Clear();
@@ -1148,11 +1142,20 @@ namespace GoldenAge.Formularios
         /// </summary>
         private void StateInit()
         {
+            ObjetPatientState = null;
+
             DtViewPatientState = new DataTable("ViewPatientState");
             DtViewPatientState.Columns.Add(new DataColumn("IdPatientState", typeof(Int32)));
             DtViewPatientState.Columns.Add(new DataColumn("Date", typeof(DateTime)));
             DtViewPatientState.Columns.Add(new DataColumn("Estate", typeof(Int32)));
             DtViewPatientState.Columns.Add(new DataColumn("Description", typeof(string)));
+
+            DtTempState = new DataTable("TempState");
+            DtTempState.Columns.Add(new DataColumn("Id", typeof(Int32)));
+            DtTempState.Columns.Add(new DataColumn("Value", typeof(string)));
+            DtTempState.Rows.Add(new object[] { 1, "Ingreso" });
+            DtTempState.Rows.Add(new object[] { 0, "Egreso" });
+            classControlComboBoxes.LoadCombo(CmbState, true, DtTempState);
         }
 
         /// <summary>
@@ -1178,8 +1181,9 @@ namespace GoldenAge.Formularios
             ClassPatientState oPp = new ClassPatientState();
             oPp.IdPatient = ObjectPatient.IdPatient;
             List<ClassPatientState> ListPp = ObjectQuery.AbmPatientState(oPp, classQuery.eAbm.SelectAll) as List<ClassPatientState>;
-            foreach (ClassPatientState Or in ListPp)
-                DtViewPatientSocialWork.Rows.Add(new object[] { Or.IdPatientState, Or.Date, Or.Estate, Or.Description });
+            if (ListPp != null)
+                foreach (ClassPatientState Or in ListPp)
+                    DtViewPatientState.Rows.Add(new object[] { Or.IdPatientState, Or.Date, Or.State, Or.Description });
             //
             if (DgvStateList.ColumnCount != 0)
                 DgvStateList.Columns.Clear();
@@ -1188,22 +1192,26 @@ namespace GoldenAge.Formularios
             //
             DataGridViewTextBoxColumn colId = new DataGridViewTextBoxColumn();
             colId.Name = "IdPatientState";
-            colId.DataPropertyName = DtViewPatientSocialWork.Columns[0].ColumnName;
+            colId.DataPropertyName = DtViewPatientState.Columns[0].ColumnName;
             DgvStateList.Columns.Add(colId);
             //
             DataGridViewTextBoxColumn colDate = new DataGridViewTextBoxColumn();
             colDate.Name = "Date";
-            colDate.DataPropertyName = DtViewPatientSocialWork.Columns[1].ColumnName;
-            DgvStateList.Columns.Add(colDate);            
+            colDate.DataPropertyName = DtViewPatientState.Columns[1].ColumnName;
+            DgvStateList.Columns.Add(colDate);
             //
-            DataGridViewTextBoxColumn colEstate = new DataGridViewTextBoxColumn();
-            colEstate.Name = "Estate";
-            colEstate.DataPropertyName = DtViewPatientSocialWork.Columns[2].ColumnName;
-            DgvStateList.Columns.Add(colEstate);
+            DataGridViewComboBoxColumn colState = new DataGridViewComboBoxColumn();
+            colState.Name = "Estate";
+            colState.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
+            colState.ValueMember = "Id";
+            colState.DisplayMember = "Value";
+            colState.DataSource = DtTempState;
+            colState.DataPropertyName = DtViewPatientState.Columns[2].ColumnName;
+            DgvStateList.Columns.Add(colState);
             //
             DataGridViewTextBoxColumn colDescription = new DataGridViewTextBoxColumn();
             colDescription.Name = "Description";
-            colDescription.DataPropertyName = DtViewPatientSocialWork.Columns[3].ColumnName;
+            colDescription.DataPropertyName = DtViewPatientState.Columns[3].ColumnName;
             DgvStateList.Columns.Add(colDescription);
             //
             //Configuracion del DataListView
@@ -1215,10 +1223,10 @@ namespace GoldenAge.Formularios
             DgvStateList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DgvStateList.ReadOnly = true;
             DgvStateList.ScrollBars = ScrollBars.Both;
-            DgvStateList.ContextMenuStrip = CmsFrm; //CmsState;
+            DgvStateList.ContextMenuStrip = CmsFrm;
             DgvStateList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvStateList.MultiSelect = false;
-            DgvStateList.DataSource = DtViewPatientSocialWork;
+            DgvStateList.DataSource = DtViewPatientState;
 #if (!DEBUG)
             dgvListState.Columns[0].Visible = false;
             //dgvListState.Columns[1].Visible = false;
@@ -1257,7 +1265,7 @@ namespace GoldenAge.Formularios
         /// </summary>
         private void StateLoadObjectPatient()
         {
-            ObjetPatientState.Estate = RbtStateInit.Checked;
+            ObjetPatientState.State = Convert.ToBoolean(CmbState.SelectedValue);
             ObjetPatientState.Description = TxtStateReason.Text;
             ObjetPatientState.Date = DtpStateDate.Value;
             ObjetPatientState.IdPatient = ObjectPatient.IdPatient;
@@ -1269,8 +1277,7 @@ namespace GoldenAge.Formularios
         /// </summary>
         private void StateLoadFrmPatient()
         {
-            RbtStateInit.Checked = ObjetPatientState.Estate;
-            RbtStateExit.Checked =! ObjetPatientState.Estate;
+            classControlComboBoxes.IndexCombos(CmbState, Convert.ToInt32(ObjetPatientState.State));
             TxtStateReason.Text = ObjetPatientState.Description;
             DtpStateDate.Value = ObjetPatientState.Date;
         }
@@ -1304,7 +1311,7 @@ namespace GoldenAge.Formularios
         {
             if (StateValidateFields())
             {
-                StateLoadFrmPatient();
+                StateLoadObjectPatient();
                 switch (ModoPatientState)
                 {
                     case Modo.Add:
