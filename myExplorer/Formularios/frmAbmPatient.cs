@@ -18,7 +18,7 @@ namespace GoldenAge.Formularios
 {
     public partial class FrmAbmPatient : Form
     {
-        // OK - 18/04/09
+        // OK - 18/04/14
         #region Atributos y Propiedades
 
         public enum Modo { Select = 0, Add = 1, Update = 2, Delete = 3 }
@@ -38,20 +38,20 @@ namespace GoldenAge.Formularios
         // Parent
         private ClassParent ObjetParent;
         private Modo ModoParent;
+        private DataTable DtTempView;               // Tabla temporal de parientes.
+        private DataTable DtQueryRelationships;
+        private int IdPatientParentSelected;
         private int IdCountryParent;
         private int IdProvinceParent;
         private int IdCityParent;
         private int SelectRowParent;                // Pariente Seleccionado desde DataGridview.
         private List<ClassParent> ListParentSearch; // Lista de pariente resultante de la busqueda.
         private int NextIdexSearchParent = 0;       // Pariente Seleccionada si el resultado de la busque da mas de 1 coincidente.
-        private DataTable DtTempView;               // Tabla temporal de parientes.
-        private int IdPatientParentSelected;
-        private DataTable DtQueryRelationships;
-
+        
         // SocialWorks
         private ClassPatientSocialWork ObjetPatientSocialWork;
         private Modo ModoSocialWork;
-        private DataTable DtViewPatientSocialWork;  //
+        private DataTable DtViewPatientSocialWork;
         private DataTable DtQuerySocialWorks;
         private int IdPatientSocialWorkSelected;
 
@@ -61,17 +61,6 @@ namespace GoldenAge.Formularios
         private DataTable DtViewPatientState;
         private DataTable DtTempState;
         private int IdPatientStateSelected;
-
-        #endregion
-
-        #region Static Variables
-
-        private static string DtView = "View";
-        private static string ColIdParent = "IdParent";
-        private static string ColIdPatientParent = "IdPatientParent";
-        private static string ColIdRelationship = "IdRelationship";
-        private static string ColName = "Name";
-        private static string ColLastName = "LastName";
 
         #endregion
 
@@ -200,7 +189,7 @@ namespace GoldenAge.Formularios
         /// <param name="e"></param>
         private void FrmAbmPatient_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("Cerrando");
+            //MessageBox.Show("Cerrando");
         }
 
         #endregion
@@ -485,7 +474,7 @@ namespace GoldenAge.Formularios
         #endregion
 
         //== # 04 =====================================================================
-        // OK - 18/04/09
+        // OK - 18/04/14
 
         #region Metodos Parent
 
@@ -499,12 +488,12 @@ namespace GoldenAge.Formularios
         {
             ObjetParent = null;
 
-            DtTempView = new DataTable(DtView);
-            DtTempView.Columns.Add(new DataColumn(ColIdParent, typeof(Int32)));
-            DtTempView.Columns.Add(new DataColumn(ColIdPatientParent, typeof(Int32)));
-            DtTempView.Columns.Add(new DataColumn(ColIdRelationship, typeof(Int32)));
-            DtTempView.Columns.Add(new DataColumn(ColName, typeof(string)));
-            DtTempView.Columns.Add(new DataColumn(ColLastName, typeof(string)));
+            DtTempView = new DataTable("ViewParent");
+            DtTempView.Columns.Add(new DataColumn("IdParent", typeof(Int32)));
+            DtTempView.Columns.Add(new DataColumn("IdPatientParent", typeof(Int32)));
+            DtTempView.Columns.Add(new DataColumn("IdRelationship", typeof(Int32)));
+            DtTempView.Columns.Add(new DataColumn("Name", typeof(string)));
+            DtTempView.Columns.Add(new DataColumn("LastName", typeof(string)));
 
             DtQueryRelationships = new DataTable();
             if ((bool)ObjectQuery.AbmRelationship(new ClassRelationship(), classQuery.eAbm.LoadCmb))
@@ -518,12 +507,13 @@ namespace GoldenAge.Formularios
 
         /// <summary>
         /// Mostrar en formulario los datos del pariente.
-        /// OK - 18/04/09
+        /// OK - 18/04/14
         /// </summary>
         private void ParentLoad()
         {
-            ParentEnable(ModoPatient != Modo.Select);
+            ParentEnable(false);
             BtnParentNew.Visible = ModoPatient != Modo.Select;
+            CmsFrm.Enabled = ModoPatient != Modo.Select;
             LblParentSearch.Text = string.Empty;
             ParentGenerarGrilla();
         }
@@ -596,10 +586,10 @@ namespace GoldenAge.Formularios
             DgvParentList.MultiSelect = false;
             DgvParentList.DataSource = DtTempView;
 #if (!DEBUG)
-            dgvParentList.Columns[0].Visible = false;
-            dgvParentList.Columns[1].Visible = false;
-            //dgvParentList.Columns[2].Visible = false;
-            //dgvParentList.Columns[3].Visible = false;
+            DgvParentList.Columns[0].Visible = false;
+            DgvParentList.Columns[1].Visible = false;
+            //DgvParentList.Columns[2].Visible = false;
+            //DgvParentList.Columns[3].Visible = false;
 #endif
         }
 
@@ -637,6 +627,7 @@ namespace GoldenAge.Formularios
                     C.Enabled = X;
             }
             DgvParentList.Enabled = true;
+            BtnParentNew.Enabled = true;
         }
 
         /// <summary>
@@ -883,7 +874,7 @@ namespace GoldenAge.Formularios
         #endregion
 
         //== # 05 =====================================================================
-        // OK - 18/04/09
+        // OK - 18/04/14
 
         #region Metodos SocialWork
 
@@ -914,8 +905,9 @@ namespace GoldenAge.Formularios
         /// </summary>
         private void SocialWorkLoad()
         {
-            SocialWorkEnable(ModoPatient != Modo.Select);
+            SocialWorkEnable(false);
             BtnSocialWorkNew.Visible = ModoPatient != Modo.Select;
+            CmsFrm.Enabled = ModoPatient != Modo.Select;
             SocialWorkGenerarGrilla();
         }
 
@@ -955,7 +947,7 @@ namespace GoldenAge.Formularios
             DgvSocialWorksList.Columns.Add(colSocialWork);
             //
             DataGridViewTextBoxColumn colAffiliateNumber = new DataGridViewTextBoxColumn();
-            colAffiliateNumber.Name = "Numero";
+            colAffiliateNumber.Name = "Numero Afiliado";
             colAffiliateNumber.DataPropertyName = DtViewPatientSocialWork.Columns[2].ColumnName;
             DgvSocialWorksList.Columns.Add(colAffiliateNumber);
             //
@@ -973,9 +965,9 @@ namespace GoldenAge.Formularios
             DgvSocialWorksList.MultiSelect = false;
             DgvSocialWorksList.DataSource = DtViewPatientSocialWork;
 #if (!DEBUG)
-            dgvSocialWorksList.Columns[0].Visible = false;
-            //dgvSocialWorksList.Columns[1].Visible = false;
-            //dgvSocialWorksList.Columns[dgvSocialWorks.ColumnCount -1].Visible = false;
+            DgvSocialWorksList.Columns[0].Visible = false;
+            //DgvSocialWorksList.Columns[1].Visible = false;
+            //DgvSocialWorksList.Columns[dgvSocialWorks.ColumnCount -1].Visible = false;
 #endif
         }
 
@@ -1003,6 +995,7 @@ namespace GoldenAge.Formularios
                     C.Enabled = X;
             }
             DgvSocialWorksList.Enabled = true;
+            BtnSocialWorkNew.Enabled = true;
         }
 
         /// <summary>
@@ -1131,7 +1124,7 @@ namespace GoldenAge.Formularios
         #endregion
 
         //== # 06 =====================================================================
-        // OK - 18/04/13
+        // OK - 18/04/14
 
         #region State
 
@@ -1160,18 +1153,19 @@ namespace GoldenAge.Formularios
 
         /// <summary>
         /// Mostrar en formulario los datos del Estado.
-        /// OK - 18/04/13
+        /// OK - 18/04/14
         /// </summary>
         private void StateLoad()
         {
-            StateEnable(ModoPatient != Modo.Select);
+            StateEnable(false);
             BtnStateNew.Visible = ModoPatient != Modo.Select;
+            CmsFrm.Enabled = ModoPatient != Modo.Select;
             StateGenerarGrilla();
         }
 
         /// <summary>
         /// Carga y muestra la grilla.
-        /// OK - 18/04/13
+        /// OK - 18/04/14
         /// </summary>  
         private void StateGenerarGrilla()
         {
@@ -1196,12 +1190,12 @@ namespace GoldenAge.Formularios
             DgvStateList.Columns.Add(colId);
             //
             DataGridViewTextBoxColumn colDate = new DataGridViewTextBoxColumn();
-            colDate.Name = "Date";
+            colDate.Name = "Fecha";
             colDate.DataPropertyName = DtViewPatientState.Columns[1].ColumnName;
             DgvStateList.Columns.Add(colDate);
             //
             DataGridViewComboBoxColumn colState = new DataGridViewComboBoxColumn();
-            colState.Name = "Estate";
+            colState.Name = "Estado";
             colState.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
             colState.ValueMember = "Id";
             colState.DisplayMember = "Value";
@@ -1210,7 +1204,7 @@ namespace GoldenAge.Formularios
             DgvStateList.Columns.Add(colState);
             //
             DataGridViewTextBoxColumn colDescription = new DataGridViewTextBoxColumn();
-            colDescription.Name = "Description";
+            colDescription.Name = "Descripcion";
             colDescription.DataPropertyName = DtViewPatientState.Columns[3].ColumnName;
             DgvStateList.Columns.Add(colDescription);
             //
@@ -1228,15 +1222,15 @@ namespace GoldenAge.Formularios
             DgvStateList.MultiSelect = false;
             DgvStateList.DataSource = DtViewPatientState;
 #if (!DEBUG)
-            dgvListState.Columns[0].Visible = false;
-            //dgvListState.Columns[1].Visible = false;
-            //dgvListState.Columns[dgvSocialWorks.ColumnCount -1].Visible = false;
+            DgvStateList.Columns[0].Visible = false;
+            //DgvStateList.Columns[1].Visible = false;
+            //DgvStateList.Columns[dgvSocialWorks.ColumnCount -1].Visible = false;
 #endif
         }
 
         /// <summary>
         /// Limpia formulario.
-        /// OK - 18/04/13
+        /// OK - 18/04/14
         /// </summary>
         private void StateClean()
         {
@@ -1257,6 +1251,8 @@ namespace GoldenAge.Formularios
                 if (!(C is Label))
                     C.Enabled = X;
             }
+            DgvStateList.Enabled = true;
+            BtnStateNew.Enabled = true;
         }
 
         /// <summary>
@@ -1367,7 +1363,7 @@ namespace GoldenAge.Formularios
         }
 
         // OK - 18/04/13
-        private void DgvListState_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvStateList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int Select = 0;
             if (DgvStateList.RowCount >= 0)

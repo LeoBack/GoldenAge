@@ -99,10 +99,10 @@
             this.LblStateDate = new System.Windows.Forms.Label();
             this.TxtStateReason = new System.Windows.Forms.TextBox();
             this.BtnStateNew = new System.Windows.Forms.Button();
+            this.CmbState = new System.Windows.Forms.ComboBox();
             this.BtnClosed = new System.Windows.Forms.Button();
             this.CmsFrm = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.CmbState = new System.Windows.Forms.ComboBox();
             this.TlpPanelPrincipal.SuspendLayout();
             this.TabCarpeta.SuspendLayout();
             this.TbpPatient.SuspendLayout();
@@ -475,8 +475,8 @@
             this.TlpParent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.TlpParent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.TlpParent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
+            this.TlpParent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TlpParent.Controls.Add(this.BtnParentLocalitation, 4, 5);
-            this.TlpParent.Controls.Add(this.DgvParentList, 0, 1);
             this.TlpParent.Controls.Add(this.LblParentAddress, 1, 6);
             this.TlpParent.Controls.Add(this.LblParentLocation, 1, 5);
             this.TlpParent.Controls.Add(this.TxtParentNumberDocument, 3, 4);
@@ -498,12 +498,13 @@
             this.TlpParent.Controls.Add(this.CmbParentRelationship, 2, 1);
             this.TlpParent.Controls.Add(this.CmbParentTypeDocument, 2, 4);
             this.TlpParent.Controls.Add(this.LblParentSearch, 5, 4);
-            this.TlpParent.Controls.Add(this.BtnParentNew, 5, 10);
+            this.TlpParent.Controls.Add(this.BtnParentNew, 5, 9);
+            this.TlpParent.Controls.Add(this.DgvParentList, 0, 0);
             this.TlpParent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TlpParent.Location = new System.Drawing.Point(3, 3);
             this.TlpParent.Name = "TlpParent";
             this.TlpParent.RowCount = 10;
-            this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
@@ -513,14 +514,15 @@
             this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TlpParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TlpParent.Size = new System.Drawing.Size(1078, 453);
             this.TlpParent.TabIndex = 0;
             // 
             // BtnParentLocalitation
             // 
             this.BtnParentLocalitation.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.BtnParentLocalitation.Location = new System.Drawing.Point(847, 178);
+            this.BtnParentLocalitation.Location = new System.Drawing.Point(847, 210);
             this.BtnParentLocalitation.Name = "BtnParentLocalitation";
             this.BtnParentLocalitation.Size = new System.Drawing.Size(81, 32);
             this.BtnParentLocalitation.TabIndex = 20;
@@ -532,11 +534,11 @@
             // 
             this.DgvParentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvParentList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvParentList.Location = new System.Drawing.Point(3, -10);
+            this.DgvParentList.Location = new System.Drawing.Point(3, 3);
             this.DgvParentList.Name = "DgvParentList";
-            this.TlpParent.SetRowSpan(this.DgvParentList, 10);
+            this.TlpParent.SetRowSpan(this.DgvParentList, 11);
             this.DgvParentList.RowTemplate.Height = 28;
-            this.DgvParentList.Size = new System.Drawing.Size(414, 460);
+            this.DgvParentList.Size = new System.Drawing.Size(414, 447);
             this.DgvParentList.TabIndex = 0;
             this.DgvParentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvParentList_CellClick);
             // 
@@ -544,7 +546,7 @@
             // 
             this.LblParentAddress.AutoSize = true;
             this.LblParentAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentAddress.Location = new System.Drawing.Point(423, 217);
+            this.LblParentAddress.Location = new System.Drawing.Point(423, 249);
             this.LblParentAddress.Name = "LblParentAddress";
             this.LblParentAddress.Size = new System.Drawing.Size(118, 46);
             this.LblParentAddress.TabIndex = 7;
@@ -555,7 +557,7 @@
             // 
             this.LblParentLocation.AutoSize = true;
             this.LblParentLocation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentLocation.Location = new System.Drawing.Point(423, 171);
+            this.LblParentLocation.Location = new System.Drawing.Point(423, 203);
             this.LblParentLocation.Name = "LblParentLocation";
             this.LblParentLocation.Size = new System.Drawing.Size(118, 46);
             this.LblParentLocation.TabIndex = 18;
@@ -565,7 +567,7 @@
             // TxtParentNumberDocument
             // 
             this.TxtParentNumberDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtParentNumberDocument.Location = new System.Drawing.Point(667, 135);
+            this.TxtParentNumberDocument.Location = new System.Drawing.Point(667, 167);
             this.TxtParentNumberDocument.Name = "TxtParentNumberDocument";
             this.TxtParentNumberDocument.Size = new System.Drawing.Size(174, 26);
             this.TxtParentNumberDocument.TabIndex = 12;
@@ -575,7 +577,7 @@
             // 
             this.LblParentNumberDocument.AutoSize = true;
             this.LblParentNumberDocument.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentNumberDocument.Location = new System.Drawing.Point(423, 125);
+            this.LblParentNumberDocument.Location = new System.Drawing.Point(423, 157);
             this.LblParentNumberDocument.Name = "LblParentNumberDocument";
             this.LblParentNumberDocument.Size = new System.Drawing.Size(118, 46);
             this.LblParentNumberDocument.TabIndex = 5;
@@ -586,7 +588,7 @@
             // 
             this.LblParentLastName.AutoSize = true;
             this.LblParentLastName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentLastName.Location = new System.Drawing.Point(423, 79);
+            this.LblParentLastName.Location = new System.Drawing.Point(423, 111);
             this.LblParentLastName.Name = "LblParentLastName";
             this.LblParentLastName.Size = new System.Drawing.Size(118, 46);
             this.LblParentLastName.TabIndex = 4;
@@ -597,7 +599,7 @@
             // 
             this.LblParentName.AutoSize = true;
             this.LblParentName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentName.Location = new System.Drawing.Point(423, 33);
+            this.LblParentName.Location = new System.Drawing.Point(423, 65);
             this.LblParentName.Name = "LblParentName";
             this.LblParentName.Size = new System.Drawing.Size(118, 46);
             this.LblParentName.TabIndex = 3;
@@ -608,7 +610,7 @@
             // 
             this.LblParentRelationship.AutoSize = true;
             this.LblParentRelationship.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentRelationship.Location = new System.Drawing.Point(423, -13);
+            this.LblParentRelationship.Location = new System.Drawing.Point(423, 19);
             this.LblParentRelationship.Name = "LblParentRelationship";
             this.LblParentRelationship.Size = new System.Drawing.Size(118, 46);
             this.LblParentRelationship.TabIndex = 9;
@@ -619,7 +621,7 @@
             // 
             this.LblParentPhone.AutoSize = true;
             this.LblParentPhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentPhone.Location = new System.Drawing.Point(423, 263);
+            this.LblParentPhone.Location = new System.Drawing.Point(423, 295);
             this.LblParentPhone.Name = "LblParentPhone";
             this.LblParentPhone.Size = new System.Drawing.Size(118, 46);
             this.LblParentPhone.TabIndex = 2;
@@ -630,7 +632,7 @@
             // 
             this.LblParentAlternativePhone.AutoSize = true;
             this.LblParentAlternativePhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentAlternativePhone.Location = new System.Drawing.Point(423, 309);
+            this.LblParentAlternativePhone.Location = new System.Drawing.Point(423, 341);
             this.LblParentAlternativePhone.Name = "LblParentAlternativePhone";
             this.LblParentAlternativePhone.Size = new System.Drawing.Size(118, 46);
             this.LblParentAlternativePhone.TabIndex = 6;
@@ -641,7 +643,7 @@
             // 
             this.LblParentEmail.AutoSize = true;
             this.LblParentEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentEmail.Location = new System.Drawing.Point(423, 355);
+            this.LblParentEmail.Location = new System.Drawing.Point(423, 387);
             this.LblParentEmail.Name = "LblParentEmail";
             this.LblParentEmail.Size = new System.Drawing.Size(118, 46);
             this.LblParentEmail.TabIndex = 8;
@@ -651,7 +653,7 @@
             // BtnParentSearch
             // 
             this.BtnParentSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.BtnParentSearch.Location = new System.Drawing.Point(847, 132);
+            this.BtnParentSearch.Location = new System.Drawing.Point(847, 164);
             this.BtnParentSearch.Name = "BtnParentSearch";
             this.BtnParentSearch.Size = new System.Drawing.Size(81, 32);
             this.BtnParentSearch.TabIndex = 22;
@@ -663,7 +665,7 @@
             // 
             this.TxtParentEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TlpParent.SetColumnSpan(this.TxtParentEmail, 3);
-            this.TxtParentEmail.Location = new System.Drawing.Point(547, 365);
+            this.TxtParentEmail.Location = new System.Drawing.Point(547, 397);
             this.TxtParentEmail.Name = "TxtParentEmail";
             this.TxtParentEmail.Size = new System.Drawing.Size(381, 26);
             this.TxtParentEmail.TabIndex = 14;
@@ -673,7 +675,7 @@
             // 
             this.TxtParentAlternativePhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TlpParent.SetColumnSpan(this.TxtParentAlternativePhone, 3);
-            this.TxtParentAlternativePhone.Location = new System.Drawing.Point(547, 319);
+            this.TxtParentAlternativePhone.Location = new System.Drawing.Point(547, 351);
             this.TxtParentAlternativePhone.Name = "TxtParentAlternativePhone";
             this.TxtParentAlternativePhone.Size = new System.Drawing.Size(381, 26);
             this.TxtParentAlternativePhone.TabIndex = 15;
@@ -683,7 +685,7 @@
             // 
             this.TxtParentPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TlpParent.SetColumnSpan(this.TxtParentPhone, 3);
-            this.TxtParentPhone.Location = new System.Drawing.Point(547, 273);
+            this.TxtParentPhone.Location = new System.Drawing.Point(547, 305);
             this.TxtParentPhone.Name = "TxtParentPhone";
             this.TxtParentPhone.Size = new System.Drawing.Size(381, 26);
             this.TxtParentPhone.TabIndex = 16;
@@ -693,7 +695,7 @@
             // 
             this.TxtParentAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TlpParent.SetColumnSpan(this.TxtParentAddress, 3);
-            this.TxtParentAddress.Location = new System.Drawing.Point(547, 227);
+            this.TxtParentAddress.Location = new System.Drawing.Point(547, 259);
             this.TxtParentAddress.Name = "TxtParentAddress";
             this.TxtParentAddress.Size = new System.Drawing.Size(381, 26);
             this.TxtParentAddress.TabIndex = 13;
@@ -702,7 +704,7 @@
             // 
             this.TxtParentLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TlpParent.SetColumnSpan(this.TxtParentLocation, 2);
-            this.TxtParentLocation.Location = new System.Drawing.Point(547, 181);
+            this.TxtParentLocation.Location = new System.Drawing.Point(547, 213);
             this.TxtParentLocation.Name = "TxtParentLocation";
             this.TxtParentLocation.ReadOnly = true;
             this.TxtParentLocation.Size = new System.Drawing.Size(294, 26);
@@ -712,7 +714,7 @@
             // 
             this.TxtParentLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TlpParent.SetColumnSpan(this.TxtParentLastName, 3);
-            this.TxtParentLastName.Location = new System.Drawing.Point(547, 89);
+            this.TxtParentLastName.Location = new System.Drawing.Point(547, 121);
             this.TxtParentLastName.Name = "TxtParentLastName";
             this.TxtParentLastName.Size = new System.Drawing.Size(381, 26);
             this.TxtParentLastName.TabIndex = 11;
@@ -722,7 +724,7 @@
             // 
             this.TxtParentName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TlpParent.SetColumnSpan(this.TxtParentName, 3);
-            this.TxtParentName.Location = new System.Drawing.Point(547, 43);
+            this.TxtParentName.Location = new System.Drawing.Point(547, 75);
             this.TxtParentName.Name = "TxtParentName";
             this.TxtParentName.Size = new System.Drawing.Size(381, 26);
             this.TxtParentName.TabIndex = 10;
@@ -734,7 +736,7 @@
             this.TlpParent.SetColumnSpan(this.CmbParentRelationship, 3);
             this.CmbParentRelationship.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbParentRelationship.FormattingEnabled = true;
-            this.CmbParentRelationship.Location = new System.Drawing.Point(547, -4);
+            this.CmbParentRelationship.Location = new System.Drawing.Point(547, 28);
             this.CmbParentRelationship.Name = "CmbParentRelationship";
             this.CmbParentRelationship.Size = new System.Drawing.Size(381, 28);
             this.CmbParentRelationship.TabIndex = 17;
@@ -744,7 +746,7 @@
             this.CmbParentTypeDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbParentTypeDocument.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbParentTypeDocument.FormattingEnabled = true;
-            this.CmbParentTypeDocument.Location = new System.Drawing.Point(547, 134);
+            this.CmbParentTypeDocument.Location = new System.Drawing.Point(547, 166);
             this.CmbParentTypeDocument.Name = "CmbParentTypeDocument";
             this.CmbParentTypeDocument.Size = new System.Drawing.Size(114, 28);
             this.CmbParentTypeDocument.TabIndex = 23;
@@ -753,7 +755,7 @@
             // 
             this.LblParentSearch.AutoSize = true;
             this.LblParentSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblParentSearch.Location = new System.Drawing.Point(934, 125);
+            this.LblParentSearch.Location = new System.Drawing.Point(934, 157);
             this.LblParentSearch.Name = "LblParentSearch";
             this.LblParentSearch.Size = new System.Drawing.Size(141, 46);
             this.LblParentSearch.TabIndex = 24;
@@ -765,6 +767,7 @@
             this.BtnParentNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnParentNew.Location = new System.Drawing.Point(977, 410);
             this.BtnParentNew.Name = "BtnParentNew";
+            this.TlpParent.SetRowSpan(this.BtnParentNew, 2);
             this.BtnParentNew.Size = new System.Drawing.Size(98, 40);
             this.BtnParentNew.TabIndex = 21;
             this.BtnParentNew.Text = "Nuevo";
@@ -785,26 +788,24 @@
             // TlpSocialWork
             // 
             this.TlpSocialWork.ColumnCount = 4;
-            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
-            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
-            this.TlpSocialWork.Controls.Add(this.DgvSocialWorksList, 0, 1);
-            this.TlpSocialWork.Controls.Add(this.CmbSocialWorkName, 2, 2);
-            this.TlpSocialWork.Controls.Add(this.TxtSocialWorkAffiliateNumber, 2, 3);
-            this.TlpSocialWork.Controls.Add(this.LblSocialWorkName, 1, 2);
-            this.TlpSocialWork.Controls.Add(this.LblSocialWorkAffiliateNumber, 1, 3);
-            this.TlpSocialWork.Controls.Add(this.BtnSocialWorkNew, 3, 5);
+            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
+            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 217F));
+            this.TlpSocialWork.Controls.Add(this.DgvSocialWorksList, 0, 0);
+            this.TlpSocialWork.Controls.Add(this.CmbSocialWorkName, 2, 1);
+            this.TlpSocialWork.Controls.Add(this.TxtSocialWorkAffiliateNumber, 2, 2);
+            this.TlpSocialWork.Controls.Add(this.LblSocialWorkName, 1, 1);
+            this.TlpSocialWork.Controls.Add(this.LblSocialWorkAffiliateNumber, 1, 2);
+            this.TlpSocialWork.Controls.Add(this.BtnSocialWorkNew, 3, 3);
             this.TlpSocialWork.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TlpSocialWork.Location = new System.Drawing.Point(3, 3);
             this.TlpSocialWork.Name = "TlpSocialWork";
-            this.TlpSocialWork.RowCount = 6;
-            this.TlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.TlpSocialWork.RowCount = 4;
             this.TlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.TlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.TlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TlpSocialWork.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.TlpSocialWork.Size = new System.Drawing.Size(1078, 453);
             this.TlpSocialWork.TabIndex = 23;
             // 
@@ -814,11 +815,11 @@
             this.DgvSocialWorksList.AllowUserToDeleteRows = false;
             this.DgvSocialWorksList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvSocialWorksList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvSocialWorksList.Location = new System.Drawing.Point(3, 32);
+            this.DgvSocialWorksList.Location = new System.Drawing.Point(3, 3);
             this.DgvSocialWorksList.Name = "DgvSocialWorksList";
-            this.TlpSocialWork.SetRowSpan(this.DgvSocialWorksList, 5);
+            this.TlpSocialWork.SetRowSpan(this.DgvSocialWorksList, 4);
             this.DgvSocialWorksList.RowTemplate.Height = 28;
-            this.DgvSocialWorksList.Size = new System.Drawing.Size(504, 418);
+            this.DgvSocialWorksList.Size = new System.Drawing.Size(425, 447);
             this.DgvSocialWorksList.TabIndex = 22;
             this.DgvSocialWorksList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSocialWorksList_CellClick);
             // 
@@ -827,26 +828,26 @@
             this.CmbSocialWorkName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbSocialWorkName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbSocialWorkName.FormattingEnabled = true;
-            this.CmbSocialWorkName.Location = new System.Drawing.Point(627, 175);
+            this.CmbSocialWorkName.Location = new System.Drawing.Point(678, 186);
             this.CmbSocialWorkName.Name = "CmbSocialWorkName";
-            this.CmbSocialWorkName.Size = new System.Drawing.Size(334, 28);
+            this.CmbSocialWorkName.Size = new System.Drawing.Size(179, 28);
             this.CmbSocialWorkName.TabIndex = 24;
             // 
             // TxtSocialWorkAffiliateNumber
             // 
             this.TxtSocialWorkAffiliateNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtSocialWorkAffiliateNumber.Location = new System.Drawing.Point(627, 228);
+            this.TxtSocialWorkAffiliateNumber.Location = new System.Drawing.Point(678, 239);
             this.TxtSocialWorkAffiliateNumber.Name = "TxtSocialWorkAffiliateNumber";
-            this.TxtSocialWorkAffiliateNumber.Size = new System.Drawing.Size(334, 26);
+            this.TxtSocialWorkAffiliateNumber.Size = new System.Drawing.Size(179, 26);
             this.TxtSocialWorkAffiliateNumber.TabIndex = 23;
             // 
             // LblSocialWorkName
             // 
             this.LblSocialWorkName.AutoSize = true;
             this.LblSocialWorkName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblSocialWorkName.Location = new System.Drawing.Point(513, 163);
+            this.LblSocialWorkName.Location = new System.Drawing.Point(434, 174);
             this.LblSocialWorkName.Name = "LblSocialWorkName";
-            this.LblSocialWorkName.Size = new System.Drawing.Size(108, 52);
+            this.LblSocialWorkName.Size = new System.Drawing.Size(238, 52);
             this.LblSocialWorkName.TabIndex = 54;
             this.LblSocialWorkName.Text = "Obra Social";
             this.LblSocialWorkName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -855,9 +856,9 @@
             // 
             this.LblSocialWorkAffiliateNumber.AutoSize = true;
             this.LblSocialWorkAffiliateNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblSocialWorkAffiliateNumber.Location = new System.Drawing.Point(513, 215);
+            this.LblSocialWorkAffiliateNumber.Location = new System.Drawing.Point(434, 226);
             this.LblSocialWorkAffiliateNumber.Name = "LblSocialWorkAffiliateNumber";
-            this.LblSocialWorkAffiliateNumber.Size = new System.Drawing.Size(108, 52);
+            this.LblSocialWorkAffiliateNumber.Size = new System.Drawing.Size(238, 52);
             this.LblSocialWorkAffiliateNumber.TabIndex = 54;
             this.LblSocialWorkAffiliateNumber.Text = "Numero de Afiliado";
             this.LblSocialWorkAffiliateNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -891,7 +892,7 @@
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.TlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.TlpStatus.Controls.Add(this.DgvStateList, 0, 0);
             this.TlpStatus.Controls.Add(this.LblStateStatus, 0, 1);
             this.TlpStatus.Controls.Add(this.LblStateReasonExit, 0, 2);
@@ -904,10 +905,10 @@
             this.TlpStatus.Location = new System.Drawing.Point(3, 3);
             this.TlpStatus.Name = "TlpStatus";
             this.TlpStatus.RowCount = 5;
-            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.TlpStatus.Size = new System.Drawing.Size(1078, 453);
             this.TlpStatus.TabIndex = 49;
@@ -923,17 +924,17 @@
             this.DgvStateList.Name = "DgvStateList";
             this.DgvStateList.ReadOnly = true;
             this.DgvStateList.RowTemplate.Height = 28;
-            this.DgvStateList.Size = new System.Drawing.Size(1072, 184);
+            this.DgvStateList.Size = new System.Drawing.Size(1072, 218);
             this.DgvStateList.TabIndex = 48;
-            this.DgvStateList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListState_CellContentClick);
+            this.DgvStateList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvStateList_CellContentClick);
             // 
             // LblStateStatus
             // 
             this.LblStateStatus.AutoSize = true;
             this.LblStateStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblStateStatus.Location = new System.Drawing.Point(3, 190);
+            this.LblStateStatus.Location = new System.Drawing.Point(3, 224);
             this.LblStateStatus.Name = "LblStateStatus";
-            this.LblStateStatus.Size = new System.Drawing.Size(139, 52);
+            this.LblStateStatus.Size = new System.Drawing.Size(139, 50);
             this.LblStateStatus.TabIndex = 43;
             this.LblStateStatus.Text = "Estado";
             this.LblStateStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -944,9 +945,9 @@
             this.LblStateReasonExit.BackColor = System.Drawing.Color.Cornsilk;
             this.TlpStatus.SetColumnSpan(this.LblStateReasonExit, 4);
             this.LblStateReasonExit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblStateReasonExit.Location = new System.Drawing.Point(3, 242);
+            this.LblStateReasonExit.Location = new System.Drawing.Point(3, 274);
             this.LblStateReasonExit.Name = "LblStateReasonExit";
-            this.LblStateReasonExit.Size = new System.Drawing.Size(941, 33);
+            this.LblStateReasonExit.Size = new System.Drawing.Size(939, 32);
             this.LblStateReasonExit.TabIndex = 44;
             this.LblStateReasonExit.Text = "Motivo";
             this.LblStateReasonExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -954,18 +955,18 @@
             // DtpStateDate
             // 
             this.DtpStateDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.DtpStateDate.Location = new System.Drawing.Point(556, 203);
+            this.DtpStateDate.Location = new System.Drawing.Point(555, 236);
             this.DtpStateDate.Name = "DtpStateDate";
-            this.DtpStateDate.Size = new System.Drawing.Size(388, 26);
+            this.DtpStateDate.Size = new System.Drawing.Size(387, 26);
             this.DtpStateDate.TabIndex = 45;
             // 
             // LblStateDate
             // 
             this.LblStateDate.AutoSize = true;
             this.LblStateDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblStateDate.Location = new System.Drawing.Point(411, 190);
+            this.LblStateDate.Location = new System.Drawing.Point(410, 224);
             this.LblStateDate.Name = "LblStateDate";
-            this.LblStateDate.Size = new System.Drawing.Size(139, 52);
+            this.LblStateDate.Size = new System.Drawing.Size(139, 50);
             this.LblStateDate.TabIndex = 42;
             this.LblStateDate.Text = "Fecha";
             this.LblStateDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -974,11 +975,11 @@
             // 
             this.TlpStatus.SetColumnSpan(this.TxtStateReason, 4);
             this.TxtStateReason.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TxtStateReason.Location = new System.Drawing.Point(3, 278);
+            this.TxtStateReason.Location = new System.Drawing.Point(3, 309);
             this.TxtStateReason.Multiline = true;
             this.TxtStateReason.Name = "TxtStateReason";
             this.TlpStatus.SetRowSpan(this.TxtStateReason, 2);
-            this.TxtStateReason.Size = new System.Drawing.Size(941, 172);
+            this.TxtStateReason.Size = new System.Drawing.Size(939, 141);
             this.TxtStateReason.TabIndex = 47;
             // 
             // BtnStateNew
@@ -991,6 +992,16 @@
             this.BtnStateNew.Text = "Nuevo";
             this.BtnStateNew.UseVisualStyleBackColor = true;
             this.BtnStateNew.Click += new System.EventHandler(this.BtnStateNew_Click);
+            // 
+            // CmbState
+            // 
+            this.CmbState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbState.FormattingEnabled = true;
+            this.CmbState.Location = new System.Drawing.Point(148, 235);
+            this.CmbState.Name = "CmbState";
+            this.CmbState.Size = new System.Drawing.Size(256, 28);
+            this.CmbState.TabIndex = 53;
             // 
             // BtnClosed
             // 
@@ -1019,16 +1030,6 @@
             this.TsmiDelete.Size = new System.Drawing.Size(154, 30);
             this.TsmiDelete.Text = "Eliminar";
             this.TsmiDelete.Click += new System.EventHandler(this.TsmiDelete_Click);
-            // 
-            // CmbState
-            // 
-            this.CmbState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbState.FormattingEnabled = true;
-            this.CmbState.Location = new System.Drawing.Point(148, 202);
-            this.CmbState.Name = "CmbState";
-            this.CmbState.Size = new System.Drawing.Size(257, 28);
-            this.CmbState.TabIndex = 53;
             // 
             // FrmAbmPatient
             // 
