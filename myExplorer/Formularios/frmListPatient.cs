@@ -16,7 +16,7 @@ namespace GoldenAge.Formularios
 {
     public partial class FrmListPatient : Form
     {
-        // OK - 17/11/20
+        // OK - 18/04/15
         #region Atributos y Propiedades
 
         public classQuery oQuery { set; get; }
@@ -26,11 +26,11 @@ namespace GoldenAge.Formularios
         private int cantPag = 0;
         private int Pag = 1;
         //
-        private bool PatientLocked = false;
+        private bool PatientState = true;
 
         #endregion
 
-        // OK - 18/02/08
+        // OK - 18/04/15
         #region Formulario
 
         // OK - 17/09/30
@@ -40,22 +40,16 @@ namespace GoldenAge.Formularios
             oTxt = new classTextos();
         }
 
-        // OK - 18/02/08
+        // OK - 18/04/15
         private void frmListPatient_Load(object sender, EventArgs e)
         {
-#if (!DEBUG)
-            tsbPatientLoked.Visible = false;
-#else
-            tsbPatientLoked.Visible = true;
-#endif
-
             if (oQuery != null && oUtil != null)
             {
                 Permission();
                 Text = oTxt.TitleListPatient;
                 SelectRow = 0;
-                tslPagina.Text = "Página: 0 de 0";
-                tsbPrintList.Enabled = false;
+                TslNumberPag.Text = "Página: 0 de 0";
+                TsbPrintList.Enabled = false;
             }
             else
                 Close();
@@ -63,33 +57,16 @@ namespace GoldenAge.Formularios
 
         #endregion
 
-        // OK - 17/11/23
+        // OK - 18/04/15
         #region Menu Contextual Botones
-
-        // OK - 17/11/23
-        private void tsmiDelete_Click(object sender, EventArgs e)
-        {
-            if (dgvLista.RowCount != 0)
-            {
-                ClassPatient oGf = new ClassPatient();
-                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
-                oGf = (ClassPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
-                oGf.Visible = false;
-
-                if (oGf != null)
-                    MessageBox.Show((0 != (int)oQuery.AbmPatient(oGf, classQuery.eAbm.Update)) ? oTxt.UpdateParent : oTxt.ErrorQueryUpdate);
-                else
-                    MessageBox.Show(oTxt.ErrorQueryList);
-            }
-        }
 
         // OK - 17/09/24
         private void tsmiUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvLista.RowCount != 0)
+            if (DgvLista.RowCount != 0)
             {
                 ClassPatient oGf = new ClassPatient();
-                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
+                oGf.IdPatient = Convert.ToInt32(DgvLista.Rows[SelectRow].Cells[1].Value);
                 oGf = (ClassPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
 
                 if (oGf != null)
@@ -111,7 +88,7 @@ namespace GoldenAge.Formularios
 
         #endregion
 
-        // OK - 17/11/20
+        // OK - 18/04/15
         #region Paginador
 
         // OK - 17/11/20
@@ -134,7 +111,24 @@ namespace GoldenAge.Formularios
             Filtrar(Pag = 1);
         }
 
-#endregion
+        // OK - 18/04/15
+        private void TsbToggleStatus_Click(object sender, EventArgs e)
+        {
+            PatientState =! PatientState;
+
+            if (PatientState)
+            {
+                //TsbToggleStatus.Text = "Ver Activos";
+                TsbToggleStatus.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                //TsbToggleStatus.Text = "Ver Bloqueados";
+                TsbToggleStatus.BackColor = SystemColors.ControlDark;
+            }
+        }
+
+        #endregion
 
         // OK - 18/02/08
         #region Botones
@@ -142,10 +136,10 @@ namespace GoldenAge.Formularios
         // OK - 17/09/30
         private void tsmiSelect_Click(object sender, EventArgs e)
         {
-            if (dgvLista.RowCount != 0)
+            if (DgvLista.RowCount != 0)
             {
                 ClassPatient oGf = new ClassPatient();
-                oGf.IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
+                oGf.IdPatient = Convert.ToInt32(DgvLista.Rows[SelectRow].Cells[1].Value);
                 oGf = (ClassPatient)oQuery.AbmPatient(oGf, classQuery.eAbm.Select);
 
                 FrmAbmPatient frmPatient = new FrmAbmPatient(oGf, FrmAbmPatient.Modo.Select, oQuery, oUtil);
@@ -156,9 +150,9 @@ namespace GoldenAge.Formularios
         // OK - 17/11/16
         private void tsmiDiagnostic_Click(object sender, EventArgs e)
         {
-            if (dgvLista.RowCount != 0)
+            if (DgvLista.RowCount != 0)
             {
-                int IdPatient = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
+                int IdPatient = Convert.ToInt32(DgvLista.Rows[SelectRow].Cells[1].Value);
                 frmAbmDiagnostic fDiagnostic = new frmAbmDiagnostic(IdPatient, frmAbmDiagnostic.SelectedId.Patient);
                 fDiagnostic.oQuery = oQuery;
                 fDiagnostic.oUtil = oUtil;
@@ -171,9 +165,9 @@ namespace GoldenAge.Formularios
         {
             DataSet dS = new DataSet();
             ClassPatient oP = new ClassPatient();
-            oP.LastName = tstxtLastName.Text;
+            oP.LastName = TstxtLastName.Text;
             oP.Name = tstxtName.Text;
-            oP.NumberDocument = tstxtDocument.Text == string.Empty ? 0 : Convert.ToInt32(tstxtDocument.Text);
+            oP.NumberDocument = TstxtDocument.Text == string.Empty ? 0 : Convert.ToInt32(TstxtDocument.Text);
 
             if (oQuery.rpListPatient(oP.Name, oP.LastName, oP.NumberDocument))
             {
@@ -190,7 +184,7 @@ namespace GoldenAge.Formularios
         {
             bool isOk = true;
             DataSet dS = new DataSet();
-            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
+            int Id = Convert.ToInt32(DgvLista.Rows[SelectRow].Cells[1].Value);
 
             if (oQuery.RpSocialWork(Id))
                 dS.Tables.Add(oQuery.Table);
@@ -216,7 +210,7 @@ namespace GoldenAge.Formularios
         {
             bool isOk = true;
             DataSet dS = new DataSet();
-            int Id = Convert.ToInt32(dgvLista.Rows[SelectRow].Cells[1].Value);
+            int Id = Convert.ToInt32(DgvLista.Rows[SelectRow].Cells[1].Value);
 
             if (oQuery.RpOnlyPatient(Id))
                 dS.Tables.Add(oQuery.Table);
@@ -240,33 +234,32 @@ namespace GoldenAge.Formularios
         // OK - 17/11/16
         private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLista.RowCount >= 0)
+            if (DgvLista.RowCount >= 0)
             {
                 SelectRow = e.RowIndex >= 0 ? e.RowIndex : SelectRow;
-                SelectRow = dgvLista.RowCount == 1 ? 0 : SelectRow;
+                SelectRow = DgvLista.RowCount == 1 ? 0 : SelectRow;
             }
         }
 
         #endregion
 
-        // OK - 18/02/08
+        // OK - 18/04/15
         #region Metodos
 
-        // OK - 17/11/11
+        // OK - 18/04/15
         private void Permission()
         {
             bool isAdmin = (oUtil.oProfessional.IdPermission == 1);
-            tsmiAdd.Visible = isAdmin;
-            tsmiDelete.Visible = isAdmin;
-            tsmiUpdate.Visible = isAdmin;
-            tssMenuAbm.Visible = isAdmin;
-            tsmiPrintSelect.Visible = isAdmin;
-            tsmiPrintParent.Visible = isAdmin;
-            tssMenuPrint.Visible = isAdmin;
-            tsbPrintList.Visible = isAdmin;
-            tssPrint.Visible = isAdmin;
-            tsbAdd.Visible = isAdmin;
-            tssAdd.Visible = isAdmin;
+            TsmiAddFile.Visible = isAdmin;
+            TsmiUpdateFile.Visible = isAdmin;
+            TssMenuAbm.Visible = isAdmin;
+            TsmiPrintSelect.Visible = isAdmin;
+            TsmiPrintParent.Visible = isAdmin;
+            TssMenuPrint.Visible = isAdmin;
+            TsbPrintList.Visible = isAdmin;
+            TssPrint.Visible = isAdmin;
+            TsbAdd.Visible = isAdmin;
+            TssAdd.Visible = isAdmin;
         }
 
         /// <summary>
@@ -275,28 +268,28 @@ namespace GoldenAge.Formularios
         /// </summary>
         public void Filtrar(int vPag)
         {
-            int affNumber = tstxtDocument.Text == string.Empty ? 0 : Convert.ToInt32(tstxtDocument.Text);
+            int affNumber = TstxtDocument.Text == string.Empty ? 0 : Convert.ToInt32(TstxtDocument.Text);
 
             if (oQuery.FilterLimitPatient(
-                    tstxtName.TextBox.Text, tstxtLastName.TextBox.Text, affNumber,
+                    tstxtName.TextBox.Text, TstxtLastName.TextBox.Text, affNumber, PatientState,
                 vPag, oUtil.CantRegistrosGrilla))
             {
                 decimal Cont = oQuery.FilterLimitCountPatient(
-                    tstxtName.TextBox.Text,  tstxtLastName.TextBox.Text, affNumber);
+                    tstxtName.TextBox.Text,  TstxtLastName.TextBox.Text, affNumber);
                 decimal Div = Math.Ceiling(Cont / oUtil.CantRegistrosGrilla);
                 cantPag = Convert.ToInt32(Math.Round(Div, MidpointRounding.ToEven));
-                tslPagina.Text = "Página: " + Pag.ToString() + " de " + cantPag.ToString();
+                TslNumberPag.Text = "Página: " + Pag.ToString() + " de " + cantPag.ToString();
 
-                dgvLista.Columns.Clear();
+                DgvLista.Columns.Clear();
                 GenerarGrilla(oQuery.Table);
 
-                if (dgvLista.RowCount != 0)
+                if (DgvLista.RowCount != 0)
                 {
                     PintarBloqueados(Color.Gray);
-                    tsbPrintList.Enabled = true;
+                    TsbPrintList.Enabled = true;
                 }
                 else
-                    tsbPrintList.Enabled = false;
+                    TsbPrintList.Enabled = false;
             }
             else
                 MessageBox.Show(oTxt.ErrorQueryList);
@@ -310,20 +303,20 @@ namespace GoldenAge.Formularios
         public void PintarBloqueados(Color Color)
         {
             bool Block = false;
-            int nCell = dgvLista.ColumnCount;
+            int nCell = DgvLista.ColumnCount;
 
-            for (int Fila = 0; Fila < dgvLista.Rows.Count; Fila++)
+            for (int Fila = 0; Fila < DgvLista.Rows.Count; Fila++)
             {
-                Block = Convert.ToBoolean(dgvLista.Rows[Fila].Cells[nCell - 1].Value);
+                Block = Convert.ToBoolean(DgvLista.Rows[Fila].Cells[nCell - 1].Value);
                 if (Block == false)
-                    for (int Columna = 0; Columna < dgvLista.Rows[Fila].Cells.Count; Columna++)
-                        dgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
+                    for (int Columna = 0; Columna < DgvLista.Rows[Fila].Cells.Count; Columna++)
+                        DgvLista.Rows[Fila].Cells[Columna].Style.BackColor = Color;
             }
         }
 
         /// <summary>
         /// Carga la Lista debuelve la cantidad de filas.
-        /// OK - 17/11/23
+        /// OK - 18/04/15
         /// </summary>
         /// <param name="Source"></param>
         public void GenerarGrilla(object Source)
@@ -331,40 +324,24 @@ namespace GoldenAge.Formularios
             //
             //Configuracion del DataListView
             //
-            dgvLista.AutoGenerateColumns = true;
-            dgvLista.AllowUserToAddRows = false;
-            dgvLista.RowHeadersVisible = false;
-            dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLista.ReadOnly = true;
-            dgvLista.ScrollBars = ScrollBars.Both;
-            dgvLista.ContextMenuStrip = cmsMenuEmergente;
-            dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvLista.MultiSelect = false;
-            dgvLista.DataSource = Source;
+            DgvLista.AutoGenerateColumns = true;
+            DgvLista.AllowUserToAddRows = false;
+            DgvLista.RowHeadersVisible = false;
+            DgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            DgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvLista.ReadOnly = true;
+            DgvLista.ScrollBars = ScrollBars.Both;
+            DgvLista.ContextMenuStrip = CmsMenuEmergente;
+            DgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvLista.MultiSelect = false;
+            DgvLista.DataSource = Source;
 #if (!DEBUG)
-            dgvLista.Columns[0].Visible = false;
-            dgvLista.Columns[1].Visible = false;
-            dgvLista.Columns[dgvLista.ColumnCount -1].Visible = false;
+            DgvLista.Columns[0].Visible = false;
+            DgvLista.Columns[1].Visible = false;
+            DgvLista.Columns[DgvLista.ColumnCount -1].Visible = false;
 #endif
         }
 
-#endregion
-
-        private void tsbPatientLoked_Click(object sender, EventArgs e)
-        {
-            PatientLocked = !PatientLocked;
-
-            if (PatientLocked)
-            {
-                tsbPatientLoked.Text = "Ver Activos";
-                tsbPatientLoked.BackColor = SystemColors.ControlDark;
-            }
-            else
-            {
-                tsbPatientLoked.Text = "Ver Bloqueados";
-                tsbPatientLoked.BackColor = SystemColors.Control;
-            }
-        }
+        #endregion
     }
 }

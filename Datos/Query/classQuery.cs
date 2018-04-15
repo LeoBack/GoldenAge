@@ -1561,13 +1561,14 @@ namespace Datos.Query
         /// <param name="Pag">Id Actual</param>
         /// <param name="RowsShow">Cantidad de filas a mostrar</param>
         /// <returns></returns>
-        public bool FilterLimitPatient(string Name, string LastName, int NumberDocument, int Pag, int RowsShow)
+        public bool FilterLimitPatient(string Name, string LastName, int NumberDocument, bool State, int Pag, int RowsShow)
         {
             string SPname = sp.FiltroPatientLimite;
             List<SqlParameter> lParam = new List<SqlParameter>();
             lParam.Add(new SqlParameter("@Name", Name));
             lParam.Add(new SqlParameter("@LastName", LastName));
             lParam.Add(new SqlParameter("@NumberDocument", NumberDocument));
+            lParam.Add(new SqlParameter("@State", State));
             lParam.Add(new SqlParameter("@Pag", Pag));
             lParam.Add(new SqlParameter("@RowsShow", RowsShow));
 

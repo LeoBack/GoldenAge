@@ -30,351 +30,341 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListPatient));
-            this.tlpPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.tsFooter = new System.Windows.Forms.ToolStrip();
-            this.tslPagina = new System.Windows.Forms.ToolStripLabel();
-            this.tsMenu = new System.Windows.Forms.ToolStrip();
-            this.tssAdd = new System.Windows.Forms.ToolStripSeparator();
-            this.tslblLastName = new System.Windows.Forms.ToolStripLabel();
-            this.tstxtLastName = new System.Windows.Forms.ToolStripTextBox();
-            this.tslblName = new System.Windows.Forms.ToolStripLabel();
+            this.TlpPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.TsFooter = new System.Windows.Forms.ToolStrip();
+            this.TsbPrevious = new System.Windows.Forms.ToolStripLabel();
+            this.TslNumberPag = new System.Windows.Forms.ToolStripLabel();
+            this.TsbNext = new System.Windows.Forms.ToolStripButton();
+            this.TsMenu = new System.Windows.Forms.ToolStrip();
+            this.TsbAdd = new System.Windows.Forms.ToolStripButton();
+            this.TssAdd = new System.Windows.Forms.ToolStripSeparator();
+            this.TslblLastName = new System.Windows.Forms.ToolStripLabel();
+            this.TstxtLastName = new System.Windows.Forms.ToolStripTextBox();
+            this.TslblName = new System.Windows.Forms.ToolStripLabel();
             this.tstxtName = new System.Windows.Forms.ToolStripTextBox();
-            this.tslDocument = new System.Windows.Forms.ToolStripLabel();
-            this.tstxtDocument = new System.Windows.Forms.ToolStripTextBox();
-            this.tssPrint = new System.Windows.Forms.ToolStripSeparator();
-            this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.cmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tssMenuPrint = new System.Windows.Forms.ToolStripSeparator();
-            this.tssMenuAbm = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.tsbAdd = new System.Windows.Forms.ToolStripButton();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
-            this.tsbPrintList = new System.Windows.Forms.ToolStripButton();
-            this.tsbPatientLoked = new System.Windows.Forms.ToolStripButton();
-            this.tsmiSelect = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDiagnostic = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPrintSelect = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPrintParent = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlpPanel.SuspendLayout();
-            this.tsFooter.SuspendLayout();
-            this.tsMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
-            this.cmsMenuEmergente.SuspendLayout();
+            this.TslDocument = new System.Windows.Forms.ToolStripLabel();
+            this.TstxtDocument = new System.Windows.Forms.ToolStripTextBox();
+            this.TsbToggleStatus = new System.Windows.Forms.ToolStripButton();
+            this.TsbBuscar = new System.Windows.Forms.ToolStripButton();
+            this.TssPrint = new System.Windows.Forms.ToolStripSeparator();
+            this.TsbPrintList = new System.Windows.Forms.ToolStripButton();
+            this.DgvLista = new System.Windows.Forms.DataGridView();
+            this.CmsMenuEmergente = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TsmiSelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmiDiagnostic = new System.Windows.Forms.ToolStripMenuItem();
+            this.TssMenuPrint = new System.Windows.Forms.ToolStripSeparator();
+            this.TsmiPrintSelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmiPrintParent = new System.Windows.Forms.ToolStripMenuItem();
+            this.TssMenuAbm = new System.Windows.Forms.ToolStripSeparator();
+            this.TsmiUpdateFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmiAddFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.TlpPanel.SuspendLayout();
+            this.TsFooter.SuspendLayout();
+            this.TsMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).BeginInit();
+            this.CmsMenuEmergente.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tlpPanel
+            // TlpPanel
             // 
-            this.tlpPanel.ColumnCount = 1;
-            this.tlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.Controls.Add(this.tsFooter, 0, 2);
-            this.tlpPanel.Controls.Add(this.tsMenu, 0, 0);
-            this.tlpPanel.Controls.Add(this.dgvLista, 0, 1);
-            this.tlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpPanel.Location = new System.Drawing.Point(0, 0);
-            this.tlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tlpPanel.Name = "tlpPanel";
-            this.tlpPanel.RowCount = 3;
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tlpPanel.Size = new System.Drawing.Size(1274, 435);
-            this.tlpPanel.TabIndex = 0;
+            this.TlpPanel.ColumnCount = 1;
+            this.TlpPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TlpPanel.Controls.Add(this.TsFooter, 0, 2);
+            this.TlpPanel.Controls.Add(this.TsMenu, 0, 0);
+            this.TlpPanel.Controls.Add(this.DgvLista, 0, 1);
+            this.TlpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TlpPanel.Location = new System.Drawing.Point(0, 0);
+            this.TlpPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TlpPanel.Name = "TlpPanel";
+            this.TlpPanel.RowCount = 3;
+            this.TlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.TlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TlpPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.TlpPanel.Size = new System.Drawing.Size(1237, 540);
+            this.TlpPanel.TabIndex = 0;
             // 
-            // tsFooter
+            // TsFooter
             // 
-            this.tsFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tsFooter.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.tsFooter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.tslPagina,
-            this.toolStripButton1});
-            this.tsFooter.Location = new System.Drawing.Point(0, 404);
-            this.tsFooter.Name = "tsFooter";
-            this.tsFooter.Size = new System.Drawing.Size(1274, 31);
-            this.tsFooter.TabIndex = 9;
-            this.tsFooter.Text = "toolStrip1";
+            this.TsFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TsFooter.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.TsFooter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsbPrevious,
+            this.TslNumberPag,
+            this.TsbNext});
+            this.TsFooter.Location = new System.Drawing.Point(0, 509);
+            this.TsFooter.Name = "TsFooter";
+            this.TsFooter.Size = new System.Drawing.Size(1237, 31);
+            this.TsFooter.TabIndex = 9;
+            this.TsFooter.Text = "toolStrip1";
             // 
-            // tslPagina
+            // TsbPrevious
             // 
-            this.tslPagina.Name = "tslPagina";
-            this.tslPagina.Size = new System.Drawing.Size(82, 28);
-            this.tslPagina.Text = "tslPagina";
+            this.TsbPrevious.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TsbPrevious.Image = global::GoldenAge.Properties.Resources.ArrowLeft;
+            this.TsbPrevious.Name = "TsbPrevious";
+            this.TsbPrevious.Size = new System.Drawing.Size(24, 28);
+            this.TsbPrevious.Text = "tsbPreview";
+            this.TsbPrevious.Click += new System.EventHandler(this.tsbPreview_Click);
             // 
-            // tsMenu
+            // TslNumberPag
             // 
-            this.tsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbAdd,
-            this.tssAdd,
-            this.tslblLastName,
-            this.tstxtLastName,
-            this.tslblName,
+            this.TslNumberPag.Name = "TslNumberPag";
+            this.TslNumberPag.Size = new System.Drawing.Size(82, 28);
+            this.TslNumberPag.Text = "tslPagina";
+            // 
+            // TsbNext
+            // 
+            this.TsbNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TsbNext.Image = global::GoldenAge.Properties.Resources.ArrowRight;
+            this.TsbNext.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbNext.Name = "TsbNext";
+            this.TsbNext.Size = new System.Drawing.Size(28, 28);
+            this.TsbNext.Text = "tsbNext";
+            this.TsbNext.Click += new System.EventHandler(this.tsbNext_Click);
+            // 
+            // TsMenu
+            // 
+            this.TsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.TsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsbAdd,
+            this.TssAdd,
+            this.TslblLastName,
+            this.TstxtLastName,
+            this.TslblName,
             this.tstxtName,
-            this.tslDocument,
-            this.tstxtDocument,
-            this.tsbBuscar,
-            this.tssPrint,
-            this.tsbPrintList,
-            this.tsbPatientLoked});
-            this.tsMenu.Location = new System.Drawing.Point(0, 0);
-            this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.tsMenu.Size = new System.Drawing.Size(1274, 32);
-            this.tsMenu.TabIndex = 0;
-            this.tsMenu.Text = "Menu";
+            this.TslDocument,
+            this.TstxtDocument,
+            this.TsbToggleStatus,
+            this.TsbBuscar,
+            this.TssPrint,
+            this.TsbPrintList});
+            this.TsMenu.Location = new System.Drawing.Point(0, 0);
+            this.TsMenu.Name = "TsMenu";
+            this.TsMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.TsMenu.Size = new System.Drawing.Size(1237, 31);
+            this.TsMenu.TabIndex = 0;
+            this.TsMenu.Text = "Menu";
             // 
-            // tssAdd
+            // TsbAdd
             // 
-            this.tssAdd.Name = "tssAdd";
-            this.tssAdd.Size = new System.Drawing.Size(6, 32);
+            this.TsbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TsbAdd.Image = global::GoldenAge.Properties.Resources.Plus;
+            this.TsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbAdd.Name = "TsbAdd";
+            this.TsbAdd.Size = new System.Drawing.Size(28, 28);
+            this.TsbAdd.Text = "Nueva Ficha";
+            this.TsbAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
-            // tslblLastName
+            // TssAdd
             // 
-            this.tslblLastName.Name = "tslblLastName";
-            this.tslblLastName.Size = new System.Drawing.Size(78, 29);
-            this.tslblLastName.Text = "Apellido";
+            this.TssAdd.Name = "TssAdd";
+            this.TssAdd.Size = new System.Drawing.Size(6, 31);
             // 
-            // tstxtLastName
+            // TslblLastName
             // 
-            this.tstxtLastName.Name = "tstxtLastName";
-            this.tstxtLastName.Size = new System.Drawing.Size(148, 32);
+            this.TslblLastName.Name = "TslblLastName";
+            this.TslblLastName.Size = new System.Drawing.Size(78, 28);
+            this.TslblLastName.Text = "Apellido";
             // 
-            // tslblName
+            // TstxtLastName
             // 
-            this.tslblName.Name = "tslblName";
-            this.tslblName.Size = new System.Drawing.Size(78, 29);
-            this.tslblName.Text = "Nombre";
+            this.TstxtLastName.Name = "TstxtLastName";
+            this.TstxtLastName.Size = new System.Drawing.Size(148, 31);
+            // 
+            // TslblName
+            // 
+            this.TslblName.Name = "TslblName";
+            this.TslblName.Size = new System.Drawing.Size(78, 28);
+            this.TslblName.Text = "Nombre";
             // 
             // tstxtName
             // 
             this.tstxtName.Name = "tstxtName";
-            this.tstxtName.Size = new System.Drawing.Size(100, 32);
+            this.tstxtName.Size = new System.Drawing.Size(100, 31);
             // 
-            // tslDocument
+            // TslDocument
             // 
-            this.tslDocument.Name = "tslDocument";
-            this.tslDocument.Size = new System.Drawing.Size(132, 29);
-            this.tslDocument.Text = "Nº Documento";
+            this.TslDocument.Name = "TslDocument";
+            this.TslDocument.Size = new System.Drawing.Size(132, 28);
+            this.TslDocument.Text = "Nº Documento";
             // 
-            // tstxtDocument
+            // TstxtDocument
             // 
-            this.tstxtDocument.Name = "tstxtDocument";
-            this.tstxtDocument.Size = new System.Drawing.Size(100, 32);
+            this.TstxtDocument.Name = "TstxtDocument";
+            this.TstxtDocument.Size = new System.Drawing.Size(100, 31);
             // 
-            // tssPrint
+            // TsbToggleStatus
             // 
-            this.tssPrint.Name = "tssPrint";
-            this.tssPrint.Size = new System.Drawing.Size(6, 32);
+            this.TsbToggleStatus.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TsbToggleStatus.Image = global::GoldenAge.Properties.Resources.Padlock2;
+            this.TsbToggleStatus.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbToggleStatus.Name = "TsbToggleStatus";
+            this.TsbToggleStatus.Size = new System.Drawing.Size(28, 28);
+            this.TsbToggleStatus.Text = "Habilitados";
+            this.TsbToggleStatus.ToolTipText = "Cambia el resultado de la busqueda\r\nPacientes con Ingreso / Pacientes con Egreso";
+            this.TsbToggleStatus.Click += new System.EventHandler(this.TsbToggleStatus_Click);
             // 
-            // dgvLista
+            // TsbBuscar
             // 
-            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(4, 53);
-            this.dgvLista.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(1266, 332);
-            this.dgvLista.TabIndex = 1;
-            this.dgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
+            this.TsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TsbBuscar.Image = global::GoldenAge.Properties.Resources.Search;
+            this.TsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbBuscar.Name = "TsbBuscar";
+            this.TsbBuscar.Size = new System.Drawing.Size(28, 28);
+            this.TsbBuscar.Text = "Buscar";
+            this.TsbBuscar.Click += new System.EventHandler(this.tsbSearch_Click);
             // 
-            // cmsMenuEmergente
+            // TssPrint
             // 
-            this.cmsMenuEmergente.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.cmsMenuEmergente.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSelect,
-            this.tsmiDiagnostic,
-            this.tssMenuPrint,
-            this.tsmiPrintSelect,
-            this.tsmiPrintParent,
-            this.tssMenuAbm,
-            this.tsmiUpdate,
-            this.tsmiDelete,
-            this.tsmiAdd});
-            this.cmsMenuEmergente.Name = "cmsMenuEmergente";
-            this.cmsMenuEmergente.Size = new System.Drawing.Size(302, 226);
+            this.TssPrint.Name = "TssPrint";
+            this.TssPrint.Size = new System.Drawing.Size(6, 31);
             // 
-            // tssMenuPrint
+            // TsbPrintList
             // 
-            this.tssMenuPrint.Name = "tssMenuPrint";
-            this.tssMenuPrint.Size = new System.Drawing.Size(298, 6);
+            this.TsbPrintList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TsbPrintList.Image = global::GoldenAge.Properties.Resources.Printer;
+            this.TsbPrintList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbPrintList.Name = "TsbPrintList";
+            this.TsbPrintList.Size = new System.Drawing.Size(28, 28);
+            this.TsbPrintList.Text = "Imprimir";
+            this.TsbPrintList.Click += new System.EventHandler(this.tsbPrintList_Click);
             // 
-            // tssMenuAbm
+            // DgvLista
             // 
-            this.tssMenuAbm.Name = "tssMenuAbm";
-            this.tssMenuAbm.Size = new System.Drawing.Size(298, 6);
+            this.DgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvLista.Location = new System.Drawing.Point(4, 53);
+            this.DgvLista.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DgvLista.Name = "DgvLista";
+            this.DgvLista.Size = new System.Drawing.Size(1229, 437);
+            this.DgvLista.TabIndex = 1;
+            this.DgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
             // 
-            // toolStripLabel1
+            // CmsMenuEmergente
             // 
-            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripLabel1.Image = global::GoldenAge.Properties.Resources.ArrowLeft;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(24, 28);
-            this.toolStripLabel1.Text = "tsbPreview";
-            this.toolStripLabel1.Click += new System.EventHandler(this.tsbPreview_Click);
+            this.CmsMenuEmergente.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.CmsMenuEmergente.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsmiSelect,
+            this.TsmiDiagnostic,
+            this.TssMenuPrint,
+            this.TsmiPrintSelect,
+            this.TsmiPrintParent,
+            this.TssMenuAbm,
+            this.TsmiUpdateFile,
+            this.TsmiAddFile});
+            this.CmsMenuEmergente.Name = "cmsMenuEmergente";
+            this.CmsMenuEmergente.Size = new System.Drawing.Size(302, 196);
             // 
-            // toolStripButton1
+            // TsmiSelect
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::GoldenAge.Properties.Resources.ArrowRight;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(28, 28);
-            this.toolStripButton1.Text = "tsbNext";
-            this.toolStripButton1.Click += new System.EventHandler(this.tsbNext_Click);
+            this.TsmiSelect.Image = global::GoldenAge.Properties.Resources.Clipboard;
+            this.TsmiSelect.Name = "TsmiSelect";
+            this.TsmiSelect.Size = new System.Drawing.Size(301, 30);
+            this.TsmiSelect.Text = "Ver Ficha";
+            this.TsmiSelect.Click += new System.EventHandler(this.tsmiSelect_Click);
             // 
-            // tsbAdd
+            // TsmiDiagnostic
             // 
-            this.tsbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAdd.Image = global::GoldenAge.Properties.Resources.Plus;
-            this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAdd.Name = "tsbAdd";
-            this.tsbAdd.Size = new System.Drawing.Size(28, 29);
-            this.tsbAdd.Text = "Agregar";
-            this.tsbAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
+            this.TsmiDiagnostic.Image = global::GoldenAge.Properties.Resources.Clipboard;
+            this.TsmiDiagnostic.Name = "TsmiDiagnostic";
+            this.TsmiDiagnostic.Size = new System.Drawing.Size(301, 30);
+            this.TsmiDiagnostic.Text = "Diagnosticos";
+            this.TsmiDiagnostic.Click += new System.EventHandler(this.tsmiDiagnostic_Click);
             // 
-            // tsbBuscar
+            // TssMenuPrint
             // 
-            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbBuscar.Image = global::GoldenAge.Properties.Resources.Search;
-            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(28, 29);
-            this.tsbBuscar.Text = "Buscar";
-            this.tsbBuscar.Click += new System.EventHandler(this.tsbSearch_Click);
+            this.TssMenuPrint.Name = "TssMenuPrint";
+            this.TssMenuPrint.Size = new System.Drawing.Size(298, 6);
             // 
-            // tsbPrintList
+            // TsmiPrintSelect
             // 
-            this.tsbPrintList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrintList.Image = global::GoldenAge.Properties.Resources.Printer;
-            this.tsbPrintList.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPrintList.Name = "tsbPrintList";
-            this.tsbPrintList.Size = new System.Drawing.Size(28, 29);
-            this.tsbPrintList.Text = "Imprimir";
-            this.tsbPrintList.Click += new System.EventHandler(this.tsbPrintList_Click);
+            this.TsmiPrintSelect.Image = global::GoldenAge.Properties.Resources.Printer;
+            this.TsmiPrintSelect.Name = "TsmiPrintSelect";
+            this.TsmiPrintSelect.Size = new System.Drawing.Size(301, 30);
+            this.TsmiPrintSelect.Text = "Imprimir seleccionado";
+            this.TsmiPrintSelect.Click += new System.EventHandler(this.tsmiPrintSelect_Click);
             // 
-            // tsbPatientLoked
+            // TsmiPrintParent
             // 
-            this.tsbPatientLoked.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbPatientLoked.Image = global::GoldenAge.Properties.Resources.Padlock2;
-            this.tsbPatientLoked.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPatientLoked.Name = "tsbPatientLoked";
-            this.tsbPatientLoked.Size = new System.Drawing.Size(164, 29);
-            this.tsbPatientLoked.Text = "Ver Bloqueados";
-            this.tsbPatientLoked.Click += new System.EventHandler(this.tsbPatientLoked_Click);
+            this.TsmiPrintParent.Image = global::GoldenAge.Properties.Resources.Printer;
+            this.TsmiPrintParent.Name = "TsmiPrintParent";
+            this.TsmiPrintParent.Size = new System.Drawing.Size(301, 30);
+            this.TsmiPrintParent.Text = "Imprimir personas a cargo";
+            this.TsmiPrintParent.Click += new System.EventHandler(this.tsmiPrintParent_Click);
             // 
-            // tsmiSelect
+            // TssMenuAbm
             // 
-            this.tsmiSelect.Image = global::GoldenAge.Properties.Resources.Clipboard;
-            this.tsmiSelect.Name = "tsmiSelect";
-            this.tsmiSelect.Size = new System.Drawing.Size(301, 30);
-            this.tsmiSelect.Text = "Ver Ficha";
-            this.tsmiSelect.Click += new System.EventHandler(this.tsmiSelect_Click);
+            this.TssMenuAbm.Name = "TssMenuAbm";
+            this.TssMenuAbm.Size = new System.Drawing.Size(298, 6);
             // 
-            // tsmiDiagnostic
+            // TsmiUpdateFile
             // 
-            this.tsmiDiagnostic.Image = global::GoldenAge.Properties.Resources.Clipboard;
-            this.tsmiDiagnostic.Name = "tsmiDiagnostic";
-            this.tsmiDiagnostic.Size = new System.Drawing.Size(301, 30);
-            this.tsmiDiagnostic.Text = "Diagnosticos";
-            this.tsmiDiagnostic.Click += new System.EventHandler(this.tsmiDiagnostic_Click);
+            this.TsmiUpdateFile.Image = global::GoldenAge.Properties.Resources.EditFile;
+            this.TsmiUpdateFile.Name = "TsmiUpdateFile";
+            this.TsmiUpdateFile.Size = new System.Drawing.Size(301, 30);
+            this.TsmiUpdateFile.Text = "Modificar Ficha";
+            this.TsmiUpdateFile.Click += new System.EventHandler(this.tsmiUpdate_Click);
             // 
-            // tsmiPrintSelect
+            // TsmiAddFile
             // 
-            this.tsmiPrintSelect.Image = global::GoldenAge.Properties.Resources.Printer;
-            this.tsmiPrintSelect.Name = "tsmiPrintSelect";
-            this.tsmiPrintSelect.Size = new System.Drawing.Size(301, 30);
-            this.tsmiPrintSelect.Text = "Imprimir seleccionado";
-            this.tsmiPrintSelect.Click += new System.EventHandler(this.tsmiPrintSelect_Click);
+            this.TsmiAddFile.Image = global::GoldenAge.Properties.Resources.Plus;
+            this.TsmiAddFile.Name = "TsmiAddFile";
+            this.TsmiAddFile.Size = new System.Drawing.Size(301, 30);
+            this.TsmiAddFile.Text = "Nueva Ficha";
+            this.TsmiAddFile.Click += new System.EventHandler(this.tsmiAdd_Click);
             // 
-            // tsmiPrintParent
-            // 
-            this.tsmiPrintParent.Image = global::GoldenAge.Properties.Resources.Printer;
-            this.tsmiPrintParent.Name = "tsmiPrintParent";
-            this.tsmiPrintParent.Size = new System.Drawing.Size(301, 30);
-            this.tsmiPrintParent.Text = "Imprimir personas a cargo";
-            this.tsmiPrintParent.Click += new System.EventHandler(this.tsmiPrintParent_Click);
-            // 
-            // tsmiUpdate
-            // 
-            this.tsmiUpdate.Image = global::GoldenAge.Properties.Resources.EditFile;
-            this.tsmiUpdate.Name = "tsmiUpdate";
-            this.tsmiUpdate.Size = new System.Drawing.Size(301, 30);
-            this.tsmiUpdate.Text = "Modificar";
-            this.tsmiUpdate.Click += new System.EventHandler(this.tsmiUpdate_Click);
-            // 
-            // tsmiDelete
-            // 
-            this.tsmiDelete.Image = global::GoldenAge.Properties.Resources.Error;
-            this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(301, 30);
-            this.tsmiDelete.Text = "Eliminar";
-            this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
-            // 
-            // tsmiAdd
-            // 
-            this.tsmiAdd.Image = global::GoldenAge.Properties.Resources.Plus;
-            this.tsmiAdd.Name = "tsmiAdd";
-            this.tsmiAdd.Size = new System.Drawing.Size(301, 30);
-            this.tsmiAdd.Text = "Agregar";
-            this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
-            // 
-            // frmListPatient
+            // FrmListPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 435);
-            this.Controls.Add(this.tlpPanel);
+            this.ClientSize = new System.Drawing.Size(1237, 540);
+            this.Controls.Add(this.TlpPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmListPatient";
-            this.Text = "Buscar Pacientes";
+            this.Name = "FrmListPatient";
+            this.Text = "Buscar [fichas de pacientes]";
             this.Load += new System.EventHandler(this.frmListPatient_Load);
-            this.tlpPanel.ResumeLayout(false);
-            this.tlpPanel.PerformLayout();
-            this.tsFooter.ResumeLayout(false);
-            this.tsFooter.PerformLayout();
-            this.tsMenu.ResumeLayout(false);
-            this.tsMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
-            this.cmsMenuEmergente.ResumeLayout(false);
+            this.TlpPanel.ResumeLayout(false);
+            this.TlpPanel.PerformLayout();
+            this.TsFooter.ResumeLayout(false);
+            this.TsFooter.PerformLayout();
+            this.TsMenu.ResumeLayout(false);
+            this.TsMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).EndInit();
+            this.CmsMenuEmergente.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tlpPanel;
-        private System.Windows.Forms.ToolStrip tsMenu;
-        private System.Windows.Forms.ToolStripLabel tslblLastName;
-        private System.Windows.Forms.ToolStripTextBox tstxtLastName;
-        private System.Windows.Forms.DataGridView dgvLista;
-        private System.Windows.Forms.ContextMenuStrip cmsMenuEmergente;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSelect;
-        private System.Windows.Forms.ToolStripButton tsbPrintList;
-        private System.Windows.Forms.ToolStripButton tsbBuscar;
-        private System.Windows.Forms.ToolStripMenuItem tsmiUpdate;
-        private System.Windows.Forms.ToolStripLabel tslblName;
+        private System.Windows.Forms.TableLayoutPanel TlpPanel;
+        private System.Windows.Forms.ToolStrip TsMenu;
+        private System.Windows.Forms.ToolStripLabel TslblLastName;
+        private System.Windows.Forms.ToolStripTextBox TstxtLastName;
+        private System.Windows.Forms.DataGridView DgvLista;
+        private System.Windows.Forms.ContextMenuStrip CmsMenuEmergente;
+        private System.Windows.Forms.ToolStripMenuItem TsmiSelect;
+        private System.Windows.Forms.ToolStripButton TsbPrintList;
+        private System.Windows.Forms.ToolStripButton TsbBuscar;
+        private System.Windows.Forms.ToolStripMenuItem TsmiUpdateFile;
+        private System.Windows.Forms.ToolStripLabel TslblName;
         private System.Windows.Forms.ToolStripTextBox tstxtName;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDelete;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAdd;
-        private System.Windows.Forms.ToolStripSeparator tssMenuPrint;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDiagnostic;
-        private System.Windows.Forms.ToolStripButton tsbAdd;
-        private System.Windows.Forms.ToolStrip tsFooter;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripLabel tslPagina;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripSeparator tssAdd;
-        private System.Windows.Forms.ToolStripSeparator tssPrint;
-        private System.Windows.Forms.ToolStripMenuItem tsmiPrintSelect;
-        private System.Windows.Forms.ToolStripMenuItem tsmiPrintParent;
-        private System.Windows.Forms.ToolStripSeparator tssMenuAbm;
-        private System.Windows.Forms.ToolStripLabel tslDocument;
-        private System.Windows.Forms.ToolStripTextBox tstxtDocument;
-        private System.Windows.Forms.ToolStripButton tsbPatientLoked;
+        private System.Windows.Forms.ToolStripMenuItem TsmiAddFile;
+        private System.Windows.Forms.ToolStripSeparator TssMenuPrint;
+        private System.Windows.Forms.ToolStripMenuItem TsmiDiagnostic;
+        private System.Windows.Forms.ToolStripButton TsbAdd;
+        private System.Windows.Forms.ToolStrip TsFooter;
+        private System.Windows.Forms.ToolStripLabel TsbPrevious;
+        private System.Windows.Forms.ToolStripLabel TslNumberPag;
+        private System.Windows.Forms.ToolStripButton TsbNext;
+        private System.Windows.Forms.ToolStripSeparator TssAdd;
+        private System.Windows.Forms.ToolStripSeparator TssPrint;
+        private System.Windows.Forms.ToolStripMenuItem TsmiPrintSelect;
+        private System.Windows.Forms.ToolStripMenuItem TsmiPrintParent;
+        private System.Windows.Forms.ToolStripSeparator TssMenuAbm;
+        private System.Windows.Forms.ToolStripLabel TslDocument;
+        private System.Windows.Forms.ToolStripTextBox TstxtDocument;
+        private System.Windows.Forms.ToolStripButton TsbToggleStatus;
     }
 }
