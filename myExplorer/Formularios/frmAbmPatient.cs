@@ -798,10 +798,7 @@ namespace GoldenAge.Formularios
         }
 
         // OK - 18/04/09
-        private void TsmiParentDelete_Click(object sender, EventArgs e)
-        {
-            ParentDelete();
-        }
+        private void TsmiParentDelete_Click(object sender, EventArgs e) => ParentDelete();
 
         // OK - 17/09/30
         private void BtnParentLocalitation_Click(object sender, EventArgs e)
@@ -1097,10 +1094,7 @@ namespace GoldenAge.Formularios
         }
 
         // OK - 18/04/09
-        private void TsmiSocialWorkDelete_Click(object sender, EventArgs e)
-        {
-            SocialWorkDelete();
-        }
+        private void TsmiSocialWorkDelete_Click(object sender, EventArgs e) => SocialWorkDelete();
 
         // OK - 18/04/09
         private void DgvSocialWorksList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1124,7 +1118,7 @@ namespace GoldenAge.Formularios
         #endregion
 
         //== # 06 =====================================================================
-        // OK - 18/04/14
+        // OK - 18/04/23
 
         #region State
 
@@ -1253,6 +1247,7 @@ namespace GoldenAge.Formularios
             }
             DgvStateList.Enabled = true;
             BtnStateNew.Enabled = true;
+            CmbState.Enabled = false;
         }
 
         /// <summary>
@@ -1345,6 +1340,19 @@ namespace GoldenAge.Formularios
             StateGenerarGrilla();
         }
 
+        /// <summary>
+        /// Selecciona automaticamente el estado (Como medida de seguridad).
+        /// OK - 18/04/23
+        /// </summary>
+        private void AutoStateSelected()
+        {
+            if (DtViewPatientState.Rows.Count != 0)
+            {
+                DataRow Dr = DtViewPatientState.Rows[DtViewPatientState.Rows.Count - 1];
+                CmbState.SelectedIndex = Convert.ToInt32(Dr[2]) == 0 ? 0 : 1;
+            }
+        }
+
         #endregion
 
         // OK - 18/04/13
@@ -1354,13 +1362,11 @@ namespace GoldenAge.Formularios
             StateEnable(true);
             ObjetPatientState = new ClassPatientState();
             ModoPatientState = Modo.Add;
+            AutoStateSelected();
         }
 
         // OK - 18/04/13
-        private void TsmiStateDelete_Click(object sender, EventArgs e)
-        {
-            StateDelete();
-        }
+        private void TsmiStateDelete_Click(object sender, EventArgs e) => StateDelete();
 
         // OK - 18/04/13
         private void DgvStateList_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1380,6 +1386,9 @@ namespace GoldenAge.Formularios
                 StateLoadFrmPatient();
             }
         }
+
+        // OK - 18/04/23
+        private void DtpStateDate_ValueChanged(object sender, EventArgs e) => CmbState.Enabled = DtpStateDate.Value < DateTime.Now.AddDays(-1);
 
         #endregion
 

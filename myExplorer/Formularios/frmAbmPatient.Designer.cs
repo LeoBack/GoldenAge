@@ -59,7 +59,6 @@
             this.TbpParent = new System.Windows.Forms.TabPage();
             this.TlpParent = new System.Windows.Forms.TableLayoutPanel();
             this.BtnParentLocalitation = new System.Windows.Forms.Button();
-            this.DgvParentList = new System.Windows.Forms.DataGridView();
             this.LblParentAddress = new System.Windows.Forms.Label();
             this.LblParentLocation = new System.Windows.Forms.Label();
             this.TxtParentNumberDocument = new System.Windows.Forms.TextBox();
@@ -82,6 +81,7 @@
             this.CmbParentTypeDocument = new System.Windows.Forms.ComboBox();
             this.LblParentSearch = new System.Windows.Forms.Label();
             this.BtnParentNew = new System.Windows.Forms.Button();
+            this.DgvParentList = new System.Windows.Forms.DataGridView();
             this.TbpSocialWorks = new System.Windows.Forms.TabPage();
             this.TlpSocialWork = new System.Windows.Forms.TableLayoutPanel();
             this.DgvSocialWorksList = new System.Windows.Forms.DataGridView();
@@ -530,18 +530,6 @@
             this.BtnParentLocalitation.UseVisualStyleBackColor = true;
             this.BtnParentLocalitation.Click += new System.EventHandler(this.BtnParentLocalitation_Click);
             // 
-            // DgvParentList
-            // 
-            this.DgvParentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvParentList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvParentList.Location = new System.Drawing.Point(3, 3);
-            this.DgvParentList.Name = "DgvParentList";
-            this.TlpParent.SetRowSpan(this.DgvParentList, 11);
-            this.DgvParentList.RowTemplate.Height = 28;
-            this.DgvParentList.Size = new System.Drawing.Size(414, 447);
-            this.DgvParentList.TabIndex = 0;
-            this.DgvParentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvParentList_CellClick);
-            // 
             // LblParentAddress
             // 
             this.LblParentAddress.AutoSize = true;
@@ -774,6 +762,18 @@
             this.BtnParentNew.UseVisualStyleBackColor = true;
             this.BtnParentNew.Click += new System.EventHandler(this.BtnParentNew_Click);
             // 
+            // DgvParentList
+            // 
+            this.DgvParentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvParentList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvParentList.Location = new System.Drawing.Point(3, 3);
+            this.DgvParentList.Name = "DgvParentList";
+            this.TlpParent.SetRowSpan(this.DgvParentList, 11);
+            this.DgvParentList.RowTemplate.Height = 28;
+            this.DgvParentList.Size = new System.Drawing.Size(414, 447);
+            this.DgvParentList.TabIndex = 0;
+            this.DgvParentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvParentList_CellClick);
+            // 
             // TbpSocialWorks
             // 
             this.TbpSocialWorks.Controls.Add(this.TlpSocialWork);
@@ -791,7 +791,7 @@
             this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
             this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 217F));
+            this.TlpSocialWork.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
             this.TlpSocialWork.Controls.Add(this.DgvSocialWorksList, 0, 0);
             this.TlpSocialWork.Controls.Add(this.CmbSocialWorkName, 2, 1);
             this.TlpSocialWork.Controls.Add(this.TxtSocialWorkAffiliateNumber, 2, 2);
@@ -819,7 +819,7 @@
             this.DgvSocialWorksList.Name = "DgvSocialWorksList";
             this.TlpSocialWork.SetRowSpan(this.DgvSocialWorksList, 4);
             this.DgvSocialWorksList.RowTemplate.Height = 28;
-            this.DgvSocialWorksList.Size = new System.Drawing.Size(425, 447);
+            this.DgvSocialWorksList.Size = new System.Drawing.Size(424, 447);
             this.DgvSocialWorksList.TabIndex = 22;
             this.DgvSocialWorksList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSocialWorksList_CellClick);
             // 
@@ -828,24 +828,24 @@
             this.CmbSocialWorkName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbSocialWorkName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbSocialWorkName.FormattingEnabled = true;
-            this.CmbSocialWorkName.Location = new System.Drawing.Point(678, 186);
+            this.CmbSocialWorkName.Location = new System.Drawing.Point(677, 186);
             this.CmbSocialWorkName.Name = "CmbSocialWorkName";
-            this.CmbSocialWorkName.Size = new System.Drawing.Size(179, 28);
+            this.CmbSocialWorkName.Size = new System.Drawing.Size(178, 28);
             this.CmbSocialWorkName.TabIndex = 24;
             // 
             // TxtSocialWorkAffiliateNumber
             // 
             this.TxtSocialWorkAffiliateNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtSocialWorkAffiliateNumber.Location = new System.Drawing.Point(678, 239);
+            this.TxtSocialWorkAffiliateNumber.Location = new System.Drawing.Point(677, 239);
             this.TxtSocialWorkAffiliateNumber.Name = "TxtSocialWorkAffiliateNumber";
-            this.TxtSocialWorkAffiliateNumber.Size = new System.Drawing.Size(179, 26);
+            this.TxtSocialWorkAffiliateNumber.Size = new System.Drawing.Size(178, 26);
             this.TxtSocialWorkAffiliateNumber.TabIndex = 23;
             // 
             // LblSocialWorkName
             // 
             this.LblSocialWorkName.AutoSize = true;
             this.LblSocialWorkName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblSocialWorkName.Location = new System.Drawing.Point(434, 174);
+            this.LblSocialWorkName.Location = new System.Drawing.Point(433, 174);
             this.LblSocialWorkName.Name = "LblSocialWorkName";
             this.LblSocialWorkName.Size = new System.Drawing.Size(238, 52);
             this.LblSocialWorkName.TabIndex = 54;
@@ -856,7 +856,7 @@
             // 
             this.LblSocialWorkAffiliateNumber.AutoSize = true;
             this.LblSocialWorkAffiliateNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblSocialWorkAffiliateNumber.Location = new System.Drawing.Point(434, 226);
+            this.LblSocialWorkAffiliateNumber.Location = new System.Drawing.Point(433, 226);
             this.LblSocialWorkAffiliateNumber.Name = "LblSocialWorkAffiliateNumber";
             this.LblSocialWorkAffiliateNumber.Size = new System.Drawing.Size(238, 52);
             this.LblSocialWorkAffiliateNumber.TabIndex = 54;
@@ -906,8 +906,8 @@
             this.TlpStatus.Name = "TlpStatus";
             this.TlpStatus.RowCount = 5;
             this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.TlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.TlpStatus.Size = new System.Drawing.Size(1078, 453);
@@ -924,7 +924,7 @@
             this.DgvStateList.Name = "DgvStateList";
             this.DgvStateList.ReadOnly = true;
             this.DgvStateList.RowTemplate.Height = 28;
-            this.DgvStateList.Size = new System.Drawing.Size(1072, 218);
+            this.DgvStateList.Size = new System.Drawing.Size(1072, 214);
             this.DgvStateList.TabIndex = 48;
             this.DgvStateList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvStateList_CellContentClick);
             // 
@@ -932,9 +932,9 @@
             // 
             this.LblStateStatus.AutoSize = true;
             this.LblStateStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblStateStatus.Location = new System.Drawing.Point(3, 224);
+            this.LblStateStatus.Location = new System.Drawing.Point(3, 220);
             this.LblStateStatus.Name = "LblStateStatus";
-            this.LblStateStatus.Size = new System.Drawing.Size(139, 50);
+            this.LblStateStatus.Size = new System.Drawing.Size(139, 58);
             this.LblStateStatus.TabIndex = 43;
             this.LblStateStatus.Text = "Estado";
             this.LblStateStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -945,9 +945,9 @@
             this.LblStateReasonExit.BackColor = System.Drawing.Color.Cornsilk;
             this.TlpStatus.SetColumnSpan(this.LblStateReasonExit, 4);
             this.LblStateReasonExit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblStateReasonExit.Location = new System.Drawing.Point(3, 274);
+            this.LblStateReasonExit.Location = new System.Drawing.Point(3, 278);
             this.LblStateReasonExit.Name = "LblStateReasonExit";
-            this.LblStateReasonExit.Size = new System.Drawing.Size(939, 32);
+            this.LblStateReasonExit.Size = new System.Drawing.Size(939, 30);
             this.LblStateReasonExit.TabIndex = 44;
             this.LblStateReasonExit.Text = "Motivo";
             this.LblStateReasonExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -959,14 +959,15 @@
             this.DtpStateDate.Name = "DtpStateDate";
             this.DtpStateDate.Size = new System.Drawing.Size(387, 26);
             this.DtpStateDate.TabIndex = 45;
+            this.DtpStateDate.ValueChanged += new System.EventHandler(this.DtpStateDate_ValueChanged);
             // 
             // LblStateDate
             // 
             this.LblStateDate.AutoSize = true;
             this.LblStateDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblStateDate.Location = new System.Drawing.Point(410, 224);
+            this.LblStateDate.Location = new System.Drawing.Point(410, 220);
             this.LblStateDate.Name = "LblStateDate";
-            this.LblStateDate.Size = new System.Drawing.Size(139, 50);
+            this.LblStateDate.Size = new System.Drawing.Size(139, 58);
             this.LblStateDate.TabIndex = 42;
             this.LblStateDate.Text = "Fecha";
             this.LblStateDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -975,11 +976,11 @@
             // 
             this.TlpStatus.SetColumnSpan(this.TxtStateReason, 4);
             this.TxtStateReason.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TxtStateReason.Location = new System.Drawing.Point(3, 309);
+            this.TxtStateReason.Location = new System.Drawing.Point(3, 311);
             this.TxtStateReason.Multiline = true;
             this.TxtStateReason.Name = "TxtStateReason";
             this.TlpStatus.SetRowSpan(this.TxtStateReason, 2);
-            this.TxtStateReason.Size = new System.Drawing.Size(939, 141);
+            this.TxtStateReason.Size = new System.Drawing.Size(939, 139);
             this.TxtStateReason.TabIndex = 47;
             // 
             // BtnStateNew
@@ -997,6 +998,7 @@
             // 
             this.CmbState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbState.Enabled = false;
             this.CmbState.FormattingEnabled = true;
             this.CmbState.Location = new System.Drawing.Point(148, 235);
             this.CmbState.Name = "CmbState";

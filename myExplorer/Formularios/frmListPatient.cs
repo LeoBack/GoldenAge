@@ -106,10 +106,7 @@ namespace GoldenAge.Formularios
         }
 
         // OK - 17/11/20
-        private void tsbSearch_Click(object sender, EventArgs e)
-        {
-            Filtrar(Pag = 1);
-        }
+        private void TsbSearch_Click(object sender, EventArgs e) => Filtrar(Pag = 1);
 
         // OK - 18/04/15
         private void TsbToggleStatus_Click(object sender, EventArgs e)

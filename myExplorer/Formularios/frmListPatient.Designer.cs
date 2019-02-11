@@ -212,7 +212,7 @@
             this.TsbBuscar.Name = "TsbBuscar";
             this.TsbBuscar.Size = new System.Drawing.Size(28, 28);
             this.TsbBuscar.Text = "Buscar";
-            this.TsbBuscar.Click += new System.EventHandler(this.tsbSearch_Click);
+            this.TsbBuscar.Click += new System.EventHandler(this.TsbSearch_Click);
             // 
             // TssPrint
             // 
